@@ -1,0 +1,227 @@
+# Diccionario de ejemplo
+culture:                  English
+dictionary:
+  default:
+    user:                 User
+    informe:              Report
+    pass:                 Password
+    register:             Record
+    nom:                  Name
+    des:                  Description
+    cedu:                 Writ
+    apell:                Last Name
+    usu_id:               User Id
+    cre_id:               credential Id
+    bus:                  search For
+    update:               Update 
+    orden:                Code Order Service
+    producto:             codigo product Input
+    cantidad:             quantity
+    valor:                value
+    maquina:              codigo machine
+    trab:                 worker
+    fecha_M:              Date
+    tipo:                 Type Use Id
+    origen:               Origin Id
+    pro:                  provider Id 
+    num id:               Identity Document
+    dir:                  Street Address
+    tel:                  Phone
+    idTipo:               codigo Type Id
+    idCiudad:             codigo City
+    tamano:               size
+    ubicacion:            location
+    iva:                  Iva
+    unidad:               Measurement Unit
+    atras:                Go To Previous Paguina
+    eliminar en masa:     Remove Calendar Community Boxes
+    nuevo:                New
+    cliente:              Customer
+    aciones:              Actions
+    ver:                  See
+    modificar:            Modify
+    eliminar:             Delete
+    editar cliente:       Edit Customer
+    nuevo cliente:        New Customer
+    datos:                DATA
+    credencial:           CREDENTIAL
+    de:                   Of
+    editar credencial:    Editar Credencial
+    #-------
+    nueva credencial:     Nueva Credencial
+    editar usuario:       Editar Usuario
+    nuevo usuario:        Nuevo Usuario
+    estado:               estado
+    editar lote:          Editar Lote
+    lote:                 Lote
+    nuevo lote:           Nuevo Lote
+    editar orden:         Editar Orden De Servicio
+    orden:                Orden De Servicio
+    fechaMantenimiento:   Fecha Mantenimiento
+    nombreTrabajador:     Nombre Trabajador
+    nuevo orden:          Nueva Orden De Servicio
+    origen:               Origen Maquina
+    nuevo origen:         Nuevo Origen De Maquina
+    tipo uso:             Tipo Uso Maquina
+    nuevo tipo:           Nuevo Tipo Uso Maquina
+    editar maquina:       Editar Maquina
+    nuevo maquina:        Nueva Maquina
+    maquina:              Maquina
+    editar tipo producto: Editar Tipo Insumo
+    nuevo tipo insumo:    Nuevo Tipo Insumo
+    tipo insumo:          Tipo Insumo
+    editar usu cre:       Editar Usuario Credencial
+    nuevo usu cre:        Nuevo Usuario Credencial
+    usu cre:              USUARIO CREDENCIAL
+    nuevo insumo:         Nuevo Insumo
+    editar insumo:        Editar Insumo
+    insumo:               Insumo
+    cerrar:               cerrar
+    filtros:              Filtros
+    eFiltros:             Eliminar Filtros
+    filtrar:              Filtrar
+    tipo id:              tipo id
+    confirmar eliminar:   Confirmar Eliminar
+    fecha crear:          Fecha Creacion
+    fecha fin:            Fecha FInal
+    register:             Registrar
+    extReg:               El Registro fue Exitoso
+    name:                 Nombre
+    des:                  Descripcion
+    cedu:                 Cedula
+    lastName:             Apellido
+    usu_id:               UsuarioId
+    cre_id:               CredencialId
+    bus:                  Buscar
+    update:               Actualizar 
+    email:                Email
+    orden:                CodigoOrdenServicio
+    producto:             CodigoProductoInsumo
+    cantidad:             Cantidad
+    valor:                Valor
+    maquina:              CodigoMaquina
+    trabajador:           Trabajador
+    selectTrabajador:     Seleccione el Trabajador
+    nuevoTrabajador:      Nuevo trabajador
+    fecha_M:              Fecha del Mantenimiento
+    tipo:                 TipoUsoId
+    origen:               OrigenId
+    pro:                  ProveedorId 
+    nomProveedor:         Proveedor
+    empresa:              Empresa
+    selectEmpresa:        Seleccione la Empresa
+    selectProveedor:      Seleccione el Proveedor
+    streetAddress:        Direccion
+    phone:                Telefono
+    idTipo:               CodigoTipoId
+    idCiudad:             CodigoCiudad
+    tamano:               Tamaño
+    ubicacion:            Ubicacion
+    iva:                  Iva
+    unidad:               Unidad medida
+    atras:                Pagina anterior
+    configEliminar:       Confirmar Eliminacion
+    configEliMas:         Confirmar Casillas Seleccionadas 
+    exiEliMas:            Las Casillas Seleccionadas Fueron Eliminadas Exitosamente
+    eliminarMas:          ¿Desea Eliminar las Casillas Seleccionadas? 
+    eliminarReg:          ¿Desea Eliminar el Registro?
+    removeSelection:      Eliminar Seleccion
+    cancel:               Cancelar
+    #--------------------------------------------
+    user:                 User
+    pass:                 Contraseña
+    register:             Register
+    extReg:               El Registro fue Exitoso
+    name:                 Name
+    des:                  Descripcion
+    cedu:                 Cedula
+    lastName:             Last Name
+    usu_id:               UsuarioId
+    cre_id:               CredencialId
+    bus:                  Buscar
+    update:               Actualizar 
+    email:                Email
+    orden:                CodigoOrdenServicio
+    producto:             CodigoProductoInsumo
+    cantidad:             Cantidad
+    valor:                Valor
+    maquina:              CodigoMaquina
+    trab:                 Trabajador
+    fecha_M:              Fecha del Mantenimiento
+    tipo:                 TipoUsoId
+    origen:               OrigenId
+    pro:                  ProveedorId 
+    streetAddress:        Street Address
+    phone:                Phone
+    idTipo:               CodigoTipoId
+    idCiudad:             CodigoCiudad
+    tamano:               Tamaño
+    ubicacion:            Ubicacion
+    iva:                  Iva
+    unidad:               Unidad medida
+    atras:                Pagina anterior
+    configEliminar:       Confirmar Eliminacion
+    configEliMas:         Confirmar Casillas Seleccionadas 
+    exiEliMas:            Las Casillas Seleccionadas Fueron Eliminadas Exitosamente
+    eliminarMas:          ¿Desea Eliminar las Casillas Seleccionadas? 
+    eliminarReg:          ¿Desea Eliminar el Registro?
+    removeSelection:      Remove Selection
+    cancel:               Cancel
+    new:                  New
+    customer:             Customer
+    actions:              Actions
+    see:                  See
+    modify:               Modify
+    takeOut:              TakeOut
+    page:                 Page
+    editar cliente:       Editar Cliente
+    nuevo cliente:        Nuevo Cliente
+    datos:                Datos
+    credencial:           Credencial
+    editar credencial:    Editar Credencial
+    nueva credencial:     Nueva Credencial
+    editar usuario:       Editar Usuario
+    nuevo usuario:        Nuevo Usuario
+    estado:               Estado
+    editar lote:          Editar Lote
+    lote:                 Lote
+    nuevo lote:           Nuevo Lote
+    editar orden:         Editar Orden De Servicio
+    orden:                Orden De Servicio
+    nombreTrabajador:     Nombre Trabajador
+    nuevo orden:          Nueva Orden De Servicio
+    origen:               Origen Maquina
+    nuevo origen:         Nuevo Origen De Maquina
+    tipo uso:             Tipo Uso Maquina
+    nuevo tipo:           Nuevo Tipo Uso Maquina
+    editar maquina:       Editar Maquina
+    nuevo maquina:        Nueva Maquina
+    maquina:              Maquina
+    editar tipo producto: Editar Tipo Insumo
+    nuevo tipo insumo:    Nuevo Tipo Insumo
+    tipo insumo:          Tipo Insumo
+    editar usu cre:       Editar Usuario Credencial
+    nuevo usu cre:        Nuevo Usuario Credencial
+    usu cre:              Usuario Credencial
+    nuevo insumo:         Nuevo Insumo
+    editar insumo:        Editar Insumo
+    insumo:               Insumo
+    editar proveedor:     Editar Proveedor
+    selectCiudad:         Seleccione la Ciudad
+    selectTipoId:         Seleccione el Tipo de Identificacion
+    filters:              Filters
+    removeFilters:        Remove Filters
+    filtrar:              Filtrar
+    tipo id:              tipo id
+    confirmar eliminar:   Confirmar Eliminar
+    fecha crear:          Fecha Creacion
+    fecha fin:            Fecha FInal
+    de:                   of
+    nomProveedor:         Proveedor
+  errors:
+    00001:                El módulo y la acción solicitada, no existe.
+    00002:                La dirección que solicita no está registrada.
+    00003:                Los datos de usuario y contrseña son inválidos.
+    00004:                El nombre de usuario excede la longitud permitida (:longitud)
+    00005:                El codigo de el usuario que desea registrar excede la longitud existente del sistema (:longitud)
+    00006:                El codigo de la credencial que desea registrar excede la longitud existente del sistema (:longitud)

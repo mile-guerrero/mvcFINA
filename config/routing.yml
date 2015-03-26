@@ -1,0 +1,1179 @@
+homepage:
+  url:    /
+  param:  { module: default, action: index, format: html }
+  load:
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php
+
+traduccion:
+  url:    /traduccion
+  param:  { module: cliente, action: traductor, format: html } 
+#-------------------------- shfSecurity --------------------------
+shfSecurity_index:
+  url:    /signin
+  param:  { module: shfSecurity, action: index, format: html }
+  load:
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php
+
+shfSecurity_login:
+  url:    /login
+  param:  { module: shfSecurity, action: login, format: html }
+  load:
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php
+    - model/base/usuarioCredencialBaseTableClass.php
+    - model/usuarioCredencialTableClass.php
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+    - model/base/recordarMeBaseTableClass.php
+    - model/recordarMeTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
+
+shfSecurity_logout:
+  url:    /logout
+  param:  { module: shfSecurity, action: logout, format: html }
+  load:
+    - model/base/recordarMeBaseTableClass.php
+    - model/recordarMeTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php 
+    
+shfSecurity_noPermission:
+  url:    /sin_permisos
+  param:  { module: shfSecurity, action: noPermission, format: html }
+
+shfSecurity_exception:
+  url:    /exception
+  param:  { module: shfSecurity, action: exception, format: html }    
+#--------------------------modulo-default --------------------------
+default_index:
+  url:    /usuario/index
+  param:  { module: default, action: index, format: html }
+  load:
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php
+    
+default_insert:
+  url:    /usuario/insertar
+  param:  { module: default, action: insert, format: html }
+  load:
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php
+    
+default_create:
+  url:    /usuario/crear
+  param:  { module: default, action: create, format: html }
+  load:
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php
+    
+default_edit:
+  url:    /usuario/editar
+  param:  { module: default, action: edit, format: html }
+  load:
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php 
+    
+default_update:
+  url:    /usuario/actualizar
+  param:  { module: default, action: update, format: html }
+  load:
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php 
+    
+default_delete:
+  url:    /usuario/eliminar
+  param:  { module: default, action: delete, format: json }
+  load:
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php
+    
+default_deleteSelect:
+  url:    /usuario/eliminarSeleccion
+  param:  { module: default, action: deleteSelect, format: html }
+  load:
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php
+default_ver:
+  url:    /usuario/ver
+  param:  { module: default, action: ver, format: html }
+  load:
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php  
+    
+default_reporte:
+  url:    /usuario/reporte
+  param:  { module: default, action: report, format: pdf } 
+  load:
+    - libs/fpdf/fpdf.php
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php 
+  
+ #-------------------modulo - credencial----------------------------   
+credencial_index:
+  url:    /credencial/index
+  param:  { module: credencial, action: index, format: html }
+  load:
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+    
+credencial_menuPrincipal:
+  url:    /credencial/menuPrincipal
+  param:  { module: credencial, action: menuPrincipal, format: html }
+  load:
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php    
+
+credencial_insert:
+  url:    /credencial/insertar
+  param:  { module: credencial, action: insert, format: html }
+  load:
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+        
+credencial_create:
+  url:    /credencial/crear
+  param:  { module: credencial, action: create, format: html }
+  load:
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+    
+credencial_edit:
+  url:    /credencial/editar
+  param:  { module: credencial, action: edit, format: html }
+  load:
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php  
+    
+credencial_update:
+  url:    /credencial/actualizar
+  param:  { module: credencial, action: update, format: html }
+  load:
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php 
+    
+credencial_delete:
+  url:    /credencial/eliminar
+  param:  { module: credencial, action: delete, format: json }
+  load:
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+    
+credencial_deleteSelect:
+  url:    /credencial/eliminarSeleccion
+  param:  { module: credencial, action: deleteSelect, format: html }
+  load:
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+    
+credencial_ver:
+  url:    /credencial/ver
+  param:  { module: credencial, action: ver, format: html }
+  load:
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+    
+credencial_reporte:
+  url:    /credencial/reporte
+  param:  { module: credencial, action: report, format: pdf } 
+  load:
+    - libs/fpdf/fpdf.php 
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+ #-------------------modulo - usuario credencial----------------------------  
+usuarioCredencial_index:
+  url:    /usuarioCredencial/index
+  param:  { module: usuarioCredencial, action: index, format: html }
+  load:
+    - model/base/usuarioCredencialBaseTableClass.php
+    - model/usuarioCredencialTableClass.php
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+
+usuarioCredencial_insert:
+  url:    /usuarioCredencial/insertar
+  param:  { module: usuarioCredencial, action: insert, format: html }
+  load:
+    - model/base/usuarioCredencialBaseTableClass.php
+    - model/usuarioCredencialTableClass.php
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+        
+usuarioCredencial_create:
+  url:    /usuarioCredencial/crear
+  param:  { module: usuarioCredencial, action: create, format: html }
+  load:
+    - model/base/usuarioCredencialBaseTableClass.php
+    - model/usuarioCredencialTableClass.php
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+    
+usuarioCredencial_edit:
+  url:    /usuarioCredencial/editar
+  param:  { module: usuarioCredencial, action: edit, format: html }
+  load:
+    - model/base/usuarioCredencialBaseTableClass.php
+    - model/usuarioCredencialTableClass.php  
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+    
+usuarioCredencial_update:
+  url:    /usuarioCredencial/actualizar
+  param:  { module: usuarioCredencial, action: update, format: html }
+  load:
+    - model/base/usuarioCredencialBaseTableClass.php
+    - model/usuarioCredencialTableClass.php
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+        
+usuarioCredencial_ver:
+  url:    /usuarioCredencial/ver
+  param:  { module: usuarioCredencial, action: ver, format: html }
+  load:
+    - model/base/usuarioCredencialBaseTableClass.php
+    - model/usuarioCredencialTableClass.php
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+    
+usuarioCredencial_reporte:
+  url:    /usuarioCredencial/reporte
+  param:  { module: usuarioCredencial, action: report, format: pdf } 
+  load:
+    - libs/fpdf/fpdf.php    
+    - model/base/usuarioCredencialBaseTableClass.php
+    - model/usuarioCredencialTableClass.php
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+#-------------------modulo - orden servicio----------------------------
+ordenServicio_index:
+  url:    /ordenServicio/index
+  param:  { module: ordenServicio, action: index, format: html }
+  load:
+    - model/base/ordenServicioBaseTableClass.php
+    - model/ordenServicioTableClass.php
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    
+ordenServicio_insert:
+  url:    /ordenServicio/insertar
+  param:  { module: ordenServicio, action: insert, format: html }
+  load:
+    - model/base/ordenServicioBaseTableClass.php
+    - model/ordenServicioTableClass.php
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    
+ordenServicio_create:
+  url:    /ordenServicio/crear
+  param:  { module: ordenServicio, action: create, format: html }
+  load:
+    - model/base/ordenServicioBaseTableClass.php
+    - model/ordenServicioTableClass.php
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    
+ordenServicio_edit:
+  url:    /ordenServicio/editar
+  param:  { module: ordenServicio, action: edit, format: html }
+  load:
+    - model/base/ordenServicioBaseTableClass.php
+    - model/ordenServicioTableClass.php 
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    
+ordenServicio_update:
+  url:    /ordenServicio/actualizar
+  param:  { module: ordenServicio, action: update, format: html }
+  load:
+    - model/base/ordenServicioBaseTableClass.php
+    - model/ordenServicioTableClass.php 
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    
+ordenServicio_ver:
+  url:    /ordenServicio/ver
+  param:  { module: ordenServicio, action: ver, format: html }
+  load:
+    - model/base/ordenServicioBaseTableClass.php
+    - model/ordenServicioTableClass.php 
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    
+ordenServicio_reporte:
+  url:    /ordenServicio/reporte
+  param:  { module: ordenServicio, action: report, format: pdf } 
+  load:
+    - libs/fpdf/fpdf.php    
+#-------------------modulo - detalle orden servicio----------------------------
+detalleOrdenServicio_index:
+  url:    /detalleOrdenServicio/index
+  param:  { module: detalleOrdenServicio, action: index, format: html }
+  load:
+    - model/base/detalleOrdenServicioBaseTableClass.php
+    - model/detalleOrdenServicioTableClass.php
+    
+detalleOrdenServicio_insert:
+  url:    /detalleOrdenServicio/insertar
+  param:  { module: detalleOrdenServicio, action: insert, format: html }
+  load:
+    - model/base/detalleOrdenServicioBaseTableClass.php
+    - model/detalleOrdenServicioTableClass.php
+    
+detalleOrdenServicio_create:
+  url:    /detalleOrdenServicio/crear
+  param:  { module: detalleOrdenServicio, action: create, format: html }
+  load:
+    - model/base/detalleOrdenServicioBaseTableClass.php
+    - model/detalleOrdenServicioTableClass.php
+    
+detalleOrdenServicio_edit:
+  url:    /detalleOrdenServicio/editar
+  param:  { module: detalleOrdenServicio, action: edit, format: html }
+  load:
+    - model/base/detalleOrdenServicioBaseTableClass.php
+    - model/detalleOrdenServicioTableClass.php 
+    
+detalleOrdenServicio_update:
+  url:    /detalleOrdenServicio/actualizar
+  param:  { module: detalleOrdenServicio, action: update, format: html }
+  load:
+    - model/base/detalleOrdenServicioBaseTableClass.php
+    - model/detalleOrdenServicioTableClass.php 
+    
+detalleOrdenServicio_ver:
+  url:    /detalleOrdenServicio/ver
+  param:  { module: detalleOrdenServicio, action: ver, format: html }
+  load:
+    - model/base/detalleOrdenServicioBaseTableClass.php
+    - model/detalleOrdenServicioTableClass.php
+    
+detalleOrdenServicio_reporte:
+  url:    /detalleOrdenServicio/reporte
+  param:  { module: detalleOrdenServicio, action: report, format: pdf } 
+  load:
+    - libs/fpdf/fpdf.php    
+#-------------------modulo - maquina----------------------------   
+maquina_index:
+  url:    /maquina/index
+  param:  { module: maquina, action: indexMaquina, format: html }
+  load:
+    - model/base/maquinaBaseTableClass.php
+    - model/maquinaTableClass.php
+    - model/base/origenMaquinaBaseTableClass.php
+    - model/origenMaquinaTableClass.php
+    - model/base/tipoUsoMaquinaBaseTableClass.php
+    - model/tipoUsoMaquinaTableClass.php
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
+    
+maquina_menuPrincipal:
+  url:    /maquina/menuPrincipal
+  param:  { module: maquina, action: menuPrincipal, format: html }
+  load:
+    - model/base/maquinaBaseTableClass.php
+    - model/maquinaTableClass.php 
+    - model/base/origenMaquinaBaseTableClass.php
+    - model/origenMaquinaTableClass.php
+    - model/base/tipoUsoMaquinaBaseTableClass.php
+    - model/tipoUsoMaquinaTableClass.php
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
+
+maquina_insert:
+  url:    /maquina/insertar
+  param:  { module: maquina, action: insertMaquina, format: html }
+  load:
+    - model/base/maquinaBaseTableClass.php
+    - model/maquinaTableClass.php
+    - model/base/origenMaquinaBaseTableClass.php
+    - model/origenMaquinaTableClass.php
+    - model/base/tipoUsoMaquinaBaseTableClass.php
+    - model/tipoUsoMaquinaTableClass.php
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
+        
+maquina_create:
+  url:    /maquina/crear
+  param:  { module: maquina, action: createMaquina, format: html }
+  load:
+    - model/base/maquinaBaseTableClass.php
+    - model/maquinaTableClass.php
+    - model/base/origenMaquinaBaseTableClass.php
+    - model/origenMaquinaTableClass.php
+    - model/base/tipoUsoMaquinaBaseTableClass.php
+    - model/tipoUsoMaquinaTableClass.php
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
+    
+maquina_edit:
+  url:    /maquina/editar
+  param:  { module: maquina, action: editMaquina, format: html }
+  load:
+    - model/base/maquinaBaseTableClass.php
+    - model/maquinaTableClass.php  
+    - model/base/origenMaquinaBaseTableClass.php
+    - model/origenMaquinaTableClass.php
+    - model/base/tipoUsoMaquinaBaseTableClass.php
+    - model/tipoUsoMaquinaTableClass.php
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
+    
+maquina_update:
+  url:    /maquina/actualizar
+  param:  { module: maquina, action: updateMaquina, format: html }
+  load:
+    - model/base/maquinaBaseTableClass.php
+    - model/maquinaTableClass.php 
+    - model/base/origenMaquinaBaseTableClass.php
+    - model/origenMaquinaTableClass.php
+    - model/base/tipoUsoMaquinaBaseTableClass.php
+    - model/tipoUsoMaquinaTableClass.php
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
+    
+maquina_delete:
+  url:    /maquina/eliminar
+  param:  { module: maquina, action: deleteMaquina, format: json }
+  load:
+    - model/base/maquinaBaseTableClass.php
+    - model/maquinaTableClass.php
+    - model/base/origenMaquinaBaseTableClass.php
+    - model/origenMaquinaTableClass.php
+    - model/base/tipoUsoMaquinaBaseTableClass.php
+    - model/tipoUsoMaquinaTableClass.php
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
+    
+maquina_deleteSelect:
+  url:    /maquina/eliminarSeleccion
+  param:  { module: maquina, action: deleteSelectMaquina, format: html }
+  load:
+    - model/base/maquinaBaseTableClass.php
+    - model/maquinaTableClass.php
+    - model/base/origenMaquinaBaseTableClass.php
+    - model/origenMaquinaTableClass.php
+    - model/base/tipoUsoMaquinaBaseTableClass.php
+    - model/tipoUsoMaquinaTableClass.php
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
+    
+maquina_ver:
+  url:    /maquina/ver
+  param:  { module: maquina, action: verMaquina, format: html }
+  load:
+    - model/base/maquinaBaseTableClass.php
+    - model/maquinaTableClass.php 
+    - model/base/origenMaquinaBaseTableClass.php
+    - model/origenMaquinaTableClass.php
+    - model/base/tipoUsoMaquinaBaseTableClass.php
+    - model/tipoUsoMaquinaTableClass.php
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
+    
+maquina_reporte:
+  url:    /maquina/reporte
+  param:  { module: maquina, action: reportMaquina, format: pdf } 
+  load:
+    - libs/fpdf/fpdf.php  
+    - model/base/maquinaBaseTableClass.php
+    - model/maquinaTableClass.php 
+    - model/base/origenMaquinaBaseTableClass.php
+    - model/origenMaquinaTableClass.php
+    - model/base/tipoUsoMaquinaBaseTableClass.php
+    - model/tipoUsoMaquinaTableClass.php
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
+    
+origenMaquina_index:
+  url:    /origenMaquina/index
+  param:  { module: maquina, action: indexOrigenMaquina, format: html }
+  load:
+    - model/base/origenMaquinaBaseTableClass.php
+    - model/origenMaquinaTableClass.php
+    
+origenMaquina_insert:
+  url:    /origenMaquina/insertar
+  param:  { module: maquina, action: insertOrigenMaquina, format: html }
+  load:
+    - model/base/origenMaquinaBaseTableClass.php
+    - model/origenMaquinaTableClass.php
+    
+origenMaquina_create:
+  url:    /origenMaquina/crear
+  param:  { module: maquina, action: createOrigenMaquina, format: html }
+  load:
+    - model/base/origenMaquinaBaseTableClass.php
+    - model/origenMaquinaTableClass.php
+    
+origenMaquina_ver:
+  url:    /origenMaquina/ver
+  param:  { module: maquina, action: verOrigenMaquina, format: html }
+  load:
+    - model/base/origenMaquinaBaseTableClass.php
+    - model/origenMaquinaTableClass.php
+    
+origenMaquina_reporte:
+  url:    /origenMaquina/reporte
+  param:  { module: maquina, action: reportOrigenMaquina, format: pdf } 
+  load:
+    - libs/fpdf/fpdf.php 
+    - model/base/origenMaquinaBaseTableClass.php
+    - model/origenMaquinaTableClass.php
+    
+tipoUsoMaquina_index:
+  url:    /tipoUsoMaquina/index
+  param:  { module: maquina, action: indexTipoUsoMaquina, format: html }
+  load:
+    - model/base/tipoUsoMaquinaBaseTableClass.php
+    - model/tipoUsoMaquinaTableClass.php
+    
+tipoUsoMaquina_insert:
+  url:    /tipoUsoMaquina/insertar
+  param:  { module: maquina, action: insertTipoUsoMaquina, format: html }
+  load:
+    - model/base/tipoUsoMaquinaBaseTableClass.php
+    - model/tipoUsoMaquinaTableClass.php
+    
+tipoUsoMaquina_create:
+  url:    /tipoUsoMaquina/crear
+  param:  { module: maquina, action: createTipoUsoMaquina, format: html }
+  load:
+    - model/base/tipoUsoMaquinaBaseTableClass.php
+    - model/tipoUsoMaquinaTableClass.php
+    
+tipoUsoMaquina_ver:
+  url:    /tipoUsoMaquina/ver
+  param:  { module: maquina, action: verTipoUsoMaquina, format: html }
+  load:
+    - model/base/tipoUsoMaquinaBaseTableClass.php
+    - model/tipoUsoMaquinaTableClass.php 
+    
+tipoUsoMaquina_reporte:
+  url:    /tipoUsoMaquina/reporte
+  param:  { module: maquina, action: reportTipoUsoMaquina, format: pdf } 
+  load:
+    - libs/fpdf/fpdf.php 
+    - model/base/tipoUsoMaquinaBaseTableClass.php
+    - model/tipoUsoMaquinaTableClass.php 
+    
+proveedor_index:
+  url:    /proveedor/index
+  param:  { module: maquina, action: indexProveedor, format: html }
+  load:
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+    
+proveedor_insert:
+  url:    /proveedor/insertar
+  param:  { module: maquina, action: insertProveedor, format: html }
+  load:
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+    
+proveedor_create:
+  url:    /proveedor/crear
+  param:  { module: maquina, action: createProveedor, format: html }
+  load:
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+    
+proveedor_edit:
+  url:    /proveedor/editar
+  param:  { module: maquina, action: editProveedor, format: html }
+  load:
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php 
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+    
+proveedor_update:
+  url:    /proveedor/actualizar
+  param:  { module: maquina, action: updateProveedor, format: html }
+  load:
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+    
+proveedor_delete:
+  url:    /proveedor/eliminar
+  param:  { module: maquina, action: deleteProveedor, format: json }
+  load:
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php 
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+    
+proveedor_deleteSelect:
+  url:    /proveedor/eliminarSeleccion
+  param:  { module: maquina, action: deleteSelectProveedor, format: html }
+  load:
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php 
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+   
+proveedor_ver:
+  url:    /proveedor/ver
+  param:  { module: maquina, action: verProveedor, format: html }
+  load:
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php    
+#--------------------------------Proveedor-----------------------------------
+    
+#-------------------modulo - origen maquina----------------------------
+   
+#-------------------modulo - tipo uso maquina----------------------------
+
+#-------------------modulo - cliente----------------------------   
+cliente_index:
+  url:    /cliente/index
+  param:  { module: cliente, action: indexCliente, format: html }
+  load:
+    - model/base/clienteBaseTableClass.php
+    - model/clienteTableClass.php
+    - model/base/tipoIdBaseTableClass.php
+    - model/tipoIdTableClass.php 
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+    
+cliente_menuPrincipal:
+  url:    /cliente/menuPrincipal
+  param:  { module: cliente, action: menuPrincipal, format: html }
+  load:
+    - model/base/clienteBaseTableClass.php
+    - model/clienteTableClass.php 
+    - model/base/tipoIdBaseTableClass.php
+    - model/tipoIdTableClass.php 
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php 
+
+cliente_insert:
+  url:    /cliente/insertar
+  param:  { module: cliente, action: insertCliente, format: html }
+  load:
+    - model/base/clienteBaseTableClass.php
+    - model/clienteTableClass.php
+    - model/base/tipoIdBaseTableClass.php
+    - model/tipoIdTableClass.php 
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+        
+cliente_create:
+  url:    /cliente/crear
+  param:  { module: cliente, action: createCliente, format: html }
+  load:
+    - model/base/clienteBaseTableClass.php
+    - model/clienteTableClass.php
+    - model/base/tipoIdBaseTableClass.php
+    - model/tipoIdTableClass.php 
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+    
+cliente_edit:
+  url:    /cliente/editar
+  param:  { module: cliente, action: editCliente, format: html }
+  load:
+    - model/base/clienteBaseTableClass.php
+    - model/clienteTableClass.php  
+    - model/base/tipoIdBaseTableClass.php
+    - model/tipoIdTableClass.php 
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+    
+cliente_update:
+  url:    /cliente/actualizar
+  param:  { module: cliente, action: updateCliente, format: html }
+  load:
+    - model/base/clienteBaseTableClass.php
+    - model/clienteTableClass.php 
+    - model/base/tipoIdBaseTableClass.php
+    - model/tipoIdTableClass.php 
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+    
+cliente_delete:
+  url:    /cliente/eliminar
+  param:  { module: cliente, action: deleteCliente, format: json }
+  load:
+    - model/base/clienteBaseTableClass.php
+    - model/clienteTableClass.php
+    - model/base/tipoIdBaseTableClass.php
+    - model/tipoIdTableClass.php 
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+    
+cliente_deleteSelect:
+  url:    /cliente/eliminarSeleccion
+  param:  { module: cliente, action: deleteSelectCliente, format: html }
+  load:
+    - model/base/clienteBaseTableClass.php
+    - model/clienteTableClass.php
+    - model/base/tipoIdBaseTableClass.php
+    - model/tipoIdTableClass.php 
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+    
+cliente_ver:
+  url:    /cliente/ver
+  param:  { module: cliente, action: verCliente, format: html }
+  load:
+    - model/base/clienteBaseTableClass.php
+    - model/clienteTableClass.php 
+    - model/base/tipoIdBaseTableClass.php
+    - model/tipoIdTableClass.php 
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+    
+cliente_reporte:
+  url:    /cliente/reporte
+  param:  { module: cliente, action: reportCliente, format: pdf } 
+  load:
+    - libs/fpdf/fpdf.php  
+    - model/base/clienteBaseTableClass.php
+    - model/clienteTableClass.php 
+    - model/base/tipoIdBaseTableClass.php
+    - model/tipoIdTableClass.php 
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+ 
+tipoId_index:
+  url:    /tipoId/index
+  param:  { module: cliente, action: indexTipoId, format: html }
+  load:
+    - model/base/tipoIdBaseTableClass.php
+    - model/tipoIdTableClass.php
+    
+tipoId_insert:
+  url:    /tipoId/insertar
+  param:  { module: cliente, action: insertTipoId, format: html }
+  load:
+    - model/base/tipoIdBaseTableClass.php
+    - model/tipoIdTableClass.php
+    
+tipoId_create:
+  url:    /tipoId/crear
+  param:  { module: cliente, action: createTipoId, format: html }
+  load:
+    - model/base/tipoIdBaseTableClass.php
+    - model/tipoIdTableClass.php
+    
+tipoId_edit:
+  url:    /tipoId/editar
+  param:  { module: cliente, action: editTipoId, format: html }
+  load:
+    - model/base/tipoIdBaseTableClass.php
+    - model/tipoIdTableClass.php 
+    
+tipoId_update:
+  url:    /tipoId/actualizar
+  param:  { module: cliente, action: updateTipoId, format: html }
+  load:
+    - model/base/tipoIdBaseTableClass.php
+    - model/tipoIdTableClass.php 
+    
+tipoId_ver:
+  url:    /tipoId/ver
+  param:  { module: cliente, action: verTipoId, format: html }
+  load:
+    - model/base/tipoIdBaseTableClass.php
+    - model/tipoIdTableClass.php 
+    
+tipoId_reporte:
+  url:    /tipoId/reporte
+  param:  { module: cliente, action: reportTipoId, format: pdf } 
+  load:
+    - libs/fpdf/fpdf.php  
+    - model/base/tipoIdBaseTableClass.php
+    - model/tipoIdTableClass.php     
+#-------------------modulo - lote----------------------------   
+lote_index:
+  url:    /lote/index
+  param:  { module: lote, action: indexLote, format: html }
+  load:
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+    
+lote_menuPrincipal:
+  url:    /lote/menuPrincipal
+  param:  { module: lote, action: menuPrincipal, format: html }
+  load:
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php 
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+
+lote_insert:
+  url:    /lote/insertar
+  param:  { module: lote, action: insertLote, format: html }
+  load:
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+        
+lote_create:
+  url:    /lote/crear
+  param:  { module: lote, action: createLote, format: html }
+  load:
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+    
+lote_edit:
+  url:    /lote/editar
+  param:  { module: lote, action: editLote, format: html }
+  load:
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php 
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+    
+lote_update:
+  url:    /lote/actualizar
+  param:  { module: lote, action: updateLote, format: html }
+  load:
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php 
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+    
+lote_delete:
+  url:    /lote/eliminar
+  param:  { module: lote, action: deleteLote, format: json }
+  load:
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+    
+lote_deleteSelect:
+  url:    /lote/eliminarSeleccion
+  param:  { module: lote, action: deleteSelectLote, format: html }
+  load:
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+lote_ver:
+  url:    /lote/ver
+  param:  { module: lote, action: verLote, format: html }
+  load:
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php 
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+    
+lote_reporte:
+  url:    /lote/reporte
+  param:  { module: lote, action: reportLote, format: pdf } 
+  load:
+    - libs/fpdf/fpdf.php 
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php 
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+#--------------------------modulo-tipoProductoInsumo--------------------------
+ 
+#--------------------------modulo-productoInsumo --------------------------
+productoInsumo_index:
+  url:    /productoInsumo/index
+  param:  { module: productoInsumo, action: indexProductoInsumo, format: html }
+  load:
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php
+    
+productoInsumo_insert:
+  url:    /productoInsumo/insertar
+  param:  { module: productoInsumo, action: insertProductoInsumo, format: html }
+  load:
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php
+    
+productoInsumo_create:
+  url:    /productoInsumo/crear
+  param:  { module: productoInsumo, action: createProductoInsumo, format: html }
+  load:
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php
+    
+productoInsumo_edit:
+  url:    /productoInsumo/editar
+  param:  { module: productoInsumo, action: editProductoInsumo, format: html }
+  load:
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php 
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php
+    
+productoInsumo_update:
+  url:    /productoInsumo/actualizar
+  param:  { module: productoInsumo, action: updateProductoInsumo, format: html }
+  load:
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php 
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php
+    
+productoInsumo_delete:
+  url:    /productoInsumo/eliminar
+  param:  { module: productoInsumo, action: deleteProductoInsumo, format: json }
+  load:
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php
+    
+productoInsumo_deleteSelect:
+  url:    /productoInsumo/eliminarSeleccion
+  param:  { module: productoInsumo, action: deleteSelectProductoInsumo, format: html }
+  load:
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php
+productoInsumo_ver:
+  url:    /productoInsumo/ver
+  param:  { module: productoInsumo, action: verProductoInsumo, format: html }
+  load:
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php
+    
+productoInsumo_reporte:
+  url:    /productoInsumo/reporte
+  param:  { module: productoInsumo, action: reportProductoInsumo, format: pdf } 
+  load:
+    - libs/fpdf/fpdf.php   
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php
+    
+tipoProductoInsumo_index:
+  url:    /tipoProductoInsumo/index
+  param:  { module: productoInsumo, action: indexTipoProductoInsumo, format: html }
+  load:
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php
+    
+tipoProductoInsumo_insert:
+  url:    /tipoProductoInsumo/insertar
+  param:  { module: productoInsumo, action: insertTipoProductoInsumo, format: html }
+  load:
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php
+    
+tipoProductoInsumo_create:
+  url:    /tipoProductoInsumo/crear
+  param:  { module: productoInsumo, action: createTipoProductoInsumo, format: html }
+  load:
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php
+    
+tipoProductoInsumo_edit:
+  url:    /tipoProductoInsumo/editar
+  param:  { module: productoInsumo, action: editTipoProductoInsumo, format: html }
+  load:
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php 
+    
+tipoProductoInsumo_update:
+  url:    /tipoProductoInsumo/actualizar
+  param:  { module: productoInsumo, action: updateTipoProductoInsumo, format: html }
+  load:
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php 
+    
+tipoProductoInsumo_delete:
+  url:    /tipoProductoInsumo/eliminar
+  param:  { module: productoInsumo, action: deleteTipoProductoInsumo, format: json }
+  load:
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php
+    
+tipoProductoInsumo_deleteSelect:
+  url:    /tipoProductoInsumo/eliminarSeleccion
+  param:  { module: productoInsumo, action: deleteSelectTipoProductoInsumo, format: html }
+  load:
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php
+    
+tipoProductoInsumo_ver:
+  url:    /tipoProductoInsumo/ver
+  param:  { module: productoInsumo, action: verTipoProductoInsumo, format: html }
+  load:
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php 
+    
+tipoProductoInsumo_reporte:
+  url:    /tipoProductoInsumo/reporte
+  param:  { module: productoInsumo, action: reportTipoProductoInsumo, format: pdf } 
+  load:
+    - libs/fpdf/fpdf.php 
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php    
+#--------------------------modulo-tipoId --------------------------    
+
+#-------------------modulo - solicitud insumo----------------------------
+solicitudInsumo_index:
+  url:    /solicitudInsumo/index
+  param:  { module: solicitudInsumo, action: index, format: html }
+  load:
+    - model/base/solicitudInsumoBaseTableClass.php
+    - model/solicitudInsumoTableClass.php
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    
+solicitudInsumo_insert:
+  url:    /solicitudInsumo/insertar
+  param:  { module: solicitudInsumo, action: insert, format: html }
+  load:
+    - model/base/solicitudInsumoBaseTableClass.php
+    - model/solicitudInsumoTableClass.php
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    
+solicitudInsumo_create:
+  url:    /solicitudInsumo/crear
+  param:  { module: osolicitudInsumo, action: create, format: html }
+  load:
+    - model/base/solicitudInsumoBaseTableClass.php
+    - model/solicitudInsumoTableClass.php
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    
+solicitudInsumo_edit:
+  url:    /solicitudInsumo/editar
+  param:  { module: solicitudInsumo, action: edit, format: html }
+  load:
+    - model/base/solicitudInsumoBaseTableClass.php
+    - model/solicitudInsumoTableClass.php 
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    
+solicitudInsumo_update:
+  url:    /solicitudInsumo/actualizar
+  param:  { module: solicitudInsumo, action: update, format: html }
+  load:
+    - model/base/solicitudInsumoBaseTableClass.php
+    - model/solicitudInsumoTableClass.php 
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    
+solicitudInsumo_ver:
+  url:    /solicitudInsumo/ver
+  param:  { module: solicitudInsumo, action: ver, format: html }
+  load:
+    - model/base/solicitudInsumoBaseTableClass.php
+    - model/solicitudInsumoTableClass.php 
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    
+solicitudInsumo_reporte:
+  url:    /solicitudInsumo/reporte
+  param:  { module: solicitudInsumo, action: report, format: pdf } 
+  load:
+    - libs/fpdf/fpdf.php    
+#-------------------modulo - detalle solicitud insumo----------------------------
+detalleSolicitudInsumo_index:
+  url:    /detalleSolicitudInsumo/index
+  param:  { module: detalleSolicitudInsumo, action: index, format: html }
+  load:
+    - model/base/detalleSolicitudInsumoBaseTableClass.php
+    - model/detalleSolicitudInsumoTableClass.php
+    
+detalleSolicitudInsumo_insert:
+  url:    /detalleSolicitudInsumo/insertar
+  param:  { module: detalleSolicitudInsumo, action: insert, format: html }
+  load:
+    - model/base/detalleSolicitudInsumoBaseTableClass.php
+    - model/detalleSolicitudInsumoTableClass.php
+    
+detalleSolicitudInsumo_create:
+  url:    /detalleSolicitudInsumo/crear
+  param:  { module: detalleSolicitudInsumo, action: create, format: html }
+  load:
+    - model/base/detalleSolicitudInsumoBaseTableClass.php
+    - model/detalleSolicitudInsumoTableClass.php
+    
+detalleSolicitudInsumo_edit:
+  url:    /detalleSolicitudInsumo/editar
+  param:  { module: detalleSolicitudInsumo, action: edit, format: html }
+  load:
+    - model/base/detalleSolicitudInsumoBaseTableClass.php
+    - model/detalleSolicitudInsumoTableClass.php 
+    
+detalleSolicitudInsumo_update:
+  url:    /detalleSolicitudInsumo/actualizar
+  param:  { module: detalleSolicitudInsumo, action: update, format: html }
+  load:
+    - model/base/detalleSolicitudInsumoBaseTableClass.php
+    - model/detalleSolicitudInsumoTableClass.php 
+    
+detalleSolicitudInsumo_ver:
+  url:    /detalleSolicitudInsumo/ver
+  param:  { module: detalleSolicitudInsumo, action: ver, format: html }
+  load:
+    - model/base/detalleSolicitudInsumoBaseTableClass.php
+    - model/detalleSolicitudInsumoTableClass.php    
+    
+detalleSolicitudInsumo_reporte:
+  url:    /detalleSolicitudInsumo/reporte
+  param:  { module: detalleSolicitudInsumo, action: report, format: pdf } 
+  load:
+    - libs/fpdf/fpdf.php    

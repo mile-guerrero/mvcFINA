@@ -1,0 +1,112 @@
+#shfDevelopmentBar {
+  background-color: #993300;
+  position: fixed;
+  right: 0px;
+  color: #ffffff;
+  /*width: 500px;*/
+  z-index: 2147483647;
+  padding: 3px;
+  border-radius: 0px 0px 0px 5px;
+  font-size: 0.8em;
+  text-shadow: 1px 1px 2px rgba(20, 20, 20, 1);
+}
+#imgPortadalogin4{
+  padding-top: 200px;
+  padding-right:1024px;
+  background-image: url('../img/portada4.jpg');
+}
+#imgPortada{
+  padding-top: 200px;
+  padding-right:1024px;
+  background-image: url('../img/portada.jpg');
+}
+#imgPortada2{
+background: center;
+ padding-top: 200px;
+  padding-right:1024px;
+  background-image: url('../img/portadas2.jpg');
+  
+}
+#imgPortada3{
+background: center;
+   padding-top: 200px;
+  padding-right:1024px;
+  background-image: url('../img/portadas3.jpg');
+}
+#imgPortada4{
+background: center;
+   padding-top: 200px;
+  padding-right:1024px;
+  background-image: url('../img/portadas4.jpg');
+}
+
+#imgespanol{
+background: center;
+ padding-top: 100px;
+  padding-right:100px;
+  background-image: url('../img/espanol.jpg');
+  
+}
+#imgingles{
+background: center;
+ padding-top: 100px;
+  padding-right:100px;
+  background-image: url('../img/ingles.jpg');
+  
+}
+
+#cuerpo{
+  width: 700px;
+}
+
+
+header,section,aside,footer,article{
+    display:block;
+}
+
+
+#encabezado{ 
+}
+#barramenu{  
+}
+#barramenu li{
+}
+#contenido{
+  clear:both;
+    width:280px;
+	float: left;
+}
+#derecha{
+   /*background: #FFE4C4;*/
+	width: 600px;
+	padding: 15px 20px 15px 15px ;
+	float: right;
+	margin: 0px -50px 0px 0px;
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
+	border-radius: 0px;
+}
+
+#pie{
+    width:95%;
+    clear:both;
+    padding:15px;
+    text-align:center;
+    -moz-border-radius:0px 0px 0px 0px;
+    -webkit-border-radius:0px 0px 0px 0px;
+    background:#2E8B57;
+}
+
+table > thead > tr > th:first-child {
+  width: 20px;
+}
+table > thead > tr, table > tfoot > tr {
+  text-shadow: 0 1px 0 #fff;
+  background-image: -webkit-linear-gradient(top, #fff 0%, #e0e0e0 100%);
+  background-image:      -o-linear-gradient(top, #fff 0%, #e0e0e0 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#e0e0e0));
+  background-image:         linear-gradient(to bottom, #fff 0%, #e0e0e0 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe0e0e0', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  background-repeat: repeat-x;
+}

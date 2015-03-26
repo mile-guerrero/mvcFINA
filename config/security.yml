@@ -1,0 +1,346 @@
+shfSecurity:
+  index:
+    security: false
+  logoin:
+    security: false
+  logout:
+    security: true
+  noPermission:
+    security: false
+  exception:
+    security: false
+    
+#-------------------modulo - default----------------------------    
+default:
+  index:
+    security: true
+    credentials:
+      - [admin, cajero]
+      - [usuario, cajero]
+      - [consultor, cajero]
+  insert:
+    security: true
+  create:
+    security: true
+  edit: 
+    security: true
+  update:
+    security: true
+  delete:
+    security: true
+  deleteSelect:  
+    security: true
+  ver:
+    security: true
+  report:
+    security: true
+  
+#-------------------modulo - credencial----------------------------  
+credencial:
+  index:
+    security: true
+    credentials:
+      - [admin, cajero]
+      - [usuario, cajero]
+      - [consultor, cajero]
+  insert:
+    security: true
+  create:
+    security: true
+  edit: 
+    security: true
+  update:
+    security: true
+  delete:
+    security: true
+  deleteSelect:  
+    security: true
+  ver:
+    security: true
+  report:
+    security: true   
+    
+#-------------------modulo - usuarioCredencial----------------------------
+usuarioCredencial:
+  index:
+    security: true
+    credentials:
+      - [admin, cajero]
+      - [usuario, cajero]
+      - [consultor, cajero]
+  insert:
+    security: true
+  create:
+    security: true
+  edit: 
+    security: true
+  update:
+    security: true
+  ver:
+    security: true
+  report:
+    security: true
+
+#-------------------modulo - orden servicio-------------------
+ordenServicio:
+  index:
+    security: true
+    credentials:
+      - [admin, cajero]
+      - [usuario, cajero]
+      - [consultor, cajero]
+  insert:
+    security: true
+  create:
+    security: true
+  edit: 
+    security: true
+  update:
+    security: true
+  ver:
+    security: true
+  report:
+    security: true
+
+#-------------------modulo - detalle orden servicio-----------
+detalleOrdenServicio:
+  index:
+    security: true
+    credentials:
+      - [admin, cajero]
+      - [usuario, cajero]
+      - [consultor, cajero]
+  insert:
+    security: true
+  create:
+    security: true
+  edit: 
+    security: true
+  update:
+    security: true
+  ver:
+    security: true
+  report:
+    security: true
+
+#-------------------modulo - maquina--------------------------
+maquina:
+  indexMaquina:
+    security: true
+    credentials:
+      - [admin, cajero]
+      - [usuario, cajero]
+      - [consultor, cajero]
+  insertMaquina:
+    security: true
+  createMaquina:
+    security: true
+  editMaquina: 
+    security: true
+  updateMaquina:
+    security: true
+  deleteMaquina:
+    security: true
+  deleteSelectMaquina:  
+    security: true
+  verMaquina:
+    security: true
+  reportMaquina:
+    security: true
+
+#-------------------modulo - origen maquina-------------------
+origenMaquina:
+  indexOrigenMaquina:
+    security: true
+    credentials:
+      - [admin, cajero]
+      - [usuario, cajero]
+      - [consultor, cajero]
+  insertOrigenMaquina:
+    security: true
+  createOrigenMaquina:
+    security: true
+  verOrigenMaquina:
+    security: true
+  reportOrigenMaquina:
+    security: true
+
+#-------------------modulo - tipo uso maquina----------------
+tipoUsoMaquina:
+  indexTipoUsoMaquina:
+    security: true
+    credentials:
+      - [admin, cajero]
+      - [usuario, cajero]
+      - [consultor, cajero]
+  insertTipoUsoMaquina:
+    security: true
+  createTipoUsoMaquina:
+    security: true
+  verTipoUsoMaquina:
+    security: true
+  reportTipoUsoMaquina:
+    security: true
+
+#-------------------modulo - cliente-------------------------
+cliente:
+  indexCliente:
+    security: true
+    credentials:
+      - [admin, cajero]
+      - [usuario, cajero]
+      - [consultor, cajero]
+  insertCliente:
+    security: true
+  createCliente:
+    security: true
+  editCliente: 
+    security: true
+  updateCliente:
+    security: true
+  deleteCliente:
+    security: true
+  deleteSelectCliente:  
+    security: true
+  verCliente:
+    security: true
+  reportCliente:
+    security: true
+
+#-------------------modulo - lote----------------------------
+lote:
+  indexLote:
+    security: true
+    credentials:
+      - [admin, cajero]
+      - [usuario, cajero]
+      - [consultor, cajero]
+  insertLote:
+    security: true
+  createLote:
+    security: true
+  editLote: 
+    security: true
+  updateLote:
+    security: true
+  deleteLote:
+    security: true
+  deleteSelectLote:  
+    security: true
+  verLote:
+    security: true
+  reportLote:
+    security: true
+
+#-------------------modulo - tipoProductoInsumo--------------
+tipoProductoInsumo:
+  index:
+    security: true
+    credentials:
+      - [admin, cajero]
+      - [usuario, cajero]
+      - [consultor, cajero]
+  insert:
+    security: true
+  create:
+    security: true
+  edit: 
+    security: true
+  update:
+    security: true
+  delete:
+    security: true
+  deleteSelect:  
+    security: true
+  ver:
+    security: true
+  report:
+    security: true
+
+#-------------------modulo - productoInsumo------------------
+productoInsumo:
+  index:
+    security: true
+    credentials:
+      - [admin, cajero]
+      - [usuario, cajero]
+      - [consultor, cajero]
+  insert:
+    security: true
+  create:
+    security: true
+  edit: 
+    security: true
+  update:
+    security: true
+  delete:
+    security: true
+  deleteSelect:  
+    security: true
+  ver:
+    security: true
+  report:
+    security: true
+
+#-------------------modulo - tipoId--------------------------
+tipoId:
+  indexTipoId:
+    security: true
+    credentials:
+      - [admin, cajero]
+      - [usuario, cajero]
+      - [consultor, cajero]
+  insertTipoId:
+    security: true
+  createTipoId:
+    security: true
+  editTipoId: 
+    security: true
+  updateTipoId:
+    security: true
+  verTipoId:
+    security: true
+  reportTipoId:
+    security: true
+
+#-------------------modulo - solicitud insumo-----------------
+solicitudInsumo:
+  index:
+    security: true
+    credentials:
+      - [admin, cajero]
+      - [usuario, cajero]
+      - [consultor, cajero]
+  insert:
+    security: true
+  create:
+    security: true
+  edit: 
+    security: true
+  update:
+    security: true
+  ver:
+    security: true
+  report:
+    security: true
+
+#-------------------modulo - detalle solicitud insumo----------  
+detalleSolicitudInsumo:
+  index:
+    security: true
+    credentials:
+      - [admin, cajero]
+      - [usuario, cajero]
+      - [consultor, cajero]
+  insert:
+    security: true
+  create:
+    security: true
+  edit: 
+    security: true
+  update:
+    security: true
+  ver:
+    security: true
+  report:
+    security: true    
