@@ -5,7 +5,7 @@ use mvc\model\table\tableBaseClass;
 /**
  * Description of ordenServicioBaseTableClass
  *
- * 
+ * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
  */
 class tipoIdBaseTableClass extends tableBaseClass {
 
@@ -18,6 +18,7 @@ class tipoIdBaseTableClass extends tableBaseClass {
 
   const ID = 'id';
   const DESCRIPCION = 'descripcion';
+  const DESCRIPCION_LENGTH = 60;
   const CREATED_AT = 'created_at';
   const UPDATED_AT = 'updated_at';
   

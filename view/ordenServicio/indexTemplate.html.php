@@ -14,7 +14,7 @@ use mvc\i18n\i18nClass as i18n ?>
   <nav id="">
     <ul>
 
-      <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('ordenServicio', 'insert') ?>"><?php echo i18n::__('nuevo') ?></a>              
+      <a class="btn btn-success btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('ordenServicio', 'insert') ?>"><?php echo i18n::__('nuevo') ?></a>              
     </ul> 
   </nav>
   <section id="">
@@ -31,7 +31,7 @@ use mvc\i18n\i18nClass as i18n ?>
           <?php echo i18n::__('nombreTrabajador') ?>
         </th>
         <th>
-<?php echo i18n::__('aciones') ?>
+<?php echo i18n::__('acciones') ?>
         </th>              
         </tr>
         </thead>
@@ -39,15 +39,16 @@ use mvc\i18n\i18nClass as i18n ?>
 <?php foreach ($objOS as $key): ?>
           <tr>
             
-              <th>
+            <td>
   <?php echo $key->$fecha_mantenimiento ?>
-              </th>
+            </td>
          
-              <th>
+              <td>
   <?php echo trabajadorTableClass::getNameTrabajador($key->$nombreT) ?> 
-              </th> 
+              </td> 
               <th>
-                <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('ordenServicio', 'ver', array(ordenServicioTableClass::ID => $key->$id)) ?>" ><?php echo i18n::__('ver') ?></a> - <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('ordenServicio', 'edit', array(ordenServicioTableClass::ID => $key->$id)) ?>"><?php echo i18n::__('modificar') ?> </a>
+                <a class="btn btn-warning btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('ordenServicio', 'ver', array(ordenServicioTableClass::ID => $key->$id)) ?>" ><?php echo i18n::__('ver') ?></a> - 
+                <a class="btn btn-primary btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('ordenServicio', 'edit', array(ordenServicioTableClass::ID => $key->$id)) ?>"><?php echo i18n::__('modificar') ?> </a>
               </th>
 <?php endforeach; ?>   
         </tbody>

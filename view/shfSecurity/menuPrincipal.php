@@ -1,6 +1,9 @@
 <?php use mvc\routing\routingClass as routing ?>
 <?php use mvc\view\viewClass as view ?>
 <?php use mvc\session\sessionClass as session ?>
+<?php use mvc\config\configClass as config ?>
+<?php use mvc\request\requestClass as request ?>
+<?php use mvc\i18n\i18nClass as i18n?>
   <header>
    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
@@ -82,13 +85,13 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">crear cuenta</a></li>
+        <li><a href="#"><?php echo i18n::__('crearCuenta') ?></a></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Idioma<span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo i18n::__('idioma') ?><span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Español</a></li>           
-            <li class="divider"></li>
-            <li><a href="#">Ingles</a></li>
+            <a href="<?php echo routing::getInstance()->getUrlWeb('cliente', 'traductor', array('language' => 'es', 'PATH_INFO' => request::getInstance()->getServer('PATH_INFO'), 'QUERY_STRING' => htmlentities(request::getInstance()->getServer('QUERY_STRING')) ))?>"><img class="img-responsive"  id="imgespanol" src="" alt=" "></a>
+            <a href="<?php echo routing::getInstance()->getUrlWeb('cliente', 'traductor', array('language' => 'en', 'PATH_INFO' => request::getInstance()->getServer('PATH_INFO'), 'QUERY_STRING' => htmlentities(request::getInstance()->getServer('QUERY_STRING')) ))?>"><img class="img-responsive"  id="imgingles" src="" alt=" "></a>
+ 
           </ul>
         </li>
       </ul>

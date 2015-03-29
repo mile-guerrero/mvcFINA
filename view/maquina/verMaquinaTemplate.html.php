@@ -32,13 +32,13 @@ use mvc\i18n\i18nClass as i18n ?>
         <tbody>
 <?php foreach ($objMaquina as $key): ?>
             <tr>
-              <th>Nombre</th>      
-              <th><?php echo $key->$nombre ?></th>
+              <th><?php echo i18n::__('nom') ?></th>      
+              <td><?php echo $key->$nombre ?></td>
             </tr>
 
             <tr>
-              <th>Descripcion</th>      
-              <th><?php echo $key->$descripcion ?></th>
+              <th><?php echo i18n::__('des') ?></th>      
+              <td><?php echo $key->$descripcion ?></td>
             </tr>
                          
           <th>fecha creacion</th>                   
@@ -53,22 +53,22 @@ use mvc\i18n\i18nClass as i18n ?>
           
           <?php foreach ($objMaquina as $TUM): ?>          
           <tr>
-            <th>Tipo Uso Maquina</th>                   
-            <th><?php echo tipoUsoMaquinaTableClass::getNameTipoUsoMaquina($TUM->$descripcion_uso) ?></th>
+            <th><?php echo i18n::__('tipo uso') ?></th>                   
+            <td><?php echo tipoUsoMaquinaTableClass::getNameTipoUsoMaquina($TUM->$descripcion_uso) ?></td>
           </tr>
         <?php endforeach; ?>
 
 
 <?php foreach ($objMaquina as $OM): ?>
           <tr>
-          <th>origen maquina</th>      
-          <th><?php echo origenMaquinaTableClass::getNameOrigenMaquina($OM->$des_origen) ?></th>
+          <th><?php echo i18n::__('origenM') ?></th>      
+          <td><?php echo origenMaquinaTableClass::getNameOrigenMaquina($OM->$des_origen) ?></td>
           </tr>
 <?php endforeach; ?>
           <?php foreach ($objMaquina as $P): ?>
           <tr>
-          <th>proveedor</th>      
-          <th><?php echo proveedorTableClass::getNameProveedor($P->$nombre_pro) ?></th>
+          <th><?php echo i18n::__('nomProveedor') ?></th>      
+          <td><?php echo proveedorTableClass::getNameProveedor($P->$nombre_pro) ?></td>
           </tr>
 <?php endforeach; ?>
         </tbody>

@@ -5,7 +5,7 @@ use mvc\model\table\tableBaseClass;
 /**
  * Description of origenMaquinaBaseTableClass
  *
- * 
+ * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
  */
 class origenMaquinaBaseTableClass extends tableBaseClass {
 

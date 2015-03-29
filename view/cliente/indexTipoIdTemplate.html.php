@@ -1,8 +1,9 @@
 <?php mvc\view\viewClass::includePartial('default/menuPrincipal') ?>
-  <?php use mvc\routing\routingClass as routing ?>
+<?php use mvc\routing\routingClass as routing ?>
 <?php use mvc\i18n\i18nClass as i18n ?>
-  <?php $id = tipoIdTableClass::ID ?>
-  <?php $des = tipoIdTableClass::DESCRIPCION ?>
+
+<?php $id = tipoIdTableClass::ID ?>
+<?php $des = tipoIdTableClass::DESCRIPCION ?>
 <div class="container container-fluid" id="cuerpo">
   <header id="">
    
@@ -17,7 +18,7 @@
  <h1><?php echo i18n::__('tipo id') ?></h1>
       <ul>
       
-    <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('cliente', 'insertTipoId') ?>"><?php echo i18n::__('nuevo') ?></a>              
+    <a class="btn btn-success btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('cliente', 'insertTipoId') ?>"><?php echo i18n::__('nuevo') ?></a>              
      </ul>
         <table class="table table-bordered table-responsive">
           <tr>
@@ -28,7 +29,7 @@
               </th>
              
               <th>
-               <?php echo i18n::__('aciones') ?>
+               <?php echo i18n::__('acciones') ?>
               </th>
               
     </tr>
@@ -36,11 +37,12 @@
 	<tbody>
               <?php foreach ($objTI as $key): ?>
                 <tr>
-                 <th>
+                  <td>
                     <?php echo $key->$des ?>
-                  </th>
+                  </td>
                   <th>
-                  <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('cliente', 'verTipoId', array(tipoIdTableClass::ID =>$key->$id)) ?>" ><?php echo i18n::__('ver') ?></a> - <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('cliente', 'editTipoId', array(tipoIdTableClass::ID=>$key->$id)) ?>"><?php echo i18n::__('modificar') ?> </a>
+                  <a class="btn btn-warning btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('cliente', 'verTipoId', array(tipoIdTableClass::ID =>$key->$id)) ?>" ><?php echo i18n::__('ver') ?></a> - 
+                  <a class="btn btn-primary btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('cliente', 'editTipoId', array(tipoIdTableClass::ID=>$key->$id)) ?>"><?php echo i18n::__('modificar') ?> </a>
                   </th>
                 </tr>                                        
                                                         

@@ -5,7 +5,7 @@ use mvc\model\modelClass as model;
 /**
  * Description of unidadMedidaTableClass
  *
- * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+ * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
  */
 class unidadMedidaTableClass extends unidadMedidaBaseTableClass {
   public static function getNameUnidadMedida($id){

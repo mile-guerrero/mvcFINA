@@ -7,8 +7,8 @@
 <?php $direccion = proveedorTableClass::DIRECCION ?>
 <?php $telefono = proveedorTableClass::TELEFONO ?>
 <?php $id = proveedorTableClass::ID ?>
-<?php $idCiudad = ciudadTableClass::ID?>
-<?php $nomCiu = ciudadTableClass::NOMBRE_CIUDAD?>
+<?php $idCiudaddes = ciudadTableClass::ID?>
+<?php $descripcionciudad = ciudadTableClass::NOMBRE_CIUDAD?>
 <div class="container container-fluid" id="cuerpo">
   <header id="">
     
@@ -23,16 +23,64 @@
       <h1><?php echo i18n::__('nomProveedor') ?></h1>
       
       <ul>
-      <a class="btn btn-success btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('maquina', 'insertProveedor') ?>"><i class="glyphicon glyphicon-plus-sign"><?php echo i18n::__('new') ?></i></a>
-      <a href="javascript:eliminarMasivo()" class="btn btn-danger btn-xs" id="btnDeleteMasivo"><?php echo i18n::__('removeSelection') ?></a>             
-      <button type="button" class="btn btn-primary btn btn-xs" data-toggle="modal" data-target="#myModalFilters"><?php echo i18n::__('filters') ?></button>
-      <a href="<?php echo routing::getInstance()->getUrlWeb('maquina', 'indexProveedor') ?>" class="btn btn-default btn btn-xs"><?php echo i18n::__('removeFilters') ?></a>
+      <a class="btn btn-success btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('maquina', 'insertProveedor') ?>"><?php echo i18n::__('nuevo') ?></a>
+      <a href="javascript:eliminarMasivo()" class="btn btn-danger btn-xs" id="btnDeleteMasivo"><?php echo i18n::__('eliminar en masa') ?></a>             
+      <button type="button" class="btn btn-primary btn btn-xs" data-toggle="modal" data-target="#myModalFilters"><?php echo i18n::__('filtros') ?></button>
+      <a href="<?php echo routing::getInstance()->getUrlWeb('maquina', 'indexProveedor') ?>" class="btn btn-default btn btn-xs"><?php echo i18n::__('eFiltros') ?></a>
+      <button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#myModalReport" ><?php echo i18n::__('informe') ?></button>
+      </ul>
+      <!---Informes--->
+       <div class="modal fade" id="myModalReport" tabindex="-1" role="modal" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('informe') ?></h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" id="reportForm" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('cliente', 'reportCliente')?>">
+          <div class="form-group">
+    <label for="reportNombre" class="col-sm-2 control-label"><?php echo i18n::__('name') ?></label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="reportNombre" name="report[nombre]" placeholder="Nombre">
+    </div>
+  </div>
+           <div class="form-group">
+    <label for="reportCiudad" class="col-sm-2 control-label"><?php echo i18n::__('idCiudad') ?></label>
+    <div class="col-sm-10">
+      <select class="form-control" id="reportCiudad" name="report[ciudad]">
+            <option><?php echo i18n::__('selectCiudad') ?></option>
+<?php foreach ($objCC as $ciudad): ?>
+            <option value="<?php echo $ciudad->$idCiudaddes ?>"><?php echo $ciudad->$descripcionciudad ?></option>
+<?php endforeach; ?>
+          </select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
+    <div class="col-sm-10">
+      <input type="date" class="form-control" id="reportFecha1" name="report[fecha1]">
+      <br>
+       <input type="date" class="form-control" id="reportFecha2" name="report[fecha2]">
+    </div>
+  </div>
+</form>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default btn btn-xs" data-dismiss="modal">  <?php echo i18n::__('cerrar') ?></button>
+        <button type="button" onclick="$('#reportForm').submit()" class="btn btn-warning btn btn-xs"><?php echo i18n::__('informe') ?></button>
+      </div>
+    </div>
+  </div>
+</div>
+      <!-- Modal -->
       <div class="modal fade" id="myModalFilters" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('filters') ?></h4>
+        <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('filtros') ?></h4>
       </div>
       <div class="modal-body">
         <form class="form-horizontal" id="filterForm" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('maquina', 'indexProveedor')?>">
@@ -48,7 +96,7 @@
       <select class="form-control" id="filterCiudad" name="filter[ciudad]">
             <option><?php echo i18n::__('selectCiudad') ?></option>
 <?php foreach ($objCC as $ciudad): ?>
-            <option value="<?php echo $ciudad->$idCiudad ?>"><?php echo $ciudad->$nomCiu ?></option>
+            <option value="<?php echo $ciudad->$idCiudaddes ?>"><?php echo $ciudad->$descripcionciudad ?></option>
 <?php endforeach; ?>
           </select>
     </div>
@@ -66,12 +114,12 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default btn btn-xs" data-dismiss="modal">  <?php echo i18n::__('cancel') ?></button>
-        <button type="button" onclick="$('#filterForm').submit()" class="btn btn-primary btn btn-xs"><?php echo i18n::__('filters') ?></button>
+        <button type="button" onclick="$('#filterForm').submit()" class="btn btn-primary btn btn-xs"><?php echo i18n::__('filtros') ?></button>
       </div>
     </div>
   </div>
 </div>
-    </ul> 
+    
       <form class="form-signin" id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('maquina', 'deleteSelectProveedor') ?>" method="POST">        
         <?php view::includeHandlerMessage()?>
         <br>
@@ -82,19 +130,19 @@
             <input type="checkbox" id="chkAll">
           </th>
           <th>
-            <?php echo i18n::__('name') ?>
+            <?php echo i18n::__('nom') ?>
           </th>
           <th>
-            <?php echo i18n::__('lastName') ?>
+            <?php echo i18n::__('apell') ?>
           </th>
           <th>
-            <?php echo i18n::__('streetAddress') ?>
+            <?php echo i18n::__('dir') ?>
           </th>
           <th>
-            <?php echo i18n::__('phone') ?>
+            <?php echo i18n::__('tel') ?>
           </th>
           <th>
-<?php echo i18n::__('actions') ?>
+<?php echo i18n::__('acciones') ?>
           </th>
           </tr>
           </thead>
@@ -117,9 +165,9 @@
   <?php echo $key->$telefono ?>
                 </td>
                 <td>
-                  <a class="btn btn-warning btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('maquina', 'verProveedor', array(proveedorTableClass::ID => $key->$id)) ?>"><i class="glyphicon glyphicon-eye-open"><?php echo i18n::__('see') ?></i></a> 
-                  <a class="btn btn-primary btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('maquina', 'editProveedor', array(proveedorTableClass::ID => $key->$id)) ?>"><i class="glyphicon glyphicon-edit"><?php echo i18n::__('modify') ?></i></a>
-                  <a href="#" data-toggle="modal" data-target="#myModalDelete<?php echo $key->$id ?>" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"><?php echo i18n::__('takeOut') ?></i></a>
+                  <a class="btn btn-warning btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('maquina', 'verProveedor', array(proveedorTableClass::ID => $key->$id)) ?>"><?php echo i18n::__('ver') ?></a> 
+                  <a class="btn btn-primary btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('maquina', 'editProveedor', array(proveedorTableClass::ID => $key->$id)) ?>"><?php echo i18n::__('modificar') ?></a>
+                  <a href="#" data-toggle="modal" data-target="#myModalDelete<?php echo $key->$id ?>" class="btn btn-danger btn-xs"><?php echo i18n::__('eliminar') ?></a>
                 </td>
               </tr>
 <div class="modal fade" id="myModalDelete<?php echo $key->$id ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -144,7 +192,7 @@
         </table>
       </form> 
       <div class="text-right">
-       <?php echo i18n::__('page') ?> <select id="slqPaginador" onchange="paginador(this, '<?php echo routing::getInstance()->getUrlWeb('maquina', 'indexProveedor')?>')">
+       <?php echo i18n::__('paginas') ?> <select id="slqPaginador" onchange="paginador(this, '<?php echo routing::getInstance()->getUrlWeb('maquina', 'indexProveedor')?>')">
          <?php for($x = 1; $x <= $cntPages; $x++):?>
            <option <?php echo (isset($page) and $page == $x) ? 'selected': '' ?> value="<?php echo $x ?>"><?php echo $x ?></option>
           <?php endfor;?>

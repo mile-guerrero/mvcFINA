@@ -5,7 +5,7 @@ use mvc\model\table\tableBaseClass;
 /**
  * Description of tipoProductoInsumoClass
  *
- * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+ * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
  */
 class tipoProductoInsumoBaseTableClass extends tableBaseClass {
   

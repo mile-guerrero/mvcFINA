@@ -5,7 +5,7 @@ use mvc\model\modelClass as model;
 /**
  * Description of credencialTableClass
  *
- * @author 
+ * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
  */
 class proveedorTableClass extends proveedorBaseTableClass {
 

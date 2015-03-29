@@ -5,7 +5,7 @@ use mvc\model\table\tableBaseClass;
 /**
  * Description of ciudadBaseTableClass
  *
- * 
+ * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
  */
 class ciudadBaseTableClass extends tableBaseClass {
 

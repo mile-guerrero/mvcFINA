@@ -12,7 +12,7 @@ use mvc\i18n\i18nClass as i18n;
 /**
  * Description of loginActionClass
  *
- * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+ * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
  */
 class loginActionClass extends controllerClass implements controllerActionInterface {
 

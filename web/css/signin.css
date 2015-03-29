@@ -2,6 +2,7 @@ body {
 }
 
 
+
 .form-signin {
   max-width: 330px;
   padding: 15px;
@@ -86,4 +87,19 @@ header,section,aside,footer,article{
 #pie{
  
 }
-
+#imgespanol{
+background: center;
+margin-left: 50px;
+ width:  60px;
+ padding-top: 30px;
+  background-image: url('../img/espanol.gif');
+  
+}
+#imgingles{
+background: center;
+margin-left: 50px;
+ width:  60px;
+ padding-top: 30px;
+  background-image: url('../img/ingles.gif');
+  
+}

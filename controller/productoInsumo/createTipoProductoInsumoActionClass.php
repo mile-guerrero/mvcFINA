@@ -11,7 +11,7 @@ use mvc\i18n\i18nClass as i18n;
 /**
  * Description of ejemploClass
  *
- * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+ * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
  */
 class createTipoProductoInsumoActionClass extends controllerClass implements controllerActionInterface {
 
@@ -21,9 +21,13 @@ class createTipoProductoInsumoActionClass extends controllerClass implements con
 
         $descripcion = request::getInstance()->getPost(tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::DESCRIPCION, true));
         
-        if (strlen($descripcion) > tipoProductoInsumoTableClass::DESCRIPCION_LENGTH) {
-          throw new PDOException(i18n::__(00001, null, 'errors', array(':longitud' => tipoProductoInsumoTableClass::DESCRIPCION_LENGTH)), 00001);
+    if (strlen($descripcion) > tipoProductoInsumoTableClass::DESCRIPCION_LENGTH) {
+         session::getInstance()->setError(i18n::__(00004, null, 'errors', array(':longitud' => tipoProductoInsumoTableClass::DESCRIPCION_LENGTH)), 00004);
+        routing::getInstance()->redirect('productoInsumo', 'insertTipoProductoInsumo');
+         
         }
+        
+        
 
         $data = array(
             tipoProductoInsumoTableClass::DESCRIPCION=> $descripcion

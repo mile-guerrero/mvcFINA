@@ -11,7 +11,7 @@ use mvc\i18n\i18nClass as i18n;
 /**
  * Description of ejemploClass
  *
- * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+ * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon 
  */
 class createClienteActionClass extends controllerClass implements controllerActionInterface {
 
@@ -26,9 +26,18 @@ class createClienteActionClass extends controllerClass implements controllerActi
         $idTipo = request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::ID_TIPO_ID, true));
         $idCiudad = request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::ID_CIUDAD, true));
 
-//        if (strlen($nombre) > clienteTableClass::NOMBRE_LENGTH) {
-//          throw new PDOException(i18n::__(00001, null, 'errors', array(':longitud' => clienteTableClass::NOMBRE_LENGTH)), 00001);
-//        }
+        if (strlen($nombre) > clienteTableClass::NOMBRE_LENGTH) {
+         session::getInstance()->setError(i18n::__(00001, null, 'errors', array(':longitud' => clienteTableClass::NOMBRE_LENGTH)), 00001);
+        routing::getInstance()->redirect('cliente', 'insertCliente');
+         
+        }
+        
+        if (strlen($apellido) > clienteTableClass::APELLIDO_LENGTH) {
+         session::getInstance()->setError(i18n::__(00002, null, 'errors', array(':longitud' => clienteTableClass::APELLIDO_LENGTH)), 00002);
+        routing::getInstance()->redirect('cliente', 'insertCliente');
+         
+        }
+         
 
         $data = array(
             clienteTableClass::NOMBRE => $nombre,
@@ -39,6 +48,7 @@ class createClienteActionClass extends controllerClass implements controllerActi
             clienteTableClass::ID_CIUDAD => $idCiudad,
         );
         clienteTableClass::insert($data);
+        session::getInstance()->setSuccess('El registro fue exitoso');
         routing::getInstance()->redirect('cliente', 'indexCliente');
       } else {
         routing::getInstance()->redirect('cliente', 'indexCliente');

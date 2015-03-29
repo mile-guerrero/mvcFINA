@@ -3,7 +3,7 @@
   <?php $id = detalleOrdenServicioTableClass::ID ?>
 <div id=''>
   <header id="">
-    <h1>DETALLE ORDEN SERVICIO</h1>
+    <h1>D</h1>
     </header>
 	<nav id="">
 	<ul>

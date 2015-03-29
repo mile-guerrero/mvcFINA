@@ -1,9 +1,6 @@
 <?php mvc\view\viewClass::includePartial('default/menuPrincipal') ?>
-<?php
-
-use mvc\routing\routingClass as routing ?>
-<?php
-use mvc\i18n\i18nClass as i18n ?>
+<?php use mvc\routing\routingClass as routing ?>
+<?php use mvc\i18n\i18nClass as i18n ?>
 <?php $id = ordenServicioTableClass::ID ?>
 <?php $nombreT = trabajadorTableClass::NOMBRET ?>
 <?php $fecha_mantenimiento = ordenServicioTableClass::FECHA_MANTENIMIENTO ?>
@@ -14,7 +11,7 @@ use mvc\i18n\i18nClass as i18n ?>
   <nav id="">
     <ul>
 
-      <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('ordenServicio', 'insert') ?>"><?php echo i18n::__('nuevo') ?></a>              
+      <a class="btn btn-success btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('ordenServicio', 'insert') ?>"><?php echo i18n::__('nuevo') ?></a>              
     </ul> 
   </nav>
   <section id="">
@@ -31,7 +28,7 @@ use mvc\i18n\i18nClass as i18n ?>
           <?php echo i18n::__('nombreTrabajador') ?>
         </th>
         <th>
-<?php echo i18n::__('aciones') ?>
+<?php echo i18n::__('acciones') ?>
         </th>              
         </tr>
         </thead>
@@ -48,7 +45,8 @@ use mvc\i18n\i18nClass as i18n ?>
   <?php echo $tra->$nombreT ?>
               </th> 
               <th>
-                <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('ordenServicio', 'ver', array(ordenServicioTableClass::ID => $key->$id)) ?>" ><?php echo i18n::__('ver') ?></a> - <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('ordenServicio', 'edit', array(ordenServicioTableClass::ID => $key->$id)) ?>"><?php echo i18n::__('modificar') ?> </a>
+                <a class="btn btn-warning btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('ordenServicio', 'ver', array(ordenServicioTableClass::ID => $key->$id)) ?>" ><?php echo i18n::__('ver') ?></a> - 
+                <a class="btn btn-primary btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('ordenServicio', 'edit', array(ordenServicioTableClass::ID => $key->$id)) ?>"><?php echo i18n::__('modificar') ?> </a>
               </th>
 <?php endforeach; ?>     
 

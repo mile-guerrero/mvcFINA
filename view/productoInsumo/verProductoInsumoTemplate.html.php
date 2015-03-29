@@ -29,13 +29,13 @@
 	<tbody>
               <?php foreach ($objPI as $key): ?>
                 <tr>
-                  <th>Descripcion</th>      
-                 <th><?php echo $key->$des ?></th>
+                  <th><?php echo i18n::__('des') ?></th>      
+                  <td><?php echo $key->$des ?></td>
                   </tr>
                   <tr>
                    <tr>
-                  <th>iva</th>      
-                 <th><?php echo $key->$iva ?></th>
+                  <th><?php echo i18n::__('iva') ?></th>      
+                  <td><?php echo $key->$iva ?></td>
                   </tr>
                   </tr>
                   <th>fecha creacion</th> 
@@ -47,14 +47,14 @@
                   <?php endforeach; ?>
                   <?php foreach ($objPI as $key): ?>
                   <tr> 
-                   <th>codigo unidad medida</th>                   
-                   <th><?php echo unidadMedidaTableClass::getNameUnidadMedida($key->$unidad) ?></th>
+                   <th><?php echo i18n::__('unidadM') ?></th>                   
+                   <td><?php echo unidadMedidaTableClass::getNameUnidadMedida($key->$unidad) ?></td>
                        </tr>
                     <?php endforeach; ?>
                        <?php foreach ($objPI as $key): ?>
                        <tr>
-                       <th>codigo tipo producto insumo</th> 
-                       <th><?php echo tipoProductoInsumoTableClass::getNameTipoProductoInsumo($key->$tipo) ?></th>
+                       <th><?php echo i18n::__('tipoProducto') ?></th> 
+                       <td><?php echo tipoProductoInsumoTableClass::getNameTipoProductoInsumo($key->$tipo) ?></td>
                             
                                               
                 <?php endforeach; ?>

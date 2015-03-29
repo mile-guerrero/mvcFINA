@@ -27,21 +27,21 @@
 	<tbody>
       <?php foreach ($objUC as $key): ?>
                   <tr> 
-                   <th>fecha creacion</th>                   
+                   <th><?php echo i18n::__('fecha crear') ?></th>                   
                    <th><?php echo $key->$created_at ?></th>
                   </tr>
                   <?php endforeach; ?>
               <?php foreach ($objUC as $ko): ?>
                 <tr>
-                  <th>Usuario</th>      
-                 <th><?php echo usuarioTableClass::getNameUsuario($ko->$usua)?></th>
+                  <th><?php echo i18n::__('user') ?></th>      
+                  <td><?php echo usuarioTableClass::getNameUsuario($ko->$usua)?></td>
                   </tr>
                   <?php endforeach; ?>
                   
                   <?php foreach ($objUC as $key): ?>
                   <tr>
-                  <th>Credencial</th>      
-                 <th><?php echo credencialTableClass::getNameCredencial($key->$cred) ?></th>
+                  <th><?php echo i18n::__('credencial') ?></th>      
+                  <td><?php echo credencialTableClass::getNameCredencial($key->$cred) ?></td>
                   </tr>                           
                 <?php endforeach; ?>
                   

@@ -1,4 +1,3 @@
-
 <?php
 use mvc\interfaces\controllerActionInterface;
 use mvc\controller\controllerClass;
@@ -11,7 +10,7 @@ use mvc\i18n\i18nClass as i18n;
 /**
  * Description of ejemploClass
  *
- * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+ * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
  */
 class editClienteActionClass extends controllerClass implements controllerActionInterface {
 

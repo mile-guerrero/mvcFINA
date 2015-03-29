@@ -1,12 +1,15 @@
 <?php mvc\view\viewClass::includePartial('default/menuPrincipal') ?>
-<?php
-
-use mvc\routing\routingClass as routing ?>
-<?php
-use mvc\i18n\i18nClass as i18n ?>
+<?php use mvc\routing\routingClass as routing ?>
+<?php use mvc\i18n\i18nClass as i18n ?>
 <?php use mvc\view\viewClass as view?>
 <?php $id = maquinaTableClass::ID ?>
 <?php $nombre = maquinaTableClass::NOMBRE ?>
+<?php $idorigen= origenMaquinaTableClass::ID ?>
+<?php $desorigen= origenMaquinaTableClass::DESCRIPCION ?>
+<?php $idtipo= tipoUsoMaquinaTableClass::ID ?>
+<?php $destipo= tipoUsoMaquinaTableClass::DESCRIPCION ?>
+<?php $idpro= proveedorTableClass::ID ?>
+<?php $despro= proveedorTableClass::NOMBREP ?>
 <div class="container container-fluid" id="cuerpo">
   <header id="">
     
@@ -21,9 +24,83 @@ use mvc\i18n\i18nClass as i18n ?>
 <h1><?php echo i18n::__('maquina') ?></h1>
        <ul>
 
-      <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('maquina', 'insertMaquina') ?>"><?php echo i18n::__('nuevo') ?></a> <a href="javascript:eliminarMasivo()" class="btn btn-danger btn-xs" id="btnDeleteMasivo"><?php echo i18n::__('eliminar en masa') ?></a> <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModalFiltres"><?php echo i18n::__('filtros') ?></button>  <a href="<?php echo routing::getInstance()->getUrlWeb('maquina', 'indexMaquina') ?>" class="btn btn-default btn-xs" ><?php echo i18n::__('eFiltros') ?></a> <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('maquina', 'reportMaquina') ?>"><?php echo i18n::__('informe') ?></a>           
+      <a class="btn btn-success btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('maquina', 'insertMaquina') ?>"><?php echo i18n::__('nuevo') ?></a> 
+      <a href="javascript:eliminarMasivo()" class="btn btn-danger btn-xs" id="btnDeleteMasivo"><?php echo i18n::__('eliminar en masa') ?></a> 
+      <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModalFiltres"><?php echo i18n::__('filtros') ?></button>  
+      <a href="<?php echo routing::getInstance()->getUrlWeb('maquina', 'indexMaquina') ?>" class="btn btn-default btn-xs" ><?php echo i18n::__('eFiltros') ?></a> <button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#myModalReport" ><?php echo i18n::__('informe') ?></button>           
     </ul> 
-
+<!---Informes--->
+       <div class="modal fade" id="myModalReport" tabindex="-1" role="modal" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('informe') ?></h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" id="reportForm" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('maquina', 'reportMaquina')?>">
+          <div class="form-group">
+    <label for="reportNombre" class="col-sm-2 control-label"><?php echo i18n::__('name') ?></label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="reportNombre" name="report[nombre]" placeholder="Nombre">
+    </div>
+  </div>
+           
+  <div class="form-group">
+    <label for="filterCiudad" class="col-sm-2 control-label"><?php echo i18n::__('origenM') ?></label>
+    <div class="col-sm-10">
+      <select class="form-control" id="filterCiudad" name="filter[origen]">
+        <option value=""><?php echo i18n::__('selectOrigen') ?></option>
+<?php foreach ($objMOM as $ciudad): ?>
+            <option value="<?php echo $ciudad->$idorigen ?>"><?php echo $ciudad->$desorigen ?></option>
+<?php endforeach; ?>
+          </select>
+    </div>
+  </div>
+    
+  <div class="form-group">
+    <label for="filterCiudad" class="col-sm-2 control-label"><?php echo i18n::__('tipo uso') ?></label>
+    <div class="col-sm-10">
+      <select class="form-control" id="filterCiudad" name="filter[tipo]">
+        <option value=""><?php echo i18n::__('selectTipoUso') ?></option>
+<?php foreach ($objMTUM as $ciudad): ?>
+            <option value="<?php echo $ciudad->$idtipo ?>"><?php echo $ciudad->$destipo ?></option>
+<?php endforeach; ?>
+          </select>
+    </div>
+  </div>            
+            
+   <div class="form-group">
+    <label for="filterCiudad" class="col-sm-2 control-label"><?php echo i18n::__('nomProveedor') ?></label>
+    <div class="col-sm-10">
+      <select class="form-control" id="filterCiudad" name="filter[proveedor]">
+        <option value=""><?php echo i18n::__('selectProveedor') ?></option>
+<?php foreach ($objMP as $ciudad): ?>
+            <option value="<?php echo $ciudad->$idpro ?>"><?php echo $ciudad->$despro ?></option>
+<?php endforeach; ?>
+          </select>
+    </div>
+  </div>         
+          
+          
+  <div class="form-group">
+    <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
+    <div class="col-sm-10">
+      <input type="date" class="form-control" id="reportFecha1" name="report[fecha1]">
+      <br>
+       <input type="date" class="form-control" id="reportFecha2" name="report[fecha2]">
+    </div>
+  </div>
+</form>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default btn btn-xs" data-dismiss="modal">  <?php echo i18n::__('cerrar') ?></button>
+        <button type="button" onclick="$('#reportForm').submit()" class="btn btn-warning btn btn-xs"><?php echo i18n::__('informe') ?></button>
+      </div>
+    </div>
+  </div>
+</div>
 
     <!-- Modal -->
     <div class="modal fade" id="myModalFiltres" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -49,7 +126,42 @@ use mvc\i18n\i18nClass as i18n ?>
                   <input type="text" class="form-control" id="filterDescripcion" name="filter[descripcion]" placeholder="<?php echo i18n::__('des') ?>">
                 </div>
               </div>
-
+              
+<div class="form-group">
+    <label for="filterCiudad" class="col-sm-2 control-label"><?php echo i18n::__('origenM') ?></label>
+    <div class="col-sm-10">
+      <select class="form-control" id="filterCiudad" name="filter[origen]">
+        <option value=""><?php echo i18n::__('selectOrigen') ?></option>
+<?php foreach ($objMOM as $ciudad): ?>
+            <option value="<?php echo $ciudad->$idorigen ?>"><?php echo $ciudad->$desorigen ?></option>
+<?php endforeach; ?>
+          </select>
+    </div>
+  </div>
+    
+  <div class="form-group">
+    <label for="filterCiudad" class="col-sm-2 control-label"><?php echo i18n::__('tipo uso') ?></label>
+    <div class="col-sm-10">
+      <select class="form-control" id="filterCiudad" name="filter[tipo]">
+        <option value=""><?php echo i18n::__('selectTipoUso') ?></option>
+<?php foreach ($objMTUM as $ciudad): ?>
+            <option value="<?php echo $ciudad->$idtipo ?>"><?php echo $ciudad->$destipo ?></option>
+<?php endforeach; ?>
+          </select>
+    </div>
+  </div>            
+            
+   <div class="form-group">
+    <label for="filterCiudad" class="col-sm-2 control-label"><?php echo i18n::__('nomProveedor') ?></label>
+    <div class="col-sm-10">
+      <select class="form-control" id="filterCiudad" name="filter[proveedor]">
+        <option value=""><?php echo i18n::__('selectProveedor') ?></option>
+<?php foreach ($objMP as $ciudad): ?>
+            <option value="<?php echo $ciudad->$idpro ?>"><?php echo $ciudad->$despro ?></option>
+<?php endforeach; ?>
+          </select>
+    </div>
+  </div>            
               <div class="form-group">
                 <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
                 <div class="col-sm-10">
@@ -68,8 +180,8 @@ use mvc\i18n\i18nClass as i18n ?>
 
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('cerrar') ?></button>
-            <button type="button" onclick="$('#filterForm').submit()" class="btn btn-primary"><?php echo i18n::__('filtrar') ?></button>
+            <button type="button" class="btn btn-default btn-xs" data-dismiss="modal"><?php echo i18n::__('cerrar') ?></button>
+            <button type="button" onclick="$('#filterForm').submit()" class="btn btn-primary btn-xs"><?php echo i18n::__('filtrar') ?></button>
           </div>
         </div>
       </div>
@@ -87,7 +199,7 @@ use mvc\i18n\i18nClass as i18n ?>
           </th>
 
           <th>
-            <?php echo i18n::__('aciones') ?>
+            <?php echo i18n::__('acciones') ?>
           </th>
 
           </tr>
@@ -99,12 +211,14 @@ use mvc\i18n\i18nClass as i18n ?>
                 <th>
                   <input type="checkbox" name="chk[]" value="<?php echo $key->$id ?>">
                 </th>
-                <th>
+                <td>
                   <?php echo $key->$nombre ?>
-                </th>
+                </td>
 
                 <th>
-                  <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('maquina', 'verMaquina', array(maquinaTableClass::ID => $key->$id)) ?>" ><?php echo i18n::__('ver') ?></a> - <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('maquina', 'editMaquina', array(maquinaTableClass::ID => $key->$id)) ?>"><?php echo i18n::__('modificar') ?> </a>- <a data-toggle="modal" data-target="#myModalDelete<?php echo $key->$id ?>" class="btn btn-danger btn-xs"><?php echo i18n::__('eliminar') ?></a>
+                  <a class="btn btn-warning btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('maquina', 'verMaquina', array(maquinaTableClass::ID => $key->$id)) ?>" ><?php echo i18n::__('ver') ?></a> -
+                  <a class="btn btn-primary btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('maquina', 'editMaquina', array(maquinaTableClass::ID => $key->$id)) ?>"><?php echo i18n::__('modificar') ?> </a> -
+                  <a data-toggle="modal" data-target="#myModalDelete<?php echo $key->$id ?>" class="btn btn-danger btn-xs"><?php echo i18n::__('eliminar') ?></a>
                 </th> 
               </tr>
             <div class="modal fade" id="myModalDelete<?php echo $key->$id ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -118,8 +232,8 @@ use mvc\i18n\i18nClass as i18n ?>
                     <?php echo i18n::__('Desea  eliminar este campo') ?> <?php echo $key->$nombre ?><?php echo i18n::__('?') ?>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal"><?php echo i18n::__('cerrar') ?></button>
-                    <button type="button" class="btn btn-danger" onclick="eliminar(<?php echo $key->$id ?>, '<?php echo maquinaTableClass::getNameField(maquinaTableClass::ID, true) ?>', '<?php echo routing::getInstance()->getUrlWeb('maquina', 'deleteMaquina') ?>')"><?php echo i18n::__('eliminar') ?></button>
+                    <button type="button" class="btn btn-primary btn-xs" data-dismiss="modal"><?php echo i18n::__('cerrar') ?></button>
+                    <button type="button" class="btn btn-danger btn-xs" onclick="eliminar(<?php echo $key->$id ?>, '<?php echo maquinaTableClass::getNameField(maquinaTableClass::ID, true) ?>', '<?php echo routing::getInstance()->getUrlWeb('maquina', 'deleteMaquina') ?>')"><?php echo i18n::__('eliminar') ?></button>
                   </div>
                 </div>
               </div>
@@ -130,7 +244,7 @@ use mvc\i18n\i18nClass as i18n ?>
       </form> 
       
       <div class="text-right">
-        Pagina <select id="slqPaginador" onchange="paginador(this, '<?php echo routing::getInstance()->getUrlWeb('maquina', 'indexMaquina')?>')">
+        <?php echo i18n::__('paginas') ?> <select id="slqPaginador" onchange="paginador(this, '<?php echo routing::getInstance()->getUrlWeb('maquina', 'indexMaquina')?>')">
          <?php for($x = 1; $x <= $cntPages; $x++):?>
            <option <?php echo (isset($page) and $page == $x) ? 'selected': '' ?> value="<?php echo $x ?>"><?php echo $x ?></option>
           <?php endfor;?>

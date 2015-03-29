@@ -33,8 +33,8 @@
 	<tbody>
               <?php foreach ($objUsuarios as $key): ?>
                 <tr>
-                  <th>Usuario</th>      
-                 <th><?php echo $key->$usu ?></th>
+                  <th><?php echo i18n::__('user') ?></th>      
+                  <td><?php echo $key->$usu ?></td>
                   </tr>
                   <tr>
                    <th>fecha creacion</th>                   
@@ -45,8 +45,8 @@
                        <th><?php echo $key->$updated_at ?></th>
                        </tr>
                        <tr>  
-                       <th>Estado</th>
-                     <th><?php echo $key->$actived ?></th>
+                       <th><?php echo i18n::__('estado') ?></th>
+                       <td><?php echo $key->$actived ?></td>
                        </tr>                         
                 <?php endforeach; ?>
            </tbody>

@@ -33,17 +33,17 @@
         <tbody>
 <?php foreach ($objCliente as $key): ?>
             <tr>
-              <th>Nombre</th>      
-              <th><?php echo $key->$nom ?></th>
+              <th><?php echo i18n::__('nom') ?></th>      
+              <td><?php echo $key->$nom ?></td>
             </tr>
-          <th>Apellido</th>      
-          <th><?php echo $key->$apellido ?></th>
+          <th><?php echo i18n::__('apell') ?></th>      
+          <td><?php echo $key->$apellido ?></td>
           </tr>
-          <th>direccion</th>      
-          <th><?php echo $key->$direccion ?></th>
+          <th><?php echo i18n::__('dir') ?></th>      
+          <td><?php echo $key->$direccion ?></td>
           </tr>
-          <th>Telefono</th>      
-          <th><?php echo $key->$telefono ?></th>
+          <th><?php echo i18n::__('tel') ?></th>      
+          <td><?php echo $key->$telefono ?></td>
           </tr>
           <tr>
             <th>fecha modificacion</th> 
@@ -58,16 +58,16 @@
 
 <?php foreach ($objCliente as $tipoId): ?>          
           <tr>
-            <th>Tipo Identidad</th>                   
-            <th><?php echo tipoIdTableClass::getNameTipoId($tipoId->$descripcion) ?></th>
+            <th><?php echo i18n::__('tipo id') ?></th>                   
+            <td><?php echo tipoIdTableClass::getNameTipoId($tipoId->$descripcion) ?></td>
           </tr>
         <?php endforeach; ?>
 
 
 <?php foreach ($objCliente as $ciudad): ?>
           <tr>
-          <th>Ciudad</th>      
-          <th><?php echo ciudadTableClass::getNameCiudad($ciudad->$nombre_ciudad) ?></th>
+          <th><?php echo i18n::__('ciudad') ?></th>      
+          <td><?php echo ciudadTableClass::getNameCiudad($ciudad->$nombre_ciudad) ?></td>
           </tr>
 <?php endforeach; ?>
 

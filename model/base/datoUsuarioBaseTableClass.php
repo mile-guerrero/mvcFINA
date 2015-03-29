@@ -5,7 +5,7 @@ use mvc\model\table\tableBaseClass;
 /**
  * Description of usuarioBaseTableClass
  *
- * 
+ * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
  */
 class datoUsuarioBaseTableClass extends tableBaseClass {
 

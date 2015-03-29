@@ -17,7 +17,7 @@
       
        <h1><?php echo i18n::__('tipo uso') ?></h1>
     <ul>
-      <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('maquina', 'insertTipoUsoMaquina') ?>"><?php echo i18n::__('nuevo') ?></a>              
+      <a class="btn btn-success btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('maquina', 'insertTipoUsoMaquina') ?>"><?php echo i18n::__('nuevo') ?></a>              
     </ul> 
   
       <table class="table table-bordered table-responsive">
@@ -27,25 +27,25 @@
           <?php echo i18n::__('des') ?>
         </th> 
         <th>
-            <?php echo i18n::__('aciones') ?>
+            <?php echo i18n::__('acciones') ?>
           </th>
         </tr>
         </thead>
         <tbody>
               <?php foreach ($objTUM as $key): ?>
             <tr>
-              <th>
+              <td>
               <?php echo $key->$descrip ?>
-              </th>
+              </td>
               <th>
-              <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('maquina', 'verTipoUsoMaquina', array(tipoUsoMaquinaTableClass::ID => $key->$id)) ?>" > <?php echo i18n::__('ver') ?></a>
+              <a class="btn btn-warning btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('maquina', 'verTipoUsoMaquina', array(tipoUsoMaquinaTableClass::ID => $key->$id)) ?>" > <?php echo i18n::__('ver') ?></a>
               </th>
             </tr>                         
 <?php endforeach; ?>
         </tbody>
       </table>
       <div class="text-right">
-        Pagina <select id="slqPaginador" onchange="paginador(this, '<?php echo routing::getInstance()->getUrlWeb('maquina', 'indexTipoUsoMaquina')?>')">
+        <?php echo i18n::__('paginas') ?> <select id="slqPaginador" onchange="paginador(this, '<?php echo routing::getInstance()->getUrlWeb('maquina', 'indexTipoUsoMaquina')?>')">
          <?php for($x = 1; $x <= $cntPages; $x++):?>
            <option <?php echo (isset($page) and $page == $x) ? 'selected': '' ?> value="<?php echo $x ?>"><?php echo $x ?></option>
           <?php endfor;?>

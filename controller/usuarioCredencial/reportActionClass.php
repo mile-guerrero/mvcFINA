@@ -11,15 +11,31 @@ use mvc\i18n\i18nClass as i18n;
 /**
  * Description of ejemploClass
  *
- * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+ * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
  */
 class reportActionClass extends controllerClass implements controllerActionInterface {
 
   public function execute() {
     try {
       
-      //$this->mensaje = 'Hola a todos';
-     
+      $this->mensaje = 'Hola a todos';
+     $where = null;
+      if(request::getInstance()->hasPost('filter')){
+      $filter = request::getInstance()->getPost('filter');
+      //validar
+      if(isset($filter['usuario']) and $filter['usuario'] !== null and $filter['usuario'] !== ""){
+        $where[usuarioCredencialTableClass::USUARIO_ID] = $filter['usuario'];
+      }
+      if(isset($filter['credencial']) and $filter['credencial'] !== null and $filter['credencial'] !== ""){
+        $where[usuarioCredencialTableClass::CREDENCIAL_ID] = $filter['credencial'];
+      }
+      if((isset($filter['fechaIni']) and $filter['fechaIni'] !== null and $filter['fechaIni'] !== "") and (isset($filter['fechaFin']) and $filter['fechaFin'] !== null and $filter['fechaFin'] !== "" )){
+        $where[usuarioCredencialTableClass::CREATED_AT] = array(
+           date(config::getFormatTimestamp(), strtotime($filter['fechaIni'].' 00:00:00')),
+           date(config::getFormatTimestamp(), strtotime($filter['fechaFin'].' 23:59:59'))
+            );
+      } 
+      }
       
      $fields = array(
           usuarioCredencialTableClass::ID, 
@@ -31,19 +47,19 @@ class reportActionClass extends controllerClass implements controllerActionInter
       usuarioCredencialTableClass::ID   
       ); 
       
-      $this->objUC = usuarioCredencialTableClass::getAll($fields, false, $orderBy, 'ASC');
+      $this->objUC = usuarioCredencialTableClass::getAll($fields, false, $orderBy, 'ASC',null,null,$where);
 $fields = array(
           usuarioTableClass::ID,
           usuarioTableClass::USUARIO
       );
       
-      $this->objU = usuarioTableClass::getAll($fields, true);
+      $this->objUCU = usuarioTableClass::getAll($fields, true);
 $fields = array(
           credencialTableClass::ID,
           credencialTableClass::NOMBRE
       );
       
-      $this->objC = credencialTableClass::getAll($fields, true);
+      $this->objUCC = credencialTableClass::getAll($fields, true);
 
     
       $this->defineView('index', 'usuarioCredencial', session::getInstance()->getFormatOutput());

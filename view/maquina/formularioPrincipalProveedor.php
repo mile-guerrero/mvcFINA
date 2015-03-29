@@ -1,5 +1,6 @@
 <?php use mvc\routing\routingClass as routing ?>
 <?php use mvc\i18n\i18nClass as i18n ?>
+<?php use mvc\view\viewClass as view?>
 <?php $idProveedor = proveedorTableClass::ID ?>
 <?php $apellido = proveedorTableClass::APELLIDO ?>
 <?php $direccion = proveedorTableClass::DIRECCION ?>
@@ -13,32 +14,32 @@
 <?php if (isset($objProveedor) == true): ?>
     <input  name="<?php echo proveedorTableClass::getNameField(proveedorTableClass::ID, true) ?>" value="<?php echo $objProveedor[0]->$idProveedor ?>" type="hidden">
 <?php endif ?>
-
+  <?php view::includeHandlerMessage()?>
     <div class="form-group">
-      <label for="<?php echo proveedorTableClass::getNameField(proveedorTableClass::NOMBREP, true) ?>" class="col-sm-2"> <?php echo i18n::__('name') ?>:</label>     
+      <label for="<?php echo proveedorTableClass::getNameField(proveedorTableClass::NOMBREP, true) ?>" class="col-sm-2"> <?php echo i18n::__('nom') ?>:</label>     
       <div class="col-sm-10">
-        <input class="form-control" value="<?php echo ((isset($objProveedor) == true) ? $objProveedor[0]->$nombre : '') ?>" type="text" name="<?php echo proveedorTableClass::getNameField(proveedorTableClass::NOMBREP, true) ?>">
+        <input class="form-control" value="<?php echo ((isset($objProveedor) == true) ? $objProveedor[0]->$nombre : '') ?>" type="text" name="<?php echo proveedorTableClass::getNameField(proveedorTableClass::NOMBREP, true) ?>" placeholder="Nombre" required>
       </div>
     </div>  
 
     <div class="form-group">
-      <label for="<?php echo proveedorTableClass::getNameField(proveedorTableClass::APELLIDO, true) ?>" class="col-sm-2"> <?php echo i18n::__('lastName') ?>:</label>     
+      <label for="<?php echo proveedorTableClass::getNameField(proveedorTableClass::APELLIDO, true) ?>" class="col-sm-2"> <?php echo i18n::__('apell') ?>:</label>     
       <div class="col-sm-10">            
-        <input class="form-control" value="<?php echo ((isset($objProveedor) == true) ? $objProveedor[0]->$apellido : '') ?>" type="text" name="<?php echo proveedorTableClass::getNameField(proveedorTableClass::APELLIDO, true) ?>">
+        <input class="form-control" value="<?php echo ((isset($objProveedor) == true) ? $objProveedor[0]->$apellido : '') ?>" type="text" name="<?php echo proveedorTableClass::getNameField(proveedorTableClass::APELLIDO, true) ?>" placeholder="Apellido" required>
       </div>
     </div> 
 
     <div class="form-group">
-      <label for="<?php echo proveedorTableClass::getNameField(proveedorTableClass::DIRECCION, true) ?>" class="col-sm-2"> <?php echo i18n::__('streetAddress') ?>: </label>     
+      <label for="<?php echo proveedorTableClass::getNameField(proveedorTableClass::DIRECCION, true) ?>" class="col-sm-2"> <?php echo i18n::__('dir') ?>: </label>     
       <div class="col-sm-10">             
-        <input class="form-control" value="<?php echo ((isset($objProveedor) == true) ? $objProveedor[0]->$direccion : '') ?>" type="text" name="<?php echo proveedorTableClass::getNameField(proveedorTableClass::DIRECCION, true) ?>">
+        <input class="form-control" value="<?php echo ((isset($objProveedor) == true) ? $objProveedor[0]->$direccion : '') ?>" type="text" name="<?php echo proveedorTableClass::getNameField(proveedorTableClass::DIRECCION, true) ?>" placeholder="Direccion" required>
       </div>
     </div>
 
     <div class="form-group">
-      <label for="<?php echo proveedorTableClass::getNameField(proveedorTableClass::TELEFONO, true) ?>" class="col-sm-2"> <?php echo i18n::__('phone') ?>:  </label>     
+      <label for="<?php echo proveedorTableClass::getNameField(proveedorTableClass::TELEFONO, true) ?>" class="col-sm-2"> <?php echo i18n::__('tel') ?>:  </label>     
       <div class="col-sm-10">              
-        <input class="form-control" value="<?php echo ((isset($objProveedor) == true) ? $objProveedor[0]->$telefono : '') ?>" type="text" name="<?php echo proveedorTableClass::getNameField(proveedorTableClass::TELEFONO, true) ?>">
+        <input class="form-control" value="<?php echo ((isset($objProveedor) == true) ? $objProveedor[0]->$telefono : '') ?>" type="number" name="<?php echo proveedorTableClass::getNameField(proveedorTableClass::TELEFONO, true) ?>" placeholder="Telefono" required>
       </div>
     </div>  
       

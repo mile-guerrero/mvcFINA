@@ -11,7 +11,7 @@ use mvc\i18n\i18nClass as i18n;
 /**
  * Description of ejemploClass
  *
- * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+ * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
  */
 class reportActionClass extends controllerClass implements controllerActionInterface {
 
@@ -19,8 +19,20 @@ class reportActionClass extends controllerClass implements controllerActionInter
     try {
       
       //$this->mensaje = 'Hola a todos';
-     
-      
+     $where = null;
+      if(request::getInstance()->hasPost('filter')){
+      $filter = request::getInstance()->getPost('filter');
+      //validar
+      if(isset($filter['usuario']) and $filter['usuario'] !== null and $filter['usuario'] !== ""){
+        $where[usuarioTableClass::USUARIO] = $filter['usuario'];
+      }
+       if((isset($filter['fechaIni']) and $filter['fechaIni'] !== null and $filter['fechaIni'] !== "") and (isset($filter['fechaFin']) and $filter['fechaFin'] !== null and $filter['fechaFin'] !== "" )){
+        $where[usuarioTableClass::CREATED_AT] = array(
+           date(config::getFormatTimestamp(), strtotime($filter['fechaIni'].' 00:00:00')),
+           date(config::getFormatTimestamp(), strtotime($filter['fechaFin'].' 23:59:59'))
+            );
+      }     
+      }
       $fields = array(
           usuarioTableClass::ID,
           usuarioTableClass::USUARIO,
@@ -30,13 +42,8 @@ class reportActionClass extends controllerClass implements controllerActionInter
       $orderBy = array(
          usuarioTableClass::ID
       );
-      $this->objUsu = usuarioTableClass::getAll($fields, true, $orderBy, 'ASC');
-
-       
-       
-
-      
-      
+      $this->objUsuarios = usuarioTableClass::getAll($fields, true, $orderBy, 'ASC',null,null,$where);
+ 
       $this->defineView('index', 'default', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
       echo $exc->getMessage();

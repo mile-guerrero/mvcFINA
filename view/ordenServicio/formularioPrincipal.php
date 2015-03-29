@@ -19,7 +19,7 @@
   </div>
   
   <div class="form-group">
-      <label for="<?php echo ordenServicioTableClass::getNameField(ordenServicioTableClass::TRABAJADOR_ID, true) ?>" class="col-sm-2"> <?php echo i18n::__('trab') ?> </label>
+      <label for="<?php echo ordenServicioTableClass::getNameField(ordenServicioTableClass::TRABAJADOR_ID, true) ?>" class="col-sm-2"> <?php echo i18n::__('trabajador') ?> </label>
       <div class="col-sm-10"> 
         <input value="" type="text" name="<?php echo ordenServicioTableClass::getNameField(ordenServicioTableClass::TRABAJADOR_ID, true) ?>" class="form-control" list="nombres" placeholder="Digite nombre">
         <datalist id="nombres">

@@ -13,7 +13,7 @@ namespace hook\security {
   /**
    * Description of securityHookClass
    *
-   * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+   * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
    */
   class securityHookClass implements hookInterface {
 

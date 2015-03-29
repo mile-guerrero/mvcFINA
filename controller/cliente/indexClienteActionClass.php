@@ -11,31 +11,32 @@ use mvc\i18n\i18nClass as i18n;
 /**
  * Description of ejemploClass
  *
- * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+ * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
  */
 class indexClienteActionClass extends controllerClass implements controllerActionInterface {
 
   public function execute() {
     try {
-      $where = null;
-      if(request::getInstance()->hasPost('filter')){
-      $filter = request::getInstance()->getPost('filter');
-      //validar
-      if(isset($filter['nombre']) and $filter['nombre'] !== null and $filter['nombre'] !== ""){
-        $where[clienteTableClass::NOMBRE] = $filter['nombre'];
-      }
-      if(isset($filter['apellido']) and $filter['apellido'] !== null and $filter['apellido'] !== ""){
-        $where[clienteTableClass::APELLIDO] = $filter['apellido'];
-      }
-      if(isset($filter['ciudad']) and $filter['ciudad'] !== null and $filter['ciudad'] !== ""){
-      $where[clienteTableClass::ID_CIUDAD] = $filter['ciudad'];
-      }
-      if((isset($filter['fechaIni']) and $filter['fechaIni'] !== null and $filter['fechaIni'] !== "") and (isset($filter['fechaFin']) and $filter['fechaFin'] !== null and $filter['fechaFin'] !== "" )){
-        $where[clienteTableClass::CREATED_AT] = array(
-           date(config::getFormatTimestamp(), strtotime($filter['fechaIni'].' 00:00:00')),
-           date(config::getFormatTimestamp(), strtotime($filter['fechaFin'].' 23:59:59'))
-            );
-      }     
+    $where = null;
+      if (request::getInstance()->hasPost('filter')) {
+        $filter = request::getInstance()->getPost('filter');
+        //Validar datos
+
+        if (isset($filter['nombre']) and $filter['nombre'] !== null and $filter['nombre'] !== '') {
+          $where[clienteTableClass::NOMBRE] = $filter['nombre'];
+        }
+        if (isset($filter['apellido']) and $filter['apellido'] !== null and $filter['apellido'] !== '') {
+          $where[clienteTableClass::APELLIDO] = $filter['apellido'];
+        }
+        if (isset($filter['ciudad']) and $filter['ciudad'] !== null and $filter['ciudad'] !== '') {
+          $where[clienteTableClass::ID_CIUDAD] = $filter['ciudad'];
+        }
+        if (isset($filter['fecha1']) and $filter['fecha1'] !== null and $filter['fecha1'] !== '' and (isset($filter['fecha2']) and $filter['fecha2'] !== null and $filter['fecha2'] !== '')) {
+          $where[clienteTableClass::CREATED_AT] = array(
+          date(config::getFormatTimestamp(), strtotime($filter['fecha1'] . ' 00:00:00')),
+          date(config::getFormatTimestamp(), strtotime($filter['fecha2'] . ' 23:59:59'))
+          );
+        }
       }
         
       $fields = array(
@@ -68,7 +69,6 @@ class indexClienteActionClass extends controllerClass implements controllerActio
       ciudadTableClass::NOMBRE_CIUDAD    
       ); 
       $this->objCC = ciudadTableClass::getAll($fields, false, $orderBy, 'ASC');
-
     
       $this->defineView('indexCliente', 'cliente', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {

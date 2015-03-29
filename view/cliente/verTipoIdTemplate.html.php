@@ -24,8 +24,8 @@
 	<tbody>
               <?php foreach ($objTI as $key): ?>
                 <tr>
-                  <th>Descripcion</th>      
-                 <th><?php echo $key->$des ?></th>
+                  <th><?php echo i18n::__('des') ?></th>      
+                  <td><?php echo $key->$des ?></td>
                   </tr>
                  
                   <tr> 

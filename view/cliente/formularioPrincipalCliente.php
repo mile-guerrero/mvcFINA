@@ -1,8 +1,7 @@
-<?php
+<?php use mvc\routing\routingClass as routing ?>
+<?php use mvc\i18n\i18nClass as i18n ?>
+<?php use mvc\view\viewClass as view?>
 
-use mvc\routing\routingClass as routing ?>
-<?php
-use mvc\i18n\i18nClass as i18n ?>
 <?php $idCliente = clienteTableClass::ID ?>
 <?php $apellido = clienteTableClass::APELLIDO ?>
 <?php $direccion = clienteTableClass::DIRECCION ?>
@@ -19,32 +18,33 @@ use mvc\i18n\i18nClass as i18n ?>
 <?php if (isset($objCliente) == true): ?>
       <input  name="<?php echo clienteTableClass::getNameField(clienteTableClass::ID, true) ?>" value="<?php echo $objCliente[0]->$idCliente ?>" type="hidden">
 <?php endif ?>
-
+  <?php view::includeHandlerMessage()?>
     <div class="form-group">
+      
       <label for="<?php echo clienteTableClass::getNameField(clienteTableClass::NOMBRE, true) ?>" class="col-sm-2"> <?php echo i18n::__('nom') ?>:</label>     
       <div class="col-sm-10">
-        <input class="form-control" value="<?php echo ((isset($objCliente) == true) ? $objCliente[0]->$nombre : '') ?>" type="text" name="<?php echo clienteTableClass::getNameField(clienteTableClass::NOMBRE, true) ?>">
+        <input class="form-control" value="<?php echo ((isset($objCliente) == true) ? $objCliente[0]->$nombre : '') ?>" type="text" name="<?php echo clienteTableClass::getNameField(clienteTableClass::NOMBRE, true) ?>" placeholder="Nombre" required>
       </div>
     </div>  
 
     <div class="form-group">
       <label for="<?php echo clienteTableClass::getNameField(clienteTableClass::APELLIDO, true) ?>" class="col-sm-2"> <?php echo i18n::__('apell') ?>:</label>     
       <div class="col-sm-10">            
-        <input class="form-control" value="<?php echo ((isset($objCliente) == true) ? $objCliente[0]->$apellido : '') ?>" type="text" name="<?php echo clienteTableClass::getNameField(clienteTableClass::APELLIDO, true) ?>">
+        <input class="form-control" value="<?php echo ((isset($objCliente) == true) ? $objCliente[0]->$apellido : '') ?>" type="text" name="<?php echo clienteTableClass::getNameField(clienteTableClass::APELLIDO, true) ?>" placeholder="Apellido" required>
       </div>
     </div> 
 
     <div class="form-group">
       <label for="<?php echo clienteTableClass::getNameField(clienteTableClass::DIRECCION, true) ?>" class="col-sm-2"> <?php echo i18n::__('dir') ?>: </label>     
       <div class="col-sm-10">             
-        <input class="form-control" value="<?php echo ((isset($objCliente) == true) ? $objCliente[0]->$direccion : '') ?>" type="text" name="<?php echo clienteTableClass::getNameField(clienteTableClass::DIRECCION, true) ?>">
+        <input class="form-control" value="<?php echo ((isset($objCliente) == true) ? $objCliente[0]->$direccion : '') ?>" type="text" name="<?php echo clienteTableClass::getNameField(clienteTableClass::DIRECCION, true) ?>" placeholder="Direccion" required>
       </div>
     </div>
 
     <div class="form-group">
       <label for="<?php echo clienteTableClass::getNameField(clienteTableClass::TELEFONO, true) ?>" class="col-sm-2"> <?php echo i18n::__('tel') ?>:  </label>     
       <div class="col-sm-10">              
-        <input class="form-control" value="<?php echo ((isset($objCliente) == true) ? $objCliente[0]->$telefono : '') ?>" type="text" name="<?php echo clienteTableClass::getNameField(clienteTableClass::TELEFONO, true) ?>">
+        <input class="form-control" value="<?php echo ((isset($objCliente) == true) ? $objCliente[0]->$telefono : '') ?>" type="number" name="<?php echo clienteTableClass::getNameField(clienteTableClass::TELEFONO, true) ?>" placeholder="Telefono" required>
       </div>
     </div>
 

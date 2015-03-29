@@ -147,9 +147,6 @@ maquina:
     security: true
   reportMaquina:
     security: true
-
-#-------------------modulo - origen maquina-------------------
-origenMaquina:
   indexOrigenMaquina:
     security: true
     credentials:
@@ -164,9 +161,6 @@ origenMaquina:
     security: true
   reportOrigenMaquina:
     security: true
-
-#-------------------modulo - tipo uso maquina----------------
-tipoUsoMaquina:
   indexTipoUsoMaquina:
     security: true
     credentials:
@@ -180,7 +174,35 @@ tipoUsoMaquina:
   verTipoUsoMaquina:
     security: true
   reportTipoUsoMaquina:
+    security: true  
+  indexProveedor:
     security: true
+    credentials:
+      - [admin, cajero]
+      - [usuario, cajero]
+      - [consultor, cajero]
+  insertProveedor:
+    security: true
+  createProveedor:
+    security: true
+  editProveedor: 
+    security: true
+  updateProveedor:
+    security: true
+  deleteProveedor:
+    security: true
+  deleteSelectProveedor:  
+    security: true
+  verProveedor:
+    security: true
+  reportProveedor:
+    security: true  
+
+#-------------------modulo - origen maquina-------------------
+  
+
+#-------------------modulo - tipo uso maquina----------------
+  
 
 #-------------------modulo - cliente-------------------------
 cliente:
@@ -233,55 +255,55 @@ lote:
     security: true
 
 #-------------------modulo - tipoProductoInsumo--------------
-tipoProductoInsumo:
-  index:
-    security: true
-    credentials:
-      - [admin, cajero]
-      - [usuario, cajero]
-      - [consultor, cajero]
-  insert:
-    security: true
-  create:
-    security: true
-  edit: 
-    security: true
-  update:
-    security: true
-  delete:
-    security: true
-  deleteSelect:  
-    security: true
-  ver:
-    security: true
-  report:
-    security: true
+
+  
 
 #-------------------modulo - productoInsumo------------------
 productoInsumo:
-  index:
+  indexProductoInsumo:
     security: true
     credentials:
       - [admin, cajero]
       - [usuario, cajero]
       - [consultor, cajero]
-  insert:
+  insertProductoInsumo:
     security: true
-  create:
+  createProductoInsumo:
     security: true
-  edit: 
+  editProductoInsumo: 
     security: true
-  update:
+  updateProductoInsumo:
     security: true
-  delete:
+  deleteProductoInsumo:
     security: true
-  deleteSelect:  
+  deleteSelectProductoInsumo:  
     security: true
-  ver:
+  verProductoInsumo:
     security: true
-  report:
+  reportProductoInsumo:
     security: true
-
+  indexTipoProductoInsumo:
+    security: true
+    credentials:
+      - [admin, cajero]
+      - [usuario, cajero]
+      - [consultor, cajero]
+  insertTipoProductoInsumo:
+    security: true
+  createTipoProductoInsumo:
+    security: true
+  editTipoProductoInsumo: 
+    security: true
+  updateTipoProductoInsumo:
+    security: true
+  deleteTipoProductoInsumo:
+    security: true
+  deleteSelectTipoProductoInsumo:  
+    security: true
+  verTipoProductoInsumo:
+    security: true
+  reportTipoProductoInsumo:
+    security: true
 #-------------------modulo - tipoId--------------------------
 tipoId:
   indexTipoId:
@@ -343,4 +365,4 @@ detalleSolicitudInsumo:
   ver:
     security: true
   report:
-    security: true    
+    security: true     

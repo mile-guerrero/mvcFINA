@@ -9,9 +9,7 @@
     
   </header>
   <nav id="">
-          
-                      
-    
+  
   </nav>
   <section id="">
     
@@ -20,9 +18,46 @@
       <h1><?php echo i18n::__('tipo insumo') ?></h1>
           <ul>
 
-      <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'insertTipoProductoInsumo') ?>"><?php echo i18n::__('nuevo') ?></a> <a href="javascript:eliminarMasivo()" class="btn btn-danger btn-xs" id="btnDeleteMasivo"><?php echo i18n::__('eliminar en masa') ?></a> <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModalFiltres"><?php echo i18n::__('filtros') ?></button>  <a href="<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'indexTipoProductoInsumo') ?>" class="btn btn-default btn-xs" ><?php echo i18n::__('eFiltros') ?></a>             
+      <a class="btn btn-success btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'insertTipoProductoInsumo') ?>"><?php echo i18n::__('nuevo') ?></a>
+      <a href="javascript:eliminarMasivo()" class="btn btn-danger btn-xs" id="btnDeleteMasivo"><?php echo i18n::__('eliminar en masa') ?></a>
+      <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModalFiltres"><?php echo i18n::__('filtros') ?></button> 
+      <a href="<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'indexTipoProductoInsumo') ?>" class="btn btn-default btn-xs" ><?php echo i18n::__('eFiltros') ?></a> <button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#myModalReport" ><?php echo i18n::__('informe') ?></button>            
     </ul> 
-
+<!---Informes--->
+       <div class="modal fade" id="myModalReport" tabindex="-1" role="modal" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('informe') ?></h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" id="reportForm" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'reportTipoProductoInsumo')?>">
+          <div class="form-group">
+    <label for="reportDescripcion" class="col-sm-2 control-label"><?php echo i18n::__('name') ?></label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="reportDescripcion" name="report[descripcion]" placeholder="Nombre">
+    </div>
+  </div>
+           
+  <div class="form-group">
+    <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
+    <div class="col-sm-10">
+      <input type="date" class="form-control" id="reportFecha1" name="report[fecha1]">
+      <br>
+       <input type="date" class="form-control" id="reportFecha2" name="report[fecha2]">
+    </div>
+  </div>
+</form>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default btn btn-xs" data-dismiss="modal">  <?php echo i18n::__('cerrar') ?></button>
+        <button type="button" onclick="$('#reportForm').submit()" class="btn btn-warning btn btn-xs"><?php echo i18n::__('informe') ?></button>
+      </div>
+    </div>
+  </div>
+</div>
 
     <!-- Modal -->
     <div class="modal fade" id="myModalFiltres" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -61,8 +96,8 @@
 
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('cerrar') ?></button>
-            <button type="button" onclick="$('#filterForm').submit()" class="btn btn-primary"><?php echo i18n::__('filtrar') ?></button>
+            <button type="button" class="btn btn-default btn-xs" data-dismiss="modal"><?php echo i18n::__('cerrar') ?></button>
+            <button type="button" onclick="$('#filterForm').submit()" class="btn btn-primary btn-xs"><?php echo i18n::__('filtrar') ?></button>
           </div>
         </div>
       </div>
@@ -82,7 +117,7 @@
           </th>
 
           <th>
-<?php echo i18n::__('aciones') ?>
+<?php echo i18n::__('acciones') ?>
           </th>
           </tr>
           </thead>
@@ -93,12 +128,14 @@
                 <th>
                   <input type="checkbox" name="chk[]" value="<?php echo $key->$id ?>">
                 </th>
-                <th>
+                <td>
   <?php echo $key->$des ?>
-                </th>
+                </td>
 
                 <th>
-                  <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'verTipoProductoInsumo', array(tipoProductoInsumoTableClass::ID => $key->$id)) ?>" ><?php echo i18n::__('ver') ?></a> - <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'editTipoProductoInsumo', array(tipoProductoInsumoTableClass::ID => $key->$id)) ?>"><?php echo i18n::__('modificar') ?> </a>- <a data-toggle="modal" data-target="#myModalDelete<?php echo $key->$id ?>" class="btn btn-danger btn-xs"><?php echo i18n::__('eliminar') ?></a>
+                  <a class="btn btn-warning btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'verTipoProductoInsumo', array(tipoProductoInsumoTableClass::ID => $key->$id)) ?>" ><?php echo i18n::__('ver') ?></a> -
+                  <a class="btn btn-primary btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'editTipoProductoInsumo', array(tipoProductoInsumoTableClass::ID => $key->$id)) ?>"><?php echo i18n::__('modificar') ?> </a> -
+                  <a data-toggle="modal" data-target="#myModalDelete<?php echo $key->$id ?>" class="btn btn-danger btn-xs"><?php echo i18n::__('eliminar') ?></a>
                 </th>
                  </tr>
   <div class="modal fade" id="myModalDelete<?php echo $key->$id ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -112,8 +149,8 @@
         <?php echo i18n::__('Desea  eliminar este campo') ?> <?php echo $key->$des ?><?php echo i18n::__('?') ?>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal"><?php echo i18n::__('cerrar') ?></button>
-        <button type="button" class="btn btn-danger" onclick="eliminar(<?php echo $key->$id ?>,'<?php echo tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::ID, true) ?>','<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'deleteTipoProductoInsumo') ?>')"><?php echo i18n::__('eliminar') ?></button>
+        <button type="button" class="btn btn-primary btn-xs" data-dismiss="modal"><?php echo i18n::__('cerrar') ?></button>
+        <button type="button" class="btn btn-danger btn-xs" onclick="eliminar(<?php echo $key->$id ?>,'<?php echo tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::ID, true) ?>','<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'deleteTipoProductoInsumo') ?>')"><?php echo i18n::__('eliminar') ?></button>
       </div>
     </div>
   </div>
@@ -123,7 +160,7 @@
         </table>
       </form> 
       <div class="text-right">
-        Pagina <select id="slqPaginador" onchange="paginador(this, '<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'indexTipoProductoInsumo')?>')">
+        <?php echo i18n::__('paginas') ?> <select id="slqPaginador" onchange="paginador(this, '<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'indexTipoProductoInsumo')?>')">
          <?php for($x = 1; $x <= $cntPages; $x++):?>
            <option <?php echo (isset($page) and $page == $x) ? 'selected': '' ?> value="<?php echo $x ?>"><?php echo $x ?></option>
           <?php endfor;?>
@@ -147,8 +184,8 @@
         <?php echo i18n::__('eliminar en masa') ?>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('cerrar') ?></button>
-        <button type="button" class="btn btn-danger" onclick="$('#frmDeleteAll').submit()"><?php echo i18n::__('eliminar') ?></button>
+        <button type="button" class="btn btn-default btn-xs" data-dismiss="modal"><?php echo i18n::__('cerrar') ?></button>
+        <button type="button" class="btn btn-danger btn-xs" onclick="$('#frmDeleteAll').submit()"><?php echo i18n::__('eliminar') ?></button>
       </div>
     </div>
   </div>

@@ -11,7 +11,7 @@ use mvc\i18n\i18nClass as i18n;
 /**
  * Description of ejemploClass
  *
- * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+ * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
  */
 class createMaquinaActionClass extends controllerClass implements controllerActionInterface {
 
@@ -25,8 +25,16 @@ class createMaquinaActionClass extends controllerClass implements controllerActi
         $origen = request::getInstance()->getPost(maquinaTableClass::getNameField(maquinaTableClass::ORIGEN_ID, true));
         $proveedor = request::getInstance()->getPost(maquinaTableClass::getNameField(maquinaTableClass::PROVEEDOR_ID, true));
 
-        if (strlen($nombre) > maquinaTableClass::NOMBRE_LENGTH) {
-          throw new PDOException(i18n::__(00001, null, 'errors', array(':longitud' => maquinaTableClass::NOMBRE_LENGTH)), 00001);
+         if (strlen($nombre) > maquinaTableClass::NOMBRE_LENGTH) {
+         session::getInstance()->setError(i18n::__(00001, null, 'errors', array(':longitud' => maquinaTableClass::NOMBRE_LENGTH)), 00001);
+        routing::getInstance()->redirect('maquina', 'insertMaquina');
+         
+        }
+        
+        if (strlen($descripcion) > maquinaTableClass::DESCRIPCION_LENGTH) {
+         session::getInstance()->setError(i18n::__(00004, null, 'errors', array(':longitud' => maquinaTableClass::DESCRIPCION_LENGTH)), 00004);
+        routing::getInstance()->redirect('maquina', 'insertMaquina');
+         
         }
 
         $data = array(

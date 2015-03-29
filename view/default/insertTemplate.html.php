@@ -5,8 +5,8 @@
 <div class="container container-fluid" id="cuerpo">
   <article id='derecha'>
 <h2 class="form-signin-heading">
-<?php echo i18n::__('nuevo usuario') ?> <?php echo $mensaje ?> 
+<?php echo i18n::__('nuevo usuario') ?>
 </h2>
   </article>
-<?php view::includePartial('default/formularioPrincipal', array('mensaje' => $mensaje)) ?>
+<?php view::includePartial('default/formularioPrincipal') ?>
 </div>

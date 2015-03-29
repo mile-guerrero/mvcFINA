@@ -9,7 +9,7 @@ namespace hook\log {
   /**
    * Description of logHookClass
    *
-   * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+   * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
    */
   class logHookClass implements hookInterface {
 

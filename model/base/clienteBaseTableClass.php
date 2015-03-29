@@ -5,7 +5,7 @@ use mvc\model\table\tableBaseClass;
 /**
  * Description of clienteClass
  *
- * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+ * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
  */
 class clienteBaseTableClass extends tableBaseClass {
   

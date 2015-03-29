@@ -27,11 +27,11 @@
 	<tbody>
               <?php foreach ($objTPI as $key): ?>
                 <tr>
-                  <th>Descripcion</th>      
-                 <th><?php echo $key->$des ?></th>
+                  <th><?php echo i18n::__('des') ?></th>      
+                  <td><?php echo $key->$des ?></td>
                   </tr>
                   <tr>
-                   <th>fecha creacion</th>                   
+                   <th><?php echo i18n::__('fecha crear') ?></th>                   
                    <th><?php echo $key->$created_at ?></th>
                        </tr>
                        <tr>

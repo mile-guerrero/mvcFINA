@@ -4,7 +4,7 @@
 <?php use mvc\view\viewClass as view?>
 <div class="container container-fluid" id="cuerpo">
   <article id="derecha">
-<h1>Nuevo Proveedor <?php echo $mensaje?></h1>
+    <h1> <?php echo i18n::__('nuevo proveedor') ?> <?php echo $mensaje?></h1>
   </article>
 <?php view::includePartial('maquina/formularioPrincipalProveedor', array('objCiudad' => $objCiudad))?>
 <?php view::includePartial('maquina/formularioPrincipalProveedor', array('mensaje' => $mensaje))?>

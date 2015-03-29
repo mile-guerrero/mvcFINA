@@ -11,7 +11,7 @@ use mvc\i18n\i18nClass as i18n;
 /**
  * Description of ejemploClass
  *
- * @author 
+ * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
  */
 class indexProveedorActionClass extends controllerClass implements controllerActionInterface {
 
@@ -51,17 +51,16 @@ class indexProveedorActionClass extends controllerClass implements controllerAct
           proveedorTableClass::NOMBREP
       );
       
-      $page = 0;
+       $page = 0;
       if (request::getInstance()->hasGet('page')) {
         $this->page = request::getInstance()->getGet('page');
         $page = request::getInstance()->getGet('page') - 1;
-        $page = $page * 3;
+        $page = $page * config::getRowGrid();
       }
-
-      $this->cntPages = proveedorTableClass::getTotalPages(3);
+      $this->cntPages = proveedorTableClass::getTotalPages(config::getRowGrid());
       
       
-      $this->objProveedor = proveedorTableClass::getAll($fields, true, $orderBy, 'ASC', 3, $page, $where);
+      $this->objProveedor = proveedorTableClass::getAll($fields, true, $orderBy, 'ASC',config::getRowGrid(), $page,$where);
       
       $fields = array(     
       ciudadTableClass::ID, 

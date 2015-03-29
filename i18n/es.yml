@@ -3,32 +3,47 @@ culture:                  Español
 dictionary:
   default:
     user:                 Usuario
-    informe:             Informes
+    usu_id:               usuarioId
+    informe:              Informes
     pass:                 Contraseña
+    editar usuario:       Editar Usuario
+    nuevo usuario:        Nuevo Usuario
     register:             Registrar
     nom:                  nombre
-    des:                  descripcion
-    cedu:                 cedula
     apell:                apellido
-    usu_id:               usuarioId
+    dir:                  direccion
+    tel:                  telefono
+    cedu:                 cedula
     cre_id:               credencialId
+    usuarioCredencial:    Usuario Credencial
     bus:                  buscar
     update:               actualizar 
     orden:                codigo OrdenServicio
-    producto:             codigo ProductoInsumo
+    product:              Producto
+    producto:             codigo Producto Insumo
+    editar tipo producto: Editar Tipo Insumo
+    tipoProdcuto:         Tipo Producto
     cantidad:             cantidad
     valor:                valor
-    maquina:              codigoMaquina
-    trab:                 trabajaor
+#   maquina:              codigoMaquina
+    editar maquina:       Editar Maquina
+    nuevo maquina:        Nueva Maquina
+    maquina:              Maquina
+    nuevo tipo:           Nuevo Tipo Uso Maquina
+    trabajador:           Trabajador
+    selectTrabajador:     Seleccione el Trabajador
+    nuevoTrabajador:      Nuevo trabajador
+    nombreTrabajador:     Nombre Trabajador
+    pagoTrabajador:       Pago del Trabajador
+    nuevoPago:            Nuevo Pago al Trabajador
+    detallePago:          Detalle del Pago Trabajador
     fecha_M:              fecha 
     tipo:                 tipoUsoId
     origen:               origenId
-    pro:                  proveedorId 
     num id:               Documento De Identidad
-    dir:                  direccion
-    tel:                  telefono
     idTipo:               codigoTipoId
-    idCiudad:             codigoCiudad
+    ciudad:               Ciudad
+    idCiudad:             cod Ciudad
     tamano:               tamaño
     ubicacion:            ubicacion
     iva:                  iva
@@ -36,42 +51,38 @@ dictionary:
     atras:                Ir a la paguina anterior
     eliminar en masa:     Eliminar casillas Selecionadas
     nuevo:                Nuevo
-    cliente:              CLIENTE
-    aciones:              acciones
+    cliente:              Cliente
+    editar cliente:       Editar Cliente
+    nuevo cliente:        Nuevo Cliente
+    nuevo proveedor:      Nuevo Proveedor
+    acciones:             Acciones
+    de:                   de
     ver:                  Ver
     modificar:            Modificar
     eliminar:             Eliminar
-    editar cliente:       Editar Cliente
-    nuevo cliente:        Nuevo Cliente
-    datos:                DATOS
-    credencial:           CREDENCIAL
-    de:                   de
+    datos:                Datos
+    credencial:           Credencial
     editar credencial:    Editar Credencial
     nueva credencial:     Nueva Credencial
-    editar usuario:       Editar Usuario
-    nuevo usuario:        Nuevo Usuario
-    estado:               estado
+    estado:               Estado
     editar lote:          Editar Lote
     lote:                 Lote
     nuevo lote:           Nuevo Lote
     editar orden:         Editar Orden De Servicio
     orden:                Orden De Servicio
-    fechaMantenimiento:   Fecha Mantenimiento
-    nombreTrabajador:     Nombre Trabajador
     nuevo orden:          Nueva Orden De Servicio
-    origen:               Origen Maquina
+    fechaMantenimiento:   Fecha Mantenimiento
+    origenM:              Origen Maquina
     nuevo origen:         Nuevo Origen De Maquina
     tipo uso:             Tipo Uso Maquina
     nuevo tipo:           Nuevo Tipo Uso Maquina
-    editar maquina:       Editar Maquina
-    nuevo maquina:        Nueva Maquina
-    maquina:              Maquina
-    editar tipo producto: Editar Tipo Insumo
     nuevo tipo insumo:    Nuevo Tipo Insumo
+    nuevo tipoId:         Nuevo Tipo de Identidad
+    tipo id:              Tipo Identidad
     tipo insumo:          Tipo Insumo
     editar usu cre:       Editar Usuario Credencial
     nuevo usu cre:        Nuevo Usuario Credencial
-    usu cre:              USUARIO CREDENCIAL
+    usu cre:              Usuario credencial
     nuevo insumo:         Nuevo Insumo
     editar insumo:        Editar Insumo
     insumo:               Insumo
@@ -79,41 +90,37 @@ dictionary:
     filtros:              Filtros
     eFiltros:             Eliminar Filtros
     filtrar:              Filtrar
-    tipo id:              tipo id
     confirmar eliminar:   Confirmar Eliminar
     fecha crear:          Fecha Creacion
     fecha fin:            Fecha FInal
-    register:             Registrar
     extReg:               El Registro fue Exitoso
     name:                 Nombre
     des:                  Descripcion
     cedu:                 Cedula
     lastName:             Apellido
     usu_id:               UsuarioId
-    cre_id:               CredencialId
     bus:                  Buscar
     update:               Actualizar 
     email:                Email
-    orden:                CodigoOrdenServicio
     producto:             CodigoProductoInsumo
     cantidad:             Cantidad
     valor:                Valor
-    maquina:              CodigoMaquina
-    trabajador:           Trabajador
-    selectTrabajador:     Seleccione el Trabajador
-    nuevoTrabajador:      Nuevo trabajador
     fecha_M:              Fecha del Mantenimiento
-    tipo:                 TipoUsoId
-    origen:               OrigenId
+    origen:               Origen
     pro:                  ProveedorId 
     nomProveedor:         Proveedor
     empresa:              Empresa
     selectEmpresa:        Seleccione la Empresa
     selectProveedor:      Seleccione el Proveedor
+    selectCiudad:         Seleccione la Ciudad
+    selectOrigen:         Seleccione el Origen
+    selectTipoUso:        Seleccione el Tipo de Uso
+    selectUnidad:         Seleccione la Unidad de Medida
+    selectUsuario:        Seleccione el Usuario
+    selectCredencial:     Seleccione la Credencial
     streetAddress:        Direccion
     phone:                Telefono
     idTipo:               CodigoTipoId
-    idCiudad:             CodigoCiudad
     tamano:               Tamaño
     ubicacion:            Ubicacion
     iva:                  Iva
@@ -126,70 +133,14 @@ dictionary:
     eliminarReg:          ¿Desea Eliminar el Registro?
     removeSelection:      Eliminar Seleccion
     cancel:               Cancelar
+    personas:             Personas
+    otros:                Otros
+    cerrarSesion:         Cerrar Sesion
+    idioma:               Idioma
+    crearCuenta:          Crear Cuenta
+    recordar:             Recordar me
     #-----------------------------------
-    new:                  Nuevo
-    customer:             Cliente
-    actions:              Acciones
-    see:                  Ver
-    detalle:              Detalle
-    modify:               Modificar
-    takeOut:              Eliminar
-    page:                 Pagina
-    editar cliente:       Editar Cliente
-    nuevo cliente:        Nuevo Cliente
-    datos:                Datos
-    credencial:           Credencial
-    editar credencial:    Editar Credencial
-    nueva credencial:     Nueva Credencial
-    editar usuario:       Editar Usuario
-    nuevo usuario:        Nuevo Usuario
-    estado:               Estado
-    editar lote:          Editar Lote
-    lote:                 Lote
-    nuevo lote:           Nuevo Lote
-    editar orden:         Editar Orden De Servicio
-    orden:                Orden De Servicio
-    nombreTrabajador:     Nombre Trabajador
-    pagoTrabajador:       Pago del Trabajador
-    detallePago:          Detalle del Pago Trabajador
-    salario:              Salario
-    cantidad:             Cantidad
-    horasExtras:          Horas Extras
-    vHorasExtras:         V Horas Extras
-    perdidas:             H Perdidas
-    totalPagar:           Total Pagar
-    detalleP:             D pago
-    nuevoPago:            Nuevo Pago al Trabajador
-    fechaPagoIni:         Fecha de Pago
-    fechaPagoFin:         Fecha Final del Pago
-    nuevo orden:          Nueva Orden De Servicio
-    origen:               Origen Maquina
-    nuevo origen:         Nuevo Origen De Maquina
-    tipo uso:             Tipo Uso Maquina
-    nuevo tipo:           Nuevo Tipo Uso Maquina
-    editar maquina:       Editar Maquina
-    nuevo maquina:        Nueva Maquina
-    maquina:              Maquina
-    editar tipo producto: Editar Tipo Insumo
-    nuevo tipo insumo:    Nuevo Tipo Insumo
-    tipo insumo:          Tipo Insumo
-    editar usu cre:       Editar Usuario Credencial
-    nuevo usu cre:        Nuevo Usuario Credencial
-    usu cre:              Usuario Credencial
-    nuevo insumo:         Nuevo Insumo
-    editar insumo:        Editar Insumo
-    insumo:               Insumo
-    editar proveedor:     Editar Proveedor
-    selectCiudad:         Seleccione la Ciudad
-    selectCredencial:     Seleccione la Crecencial
-    selectTipoId:         Seleccione el Tipo de Identificacion
-    filters:              Filtros
-    removeFilters:        Eliminar Filtros
-    filtrar:              Filtrar
-    tipo id:              tipo id
-    confirmar eliminar:   Confirmar Eliminar
-    fecha crear:          Fecha Creacion
-    fecha fin:            Fecha FInal
+    paginas:              Paginas
     of:                   de
     nuevoPedido:          Nuevo Pedido
     pedido:               Pedido
@@ -197,9 +148,11 @@ dictionary:
     ?:                    ?
     Eliminacion exitosa:  Eliminacion exitosa
   errors:
-    00001:                El módulo y la acción solicitada, no existe.
-    00002:                La dirección que solicita no está registrada.
+    00001:                El nombre excede la longitud permitida (:longitud)
+    00002:                El apellido excede la longitud permitida (:longitud)
     00003:                Los datos de usuario y contrseña son inválidos.
-    00004:                El nombre de usuario excede la longitud permitida (:longitud)
-    00005:                El codigo de el usuario que desea registrar excede la longitud existente del sistema (:longitud)
-    00006:                El codigo de la credencial que desea registrar excede la longitud existente del sistema (:longitud)
+    00004:                La descripcion  excede la longitud permitida (:longitud)
+    00005:                La ubicacion  excede la longitud permitida (:longitud)
+    00006:                El campo tamaño  excede la longitud permitida (:longitud)
+    00007:                El nombre de usuario excede la longitud permitida (:longitud)
+    00008:                La contraseña  excede la longitud permitida (:longitud)

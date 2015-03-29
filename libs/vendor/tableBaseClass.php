@@ -10,7 +10,7 @@ namespace mvc\model\table {
   /**
    * Clase general para las tablas el cual define el CRUD
    *
-   * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+   * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
    */
   class tableBaseClass implements tableInterface {
 

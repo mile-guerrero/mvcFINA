@@ -11,7 +11,7 @@ use mvc\i18n\i18nClass as i18n;
 /**
  * Description of ejemploClass
  *
- * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+ * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
  */
 class indexLoteActionClass extends controllerClass implements controllerActionInterface {
 
@@ -29,6 +29,9 @@ class indexLoteActionClass extends controllerClass implements controllerActionIn
       }
       if(isset($filter['descripcion']) and $filter['descripcion'] !== null and $filter['descripcion'] !== ""){
         $where[loteTableClass::DESCRIPCION] = $filter['descripcion'];
+      }
+      if(isset($filter['ciudad']) and $filter['ciudad'] !== null and $filter['ciudad'] !== ""){
+        $where[loteTableClass::ID_CIUDAD] = $filter['ciudad'];
       }
        
       if((isset($filter['fechaIni']) and $filter['fechaIni'] !== null and $filter['fechaIni'] !== "") and (isset($filter['fechaFin']) and $filter['fechaFin'] !== null and $filter['fechaFin'] !== "" )){
@@ -59,13 +62,7 @@ class indexLoteActionClass extends controllerClass implements controllerActionIn
       $this->cntPages = loteTableClass::getTotalPages(config::getRowGrid());
       
       $this->objLote = loteTableClass::getAll($fields, true, $orderBy, 'ASC',config::getRowGrid(), $page,$where);
-     if(request::getInstance()->hasPost('filter')){
-      $filter = request::getInstance()->getPost('filter');
-      if(isset($filter['ciudad']) and $filter['ciudad'] !== null and $filter['ciudad'] !== ""){
-        $where[loteTableClass::ID_CIUDAD] = $filter['ciudad'];
-     }
      
-      }
       
       $fields = array(     
       ciudadTableClass::ID, 

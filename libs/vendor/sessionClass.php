@@ -7,7 +7,7 @@ namespace mvc\session {
   /**
    * Description of sessionClass
    *
-   * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+   * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
    */
   class sessionClass implements sessionInterface {
 

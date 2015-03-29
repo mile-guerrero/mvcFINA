@@ -11,7 +11,7 @@ use mvc\i18n\i18nClass as i18n;
 /**
  * Description of ejemploClass
  *
- * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+ * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
  */
 class createLoteActionClass extends controllerClass implements controllerActionInterface {
 
@@ -27,7 +27,23 @@ class createLoteActionClass extends controllerClass implements controllerActionI
 //        if (strlen($descripcion) > loteTableClass::DESCRIPCION_LENGTH) {
 //          throw new PDOException(i18n::__(00001, null, 'errors', array(':longitud' => loteTableClass::DESCRIPCION_LENGTH)), 00001);
 //        }
-
+ if (strlen($ubicacion) > loteTableClass::UBICACION_LENGTH) {
+         session::getInstance()->setError(i18n::__(00005, null, 'errors', array(':longitud' =>  loteTableClass::UBICACION_LENGTH)), 00005);
+        routing::getInstance()->redirect('lote', 'insertLote');
+         
+        }
+        
+        if (strlen($tamano) > loteTableClass::TAMANO_LENGTH) {
+         session::getInstance()->setError(i18n::__(00006, null, 'errors', array(':longitud' => loteTableClass::TAMANO_LENGTH)), 00006);
+        routing::getInstance()->redirect('lote', 'insertLote');
+         
+        }
+        
+        if (strlen($tamano) > loteTableClass::DESCRIPCION_LENGTH) {
+         session::getInstance()->setError(i18n::__(00004, null, 'errors', array(':longitud' => loteTableClass::DESCRIPCION_LENGTH)), 00004);
+        routing::getInstance()->redirect('lote', 'insertLote');
+         
+        }
         $data = array(
             loteTableClass::UBICACION => $ubicacion,
             loteTableClass::TAMANO => $tamano,

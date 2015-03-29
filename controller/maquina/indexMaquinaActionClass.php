@@ -11,7 +11,7 @@ use mvc\i18n\i18nClass as i18n;
 /**
  * Description of ejemploClass
  *
- * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+ * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
  */
 class indexMaquinaActionClass extends controllerClass implements controllerActionInterface {
 
@@ -26,6 +26,15 @@ class indexMaquinaActionClass extends controllerClass implements controllerActio
       }
       if(isset($filter['descripcion']) and $filter['descripcion'] !== null and $filter['descripcion'] !== ""){
         $where[maquinaTableClass::DESCRIPCION] = $filter['descripcion'];
+      }
+      if(isset($filter['origen']) and $filter['origen'] !== null and $filter['origen'] !== ""){
+        $where[maquinaTableClass::ORIGEN_ID] = $filter['origen'];
+      }
+      if(isset($filter['tipo']) and $filter['tipo'] !== null and $filter['tipo'] !== ""){
+        $where[maquinaTableClass::TIPO_USO_ID] = $filter['tipo'];
+      }
+      if(isset($filter['proveedor']) and $filter['proveedor'] !== null and $filter['proveedor'] !== ""){
+        $where[maquinaTableClass::PROVEEDOR_ID] = $filter['proveedor'];
       }
       if((isset($filter['fechaIni']) and $filter['fechaIni'] !== null and $filter['fechaIni'] !== "") and (isset($filter['fechaFin']) and $filter['fechaFin'] !== null and $filter['fechaFin'] !== "" )){
         $where[maquinaTableClass::CREATED_AT] = array(
@@ -56,6 +65,35 @@ class indexMaquinaActionClass extends controllerClass implements controllerActio
       $this->cntPages = maquinaTableClass::getTotalPages(config::getRowGrid());
       
       $this->objMaquina = maquinaTableClass::getAll($fields, true, $orderBy, 'ASC',config::getRowGrid(), $page,$where);
+      
+      $fields = array(     
+      origenMaquinaTableClass::ID, 
+      origenMaquinaTableClass::DESCRIPCION
+      );
+      $orderBy = array(
+      origenMaquinaTableClass::ID   
+      ); 
+      $this->objMOM = origenMaquinaTableClass::getAll($fields, false, $orderBy, 'ASC');
+      
+      $fields = array(     
+      tipoUsoMaquinaTableClass::ID, 
+      tipoUsoMaquinaTableClass::DESCRIPCION
+      );
+      $orderBy = array(
+      tipoUsoMaquinaTableClass::ID   
+      ); 
+      $this->objMTUM = tipoUsoMaquinaTableClass::getAll($fields, false, $orderBy, 'ASC');
+      
+      $fields = array(     
+      proveedorTableClass::ID, 
+      proveedorTableClass::NOMBREP
+      );
+      $orderBy = array(
+      proveedorTableClass::ID   
+      ); 
+      $this->objMP = proveedorTableClass::getAll($fields, true, $orderBy, 'ASC',null,null,$where);
+      
+      
       $this->defineView('indexMaquina', 'maquina', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
       echo $exc->getMessage();

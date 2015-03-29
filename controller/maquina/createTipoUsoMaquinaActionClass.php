@@ -11,7 +11,7 @@ use mvc\i18n\i18nClass as i18n;
 /**
  * Description of ejemploClass
  *
- * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+ * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
  */
 class createTipoUsoMaquinaActionClass extends controllerClass implements controllerActionInterface {
 
@@ -20,9 +20,12 @@ class createTipoUsoMaquinaActionClass extends controllerClass implements control
       if (request::getInstance()->isMethod('POST')) {
        $descripcion = request::getInstance()->getPost(tipoUsoMaquinaTableClass::getNameField(tipoUsoMaquinaTableClass::DESCRIPCION, true));
 
-        if (strlen($descripcion) > tipoUsoMaquinaTableClass::DESCRIPCION_LENGTH) {
-          throw new PDOException(i18n::__(00001, null, 'errors', array(':longitud' => tipoUsoMaquinaTableClass::DESCRIPCION_LENGTH)), 00001);
+      if (strlen($descripcion) > tipoUsoMaquinaTableClass::DESCRIPCION_LENGTH) {
+         session::getInstance()->setError(i18n::__(00004, null, 'errors', array(':longitud' => tipoUsoMaquinaTableClass::DESCRIPCION_LENGTH)), 00004);
+        routing::getInstance()->redirect('maquina', 'insertTipoUsoMaquina');
+         
         }
+       
 
         $data = array(
             tipoUsoMaquinaTableClass::DESCRIPCION => $descripcion

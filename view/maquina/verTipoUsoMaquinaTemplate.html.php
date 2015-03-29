@@ -23,8 +23,8 @@
 	<tbody>
               <?php foreach ($objTUM as $key): ?>
                 <tr>
-                  <th>Descripcion</th>      
-                 <th><?php echo $key->$descrip ?></th>
+                  <th><?php echo i18n::__('des') ?></th>      
+                  <td><?php echo $key->$descrip ?></td>
                    </tr>       
                 <?php endforeach; ?>
            </tbody>

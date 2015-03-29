@@ -4,10 +4,12 @@ homepage:
   load:
     - model/base/usuarioBaseTableClass.php
     - model/usuarioTableClass.php
-
+    
 traduccion:
   url:    /traduccion
-  param:  { module: cliente, action: traductor, format: html } 
+  param:  { module: cliente, action: traductor, format: html }
+  
+  
 #-------------------------- shfSecurity --------------------------
 shfSecurity_index:
   url:    /signin
@@ -15,6 +17,13 @@ shfSecurity_index:
   load:
     - model/base/usuarioBaseTableClass.php
     - model/usuarioTableClass.php
+
+shfSecurity_idioma:
+  url:    /traduccion
+  param:  { module: shfSecurity, action: traductor, format: html }
+  load:
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php    
 
 shfSecurity_login:
   url:    /login
@@ -1176,4 +1185,4 @@ detalleSolicitudInsumo_reporte:
   url:    /detalleSolicitudInsumo/reporte
   param:  { module: detalleSolicitudInsumo, action: report, format: pdf } 
   load:
-    - libs/fpdf/fpdf.php    
+    - libs/fpdf/fpdf.php        

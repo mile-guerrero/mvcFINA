@@ -5,7 +5,7 @@ use mvc\config\configClass as config;
 /**
  * Description of ciudadTableClass
  *
- * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+ * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
  */
 class ciudadTableClass extends ciudadBaseTableClass {
 

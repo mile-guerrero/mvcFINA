@@ -4,7 +4,7 @@
 <?php use mvc\view\viewClass as view ?>
 <div class="container container-fluid" id="cuerpo">
   <article id='derecha'>
-<h2 class="form-signin-heading">NUEVA TIPO ID </h2>
+    <h2 class="form-signin-heading"><?php echo i18n::__('nuevo tipoId')?> </h2>
   </article>
 <?php view::includePartial('cliente/formularioPrincipalTipoId') ?>
 </div>

@@ -11,7 +11,7 @@ use mvc\i18n\i18nClass as i18n;
 /**
  * Description of ejemploClass
  *
- * @author Andres Bahamon
+ * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
  */
 class createProveedorActionClass extends controllerClass implements controllerActionInterface {
 
@@ -30,7 +30,17 @@ class createProveedorActionClass extends controllerClass implements controllerAc
 //        if (strlen($usuario) > usuarioTableClass::USUARIO_LENGTH) {
 //          throw new PDOException(i18n::__(00001, null, 'errors', array(':longitud' => usuarioTableClass::USUARIO_LENGTH)), 00001);
 //        }
-
+ if (strlen($nombre) > proveedorTableClass::NOMBREP_LENGTH) {
+         session::getInstance()->setError(i18n::__(00001, null, 'errors', array(':longitud' => proveedorTableClass::NOMBREP_LENGTH)), 00001);
+        routing::getInstance()->redirect('maquina', 'insertProveedor');
+         
+        }
+        
+        if (strlen($apellido) > proveedorTableClass::APELLIDO_LENGTH) {
+         session::getInstance()->setError(i18n::__(00002, null, 'errors', array(':longitud' => proveedorTableClass::APELLIDO_LENGTH)), 00002);
+        routing::getInstance()->redirect('maquina', 'insertProveedor');
+         
+        }
         $data = array(
             proveedorTableClass::NOMBREP => $nombre,
             proveedorTableClass::APELLIDO => $apellido,

@@ -30,13 +30,13 @@ config::setDbUnixSocket('/tmp/mysql.sock');
 //}
 
 //para linux
-config::setPathAbsolute('/var/www/html/mvcfinal/');
+//config::setPathAbsolute('/var/www/html/mvcfinal/');
 //para windows
-//config::setPathAbsolute('c:/xampp/htdocs/mvcfinal/');
+config::setPathAbsolute('c:/xampp/htdocs/mvcfinal/');
 //para url por local host
-//config::setUrlBase('http://localhost/mvcfinal/web/');
+config::setUrlBase('http://localhost/mvcfinal/web/');
 // para www.....com
-config::setUrlBase('http://www.agricontrol.com/web/');
+//config::setUrlBase('http://www.agricontrol.com/web/');
 
 config::setScope('prod'); // prod  -   dev
 if (session::getInstance()->hasDefaultCulture() === false) {
@@ -59,13 +59,13 @@ config::setHeaderExcel2007('Content-Type: application/vnd.openxmlformats-officed
 config::setCookieNameRememberMe('mvcSiteRememberMe');
 config::setCookieNameSite('mvcSite');
 
-config::setCookiePath('/www.agricontrol.com/web/' . config::getIndexFile());
+//config::setCookiePath('/www.agricontrol.com/web/' . config::getIndexFile());
 
-//config::setCookiePath('/mvcfinal/web/' . config::getIndexFile());
+config::setCookiePath('/mvcfinal/web/' . config::getIndexFile());
 
 
-config::setCookieDomain('http://www.agricontrol.com/');
-//config::setCookieDomain('http://localhost/');
+//config::setCookieDomain('http://www.agricontrol.com/');
+config::setCookieDomain('http://localhost/');
 
 config::setCookieTime(3600 * 8); // una hora en segundo 3600 y por 8 serían 8 horas
 

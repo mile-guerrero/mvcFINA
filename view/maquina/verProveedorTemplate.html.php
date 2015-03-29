@@ -33,23 +33,23 @@
         <tbody>
 <?php foreach ($objProveedor as $key): ?>
             <tr>
-              <th>Nombre</th>      
+              <th><?php echo i18n::__('nom') ?></th>      
               <td><?php echo $key->$nom ?></td>
             </tr>
             <tr>
-          <th>Apellido</th>      
+          <th><?php echo i18n::__('apell') ?></th>      
           <td><?php echo $key->$apellido ?></td>
           </tr>
           <tr>
-          <th>direccion</th>      
+          <th><?php echo i18n::__('dir') ?></th>      
           <td><?php echo $key->$direccion ?></td>
           </tr>
           <tr>
-          <th>Telefono</th>      
+          <th><?php echo i18n::__('tel') ?></th>      
           <td><?php echo $key->$telefono ?></td>
           </tr>
           <tr>
-          <th>Email</th>      
+          <th><?php echo i18n::__('email') ?></th>      
           <td><?php echo $key->$email ?></td>
           </tr>
           <tr>

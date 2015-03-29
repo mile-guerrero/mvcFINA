@@ -28,8 +28,8 @@ use mvc\i18n\i18nClass as i18n ?>
         <tbody>
 <?php foreach ($objCredencial as $key): ?>
             <tr>
-              <th>Nombre</th>      
-              <th><?php echo $key->$nom ?></th>
+              <th><?php echo i18n::__('nom') ?></th>      
+              <td><?php echo $key->$nom ?></td>
             </tr>
             
             <tr> 

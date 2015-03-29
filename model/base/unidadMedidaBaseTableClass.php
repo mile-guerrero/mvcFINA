@@ -5,7 +5,7 @@ use mvc\model\table\tableBaseClass;
 /**
  * Description of unidadMedidaBaseTableClass
  *
- * 
+ * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
  */
 class unidadMedidaBaseTableClass extends tableBaseClass {
 

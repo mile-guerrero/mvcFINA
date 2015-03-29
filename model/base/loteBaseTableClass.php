@@ -5,7 +5,7 @@ use mvc\model\table\tableBaseClass;
 /**
  * Description of loteClass
  *
- * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+ * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
  */
 class loteBaseTableClass extends tableBaseClass {
   
@@ -20,7 +20,9 @@ class loteBaseTableClass extends tableBaseClass {
 
   const ID = 'id';
   const UBICACION = 'ubicacion';
+  const UBICACION_LENGTH = 60;
   const TAMANO = 'tamano';
+  const TAMANO_LENGTH = 60;
   const DESCRIPCION = 'descripcion';
   const DESCRIPCION_LENGTH = 80;
   const ID_CIUDAD = 'id_ciudad';

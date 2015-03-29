@@ -7,7 +7,7 @@ $cre = usuarioTableClass::CREATED_AT;
 $pdf = new FPDF();
 $pdf->AddPage();
 $pdf->SetFont('Arial','B',16);
-foreach ($objUsu as $valor){
+foreach ($objUsuarios as $valor){
   $pdf->Cell(40,10, utf8_decode($valor->$usu));
   $pdf->Cell(40,10, utf8_decode($valor->$actived));
   $pdf->Cell(40,10, utf8_decode($valor->$cre));

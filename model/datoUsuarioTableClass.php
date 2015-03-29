@@ -5,7 +5,7 @@ use mvc\model\modelClass;
 /**
  * Description of datoUsuarioTableClass
  *
- * @author gonzalo bejarano
+ * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
  */
 class datoUsuarioTableClass extends datoUsuarioBaseTableClass {
 

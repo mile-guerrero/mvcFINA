@@ -11,7 +11,7 @@ use mvc\i18n\i18nClass as i18n;
 /**
  * Description of ejemploClass
  *
- * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+ * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
  */
 class createActionClass extends controllerClass implements controllerActionInterface {
 
@@ -21,10 +21,12 @@ class createActionClass extends controllerClass implements controllerActionInter
 
         $nombre = request::getInstance()->getPost(credencialTableClass::getNameField(credencialTableClass::NOMBRE, true));
         
-        if (strlen($nombre) > credencialTableClass::NOMBRE_LENGTH) {
-          throw new PDOException(i18n::__(00001, null, 'errors', array(':longitud' => credencialTableClass::NOMBRE_LENGTH)), 00001);
+         if (strlen($nombre) > credencialTableClass::NOMBRE_LENGTH) {
+         session::getInstance()->setError(i18n::__(00001, null, 'errors', array(':longitud' => credencialTableClass::NOMBRE_LENGTH)), 00001);
+        routing::getInstance()->redirect('credencial', 'insert');
+         
         }
-
+        
         $data = array(
             credencialTableClass::NOMBRE => $nombre,
           

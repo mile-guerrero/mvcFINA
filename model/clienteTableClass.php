@@ -6,7 +6,7 @@ use mvc\config\configClass as config;
 /**
  * Description of clienteTableClass
  *
- * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+ * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
  */
 
 class clienteTableClass extends clienteBaseTableClass {

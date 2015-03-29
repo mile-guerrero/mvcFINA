@@ -12,7 +12,7 @@ use mvc\i18n\i18nClass as i18n;
 /**
  * Description of logoutActionClass
  *
- * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+ * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
  */
 class logoutActionClass extends controllerClass implements controllerActionInterface {
 

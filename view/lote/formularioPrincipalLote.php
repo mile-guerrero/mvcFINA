@@ -1,5 +1,6 @@
 <?php use mvc\routing\routingClass as routing ?>
 <?php use mvc\i18n\i18nClass as i18n ?>
+<?php use mvc\view\viewClass as view?>
 <?php $idLote = loteTableClass::ID ?>
 <?php $ubi = loteTableClass::UBICACION ?>
 <?php $tamano = loteTableClass::TAMANO ?>
@@ -13,34 +14,34 @@
   <?php if(isset($objLote)== true): ?>
   <input  name="<?php echo loteTableClass::getNameField(loteTableClass::ID,true) ?>" value="<?php echo $objLote[0]->$idLote ?>" type="hidden">
   <?php endif ?>
-  
+    <?php view::includeHandlerMessage()?>
   <div class="form-group">
       <label for="<?php echo loteTableClass::getNameField(loteTableClass::UBICACION, true) ?>" class="col-sm-2"> <?php echo i18n::__('ubicacion') ?>:</label>     
       <div class="col-sm-10">
-   <input  class="form-control"  value="<?php echo ((isset($objLote)==true) ? $objLote[0]->$ubi : '') ?>" type="text" name="<?php echo loteTableClass::getNameField(loteTableClass::UBICACION, true) ?>">
+        <input  class="form-control"  value="<?php echo ((isset($objLote)==true) ? $objLote[0]->$ubi : '') ?>" type="text" name="<?php echo loteTableClass::getNameField(loteTableClass::UBICACION, true) ?>" placeholder="Ubicacion" required>
       </div>
   </div>
   
  <div class="form-group">
       <label for="<?php echo loteTableClass::getNameField(loteTableClass::TAMANO, true) ?>" class="col-sm-2"> <?php echo i18n::__('tamano') ?>:</label>     
       <div class="col-sm-10">
-   <input class="form-control" value="<?php echo ((isset($objLote)==true) ? $objLote[0]->$tamano : '') ?>" type="text" name="<?php echo loteTableClass::getNameField(loteTableClass::TAMANO, true) ?>">
+        <input class="form-control" value="<?php echo ((isset($objLote)==true) ? $objLote[0]->$tamano : '') ?>" type="text" name="<?php echo loteTableClass::getNameField(loteTableClass::TAMANO, true) ?>" placeholder="Tamaño" required>
       </div>
  </div>
   
  <div class="form-group">
       <label for="<?php echo loteTableClass::getNameField(loteTableClass::DESCRIPCION, true) ?>" class="col-sm-2"> <?php echo i18n::__('des') ?>: </label>     
       <div class="col-sm-10">
-  <input  class="form-control" value="<?php echo ((isset($objLote)==true) ? $objLote[0]->$descripcion : '') ?>" type="text" name="<?php echo loteTableClass::getNameField(loteTableClass::DESCRIPCION, true) ?>">
+        <input  class="form-control" value="<?php echo ((isset($objLote)==true) ? $objLote[0]->$descripcion : '') ?>" type="text" name="<?php echo loteTableClass::getNameField(loteTableClass::DESCRIPCION, true) ?>" placeholder="Descripcion" required>
       </div>
  </div>
   
   
   <div class="form-group">
-      <label for="<?php echo loteTableClass::getNameField(loteTableClass::ID_CIUDAD, true) ?>" class="col-sm-2"> <?php echo i18n::__('idCiudad') ?> </label>
+      <label for="<?php echo loteTableClass::getNameField(loteTableClass::ID_CIUDAD, true) ?>" class="col-sm-2"> <?php echo i18n::__('idCiudad') ?>: </label>
       <div class="col-sm-10">       
 <select class="form-control" id="<?php loteTableClass::getNameField(loteTableClass::ID_CIUDAD, TRUE)?>" name="<?php echo loteTableClass::getNameField(loteTableClass::ID_CIUDAD, TRUE);?>">
-       <option><?php echo i18n::__('idCiudad') ?></option>
+       <option><?php echo i18n::__('selectCiudad') ?></option>
        <?php foreach($objLC as $C):?>
        <option value="<?php echo $C->$idCiudaddes?>"><?php echo $C->$descripcionciudad?></option>
        <?php endforeach;?>

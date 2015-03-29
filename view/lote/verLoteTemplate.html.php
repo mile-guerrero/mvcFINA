@@ -30,16 +30,16 @@
         <tbody>
 <?php foreach ($objLote as $key): ?>
             <tr>
-              <th>Ubicacion</th>      
-              <th><?php echo $key->$ubicacion ?></th>
+              <th><?php echo i18n::__('ubicacion') ?></th>      
+              <td><?php echo $key->$ubicacion ?></td>
             </tr>
             <tr>
-              <th>Tamaño</th>      
-              <th><?php echo $key->$tamano ?></th>
+              <th><?php echo i18n::__('tamano') ?></th>      
+              <td><?php echo $key->$tamano ?></td>
             </tr>
             <tr>
-              <th>Descripcion</th>      
-              <th><?php echo $key->$descripcion ?></th>
+              <th><?php echo i18n::__('des') ?></th>      
+              <td><?php echo $key->$descripcion ?></td>
             </tr>
             
             <tr>
@@ -55,8 +55,8 @@
             
        <?php foreach ($objLote as $ciudad): ?>     
             <tr>
-              <th>Codigo Ciudad</th>      
-              <th><?php echo ciudadTableClass::getNameCiudad($ciudad->$nombre_ciudad) ?></th>
+              <th><?php echo i18n::__('ciudad') ?></th>      
+              <td><?php echo ciudadTableClass::getNameCiudad($ciudad->$nombre_ciudad) ?></td>
             </tr>
             <?php endforeach; ?>
         </tbody>

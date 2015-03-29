@@ -6,7 +6,7 @@ use mvc\config\configClass as config;
 /**
  * Description of usuarioCredencialTableClass
  *
- * @author gonzalo bejarano
+ * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
  */
 class usuarioCredencialTableClass extends usuarioCredencialBaseTableClass {
  public static function getTotalPages($lines){

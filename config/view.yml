@@ -1,6 +1,6 @@
 all:
   favicon: hola.ico
-  title: titulo de la p‡gina general
+  title: titulo de la pagina general
   meta:
     - charset="UTF-8"
   javascript:
@@ -14,10 +14,9 @@ all:
     
 shfSecurity:
   index:
-    title: Identificaci—n de usuario
+    title: Identificacion de usuario
     stylesheet:
-      - signin.css    
-    
+      - signin.css
 #-------------------modulo - default----------------------------    
 default: 
   index:
@@ -52,7 +51,10 @@ maquina:
       - confirmar.js 
   indexTipoUsoMaquina:
     javascript:
-      - confirmar.js    
+      - confirmar.js 
+  indexProveedor:
+    javascript:
+      - confirmar.js     
 #-------------------modulo - origen maquina-------------------
 
   
@@ -78,17 +80,16 @@ lote:
       - confirmar.js
 
 #-------------------modulo - tipoProductoInsumo--------------
-tipoProductoInsumo: 
-  indexTipoProductoInsumo:
-    javascript:
-      - confirmar.js 
+ 
 
 #-------------------modulo - productoInsumo------------------
 productoInsumo: 
   indexProductoInsumo:
     javascript:
+      - confirmar.js 
+  indexTipoProductoInsumo:
+    javascript:
       - confirmar.js
-
 #-------------------modulo - tipoId-------------------------
 
 
