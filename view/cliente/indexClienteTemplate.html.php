@@ -14,7 +14,11 @@
    
   </header>
   <nav id="barramenu">
-              
+     <a class="btn  btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('cliente', 'insertCliente') ?>"><img class="img-responsive"  id="imgnuevo" src="" alt=" "><?php echo i18n::__('nuevo') ?></a> 
+        <a href="javascript:eliminarMasivo()" class="btn  btn btn-xs" id="btnDeleteMasivo"><img class="img-responsive"  id="imgmasivo" src="" alt=" "><?php echo i18n::__('eliminar en masa') ?></a> 
+        <a type="button" class="btn  btn btn-xs" data-toggle="modal" data-target="#myModalFilters"><img class="img-responsive"  id="imgfiltros" src="" alt=" "><?php echo i18n::__('filtros') ?></a>
+        <a href="<?php echo routing::getInstance()->getUrlWeb('cliente', 'indexCliente') ?>" class="btn  btn-xs" ><img class="img-responsive"  id="imgelifiltro" src="" alt=" "><?php echo i18n::__('eFiltros') ?></a>
+        <a type="button" class="btn  btn-xs" data-toggle="modal" data-target="#myModalReport" ><img class="img-responsive"  id="imgreporte" src="" alt=" "><?php echo i18n::__('informe') ?></a>          
     
   </nav>
   <section id="">
@@ -23,11 +27,7 @@
     <article id='derecha'>
        <h1><?php echo i18n::__('cliente') ?></h1>
       <ul>
-        <a class="btn btn-success btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('cliente', 'insertCliente') ?>"><?php echo i18n::__('nuevo') ?></a> 
-        <a href="javascript:eliminarMasivo()" class="btn btn-danger btn-xs" id="btnDeleteMasivo"><?php echo i18n::__('eliminar en masa') ?></a> 
-        <button type="button" class="btn btn-primary btn btn-xs" data-toggle="modal" data-target="#myModalFilters"><?php echo i18n::__('filtros') ?></button>
-        <a href="<?php echo routing::getInstance()->getUrlWeb('cliente', 'indexCliente') ?>" class="btn btn-default btn-xs" ><?php echo i18n::__('eFiltros') ?></a>
-        <button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#myModalReport" ><?php echo i18n::__('informe') ?></button>            
+                 
     
       </ul> 
 
