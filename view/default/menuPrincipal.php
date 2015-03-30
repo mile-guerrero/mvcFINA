@@ -98,6 +98,7 @@ use mvc\i18n\i18nClass as i18 ?>
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo i18::__('personas') ?> <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
               <li><a href="<?php echo routing::getInstance()->getUrlWeb('cliente', 'indexCliente') ?>"><?php echo i18::__('cliente') ?></a></li>
+              <li><a href="<?php echo routing::getInstance()->getUrlWeb('maquina', 'indexProveedor') ?>"><?php echo i18::__('nomProveedor') ?></a></li>
               <li><a href="<?php echo routing::getInstance()->getUrlWeb('credencial', 'index') ?>"><?php echo i18::__('credencial') ?></a></li>
               <li><a href="<?php echo routing::getInstance()->getUrlWeb('default', 'index') ?>"><?php echo i18::__('user') ?></a></li>
               <li class="divider"></li>
@@ -122,9 +123,10 @@ use mvc\i18n\i18nClass as i18 ?>
 
 
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo i18::__('trabajador') ?> <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
-              <li><a href="<?php echo routing::getInstance()->getUrlWeb('maquina', 'indexProveedor') ?>"><?php echo i18::__('nomProveedor') ?></a></li>
+              <li><a href="<?php echo routing::getInstance()->getUrlWeb('trabajador', 'index') ?>"><?php echo i18::__('trabajador') ?></a></li>
+              <li><a href="<?php echo routing::getInstance()->getUrlWeb('pagoTrabajador', 'index') ?>"><?php echo i18::__('pagoTrabajador') ?></a></li>
               <li><a href="#">Another action</a></li>
               <li><a href="#">Something else here</a></li>
               <li class="divider"></li>

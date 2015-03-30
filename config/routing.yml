@@ -1186,3 +1186,257 @@ detalleSolicitudInsumo_reporte:
   param:  { module: detalleSolicitudInsumo, action: report, format: pdf } 
   load:
     - libs/fpdf/fpdf.php        
+
+#----------------------Trabajador-------------------------------- 
+
+trabajador_index:
+  url:    /trabajador/index
+  param:  { module: trabajador, action: index, format: html }
+  load:
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    - model/base/tipoIdBaseTableClass.php
+    - model/tipoIdTableClass.php 
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+    
+trabajador_insert:
+  url:    /trabajador/insertar
+  param:  { module: trabajador, action: insert, format: html }
+  load:
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    - model/base/tipoIdBaseTableClass.php
+    - model/tipoIdTableClass.php 
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+    
+trabajador_create:
+  url:    /trabajador/crear
+  param:  { module: trabajador, action: create, format: html }
+  load:
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    - model/base/tipoIdBaseTableClass.php
+    - model/tipoIdTableClass.php 
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+
+trabajador_edit:
+  url:    /trabajador/editar
+  param:  { module: trabajador, action: edit, format: html }
+  load:
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    - model/base/tipoIdBaseTableClass.php
+    - model/tipoIdTableClass.php 
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+    
+trabajador_update:
+  url:    /trabajador/actualizar
+  param:  { module: trabajador, action: update, format: html }
+  load:
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    - model/base/tipoIdBaseTableClass.php
+    - model/tipoIdTableClass.php 
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+    
+trabajador_delete:
+  url:    /trabajador/eliminar
+  param:  { module: trabajador, action: delete, format: json }
+  load:
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    - model/base/tipoIdBaseTableClass.php
+    - model/tipoIdTableClass.php 
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+    
+trabajador_deleteSelect:
+  url:    /trabajador/eliminarSeleccion
+  param:  { module: trabajador, action: deleteSelect, format: html }
+  load:
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    - model/base/tipoIdBaseTableClass.php
+    - model/tipoIdTableClass.php 
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+    
+trabajador_ver:
+  url:    /trabajador/ver
+  param:  { module: trabajador, action: ver, format: html }
+  load:
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    - model/base/tipoIdBaseTableClass.php
+    - model/tipoIdTableClass.php 
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+    
+trabajador_reporte:
+  url:    /trabajador/reporte
+  param:  { module: trabajador, action: reportTrabajador, format: pdf } 
+  load:
+    - libs/fpdf/fpdf.php  
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php 
+    - model/base/tipoIdBaseTableClass.php
+    - model/tipoIdTableClass.php 
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+    
+#----------------------DocumentoPagoTrabajador--------------------------------    
+pagoTrabajador_index:
+  url:    /pagoTrabajador/index
+  param:  { module: pagoTrabajador, action: index, format: html }
+  load:
+    - model/base/pagoTrabajadorBaseTableClass.php
+    - model/pagoTrabajadorTableClass.php
+    - model/base/empresaBaseTableClass.php
+    - model/empresaTableClass.php
+    - model/base/detallePagoTrabajadorBaseTableClass.php
+    - model/detallePagoTrabajadorTableClass.php
+    
+pagoTrabajador_insert:
+  url:    /pagoTrabajador/insertar
+  param:  { module: pagoTrabajador, action: insert, format: html }
+  load:
+    - model/base/pagoTrabajadorBaseTableClass.php
+    - model/pagoTrabajadorTableClass.php
+    - model/base/empresaBaseTableClass.php
+    - model/empresaTableClass.php
+    - model/base/detallePagoTrabajadorBaseTableClass.php
+    - model/detallePagoTrabajadorTableClass.php
+    
+pagoTrabajador_create:
+  url:    /pagoTrabajador/crear
+  param:  { module: pagoTrabajador, action: create, format: html }
+  load:
+    - model/base/pagoTrabajadorBaseTableClass.php
+    - model/pagoTrabajadorTableClass.php
+    - model/base/empresaBaseTableClass.php
+    - model/empresaTableClass.php
+    - model/base/detallePagoTrabajadorBaseTableClass.php
+    - model/detallePagoTrabajadorTableClass.php
+
+pagoTrabajador_edit:
+  url:    /pagoTrabajador/editar
+  param:  { module: pagoTrabajador, action: edit, format: html }
+  load:
+    - model/base/pagoTrabajadorBaseTableClass.php
+    - model/pagoTrabajadorTableClass.php
+    - model/base/empresaBaseTableClass.php
+    - model/empresaTableClass.php
+    - model/base/detallePagoTrabajadorBaseTableClass.php
+    - model/detallePagoTrabajadorTableClass.php
+    
+pagoTrabajador_update:
+  url:    /pagoTrabajador/actualizar
+  param:  { module: pagoTrabajador, action: update, format: html }
+  load:
+    - model/base/pagoTrabajadorBaseTableClass.php
+    - model/pagoTrabajadorTableClass.php
+    - model/base/empresaBaseTableClass.php
+    - model/empresaTableClass.php
+    - model/base/detallePagoTrabajadorBaseTableClass.php
+    - model/detallePagoTrabajadorTableClass.php
+    
+pagoTrabajador_ver:
+  url:    /pagoTrabajador/ver
+  param:  { module: pagoTrabajador, action: ver, format: html }
+  load:
+    - model/base/pagoTrabajadorBaseTableClass.php
+    - model/pagoTrabajadorTableClass.php
+    - model/base/empresaBaseTableClass.php
+    - model/empresaTableClass.php
+    - model/base/detallePagoTrabajadorBaseTableClass.php
+    - model/detallePagoTrabajadorTableClass.php
+    
+#---------------------------------Detalle Pago Trabajador-----------------------
+
+detallePagoTrabajador_index:
+  url:    /detallePagoTrabajador/index
+  param:  { module: detallePagoTrabajador, action: index, format: html }
+  load:
+    - model/base/detallePagoTrabajadorBaseTableClass.php
+    - model/detallePagoTrabajadorTableClass.php
+    - model/base/pagoTrabajadorBaseTableClass.php
+    - model/pagoTrabajadorTableClass.php
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    
+    
+detallePagoTrabajador_insert:
+  url:    /detallePagoTrabajador/insertar
+  param:  { module: detallePagoTrabajador, action: insert, format: html }
+  load:
+    - model/base/detallePagoTrabajadorBaseTableClass.php
+    - model/detallePagoTrabajadorTableClass.php
+    - model/base/pagoTrabajadorBaseTableClass.php
+    - model/pagoTrabajadorTableClass.php
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    
+detallePagoTrabajador_create:
+  url:    /detallePagoTrabajador/crear
+  param:  { module: detallePagoTrabajador, action: create, format: html }
+  load:
+    - model/base/detallePagoTrabajadorBaseTableClass.php
+    - model/detallePagoTrabajadorTableClass.php
+    - model/base/pagoTrabajadorBaseTableClass.php
+    - model/pagoTrabajadorTableClass.php
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    
+detallePagoTrabajador_edit:
+  url:    /detallePagoTrabajador/editar
+  param:  { module: detallePagoTrabajador, action: edit, format: html }
+  load:
+    - model/base/detallePagoTrabajadorBaseTableClass.php
+    - model/detallePagoTrabajadorTableClass.php
+    - model/base/pagoTrabajadorBaseTableClass.php
+    - model/pagoTrabajadorTableClass.php
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    
+detallePagoTrabajador_update:
+  url:    /detallePagoTrabajador/actualizar
+  param:  { module: detallePagoTrabajador, action: update, format: html }
+  load:
+    - model/base/detallePagoTrabajadorBaseTableClass.php
+    - model/detallePagoTrabajadorTableClass.php
+    - model/base/pagoTrabajadorBaseTableClass.php
+    - model/pagoTrabajadorTableClass.php
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    
+detallePagoTrabajador_ver:
+  url:    /detallePagoTrabajador/ver
+  param:  { module: detallePagoTrabajador, action: ver, format: html }
+  load:
+    - model/base/detallePagoTrabajadorBaseTableClass.php
+    - model/detallePagoTrabajadorTableClass.php
+    - model/base/pagoTrabajadorBaseTableClass.php
+    - model/pagoTrabajadorTableClass.php
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php

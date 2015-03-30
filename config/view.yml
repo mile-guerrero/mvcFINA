@@ -104,6 +104,12 @@ detalleSolicitudInsumo:
     javascript:
       - confirmar.js
 
+#-------------------modulo - Trabajador-----------------------
+
+trabajador: 
+  index:
+    javascript:
+      - confirmar.js
  
  
       

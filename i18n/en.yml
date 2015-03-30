@@ -38,6 +38,7 @@ dictionary:
     pagoTrabajador:       Pago del Trabajador
     nuevoPago:            Nuevo Pago al Trabajador
     detallePago:          Detalle del Pago Trabajador
+    detalle:              Detalle
     fecha_M:              Date
     tipo:                 Type Use Id
     origen:               Origin Id 
@@ -95,7 +96,6 @@ dictionary:
     register:             Register
     extReg:               The Register was Successful
     cedu:                 charter
-    lastName:             Last Name
     usu_id:               User Id
     cre_id:               Credential Id
     bus:                  look For
@@ -116,6 +116,7 @@ dictionary:
     selectUnidad:         Select the Unidad of Medida
     selectUsuario:        Select the User
     selectCredencial:     Select the Credential
+    selectTipoId:         Select the Type of Identity
     idTipo:               Code Type Id
     idCiudad:             Code City
     tamano:               Size

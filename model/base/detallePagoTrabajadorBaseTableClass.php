@@ -7,73 +7,55 @@ use mvc\model\table\tableBaseClass;
  *
  * 
  */
-class trabajadorBaseTableClass extends tableBaseClass {
+class detallePagoTrabajadorBaseTableClass extends tableBaseClass {
 
-  private $id;
-  private $nombret;
-  private $apellido;
-  private $direccion;
-  private $telefono;
-  private $email;
-  private $idCiudad;
-  private $idCredencial;
-  private $idTipoId;
-  private $createdAt;
-  private $updatedAt;
-  private $deletedAt;
+ private $id;
+ private $valorSalario;
+ private $cantidadHorasExtras;
+ private $valorHorasExtras;
+ private $horasPerdidas;
+ private $totalPagar;
+ private $createdAt;
+ private $updatedAt;
+ private $trabajadorId;
+ private $pagoTrabajadorId;
+ 
+
 
   const ID = 'id';
-  const NOMBRET = 'nombret';
-  const NOMBRET_LENGTH = 80;
-  const APELLIDO = 'apellido';
-  const APELLIDO_LENGTH = 80;
-  const DIRECCION = 'direccion';
-  const DIRECCION_LENGTH = 15;
-  const TELEFONO = 'telefono';
-  const TELEFONO_LENGTH = 12;
-  const EMAIL = 'email';
-  const EMAIL_LENGTH = 40;
-  const ID_CIUDAD = 'id_ciudad';
-  const ID_CREDENCIAL = 'id_credencial';
-  const ID_TIPO_ID = 'id_tipo_id';
+  const VALOR_SALARIO = 'valor_salario';
+  const CANTIDAD_HORAS_EXTRAS = 'cantidad_horas_extras';
+  const VALOR_HORAS_EXTRAS = 'valor_horas_extras';
+  const HORAS_PERDIDAS = 'horas_perdidas';
+  const TOTAL_PAGAR = 'total_pagar';
+  const TRABAJADOR_ID = 'trabajador_id';
+  const PAGO_TRABAJADOR_ID = 'pago_trabajador_id';
   const CREATED_AT = 'created_at';
   const UPDATED_AT = 'updated_at';
-  const DELETED_AT = 'deleted_at';
+  
   
   public function getId() {
     return $this->id;
   }
 
-  public function getNombret() {
-    return $this->nombret;
+  public function getValorSalario() {
+    return $this->valorSalario;
   }
 
-  public function getApellido() {
-    return $this->apellido;
+  public function getCantidadHorasExtras() {
+    return $this->cantidadHorasExtras;
   }
 
-  public function getDireccion() {
-    return $this->direccion;
+  public function getValorHorasExtras() {
+    return $this->valorHorasExtras;
   }
 
-  public function getTelefono() {
-    return $this->telefono;
+  public function getHorasPerdidas() {
+    return $this->horasPerdidas;
   }
 
-  public function getEmail() {
-    return $this->email;
-  }
-
-  public function getIdCiudad() {
-    return $this->idCiudad;
-  }
-
-  public function getIdCredencial() {
-    return $this->idCredencial;
-  }
-
-  public function getIdTipoId() {
-    return $this->idTipoId;
+  public function getTotalPagar() {
+    return $this->totalPagar;
   }
 
   public function getCreatedAt() {
@@ -84,44 +66,36 @@ class trabajadorBaseTableClass extends tableBaseClass {
     return $this->updatedAt;
   }
 
-  public function getDeletedAt() {
-    return $this->deletedAt;
+  public function getTrabajadorId() {
+    return $this->trabajadorId;
+  }
+
+  public function getPagoTrabajadorId() {
+    return $this->pagoTrabajadorId;
   }
 
   public function setId($id) {
     $this->id = $id;
   }
 
-  public function setNombret($nombret) {
-    $this->nombret = $nombret;
+  public function setValorSalario($valorSalario) {
+    $this->valorSalario = $valorSalario;
   }
 
-  public function setApellido($apellido) {
-    $this->apellido = $apellido;
+  public function setCantidadHorasExtras($cantidadHorasExtras) {
+    $this->cantidadHorasExtras = $cantidadHorasExtras;
   }
 
-  public function setDireccion($direccion) {
-    $this->direccion = $direccion;
+  public function setValorHorasExtras($valorHorasExtras) {
+    $this->valorHorasExtras = $valorHorasExtras;
   }
 
-  public function setTelefono($telefono) {
-    $this->telefono = $telefono;
+  public function setHorasPerdidas($horasPerdidas) {
+    $this->horasPerdidas = $horasPerdidas;
   }
 
-  public function setEmail($email) {
-    $this->email = $email;
-  }
-
-  public function setIdCiudad($idCiudad) {
-    $this->idCiudad = $idCiudad;
-  }
-
-  public function setIdCredencial($idCredencial) {
-    $this->idCredencial = $idCredencial;
-  }
-
-  public function setIdTipoId($idTipoId) {
-    $this->idTipoId = $idTipoId;
+  public function setTotalPagar($totalPagar) {
+    $this->totalPagar = $totalPagar;
   }
 
   public function setCreatedAt($createdAt) {
@@ -132,22 +106,26 @@ class trabajadorBaseTableClass extends tableBaseClass {
     $this->updatedAt = $updatedAt;
   }
 
-  public function setDeletedAt($deletedAt) {
-    $this->deletedAt = $deletedAt;
+  public function setTrabajadorId($trabajadorId) {
+    $this->trabajadorId = $trabajadorId;
   }
 
+  public function setPagoTrabajadorId($pagoTrabajadorId) {
+    $this->pagoTrabajadorId = $pagoTrabajadorId;
+  }
+
+        
   
-    
-    
-  /**
+  
+    /**
    * Obtiene el nombre de la tabla
    * @return string
    */
   static public function getNameTable() {
-    return 'trabajador';
+    return 'detalle_pago_trabajador';
   }
 
-  /**
+   /**
    * Método para obtener el nombre del campo más la tabla ya sea en formato
    * DB (.) o en formato HTML (_)
    *

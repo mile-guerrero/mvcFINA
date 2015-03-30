@@ -19,7 +19,8 @@
       
       <h1><?php echo i18n::__('credencial') ?></h1> 
        <ul>      
-      <a class="btn btn-success btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('credencial', 'insert') ?>"><?php echo i18n::__('nuevo') ?></a> <a href="javascript:eliminarMasivo()" class="btn btn-danger btn-xs" id="btnDeleteMasivo"><?php echo i18n::__('eliminar en masa') ?> </a> 
+      <a class="btn btn-success btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('credencial', 'insert') ?>"><?php echo i18n::__('nuevo') ?></a>
+      <a href="javascript:eliminarMasivo()" class="btn btn-danger btn-xs" id="btnDeleteMasivo"><?php echo i18n::__('eliminar en masa') ?> </a> 
       <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModalFiltres"><?php echo i18n::__('filtros') ?></button>  
       <a href="<?php echo routing::getInstance()->getUrlWeb('credencial', 'index') ?>" class="btn btn-default btn-xs" ><?php echo i18n::__('eFiltros') ?></a>
       <button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#myModalReport" ><?php echo i18n::__('informe') ?></button>            

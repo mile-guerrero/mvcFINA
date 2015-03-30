@@ -9,22 +9,20 @@ dictionary:
     editar usuario:       Editar Usuario
     nuevo usuario:        Nuevo Usuario
     register:             Registrar
-    nom:                  nombre
-    apell:                apellido
-    dir:                  direccion
-    tel:                  telefono
-    cedu:                 cedula
-    cre_id:               credencialId
+    nom:                  Nombre
+    apell:                Apellido
+    dir:                  Direccion
+    tel:                  Telefono
+    cedu:                 Cedula
+    cre_id:               CredencialId
     usuarioCredencial:    Usuario Credencial
-    bus:                  buscar
-    update:               actualizar 
-    orden:                codigo OrdenServicio
+    bus:                  Buscar
+    update:               Actualizar 
     product:              Producto
-    producto:             codigo Producto Insumo
+    producto:             Codigo Producto Insumo
     editar tipo producto: Editar Tipo Insumo
     tipoProdcuto:         Tipo Producto
-    cantidad:             cantidad
-    valor:                valor
+    cantidad:             Cantidad
 #   maquina:              codigoMaquina
     editar maquina:       Editar Maquina
     nuevo maquina:        Nueva Maquina
@@ -37,18 +35,17 @@ dictionary:
     pagoTrabajador:       Pago del Trabajador
     nuevoPago:            Nuevo Pago al Trabajador
     detallePago:          Detalle del Pago Trabajador
-    fecha_M:              fecha 
-    tipo:                 tipoUsoId
-    origen:               origenId
+    detalle:               Detalle
+    fecha_M:              Fecha 
+    tipo:                 TipoUsoId
+    origen:               OrigenId
     num id:               Documento De Identidad
-    idTipo:               codigoTipoId
+    idTipo:               CodigoTipoId
     ciudad:               Ciudad
-    idCiudad:             cod Ciudad
-    tamano:               tamaño
-    ubicacion:            ubicacion
-    iva:                  iva
-    unidad:               unidad medida
-    atras:                Ir a la paguina anterior
+    idCiudad:             Cod Ciudad
+    tamano:               Tamaño
+    ubicacion:            Ubicacion
+    iva:                  Iva
     eliminar en masa:     Eliminar casillas Selecionadas
     nuevo:                Nuevo
     cliente:              Cliente
@@ -94,16 +91,10 @@ dictionary:
     fecha crear:          Fecha Creacion
     fecha fin:            Fecha FInal
     extReg:               El Registro fue Exitoso
-    name:                 Nombre
     des:                  Descripcion
-    cedu:                 Cedula
-    lastName:             Apellido
     usu_id:               UsuarioId
-    bus:                  Buscar
     update:               Actualizar 
     email:                Email
-    producto:             CodigoProductoInsumo
-    cantidad:             Cantidad
     valor:                Valor
     fecha_M:              Fecha del Mantenimiento
     origen:               Origen
@@ -118,12 +109,8 @@ dictionary:
     selectUnidad:         Seleccione la Unidad de Medida
     selectUsuario:        Seleccione el Usuario
     selectCredencial:     Seleccione la Credencial
-    streetAddress:        Direccion
-    phone:                Telefono
+    selectTipoId:         Seleccione el Tipo de Identificacion
     idTipo:               CodigoTipoId
-    tamano:               Tamaño
-    ubicacion:            Ubicacion
-    iva:                  Iva
     unidad:               Unidad medida
     atras:                Pagina anterior
     configEliminar:       Confirmar Eliminacion
@@ -131,7 +118,6 @@ dictionary:
     exiEliMas:            Las Casillas Seleccionadas Fueron Eliminadas Exitosamente
     eliminarMas:          ¿Desea Eliminar las Casillas Seleccionadas? 
     eliminarReg:          ¿Desea Eliminar el Registro?
-    removeSelection:      Eliminar Seleccion
     cancel:               Cancelar
     personas:             Personas
     otros:                Otros

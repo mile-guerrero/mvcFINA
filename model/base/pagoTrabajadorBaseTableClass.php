@@ -7,73 +7,25 @@ use mvc\model\table\tableBaseClass;
  *
  * 
  */
-class trabajadorBaseTableClass extends tableBaseClass {
+class pagoTrabajadorBaseTableClass extends tableBaseClass {
 
-  private $id;
-  private $nombret;
-  private $apellido;
-  private $direccion;
-  private $telefono;
-  private $email;
-  private $idCiudad;
-  private $idCredencial;
-  private $idTipoId;
-  private $createdAt;
-  private $updatedAt;
-  private $deletedAt;
+ private $id;
+ private $createdAt;
+ private $updatedAt;
+ private $empresaId;
+ private $fechaInicial;
+ private $fechaFinal;
+
 
   const ID = 'id';
-  const NOMBRET = 'nombret';
-  const NOMBRET_LENGTH = 80;
-  const APELLIDO = 'apellido';
-  const APELLIDO_LENGTH = 80;
-  const DIRECCION = 'direccion';
-  const DIRECCION_LENGTH = 15;
-  const TELEFONO = 'telefono';
-  const TELEFONO_LENGTH = 12;
-  const EMAIL = 'email';
-  const EMAIL_LENGTH = 40;
-  const ID_CIUDAD = 'id_ciudad';
-  const ID_CREDENCIAL = 'id_credencial';
-  const ID_TIPO_ID = 'id_tipo_id';
+  const EMPRESA_ID = 'empresa_id';
   const CREATED_AT = 'created_at';
   const UPDATED_AT = 'updated_at';
-  const DELETED_AT = 'deleted_at';
+  const FECHA_INICIAL = 'fecha_inicial';
+  const FECHA_FINAL = 'fecha_final';
   
   public function getId() {
     return $this->id;
-  }
-
-  public function getNombret() {
-    return $this->nombret;
-  }
-
-  public function getApellido() {
-    return $this->apellido;
-  }
-
-  public function getDireccion() {
-    return $this->direccion;
-  }
-
-  public function getTelefono() {
-    return $this->telefono;
-  }
-
-  public function getEmail() {
-    return $this->email;
-  }
-
-  public function getIdCiudad() {
-    return $this->idCiudad;
-  }
-
-  public function getIdCredencial() {
-    return $this->idCredencial;
-  }
-
-  public function getIdTipoId() {
-    return $this->idTipoId;
   }
 
   public function getCreatedAt() {
@@ -84,44 +36,20 @@ class trabajadorBaseTableClass extends tableBaseClass {
     return $this->updatedAt;
   }
 
-  public function getDeletedAt() {
-    return $this->deletedAt;
+  public function getEmpresaId() {
+    return $this->empresaId;
+  }
+
+  public function getFechaInicial() {
+    return $this->fechaInicial;
+  }
+
+  public function getFechaFinal() {
+    return $this->fechaFinal;
   }
 
   public function setId($id) {
     $this->id = $id;
-  }
-
-  public function setNombret($nombret) {
-    $this->nombret = $nombret;
-  }
-
-  public function setApellido($apellido) {
-    $this->apellido = $apellido;
-  }
-
-  public function setDireccion($direccion) {
-    $this->direccion = $direccion;
-  }
-
-  public function setTelefono($telefono) {
-    $this->telefono = $telefono;
-  }
-
-  public function setEmail($email) {
-    $this->email = $email;
-  }
-
-  public function setIdCiudad($idCiudad) {
-    $this->idCiudad = $idCiudad;
-  }
-
-  public function setIdCredencial($idCredencial) {
-    $this->idCredencial = $idCredencial;
-  }
-
-  public function setIdTipoId($idTipoId) {
-    $this->idTipoId = $idTipoId;
   }
 
   public function setCreatedAt($createdAt) {
@@ -132,22 +60,30 @@ class trabajadorBaseTableClass extends tableBaseClass {
     $this->updatedAt = $updatedAt;
   }
 
-  public function setDeletedAt($deletedAt) {
-    $this->deletedAt = $deletedAt;
+  public function setEmpresaId($empresaId) {
+    $this->empresaId = $empresaId;
   }
 
+  public function setFechaInicial($fechaInicial) {
+    $this->fechaInicial = $fechaInicial;
+  }
+
+  public function setFechaFinal($fechaFinal) {
+    $this->fechaFinal = $fechaFinal;
+  }
+
+      
   
-    
-    
-  /**
+  
+    /**
    * Obtiene el nombre de la tabla
    * @return string
    */
   static public function getNameTable() {
-    return 'trabajador';
+    return 'pago_trabajador';
   }
 
-  /**
+   /**
    * Método para obtener el nombre del campo más la tabla ya sea en formato
    * DB (.) o en formato HTML (_)
    *
