@@ -16,9 +16,8 @@
    <article id='derecha'> 
      <h1><?php echo i18n::__('origen') ?></h1>
      <ul>
-
-      <a class="btn btn-success btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('maquina', 'insertOrigenMaquina') ?>"><?php echo i18n::__('nuevo') ?></a>              
-    </ul>
+ <a class="btn  btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('maquina', 'insertOrigenMaquina') ?>"><img class="img-responsive"  id="imgnuevo" src="" alt=" "><?php echo i18n::__('nuevo') ?></a>              
+   </ul>
       <table class="table table-bordered table-responsive">
         <tr>
         <thead>

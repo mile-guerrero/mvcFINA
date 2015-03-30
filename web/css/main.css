@@ -60,9 +60,44 @@ margin-left: 50px;
   background-image: url('../img/ingles.gif');
   
 }
-
+#imgmasivo{
+background: center;
+margin-left: 20px;
+ width:  60px;
+ padding-top: 30px;
+  background-image: url('../img/masivo.gif');
+  
+}
+#imgfiltros{
+background: center;
+ width:  60px;
+ padding-top: 30px;
+  background-image: url('../img/filtros.gif');
+  
+}
+#imgelifiltro{
+background: center;
+ width:  60px;
+ padding-top: 30px;
+  background-image: url('../img/elifiltro.gif');
+  
+}
+#imgreporte{
+background: center;
+ width:  60px;
+ padding-top: 30px;
+  background-image: url('../img/reporte.gif');
+  
+}
+#imgnuevo{
+background: center;
+ width:  60px;
+ padding-top: 30px;
+  background-image: url('../img/nuevo.gif');
+  
+}
 #cuerpo{
-  width: 700px;
+  width: 800px;
 }
 
 

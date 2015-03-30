@@ -17,7 +17,7 @@
       
        <h1><?php echo i18n::__('tipo uso') ?></h1>
     <ul>
-      <a class="btn btn-success btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('maquina', 'insertTipoUsoMaquina') ?>"><?php echo i18n::__('nuevo') ?></a>              
+      <a class="btn  btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('maquina', 'insertTipoUsoMaquina') ?>"><img class="img-responsive"  id="imgnuevo" src="" alt=" "><?php echo i18n::__('nuevo') ?></a>              
     </ul> 
   
       <table class="table table-bordered table-responsive">
