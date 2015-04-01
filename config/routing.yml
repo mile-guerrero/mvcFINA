@@ -1384,7 +1384,8 @@ detallePagoTrabajador_index:
     - model/pagoTrabajadorTableClass.php
     - model/base/trabajadorBaseTableClass.php
     - model/trabajadorTableClass.php
-    
+    - model/base/empresaBaseTableClass.php
+    - model/empresaTableClass.php
     
 detallePagoTrabajador_insert:
   url:    /detallePagoTrabajador/insertar

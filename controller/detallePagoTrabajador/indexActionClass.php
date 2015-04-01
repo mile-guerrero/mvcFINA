@@ -11,7 +11,7 @@ use mvc\i18n\i18nClass as i18n;
 /**
  * Description of ejemploClass
  *
- * @author 
+ * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
  */
 class indexActionClass extends controllerClass implements controllerActionInterface {
 
@@ -28,7 +28,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
           $where[pagoTrabajadorTableClass::EMPRESA_ID] = $filter['empresa'];
         }
         if (isset($filter['fechaIni']) and $filter['fechaIni'] !== null and $filter['fechaIni'] !== '' and ( isset($filter['fechaFin']) and $filter['fechaFin'] !== null and $filter['fechaFin'] !== '')) {
-          $where[trabajadorTableClass::CREATED_AT] = array(
+          $where[pagoTrabajadorTableClass::CREATED_AT] = array(
               date(config::getFormatTimestamp(), strtotime($filter['fechaIni'] . ' 00:00:00')),
               date(config::getFormatTimestamp(), strtotime($filter['fechaFin'] . ' 23:59:59'))
           );
@@ -67,23 +67,6 @@ class indexActionClass extends controllerClass implements controllerActionInterf
 
       $this->objDPT = detallePagoTrabajadorTableClass::getAll($fields, false, $orderBy, 'ASC', 3, $page, $where);
       
-       $fields = array(
-            pagoTrabajadorTableClass::ID,
-            pagoTrabajadorTableClass::FECHA_INICIAL
-        );
-        $orderBy = array(
-            pagoTrabajadorTableClass::FECHA_INICIAL
-        );
-        $this->objPT = pagoTrabajadorTableClass::getAll($fields, false, $orderBy, 'ASC');
-
-      $fields = array(
-          trabajadorTableClass::ID,
-          trabajadorTableClass::NOMBRET
-      );
-      $orderBy = array(
-          trabajadorTableClass::NOMBRET
-      );
-      $this->objTrabajador = trabajadorTableClass::getAll($fields, true, $orderBy, 'ASC');
       $this->defineView('index', 'detallePagoTrabajador', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
       echo $exc->getMessage();

@@ -34,8 +34,15 @@ dictionary:
     trabajador:           worker
     selectTrabajador:     Select the Worker
     nuevoTrabajador:      New worker
+    editarTrabajador:     Edit worker
     nombreTrabajador:     Name Worker
     pagoTrabajador:       Pago del Trabajador
+    fechaPagoIni:         Fecha de Pago Inicial
+    fechaPagoFin:         Fecha de Pago Final
+    salario:              Salario
+    horasExtras:          Horas Extras
+    horasPerdidas:        Horas Perdidas
+    totalPagar:           Total Pagar
     nuevoPago:            Nuevo Pago al Trabajador
     detallePago:          Detalle del Pago Trabajador
     detalle:              Detalle
@@ -117,6 +124,7 @@ dictionary:
     selectUsuario:        Select the User
     selectCredencial:     Select the Credential
     selectTipoId:         Select the Type of Identity
+    solicitudInsumo:      Solicitud Input
     idTipo:               Code Type Id
     idCiudad:             Code City
     tamano:               Size
@@ -143,6 +151,9 @@ dictionary:
     idioma:               Language
     crearCuenta:          Create Account
     recordar:             Remember
+    documentos:           Documents
+    identificacion:       Identifieds
+    entrar:               Entrar
   errors:
     00001:                The name exceeds the allowable length (:length)
     00002:                The Last name exceeds the allowable length (:length)

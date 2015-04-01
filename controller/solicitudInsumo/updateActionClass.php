@@ -19,20 +19,20 @@ class updateActionClass extends controllerClass implements controllerActionInter
   public function execute() {
     try {
       if (request::getInstance()->isMethod('POST')) {
-        $id = request::getInstance()->getPost(ordenServicioTableClass::getNameField(ordenServicioTableClass::ID, true));
-        $fecha = request::getInstance()->getPost(ordenServicioTableClass::getNameField(ordenServicioTableClass::FECHA_MANTENIMIENTO, true));
-        $trabajador = request::getInstance()->getPost(ordenServicioTableClass::getNameField(ordenServicioTableClass::TRABAJADOR_ID, true));
+        $id = request::getInstance()->getPost(solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::ID, true));
+        $fecha = request::getInstance()->getPost(solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::FECHA_HORA, true));
+        $trabajador = request::getInstance()->getPost(solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::TRABAJADOR_ID, true));
 
         $ids = array(
-            ordenServicioTableClass::ID => $id
+            solicitudInsumoTableClass::ID => $id
         );
         $data = array(
-            ordenServicioTableClass::FECHA_MANTENIMIENTO => $fecha,
-            ordenServicioTableClass::TRABAJADOR_ID => $trabajador
+            solicitudInsumoTableClass::FECHA_HORA => $fecha,
+            solicitudInsumoTableClass::TRABAJADOR_ID => $trabajador
         );
-        ordenServicioTableClass::update($ids, $data);
+        solicitudInsumoTableClass::update($ids, $data);
          
-        routing::getInstance()->redirect('ordenServicio', 'index');
+        routing::getInstance()->redirect('solicitudInsumo', 'index');
       }
     } catch (PDOException $exc) {
       echo $exc->getMessage();

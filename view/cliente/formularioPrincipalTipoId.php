@@ -12,7 +12,7 @@
     <div class="form-group">
       <label for="<?php echo tipoIdtableClass::getNameField(tipoIdTableClass::DESCRIPCION, true) ?>" class="col-sm-2"> <?php echo i18n::__('des') ?>:</label>     
       <div class="col-sm-10"> 
-        <input  class="form-control" value="<?php echo ((isset($objTI) == true) ? $objTI[0]->$descripcion : '') ?>" type="text" name="<?php echo tipoIdTableClass::getNameField(tipoIdTableClass::DESCRIPCION, true) ?>" placeholder="Descripcion" required>
+        <input  class="form-control" value="<?php echo ((isset($objTI) == true) ? $objTI[0]->$descripcion : '') ?>" type="text" name="<?php echo tipoIdTableClass::getNameField(tipoIdTableClass::DESCRIPCION, true) ?>" placeholder="<?php echo i18n::__('des') ?>" required>
       </div>
     </div>  
       

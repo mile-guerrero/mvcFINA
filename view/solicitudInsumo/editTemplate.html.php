@@ -5,7 +5,7 @@
 <?php $trabajador = ordenServicioTableClass::TRABAJADOR_ID ?>
 <div class="container container-fluid" id="cuerpo">
     <h2 class="form-signin-heading"> <?php echo i18n::__('editar orden') ?> </h2>
-<?php view::includePartial('ordenServicio/formularioPrincipal',array('objOS'=>$objOS, 'trabajador_id'=>$trabajador)) ?>
+<?php view::includePartial('solicitudInsumo/formularioPrincipal',array('objOS'=>$objOS, 'trabajador_id'=>$trabajador)) ?>
 
 
 </div>

@@ -18,21 +18,21 @@
   <div class="form-group">
       <label for="<?php echo loteTableClass::getNameField(loteTableClass::UBICACION, true) ?>" class="col-sm-2"> <?php echo i18n::__('ubicacion') ?>:</label>     
       <div class="col-sm-10">
-        <input  class="form-control"  value="<?php echo ((isset($objLote)==true) ? $objLote[0]->$ubi : '') ?>" type="text" name="<?php echo loteTableClass::getNameField(loteTableClass::UBICACION, true) ?>" placeholder="Ubicacion" required>
+        <input  class="form-control"  value="<?php echo ((isset($objLote)==true) ? $objLote[0]->$ubi : '') ?>" type="text" name="<?php echo loteTableClass::getNameField(loteTableClass::UBICACION, true) ?>" placeholder="<?php echo i18n::__('ubicacion') ?>" required>
       </div>
   </div>
   
  <div class="form-group">
       <label for="<?php echo loteTableClass::getNameField(loteTableClass::TAMANO, true) ?>" class="col-sm-2"> <?php echo i18n::__('tamano') ?>:</label>     
       <div class="col-sm-10">
-        <input class="form-control" value="<?php echo ((isset($objLote)==true) ? $objLote[0]->$tamano : '') ?>" type="text" name="<?php echo loteTableClass::getNameField(loteTableClass::TAMANO, true) ?>" placeholder="Tamaño" required>
+        <input class="form-control" value="<?php echo ((isset($objLote)==true) ? $objLote[0]->$tamano : '') ?>" type="text" name="<?php echo loteTableClass::getNameField(loteTableClass::TAMANO, true) ?>" placeholder="<?php echo i18n::__('tamano') ?>" required>
       </div>
  </div>
   
  <div class="form-group">
       <label for="<?php echo loteTableClass::getNameField(loteTableClass::DESCRIPCION, true) ?>" class="col-sm-2"> <?php echo i18n::__('des') ?>: </label>     
       <div class="col-sm-10">
-        <input  class="form-control" value="<?php echo ((isset($objLote)==true) ? $objLote[0]->$descripcion : '') ?>" type="text" name="<?php echo loteTableClass::getNameField(loteTableClass::DESCRIPCION, true) ?>" placeholder="Descripcion" required>
+        <input  class="form-control" value="<?php echo ((isset($objLote)==true) ? $objLote[0]->$descripcion : '') ?>" type="text" name="<?php echo loteTableClass::getNameField(loteTableClass::DESCRIPCION, true) ?>" placeholder="<?php echo i18n::__('des') ?>" required>
       </div>
  </div>
   

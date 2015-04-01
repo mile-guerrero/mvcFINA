@@ -31,11 +31,18 @@ dictionary:
     trabajador:           Trabajador
     selectTrabajador:     Seleccione el Trabajador
     nuevoTrabajador:      Nuevo trabajador
+    editarTrabajador:     Editar Trabajador
     nombreTrabajador:     Nombre Trabajador
     pagoTrabajador:       Pago del Trabajador
+    fechaPagoIni:         Fecha de Pago Inicial
+    fechaPagoFin:         Fecha de Pago Final
+    salario:              Salario
+    horasExtras:          Horas Extras
+    horasPerdidas:        Horas Perdidas
+    totalPagar:           Total Pagar
     nuevoPago:            Nuevo Pago al Trabajador
     detallePago:          Detalle del Pago Trabajador
-    detalle:               Detalle
+    detalle:              Detalle
     fecha_M:              Fecha 
     tipo:                 TipoUsoId
     origen:               OrigenId
@@ -110,6 +117,7 @@ dictionary:
     selectUsuario:        Seleccione el Usuario
     selectCredencial:     Seleccione la Credencial
     selectTipoId:         Seleccione el Tipo de Identificacion
+    solicitudInsumo:      Solicitud Insumo
     idTipo:               CodigoTipoId
     unidad:               Unidad medida
     atras:                Pagina anterior
@@ -133,6 +141,9 @@ dictionary:
     Desea  eliminar este campo: ¿ Desea  eliminar el registro 
     ?:                    ?
     Eliminacion exitosa:  Eliminacion exitosa
+    documentos:           Documentos
+    identificacion:       Identificacion
+    entrar:               Entrar
   errors:
     00001:                El nombre excede la longitud permitida (:longitud)
     00002:                El apellido excede la longitud permitida (:longitud)

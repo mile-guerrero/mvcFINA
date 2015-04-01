@@ -43,9 +43,9 @@ class createActionClass extends controllerClass implements controllerActionInter
         );
         detallePagoTrabajadorTableClass::insert($data);
         session::getInstance()->setSuccess('El registro fue Exitoso');
-        routing::getInstance()->redirect('detallePagoTrabajador', 'index');
+        routing::getInstance()->redirect('pagoTrabajador', 'index');
       } else {
-        routing::getInstance()->redirect('detallePagoTrabajador', 'index');
+        routing::getInstance()->redirect('pagoTrabajador', 'index');
       }
     } catch (PDOException $exc) {
       echo $exc->getMessage();

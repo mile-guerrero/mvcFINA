@@ -23,28 +23,28 @@
       
       <label for="<?php echo clienteTableClass::getNameField(clienteTableClass::NOMBRE, true) ?>" class="col-sm-2"> <?php echo i18n::__('nom') ?>:</label>     
       <div class="col-sm-10">
-        <input class="form-control" value="<?php echo ((isset($objCliente) == true) ? $objCliente[0]->$nombre : '') ?>" type="text" name="<?php echo clienteTableClass::getNameField(clienteTableClass::NOMBRE, true) ?>" placeholder="Nombre" required>
+        <input class="form-control" value="<?php echo ((isset($objCliente) == true) ? $objCliente[0]->$nombre : '') ?>" type="text" name="<?php echo clienteTableClass::getNameField(clienteTableClass::NOMBRE, true) ?>" placeholder="<?php echo i18n::__('nom') ?>" required>
       </div>
     </div>  
 
     <div class="form-group">
       <label for="<?php echo clienteTableClass::getNameField(clienteTableClass::APELLIDO, true) ?>" class="col-sm-2"> <?php echo i18n::__('apell') ?>:</label>     
       <div class="col-sm-10">            
-        <input class="form-control" value="<?php echo ((isset($objCliente) == true) ? $objCliente[0]->$apellido : '') ?>" type="text" name="<?php echo clienteTableClass::getNameField(clienteTableClass::APELLIDO, true) ?>" placeholder="Apellido" required>
+        <input class="form-control" value="<?php echo ((isset($objCliente) == true) ? $objCliente[0]->$apellido : '') ?>" type="text" name="<?php echo clienteTableClass::getNameField(clienteTableClass::APELLIDO, true) ?>" placeholder="<?php echo i18n::__('apell') ?>" required>
       </div>
     </div> 
 
     <div class="form-group">
       <label for="<?php echo clienteTableClass::getNameField(clienteTableClass::DIRECCION, true) ?>" class="col-sm-2"> <?php echo i18n::__('dir') ?>: </label>     
       <div class="col-sm-10">             
-        <input class="form-control" value="<?php echo ((isset($objCliente) == true) ? $objCliente[0]->$direccion : '') ?>" type="text" name="<?php echo clienteTableClass::getNameField(clienteTableClass::DIRECCION, true) ?>" placeholder="Direccion" required>
+        <input class="form-control" value="<?php echo ((isset($objCliente) == true) ? $objCliente[0]->$direccion : '') ?>" type="text" name="<?php echo clienteTableClass::getNameField(clienteTableClass::DIRECCION, true) ?>" placeholder="<?php echo i18n::__('dir') ?>" required>
       </div>
     </div>
 
     <div class="form-group">
       <label for="<?php echo clienteTableClass::getNameField(clienteTableClass::TELEFONO, true) ?>" class="col-sm-2"> <?php echo i18n::__('tel') ?>:  </label>     
       <div class="col-sm-10">              
-        <input class="form-control" value="<?php echo ((isset($objCliente) == true) ? $objCliente[0]->$telefono : '') ?>" type="number" name="<?php echo clienteTableClass::getNameField(clienteTableClass::TELEFONO, true) ?>" placeholder="Telefono" required>
+        <input class="form-control" value="<?php echo ((isset($objCliente) == true) ? $objCliente[0]->$telefono : '') ?>" type="number" name="<?php echo clienteTableClass::getNameField(clienteTableClass::TELEFONO, true) ?>" placeholder="<?php echo i18n::__('tel') ?>" required>
       </div>
     </div>
 
@@ -54,7 +54,7 @@
       <label for="<?php echo clienteTableClass::getNameField(clienteTableClass::ID_TIPO_ID, true) ?>" class="col-sm-2"> <?php echo i18n::__('idTipo') ?> </label>
       <div class="col-sm-10">   
 <select class="form-control" id="<?php clienteTableClass::getNameField(clienteTableClass::ID_TIPO_ID, TRUE)?>" name="<?php echo clienteTableClass::getNameField(clienteTableClass::ID_TIPO_ID, TRUE);?>">
-       <option><?php echo i18n::__('idTipo') ?></option>
+      
        <?php foreach($objCTI as $IT):?>
        <option value="<?php echo $IT->$idtipoid?>"><?php echo $IT->$descripciontipo?></option>
        <?php endforeach;?>
@@ -66,7 +66,7 @@
       <label for="<?php echo clienteTableClass::getNameField(clienteTableClass::ID_CIUDAD, true) ?>" class="col-sm-2"> <?php echo i18n::__('idCiudad') ?> </label>
       <div class="col-sm-10">       
 <select class="form-control" id="<?php clienteTableClass::getNameField(clienteTableClass::ID_CIUDAD, TRUE)?>" name="<?php echo clienteTableClass::getNameField(clienteTableClass::ID_CIUDAD, TRUE);?>">
-       <option><?php echo i18n::__('idCiudad') ?></option>
+
        <?php foreach($objCC as $C):?>
        <option value="<?php echo $C->$idCiudaddes?>"><?php echo $C->$descripcionciudad?></option>
        <?php endforeach;?>

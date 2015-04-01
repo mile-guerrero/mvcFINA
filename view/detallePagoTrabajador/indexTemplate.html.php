@@ -1,8 +1,13 @@
 <?php mvc\view\viewClass::includePartial('default/menuPrincipal') ?>
-<?php use mvc\routing\routingClass as routing ?>
-<?php use mvc\i18n\i18nClass as i18n ?>
-<?php use mvc\view\viewClass as view ?>
-<?php use mvc\request\requestClass as request ?>
+<?php
+
+use mvc\routing\routingClass as routing ?>
+<?php
+use mvc\i18n\i18nClass as i18n ?>
+<?php
+use mvc\view\viewClass as view ?>
+<?php
+use mvc\request\requestClass as request ?>
 <?php $id = detallePagoTrabajadorTableClass::ID ?>
 <?php $salario = detallePagoTrabajadorTableClass::VALOR_SALARIO ?>
 <?php $cantHoras = detallePagoTrabajadorTableClass::CANTIDAD_HORAS_EXTRAS ?>
@@ -11,8 +16,31 @@
 <?php $total = detallePagoTrabajadorTableClass::TOTAL_PAGAR ?>
 <?php $pago = detallePagoTrabajadorTableClass::PAGO_TRABAJADOR_ID ?>
 <?php $idPago = pagoTrabajadorTableClass::ID ?>
-<?php $idTrabajador = trabajadorTableClass::ID ?>
+<?php $idTrabajador = detallePagoTrabajadorBaseTableClass::TRABAJADOR_ID ?>
 <?php $nomTrabajador = trabajadorTableClass::NOMBRET ?>
+<?php $idEmpresa = empresaTableClass::ID ?>
+<div class="container container-fluid" id="cuerpo">
+  <article id="derecha">
+    <table class="table table-bordered table-responsive">
+      <tr>
+      <thead>
+      <th colspan="2"><?php echo i18n::__('datos') ?></th>
+      </thead>
+      </tr>
+      <tbody>
+        <?php foreach ($objDPT as $pagoT): ?>
+          <tr>
+            <th>Pago Trabajador</th>      
+            <td><?php echo pagoTrabajadorTableClass::getNamePagoTrabajador($pagoT->$pago) ?></td>
+          </tr>
+
+<?php endforeach; ?>
+      </tbody>
+    </table>
+  </article>
+</div>
+
+
 <div class="container container-fluid" id="cuerpo">
   <header id="">
 
@@ -34,7 +62,7 @@
 
 
     <!-- Modal -->
-           
+
 
 
     <form class="form-signin">        
@@ -43,55 +71,55 @@
         <thead>
           <tr>
             <th>
-              Salario
+              Trabajador
+            </th>
+            <th>
+              Cantidad
             </th>
             <th>
               Horas Extras
             </th>
             <th>
-              V Horas Extras
+              Perdidas
             </th>
             <th>
-              H Perdidas
+              Total
             </th>
             <th>
-              T Pagar
+              Salario
             </th>
             <th>
-              Trabajador
-            </th>
-            <th>
-              <?php echo i18n::__('acciones')?>
+          <?php echo i18n::__('acciones') ?>
             </th>
           </tr>
         </thead>
         <tbody>
             <?php foreach ($objDPT as $key): ?>
             <tr>
-               <td>
-                  <?php echo $key->$salario ?>
-                </td>
-                <td>
-                  <?php echo $key->$cantHoras ?>
-                </td>
-                <td>
-                  <?php echo $key->$valorHoras ?>
-                </td>
-                <td>
-                  <?php echo $key->$horas ?>
-                </td>
-                <td>
-                  <?php echo $key->$total ?>
-                </td>
-                <td>
-                  <?php echo trabajadorTableClass::getNameTrabajador($key->$idTrabajador) ?>
-                 </td>
-                 <th>
-                   <a class="btn btn-warning btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('detallePagoTrabajador', 'ver', array(detallePagoTrabajadorTableClass::ID => $key->$id)) ?>" ><?php echo i18n::__('ver') ?></a>
-                   <a class="btn btn-primary btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('detallePagoTrabajador', 'edit', array(detallePagoTrabajadorTableClass::ID => $key->$id)) ?>"><?php echo i18n::__('modificar') ?></a>
-                 </th>
+              <td>
+                <?php echo trabajadorTableClass::getNameTrabajador($key->$idTrabajador) ?>
+              </td>                          
+              <td>
+                <?php echo $key->$salario ?>
+              </td>
+              <td>
+                <?php echo $key->$cantHoras ?>
+              </td>
+              <td>
+                <?php echo $key->$valorHoras ?>
+              </td>
+              <td>
+                <?php echo $key->$horas ?>
+              </td>
+              <td>
+               <?php echo $key->$total ?>
+              </td>
+              <td>
+                <a class="btn btn-warning btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('detallePagoTrabajador', 'ver', array(detallePagoTrabajadorTableClass::ID => $key->$id)) ?>" ><?php echo i18n::__('ver') ?></a>
+                <a class="btn btn-primary btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('detallePagoTrabajador', 'edit' , array(detallePagoTrabajadorTableClass::ID => $key->$id)) ?>"><?php echo i18n::__('modificar') ?></a>
+              </td>
             </tr>
-<?php endforeach; ?>
+        <?php endforeach; ?>
         </tbody>
       </table>
     </form> 

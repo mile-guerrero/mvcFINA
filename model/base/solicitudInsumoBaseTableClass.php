@@ -12,14 +12,14 @@ class solicitudInsumoBaseTableClass extends tableBaseClass {
  private $id;
  private $createdAt;
  private $updatedAt;
- private $fechaMantenimiento;
+ private $fechaHora;
  private $trabajadorId;
 
 
   const ID = 'id';
   const CREATED_AT = 'created_at';
   const UPDATED_AT = 'updated_at';
-  const FECHA_MANTENIMIENTO = 'fecha_mantenimiento';
+  const FECHA_HORA = 'fecha_hora';
   const TRABAJADOR_ID = 'trabajador_id';
   
   public function getId() {
@@ -34,8 +34,8 @@ class solicitudInsumoBaseTableClass extends tableBaseClass {
     return $this->updatedAt;
   }
 
-  public function getFechaMantenimiento() {
-    return $this->fechaMantenimiento;
+  public function getFechaHora() {
+    return $this->fechaHora;
   }
 
   public function getTrabajadorId() {
@@ -54,8 +54,8 @@ class solicitudInsumoBaseTableClass extends tableBaseClass {
     $this->updatedAt = $updatedAt;
   }
 
-  public function setFechaMantenimiento($fechaMantenimiento) {
-    $this->fechaMantenimiento = $fechaMantenimiento;
+  public function setFechaHora($fechaHora) {
+    $this->fechaHora = $fechaHora;
   }
 
   public function setTrabajadorId($trabajadorId) {
@@ -64,13 +64,14 @@ class solicitudInsumoBaseTableClass extends tableBaseClass {
 
   
   
+  
 
    /**
    * Obtiene el nombre de la tabla
    * @return string
    */
   static public function getNameTable() {
-    return 'orden_servicio';
+    return 'solicitud_insumo';
   }
 
   /**

@@ -22,7 +22,7 @@
   <div class="form-group">
       <label for="<?php echo maquinaTableClass::getNameField(maquinaTableClass::NOMBRE, true) ?>" class="col-sm-2"> <?php echo i18n::__('nom') ?>: </label>     
       <div class="col-sm-10">  
-        <input class="form-control"  value="<?php echo ((isset($objMaquina)== true) ? $objMaquina[0]->$nombre : '') ?>" type="text" name="<?php echo maquinaTableClass::getNameField(maquinaTableClass::NOMBRE, true) ?>" placeholder="Nombre" required>
+        <input class="form-control"  value="<?php echo ((isset($objMaquina)== true) ? $objMaquina[0]->$nombre : '') ?>" type="text" name="<?php echo maquinaTableClass::getNameField(maquinaTableClass::NOMBRE, true) ?>" placeholder="<?php echo i18n::__('nom') ?>" required>
   </div>
 </div>
   
@@ -30,7 +30,7 @@
   <div class="form-group">
       <label for="<?php echo maquinaTableClass::getNameField(maquinaTableClass::DESCRIPCION, true) ?>" class="col-sm-2"> <?php echo i18n::__('des') ?>:  </label>     
       <div class="col-sm-10">
-        <input class="form-control" value="<?php echo ((isset($objMaquina)== true) ? $objMaquina[0]->$descripcion : '') ?>" type="text" name="<?php echo maquinaTableClass::getNameField(maquinaTableClass::DESCRIPCION, true) ?>" placeholder="Descripcion" required>
+        <input class="form-control" value="<?php echo ((isset($objMaquina)== true) ? $objMaquina[0]->$descripcion : '') ?>" type="text" name="<?php echo maquinaTableClass::getNameField(maquinaTableClass::DESCRIPCION, true) ?>" placeholder="<?php echo i18n::__('des') ?>" required>
       </div>
   </div>
   
@@ -39,7 +39,7 @@
       <label for="<?php echo maquinaTableClass::getNameField(maquinaTableClass::TIPO_USO_ID, true) ?>" class="col-sm-2"> <?php echo i18n::__('tipo') ?>:  </label>
       <div class="col-sm-10"> 
         <select class="form-control" id="<?php maquinaTableClass::getNameField(maquinaTableClass::TIPO_USO_ID, TRUE)?>" name="<?php echo maquinaTableClass::getNameField(maquinaTableClass::TIPO_USO_ID, TRUE);?>">
-       <option><?php echo i18n::__('selectTipoUso') ?></option>
+       
        <?php foreach($objMTUM as $TUM):?>
        <option value="<?php echo $TUM->$tipo_usos ?>"><?php echo $TUM->$des_usos?></option>
        <?php endforeach;?>
@@ -51,7 +51,7 @@
       <label for="<?php echo maquinaTableClass::getNameField(maquinaTableClass::ORIGEN_ID, true) ?>" class="col-sm-2">  <?php echo i18n::__('origen') ?>:   </label>
       <div class="col-sm-10"> 
         <select class="form-control" id="<?php maquinaTableClass::getNameField(maquinaTableClass::ORIGEN_ID, TRUE)?>" name="<?php echo maquinaTableClass::getNameField(maquinaTableClass::ORIGEN_ID, TRUE);?>">
-       <option><?php echo i18n::__('selectOrigen') ?></option>
+       
        <?php foreach($objMOM as $O):?>
        <option value="<?php echo $O->$origen_ids?>"><?php echo $O->$des_origen?></option>
        <?php endforeach;?>
@@ -63,7 +63,7 @@
       <label for="<?php echo maquinaTableClass::getNameField(maquinaTableClass::PROVEEDOR_ID, true) ?>" class="col-sm-2">  <?php echo i18n::__('pro') ?>:   </label>
       <div class="col-sm-10"> 
     <select class="form-control" id="<?php maquinaTableClass::getNameField(maquinaTableClass::PROVEEDOR_ID, TRUE)?>" name="<?php echo maquinaTableClass::getNameField(maquinaTableClass::PROVEEDOR_ID, TRUE);?>">
-       <option><?php echo i18n::__('selectProveedor') ?></option>
+       
        <?php foreach($objMP as $P):?>
        <option value="<?php echo $P->$proveedor_ids?>"><?php echo $P->$des_proveedor?></option>
        <?php endforeach;?>

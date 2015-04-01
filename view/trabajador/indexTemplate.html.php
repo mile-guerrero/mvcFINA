@@ -10,6 +10,7 @@
 <?php $idCiudad = ciudadTableClass::ID?>
 <?php $nomCiu = ciudadTableClass::NOMBRE_CIUDAD?>
 <div class="container container-fluid" id="cuerpo">
+  <article id="derecha">
   <header id="">
     <h1><?php echo i18n::__('trabajador') ?></h1>
   </header>
@@ -115,7 +116,6 @@
     </ul> 
   </nav>
   <section id="">
-    <article id=''>
       <form class="form-signin" id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('trabajador', 'deleteSelect') ?>" method="POST">        
         <?php view::includeHandlerMessage()?>
         <br>
@@ -192,14 +192,13 @@
          <?php for($x = 1; $x <= $cntPages; $x++):?>
            <option <?php echo (isset($page) and $page == $x) ? 'selected': '' ?> value="<?php echo $x ?>"><?php echo $x ?></option>
           <?php endfor;?>
-        </select>  <?php echo i18n::__('of') ?> 10
+        </select>  <?php echo i18n::__('de') ?> 10
       </div>
       <form id="frmDelete" action="<?php echo routing::getInstance()->getUrlWeb('trabajador', 'delete') ?>" method="POST">
         <input type="hidden" id="idDelete" name="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::ID, true) ?>">
       </form>
-
+</section>
     </article>
-  </section>
 </div>
 <div class="modal fade" id="myModalDeleteMasivo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">

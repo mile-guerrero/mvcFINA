@@ -9,6 +9,25 @@ use mvc\config\configClass as config;
  * @author Andres Eduardo Bahamon, Elcy Milena Guerrero, Gonzalo Andres Bejarano
  */
 class pagoTrabajadorTableClass extends pagoTrabajadorBaseTableClass {
+  
+   public static function getNamePagoTrabajador($id){
+    try {
+      $sql = 'SELECT ' . pagoTrabajadorTableClass::ID .  ' As id  '
+             . '  FROM ' . pagoTrabajadorTableClass::getNameTable() . '  '
+             . '  WHERE ' . pagoTrabajadorTableClass::ID . ' = :id';
+      $params = array(
+          ':id'  => $id
+      );
+      $answer = model::getInstance()->prepare($sql);
+      $answer->execute($params);
+      $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+      return $answer[0]->id;
+      
+    } catch (Exception $exc) {
+      throw $exc;
+    }
+    
+  }
 
   public static function getTotalPages($lines) {
     try {

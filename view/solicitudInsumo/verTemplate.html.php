@@ -1,18 +1,15 @@
 <?php mvc\view\viewClass::includePartial('default/menuPrincipal') ?>
-<?php
-
-use mvc\routing\routingClass as routing ?>
-<?php
-use mvc\i18n\i18nClass as i18n ?>
-<?php $id = ordenServicioTableClass::ID ?>
-<?php $fecha_mantenimiento = ordenServicioTableClass::FECHA_MANTENIMIENTO ?>
-<?php $created_at = ordenServicioTableClass::CREATED_AT ?>
-<?php $updated_at = ordenServicioTableClass::UPDATED_AT ?>
+<?php use mvc\routing\routingClass as routing ?>
+<?php use mvc\i18n\i18nClass as i18n ?>
+<?php $id = solicitudInsumoTableClass::ID ?>
+<?php $fecha_mantenimiento = solicitudInsumoTableClass::FECHA_HORA ?>
+<?php $created_at = solicitudInsumoTableClass::CREATED_AT ?>
+<?php $updated_at = solicitudInsumoTableClass::UPDATED_AT ?>
 <?php $nombret = trabajadorTableClass::NOMBRET ?>
 <div class="container container-fluid" id="cuerpo">
   <header id="">
 
-    <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('ordenServicio', 'index') ?>" > <?php echo i18n::__('atras') ?></a>
+    <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('solicitudInsumo', 'index') ?>" > <?php echo i18n::__('atras') ?></a>
 
   </header>
   <nav id="">
@@ -26,9 +23,9 @@ use mvc\i18n\i18nClass as i18n ?>
         </thead>
         </tr>
         <tbody>
-<?php foreach ($objOS as $key): ?>
+<?php foreach ($objS as $key): ?>
             <tr>
-              <th>Fecha Mantenimiento</th>      
+              <th>Fecha Hora</th>      
               <th><?php echo $key->$fecha_mantenimiento ?></th>
             </tr>
             <tr> 
@@ -40,7 +37,7 @@ use mvc\i18n\i18nClass as i18n ?>
               <th><?php echo $key->$updated_at ?></th>
             </tr>                    
 <?php endforeach; ?>
-<?php foreach ($objOST as $tra): ?>
+<?php foreach ($objST as $tra): ?>
           <tr>
           <th>nombre</th>      
           <th><?php echo $tra->$nombret ?></th>

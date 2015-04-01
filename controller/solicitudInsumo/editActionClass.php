@@ -18,20 +18,20 @@ class editActionClass extends controllerClass implements controllerActionInterfa
   public function execute() {
     try {
    
-      if (request::getInstance()->hasRequest(ordenServicioTableClass::ID)) {
+      if (request::getInstance()->hasRequest(solicitudInsumoTableClass::ID)) {
         $fields = array(
-            ordenServicioTableClass::ID,
-            ordenServicioTableClass::FECHA_MANTENIMIENTO,
-            ordenServicioTableClass::TRABAJADOR_ID
+            solicitudInsumoTableClass::ID,
+            solicitudInsumoTableClass::FECHA_HORA,
+            solicitudInsumoTableClass::TRABAJADOR_ID
         );
         $where = array(
-            ordenServicioTableClass::ID => request::getInstance()->getRequest(ordenServicioTableClass::ID)
+            solicitudInsumoTableClass::ID => request::getInstance()->getRequest(solicitudInsumoTableClass::ID)
         );
-        $this->objOS = ordenServicioTableClass::getAll($fields, null, null, null, null, null, $where);
-        $this->defineView('edit', 'ordenServicio', session::getInstance()->getFormatOutput());
+        $this->objOS = solicitudInsumoTableClass::getAll($fields, null, null, null, null, null, $where);
+        $this->defineView('edit', 'solicitudInsumo', session::getInstance()->getFormatOutput());
      
       }else{
-        routing::getInstance()->redirect('ordenServicio', 'index');
+        routing::getInstance()->redirect('solicitudInsumo', 'index');
       }
 
     } catch (PDOException $exc) {

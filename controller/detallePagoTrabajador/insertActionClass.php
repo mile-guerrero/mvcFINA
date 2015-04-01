@@ -34,7 +34,14 @@ class insertActionClass extends controllerClass implements controllerActionInter
             pagoTrabajadorTableClass::FECHA_INICIAL
         );
         $this->objPT = pagoTrabajadorTableClass::getAll($fields, false, $orderBy, 'ASC');
-            $this->mensaje ="";
+           
+        $fields = array(
+                pagoTrabajadorTableClass::ID
+        );
+    
+        $this->objDPTT = pagoTrabajadorTableClass::getAll($fields, false);
+           
+        $this->mensaje ="";
             $this->defineView('insert', 'detallePagoTrabajador', session::getInstance()->getFormatOutput());
         } catch (PDOException $exc) {
             echo $exc->getMessage();

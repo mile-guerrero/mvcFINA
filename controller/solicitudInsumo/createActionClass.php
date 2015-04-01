@@ -19,21 +19,21 @@ class createActionClass extends controllerClass implements controllerActionInter
     try {
       if (request::getInstance()->isMethod('POST')) {
 
-        $fecha = request::getInstance()->getPost(ordenServicioTableClass::getNameField(ordenServicioTableClass::FECHA_MANTENIMIENTO, true));
-        $trabajador = request::getInstance()->getPost(ordenServicioTableClass::getNameField(ordenServicioTableClass::TRABAJADOR_ID, true));
+        $fecha = request::getInstance()->getPost(solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::FECHA_HORA, true));
+        $trabajador = request::getInstance()->getPost(solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::TRABAJADOR_ID, true));
 
 //        if (strlen($nombre) > credencialTableClass::NOMBRE_LENGTH) {
 //          throw new PDOException(i18n::__(00001, null, 'errors', array(':longitud' => credencialTableClass::NOMBRE_LENGTH)), 00001);
 //        }
 
         $data = array(
-            ordenServicioTableClass::FECHA_MANTENIMIENTO => $fecha,
-            ordenServicioTableClass::TRABAJADOR_ID => $trabajador
+            solicitudInsumoTableClass::FECHA_HORA => $fecha,
+            solicitudInsumoTableClass::TRABAJADOR_ID => $trabajador
         );
-        ordenServicioTableClass::insert($data);
-        routing::getInstance()->redirect('ordenServicio', 'index');
+        solicitudInsumoTableClass::insert($data);
+        routing::getInstance()->redirect('solicitudInsumo', 'index');
       } else {
-        routing::getInstance()->redirect('ordenServicio', 'index');
+        routing::getInstance()->redirect('solicitudInsumo', 'index');
       }
     } catch (PDOException $exc) {
       echo $exc->getMessage();

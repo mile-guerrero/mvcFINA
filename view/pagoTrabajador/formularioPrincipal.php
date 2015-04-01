@@ -33,7 +33,7 @@
       <label for="" class="col-sm-2"> <?php echo i18n::__('empresa') ?> </label>
       <div class="col-sm-10"> 
         <select class="form-control" id="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::EMPRESA_ID, true) ?>" name="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::EMPRESA_ID, true) ?>">
-          <option><?php echo i18n::__('selectEmpresa')?></option>
+          
 <?php foreach ($objEmpresa as $empresa): ?>
             <option value="<?php echo $empresa->$idEmpresa ?>"><?php echo $empresa->$nomEmpresa ?></option>
 <?php endforeach; ?>

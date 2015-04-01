@@ -6,6 +6,6 @@
   <h2 class="form-signin-heading">
     <?php echo i18n::__('editar credencial') ?> 
   </h2>
-   <?php view::includePartial('detallePagoTrabajador/formularioPrincipal', array('objDPT' => $objDPT, 'objPT' => $objPT, 'objTrabajador' => $objTrabajador)) ?>
+   <?php view::includePartial('detallePagoTrabajador/formularioPrincipal', array('objDPTT' => $objDPTT,'objDPT' => $objDPT, 'objPT' => $objPT, 'objTrabajador' => $objTrabajador)) ?>
 </div>
   

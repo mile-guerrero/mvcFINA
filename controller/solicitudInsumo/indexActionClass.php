@@ -18,16 +18,16 @@ class indexActionClass extends controllerClass implements controllerActionInterf
   public function execute() {
     try {
       $fields = array(
-          ordenServicioTableClass::ID,
-          ordenServicioTableClass::FECHA_MANTENIMIENTO,
-          ordenServicioTableClass::TRABAJADOR_ID,
-		  ordenServicioTableClass::CREATED_AT,
-          ordenServicioTableClass::UPDATED_AT
+          solicitudInsumoTableClass::ID,
+          solicitudInsumoTableClass::FECHA_HORA,
+          solicitudInsumoTableClass::TRABAJADOR_ID,
+		  solicitudInsumoTableClass::CREATED_AT,
+          solicitudInsumoTableClass::UPDATED_AT
       );
       $orderBy = array(
-         ordenServicioTableClass::ID
+         solicitudInsumoTableClass::ID
       );
-      $this->objOS = ordenServicioTableClass::getAll($fields,false, $orderBy);
+      $this->objS = solicitudInsumoTableClass::getAll($fields,false, $orderBy);
       
        $fields = array(
       trabajadorTableClass::ID,
@@ -36,9 +36,9 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       $orderBy = array(
       trabajadorTableClass::NOMBRET   
       );      
-      $this->objOST = trabajadorTableClass::getAll($fields, true, $orderBy, 'ASC');
+      $this->objST = trabajadorTableClass::getAll($fields, true, $orderBy, 'ASC');
     
-      $this->defineView('index', 'ordenServicio', session::getInstance()->getFormatOutput());
+      $this->defineView('index', 'solicitudInsumo', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
       echo $exc->getMessage();
       echo '<br>';

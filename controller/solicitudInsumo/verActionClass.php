@@ -18,16 +18,16 @@ class verActionClass extends controllerClass implements controllerActionInterfac
   public function execute() {
     try {
       $fields = array(
-          ordenServicioTableClass::ID,
-          ordenServicioTableClass::FECHA_MANTENIMIENTO,
-          ordenServicioTableClass::CREATED_AT,
-          ordenServicioTableClass::UPDATED_AT
+          solicitudInsumoTableClass::ID,
+          solicitudInsumoTableClass::FECHA_HORA,
+          solicitudInsumoTableClass::CREATED_AT,
+          solicitudInsumoTableClass::UPDATED_AT
       );
 
       $where = array(
-          ordenServicioTableClass::ID => request::getInstance()->getRequest(ordenServicioTableClass::ID)
+          solicitudInsumoTableClass::ID => request::getInstance()->getRequest(solicitudInsumoTableClass::ID)
       );
-      $this->objOS = ordenServicioTableClass::getAll($fields,false, null, null, null, null, null, $where);
+      $this->objS = solicitudInsumoTableClass::getAll($fields,false, null, null, null, null, null, $where);
       
      $fields = array(     
       trabajadorTableClass::ID, 
@@ -39,9 +39,9 @@ class verActionClass extends controllerClass implements controllerActionInterfac
        $where = array(
             trabajadorTableClass::ID => request::getInstance()->getRequest(trabajadorTableClass::ID)
         );
-      $this->objOST = trabajadorTableClass::getAll($fields, true, $orderBy, 'ASC',null,null,$where);
+      $this->objOST = trabajadorTableClass::getAll($fields, true, $orderBy, 'ASC', null, null,$where);
 
-      $this->defineView('ver', 'ordenServicio', session::getInstance()->getFormatOutput());
+      $this->defineView('ver', 'solicitudInsumo', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
       echo $exc->getMessage();
       echo '<br>';

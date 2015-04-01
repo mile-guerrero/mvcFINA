@@ -13,14 +13,14 @@
   <div class="form-group">
       <label for="<?php echo usuariotableClass::getNameField(usuarioTableClass::USUARIO, true) ?>" class="col-sm-2"> <?php echo i18n::__('user') ?>:</label>     
       <div class="col-sm-10">
-        <input class="form-control" value="<?php echo ((isset($objUsuarios)==true) ? $objUsuarios[0]->$usuario : '') ?>"  type="text" name="<?php echo usuarioTableClass::getNameField(usuarioTableClass::USUARIO, true) ?>" placeholder="Usuario" required>
+        <input class="form-control" value="<?php echo ((isset($objUsuarios)==true) ? $objUsuarios[0]->$usuario : '') ?>"  type="text" name="<?php echo usuarioTableClass::getNameField(usuarioTableClass::USUARIO, true) ?>" placeholder="<?php echo i18n::__('user') ?>" required>
      </div>
   </div>  
   
   <div class="form-group">
       <label for="<?php echo usuariotableClass::getNameField(usuarioTableClass::PASSWORD, true) ?>" class="col-sm-2"> <?php echo i18n::__('pass') ?>:</label>     
       <div class="col-sm-10"> 
-        <input class="form-control" value="<?php echo ((isset($objUsuarios)==true) ? $objUsuarios[0]->$password : '') ?>" type="password" name="<?php echo usuarioTableClass::getNameField(usuarioTableClass::PASSWORD, true) ?>" placeholder="Password" required>
+        <input class="form-control" value="<?php echo ((isset($objUsuarios)==true) ? $objUsuarios[0]->$password : '') ?>" type="password" name="<?php echo usuarioTableClass::getNameField(usuarioTableClass::PASSWORD, true) ?>" placeholder="<?php echo i18n::__('pass') ?>" required>
       </div>
   </div>    
     

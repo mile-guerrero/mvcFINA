@@ -27,7 +27,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
           $where[pagoTrabajadorTableClass::EMPRESA_ID] = $filter['empresa'];
         }
         if (isset($filter['fechaIni']) and $filter['fechaIni'] !== null and $filter['fechaIni'] !== '' and (isset($filter['fechaFin']) and $filter['fechaFin'] !== null and $filter['fechaFin'] !== '')) {
-          $where[trabajadorTableClass::CREATED_AT] = array(
+          $where[pagoTrabajadorTableClass::CREATED_AT] = array(
           date(config::getFormatTimestamp(), strtotime($filter['fechaIni'] . ' 00:00:00')),
           date(config::getFormatTimestamp(), strtotime($filter['fechaFin'] . ' 23:59:59'))
           );
