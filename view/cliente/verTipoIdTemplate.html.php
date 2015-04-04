@@ -13,7 +13,7 @@
     <section id="contenido">
     </section>
     <article id='derecha'>
-       <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('cliente', 'indexTipoId') ?>" >Ir Paguina Anterior</a>
+       <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('cliente', 'indexTipoId') ?>" ><?php echo i18n::__('atras') ?></a>
    
       <table class="table table-bordered table-responsive">
           <tr>

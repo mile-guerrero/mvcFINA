@@ -365,4 +365,28 @@ detalleSolicitudInsumo:
   ver:
     security: true
   report:
-    security: true     
+    security: true 
+#-----------------------trabajador-------------------    
+trabajador:
+  index:
+    security: true
+    credentials:
+      - [admin, cajero]
+      - [usuario, cajero]
+      - [consultor, cajero]
+  insert:
+    security: true
+  create:
+    security: true
+  edit: 
+    security: true
+  update:
+    security: true
+  delete:
+    security: true
+  deleteSelect:  
+    security: true
+  ver:
+    security: true
+  report:
+    security: true    

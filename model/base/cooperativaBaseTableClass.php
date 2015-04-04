@@ -3,102 +3,114 @@
 use mvc\model\table\tableBaseClass;
 
 /**
- * Description of usuarioBaseTableClass
+ * Description of cooperativaClass
  *
  * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
  */
-class datoUsuarioBaseTableClass extends tableBaseClass {
+class cooperativaBaseTableClass extends tableBaseClass {
+  
+  private $id;
+  private $nombre;
+  private $descripcion;
+  private $direccion;
+  private $telefono;
+  private $idCiudad;
+  private $createdAt;
+  private $updatedAt;
+  private $deletedAt;
 
- private $id;
- private $createdAt;
- private $updatedAt;
- private $deletedAt;
- private $usuarioId;
- private $cedula;
- private $nombre;
- private $apellido;
- 
   const ID = 'id';
-  const CREATED_AT = 'created_at';
-  const UPDATED_AT = 'update_at';
-  const DELETED_AT = 'delete_at';
-  const USUARIO_ID= 'usuario_id';
-  const CEDULA = 'cedula';
-  const CEDULA_LENGTH = 11;
   const NOMBRE = 'nombre';
   const NOMBRE_LENGTH = 80;
-  const APELLIDO = 'apellido';
-  const APELLIDO_LENGTH = 80;
-  public function getId() {
+  const DESCRIPCION = 'descripcion';
+  const DESCRIPCION_LENGTH = 80;
+  const DIRECCION = 'direccion';
+  const TELEFONO = 'telefono';
+  const ID_CIUDAD = 'id_ciudad';
+  const CREATED_AT = 'created_at';
+  const UPDATED_AT = 'updated_at';
+  const DELETED_AT = 'deleted_at';
+
+  
+  public function get_id() {
     return $this->id;
   }
 
-  public function getCreatedAt() {
-    return $this->createdAt;
-  }
-
-  public function getUpdatedAt() {
-    return $this->updatedAt;
-  }
-
-  public function getDeletedAt() {
-    return $this->deletedAt;
-  }
-
-  public function getUsuarioId() {
-    return $this->usuarioId;
-  }
-
-  public function getCedula() {
-    return $this->cedula;
-  }
-
-  public function getNombre() {
+  public function get_nombre() {
     return $this->nombre;
   }
 
-  public function getApellido() {
-    return $this->apellido;
+  public function get_descripcion() {
+    return $this->descripcion;
   }
 
-  public function setId($id) {
+  public function get_direccion() {
+    return $this->direccion;
+  }
+
+  public function get_telefono() {
+    return $this->telefono;
+  }
+
+  public function get_idCiudad() {
+    return $this->idCiudad;
+  }
+
+  public function get_createdAt() {
+    return $this->createdAt;
+  }
+
+  public function get_updatedAt() {
+    return $this->updatedAt;
+  }
+
+  public function get_deletedAt() {
+    return $this->deletedAt;
+  }
+
+  public function set_id($id) {
     $this->id = $id;
   }
 
-  public function setCreatedAt($createdAt) {
-    $this->createdAt = $createdAt;
-  }
-
-  public function setUpdatedAt($updatedAt) {
-    $this->updatedAt = $updatedAt;
-  }
-
-  public function setDeletedAt($deletedAt) {
-    $this->deletedAt = $deletedAt;
-  }
-
-  public function setUsuarioId($usuarioId) {
-    $this->usuarioId = $usuarioId;
-  }
-
-  public function setCedula($cedula) {
-    $this->cedula = $cedula;
-  }
-
-  public function setNombre($nombre) {
+  public function set_nombre($nombre) {
     $this->nombre = $nombre;
   }
 
-  public function setApellido($apellido) {
-    $this->apellido = $apellido;
+  public function set_descripcion($descripcion) {
+    $this->descripcion = $descripcion;
   }
 
-    /**
+  public function set_direccion($direccion) {
+    $this->direccion = $direccion;
+  }
+
+  public function set_telefono($telefono) {
+    $this->telefono = $telefono;
+  }
+
+  public function set_idCiudad($idCiudad) {
+    $this->idCiudad = $idCiudad;
+  }
+
+  public function set_createdAt($createdAt) {
+    $this->createdAt = $createdAt;
+  }
+
+  public function set_updatedAt($updatedAt) {
+    $this->updatedAt = $updatedAt;
+  }
+
+  public function set_deletedAt($deletedAt) {
+    $this->deletedAt = $deletedAt;
+  }
+
+      
+  /**
    * Obtiene el nombre de la tabla
    * @return string
    */
   static public function getNameTable() {
-    return 'dato_usuario';
+    return 'cooperativa';
   }
 
   /**
@@ -124,8 +136,8 @@ class datoUsuarioBaseTableClass extends tableBaseClass {
    * borrado físico [por defecto] de un registro en una tabla de la base de datos
    * @return \PDOException|boolean
    */
-  public static function delete($ids, $deletedLogical = false, $table = null) {
-    return parent::delete(self::getNameTable(), $ids, $deletedLogical);
+  public static function delete($ids, $deletedLogical = true, $table = null) {
+    return parent::delete($ids, $deletedLogical, self::getNameTable());
   }
 
   /**
@@ -157,8 +169,8 @@ class datoUsuarioBaseTableClass extends tableBaseClass {
    * variables publica los nombres de las columnas de la consulta o una
    * instancia de \PDOException en caso de fracaso.
    */
-  public static function getAll($fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null, $table = null) {
-    return parent::getAll(self::getNameTable(), $fields, $deletedLogical, $orderBy, $order, $limit, $offset);
+  public static function getAll($fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null,$where = NULL, $table = null) {
+    return parent::getAll(self::getNameTable(), $fields, $deletedLogical, $orderBy, $order, $limit, $offset, $where, $table);
   }
 
   /**

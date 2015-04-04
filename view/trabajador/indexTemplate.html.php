@@ -10,17 +10,26 @@
 <?php $idCiudad = ciudadTableClass::ID?>
 <?php $nomCiu = ciudadTableClass::NOMBRE_CIUDAD?>
 <div class="container container-fluid" id="cuerpo">
+ <header id="">
+   
+  </header>
+  <nav id="barramenu">
+    
+  </nav>
+  <section id="">
+    
+  </section>
   <article id="derecha">
   <header id="">
     <h1><?php echo i18n::__('trabajador') ?></h1>
   </header>
   <nav id="">
     <ul>
-      <a class="btn btn-success btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('trabajador', 'insert') ?>"><?php echo i18n::__('nuevo') ?></a>
-      <a href="javascript:eliminarMasivo()" class="btn btn-danger btn-xs" id="btnDeleteMasivo"><?php echo i18n::__('eliminar en masa') ?></a>             
-      <button type="button" class="btn btn-primary btn btn-xs" data-toggle="modal" data-target="#myModalFilters"><?php echo i18n::__('filtros') ?></button>
-      <a href="<?php echo routing::getInstance()->getUrlWeb('trabajador', 'index') ?>" class="btn btn-default active btn btn-xs"><?php echo i18n::__('eFiltros') ?></a>
-      <button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#myModalReport" ><?php echo i18n::__('informe') ?></button>
+      <a class="btn btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('trabajador', 'insert') ?>"><img class="img-responsive"  id="imgnuevo" src="" alt=" "><?php echo i18n::__('nuevo') ?></a>
+      <a href="javascript:eliminarMasivo()" class="btn  btn-xs" id="btnDeleteMasivo"><img class="img-responsive"  id="imgmasivo" src="" alt=" "><?php echo i18n::__('eliminar en masa') ?></a>             
+      <a type="button" class="btn btn-xs" data-toggle="modal" data-target="#myModalFilters"><img class="img-responsive"  id="imgfiltros" src="" alt=" "><?php echo i18n::__('filtros') ?></a>
+      <a href="<?php echo routing::getInstance()->getUrlWeb('trabajador', 'index') ?>" class="btn btn-xs"><img class="img-responsive"  id="imgelifiltro" src="" alt=" "><?php echo i18n::__('eFiltros') ?></a>
+      <a type="button" class="btn  btn-xs" data-toggle="modal" data-target="#myModalReport" ><img class="img-responsive"  id="imgreporte" src="" alt=" "><?php echo i18n::__('informe') ?></a>
       
       <!---Informes--->
        <div class="modal fade" id="myModalReport" tabindex="-1" role="modal" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -192,7 +201,7 @@
          <?php for($x = 1; $x <= $cntPages; $x++):?>
            <option <?php echo (isset($page) and $page == $x) ? 'selected': '' ?> value="<?php echo $x ?>"><?php echo $x ?></option>
           <?php endfor;?>
-        </select>  <?php echo i18n::__('de') ?> 10
+        </select>  <?php echo i18n::__('de') ?> <?php echo $cntPages ?>
       </div>
       <form id="frmDelete" action="<?php echo routing::getInstance()->getUrlWeb('trabajador', 'delete') ?>" method="POST">
         <input type="hidden" id="idDelete" name="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::ID, true) ?>">
