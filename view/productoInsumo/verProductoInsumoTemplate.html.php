@@ -47,7 +47,7 @@
                   <?php endforeach; ?>
                   <?php foreach ($objPI as $key): ?>
                   <tr> 
-                   <th><?php echo i18n::__('unidadM') ?></th>                   
+                   <th><?php echo i18n::__('unidad') ?></th>                   
                    <td><?php echo unidadMedidaTableClass::getNameUnidadMedida($key->$unidad) ?></td>
                        </tr>
                     <?php endforeach; ?>

@@ -7,6 +7,7 @@ dictionary:
     informe:              Informes
     pass:                 Contraseña
     editar usuario:       Editar Usuario
+    editar proveedor:     Editar Proveedor
     nuevo usuario:        Nuevo Usuario
     register:             Registrar
     nom:                  Nombre
@@ -21,7 +22,7 @@ dictionary:
     product:              Producto
     producto:             Codigo Producto Insumo
     editar tipo producto: Editar Tipo Insumo
-    tipoProdcuto:         Tipo Producto
+    tipoProducto:         Tipo Producto
     cantidad:             Cantidad
 #   maquina:              codigoMaquina
     editar maquina:       Editar Maquina
@@ -53,7 +54,7 @@ dictionary:
     tamano:               Tamaño
     ubicacion:            Ubicacion
     iva:                  Iva
-    eliminar en masa:     Eliminar casillas Selecionadas
+    eliminar en masa:     Eliminar Seleccion
     nuevo:                Nuevo
     cliente:              Cliente
     editar cliente:       Editar Cliente
@@ -110,6 +111,7 @@ dictionary:
     empresa:              Empresa
     selectEmpresa:        Seleccione la Empresa
     selectProveedor:      Seleccione el Proveedor
+    selectTPI:            Seleccione el tipo de insumo
     selectCiudad:         Seleccione la Ciudad
     selectOrigen:         Seleccione el Origen
     selectTipoUso:        Seleccione el Tipo de Uso

@@ -40,10 +40,10 @@
   <div class="form-group">
       <label for="<?php echo loteTableClass::getNameField(loteTableClass::ID_CIUDAD, true) ?>" class="col-sm-2"> <?php echo i18n::__('idCiudad') ?>: </label>
       <div class="col-sm-10">       
-<select class="form-control" id="<?php loteTableClass::getNameField(loteTableClass::ID_CIUDAD, TRUE)?>" name="<?php echo loteTableClass::getNameField(loteTableClass::ID_CIUDAD, TRUE);?>">
+<select class="form-control" id="<?php loteTableClass::getNameField(loteTableClass::ID, TRUE)?>" name="<?php echo loteTableClass::getNameField(loteTableClass::ID_CIUDAD, TRUE);?>">
        <option><?php echo i18n::__('selectCiudad') ?></option>
        <?php foreach($objLC as $C):?>
-       <option value="<?php echo $C->$idCiudaddes?>"><?php echo $C->$descripcionciudad?></option>
+       <option <?php echo (isset($objLote[0]->$idCiudad) === true and $objLote[0]->$idCiudad == $C->$idCiudaddes) ? 'selected' : '' ?>  value="<?php echo $C->$idCiudaddes?>"><?php echo $C->$descripcionciudad?></option>
        <?php endforeach;?>
    </select>
       </div> 

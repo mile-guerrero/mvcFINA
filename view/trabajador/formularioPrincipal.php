@@ -11,6 +11,7 @@
 <?php $ciudadId = trabajadorTableClass::ID_CIUDAD ?>
 <?php $idCiudad = ciudadTableClass::ID?>
 <?php $nomCiu = ciudadTableClass::NOMBRE_CIUDAD?>
+<?php $cre = trabajadorTableClass::ID_CREDENCIAL ?>
 <?php $idCredencial = credencialTableClass::ID?>
 <?php $nomCredencial = credencialTableClass::NOMBRE?>
 <div class="container container-fluid" id="cuerpo">
@@ -58,10 +59,10 @@
     <div class="form-group">
       <label for="" class="col-sm-2"> <?php echo i18n::__('idTipo') ?> </label>
       <div class="col-sm-10"> 
-        <select class="form-control" id="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::ID_TIPO_ID, true) ?>" name="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::ID_TIPO_ID, true) ?>">
-        
+        <select class="form-control" id="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::ID, true) ?>" name="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::ID_TIPO_ID, true) ?>">
+<option><?php echo i18n::__('selectTipoId') ?></option>        
 <?php foreach ($objCTI as $tipoId): ?>
-            <option value="<?php echo $tipoId->$idTipoId ?>"><?php echo $tipoId->$desc ?></option>
+            <option <?php echo (isset($objTrabajador[0]->$idTipo) === true and $objTrabajador[0]->$idTipo == $tipoId->$idTipoId) ? 'selected' : '' ?> value="<?php echo $tipoId->$idTipoId ?>"><?php echo $tipoId->$desc ?></option>
 <?php endforeach; ?>
         </select> 
       </div> 
@@ -70,10 +71,10 @@
       <div class="form-group">
          <label for="" class="col-sm-2"> <?php echo i18n::__('idCiudad') ?> </label>
          <div class="col-sm-10">
-          <select class="form-control" id="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::ID_CIUDAD, true)?>" name="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::ID_CIUDAD, true) ?>">
-            
+          <select class="form-control" id="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::ID, true)?>" name="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::ID_CIUDAD, true) ?>">
+ <option><?php echo i18n::__('selectCiudad') ?></option>            
 <?php foreach ($objCC as $ciudad): ?>
-            <option value="<?php echo $ciudad->$idCiudad ?>"><?php echo $ciudad->$nomCiu ?></option>
+            <option <?php echo (isset($objTrabajador[0]->$ciudadId) === true and  $objTrabajador[0]->$ciudadId == $ciudad->$idCiudad) ? 'selected' : '' ?> value="<?php echo $ciudad->$idCiudad ?>"><?php echo $ciudad->$nomCiu ?></option>
 <?php endforeach; ?>
           </select>
       </div>
@@ -82,10 +83,10 @@
     <div class="form-group">
          <label for="" class="col-sm-2"> id credencial </label>
          <div class="col-sm-10">
-          <select class="form-control" id="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::ID_CREDENCIAL, true)?>" name="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::ID_CREDENCIAL, true) ?>">
-            
+          <select class="form-control" id="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::ID, true)?>" name="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::ID_CREDENCIAL, true) ?>">
+   <option><?php echo i18n::__('selectCredencial') ?></option>         
 <?php foreach ($objCredencial as $credencial): ?>
-            <option value="<?php echo $credencial->$idCredencial ?>"><?php echo $credencial->$nomCredencial ?></option>
+            <option <?php echo (isset($objTrabajador[0]->$cre) === true and $objTrabajador[0]->$cre == $credencial->$idCredencial) ? 'selected' : '' ?> value="<?php echo $credencial->$idCredencial ?>"><?php echo $credencial->$nomCredencial ?></option>
 <?php endforeach; ?>
           </select>
       </div>

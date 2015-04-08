@@ -6,6 +6,7 @@
 <?php $direccion = proveedorTableClass::DIRECCION ?>
 <?php $telefono = proveedorTableClass::TELEFONO ?>
 <?php $ciudadId = proveedorTableClass::ID_CIUDAD ?>
+<?php $email = proveedorTableClass::EMAIL ?>
 <?php $idCiudad = ciudadTableClass::ID?>
 <?php $nomCiu = ciudadTableClass::NOMBRE_CIUDAD?>
 <div class="container container-fluid" id="cuerpo">
@@ -42,14 +43,21 @@
         <input class="form-control" value="<?php echo ((isset($objProveedor) == true) ? $objProveedor[0]->$telefono : '') ?>" type="number" name="<?php echo proveedorTableClass::getNameField(proveedorTableClass::TELEFONO, true) ?>" placeholder="<?php echo i18n::__('tel') ?>" required>
       </div>
     </div>  
-      
+    
+    <div class="form-group">
+      <label for="<?php echo proveedorTableClass::getNameField(proveedorTableClass::EMAIL, true) ?>" class="col-sm-2"> <?php echo i18n::__('email') ?>:</label>     
+      <div class="col-sm-10">            
+        <input class="form-control" value="<?php echo ((isset($objProveedor) == true) ? $objProveedor[0]->$email : '') ?>" type="text" name="<?php echo proveedorTableClass::getNameField(proveedorTableClass::EMAIL, true) ?>" placeholder="<?php echo i18n::__('email') ?>" required>
+      </div>
+    </div> 
+    
       <div class="form-group">
          <label for="" class="col-sm-2"> <?php echo i18n::__('idCiudad') ?> </label>
          <div class="col-sm-10">
-           <select class="form-control" id="<?php echo proveedorTableClass::getNameField(proveedorTableClass::ID_CIUDAD, true)?>" name="<?php echo proveedorTableClass::getNameField(proveedorTableClass::ID_CIUDAD, true) ?>">
-            
+           <select class="form-control" id="<?php echo proveedorTableClass::getNameField(proveedorTableClass::ID, true)?>" name="<?php echo proveedorTableClass::getNameField(proveedorTableClass::ID_CIUDAD, true) ?>">
+            <option><?php echo i18n::__('selectCiudad') ?></option>
 <?php foreach ($objCiudad as $ciudad): ?>
-            <option value="<?php echo $ciudad->$idCiudad ?>"><?php echo $ciudad->$nomCiu ?></option>
+            <option <?php echo (isset($objProveedor[0]->$ciudadId) === true and $objProveedor[0]->$ciudadId == $ciudad->$idCiudad) ? 'selected' : '' ?> value="<?php echo $ciudad->$idCiudad ?>"><?php echo $ciudad->$nomCiu ?></option>
 <?php endforeach; ?>
           </select>
       </div>

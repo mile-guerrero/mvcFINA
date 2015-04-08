@@ -12,15 +12,16 @@
 <?php $nombreCiudad = proveedorTableClass::ID_CIUDAD ?>
 
 <div class="container container-fluid" id="cuerpo">
-  <header id="">
+  <header id="encabezado">
 
+   
   </header>
-  <br>
-  <nav id="">
+  <nav id="barramenu">
   </nav>
   <section id="contenido">
-     </section>
-    <article id="derecha">
+    
+  </section>
+    <article id='derecha'>
       
     <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('maquina', 'indexProveedor') ?>" > <?php echo i18n::__('atras') ?></a>
 
@@ -32,11 +33,11 @@
         </tr>
         <tbody>
 <?php foreach ($objProveedor as $key): ?>
-            <tr>
-              <th><?php echo i18n::__('nom') ?></th>      
-              <td><?php echo $key->$nom ?></td>
-            </tr>
-            <tr>
+          <tr>
+            <th><?php echo i18n::__('nom') ?></th>      
+            <td><?php echo $key->$nom ?></td>
+          </tr>
+          <tr>
           <th><?php echo i18n::__('apell') ?></th>      
           <td><?php echo $key->$apellido ?></td>
           </tr>
@@ -60,19 +61,17 @@
             <th>fecha creacion</th>                   
             <td><?php echo $key->$created_at ?></td>
           </tr>
-
-        <?php endforeach; ?>
-
-
-<?php foreach ($objProveedor as $ciudad): ?>
+          
+            <?php endforeach; ?>
+          <?php foreach ($objProveedor as $ciudad): ?>
           <tr>
-          <th>Ciudad</th>      
+          <th><?php echo i18n::__('ciudad') ?></th>      
           <td><?php echo ciudadTableClass::getNameCiudad($ciudad->$nombreCiudad) ?></td>
           </tr>
 <?php endforeach; ?>
 
 
-        </tbody>
+         </tbody>
       </table>
 
     </article>
