@@ -38,7 +38,7 @@
       <div class="modal-body">
         <form class="form-horizontal" id="reportForm" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('cliente', 'reportCliente')?>">
           <div class="form-group">
-    <label for="reportNombre" class="col-sm-2 control-label"><?php echo i18n::__('name') ?></label>
+    <label for="reportNombre" class="col-sm-2 control-label"><?php echo i18n::__('nom') ?></label>
     <div class="col-sm-10">
       <input type="text" class="form-control" id="reportNombre" name="report[nombre]" placeholder="Nombre">
     </div>
@@ -184,7 +184,7 @@
         <?php echo i18n::__('Desea  eliminar este campo') ?> <?php echo $key->$ubi ?><?php echo i18n::__('?') ?>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary btn-xs" data-dismiss="modal"><?php echo i18n::__('cerrar') ?></button>
+        <button type="button" class="btn btn-default btn-xs" data-dismiss="modal"><?php echo i18n::__('cerrar') ?></button>
         <button type="button" class="btn btn-danger btn-xs" onclick="eliminar(<?php echo $key->$id ?>,'<?php echo loteTableClass::getNameField(loteTableClass::ID, true) ?>','<?php echo routing::getInstance()->getUrlWeb('lote', 'deleteLote') ?>')"><?php echo i18n::__('eliminar') ?></button>
       </div>
     </div>

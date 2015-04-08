@@ -42,7 +42,7 @@
       <div class="modal-body">
         <form class="form-horizontal" id="reportForm" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('trabajador', 'reportTrabajador')?>">
           <div class="form-group">
-    <label for="reportNombre" class="col-sm-2 control-label"><?php echo i18n::__('name') ?></label>
+    <label for="reportNombre" class="col-sm-2 control-label"><?php echo i18n::__('nom') ?></label>
     <div class="col-sm-10">
       <input type="text" class="form-control" id="reportNombre" name="report[nombre]" placeholder="Nombre">
     </div>
@@ -88,7 +88,7 @@
       <div class="modal-body">
         <form class="form-horizontal" id="filterForm" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('trabajador', 'index')?>">
           <div class="form-group">
-    <label for="filterNombre" class="col-sm-2 control-label"><?php echo i18n::__('name') ?></label>
+    <label for="filterNombre" class="col-sm-2 control-label"><?php echo i18n::__('nom') ?></label>
     <div class="col-sm-10">
       <input type="text" class="form-control" id="filterNombre" name="filter[nombre]" placeholder="Nombre">
     </div>

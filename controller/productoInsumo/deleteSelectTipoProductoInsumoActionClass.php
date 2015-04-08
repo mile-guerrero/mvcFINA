@@ -13,7 +13,7 @@ use mvc\i18n\i18nClass as i18n;
  *
  * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
  */
-class deleteClienteSelectActionClass extends controllerClass implements controllerActionInterface {
+class deleteSelectTipoProductoInsumoActionClass extends controllerClass implements controllerActionInterface {
 
   public function execute() {
     try {
@@ -21,15 +21,16 @@ class deleteClienteSelectActionClass extends controllerClass implements controll
         $idsToDelete = request::getInstance()->getPost('chk');
         foreach ($idsToDelete as $id){
           $ids = array(
-            clienteTableClass::ID => $id
+             tipoProductoInsumoTableClass::ID => $id
         );
         
-        clienteTableClass::delete($ids, true);
+         tipoProductoInsumoTableClass::delete($ids, true);
       }
-      session::getInstance()->setSuccess('Las Casillas Seleccionadas Fueron Eliminadas Exitosamente');
-        routing::getInstance()->redirect('cliente', 'indexCliente');
+       session::getInstance()->setSuccess('Las Casillas Seleccionadas Fueron Eliminadas Exitosamente');
+      
+        routing::getInstance()->redirect(' productoInsumo', 'indexTipoProductoInsumo');
       } else {
-        routing::getInstance()->redirect('cliente', 'indexCliente');
+        routing::getInstance()->redirect(' productoInsumo', 'indexTipoProductoInsumo');
       }
     } catch (PDOException $exc) {
       echo $exc->getMessage();

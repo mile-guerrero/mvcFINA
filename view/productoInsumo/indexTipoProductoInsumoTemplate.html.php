@@ -35,7 +35,7 @@
       <div class="modal-body">
         <form class="form-horizontal" id="reportForm" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'reportTipoProductoInsumo')?>">
           <div class="form-group">
-    <label for="reportDescripcion" class="col-sm-2 control-label"><?php echo i18n::__('name') ?></label>
+    <label for="reportDescripcion" class="col-sm-2 control-label"><?php echo i18n::__('nom') ?></label>
     <div class="col-sm-10">
       <input type="text" class="form-control" id="reportDescripcion" name="report[descripcion]" placeholder="Nombre">
     </div>
@@ -150,7 +150,7 @@
         <?php echo i18n::__('Desea  eliminar este campo') ?> <?php echo $key->$des ?><?php echo i18n::__('?') ?>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary btn-xs" data-dismiss="modal"><?php echo i18n::__('cerrar') ?></button>
+        <button type="button" class="btn btn-default btn-xs" data-dismiss="modal"><?php echo i18n::__('cerrar') ?></button>
         <button type="button" class="btn btn-danger btn-xs" onclick="eliminar(<?php echo $key->$id ?>,'<?php echo tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::ID, true) ?>','<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'deleteTipoProductoInsumo') ?>')"><?php echo i18n::__('eliminar') ?></button>
       </div>
     </div>

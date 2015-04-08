@@ -59,7 +59,7 @@
       <div class="form-group">
          <label for="<?php echo detallePagoTrabajadorTableClass::getNameField(detallePagoTrabajadorTableClass::PAGO_TRABAJADOR_ID, true) ?>" class="col-sm-2"><?php  echo i18n::__('pagoTrabajador') ?>:  </label>     
          <div class="col-sm-10">
-          <input class="form-control" value=" <?php echo ((isset($objDPT) == true) ? $objDPT[0]->$pago : $objDPTT[0]->$idPago) ?>"
+          <input class="form-control" value=" <?php echo ((isset($objDPT) == true) ? $objDPT[0]->$pago : $objPT[0]->$idPago) ?>"
             type="text" name="<?php echo detallePagoTrabajadorTableClass::getNameField(detallePagoTrabajadorTableClass::PAGO_TRABAJADOR_ID, true) ?>" placeholder="<?php echo i18n::__('pagoTrabajador') ?>" >
       </div>
     </div> 
@@ -76,6 +76,17 @@
     </div> -->
       
       
+<!--            <div class="form-group">
+         <label for="<?php echo detallePagoTrabajadorTableClass::getNameField(detallePagoTrabajadorTableClass::TRABAJADOR_ID, true) ?>" class="col-sm-2"><?php  echo i18n::__('pagoTrabajador') ?>:  </label>     
+         <div class="col-sm-10">
+           <input class="form-control" type="text" name="<?php echo detallePagoTrabajadorTableClass::getNameField(detallePagoTrabajadorTableClass::TRABAJADOR_ID, true) ?>" list="nombres" placeholder="<?php echo i18n::__('trabajador') ?>" >
+           <datalist id="nombres">
+             <?php foreach ($objTrabajador as $trabajador): ?>
+             <option value="<?php echo $trabajador->$idTrabajador ?>"><?php echo $trabajador->$nomTrabajador ?></option>
+             <?php endforeach; ?>
+           </datalist>
+         </div>
+    </div> -->
       
       <div class="form-group">
          <label for="" class="col-sm-2"> <?php echo i18n::__('trabajador') ?> </label>

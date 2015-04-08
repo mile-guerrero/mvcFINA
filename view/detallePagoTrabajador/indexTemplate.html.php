@@ -1,13 +1,8 @@
 <?php mvc\view\viewClass::includePartial('default/menuPrincipal') ?>
-<?php
-
-use mvc\routing\routingClass as routing ?>
-<?php
-use mvc\i18n\i18nClass as i18n ?>
-<?php
-use mvc\view\viewClass as view ?>
-<?php
-use mvc\request\requestClass as request ?>
+<?php use mvc\routing\routingClass as routing ?>
+<?php use mvc\i18n\i18nClass as i18n ?>
+<?php use mvc\view\viewClass as view ?>
+<?php use mvc\request\requestClass as request ?>
 <?php $id = detallePagoTrabajadorTableClass::ID ?>
 <?php $salario = detallePagoTrabajadorTableClass::VALOR_SALARIO ?>
 <?php $cantHoras = detallePagoTrabajadorTableClass::CANTIDAD_HORAS_EXTRAS ?>

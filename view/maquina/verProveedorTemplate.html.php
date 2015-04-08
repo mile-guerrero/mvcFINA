@@ -6,11 +6,9 @@
 <?php $apellido = proveedorTableClass::APELLIDO ?>
 <?php $direccion = proveedorTableClass::DIRECCION ?>
 <?php $telefono = proveedorTableClass::TELEFONO ?>
-<?php $email = proveedorTableClass::EMAIL ?>
 <?php $updated_at = proveedorTableClass::UPDATED_AT ?>
 <?php $created_at = proveedorTableClass::CREATED_AT ?>
-<?php $nombreCiudad = proveedorTableClass::ID_CIUDAD ?>
-
+<?php $nombre_ciudad = proveedorTableClass::ID_CIUDAD ?>
 <div class="container container-fluid" id="cuerpo">
   <header id="encabezado">
 
@@ -22,9 +20,9 @@
     
   </section>
     <article id='derecha'>
+      <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('maquina', 'indexProveedor') ?>" > <?php echo i18n::__('atras') ?></a>
+ 
       
-    <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('maquina', 'indexProveedor') ?>" > <?php echo i18n::__('atras') ?></a>
-
       <table class="table table-bordered table-responsive">
         <tr>
         <thead>
@@ -33,45 +31,40 @@
         </tr>
         <tbody>
 <?php foreach ($objProveedor as $key): ?>
-          <tr>
-            <th><?php echo i18n::__('nom') ?></th>      
-            <td><?php echo $key->$nom ?></td>
-          </tr>
-          <tr>
+            <tr>
+              <th><?php echo i18n::__('nom') ?></th>      
+              <td><?php echo $key->$nom ?></td>
+            </tr>
           <th><?php echo i18n::__('apell') ?></th>      
           <td><?php echo $key->$apellido ?></td>
           </tr>
-          <tr>
           <th><?php echo i18n::__('dir') ?></th>      
           <td><?php echo $key->$direccion ?></td>
           </tr>
-          <tr>
           <th><?php echo i18n::__('tel') ?></th>      
           <td><?php echo $key->$telefono ?></td>
           </tr>
           <tr>
-          <th><?php echo i18n::__('email') ?></th>      
-          <td><?php echo $key->$email ?></td>
-          </tr>
-          <tr>
             <th>fecha modificacion</th> 
-            <td><?php echo $key->$updated_at ?></td>
+            <th><?php echo $key->$updated_at ?></th>
           </tr> 
           <tr>
             <th>fecha creacion</th>                   
-            <td><?php echo $key->$created_at ?></td>
+            <th><?php echo $key->$created_at ?></th>
           </tr>
-          
-            <?php endforeach; ?>
-          <?php foreach ($objProveedor as $ciudad): ?>
+
+        <?php endforeach; ?>
+
+
+<?php foreach ($objProveedor as $ciudad): ?>
           <tr>
           <th><?php echo i18n::__('ciudad') ?></th>      
-          <td><?php echo ciudadTableClass::getNameCiudad($ciudad->$nombreCiudad) ?></td>
+          <td><?php echo ciudadTableClass::getNameCiudad($ciudad->$nombre_ciudad) ?></td>
           </tr>
 <?php endforeach; ?>
 
 
-         </tbody>
+        </tbody>
       </table>
 
     </article>

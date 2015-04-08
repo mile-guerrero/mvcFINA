@@ -34,7 +34,7 @@
  <div class="form-group">
       <label for="<?php echo productoInsumoTableClass::getNameField(productoInsumoTableClass::UNIDAD_MEDIDA_ID, true) ?>" class="col-sm-2">   <?php echo i18n::__('unidad') ?>:  </label>
       <div class="col-sm-10"> 
-        <select class="form-control" id="<?php productoInsumoTableClass::getNameField(productoInsumoTableClass::ID, TRUE)?>" name="<?php echo productoInsumoTableClass::getNameField(productoInsumoTableClass::UNIDAD_MEDIDA_ID, TRUE);?>">
+        <select class="form-control" id="<?php productoInsumoTableClass::getNameField(productoInsumoTableClass::ID, true)?>" name="<?php echo productoInsumoTableClass::getNameField(productoInsumoTableClass::UNIDAD_MEDIDA_ID, true);?>">
        <option><?php echo i18n::__('selectUnidad') ?></option>
        <?php foreach($objPIUM as $UM):?>
        <option <?php echo (isset($objPI[0]->$unidad) === true and $objPI[0]->$unidad == $UM->$unidades) ? 'selected' : '' ?> value="<?php echo $UM->$unidades?>"><?php echo $UM->$des_unidades?></option>
@@ -46,7 +46,7 @@
  <div class="form-group">
       <label for="<?php echo productoInsumoTableClass::getNameField(productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID, true) ?>" class="col-sm-2">   <?php echo i18n::__('tipo') ?>:  </label>
       <div class="col-sm-10"> 
-        <select class="form-control" id="<?php productoInsumoTableClass::getNameField(productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID, TRUE)?>" name="<?php echo productoInsumoTableClass::getNameField(productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID, TRUE);?>">
+        <select class="form-control" id="<?php productoInsumoTableClass::getNameField(productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID, true)?>" name="<?php echo productoInsumoTableClass::getNameField(productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID, true);?>">
        <option><?php echo i18n::__('selectTPI') ?></option>
        <?php foreach($objPITPI as $TP):?>
        <option <?php echo (isset($objPI[0]->$tipo) === true and $objPI[0]->$tipo == $TP->$tipos) ? 'selected' : '' ?> value="<?php echo $TP->$tipos?>"><?php echo $TP->$des_tipos?></option>

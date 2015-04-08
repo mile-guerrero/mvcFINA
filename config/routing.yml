@@ -654,6 +654,16 @@ proveedor_ver:
     - model/proveedorTableClass.php
     - model/base/ciudadBaseTableClass.php
     - model/ciudadTableClass.php    
+    
+proveedor_reporte:
+  url:    /proveedor/reporte
+  param:  { module: maquina, action: reportProveedor, format: pdf } 
+  load:
+    - libs/fpdf/fpdf.php  
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php 
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
 #--------------------------------Proveedor-----------------------------------
     
 #-------------------modulo - origen maquina----------------------------

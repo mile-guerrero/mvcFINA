@@ -51,7 +51,7 @@ class indexClienteActionClass extends controllerClass implements controllerActio
           clienteTableClass::UPDATED_AT
       );
       $orderBy = array(
-         clienteTableClass::ID
+         clienteTableClass::NOMBRE
       );
        $page = 0;
       if (request::getInstance()->hasGet('page')) {
@@ -61,7 +61,7 @@ class indexClienteActionClass extends controllerClass implements controllerActio
       }
       $this->cntPages = clienteTableClass::getTotalPages(config::getRowGrid());
       $this->objCliente = clienteTableClass::getAll($fields, true, $orderBy, 'ASC',config::getRowGrid(), $page,$where);
- $fields = array(     
+      $fields = array(     
       ciudadTableClass::ID, 
       ciudadTableClass::NOMBRE_CIUDAD
       );

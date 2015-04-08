@@ -40,7 +40,7 @@
       <div class="modal-body">
         <form class="form-horizontal" id="reportForm" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('cliente', 'reportCliente')?>">
           <div class="form-group">
-    <label for="reportNombre" class="col-sm-2 control-label"><?php echo i18n::__('name') ?></label>
+    <label for="reportNombre" class="col-sm-2 control-label"><?php echo i18n::__('nom') ?></label>
     <div class="col-sm-10">
       <input type="text" class="form-control" id="reportNombre" name="report[nombre]" placeholder="Nombre">
     </div>
@@ -49,7 +49,7 @@
     <label for="reportCiudad" class="col-sm-2 control-label"><?php echo i18n::__('idCiudad') ?></label>
     <div class="col-sm-10">
       <select class="form-control" id="reportCiudad" name="report[ciudad]">
-            <option><?php echo i18n::__('selectCiudad') ?></option>
+        <option value=""><?php echo i18n::__('selectCiudad') ?></option>
 <?php foreach ($objCC as $ciudad): ?>
             <option value="<?php echo $ciudad->$idCiudaddes ?>"><?php echo $ciudad->$descripcionciudad ?></option>
 <?php endforeach; ?>
@@ -85,7 +85,7 @@
       <div class="modal-body">
         <form class="form-horizontal" id="filterForm" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('cliente', 'indexCliente')?>">
           <div class="form-group">
-    <label for="filterNombre" class="col-sm-2 control-label"><?php echo i18n::__('name') ?></label>
+    <label for="filterNombre" class="col-sm-2 control-label"><?php echo i18n::__('nom') ?></label>
     <div class="col-sm-10">
       <input type="text" class="form-control" id="filterNombre" name="filter[nombre]" placeholder="Nombre">
     </div>
@@ -110,7 +110,7 @@
     </div>
   </div>
   <div class="form-group">
-    <label class="col-sm-2 control-label">Fecha Creacion</label>
+    <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
     <div class="col-sm-10">
       <input type="date" class="form-control" id="filterFecha1" name="filter[fecha1]">
       <br>
@@ -176,8 +176,8 @@
         <?php echo i18n::__('Desea  eliminar este campo') ?><?php echo $key->$nom ?><?php echo i18n::__('?') ?>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal"><?php echo i18n::__('cerrar') ?></button>
-        <button type="button" class="btn btn-danger" onclick="eliminar(<?php echo $key->$id ?>,'<?php echo clienteTableClass::getNameField(clienteTableClass::ID, true) ?>','<?php echo routing::getInstance()->getUrlWeb('cliente', 'deleteCliente') ?>')"><?php echo i18n::__('eliminar') ?></button>
+        <button type="button" class="btn btn-default btn-xs" data-dismiss="modal"><?php echo i18n::__('cerrar') ?></button>
+        <button type="button" class="btn btn-danger btn-xs" onclick="eliminar(<?php echo $key->$id ?>,'<?php echo clienteTableClass::getNameField(clienteTableClass::ID, true) ?>','<?php echo routing::getInstance()->getUrlWeb('cliente', 'deleteCliente') ?>')"><?php echo i18n::__('eliminar') ?></button>
       </div>
     </div>
   </div>

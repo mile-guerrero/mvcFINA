@@ -158,7 +158,7 @@
                     <?php echo i18n::__('Desea  eliminar este campo') ?> <?php echo $key->$usu ?><?php echo i18n::__('?') ?>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-primary btn-xs" data-dismiss="modal"><?php echo i18n::__('cerrar') ?></button>
+                    <button type="button" class="btn btn-default btn-xs" data-dismiss="modal"><?php echo i18n::__('cerrar') ?></button>
                     <button type="button" class="btn btn-danger btn-xs" onclick="eliminar(<?php echo $key->$id ?>, '<?php echo usuarioTableClass::getNameField(usuarioTableClass::ID, true) ?>', '<?php echo routing::getInstance()->getUrlWeb('default', 'delete') ?>')"><?php echo i18n::__('eliminar') ?></button>
                   </div>
                 </div>

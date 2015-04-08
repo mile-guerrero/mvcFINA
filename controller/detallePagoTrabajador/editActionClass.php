@@ -17,18 +17,18 @@ class editActionClass extends controllerClass implements controllerActionInterfa
 
   public function execute() {
     try {
-   
-      if (request::getInstance()->hasRequest(detallePagoTrabajadorTableClass::ID)) {
-        
-        
-        $fields = array(
-           detallePagoTrabajadorTableClass::ID,
-           detallePagoTrabajadorTableClass::PAGO_TRABAJADOR_ID
-        );
-        $where = array(
+      
+      $fields = array(
+          detallePagoTrabajadorTableClass::ID,  
+          detallePagoTrabajadorTableClass::PAGO_TRABAJADOR_ID
+          );
+      $where = array(
             detallePagoTrabajadorTableClass::ID => request::getInstance()->getRequest(detallePagoTrabajadorTableClass::ID)
         );
         $this->objDPTT = detallePagoTrabajadorTableClass::getAll($fields, false, null, null, null, null, $where);
+   
+      if (request::getInstance()->hasRequest(detallePagoTrabajadorTableClass::ID)) {
+        
         
         $fields = array(
             
@@ -38,10 +38,11 @@ class editActionClass extends controllerClass implements controllerActionInterfa
           detallePagoTrabajadorTableClass::VALOR_HORAS_EXTRAS,
           detallePagoTrabajadorTableClass::HORAS_PERDIDAS,
           detallePagoTrabajadorTableClass::TOTAL_PAGAR,
+          detallePagoTrabajadorTableClass::PAGO_TRABAJADOR_ID,
           detallePagoTrabajadorTableClass::TRABAJADOR_ID,
           detallePagoTrabajadorTableClass::CREATED_AT,
-          detallePagoTrabajadorTableClass::UPDATED_AT,
-          detallePagoTrabajadorTableClass::PAGO_TRABAJADOR_ID
+          detallePagoTrabajadorTableClass::UPDATED_AT
+          
         );
         $where = array(
             detallePagoTrabajadorTableClass::ID => request::getInstance()->getRequest(detallePagoTrabajadorTableClass::ID)
@@ -55,19 +56,17 @@ class editActionClass extends controllerClass implements controllerActionInterfa
         
         $this->objPT = pagoTrabajadorTableClass::getAll($fields, false);
         
-        $fields = array(
+       $fields = array(
             trabajadorTableClass::ID,
             trabajadorTableClass::NOMBRET
         );
-        
-        $this->objTrabajador = trabajadorTableClass::getAll($fields, true);
        
-         $fields = array(
-            detallePagoTrabajadorTableClass::PAGO_TRABAJADOR_ID
-        );
-     
-        $this->objDPTT = detallePagoTrabajadorTableClass::getAll($fields, false);
-         
+       $orderBy = array(
+       trabajadorTableClass::NOMBRET
+       );
+        
+        $this->objTrabajador = trabajadorTableClass::getAll($fields, true, $orderBy, 'ASC');
+        
         $this->defineView('edit', 'detallePagoTrabajador', session::getInstance()->getFormatOutput());
      
       }else{

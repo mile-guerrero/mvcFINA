@@ -17,7 +17,7 @@ class deleteProveedorActionClass extends controllerClass implements controllerAc
 
   public function execute() {
     try {
-      if (request::getInstance()->isMethod('POST') and request::getInstance()->isAjaxRequest()) {
+      if (request::getInstance()->isMethod('POST')and request::getInstance()->isAjaxRequest()) {
 
         $id = request::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::ID, true));
        
@@ -25,13 +25,12 @@ class deleteProveedorActionClass extends controllerClass implements controllerAc
             proveedorTableClass::ID => $id
         );
        proveedorTableClass::delete($ids, true);
-       // routing::getInstance()->redirect('cliente', 'index');
-       $this->arrayAjax = array(
-           'code' => 200,
-           'msg'  => 'La Eliminacion fue Exitosa'
-           );
-       $this->defineView('deleteProveedor', 'maquina', session::getInstance()->getFormatOutput());
-       session::getInstance()->setSuccess('La Eliminacion fue Exitosa');
+        $this->arrayAjax = array(
+            'code'=> 200,
+            'msg'=> 'Eliminacion exitosa'
+            );
+        $this->defineView('deleteProveedor', 'maquina', session::getInstance()->getFormatOutput());
+      
       } else {
         routing::getInstance()->redirect('maquina', 'indexProveedor');
       }
@@ -43,4 +42,3 @@ class deleteProveedorActionClass extends controllerClass implements controllerAc
   }
 
 }
-
