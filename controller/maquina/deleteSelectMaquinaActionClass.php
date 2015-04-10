@@ -36,6 +36,14 @@ class deleteSelectMaquinaActionClass extends controllerClass implements controll
       echo $exc->getMessage();
       echo '<br>';
       echo $exc->getTraceAsString();
+      switch ($exc->getCode()){
+        case 23503:
+          session::getInstance()->setError('Las Casillas Seleccionadas no se pueden borrar por que esta siendo utilizado');
+          routing::getInstance()->redirect('cliente', 'indexCliente');
+          break;
+          case 00000:
+          break;
+      }
     }
   }
 

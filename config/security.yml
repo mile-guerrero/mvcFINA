@@ -15,9 +15,9 @@ default:
   index:
     security: true
     credentials:
-      - [admin, cajero]
-      - [usuario, cajero]
-      - [consultor, cajero]
+      - [admin, Bahamon]
+      - [usuario, Bahamon]
+      - [Consultor, Bahamon]
   insert:
     security: true
   create:
@@ -40,9 +40,9 @@ credencial:
   index:
     security: true
     credentials:
-      - [admin, cajero]
-      - [usuario, cajero]
-      - [consultor, cajero]
+      - [admin, Bahamon]
+      - [usuario, Bahamon]
+      - [Consultor, Bahamon]
   insert:
     security: true
   create:
@@ -65,9 +65,9 @@ usuarioCredencial:
   index:
     security: true
     credentials:
-      - [admin, cajero]
-      - [usuario, cajero]
-      - [consultor, cajero]
+      - [admin, Bahamon]
+      - [usuario, Bahamon]
+      - [Consultor, Bahamon]
   insert:
     security: true
   create:
@@ -86,9 +86,9 @@ ordenServicio:
   index:
     security: true
     credentials:
-      - [admin, cajero]
-      - [usuario, cajero]
-      - [consultor, cajero]
+      - [admin, Bahamon]
+      - [usuario, Bahamon]
+      - [Consultor, Bahamon]
   insert:
     security: true
   create:
@@ -107,9 +107,9 @@ detalleOrdenServicio:
   index:
     security: true
     credentials:
-      - [admin, cajero]
-      - [usuario, cajero]
-      - [consultor, cajero]
+      - [admin, Bahamon]
+      - [usuario, Bahamon]
+      - [Consultor, Bahamon]
   insert:
     security: true
   create:
@@ -128,9 +128,9 @@ maquina:
   indexMaquina:
     security: true
     credentials:
-      - [admin, cajero]
-      - [usuario, cajero]
-      - [consultor, cajero]
+      - [admin, Bahamon]
+      - [usuario, Bahamon]
+      - [Consultor, Bahamon]
   insertMaquina:
     security: true
   createMaquina:
@@ -150,9 +150,9 @@ maquina:
   indexOrigenMaquina:
     security: true
     credentials:
-      - [admin, cajero]
-      - [usuario, cajero]
-      - [consultor, cajero]
+      - [admin, Bahamon]
+      - [usuario, Bahamon]
+      - [Consultor, Bahamon]
   insertOrigenMaquina:
     security: true
   createOrigenMaquina:
@@ -164,9 +164,9 @@ maquina:
   indexTipoUsoMaquina:
     security: true
     credentials:
-      - [admin, cajero]
-      - [usuario, cajero]
-      - [consultor, cajero]
+      - [admin, Bahamon]
+      - [usuario, Bahamon]
+      - [Consultor, Bahamon]
   insertTipoUsoMaquina:
     security: true
   createTipoUsoMaquina:
@@ -178,9 +178,9 @@ maquina:
   indexProveedor:
     security: true
     credentials:
-      - [admin, cajero]
-      - [usuario, cajero]
-      - [consultor, cajero]
+      - [admin, Bahamon]
+      - [usuario, Bahamon]
+      - [Consultor, Bahamon]
   insertProveedor:
     security: true
   createProveedor:
@@ -209,9 +209,9 @@ cliente:
   indexCliente:
     security: true
     credentials:
-      - [admin, cajero]
-      - [usuario, cajero]
-      - [consultor, cajero]
+      - [admin, Bahamon]
+      - [usuario, Bahamon]
+      - [Consultor, Bahamon]
   insertCliente:
     security: true
   createCliente:
@@ -234,9 +234,9 @@ lote:
   indexLote:
     security: true
     credentials:
-      - [admin, cajero]
-      - [usuario, cajero]
-      - [consultor, cajero]
+      - [admin, Bahamon]
+      - [usuario, Bahamon]
+      - [Consultor, Bahamon]
   insertLote:
     security: true
   createLote:
@@ -263,9 +263,9 @@ productoInsumo:
   indexProductoInsumo:
     security: true
     credentials:
-      - [admin, cajero]
-      - [usuario, cajero]
-      - [consultor, cajero]
+      - [admin, Bahamon]
+      - [usuario, Bahamon]
+      - [Consultor, Bahamon]
   insertProductoInsumo:
     security: true
   createProductoInsumo:
@@ -285,9 +285,9 @@ productoInsumo:
   indexTipoProductoInsumo:
     security: true
     credentials:
-      - [admin, cajero]
-      - [usuario, cajero]
-      - [consultor, cajero]
+      - [admin, Bahamon]
+      - [usuario, Bahamon]
+      - [Consultor, Bahamon]
   insertTipoProductoInsumo:
     security: true
   createTipoProductoInsumo:
@@ -309,9 +309,9 @@ tipoId:
   indexTipoId:
     security: true
     credentials:
-      - [admin, cajero]
-      - [usuario, cajero]
-      - [consultor, cajero]
+      - [admin, Bahamon]
+      - [usuario, Bahamon]
+      - [Consultor, Bahamon]
   insertTipoId:
     security: true
   createTipoId:
@@ -330,9 +330,9 @@ solicitudInsumo:
   index:
     security: true
     credentials:
-      - [admin, cajero]
-      - [usuario, cajero]
-      - [consultor, cajero]
+      - [admin, Bahamon]
+      - [usuario, Bahamon]
+      - [Consultor, Bahamon]
   insert:
     security: true
   create:
@@ -351,9 +351,9 @@ detalleSolicitudInsumo:
   index:
     security: true
     credentials:
-      - [admin, cajero]
-      - [usuario, cajero]
-      - [consultor, cajero]
+      - [admin, Bahamon]
+      - [usuario, Bahamon]
+      - [Consultor, Bahamon]
   insert:
     security: true
   create:
@@ -371,9 +371,9 @@ trabajador:
   index:
     security: true
     credentials:
-      - [admin, cajero]
-      - [usuario, cajero]
-      - [consultor, cajero]
+      - [admin, Bahamon]
+      - [usuario, Bahamon]
+      - [Consultor, Bahamon]
   insert:
     security: true
   create:

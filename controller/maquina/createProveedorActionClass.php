@@ -19,46 +19,79 @@ class createProveedorActionClass extends controllerClass implements controllerAc
     try {
       if (request::getInstance()->isMethod('POST')) {
 
-        $nombre = request::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::NOMBREP, true));
-        $apellido = request::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::APELLIDO, true));
-        $direccion = request::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::DIRECCION, true));
-        $telefono = request::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::TELEFONO, true));
-        $email = request::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::EMAIL, true));
-        $ciudad_id = request::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::ID_CIUDAD, true));
+        $nombre = trim(request::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::NOMBREP, true)));
+        $apellido = trim(request::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::APELLIDO, true)));
+        $direccion = trim(request::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::DIRECCION, true)));
+        $telefono = trim(request::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::TELEFONO, true)));
+        $email = trim(request::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::EMAIL, true)));
+        $idCiudad = trim(request::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::ID_CIUDAD, true)));
         
-
-//        if (strlen($usuario) > usuarioTableClass::USUARIO_LENGTH) {
-//          throw new PDOException(i18n::__(00001, null, 'errors', array(':longitud' => usuarioTableClass::USUARIO_LENGTH)), 00001);
-//        }
- if (strlen($nombre) > proveedorTableClass::NOMBREP_LENGTH) {
-         session::getInstance()->setError(i18n::__(00001, null, 'errors', array(':longitud' => proveedorTableClass::NOMBREP_LENGTH)), 00001);
-        routing::getInstance()->redirect('maquina', 'insertProveedor');
-         
-        }
+        $this->validate($nombre, $apellido, $direccion, $telefono, $email, $idCiudad);
         
-        if (strlen($apellido) > proveedorTableClass::APELLIDO_LENGTH) {
-         session::getInstance()->setError(i18n::__(00002, null, 'errors', array(':longitud' => proveedorTableClass::APELLIDO_LENGTH)), 00002);
-        routing::getInstance()->redirect('maquina', 'insertProveedor');
-         
-        }
         $data = array(
             proveedorTableClass::NOMBREP => $nombre,
             proveedorTableClass::APELLIDO => $apellido,
             proveedorTableClass::DIRECCION => $direccion,
             proveedorTableClass::TELEFONO => $telefono,
             proveedorTableClass::EMAIL => $email,
-            proveedorTableClass::ID_CIUDAD => $ciudad_id
+            proveedorTableClass::ID_CIUDAD => $idCiudad
             
         );
         proveedorTableClass::insert($data);
+        session::getInstance()->setSuccess('El registro fue exitoso');
         routing::getInstance()->redirect('maquina', 'indexProveedor');
       } else {
         routing::getInstance()->redirect('maquina', 'indexProveedor');
       }
     } catch (PDOException $exc) {
-      echo $exc->getMessage();
-      echo '<br>';
-      echo $exc->getTraceAsString();
+      routing::getInstance()->redirect('maquina', 'insertProveedor');
+      session::getInstance()->setFlash('exc', $exc);
+    }
+  }
+
+public function validate($nombre, $apellido, $direccion, $telefono, $email, $idCiudad) {
+
+    $flash = false;
+    if (strlen($nombre) > proveedorTableClass::NOMBREP_LENGTH) {
+      session::getInstance()->setError(i18n::__(00001, null, 'errors', array(':longitud' => proveedorTableClass::NOMBREP_LENGTH)), 00001);
+      session::getInstance()->setFlash(proveedorTableClass::getNameField(proveedorTableClass::NOMBREP_LENGTH, true), true);
+      
+    }
+
+    if (strlen($nombre) === "" or $nombre === null) {
+      session::getInstance()->setError(i18n::__(00009, null, 'errors', array(':campo vacio' => proveedorTableClass::NOMBREP)), 00009);
+      $flash = true;
+      session::getInstance()->setFlash(proveedorTableClass::getNameField(proveedorTableClass::NOMBREP, true), true);
+      
+    }
+
+    if (strlen($apellido) > proveedorTableClass::APELLIDO_LENGTH) {
+      session::getInstance()->setError(i18n::__(00002, null, 'errors', array(':longitud' => proveedorTableClass::APELLIDO_LENGTH)), 00002);
+      
+    }
+    
+     if (strlen($telefono) === "" or $telefono === null) {
+      session::getInstance()->setError(i18n::__(00009, null, 'errors', array(':campo vacio' => proveedorTableClass::TELEFONO)), 00009);
+      
+    }
+
+    if (!preg_match("/[0-9]{9}$/", $telefono )) {
+      session::getInstance()->setError(i18n::__(00010, null, 'errors', array(':numeros' => $telefono)), 00010);
+      $flash = true;
+      session::getInstance()->setFlash(proveedorTableClass::getNameField(proveedorTableClass::TELEFONO, true), true);
+ 
+    }
+    
+    if (!preg_match("^([a-zA-Z0-9._]+)@([a-zA-Z0-9.-]+).([a-zA-Z]{2,4})$", $email)) {
+        session::getInstance()->setError(i18n::__(00011, null, 'errors', array(':correo' => $email), 00011));
+        $flash = true;
+         session::getInstance()->setFlash(proveedorTableClass::getNameField(proveedorTableClass::EMAIL, true), true);
+         
+    }
+    
+    if ($flash === true){
+      request::getInstance()->setMethod('GET');
+      routing::getInstance()->forward('maquina', 'insertProveedor');
     }
   }
 

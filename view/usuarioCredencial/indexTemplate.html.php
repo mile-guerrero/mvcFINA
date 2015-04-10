@@ -1,6 +1,7 @@
 <?php mvc\view\viewClass::includePartial('default/menuPrincipal') ?>
 <?php use mvc\routing\routingClass as routing ?>
 <?php use mvc\i18n\i18nClass as i18n ?>
+<?php use mvc\session\sessionClass as session ?>
 <?php $id = usuarioCredencialTableClass::ID ?>
 <?php $cred = usuarioCredencialTableClass::CREDENCIAL_ID ?>
 <?php $usuid = usuarioTableClass::ID ?>
@@ -23,7 +24,9 @@
       <h1><?php echo i18n::__('usu cre') ?></h1> 
       
     <ul>
+      <?php if(session::getInstance()->hasCredential('admin')):?>
       <a class="btn  btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('usuarioCredencial', 'insert') ?>"><img class="img-responsive"  id="imgnuevo" src="" alt=" "><?php echo i18n::__('nuevo') ?></a> 
+      <?php endif?>
       <a type="button" class="btn  btn-xs" data-toggle="modal" data-target="#myModalFiltres"><img class="img-responsive"  id="imgfiltros" src="" alt=" "><?php echo i18n::__('filtros') ?></a>  
       <a href="<?php echo routing::getInstance()->getUrlWeb('usuarioCredencial', 'index') ?>" class="btn  btn-xs" ><img class="img-responsive"  id="imgelifiltro" src="" alt=" "><?php echo i18n::__('eFiltros') ?></a> 
       <a type="button" class="btn  btn-xs" data-toggle="modal" data-target="#myModalReport" ><img class="img-responsive"  id="imgreporte" src="" alt=" "><?php echo i18n::__('informe') ?></a>           
@@ -161,8 +164,10 @@
                 <?php echo credencialTableClass::getNameCredencial($key->$cred) ?>
               </td>
               <th>
-                <a class="btn btn-warning btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('usuarioCredencial', 'ver', array(usuarioCredencialTableClass::ID => $key->$id)) ?>" ><?php echo i18n::__('ver') ?></a> - 
+                <a class="btn btn-warning btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('usuarioCredencial', 'ver', array(usuarioCredencialTableClass::ID => $key->$id)) ?>" ><?php echo i18n::__('ver') ?></a>
+               <?php if(session::getInstance()->hasCredential('admin')):?>
                 <a class="btn btn-primary btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('usuarioCredencial', 'edit', array(usuarioCredencialTableClass::ID => $key->$id)) ?>"><?php echo i18n::__('modificar') ?> </a>
+             <?php endif?>
               </th>                                        
             <?php endforeach; ?>
         </tbody>

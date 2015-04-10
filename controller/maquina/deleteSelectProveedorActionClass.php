@@ -34,6 +34,15 @@ class deleteSelectProveedorActionClass extends controllerClass implements contro
       echo $exc->getMessage();
       echo '<br>';
       echo $exc->getTraceAsString();
+//    switch ($exc->getCode()){
+//        case 23503:
+//          session::getInstance()->setError('Las Casillas Seleccionadas no se pueden borrar por que esta siendo utilizado');
+//          routing::getInstance()->redirect('maquina', 'indexProveedor');
+//          break;
+//          case 00000:
+//          break;
+//      }
+      
     }
   }
 

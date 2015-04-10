@@ -35,6 +35,14 @@ class deleteSelectClienteActionClass extends controllerClass implements controll
       echo $exc->getMessage();
       echo '<br>';
       echo $exc->getTraceAsString();
+//      switch ($exc->getCode()){
+//        case 23503:
+//          session::getInstance()->setError(i18n::__(00011, null, 'errors', array(':correo'), 00011));
+//          routing::getInstance()->redirect('cliente', 'indexCliente');
+//          break;
+//          case 00000:
+//          break;
+//      }
     }
   }
 

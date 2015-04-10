@@ -163,3 +163,6 @@ dictionary:
     00006:                The size field exceeds the allowable length (:length)
     00007:                The user name exceeds the allowable length (:length)
     00008:                The password exceeds the allowable length (:length)
+    00009:                No se puede dejar el campo vacio (:campo vacio)
+    00010:                No se permiten letras, Solo numeros (:numeros)
+    00011:                El email debe ser a123@hotmail.com (:correo)
