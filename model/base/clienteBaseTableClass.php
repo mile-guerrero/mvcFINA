@@ -26,7 +26,9 @@ class clienteBaseTableClass extends tableBaseClass {
   const APELLIDO = 'apellido';
   const APELLIDO_LENGTH = 80;
   const DIRECCION = 'direccion';
+  const DIRECCION_LENGTH = 80;
   const TELEFONO = 'telefono';
+  const TELEFONO_LENGTH = 15;
   const ID_TIPO_ID = 'id_tipo_id';
   const ID_CIUDAD = 'id_ciudad';
   const CREATED_AT = 'created_at';

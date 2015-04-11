@@ -48,4 +48,74 @@ class createClienteActionClass extends controllerClass implements controllerActi
     }
   }
 
+  public function validate($nombre, $apellido, $direccion, $telefono, $idTipo, $idCiudad) {
+
+    $flag = false;
+    
+    if (strlen($nombre) > clienteTableClass::NOMBRE_LENGTH) {
+      session::getInstance()->setError(i18n::__(00001, null, 'errors', array(':longitud' => clienteTableClass::NOMBRE_LENGTH)), 00001);
+      $flag = true;
+      session::getInstance()->setFlash(usuarioTableClass::getNameField(clienteTableClass::NOMBRE, true),true);
+      }
+
+    if (strlen($nombre) == null) {
+      session::getInstance()->setError(i18n::__(00009, null, 'errors', array(':campo vacio' => clienteTableClass::NOMBRE)), 00009);
+      $flag = true;
+      session::getInstance()->setFlash(clienteTableClass::getNameField(clienteTableClass::NOMBRE, true), true);
+     }
+     
+    
+    if (!preg_match("/^[a-z]+$/i", $nombre)){         
+      session::getInstance()->setError(i18n::__(00012, null, 'errors', array(':letras' => clienteTableClass::NOMBRE)), 00012);
+      $flag = true;
+      session::getInstance()->setFlash(clienteTableClass::getNameField(clienteTableClass::NOMBRE, true), true);
+      }
+      
+ //--------------------------------------------------------------------   
+    if (strlen($apellido) > clienteTableClass::APELLIDO_LENGTH) {
+      session::getInstance()->setError(i18n::__(00002, null, 'errors', array(':longitud' => clienteTableClass::APELLIDO_LENGTH)), 00002);
+      $flag = true;
+      session::getInstance()->setFlash(clienteTableClass::getNameField(clienteTableClass::APELLIDO, true), true);
+     }
+    
+     if (strlen($apellido) == null) {
+      session::getInstance()->setError(i18n::__(00009, null, 'errors', array(':campo vacio' => clienteTableClass::APELLIDO)), 00009);
+      $flag = true;
+      session::getInstance()->setFlash(clienteTableClass::getNameField(clienteTableClass::APELLIDO, true), true);
+     }
+     
+     if (!preg_match("/^[a-z]+$/i", $apellido )) {
+      session::getInstance()->setError(i18n::__(00012, null, 'errors', array(':letras' => clienteTableClass::APELLIDO)), 00012);
+      $flag = true;
+      session::getInstance()->setFlash(clienteTableClass::getNameField(clienteTableClass::APELLIDO, true), true);
+     }
+     //-------------------------------------------------------------------
+     if (strlen($direccion) > clienteTableClass::DIRECCION_LENGTH) {
+      session::getInstance()->setError(i18n::__(00002, null, 'errors', array(':longitud' => clienteTableClass::DIRECCION_LENGTH)), 00002);
+      $flag = true;
+      session::getInstance()->setFlash(clienteTableClass::getNameField(clienteTableClass::DIRECCION, true), true);
+     }
+     
+     if (strlen($direccion) == null) {
+      session::getInstance()->setError(i18n::__(00009, null, 'errors', array(':campo vacio' => clienteTableClass::DIRECCION)), 00009);
+      $flag = true;
+      session::getInstance()->setFlash(clienteTableClass::getNameField(clienteTableClass::DIRECCION, true), true);
+     }
+
+
+//  pasar el campo a numerico
+//    if (!preg_match("/[0-9]{9}$/", $telefono )) {
+//      session::getInstance()->setError(i18n::__(00010, null, 'errors', array(':numeros' => $telefono)), 00010);
+//      session::getInstance()->setFlash(clienteTableClass::getNameField(clienteTableClass::TELEFONO, true), true);
+// 
+//    }
+
+
+    if ($flag === true){
+    request::getInstance()->setMethod('GET');
+    routing::getInstance()->forward('cliente', 'insertCliente');
+  }
+  }
+
 }
+

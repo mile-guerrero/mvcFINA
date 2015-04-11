@@ -17,23 +17,14 @@ class createActionClass extends controllerClass implements controllerActionInter
 
   public function execute() {
     try {
-      if (request::getInstance()->isMethod('POST')) {
+      if (request::getInstance()->isMethod('POST')===true) {
 
-        $usuario = request::getInstance()->getPost(usuarioTableClass::getNameField(usuarioTableClass::USUARIO, true));
+        $usuario = trim(request::getInstance()->getPost(usuarioTableClass::getNameField(usuarioTableClass::USUARIO, true)));
         $password = request::getInstance()->getPost(usuarioTableClass::getNameField(usuarioTableClass::PASSWORD, true));
-
-        if (strlen($usuario) > usuarioTableClass::USUARIO_LENGTH) {
-         session::getInstance()->setError(i18n::__(00007, null, 'errors', array(':longitud' => usuarioTableClass::USUARIO_LENGTH)), 00007);
-        routing::getInstance()->redirect('defaul', 'insert');
-         
-        }
+        $password2 = request::getInstance()->getPost(usuarioTableClass::getNameField(usuarioTableClass::PASSWORD, true));
+          
+        $this->validate($usuario,$password,$password2);
         
-        if (strlen($password) > usuarioTableClass::PASSWORD_LENGTH) {
-         session::getInstance()->setError(i18n::__(00008, null, 'errors', array(':longitud' => usuarioTableClass::PASSWORD_LENGTH)), 00008);
-        routing::getInstance()->redirect('default', 'insert');
-         
-        }
-
         $data = array(
             usuarioTableClass::USUARIO => $usuario,
             usuarioTableClass::PASSWORD => md5($password)
@@ -49,5 +40,28 @@ class createActionClass extends controllerClass implements controllerActionInter
       echo $exc->getTraceAsString();
     }
   }
-
+private function validate ($usuario,$password,$password2){
+  $flag = false;
+  if (strlen($usuario) > usuarioTableClass::USUARIO_LENGTH) {
+         session::getInstance()->setError(i18n::__(00007, null, 'errors', array(':longitud' => usuarioTableClass::USUARIO_LENGTH)), 00007);
+         $flag = true;
+         session::getInstance()->setFlash(usuarioTableClass::getNameField(usuarioTableClass::USUARIO, true),true);
+         }
+  
+  if (strlen($password) > usuarioTableClass::PASSWORD_LENGTH) {
+         session::getInstance()->setError(i18n::__(00008, null, 'errors', array(':longitud' => usuarioTableClass::PASSWORD_LENGTH)), 00008);
+         $flag = true;
+         session::getInstance()->setFlash(usuarioTableClass::getNameField(usuarioTableClass::PASSWORD, true),true);
+        }
+  if($password === $password2){
+    session::getInstance()->setError(i18n::__(00009, null, 'errors'));
+    $flag = true;
+     session::getInstance()->setFlash(usuarioTableClass::getNameField(usuarioTableClass::PASSWORD, true),true);
+  }      
+  if ($flag === true){
+    request::getInstance()->setMethod('GET');
+    routing::getInstance()->forward('default', 'insert');
+  }
+        
+}
 }
