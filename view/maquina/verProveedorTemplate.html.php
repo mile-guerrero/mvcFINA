@@ -6,6 +6,7 @@
 <?php $apellido = proveedorTableClass::APELLIDO ?>
 <?php $direccion = proveedorTableClass::DIRECCION ?>
 <?php $telefono = proveedorTableClass::TELEFONO ?>
+<?php $email = proveedorTableClass::EMAIL ?>
 <?php $updated_at = proveedorTableClass::UPDATED_AT ?>
 <?php $created_at = proveedorTableClass::CREATED_AT ?>
 <?php $nombre_ciudad = proveedorTableClass::ID_CIUDAD ?>
@@ -43,6 +44,10 @@
           </tr>
           <th><?php echo i18n::__('tel') ?></th>      
           <td><?php echo $key->$telefono ?></td>
+          </tr>
+          <tr>
+            <th>email</th>                   
+            <td><?php echo $key->$email ?></td>
           </tr>
           <tr>
             <th>fecha modificacion</th> 

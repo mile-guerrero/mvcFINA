@@ -22,7 +22,7 @@
     <div class="form-group">
       <label for="<?php echo proveedorTableClass::getNameField(proveedorTableClass::NOMBREP, true) ?>" class="col-sm-2"> <?php echo i18n::__('nom') ?>:</label>     
       <div class="col-sm-10">
-        <input id="<?php echo proveedorTableClass::getNameField(proveedorTableClass::NOMBREP, true) ?>" class="form-control" value="<?php echo ((isset($objProveedor) == true) ? $objProveedor[0]->$nombre : '') ?><?php echo (session::getInstance()->hasFlash(proveedorTableClass::getNameField(proveedorTableClass::NOMBREP, true)) === true) ? request::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::NOMBREP, true)) : '' ?>" type="text" name="<?php echo proveedorTableClass::getNameField(proveedorTableClass::NOMBREP, true) ?>" placeholder="<?php echo i18n::__('nom') ?>">
+        <input id="<?php echo proveedorTableClass::getNameField(proveedorTableClass::NOMBREP, true) ?>" class="form-control" value="<?php echo ((isset($objProveedor) == true) ? $objProveedor[0]->$nombre : '') ?>" type="text" name="<?php echo proveedorTableClass::getNameField(proveedorTableClass::NOMBREP, true) ?>" placeholder="<?php echo i18n::__('nom') ?>">
       </div>
     </div>  
 
@@ -50,7 +50,7 @@
     <div class="form-group">
       <label for="<?php echo proveedorTableClass::getNameField(proveedorTableClass::EMAIL, true) ?>" class="col-sm-2"> <?php echo i18n::__('email') ?>:</label>     
       <div class="col-sm-10">            
-        <input id="<?php echo proveedorTableClass::getNameField(proveedorTableClass::EMAIL, true) ?>" class="form-control" value="<?php echo ((isset($objProveedor) == true) ? $objProveedor[0]->$email : '') ?><?php echo (session::getInstance()->hasFlash(proveedorTableClass::getNameField(proveedorTableClass::EMAIL, true)) === true) ? request::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::EMAIL, true)) : '' ?>" type="text" name="<?php echo proveedorTableClass::getNameField(proveedorTableClass::EMAIL, true) ?>" placeholder="<?php echo i18n::__('email') ?>">
+        <input id="<?php echo proveedorTableClass::getNameField(proveedorTableClass::EMAIL, true) ?>" class="form-control" value="<?php echo ((isset($objProveedor) == true) ? $objProveedor[0]->$email : '') ?>" type="text" name="<?php echo proveedorTableClass::getNameField(proveedorTableClass::EMAIL, true) ?>" placeholder="<?php echo i18n::__('email') ?>">
       </div>
     </div> 
     

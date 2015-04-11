@@ -51,45 +51,61 @@ class createProveedorActionClass extends controllerClass implements controllerAc
 
 public function validate($nombre, $apellido, $direccion, $telefono, $email, $idCiudad) {
 
-    $flash = false;
+    $flag = false;
     if (strlen($nombre) > proveedorTableClass::NOMBREP_LENGTH) {
       session::getInstance()->setError(i18n::__(00001, null, 'errors', array(':longitud' => proveedorTableClass::NOMBREP_LENGTH)), 00001);
       session::getInstance()->setFlash(proveedorTableClass::getNameField(proveedorTableClass::NOMBREP_LENGTH, true), true);
       
     }
+    
+    if (!preg_match("/^[a-z]+$/i", $nombre)) {
+      session::getInstance()->setError(i18n::__(00012, null, 'errors', array(':letras' => $nombre)), 00012);
+      $flag = true;
+      session::getInstance()->setFlash(proveedorTableClass::getNameField(proveedorTableClass::NOMBREP, true), true);
+      
+    }
 
-    if (strlen($nombre) === "" or $nombre === null) {
+    if (strlen($nombre) == "") {
       session::getInstance()->setError(i18n::__(00009, null, 'errors', array(':campo vacio' => proveedorTableClass::NOMBREP)), 00009);
-      $flash = true;
+      $flag = true;
       session::getInstance()->setFlash(proveedorTableClass::getNameField(proveedorTableClass::NOMBREP, true), true);
       
     }
 
     if (strlen($apellido) > proveedorTableClass::APELLIDO_LENGTH) {
       session::getInstance()->setError(i18n::__(00002, null, 'errors', array(':longitud' => proveedorTableClass::APELLIDO_LENGTH)), 00002);
+      $flag = true;
+      session::getInstance()->setFlash(proveedorTableClass::getNameField(proveedorTableClass::APELLIDO, true), true);
       
     }
     
-     if (strlen($telefono) === "" or $telefono === null) {
+     if (!preg_match("/^[a-z]+$/i", $apellido)) {
+      session::getInstance()->setError(i18n::__(00012, null, 'errors', array(':letras' => $apellido)), 00012);
+      $flag = true;
+      session::getInstance()->setFlash(proveedorTableClass::getNameField(proveedorTableClass::APELLIDO, true), true);
+      
+    }
+    
+     if (!is_numeric($telefono) === "" or $telefono === null) {
       session::getInstance()->setError(i18n::__(00009, null, 'errors', array(':campo vacio' => proveedorTableClass::TELEFONO)), 00009);
       
     }
 
-    if (!preg_match("/[0-9]{9}$/", $telefono )) {
+    if (!is_numeric($telefono )) {
       session::getInstance()->setError(i18n::__(00010, null, 'errors', array(':numeros' => $telefono)), 00010);
-      $flash = true;
+      $flag = true;
       session::getInstance()->setFlash(proveedorTableClass::getNameField(proveedorTableClass::TELEFONO, true), true);
  
     }
     
-    if (!preg_match("^([a-zA-Z0-9._]+)@([a-zA-Z0-9.-]+).([a-zA-Z]{2,4})$", $email)) {
+    if (!eregi("^([a-zA-Z0-9._]+)@([a-zA-Z0-9.-]+).([a-zA-Z]{2,4})$", $email)) {
         session::getInstance()->setError(i18n::__(00011, null, 'errors', array(':correo' => $email), 00011));
-        $flash = true;
+        $flag = true;
          session::getInstance()->setFlash(proveedorTableClass::getNameField(proveedorTableClass::EMAIL, true), true);
          
     }
     
-    if ($flash === true){
+    if ($flag === true){
       request::getInstance()->setMethod('GET');
       routing::getInstance()->forward('maquina', 'insertProveedor');
     }

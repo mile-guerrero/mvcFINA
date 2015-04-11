@@ -24,7 +24,7 @@
       <div class="form-group">
       <label for="<?php echo clienteTableClass::getNameField(clienteTableClass::NOMBRE, true) ?>" class="col-sm-2"> <?php echo i18n::__('nom') ?>:</label>     
         <div class="col-sm-10">
-          <input id="<?php echo clienteTableClass::getNameField(clienteTableClass::NOMBRE, true) ?>" class="form-control" value="<?php echo ((isset($objCliente) == true) ? $objCliente[0]->$nombre : '') ?><?php echo (session::getInstance()->hasFlash(clienteTableClass::getNameField(clienteTableClass::NOMBRE, true)) === true) ? request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::NOMBRE, true)) : '' ?>" type="text" name="<?php echo clienteTableClass::getNameField(clienteTableClass::NOMBRE, true) ?>" placeholder="<?php echo i18n::__('nom') ?>">
+          <input id="<?php echo clienteTableClass::getNameField(clienteTableClass::NOMBRE, true) ?>" class="form-control" value="<?php echo ((isset($objCliente) == true) ? $objCliente[0]->$nombre : '') ?>" type="text" name="<?php echo clienteTableClass::getNameField(clienteTableClass::NOMBRE, true) ?>" placeholder="<?php echo i18n::__('nom') ?>">
         </div>
       </div>  
 

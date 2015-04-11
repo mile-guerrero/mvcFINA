@@ -48,45 +48,4 @@ class createClienteActionClass extends controllerClass implements controllerActi
     }
   }
 
-  public function validate($nombre, $apellido, $direccion, $telefono, $idTipo, $idCiudad) {
-
-    $flash = false;
-    if (strlen($nombre) > clienteTableClass::NOMBRE_LENGTH) {
-      session::getInstance()->setError(i18n::__(00001, null, 'errors', array(':longitud' => clienteTableClass::NOMBRE_LENGTH)), 00001);
-      
-    }
-
-    if (strlen($nombre) == "") {
-      session::getInstance()->setError(i18n::__(00009, null, 'errors', array(':campo vacio' => clienteTableClass::NOMBRE)), 00009);
-      session::getInstance()->setFlash(clienteTableClass::getNameField(clienteTableClass::NOMBRE, true), true);
-      
-    }
-    
-    if (strlen("/^[a-z]+$/i", $nombre )) {
-      session::getInstance()->setError(i18n::__(00012, null, 'errors', array(':letras' => clienteTableClass::NOMBRE)), 00012);
-      session::getInstance()->setFlash(clienteTableClass::getNameField(clienteTableClass::NOMBRE, true), true);
-      
-    }
-
-    if (strlen($apellido) > clienteTableClass::APELLIDO_LENGTH) {
-      session::getInstance()->setError(i18n::__(00002, null, 'errors', array(':longitud' => clienteTableClass::APELLIDO_LENGTH)), 00002);
-      
-    }
-    
-     if (strlen($telefono) === "" or $telefono === null) {
-      session::getInstance()->setError(i18n::__(00009, null, 'errors', array(':campo vacio' => clienteTableClass::TELEFONO)), 00009);
-      
-    }
-
-    if (!preg_match("/[0-9]{9}$/", $telefono )) {
-      session::getInstance()->setError(i18n::__(00010, null, 'errors', array(':numeros' => $telefono)), 00010);
-      session::getInstance()->setFlash(clienteTableClass::getNameField(clienteTableClass::TELEFONO, true), true);
- 
-    }
-    if ($flash === true){
-      request::getInstance()->setMethod('GET');
-      routing::getInstance()->forward('cliente', 'insertCliente');
-    }
-  }
-
 }
