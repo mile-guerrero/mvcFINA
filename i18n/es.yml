@@ -159,4 +159,3 @@ dictionary:
     00010:                No se permiten letras, Solo numeros (:numeros)
     00011:                El email debe ser example@hotmail.com (:correo)
     00012:                No se permiten numeros, Solo letras (:letras)
-    00013:                No se permiten numeros, Solo letras (:apellido)

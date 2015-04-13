@@ -26,10 +26,13 @@
       </div>
     </div>  
 
-    <div class="form-group">
+    <div class="form-group <?php echo (session::getInstance()->hasFlash(proveedorTableClass::getNameField(proveedorTableClass::APELLIDO, true)) === true) ? 'has-error has-feedback' : '' ?>">
       <label for="<?php echo proveedorTableClass::getNameField(proveedorTableClass::APELLIDO, true) ?>" class="col-sm-2"> <?php echo i18n::__('apell') ?>:</label>     
-      <div class="col-sm-10">            
+      <div class="col-sm-10">
         <input class="form-control" value="<?php echo ((isset($objProveedor) == true) ? $objProveedor[0]->$apellido : '') ?>" type="text" name="<?php echo proveedorTableClass::getNameField(proveedorTableClass::APELLIDO, true) ?>" placeholder="<?php echo i18n::__('apell') ?>">
+          <?php if (session::getInstance()->hasFlash(proveedorTableClass::getNameField(proveedorTableClass::APELLIDO, true)) === true): ?>
+        <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                <?php endif ?>
       </div>
     </div> 
 

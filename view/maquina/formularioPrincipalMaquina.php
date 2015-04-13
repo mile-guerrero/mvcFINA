@@ -19,10 +19,11 @@
   <input  name="<?php echo maquinaTableClass::getNameField(maquinaTableClass::ID,true) ?>" value="<?php echo $objMaquina[0]->$idM ?>" type="hidden">
   <?php endif ?>
     <?php view::includeHandlerMessage()?>
+  <br>
   <div class="form-group">
       <label for="<?php echo maquinaTableClass::getNameField(maquinaTableClass::NOMBRE, true) ?>" class="col-sm-2"> <?php echo i18n::__('nom') ?>: </label>     
       <div class="col-sm-10">  
-        <input class="form-control"  value="<?php echo ((isset($objMaquina)== true) ? $objMaquina[0]->$nombre : '') ?>" type="text" name="<?php echo maquinaTableClass::getNameField(maquinaTableClass::NOMBRE, true) ?>" placeholder="<?php echo i18n::__('nom') ?>" required>
+        <input class="form-control"  value="<?php echo ((isset($objMaquina)== true) ? $objMaquina[0]->$nombre : '') ?>" type="text" name="<?php echo maquinaTableClass::getNameField(maquinaTableClass::NOMBRE, true) ?>" placeholder="<?php echo i18n::__('nom') ?>">
   </div>
 </div>
   
@@ -30,7 +31,7 @@
   <div class="form-group">
       <label for="<?php echo maquinaTableClass::getNameField(maquinaTableClass::DESCRIPCION, true) ?>" class="col-sm-2"> <?php echo i18n::__('des') ?>:  </label>     
       <div class="col-sm-10">
-        <input class="form-control" value="<?php echo ((isset($objMaquina)== true) ? $objMaquina[0]->$descripcion : '') ?>" type="text" name="<?php echo maquinaTableClass::getNameField(maquinaTableClass::DESCRIPCION, true) ?>" placeholder="<?php echo i18n::__('des') ?>" required>
+        <input class="form-control" value="<?php echo ((isset($objMaquina)== true) ? $objMaquina[0]->$descripcion : '') ?>" type="text" name="<?php echo maquinaTableClass::getNameField(maquinaTableClass::DESCRIPCION, true) ?>" placeholder="<?php echo i18n::__('des') ?>">
       </div>
   </div>
   
