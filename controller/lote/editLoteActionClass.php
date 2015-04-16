@@ -23,13 +23,30 @@ class editLoteActionClass extends controllerClass implements controllerActionInt
             loteTableClass::ID,
             loteTableClass::UBICACION,
             loteTableClass::TAMANO,
+            loteTableClass::UNIDAD_DISTANCIA_ID,
             loteTableClass::DESCRIPCION,
-            loteTableClass::ID_CIUDAD    
+            loteTableClass::FECHA_INICIO_SIEMBRA,
+            loteTableClass::NUMERO_PLANTULAS,
+            loteTableClass::PRESUPUESTO,
+            loteTableClass::PRODUCTO_INSUMO_ID,
+            loteTableClass::ID_CIUDAD   
         );
         $where = array(
             loteTableClass::ID => request::getInstance()->getRequest(loteTableClass::ID)
         );
         $this->objLote = loteTableClass::getAll($fields, true, null, null, null, null, $where);
+       
+         $fields = array(     
+      unidadDistanciaTableClass::ID, 
+      unidadDistanciaTableClass::DESCRIPCION
+      );
+      $orderBy = array(
+      unidadDistanciaTableClass::DESCRIPCION    
+      ); 
+      $this->objLUD = unidadDistanciaTableClass::getAll($fields, false, $orderBy, 'ASC');
+     
+        
+        
         $fields = array(     
       ciudadTableClass::ID, 
       ciudadTableClass::NOMBRE_CIUDAD
@@ -39,6 +56,16 @@ class editLoteActionClass extends controllerClass implements controllerActionInt
       ); 
       $this->objLC = ciudadTableClass::getAll($fields, false, $orderBy, 'ASC');
      
+      $fields = array(     
+      productoInsumoTableClass::ID, 
+      productoInsumoTableClass::DESCRIPCION
+      );
+      $orderBy = array(
+      productoInsumoTableClass::DESCRIPCION    
+      ); 
+      $this->objLPI = productoInsumoTableClass::getAll($fields, true, $orderBy, 'ASC');
+     
+      
         $this->defineView('editLote', 'lote', session::getInstance()->getFormatOutput());
         
       }else{

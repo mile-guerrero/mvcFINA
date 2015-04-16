@@ -17,18 +17,7 @@ class insertMaquinaActionClass extends controllerClass implements controllerActi
 
   public function execute() {
     try {
-      
-      $fields = array(
-      origenMaquinaTableClass::ID,
-      origenMaquinaTableClass::DESCRIPCION
-      );
-      $orderBy = array(
-      origenMaquinaTableClass::DESCRIPCION   
-      );      
-      
-      $this->objMOM = origenMaquinaTableClass::getAll($fields, false, $orderBy, 'ASC');
-      
-      
+    
       $fields = array(     
       tipoUsoMaquinaTableClass::ID, 
       tipoUsoMaquinaTableClass::DESCRIPCION

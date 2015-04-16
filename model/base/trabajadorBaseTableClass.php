@@ -12,6 +12,7 @@ class trabajadorBaseTableClass extends tableBaseClass {
   private $id;
   private $nombret;
   private $apellido;
+  private $documento;
   private $direccion;
   private $telefono;
   private $email;
@@ -27,8 +28,10 @@ class trabajadorBaseTableClass extends tableBaseClass {
   const NOMBRET_LENGTH = 80;
   const APELLIDO = 'apellido';
   const APELLIDO_LENGTH = 80;
+  const DOCUMENTO = 'documento';
+  const DOCUMENTO_LENGTH = 15;
   const DIRECCION = 'direccion';
-  const DIRECCION_LENGTH = 15;
+  const DIRECCION_LENGTH = 30;
   const TELEFONO = 'telefono';
   const TELEFONO_LENGTH = 12;
   const EMAIL = 'email';
@@ -52,6 +55,10 @@ class trabajadorBaseTableClass extends tableBaseClass {
     return $this->apellido;
   }
 
+  public function get_documento() {
+    return $this->documento;
+  }
+  
   public function getDireccion() {
     return $this->direccion;
   }
@@ -99,6 +106,10 @@ class trabajadorBaseTableClass extends tableBaseClass {
   public function setApellido($apellido) {
     $this->apellido = $apellido;
   }
+  
+  public function set_documento($docuento) {
+    $this->documento = $documento;
+  }  
 
   public function setDireccion($direccion) {
     $this->direccion = $direccion;

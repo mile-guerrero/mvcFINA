@@ -8,5 +8,5 @@
     <h2 class="form-signin-heading">
  <?php echo i18n::__('editar maquina') ?>  <?php echo $objMaquina[0]->$nombre ?> </h2>
    </article>
-   <?php view::includePartial('maquina/formularioPrincipalMaquina',array('objMaquina'=>$objMaquina, 'nombre'=>$nombre,'objMOM' => $objMOM,'objMTUM' => $objMTUM,'objMP' => $objMP)) ?>
+   <?php view::includePartial('maquina/formularioPrincipalMaquina',array('objMaquina'=>$objMaquina, 'nombre'=>$nombre,'objMTUM' => $objMTUM,'objMP' => $objMP)) ?>
 </div>

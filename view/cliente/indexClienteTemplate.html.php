@@ -5,6 +5,7 @@
 <?php use mvc\session\sessionClass as session?>
 <?php $nom = clienteTableClass::NOMBRE ?>
 <?php $apellido = clienteTableClass::APELLIDO ?>
+<?php $documento = clienteTableClass::DOCUMENTO ?>
 <?php $id = clienteTableClass::ID ?>
 <?php $idCiudaddes = ciudadTableClass::ID ?>
 <?php $descripcionciudad = ciudadTableClass::NOMBRE_CIUDAD ?>
@@ -147,6 +148,9 @@
             <?php echo i18n::__('apell') ?>
           </th>
           <th>
+            <?php echo i18n::__('apell') ?>
+          </th>
+          <th>
             <?php echo i18n::__('acciones') ?>
           </th>
           </tr>
@@ -162,6 +166,9 @@
                 </td>
                 <td>
                   <?php echo $key->$apellido ?>
+                </td>
+                <td>
+                  <?php echo $key->$documento ?>
                 </td>
                 <th>
                   <a class="btn btn-warning btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('cliente', 'verCliente', array(clienteTableClass::ID => $key->$id)) ?>" > <?php echo i18n::__('ver') ?></a>

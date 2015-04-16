@@ -5,6 +5,7 @@
 
 <?php $idCliente = clienteTableClass::ID ?>
 <?php $apellido = clienteTableClass::APELLIDO ?>
+<?php $documento = clienteTableClass::DOCUMENTO ?>
 <?php $direccion = clienteTableClass::DIRECCION ?>
 <?php $telefono = clienteTableClass::TELEFONO ?>
 <?php $idTipo = clienteTableClass::ID_TIPO_ID ?>
@@ -34,7 +35,14 @@
           <input class="form-control" value="<?php echo ((isset($objCliente) == true) ? $objCliente[0]->$apellido : '') ?>" type="text" name="<?php echo clienteTableClass::getNameField(clienteTableClass::APELLIDO, true) ?>" placeholder="<?php echo i18n::__('apell') ?>">
         </div>
       </div> 
-
+        
+      <div class="form-group">
+        <label for="<?php echo clienteTableClass::getNameField(clienteTableClass::DOCUMENTO, true) ?>" class="col-sm-2"> <?php echo i18n::__('apell') ?>:</label>     
+        <div class="col-sm-10">            
+          <input class="form-control" value="<?php echo ((isset($objCliente) == true) ? $objCliente[0]->$documento : '') ?>" type="text" name="<?php echo clienteTableClass::getNameField(clienteTableClass::DOCUMENTO, true) ?>" placeholder="<?php echo i18n::__('apell') ?>">
+        </div>
+      </div>  
+        
       <div class="form-group">
         <label for="<?php echo clienteTableClass::getNameField(clienteTableClass::DIRECCION, true) ?>" class="col-sm-2"> <?php echo i18n::__('dir') ?>: </label>     
         <div class="col-sm-10">             

@@ -5,6 +5,7 @@
 
 <?php $idProveedor = proveedorTableClass::ID ?>
 <?php $apellido = proveedorTableClass::APELLIDO ?>
+<?php $documento = proveedorTableClass::DOCUMENTO ?>
 <?php $direccion = proveedorTableClass::DIRECCION ?>
 <?php $telefono = proveedorTableClass::TELEFONO ?>
 <?php $ciudadId = proveedorTableClass::ID_CIUDAD ?>
@@ -26,13 +27,17 @@
       </div>
     </div>  
 
-    <div class="form-group <?php echo (session::getInstance()->hasFlash(proveedorTableClass::getNameField(proveedorTableClass::APELLIDO, true)) === true) ? 'has-error has-feedback' : '' ?>">
+    <div class="form-group">
       <label for="<?php echo proveedorTableClass::getNameField(proveedorTableClass::APELLIDO, true) ?>" class="col-sm-2"> <?php echo i18n::__('apell') ?>:</label>     
-      <div class="col-sm-10">
+      <div class="col-sm-10">            
         <input class="form-control" value="<?php echo ((isset($objProveedor) == true) ? $objProveedor[0]->$apellido : '') ?>" type="text" name="<?php echo proveedorTableClass::getNameField(proveedorTableClass::APELLIDO, true) ?>" placeholder="<?php echo i18n::__('apell') ?>">
-          <?php if (session::getInstance()->hasFlash(proveedorTableClass::getNameField(proveedorTableClass::APELLIDO, true)) === true): ?>
-        <span class="glyphicon glyphicon-remove form-control-feedback"></span>
-                <?php endif ?>
+      </div>
+    </div> 
+    
+    <div class="form-group">
+      <label for="<?php echo proveedorTableClass::getNameField(proveedorTableClass::DOCUMENTO, true) ?>" class="col-sm-2"> <?php echo i18n::__('apell') ?>:</label>     
+      <div class="col-sm-10">            
+        <input class="form-control" value="<?php echo ((isset($objProveedor) == true) ? $objProveedor[0]->$documento : '') ?>" type="text" name="<?php echo proveedorTableClass::getNameField(proveedorTableClass::DOCUMENTO, true) ?>" placeholder="<?php echo i18n::__('apell') ?>">
       </div>
     </div> 
 

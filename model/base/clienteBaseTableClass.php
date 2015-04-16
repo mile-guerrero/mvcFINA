@@ -12,6 +12,7 @@ class clienteBaseTableClass extends tableBaseClass {
   private $id;
   private $nombre;
   private $apellido;
+  private $documento;
   private $direccion;
   private $telefono;
   private $idTipoId;
@@ -25,6 +26,8 @@ class clienteBaseTableClass extends tableBaseClass {
   const NOMBRE_LENGTH = 80;
   const APELLIDO = 'apellido';
   const APELLIDO_LENGTH = 80;
+  const DOCUMENTO = 'documento';
+  const DOCUMENTO_LENGTH = 15;
   const DIRECCION = 'direccion';
   const DIRECCION_LENGTH = 80;
   const TELEFONO = 'telefono';
@@ -45,6 +48,10 @@ class clienteBaseTableClass extends tableBaseClass {
 
   public function get_apellido() {
     return $this->apellido;
+  }
+  
+  public function get_documento() {
+    return $this->documento;
   }
 
   public function get_direccion() {
@@ -85,6 +92,10 @@ class clienteBaseTableClass extends tableBaseClass {
 
   public function set_apellido($apellido) {
     $this->apellido = $apellido;
+  }
+  
+  public function set_documento($docuento) {
+    $this->documento = $documento;
   }
 
   public function set_direccion($direccion) {

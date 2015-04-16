@@ -22,6 +22,7 @@ class editClienteActionClass extends controllerClass implements controllerAction
           clienteTableClass::ID,
           clienteTableClass::NOMBRE,
           clienteTableClass::APELLIDO,
+           clienteTableClass::DOCUMENTO,
           clienteTableClass::DIRECCION,
           clienteTableClass::TELEFONO,
           clienteTableClass::ID_TIPO_ID,

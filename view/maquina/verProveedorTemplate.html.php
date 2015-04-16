@@ -4,6 +4,7 @@
 <?php $id = proveedorTableClass::ID ?>
 <?php $nom = proveedorTableClass::NOMBREP ?>
 <?php $apellido = proveedorTableClass::APELLIDO ?>
+<?php $documento = proveedorTableClass::DOCUMENTO ?>
 <?php $direccion = proveedorTableClass::DIRECCION ?>
 <?php $telefono = proveedorTableClass::TELEFONO ?>
 <?php $email = proveedorTableClass::EMAIL ?>
@@ -36,12 +37,19 @@
               <th><?php echo i18n::__('nom') ?></th>      
               <td><?php echo $key->$nom ?></td>
             </tr>
+            <tr>
           <th><?php echo i18n::__('apell') ?></th>      
           <td><?php echo $key->$apellido ?></td>
           </tr>
+          <tr>
+          <th><?php echo i18n::__('apell') ?></th>      
+          <td><?php echo $key->$documento ?></td>
+          </tr>
+          <tr>
           <th><?php echo i18n::__('dir') ?></th>      
           <td><?php echo $key->$direccion ?></td>
           </tr>
+          <tr>
           <th><?php echo i18n::__('tel') ?></th>      
           <td><?php echo $key->$telefono ?></td>
           </tr>

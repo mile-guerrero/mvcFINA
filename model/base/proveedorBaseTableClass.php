@@ -3,7 +3,7 @@
 use mvc\model\table\tableBaseClass;
 
 /**
- * Description of usuarioBaseTableClass
+ * Description of proveedorBaseTableClass
  *
  * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
  */
@@ -12,6 +12,7 @@ class proveedorBaseTableClass extends tableBaseClass {
   private $id;
   private $nombreP;
   private $apellido;
+  private $documento;
   private $direccion;
   private $telefono;
   private $email;
@@ -25,10 +26,12 @@ class proveedorBaseTableClass extends tableBaseClass {
   const NOMBREP_LENGTH = 60;
   const APELLIDO = 'apellido';
   const APELLIDO_LENGTH = 60;
+  const DOCUMENTO = 'documento';
+  const DOCUMENTO_LENGTH = 15;
   const DIRECCION = 'direccion';
   const DIRECCION_LENGTH = 15;
   const TELEFONO = 'telefono';
-  const TELEFONO_LENGTH = 12;
+  const TELEFONO_LENGTH = 15;
   const EMAIL = 'email';
   const EMAIL_LENGTH = 40;
   const ID_CIUDAD = 'id_ciudad';
@@ -48,6 +51,10 @@ class proveedorBaseTableClass extends tableBaseClass {
     return $this->apellido;
   }
 
+  public function get_documento() {
+    return $this->documento;
+  }
+  
   public function getDireccion() {
     return $this->direccion;
   }
@@ -86,6 +93,10 @@ class proveedorBaseTableClass extends tableBaseClass {
 
   public function setApellido($apellido) {
     $this->apellido = $apellido;
+  }
+  
+  public function set_documento($docuento) {
+    $this->documento = $documento;
   }
 
   public function setDireccion($direccion) {

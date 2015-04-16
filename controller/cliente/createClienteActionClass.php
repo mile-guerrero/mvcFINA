@@ -21,6 +21,7 @@ class createClienteActionClass extends controllerClass implements controllerActi
 
         $nombre = trim(request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::NOMBRE, true)));
         $apellido = trim(request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::APELLIDO, true)));
+        $documento = trim(request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::DOCUMENTO, true)));
         $direccion = trim(request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::DIRECCION, true)));
         $telefono = trim(request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::TELEFONO, true)));
         $idTipo = trim(request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::ID_TIPO_ID, true)));
@@ -31,6 +32,7 @@ class createClienteActionClass extends controllerClass implements controllerActi
         $data = array(
             clienteTableClass::NOMBRE => $nombre,
             clienteTableClass::APELLIDO => $apellido,
+            clienteTableClass::DOCUMENTO => $documento,
             clienteTableClass::DIRECCION => $direccion,
             clienteTableClass::TELEFONO => $telefono,
             clienteTableClass::ID_TIPO_ID => $idTipo,

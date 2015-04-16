@@ -21,6 +21,7 @@ class createProveedorActionClass extends controllerClass implements controllerAc
 
         $nombre = trim(request::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::NOMBREP, true)));
         $apellido = trim(request::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::APELLIDO, true)));
+        $documento = trim(request::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::DOCUMENTO, true)));
         $direccion = trim(request::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::DIRECCION, true)));
         $telefono = trim(request::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::TELEFONO, true)));
         $email = trim(request::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::EMAIL, true)));
@@ -31,6 +32,7 @@ class createProveedorActionClass extends controllerClass implements controllerAc
         $data = array(
             proveedorTableClass::NOMBREP => $nombre,
             proveedorTableClass::APELLIDO => $apellido,
+            proveedorTableClass::DOCUMENTO => $documento,
             proveedorTableClass::DIRECCION => $direccion,
             proveedorTableClass::TELEFONO => $telefono,
             proveedorTableClass::EMAIL => $email,

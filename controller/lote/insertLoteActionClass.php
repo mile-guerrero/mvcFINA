@@ -17,7 +17,18 @@ class insertLoteActionClass extends controllerClass implements controllerActionI
 
   public function execute() {
     try {
-      $fields = array(     
+         $fields = array(     
+      unidadDistanciaTableClass::ID, 
+      unidadDistanciaTableClass::DESCRIPCION
+      );
+      $orderBy = array(
+      unidadDistanciaTableClass::DESCRIPCION    
+      ); 
+      $this->objLUD = unidadDistanciaTableClass::getAll($fields, false, $orderBy, 'ASC');
+     
+        
+        
+        $fields = array(     
       ciudadTableClass::ID, 
       ciudadTableClass::NOMBRE_CIUDAD
       );
@@ -25,6 +36,15 @@ class insertLoteActionClass extends controllerClass implements controllerActionI
       ciudadTableClass::NOMBRE_CIUDAD    
       ); 
       $this->objLC = ciudadTableClass::getAll($fields, false, $orderBy, 'ASC');
+     
+      $fields = array(     
+      productoInsumoTableClass::ID, 
+      productoInsumoTableClass::DESCRIPCION
+      );
+      $orderBy = array(
+      productoInsumoTableClass::DESCRIPCION    
+      ); 
+      $this->objLPI = productoInsumoTableClass::getAll($fields, true, $orderBy, 'ASC');
      
       $this->defineView('insertLote', 'lote', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {

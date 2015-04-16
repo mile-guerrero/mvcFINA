@@ -3,46 +3,106 @@
 use mvc\model\table\tableBaseClass;
 
 /**
- * Description of origenMaquinaBaseTableClass
+ * Description of pedidoBaseTableClass
  *
- * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
+ * 
  */
-class origenMaquinaBaseTableClass extends tableBaseClass {
+class pedidoBaseTableClass extends tableBaseClass {
 
- private $id;
- private $descripcion;
+ private $id;  
+ private $empresaId;
+ private $idProveedor;
+ private $cantidad;
+ private $productoInsumoId;
+ private $createdAt;
+ private $updatedAt; 
+ private $deletedAt;
 
 
-  const ID = 'id';
-  const DESCRIPCION = 'descripcion';
-  const DESCRIPCION_LENGTH = 80;
+  const ID = 'id';  
+  const EMPRESA_ID = 'empresa_id';
+  const ID_PROVEEDOR = 'id_proveedor';  
+  const CANTIDAD = 'cantidad';
+  const CANTIDAD_LENGTH = 30;  
+  const PRODUCTO_INSUMO_ID = 'producto_insumo_id'; 
+  const CREATED_AT = 'created_at';
+  const UPDATED_AT = 'updated_at';
+  const DELETED_AT = 'deleted_at';
   
-  public function getId() {
+  
+  public function get_id() {
     return $this->id;
   }
 
-  public function getDescripcion() {
-    return $this->descripcion;
+  public function get_empresaId() {
+    return $this->empresaId;
   }
 
-  public function setId($id) {
+  public function get_idProveedor() {
+    return $this->idProveedor;
+  }
+
+  public function get_cantidad() {
+    return $this->cantidad;
+  }
+
+  public function get_productoInsumoId() {
+    return $this->productoInsumoId;
+  }
+
+  public function get_createdAt() {
+    return $this->createdAt;
+  }
+
+  public function get_updatedAt() {
+    return $this->updatedAt;
+  }
+
+  public function get_deletedAt() {
+    return $this->deletedAt;
+  }
+
+  public function set_id($id) {
     $this->id = $id;
   }
 
-  public function setDescripcion($descripcion) {
-    $this->descripcion = $descripcion;
+  public function set_empresaId($empresaId) {
+    $this->empresaId = $empresaId;
   }
+
+  public function set_idProveedor($idProveedor) {
+    $this->idProveedor = $idProveedor;
+  }
+
+  public function set_cantidad($cantidad) {
+    $this->cantidad = $cantidad;
+  }
+
+  public function set_productoInsumoId($productoInsumoId) {
+    $this->productoInsumoId = $productoInsumoId;
+  }
+
+  public function set_createdAt($createdAt) {
+    $this->createdAt = $createdAt;
+  }
+
+  public function set_updatedAt($updatedAt) {
+    $this->updatedAt = $updatedAt;
+  }
+
+  public function set_deletedAt($deletedAt) {
+    $this->deletedAt = $deletedAt;
+  }
+
   /**
    * Obtiene el nombre de la tabla
    * @return string
    */
   static public function getNameTable() {
-    return 'origen_maquina';
+    return 'pedido';
   }
 
-
-  
-  /**
+   /**
    * Método para obtener el nombre del campo más la tabla ya sea en formato
    * DB (.) o en formato HTML (_)
    *
@@ -65,8 +125,8 @@ class origenMaquinaBaseTableClass extends tableBaseClass {
    * borrado físico [por defecto] de un registro en una tabla de la base de datos
    * @return \PDOException|boolean
    */
-  public static function delete($ids, $deletedLogical = false, $table = null) {
-    return parent::delete(self::getNameTable(), $ids, $deletedLogical);
+  public static function delete($ids, $deletedLogical = true, $table = null) {
+    return parent::delete($ids, $deletedLogical, self::getNameTable());
   }
 
   /**
@@ -98,8 +158,8 @@ class origenMaquinaBaseTableClass extends tableBaseClass {
    * variables publica los nombres de las columnas de la consulta o una
    * instancia de \PDOException en caso de fracaso.
    */
-  public static function getAll($fields, $orderBy = null, $order = null, $limit = null, $offset = null,$where = NULL, $table = null) {
-    return parent::getAll(self::getNameTable(), $fields, $orderBy, $order, $limit, $offset, $where, $table);
+  public static function getAll($fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null,$where = NULL, $table = null) {
+    return parent::getAll(self::getNameTable(), $fields, $deletedLogical, $orderBy, $order, $limit, $offset, $where, $table);
   }
 
   /**

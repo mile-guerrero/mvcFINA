@@ -28,7 +28,7 @@ class reportMaquinaActionClass extends controllerClass implements controllerActi
         $where[maquinaTableClass::DESCRIPCION] = $filter['descripcion'];
       }
       if(isset($filter['origen']) and $filter['origen'] !== null and $filter['origen'] !== ""){
-        $where[maquinaTableClass::ORIGEN_ID] = $filter['origen'];
+        $where[maquinaTableClass::ORIGEN_MAQUINA] = $filter['origen'];
       }
       if(isset($filter['tipo']) and $filter['tipo'] !== null and $filter['tipo'] !== ""){
         $where[maquinaTableClass::TIPO_USO_ID] = $filter['tipo'];
@@ -47,8 +47,8 @@ class reportMaquinaActionClass extends controllerClass implements controllerActi
           maquinaTableClass::ID,
           maquinaTableClass::NOMBRE,
           maquinaTableClass::DESCRIPCION,
+          maquinaTableClass::ORIGEN_MAQUINA,
           maquinaTableClass::TIPO_USO_ID,
-          maquinaTableClass::ORIGEN_ID,
           maquinaTableClass::PROVEEDOR_ID,
           maquinaTableClass::CREATED_AT,
           maquinaTableClass::UPDATED_AT
@@ -59,16 +59,7 @@ class reportMaquinaActionClass extends controllerClass implements controllerActi
       
       
       $this->objMaquina = maquinaTableClass::getAll($fields, true, $orderBy, 'ASC',null,null,$where);
-      
-      $fields = array(     
-      origenMaquinaTableClass::ID, 
-      origenMaquinaTableClass::DESCRIPCION
-      );
-      $orderBy = array(
-      origenMaquinaTableClass::ID   
-      ); 
-      $this->objMOM = origenMaquinaTableClass::getAll($fields, false, $orderBy, 'ASC');
-      
+     
       $fields = array(     
       tipoUsoMaquinaTableClass::ID, 
       tipoUsoMaquinaTableClass::DESCRIPCION

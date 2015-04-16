@@ -22,7 +22,11 @@ class editActionClass extends controllerClass implements controllerActionInterfa
         $fields = array(
             ordenServicioTableClass::ID,
             ordenServicioTableClass::FECHA_MANTENIMIENTO,
-            ordenServicioTableClass::TRABAJADOR_ID
+            ordenServicioTableClass::TRABAJADOR_ID,
+            ordenServicioTableClass::CANTIDAD,
+            ordenServicioTableClass::VALOR,            
+            ordenServicioTableClass::PRODUCTO_INSUMO_ID,
+            ordenServicioTableClass::MAQUINA_ID
         );
         $where = array(
             ordenServicioTableClass::ID => request::getInstance()->getRequest(ordenServicioTableClass::ID)

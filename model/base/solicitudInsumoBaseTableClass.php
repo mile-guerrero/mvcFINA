@@ -3,69 +3,106 @@
 use mvc\model\table\tableBaseClass;
 
 /**
- * Description of ordenServicioBaseTableClass
+ * Description of solicitudInsumoBaseTableClass
  *
  * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
  */
 class solicitudInsumoBaseTableClass extends tableBaseClass {
 
  private $id;
+ private $fechaHora;
+ private $trabajadorId; 
+ private $productoInsumoId;
+ private $cantidad;
+ private $loteId;
  private $createdAt;
  private $updatedAt;
- private $fechaHora;
- private $trabajadorId;
+ private $deletedAt;
 
-
-  const ID = 'id';
-  const CREATED_AT = 'created_at';
-  const UPDATED_AT = 'updated_at';
+  const ID = 'id';  
   const FECHA_HORA = 'fecha_hora';
   const TRABAJADOR_ID = 'trabajador_id';
+  const PRODUCTO_INSUMO_ID = 'producto_insumo_id';
+  const CANTIDAD = 'cantidad';
+  const CANTIDAD_LENGTH = 30;
+  const LOTE_ID = 'lote_id';
+  const CREATED_AT = 'created_at';
+  const UPDATED_AT = 'updated_at';
+  const DELETED_AT = 'deleted_at';
   
-  public function getId() {
+  public function get_id() {
     return $this->id;
   }
 
-  public function getCreatedAt() {
-    return $this->createdAt;
-  }
-
-  public function getUpdatedAt() {
-    return $this->updatedAt;
-  }
-
-  public function getFechaHora() {
+  public function get_fechaHora() {
     return $this->fechaHora;
   }
 
-  public function getTrabajadorId() {
+  public function get_trabajadorId() {
     return $this->trabajadorId;
   }
 
-  public function setId($id) {
+  public function get_productoInsumoId() {
+    return $this->productoInsumoId;
+  }
+
+  public function get_cantidad() {
+    return $this->cantidad;
+  }
+
+  public function get_loteId() {
+    return $this->loteId;
+  }
+
+  public function get_createdAt() {
+    return $this->createdAt;
+  }
+
+  public function get_updatedAt() {
+    return $this->updatedAt;
+  }
+
+  public function get_deletedAt() {
+    return $this->deletedAt;
+  }
+
+  public function set_id($id) {
     $this->id = $id;
   }
 
-  public function setCreatedAt($createdAt) {
-    $this->createdAt = $createdAt;
-  }
-
-  public function setUpdatedAt($updatedAt) {
-    $this->updatedAt = $updatedAt;
-  }
-
-  public function setFechaHora($fechaHora) {
+  public function set_fechaHora($fechaHora) {
     $this->fechaHora = $fechaHora;
   }
 
-  public function setTrabajadorId($trabajadorId) {
+  public function set_trabajadorId($trabajadorId) {
     $this->trabajadorId = $trabajadorId;
   }
 
-  
-  
-  
+  public function set_productoInsumoId($productoInsumoId) {
+    $this->productoInsumoId = $productoInsumoId;
+  }
 
+  public function set_cantidad($cantidad) {
+    $this->cantidad = $cantidad;
+  }
+
+  public function set_loteId($loteId) {
+    $this->loteId = $loteId;
+  }
+
+  public function set_createdAt($createdAt) {
+    $this->createdAt = $createdAt;
+  }
+
+  public function set_updatedAt($updatedAt) {
+    $this->updatedAt = $updatedAt;
+  }
+
+  public function set_deletedAt($deletedAt) {
+    $this->deletedAt = $deletedAt;
+  }
+
+  
    /**
    * Obtiene el nombre de la tabla
    * @return string

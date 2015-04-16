@@ -21,8 +21,8 @@ class verMaquinaActionClass extends controllerClass implements controllerActionI
           maquinaTableClass::ID,
           maquinaTableClass::NOMBRE,
           maquinaTableClass::DESCRIPCION,
+          maquinaTableClass::ORIGEN_MAQUINA,
           maquinaTableClass::TIPO_USO_ID,
-          maquinaTableClass::ORIGEN_ID,
           maquinaTableClass::PROVEEDOR_ID,
           maquinaTableClass::CREATED_AT,
           maquinaTableClass::UPDATED_AT

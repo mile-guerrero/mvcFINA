@@ -34,7 +34,6 @@ class insertProveedorActionClass extends controllerClass implements controllerAc
         }
 
 
-        //$this->defineView('ejemplo', 'default', session::getInstance()->getFormatOutput());
-    }
+       }
 
 }

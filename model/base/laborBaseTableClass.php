@@ -19,6 +19,7 @@ class laborBaseTableClass extends tableBaseClass {
   const DESCRIPCION = 'descripcion';
   const DESCRIPCION_LENGTH = 80;
   const VALOR = 'valor';
+  const VALOR_LENGTH = 30;
   const CREATED_AT = 'created_at';
   const UPDATED_AT = 'updated_at';
 

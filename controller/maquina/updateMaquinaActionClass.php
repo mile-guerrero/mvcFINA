@@ -23,7 +23,7 @@ class updateMaquinaActionClass extends controllerClass implements controllerActi
         $nombre = request::getInstance()->getPost(maquinaTableClass::getNameField(maquinaTableClass::NOMBRE, true));
         $descripcion = request::getInstance()->getPost(maquinaTableClass::getNameField(maquinaTableClass::DESCRIPCION, true));
         $tipo = request::getInstance()->getPost(maquinaTableClass::getNameField(maquinaTableClass::TIPO_USO_ID, true));
-        $origen = request::getInstance()->getPost(maquinaTableClass::getNameField(maquinaTableClass::ORIGEN_ID, true));
+        $origen = request::getInstance()->getPost(maquinaTableClass::getNameField(maquinaTableClass::ORIGEN_MAQUINA, true));
         $proveedor = request::getInstance()->getPost(maquinaTableClass::getNameField(maquinaTableClass::PROVEEDOR_ID, true));
 
         $ids = array(
@@ -32,8 +32,8 @@ class updateMaquinaActionClass extends controllerClass implements controllerActi
         $data = array(
             maquinaTableClass::NOMBRE => $nombre,
             maquinaTableClass::DESCRIPCION => $descripcion,
+            maquinaTableClass::ORIGEN_MAQUINA => $origen,
             maquinaTableClass::TIPO_USO_ID => $tipo,
-            maquinaTableClass::ORIGEN_ID => $origen,
             maquinaTableClass::PROVEEDOR_ID => $proveedor,
         );
         maquinaTableClass::update($ids, $data);

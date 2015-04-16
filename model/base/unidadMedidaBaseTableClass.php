@@ -11,36 +11,17 @@ class unidadMedidaBaseTableClass extends tableBaseClass {
 
  private $id;
  private $descripcion;
- private $createdAt;
- private $updatedAt;
- private $deletedAt;
 
- 
 
   const ID = 'id';
   const DESCRIPCION = 'descripcion';
-  const CREATED_AT = 'created_at';
-  const UPDATED_AT = 'updated_at';
-  const DELETED_AT = 'deleted_at';
-  
+   
   public function get_id() {
     return $this->id;
   }
 
   public function get_descripcion() {
     return $this->descripcion;
-  }
-
-  public function get_createdAt() {
-    return $this->createdAt;
-  }
-
-  public function get_updatedAt() {
-    return $this->updatedAt;
-  }
-  
-  public function get_deletedAt() {
-    return $this->deletedAt;
   }
 
   public function set_id($id) {
@@ -51,20 +32,6 @@ class unidadMedidaBaseTableClass extends tableBaseClass {
     $this->descripcion = $descripcion;
   }
 
-  public function set_createdAt($createdAt) {
-    $this->createdAt = $createdAt;
-  }
-
-  public function set_updatedAt($updatedAt) {
-    $this->updatedAt = $updatedAt;
-  }
-  
-  public function set_deletedAt($deletedAt) {
-    $this->deletedAt = $deletedAt;
-  }
-
-    
- 
   /**
    * Obtiene el nombre de la tabla
    * @return string

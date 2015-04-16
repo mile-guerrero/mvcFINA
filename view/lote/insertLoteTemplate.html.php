@@ -11,6 +11,6 @@ use mvc\i18n\i18nClass as i18n ?>
   <h2 class="form-signin-heading"><?php echo i18n::__('nuevo lote') ?> </h2>
   </article>
 
-<?php view::includePartial('lote/formularioPrincipalLote', array('objLC' => $objLC)) ?>
+<?php view::includePartial('lote/formularioPrincipalLote', array('objLUD'=>$objLUD,'objLPI'=>$objLPI,'objLC'=>$objLC)) ?>
 
 </div>

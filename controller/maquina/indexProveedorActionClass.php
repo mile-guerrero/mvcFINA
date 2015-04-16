@@ -42,6 +42,7 @@ class indexProveedorActionClass extends controllerClass implements controllerAct
           proveedorTableClass::NOMBREP,
           proveedorTableClass::APELLIDO,
           proveedorTableClass::DIRECCION,
+          proveedorTableClass::DOCUMENTO,
           proveedorTableClass::TELEFONO,
           proveedorTableClass::EMAIL,
           proveedorTableClass::ID_CIUDAD

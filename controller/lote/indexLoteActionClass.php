@@ -43,10 +43,15 @@ class indexLoteActionClass extends controllerClass implements controllerActionIn
       }
       $fields = array(
           loteTableClass::ID,
-          loteTableClass::UBICACION,
-          loteTableClass::TAMANO,
-          loteTableClass::DESCRIPCION,
-          loteTableClass::ID_CIUDAD, 
+            loteTableClass::UBICACION,
+            loteTableClass::TAMANO,
+            loteTableClass::UNIDAD_DISTANCIA_ID,
+            loteTableClass::DESCRIPCION,
+            loteTableClass::FECHA_INICIO_SIEMBRA,
+            loteTableClass::NUMERO_PLANTULAS,
+            loteTableClass::PRESUPUESTO,
+            loteTableClass::PRODUCTO_INSUMO_ID,
+            loteTableClass::ID_CIUDAD, 
           loteTableClass::CREATED_AT,
           loteTableClass::UPDATED_AT
       );
@@ -64,15 +69,35 @@ class indexLoteActionClass extends controllerClass implements controllerActionIn
       $this->objLote = loteTableClass::getAll($fields, true, $orderBy, 'ASC',config::getRowGrid(), $page,$where);
      
       
-      $fields = array(     
+         $fields = array(     
+      unidadDistanciaTableClass::ID, 
+      unidadDistanciaTableClass::DESCRIPCION
+      );
+      $orderBy = array(
+      unidadDistanciaTableClass::DESCRIPCION    
+      ); 
+      $this->objLUD = unidadDistanciaTableClass::getAll($fields, false, $orderBy, 'ASC');
+     
+        
+        
+        $fields = array(     
       ciudadTableClass::ID, 
       ciudadTableClass::NOMBRE_CIUDAD
       );
       $orderBy = array(
       ciudadTableClass::NOMBRE_CIUDAD    
       ); 
-      $this->objCC = ciudadTableClass::getAll($fields, false, $orderBy, 'ASC');
-      
+      $this->objLC = ciudadTableClass::getAll($fields, false, $orderBy, 'ASC');
+     
+      $fields = array(     
+      productoInsumoTableClass::ID, 
+      productoInsumoTableClass::DESCRIPCION
+      );
+      $orderBy = array(
+      productoInsumoTableClass::DESCRIPCION    
+      ); 
+      $this->objLPI = productoInsumoTableClass::getAll($fields, true, $orderBy, 'ASC');
+     
       $this->defineView('indexLote', 'lote', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
       echo $exc->getMessage();

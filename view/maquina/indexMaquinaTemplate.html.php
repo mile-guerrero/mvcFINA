@@ -6,8 +6,8 @@
 
 <?php $id = maquinaTableClass::ID ?>
 <?php $nombre = maquinaTableClass::NOMBRE ?>
-<?php $idorigen= origenMaquinaTableClass::ID ?>
-<?php $desorigen= origenMaquinaTableClass::DESCRIPCION ?>
+<?php $idorigen= maquinaTableClass::ORIGEN_MAQUINA ?>
+<?php $desorigen= maquinaTableClass::ORIGEN_MAQUINA ?>
 <?php $idtipo= tipoUsoMaquinaTableClass::ID ?>
 <?php $destipo= tipoUsoMaquinaTableClass::DESCRIPCION ?>
 <?php $idpro= proveedorTableClass::ID ?>
@@ -50,17 +50,6 @@
     </div>
   </div>
            
-  <div class="form-group">
-    <label for="filterCiudad" class="col-sm-2 control-label"><?php echo i18n::__('origenM') ?></label>
-    <div class="col-sm-10">
-      <select class="form-control" id="filterCiudad" name="filter[origen]">
-        <option value=""><?php echo i18n::__('selectOrigen') ?></option>
-<?php foreach ($objMOM as $ciudad): ?>
-            <option value="<?php echo $ciudad->$idorigen ?>"><?php echo $ciudad->$desorigen ?></option>
-<?php endforeach; ?>
-          </select>
-    </div>
-  </div>
     
   <div class="form-group">
     <label for="filterCiudad" class="col-sm-2 control-label"><?php echo i18n::__('tipo uso') ?></label>
@@ -131,17 +120,7 @@
                 </div>
               </div>
               
-<div class="form-group">
-    <label for="filterCiudad" class="col-sm-2 control-label"><?php echo i18n::__('origenM') ?></label>
-    <div class="col-sm-10">
-      <select class="form-control" id="filterCiudad" name="filter[origen]">
-        <option value=""><?php echo i18n::__('selectOrigen') ?></option>
-<?php foreach ($objMOM as $ciudad): ?>
-            <option value="<?php echo $ciudad->$idorigen ?>"><?php echo $ciudad->$desorigen ?></option>
-<?php endforeach; ?>
-          </select>
-    </div>
-  </div>
+
     
   <div class="form-group">
     <label for="filterCiudad" class="col-sm-2 control-label"><?php echo i18n::__('tipo uso') ?></label>

@@ -3,7 +3,7 @@
 use mvc\model\table\tableBaseClass;
 
 /**
- * Description of usuarioBaseTableClass
+ * Description of productoInsumoBaseTableClass
  *
  * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
  */
@@ -19,15 +19,17 @@ class productoInsumoBaseTableClass extends tableBaseClass {
  private $deletedAt;
  
 
-  const ID = 'id';
-  const CREATED_AT = 'created_at';
-  const UPDATED_AT = 'updated_at';
-  const DELETED_AT = 'deleted_at';
+  const ID = 'id';  
   const DESCRIPCION = 'descripcion';
   const DESCRIPCION_LENGTH = 80;
   const IVA = 'iva';
+  const IVA_LENGTH = 30;
   const UNIDAD_MEDIDA_ID = 'unidad_medida_id';
   const TIPO_PRODUCTO_INSUMO_ID = 'tipo_producto_insumo_id';
+  const CREATED_AT = 'created_at';
+  const UPDATED_AT = 'updated_at';
+  const DELETED_AT = 'deleted_at';
+  
   public function get_id() {
     return $this->id;
   }

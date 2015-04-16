@@ -6,9 +6,7 @@
 <?php $tipo_uso = maquinaTableClass::TIPO_USO_ID?>
 <?php $tipo_usos = tipoUsoMaquinaTableClass::ID?>
 <?php $des_usos = tipoUsoMaquinaTableClass::DESCRIPCION?>
-<?php $origen_id = maquinaTableClass::ORIGEN_ID ?>
-<?php $origen_ids = origenMaquinaTableClass::ID ?>
-<?php $des_origen = origenMaquinaTableClass::DESCRIPCION?>
+<?php $origen_id = maquinaTableClass::ORIGEN_MAQUINA ?>
 <?php $proveedor_id = maquinaTableClass::PROVEEDOR_ID ?>
 <?php $proveedor_ids = proveedorTableClass::ID ?>
 <?php $des_proveedor = proveedorTableClass::NOMBREP ?>
@@ -19,11 +17,10 @@
   <input  name="<?php echo maquinaTableClass::getNameField(maquinaTableClass::ID,true) ?>" value="<?php echo $objMaquina[0]->$idM ?>" type="hidden">
   <?php endif ?>
     <?php view::includeHandlerMessage()?>
-  <br>
   <div class="form-group">
       <label for="<?php echo maquinaTableClass::getNameField(maquinaTableClass::NOMBRE, true) ?>" class="col-sm-2"> <?php echo i18n::__('nom') ?>: </label>     
       <div class="col-sm-10">  
-        <input class="form-control"  value="<?php echo ((isset($objMaquina)== true) ? $objMaquina[0]->$nombre : '') ?>" type="text" name="<?php echo maquinaTableClass::getNameField(maquinaTableClass::NOMBRE, true) ?>" placeholder="<?php echo i18n::__('nom') ?>">
+        <input class="form-control"  value="<?php echo ((isset($objMaquina)== true) ? $objMaquina[0]->$nombre : '') ?>" type="text" name="<?php echo maquinaTableClass::getNameField(maquinaTableClass::NOMBRE, true) ?>" placeholder="<?php echo i18n::__('nom') ?>" required>
   </div>
 </div>
   
@@ -31,10 +28,16 @@
   <div class="form-group">
       <label for="<?php echo maquinaTableClass::getNameField(maquinaTableClass::DESCRIPCION, true) ?>" class="col-sm-2"> <?php echo i18n::__('des') ?>:  </label>     
       <div class="col-sm-10">
-        <input class="form-control" value="<?php echo ((isset($objMaquina)== true) ? $objMaquina[0]->$descripcion : '') ?>" type="text" name="<?php echo maquinaTableClass::getNameField(maquinaTableClass::DESCRIPCION, true) ?>" placeholder="<?php echo i18n::__('des') ?>">
+        <input class="form-control" value="<?php echo ((isset($objMaquina)== true) ? $objMaquina[0]->$descripcion : '') ?>" type="text" name="<?php echo maquinaTableClass::getNameField(maquinaTableClass::DESCRIPCION, true) ?>" placeholder="<?php echo i18n::__('des') ?>" required>
       </div>
   </div>
   
+  <div class="form-group">
+      <label for="<?php echo maquinaTableClass::getNameField(maquinaTableClass::ORIGEN_MAQUINA, true) ?>" class="col-sm-2"> <?php echo i18n::__('origen') ?>:  </label>     
+      <div class="col-sm-10">
+        <input class="form-control" value="<?php echo ((isset($objMaquina)== true) ? $objMaquina[0]->$origen_id : '') ?>" type="text" name="<?php echo maquinaTableClass::getNameField(maquinaTableClass::ORIGEN_MAQUINA, true) ?>" placeholder="<?php echo i18n::__('origen') ?>" required>
+      </div>
+  </div>
   
   <div class="form-group">
       <label for="<?php echo maquinaTableClass::getNameField(maquinaTableClass::TIPO_USO_ID, true) ?>" class="col-sm-2"> <?php echo i18n::__('tipo') ?>:  </label>
@@ -47,18 +50,7 @@
    </select>   
       </div> 
     </div> 
-  
-   <div class="form-group">
-      <label for="<?php echo maquinaTableClass::getNameField(maquinaTableClass::ORIGEN_ID, true) ?>" class="col-sm-2">  <?php echo i18n::__('origen') ?>:   </label>
-      <div class="col-sm-10"> 
-        <select class="form-control" id="<?php maquinaTableClass::getNameField(maquinaTableClass::ID, true)?>" name="<?php echo maquinaTableClass::getNameField(maquinaTableClass::ORIGEN_ID, true);?>">
-           <option><?php echo i18n::__('selectOrigen') ?></option>
-       <?php foreach($objMOM as $O):?>
-       <option <?php echo (isset($objMaquina[0]->$origen_id) === true and $objMaquina[0]->$origen_id == $O->$origen_ids) ? 'selected' : '' ?> value="<?php echo $O->$origen_ids?>"><?php echo $O->$des_origen?></option>
-       <?php endforeach;?>
-   </select>   
-      </div> 
-    </div> 
+
   
   <div class="form-group">
       <label for="<?php echo maquinaTableClass::getNameField(maquinaTableClass::PROVEEDOR_ID, true) ?>" class="col-sm-2">  <?php echo i18n::__('pro') ?>:   </label>

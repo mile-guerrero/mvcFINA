@@ -105,11 +105,7 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo i18::__('otros') ?> <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
-              <li><a href="<?php echo routing::getInstance()->getUrlWeb('cliente', 'indexTipoId') ?>"><?php echo i18::__('tipo id') ?></a></li>
-              <li><a href="<?php echo routing::getInstance()->getUrlWeb('maquina', 'indexTipoUsoMaquina') ?>"><?php echo i18::__('tipo uso') ?></a></li>
-              <li class="divider"></li>
-              <li><a href="<?php echo routing::getInstance()->getUrlWeb('maquina', 'indexOrigenMaquina') ?>"><?php echo i18::__('origen') ?></a></li>
-              <li class="divider"></li>
+               <li class="divider"></li>
               <li><a href="<?php echo routing::getInstance()->getUrlWeb('usuarioCredencial', 'index') ?>"><?php echo i18::__('usuarioCredencial') ?></a></li>
             </ul>
           </li>

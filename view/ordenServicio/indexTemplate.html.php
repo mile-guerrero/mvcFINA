@@ -25,9 +25,6 @@ use mvc\i18n\i18nClass as i18n ?>
         <thead>
 
         <th>
-          <?php echo i18n::__('fechaMantenimiento') ?>
-        </th>
-        <th>
           <?php echo i18n::__('nombreTrabajador') ?>
         </th>
         <th>
@@ -38,12 +35,7 @@ use mvc\i18n\i18nClass as i18n ?>
         <tbody>
 <?php foreach ($objOS as $key): ?>
           <tr>
-            
-            <td>
-  <?php echo $key->$fecha_mantenimiento ?>
-            </td>
-         
-              <td>
+           <td>
   <?php echo trabajadorTableClass::getNameTrabajador($key->$nombreT) ?> 
               </td> 
               <th>

@@ -10,28 +10,30 @@ use mvc\model\table\tableBaseClass;
 class ordenServicioBaseTableClass extends tableBaseClass {
 
  private $id;
+ private $fechaMantenimiento;
+ private $trabajadorId; 
+ private $cantidad;
+ private $valor;
+ private $productoInsumoId;
+ private $maquinaId;
  private $createdAt;
  private $updatedAt;
- private $fechaMantenimiento;
- private $trabajadorId;
 
 
-  const ID = 'id';
-  const CREATED_AT = 'created_at';
-  const UPDATED_AT = 'updated_at';
+  const ID = 'id';  
   const FECHA_MANTENIMIENTO = 'fecha_mantenimiento';
   const TRABAJADOR_ID = 'trabajador_id';
+  const CANTIDAD = 'cantidad';
+  const CANTIDAD_LENGTH = 30;
+  const VALOR = 'valor';  
+  const VALOR_LENGTH = 30;
+  const PRODUCTO_INSUMO_ID = 'producto_insumo_id';
+  const MAQUINA_ID = 'maquina_id';
+  const CREATED_AT = 'created_at';
+  const UPDATED_AT = 'updated_at';
   
   public function getId() {
     return $this->id;
-  }
-
-  public function getCreatedAt() {
-    return $this->createdAt;
-  }
-
-  public function getUpdatedAt() {
-    return $this->updatedAt;
   }
 
   public function getFechaMantenimiento() {
@@ -41,17 +43,33 @@ class ordenServicioBaseTableClass extends tableBaseClass {
   public function getTrabajadorId() {
     return $this->trabajadorId;
   }
+  
+  public function get_cantidad() {
+    return $this->cantidad;
+  }
+
+  public function get_valor() {
+    return $this->valor;
+  }
+  
+  public function get_productoInsumoId() {
+    return $this->productoInsumoId;
+  }
+
+  public function get_maquinaId() {
+    return $this->maquinaId;
+  }
+  
+  public function getCreatedAt() {
+    return $this->createdAt;
+  }
+
+  public function getUpdatedAt() {
+    return $this->updatedAt;
+  }
 
   public function setId($id) {
     $this->id = $id;
-  }
-
-  public function setCreatedAt($createdAt) {
-    $this->createdAt = $createdAt;
-  }
-
-  public function setUpdatedAt($updatedAt) {
-    $this->updatedAt = $updatedAt;
   }
 
   public function setFechaMantenimiento($fechaMantenimiento) {
@@ -61,9 +79,30 @@ class ordenServicioBaseTableClass extends tableBaseClass {
   public function setTrabajadorId($trabajadorId) {
     $this->trabajadorId = $trabajadorId;
   }
+  
+  public function set_cantidad($cantidad) {
+    $this->cantidad = $cantidad;
+  }
 
+  public function set_valor($valor) {
+    $this->valor = $valor;
+  }
   
+  public function set_productoInsumoId($productoInsumoId) {
+    $this->productoInsumoId = $productoInsumoId;
+  }
+
+  public function set_maquinaId($maquinaId) {
+    $this->maquinaId = $maquinaId;
+  }
   
+  public function setCreatedAt($createdAt) {
+    $this->createdAt = $createdAt;
+  }
+
+  public function setUpdatedAt($updatedAt) {
+    $this->updatedAt = $updatedAt;
+  }
 
    /**
    * Obtiene el nombre de la tabla

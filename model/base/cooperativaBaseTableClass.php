@@ -25,7 +25,9 @@ class cooperativaBaseTableClass extends tableBaseClass {
   const DESCRIPCION = 'descripcion';
   const DESCRIPCION_LENGTH = 80;
   const DIRECCION = 'direccion';
+  const DIRECCION_LENGTH = 80;
   const TELEFONO = 'telefono';
+  const TELEFONO_LENGTH = 15;
   const ID_CIUDAD = 'id_ciudad';
   const CREATED_AT = 'created_at';
   const UPDATED_AT = 'updated_at';

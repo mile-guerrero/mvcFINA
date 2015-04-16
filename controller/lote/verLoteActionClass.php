@@ -21,7 +21,12 @@ class verLoteActionClass extends controllerClass implements controllerActionInte
           loteTableClass::ID,
           loteTableClass::UBICACION,
           loteTableClass::TAMANO,
+          loteTableClass::UNIDAD_DISTANCIA_ID,
           loteTableClass::DESCRIPCION,
+          loteTableClass::FECHA_INICIO_SIEMBRA,
+          loteTableClass::NUMERO_PLANTULAS,
+          loteTableClass::PRESUPUESTO,
+          loteTableClass::PRODUCTO_INSUMO_ID,
           loteTableClass::ID_CIUDAD, 
           loteTableClass::CREATED_AT,
           loteTableClass::UPDATED_AT

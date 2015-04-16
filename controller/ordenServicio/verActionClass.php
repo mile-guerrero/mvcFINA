@@ -20,6 +20,10 @@ class verActionClass extends controllerClass implements controllerActionInterfac
       $fields = array(
           ordenServicioTableClass::ID,
           ordenServicioTableClass::FECHA_MANTENIMIENTO,
+          ordenServicioTableClass::CANTIDAD,
+          ordenServicioTableClass::VALOR,
+          ordenServicioTableClass::PRODUCTO_INSUMO_ID,
+          ordenServicioTableClass::MAQUINA_ID,
           ordenServicioTableClass::CREATED_AT,
           ordenServicioTableClass::UPDATED_AT
       );
@@ -40,6 +44,31 @@ class verActionClass extends controllerClass implements controllerActionInterfac
             trabajadorTableClass::ID => request::getInstance()->getRequest(trabajadorTableClass::ID)
         );
       $this->objOST = trabajadorTableClass::getAll($fields, true, $orderBy, 'ASC',null,null,$where);
+
+      
+      $fields = array(     
+      productoInsumoTableClass::ID, 
+      productoInsumoTableClass::DESCRIPCION
+      );
+      $orderBy = array(
+      productoInsumoTableClass::DESCRIPCION    
+      ); 
+       $where = array(
+            productoInsumoTableClass::ID => request::getInstance()->getRequest(productoInsumoTableClass::ID)
+        );
+      $this->objOSPI = productoInsumoTableClass::getAll($fields, true, $orderBy, 'ASC',null,null,$where);
+
+      $fields = array(     
+      maquinaTableClass::ID, 
+      maquinaTableClass::NOMBRE
+      );
+      $orderBy = array(
+      maquinaTableClass::NOMBRE    
+      ); 
+       $where = array(
+            maquinaTableClass::ID => request::getInstance()->getRequest(maquinaTableClass::ID)
+        );
+      $this->objOSM = maquinaTableClass::getAll($fields, true, $orderBy, 'ASC',null,null,$where);
 
       $this->defineView('ver', 'ordenServicio', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {

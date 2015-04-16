@@ -22,6 +22,7 @@ class editProveedorActionClass extends controllerClass implements controllerActi
             proveedorTableClass::ID,
             proveedorTableClass::NOMBREP,
             proveedorTableClass::APELLIDO,
+            proveedorTableClass::DOCUMENTO,
             proveedorTableClass::DIRECCION,
             proveedorTableClass::TELEFONO,
             proveedorTableClass::EMAIL,

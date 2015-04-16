@@ -21,12 +21,15 @@ class createLoteActionClass extends controllerClass implements controllerActionI
 
         $ubicacion = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::UBICACION, true));
         $tamano = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::TAMANO, true));
+        $unidadDistancia = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::UNIDAD_DISTANCIA_ID, true));
         $descripcion = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::DESCRIPCION, true));
+        $fechaSiembra = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::FECHA_INICIO_SIEMBRA, true));
+        $numero = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::NUMERO_PLANTULAS, true));
+        $presupuesto = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::PRESUPUESTO, true));
+        $insumo = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::PRODUCTO_INSUMO_ID, true));
         $idCiudad = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::ID_CIUDAD, true));
 
-//        if (strlen($descripcion) > loteTableClass::DESCRIPCION_LENGTH) {
-//          throw new PDOException(i18n::__(00001, null, 'errors', array(':longitud' => loteTableClass::DESCRIPCION_LENGTH)), 00001);
-//        }
+//        
  if (strlen($ubicacion) > loteTableClass::UBICACION_LENGTH) {
          session::getInstance()->setError(i18n::__(00005, null, 'errors', array(':longitud' =>  loteTableClass::UBICACION_LENGTH)), 00005);
         routing::getInstance()->redirect('lote', 'insertLote');
@@ -47,7 +50,12 @@ class createLoteActionClass extends controllerClass implements controllerActionI
         $data = array(
             loteTableClass::UBICACION => $ubicacion,
             loteTableClass::TAMANO => $tamano,
+            loteTableClass::UNIDAD_DISTANCIA_ID => $unidadDistancia,
             loteTableClass::DESCRIPCION => $descripcion,
+            loteTableClass::FECHA_INICIO_SIEMBRA => $fechaSiembra,
+            loteTableClass::NUMERO_PLANTULAS => $numero,
+            loteTableClass::PRESUPUESTO => $presupuesto,
+            loteTableClass::PRODUCTO_INSUMO_ID => $insumo,
             loteTableClass::ID_CIUDAD => $idCiudad
         );
         loteTableClass::insert($data);

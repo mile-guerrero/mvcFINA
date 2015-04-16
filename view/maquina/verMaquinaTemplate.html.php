@@ -9,7 +9,7 @@ use mvc\i18n\i18nClass as i18n ?>
 <?php $descripcion = maquinaTableClass::DESCRIPCION?>
 <?php $created_at = maquinaTableClass::CREATED_AT ?>
 <?php $updated_at = maquinaTableClass::UPDATED_AT ?>
-<?php $des_origen = maquinaTableClass::ORIGEN_ID ?>
+<?php $des_origen = maquinaTableClass::ORIGEN_MAQUINA ?>
 <?php $descripcion_uso = maquinaTableClass::TIPO_USO_ID ?>
 <?php $nombre_pro = maquinaTableClass::PROVEEDOR_ID ?>
 <div class="container container-fluid" id="cuerpo">
@@ -41,13 +41,7 @@ use mvc\i18n\i18nClass as i18n ?>
               <td><?php echo $key->$descripcion ?></td>
             </tr>
                          
-          <th>fecha creacion</th>                   
-          <th><?php echo $key->$created_at ?></th>
-          </tr>
-          <tr>
-            <th>fecha modificacion</th> 
-            <th><?php echo $key->$updated_at ?></th>
-          </tr>
+          
 
 <?php endforeach; ?>
           
@@ -59,12 +53,11 @@ use mvc\i18n\i18nClass as i18n ?>
         <?php endforeach; ?>
 
 
-<?php foreach ($objMaquina as $OM): ?>
           <tr>
           <th><?php echo i18n::__('origenM') ?></th>      
-          <td><?php echo origenMaquinaTableClass::getNameOrigenMaquina($OM->$des_origen) ?></td>
+          <td><?php echo $TUM->$des_origen ?></td>
           </tr>
-<?php endforeach; ?>
+          
           <?php foreach ($objMaquina as $P): ?>
           <tr>
           <th><?php echo i18n::__('nomProveedor') ?></th>      

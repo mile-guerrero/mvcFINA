@@ -22,6 +22,7 @@ class updateClienteActionClass extends controllerClass implements controllerActi
         $id = request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::ID, true));
         $nombre = request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::NOMBRE, true));
         $apellido = request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::APELLIDO, true));
+        $documento = request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::DOCUMENTO, true));
         $direccion = request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::DIRECCION, true));
         $telefono = request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::TELEFONO, true));
         $idTipo = request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::ID_TIPO_ID, true));
@@ -33,6 +34,7 @@ class updateClienteActionClass extends controllerClass implements controllerActi
         $data = array(
             clienteTableClass::NOMBRE => $nombre,
             clienteTableClass::APELLIDO => $apellido,
+            clienteTableClass::DOCUMENTO => $documento,
             clienteTableClass::DIRECCION => $direccion,
             clienteTableClass::TELEFONO => $telefono,
             clienteTableClass::ID_TIPO_ID => $idTipo,

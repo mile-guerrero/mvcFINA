@@ -4,6 +4,7 @@
 <?php $id = clienteTableClass::ID ?>
 <?php $nom = clienteTableClass::NOMBRE ?>
 <?php $apellido = clienteTableClass::APELLIDO ?>
+<?php $documento = clienteTableClass::DOCUMENTO ?>
 <?php $direccion = clienteTableClass::DIRECCION ?>
 <?php $telefono = clienteTableClass::TELEFONO ?>
 <?php $updated_at = clienteTableClass::UPDATED_AT ?>
@@ -36,12 +37,19 @@
               <th><?php echo i18n::__('nom') ?></th>      
               <td><?php echo $key->$nom ?></td>
             </tr>
+            <tr>
           <th><?php echo i18n::__('apell') ?></th>      
           <td><?php echo $key->$apellido ?></td>
           </tr>
+           <tr>
+          <th><?php echo i18n::__('apell') ?></th>      
+          <td><?php echo $key->$documento ?></td>
+          </tr>
+          <tr>
           <th><?php echo i18n::__('dir') ?></th>      
           <td><?php echo $key->$direccion ?></td>
           </tr>
+          <tr>
           <th><?php echo i18n::__('tel') ?></th>      
           <td><?php echo $key->$telefono ?></td>
           </tr>

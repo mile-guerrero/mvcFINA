@@ -3,113 +3,43 @@
 use mvc\model\table\tableBaseClass;
 
 /**
- * Description of registroLoteClass
+ * Description of unidadDistanciaBaseTableClass
  *
  * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
  */
-class registroLoteBaseTableClass extends tableBaseClass {
-  
-  private $id;
-  private $fechaInicioSiembra;
-  private $numeroPlantulas;
-  private $presupuesto;
-  private $loteId;
-  private $productoInsumoId;
-  private $idCiudad;
-  private $createdAt;
-  private $updatedAt;
+class unidadDistanciaBaseTableClass extends tableBaseClass {
+
+ private $id;
+ private $descripcion;
+
+ 
 
   const ID = 'id';
-  const FECHA_INICIO_SIEMBRA = 'fecha_inicio_siembra';
-  const NUMERO_PLANTULAS = 'numero_plantulas';
-  const PRESUPUESTO = 'presupuesto';
-  const LOTE_ID = 'lote_id';
-  const PRODUCTO_INSUMO_ID = 'producto_insumo_id';
-  const ID_CIUDAD = 'id_ciudad';
-  const CREATED_AT = 'created_at';
-  const UPDATED_AT = 'updated_at';
-  const DELETED_AT = 'deleted_at';
-
+  const DESCRIPCION = 'descripcion';
   
   public function get_id() {
     return $this->id;
   }
 
-  public function get_fechaInicioSiembra() {
-    return $this->fechaInicioSiembra;
-  }
-
-  public function get_numeroPlantulas() {
-    return $this->numeroPlantulas;
-  }
-
-  public function get_presupuesto() {
-    return $this->presupuesto;
-  }
-
-  public function get_loteId() {
-    return $this->loteId;
-  }
-
-  public function get_productoInsumoId() {
-    return $this->productoInsumoId;
-  }
-
-  public function get_idCiudad() {
-    return $this->idCiudad;
-  }
-
-  public function get_createdAt() {
-    return $this->createdAt;
-  }
-
-  public function get_updatedAt() {
-    return $this->updatedAt;
+  public function get_descripcion() {
+    return $this->descripcion;
   }
 
   public function set_id($id) {
     $this->id = $id;
   }
 
-  public function set_fechaInicioSiembra($fechaInicioSiembra) {
-    $this->fechaInicioSiembra = $fechaInicioSiembra;
+  public function set_descripcion($descripcion) {
+    $this->descripcion = $descripcion;
   }
 
-  public function set_numeroPlantulas($numeroPlantulas) {
-    $this->numeroPlantulas = $numeroPlantulas;
-  }
-
-  public function set_presupuesto($presupuesto) {
-    $this->presupuesto = $presupuesto;
-  }
-
-  public function set_loteId($loteId) {
-    $this->loteId = $loteId;
-  }
-
-  public function set_productoInsumoId($productoInsumoId) {
-    $this->productoInsumoId = $productoInsumoId;
-  }
-
-  public function set_idCiudad($idCiudad) {
-    $this->idCiudad = $idCiudad;
-  }
-
-  public function set_createdAt($createdAt) {
-    $this->createdAt = $createdAt;
-  }
-
-  public function set_updatedAt($updatedAt) {
-    $this->updatedAt = $updatedAt;
-  }
-
-      
+  
   /**
    * Obtiene el nombre de la tabla
    * @return string
    */
   static public function getNameTable() {
-    return 'registro_lote';
+    return 'unidad_distancia';
   }
 
   /**

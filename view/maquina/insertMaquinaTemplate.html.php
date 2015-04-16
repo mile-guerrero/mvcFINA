@@ -6,5 +6,5 @@
    <article id='derecha'>
 <h2 class="form-signin-heading"><?php echo i18n::__('nuevo maquina') ?> </h2>
    </article>
-   <?php view::includePartial('maquina/formularioPrincipalMaquina',array('objMOM' => $objMOM,'objMTUM' => $objMTUM,'objMP' => $objMP)) ?>
+   <?php view::includePartial('maquina/formularioPrincipalMaquina',array('objMTUM' => $objMTUM,'objMP' => $objMP)) ?>
 </div>

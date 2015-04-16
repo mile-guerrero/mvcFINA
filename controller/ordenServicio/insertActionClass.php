@@ -26,6 +26,24 @@ class insertActionClass extends controllerClass implements controllerActionInter
       );      
       $this->objOST = trabajadorTableClass::getAll($fields, true, $orderBy, 'ASC');
     
+      $fields = array(
+      productoInsumoTableClass::ID,
+      productoInsumoTableClass::DESCRIPCION
+      );
+      $orderBy = array(
+      productoInsumoTableClass::DESCRIPCION   
+      );      
+      $this->objOSPI = productoInsumoTableClass::getAll($fields, true, $orderBy, 'ASC');
+    
+       $fields = array(
+      maquinaTableClass::ID,
+      maquinaTableClass::NOMBRE
+      );
+      $orderBy = array(
+      maquinaTableClass::NOMBRE   
+      );      
+      $this->objOSM = maquinaTableClass::getAll($fields, true, $orderBy, 'ASC');
+    
       $this->defineView('insert', 'ordenServicio', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
       echo $exc->getMessage();

@@ -24,24 +24,14 @@ class editMaquinaActionClass extends controllerClass implements controllerAction
             maquinaTableClass::NOMBRE,
             maquinaTableClass::DESCRIPCION,
             maquinaTableClass::TIPO_USO_ID,
-            maquinaTableClass::ORIGEN_ID,
+            maquinaTableClass::ORIGEN_MAQUINA,
             maquinaTableClass::PROVEEDOR_ID
         );
         $where = array(
             maquinaTableClass::ID => request::getInstance()->getRequest(maquinaTableClass::ID)
         );
         $this->objMaquina = maquinaTableClass::getAll($fields, true, null, null, null, null, $where);
-        $fields = array(
-      origenMaquinaTableClass::ID,
-      origenMaquinaTableClass::DESCRIPCION
-      );
-      $orderBy = array(
-      origenMaquinaTableClass::DESCRIPCION   
-      );      
-      
-      $this->objMOM = origenMaquinaTableClass::getAll($fields, false, $orderBy, 'ASC');
-      
-      
+  
       $fields = array(     
       tipoUsoMaquinaTableClass::ID, 
       tipoUsoMaquinaTableClass::DESCRIPCION

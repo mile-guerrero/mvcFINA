@@ -3,29 +3,82 @@
 use mvc\model\table\tableBaseClass;
 
 /**
- * Description of usuarioBaseTableClass
+ * Description of pagoTrabajadorBaseTableClass
  *
  * 
  */
 class pagoTrabajadorBaseTableClass extends tableBaseClass {
 
- private $id;
- private $createdAt;
- private $updatedAt;
- private $empresaId;
+ private $id; 
  private $fechaInicial;
  private $fechaFinal;
+ private $empresaId; 
+ private $trabajadorId;
+ private $valorSalario;
+ private $cantidadHorasExtras;
+ private $valorHorasExtras;
+ private $horasPerdidas;
+ private $totalPagar;
+ private $createdAt;
+ private $updatedAt;
 
 
-  const ID = 'id';
+  const ID = 'id';  
+  const FECHA_INICIAL = 'fecha_inicial';
+  const FECHA_FINAL = 'fecha_final';  
   const EMPRESA_ID = 'empresa_id';
+  const TRABAJADOR_ID = 'trabajador_id';
+  const VALOR_SALARIO = 'valor_salario';
+  const VALOR_SALARIO_LENGTH = 30;
+  const CANTIDAD_HORAS_EXTRAS = 'cantidad_horas_extras';
+  const CANTIDAD_HORAS_EXTRAS_LENGTH = 30;
+  const VALOR_HORAS_EXTRAS = 'valor_horas_extras';
+  const VALOR_HORAS_EXTRAS_LENGTH = 30;
+  const HORAS_PERDIDAS = 'horas_perdidas';
+  const HORAS_PERDIDAS_LENGTH = 30;
+  const TOTAL_PAGAR = 'total_pagar';
+  const TOTAL_PAGAR_LENGTH = 30;
   const CREATED_AT = 'created_at';
   const UPDATED_AT = 'updated_at';
-  const FECHA_INICIAL = 'fecha_inicial';
-  const FECHA_FINAL = 'fecha_final';
   
   public function getId() {
     return $this->id;
+  }
+  
+  public function getFechaInicial() {
+    return $this->fechaInicial;
+  }
+
+  public function getFechaFinal() {
+    return $this->fechaFinal;
+  }
+  
+  public function getEmpresaId() {
+    return $this->empresaId;
+  }
+  
+  public function getTrabajadorId() {
+    return $this->trabajadorId;
+  }
+  
+  public function getValorSalario() {
+    return $this->valorSalario;
+  }
+
+  public function getCantidadHorasExtras() {
+    return $this->cantidadHorasExtras;
+  }
+
+  public function getValorHorasExtras() {
+    return $this->valorHorasExtras;
+  }
+
+  public function getHorasPerdidas() {
+    return $this->horasPerdidas;
+  }
+
+  public function getTotalPagar() {
+    return $this->totalPagar;
   }
 
   public function getCreatedAt() {
@@ -36,32 +89,8 @@ class pagoTrabajadorBaseTableClass extends tableBaseClass {
     return $this->updatedAt;
   }
 
-  public function getEmpresaId() {
-    return $this->empresaId;
-  }
-
-  public function getFechaInicial() {
-    return $this->fechaInicial;
-  }
-
-  public function getFechaFinal() {
-    return $this->fechaFinal;
-  }
-
   public function setId($id) {
     $this->id = $id;
-  }
-
-  public function setCreatedAt($createdAt) {
-    $this->createdAt = $createdAt;
-  }
-
-  public function setUpdatedAt($updatedAt) {
-    $this->updatedAt = $updatedAt;
-  }
-
-  public function setEmpresaId($empresaId) {
-    $this->empresaId = $empresaId;
   }
 
   public function setFechaInicial($fechaInicial) {
@@ -70,6 +99,42 @@ class pagoTrabajadorBaseTableClass extends tableBaseClass {
 
   public function setFechaFinal($fechaFinal) {
     $this->fechaFinal = $fechaFinal;
+  }
+
+  public function setEmpresaId($empresaId) {
+    $this->empresaId = $empresaId;
+  }
+
+  public function setTrabajadorId($trabajadorId) {
+    $this->trabajadorId = $trabajadorId;
+  }
+  
+  public function setValorSalario($valorSalario) {
+    $this->valorSalario = $valorSalario;
+  }
+
+  public function setCantidadHorasExtras($cantidadHorasExtras) {
+    $this->cantidadHorasExtras = $cantidadHorasExtras;
+  }
+
+  public function setValorHorasExtras($valorHorasExtras) {
+    $this->valorHorasExtras = $valorHorasExtras;
+  }
+
+  public function setHorasPerdidas($horasPerdidas) {
+    $this->horasPerdidas = $horasPerdidas;
+  }
+
+  public function setTotalPagar($totalPagar) {
+    $this->totalPagar = $totalPagar;
+  }
+  
+  public function setCreatedAt($createdAt) {
+    $this->createdAt = $createdAt;
+  }
+
+  public function setUpdatedAt($updatedAt) {
+    $this->updatedAt = $updatedAt;
   }
 
       

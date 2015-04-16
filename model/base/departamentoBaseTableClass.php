@@ -11,14 +11,10 @@ class departamentoBaseTableClass extends tableBaseClass {
   
   private $id;
   private $nombreDepartamento;
-  private $createdAt;
-  private $updatedAt;
 
   const ID = 'id';
   const NOMBRE = 'nombre_departamento';
   const NOMBRE_LENGTH = 80;
-  const CREATED_AT = 'created_at';
-  const UPDATED_AT = 'updated_at';
 
   public function get_id() {
     return $this->id;
@@ -28,14 +24,6 @@ class departamentoBaseTableClass extends tableBaseClass {
     return $this->nombreDepartamento;
   }
 
-  public function get_createdAt() {
-    return $this->createdAt;
-  }
-
-  public function get_updatedAt() {
-    return $this->updatedAt;
-  }
-
   public function set_id($id) {
     $this->id = $id;
   }
@@ -43,17 +31,7 @@ class departamentoBaseTableClass extends tableBaseClass {
   public function set_nombreDepartamento($nombreDepartamento) {
     $this->nombreDepartamento = $nombreDepartamento;
   }
-
-  public function set_createdAt($createdAt) {
-    $this->createdAt = $createdAt;
-  }
-
-  public function set_updatedAt($updatedAt) {
-    $this->updatedAt = $updatedAt;
-  }
-
   
-    
   /**
    * Obtiene el nombre de la tabla
    * @return string

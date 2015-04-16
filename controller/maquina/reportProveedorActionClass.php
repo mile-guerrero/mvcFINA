@@ -42,6 +42,7 @@ class reportProveedorActionClass extends controllerClass implements controllerAc
           proveedorTableClass::ID,
           proveedorTableClass::NOMBREP,
           proveedorTableClass::APELLIDO,
+          proveedorTableClass::DOCUMENTO,
           proveedorTableClass::DIRECCION,
           proveedorTableClass::TELEFONO,
           proveedorTableClass::EMAIL,

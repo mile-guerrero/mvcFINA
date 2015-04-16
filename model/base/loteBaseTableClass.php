@@ -12,8 +12,14 @@ class loteBaseTableClass extends tableBaseClass {
   private $id;
   private $ubicacion;
   private $tamano;
+  private $unidadDistanciaId;
   private $descripcion;
-  private $idCiudad;
+  private $fechaInicioSiembra;
+  private $numeroPlantulas;
+  private $presupuesto;
+  private $loteId;
+  private $productoInsumoId;
+  private $idCiudad;  
   private $createdAt;
   private $updatedAt;
   private $deletedAt;
@@ -22,9 +28,17 @@ class loteBaseTableClass extends tableBaseClass {
   const UBICACION = 'ubicacion';
   const UBICACION_LENGTH = 60;
   const TAMANO = 'tamano';
-  const TAMANO_LENGTH = 60;
+  const TAMANO_LENGTH = 30;
+  const UNIDAD_DISTANCIA_ID = 'unidad_distancia_id';  
   const DESCRIPCION = 'descripcion';
   const DESCRIPCION_LENGTH = 80;
+  const FECHA_INICIO_SIEMBRA = 'fecha_inicio_siembra';
+  const NUMERO_PLANTULAS = 'numero_plantulas';
+  const NUMERO_PLANTULAS_LENGTH = 30;
+  const PRESUPUESTO = 'presupuesto';
+  const PRESUPUESTO_LENGTH = 30;
+  const LOTE_ID = 'lote_id';
+  const PRODUCTO_INSUMO_ID = 'producto_insumo_id';
   const ID_CIUDAD = 'id_ciudad';
   const CREATED_AT = 'created_at';
   const UPDATED_AT = 'updated_at';
@@ -42,9 +56,32 @@ class loteBaseTableClass extends tableBaseClass {
   public function get_tamano() {
     return $this->tamano;
   }
+  
+  public function get_unidadDistanciaId() {
+    return $this->unidadDistanciaId;
+  }
 
   public function get_descripcion() {
     return $this->descripcion;
+  }
+  public function get_fechaInicioSiembra() {
+    return $this->fechaInicioSiembra;
+  }
+
+  public function get_numeroPlantulas() {
+    return $this->numeroPlantulas;
+  }
+
+  public function get_presupuesto() {
+    return $this->presupuesto;
+  }
+
+  public function get_loteId() {
+    return $this->loteId;
+  }
+
+  public function get_productoInsumoId() {
+    return $this->productoInsumoId;
   }
 
   public function get_idCiudad() {
@@ -74,9 +111,33 @@ class loteBaseTableClass extends tableBaseClass {
   public function set_tamano($tamano) {
     $this->tamano = $tamano;
   }
+  
+  public function set_unidadDistanciaId($unidadDistanciaId) {
+    $this->unidadDistanciaId = $unidadDistanciaId ;
+  }
 
   public function set_descripcion($descripcion) {
     $this->descripcion = $descripcion;
+  }
+  
+  public function set_fechaInicioSiembra($fechaInicioSiembra) {
+    $this->fechaInicioSiembra = $fechaInicioSiembra;
+  }
+
+  public function set_numeroPlantulas($numeroPlantulas) {
+    $this->numeroPlantulas = $numeroPlantulas;
+  }
+
+  public function set_presupuesto($presupuesto) {
+    $this->presupuesto = $presupuesto;
+  }
+
+  public function set_loteId($loteId) {
+    $this->loteId = $loteId;
+  }
+
+  public function set_productoInsumoId($productoInsumoId) {
+    $this->productoInsumoId = $productoInsumoId;
   }
 
   public function set_idCiudad($idCiudad) {

@@ -28,7 +28,7 @@ class indexMaquinaActionClass extends controllerClass implements controllerActio
         $where[maquinaTableClass::DESCRIPCION] = $filter['descripcion'];
       }
       if(isset($filter['origen']) and $filter['origen'] !== null and $filter['origen'] !== ""){
-        $where[maquinaTableClass::ORIGEN_ID] = $filter['origen'];
+        $where[maquinaTableClass::ORIGEN_MAQUINA] = $filter['origen'];
       }
       if(isset($filter['tipo']) and $filter['tipo'] !== null and $filter['tipo'] !== ""){
         $where[maquinaTableClass::TIPO_USO_ID] = $filter['tipo'];
@@ -48,7 +48,7 @@ class indexMaquinaActionClass extends controllerClass implements controllerActio
           maquinaTableClass::NOMBRE,
           maquinaTableClass::DESCRIPCION,
           maquinaTableClass::TIPO_USO_ID,
-          maquinaTableClass::ORIGEN_ID,
+          maquinaTableClass::ORIGEN_MAQUINA,
           maquinaTableClass::PROVEEDOR_ID,
           maquinaTableClass::CREATED_AT,
           maquinaTableClass::UPDATED_AT
@@ -65,16 +65,7 @@ class indexMaquinaActionClass extends controllerClass implements controllerActio
       $this->cntPages = maquinaTableClass::getTotalPages(config::getRowGrid());
       
       $this->objMaquina = maquinaTableClass::getAll($fields, true, $orderBy, 'ASC',config::getRowGrid(), $page,$where);
-      
-      $fields = array(     
-      origenMaquinaTableClass::ID, 
-      origenMaquinaTableClass::DESCRIPCION
-      );
-      $orderBy = array(
-      origenMaquinaTableClass::ID   
-      ); 
-      $this->objMOM = origenMaquinaTableClass::getAll($fields, false, $orderBy, 'ASC');
-      
+     
       $fields = array(     
       tipoUsoMaquinaTableClass::ID, 
       tipoUsoMaquinaTableClass::DESCRIPCION

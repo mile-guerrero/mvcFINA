@@ -22,13 +22,21 @@ class updateActionClass extends controllerClass implements controllerActionInter
         $id = request::getInstance()->getPost(ordenServicioTableClass::getNameField(ordenServicioTableClass::ID, true));
         $fecha = request::getInstance()->getPost(ordenServicioTableClass::getNameField(ordenServicioTableClass::FECHA_MANTENIMIENTO, true));
         $trabajador = request::getInstance()->getPost(ordenServicioTableClass::getNameField(ordenServicioTableClass::TRABAJADOR_ID, true));
-
+        $cantidad = request::getInstance()->getPost(ordenServicioTableClass::getNameField(ordenServicioTableClass::CANTIDAD, true));
+        $valor = request::getInstance()->getPost(ordenServicioTableClass::getNameField(ordenServicioTableClass::VALOR, true));
+        $producto = request::getInstance()->getPost(ordenServicioTableClass::getNameField(ordenServicioTableClass::PRODUCTO_INSUMO_ID, true));
+        $maquina = request::getInstance()->getPost(ordenServicioTableClass::getNameField(ordenServicioTableClass::MAQUINA_ID, true));
+        
         $ids = array(
             ordenServicioTableClass::ID => $id
         );
         $data = array(
             ordenServicioTableClass::FECHA_MANTENIMIENTO => $fecha,
-            ordenServicioTableClass::TRABAJADOR_ID => $trabajador
+            ordenServicioTableClass::TRABAJADOR_ID => $trabajador,
+            ordenServicioTableClass::CANTIDAD => $cantidad,
+            ordenServicioTableClass::VALOR => $valor,
+            ordenServicioTableClass::PRODUCTO_INSUMO_ID => $producto,            
+            ordenServicioTableClass::MAQUINA_ID => $maquina
         );
         ordenServicioTableClass::update($ids, $data);
          

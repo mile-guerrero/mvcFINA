@@ -4,7 +4,7 @@ use mvc\model\modelClass as model;
 use mvc\config\configClass as config;
 
 /**
- * Description of credencialTableClass
+ * Description of pagoTrabajadorTableClass
  *
  * @author Andres Eduardo Bahamon, Elcy Milena Guerrero, Gonzalo Andres Bejarano
  */

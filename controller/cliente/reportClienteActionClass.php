@@ -40,6 +40,7 @@ class reportClienteActionClass extends controllerClass implements controllerActi
           clienteTableClass::ID,
           clienteTableClass::NOMBRE,
           clienteTableClass::APELLIDO,
+          clienteTableClass::DOCUMENTO,
           clienteTableClass::DIRECCION,
           clienteTableClass::TELEFONO,          
           clienteTableClass::CREATED_AT,

@@ -21,14 +21,20 @@ class createActionClass extends controllerClass implements controllerActionInter
 
         $fecha = request::getInstance()->getPost(ordenServicioTableClass::getNameField(ordenServicioTableClass::FECHA_MANTENIMIENTO, true));
         $trabajador = request::getInstance()->getPost(ordenServicioTableClass::getNameField(ordenServicioTableClass::TRABAJADOR_ID, true));
+        $cantidad = request::getInstance()->getPost(ordenServicioTableClass::getNameField(ordenServicioTableClass::CANTIDAD, true));
+        $valor = request::getInstance()->getPost(ordenServicioTableClass::getNameField(ordenServicioTableClass::VALOR, true));
+        $producto = request::getInstance()->getPost(ordenServicioTableClass::getNameField(ordenServicioTableClass::PRODUCTO_INSUMO_ID, true));
+        $maquina = request::getInstance()->getPost(ordenServicioTableClass::getNameField(ordenServicioTableClass::MAQUINA_ID, true));
 
-//        if (strlen($nombre) > credencialTableClass::NOMBRE_LENGTH) {
-//          throw new PDOException(i18n::__(00001, null, 'errors', array(':longitud' => credencialTableClass::NOMBRE_LENGTH)), 00001);
-//        }
 
         $data = array(
             ordenServicioTableClass::FECHA_MANTENIMIENTO => $fecha,
-            ordenServicioTableClass::TRABAJADOR_ID => $trabajador
+            ordenServicioTableClass::TRABAJADOR_ID => $trabajador,
+            ordenServicioTableClass::CANTIDAD => $cantidad,
+            ordenServicioTableClass::VALOR => $valor,
+            ordenServicioTableClass::PRODUCTO_INSUMO_ID => $producto,            
+            ordenServicioTableClass::MAQUINA_ID => $maquina
+            
         );
         ordenServicioTableClass::insert($data);
         routing::getInstance()->redirect('ordenServicio', 'index');
@@ -43,3 +49,15 @@ class createActionClass extends controllerClass implements controllerActionInter
   }
 
 }
+
+
+
+
+
+
+ 
+
+        
+            
+           
+        

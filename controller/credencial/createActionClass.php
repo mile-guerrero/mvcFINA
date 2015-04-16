@@ -19,53 +19,28 @@ class createActionClass extends controllerClass implements controllerActionInter
     try {
       if (request::getInstance()->isMethod('POST')) {
 
-        $nombre = trim(request::getInstance()->getPost(credencialTableClass::getNameField(credencialTableClass::NOMBRE, true)));
+        $nombre = request::getInstance()->getPost(credencialTableClass::getNameField(credencialTableClass::NOMBRE, true));
         
-        $this->validate($nombre);
+         if (strlen($nombre) > credencialTableClass::NOMBRE_LENGTH) {
+         session::getInstance()->setError(i18n::__(00001, null, 'errors', array(':longitud' => credencialTableClass::NOMBRE_LENGTH)), 00001);
+        routing::getInstance()->redirect('credencial', 'insert');
+         
+        }
+        
         $data = array(
             credencialTableClass::NOMBRE => $nombre,
           
         );
         credencialTableClass::insert($data);
-        session::getInstance()->setSuccess('El registro fue exitoso');
         routing::getInstance()->redirect('credencial', 'index');
       } else {
         routing::getInstance()->redirect('credencial', 'index');
       }
     } catch (PDOException $exc) {
-      routing::getInstance()->redirect('credencial', 'insert');
-      session::getInstance()->setFlash('exc', $exc);
+      echo $exc->getMessage();
+      echo '<br>';
+      echo $exc->getTraceAsString();
     }
   }
-
-
-public function validate($nombre) {
-
-    $flag = false;
-    
-     if (strlen($nombre) > credencialTableClass::NOMBRE_LENGTH) {
-         session::getInstance()->setError(i18n::__(00001, null, 'errors', array(':longitud' => credencialTableClass::NOMBRE_LENGTH)), 00001);
-        session::getInstance()->setFlash(credencialTableClass::getNameField(credencialTableClass::NOMBRE, true), true);
-         
-        }
-        
-         if (!preg_match("/^[a-z]+$/i", $nombre)) {
-      session::getInstance()->setError(i18n::__(00012, null, 'errors', array(':letras' => $nombre)), 00012);
-      $flag = true;
-      session::getInstance()->setFlash(credencialTableClass::getNameField(credencialTableClass::NOMBRE, true), true);
-      
-    }
-
-    if (strlen($nombre) == "") {
-      session::getInstance()->setError(i18n::__(00009, null, 'errors', array(':campo vacio' => credencialTableClass::NOMBRE)), 00009);
-      $flag = true;
-      session::getInstance()->setFlash(credencialTableClass::getNameField(credencialTableClass::NOMBRE, true), true);
-    }
-    
-    if ($flag === true){
-      request::getInstance()->setMethod('GET');
-      routing::getInstance()->forward('credencial', 'insert');
-    }
-}
 
 }

@@ -193,6 +193,7 @@ credencial_reporte:
     - libs/fpdf/fpdf.php 
     - model/base/credencialBaseTableClass.php
     - model/credencialTableClass.php
+
  #-------------------modulo - usuario credencial----------------------------  
 usuarioCredencial_index:
   url:    /usuarioCredencial/index
@@ -271,6 +272,7 @@ usuarioCredencial_reporte:
     - model/usuarioTableClass.php
     - model/base/credencialBaseTableClass.php
     - model/credencialTableClass.php
+
 #-------------------modulo - orden servicio----------------------------
 ordenServicio_index:
   url:    /ordenServicio/index
@@ -331,54 +333,10 @@ ordenServicio_reporte:
   param:  { module: ordenServicio, action: report, format: pdf } 
   load:
     - libs/fpdf/fpdf.php    
+ 
 #-------------------modulo - detalle orden servicio----------------------------
-detalleOrdenServicio_index:
-  url:    /detalleOrdenServicio/index
-  param:  { module: detalleOrdenServicio, action: index, format: html }
-  load:
-    - model/base/detalleOrdenServicioBaseTableClass.php
-    - model/detalleOrdenServicioTableClass.php
-    
-detalleOrdenServicio_insert:
-  url:    /detalleOrdenServicio/insertar
-  param:  { module: detalleOrdenServicio, action: insert, format: html }
-  load:
-    - model/base/detalleOrdenServicioBaseTableClass.php
-    - model/detalleOrdenServicioTableClass.php
-    
-detalleOrdenServicio_create:
-  url:    /detalleOrdenServicio/crear
-  param:  { module: detalleOrdenServicio, action: create, format: html }
-  load:
-    - model/base/detalleOrdenServicioBaseTableClass.php
-    - model/detalleOrdenServicioTableClass.php
-    
-detalleOrdenServicio_edit:
-  url:    /detalleOrdenServicio/editar
-  param:  { module: detalleOrdenServicio, action: edit, format: html }
-  load:
-    - model/base/detalleOrdenServicioBaseTableClass.php
-    - model/detalleOrdenServicioTableClass.php 
-    
-detalleOrdenServicio_update:
-  url:    /detalleOrdenServicio/actualizar
-  param:  { module: detalleOrdenServicio, action: update, format: html }
-  load:
-    - model/base/detalleOrdenServicioBaseTableClass.php
-    - model/detalleOrdenServicioTableClass.php 
-    
-detalleOrdenServicio_ver:
-  url:    /detalleOrdenServicio/ver
-  param:  { module: detalleOrdenServicio, action: ver, format: html }
-  load:
-    - model/base/detalleOrdenServicioBaseTableClass.php
-    - model/detalleOrdenServicioTableClass.php
-    
-detalleOrdenServicio_reporte:
-  url:    /detalleOrdenServicio/reporte
-  param:  { module: detalleOrdenServicio, action: report, format: pdf } 
-  load:
-    - libs/fpdf/fpdf.php    
+ 
+   
 #-------------------modulo - maquina----------------------------   
 maquina_index:
   url:    /maquina/index
@@ -386,8 +344,6 @@ maquina_index:
   load:
     - model/base/maquinaBaseTableClass.php
     - model/maquinaTableClass.php
-    - model/base/origenMaquinaBaseTableClass.php
-    - model/origenMaquinaTableClass.php
     - model/base/tipoUsoMaquinaBaseTableClass.php
     - model/tipoUsoMaquinaTableClass.php
     - model/base/proveedorBaseTableClass.php
@@ -399,8 +355,6 @@ maquina_menuPrincipal:
   load:
     - model/base/maquinaBaseTableClass.php
     - model/maquinaTableClass.php 
-    - model/base/origenMaquinaBaseTableClass.php
-    - model/origenMaquinaTableClass.php
     - model/base/tipoUsoMaquinaBaseTableClass.php
     - model/tipoUsoMaquinaTableClass.php
     - model/base/proveedorBaseTableClass.php
@@ -412,8 +366,6 @@ maquina_insert:
   load:
     - model/base/maquinaBaseTableClass.php
     - model/maquinaTableClass.php
-    - model/base/origenMaquinaBaseTableClass.php
-    - model/origenMaquinaTableClass.php
     - model/base/tipoUsoMaquinaBaseTableClass.php
     - model/tipoUsoMaquinaTableClass.php
     - model/base/proveedorBaseTableClass.php
@@ -425,8 +377,6 @@ maquina_create:
   load:
     - model/base/maquinaBaseTableClass.php
     - model/maquinaTableClass.php
-    - model/base/origenMaquinaBaseTableClass.php
-    - model/origenMaquinaTableClass.php
     - model/base/tipoUsoMaquinaBaseTableClass.php
     - model/tipoUsoMaquinaTableClass.php
     - model/base/proveedorBaseTableClass.php
@@ -438,8 +388,6 @@ maquina_edit:
   load:
     - model/base/maquinaBaseTableClass.php
     - model/maquinaTableClass.php  
-    - model/base/origenMaquinaBaseTableClass.php
-    - model/origenMaquinaTableClass.php
     - model/base/tipoUsoMaquinaBaseTableClass.php
     - model/tipoUsoMaquinaTableClass.php
     - model/base/proveedorBaseTableClass.php
@@ -451,8 +399,6 @@ maquina_update:
   load:
     - model/base/maquinaBaseTableClass.php
     - model/maquinaTableClass.php 
-    - model/base/origenMaquinaBaseTableClass.php
-    - model/origenMaquinaTableClass.php
     - model/base/tipoUsoMaquinaBaseTableClass.php
     - model/tipoUsoMaquinaTableClass.php
     - model/base/proveedorBaseTableClass.php
@@ -464,8 +410,6 @@ maquina_delete:
   load:
     - model/base/maquinaBaseTableClass.php
     - model/maquinaTableClass.php
-    - model/base/origenMaquinaBaseTableClass.php
-    - model/origenMaquinaTableClass.php
     - model/base/tipoUsoMaquinaBaseTableClass.php
     - model/tipoUsoMaquinaTableClass.php
     - model/base/proveedorBaseTableClass.php
@@ -477,8 +421,6 @@ maquina_deleteSelect:
   load:
     - model/base/maquinaBaseTableClass.php
     - model/maquinaTableClass.php
-    - model/base/origenMaquinaBaseTableClass.php
-    - model/origenMaquinaTableClass.php
     - model/base/tipoUsoMaquinaBaseTableClass.php
     - model/tipoUsoMaquinaTableClass.php
     - model/base/proveedorBaseTableClass.php
@@ -490,8 +432,6 @@ maquina_ver:
   load:
     - model/base/maquinaBaseTableClass.php
     - model/maquinaTableClass.php 
-    - model/base/origenMaquinaBaseTableClass.php
-    - model/origenMaquinaTableClass.php
     - model/base/tipoUsoMaquinaBaseTableClass.php
     - model/tipoUsoMaquinaTableClass.php
     - model/base/proveedorBaseTableClass.php
@@ -504,48 +444,10 @@ maquina_reporte:
     - libs/fpdf/fpdf.php  
     - model/base/maquinaBaseTableClass.php
     - model/maquinaTableClass.php 
-    - model/base/origenMaquinaBaseTableClass.php
-    - model/origenMaquinaTableClass.php
     - model/base/tipoUsoMaquinaBaseTableClass.php
     - model/tipoUsoMaquinaTableClass.php
     - model/base/proveedorBaseTableClass.php
     - model/proveedorTableClass.php
-    
-origenMaquina_index:
-  url:    /origenMaquina/index
-  param:  { module: maquina, action: indexOrigenMaquina, format: html }
-  load:
-    - model/base/origenMaquinaBaseTableClass.php
-    - model/origenMaquinaTableClass.php
-    
-origenMaquina_insert:
-  url:    /origenMaquina/insertar
-  param:  { module: maquina, action: insertOrigenMaquina, format: html }
-  load:
-    - model/base/origenMaquinaBaseTableClass.php
-    - model/origenMaquinaTableClass.php
-    
-origenMaquina_create:
-  url:    /origenMaquina/crear
-  param:  { module: maquina, action: createOrigenMaquina, format: html }
-  load:
-    - model/base/origenMaquinaBaseTableClass.php
-    - model/origenMaquinaTableClass.php
-    
-origenMaquina_ver:
-  url:    /origenMaquina/ver
-  param:  { module: maquina, action: verOrigenMaquina, format: html }
-  load:
-    - model/base/origenMaquinaBaseTableClass.php
-    - model/origenMaquinaTableClass.php
-    
-origenMaquina_reporte:
-  url:    /origenMaquina/reporte
-  param:  { module: maquina, action: reportOrigenMaquina, format: pdf } 
-  load:
-    - libs/fpdf/fpdf.php 
-    - model/base/origenMaquinaBaseTableClass.php
-    - model/origenMaquinaTableClass.php
     
 tipoUsoMaquina_index:
   url:    /tipoUsoMaquina/index
@@ -664,6 +566,7 @@ proveedor_reporte:
     - model/proveedorTableClass.php 
     - model/base/ciudadBaseTableClass.php
     - model/ciudadTableClass.php
+
 #--------------------------------Proveedor-----------------------------------
     
 #-------------------modulo - origen maquina----------------------------
@@ -782,55 +685,6 @@ cliente_reporte:
     - model/base/ciudadBaseTableClass.php
     - model/ciudadTableClass.php
  
-tipoId_index:
-  url:    /tipoId/index
-  param:  { module: cliente, action: indexTipoId, format: html }
-  load:
-    - model/base/tipoIdBaseTableClass.php
-    - model/tipoIdTableClass.php
-    
-tipoId_insert:
-  url:    /tipoId/insertar
-  param:  { module: cliente, action: insertTipoId, format: html }
-  load:
-    - model/base/tipoIdBaseTableClass.php
-    - model/tipoIdTableClass.php
-    
-tipoId_create:
-  url:    /tipoId/crear
-  param:  { module: cliente, action: createTipoId, format: html }
-  load:
-    - model/base/tipoIdBaseTableClass.php
-    - model/tipoIdTableClass.php
-    
-tipoId_edit:
-  url:    /tipoId/editar
-  param:  { module: cliente, action: editTipoId, format: html }
-  load:
-    - model/base/tipoIdBaseTableClass.php
-    - model/tipoIdTableClass.php 
-    
-tipoId_update:
-  url:    /tipoId/actualizar
-  param:  { module: cliente, action: updateTipoId, format: html }
-  load:
-    - model/base/tipoIdBaseTableClass.php
-    - model/tipoIdTableClass.php 
-    
-tipoId_ver:
-  url:    /tipoId/ver
-  param:  { module: cliente, action: verTipoId, format: html }
-  load:
-    - model/base/tipoIdBaseTableClass.php
-    - model/tipoIdTableClass.php 
-    
-tipoId_reporte:
-  url:    /tipoId/reporte
-  param:  { module: cliente, action: reportTipoId, format: pdf } 
-  load:
-    - libs/fpdf/fpdf.php  
-    - model/base/tipoIdBaseTableClass.php
-    - model/tipoIdTableClass.php     
 #-------------------modulo - lote----------------------------   
 lote_index:
   url:    /lote/index
@@ -839,7 +693,11 @@ lote_index:
     - model/base/loteBaseTableClass.php
     - model/loteTableClass.php
     - model/base/ciudadBaseTableClass.php
-    - model/ciudadTableClass.php
+    - model/ciudadTableClass.php    
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php    
+    - model/base/unidadDistanciaBaseTableClass.php
+    - model/unidadDistanciaTableClass.php
     
 lote_menuPrincipal:
   url:    /lote/menuPrincipal
@@ -848,7 +706,11 @@ lote_menuPrincipal:
     - model/base/loteBaseTableClass.php
     - model/loteTableClass.php 
     - model/base/ciudadBaseTableClass.php
-    - model/ciudadTableClass.php
+    - model/ciudadTableClass.php     
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - model/base/unidadDistanciaBaseTableClass.php
+    - model/unidadDistanciaTableClass.php
 
 lote_insert:
   url:    /lote/insertar
@@ -858,6 +720,10 @@ lote_insert:
     - model/loteTableClass.php
     - model/base/ciudadBaseTableClass.php
     - model/ciudadTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - model/base/unidadDistanciaBaseTableClass.php
+    - model/unidadDistanciaTableClass.php
         
 lote_create:
   url:    /lote/crear
@@ -867,6 +733,10 @@ lote_create:
     - model/loteTableClass.php
     - model/base/ciudadBaseTableClass.php
     - model/ciudadTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - model/base/unidadDistanciaBaseTableClass.php
+    - model/unidadDistanciaTableClass.php
     
 lote_edit:
   url:    /lote/editar
@@ -876,6 +746,10 @@ lote_edit:
     - model/loteTableClass.php 
     - model/base/ciudadBaseTableClass.php
     - model/ciudadTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - model/base/unidadDistanciaBaseTableClass.php
+    - model/unidadDistanciaTableClass.php
     
 lote_update:
   url:    /lote/actualizar
@@ -885,6 +759,10 @@ lote_update:
     - model/loteTableClass.php 
     - model/base/ciudadBaseTableClass.php
     - model/ciudadTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - model/base/unidadDistanciaBaseTableClass.php
+    - model/unidadDistanciaTableClass.php
     
 lote_delete:
   url:    /lote/eliminar
@@ -894,6 +772,10 @@ lote_delete:
     - model/loteTableClass.php
     - model/base/ciudadBaseTableClass.php
     - model/ciudadTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - model/base/unidadDistanciaBaseTableClass.php
+    - model/unidadDistanciaTableClass.php
     
 lote_deleteSelect:
   url:    /lote/eliminarSeleccion
@@ -903,6 +785,11 @@ lote_deleteSelect:
     - model/loteTableClass.php
     - model/base/ciudadBaseTableClass.php
     - model/ciudadTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - model/base/unidadDistanciaBaseTableClass.php
+    - model/unidadDistanciaTableClass.php
+    
 lote_ver:
   url:    /lote/ver
   param:  { module: lote, action: verLote, format: html }
@@ -911,6 +798,10 @@ lote_ver:
     - model/loteTableClass.php 
     - model/base/ciudadBaseTableClass.php
     - model/ciudadTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - model/base/unidadDistanciaBaseTableClass.php
+    - model/unidadDistanciaTableClass.php
     
 lote_reporte:
   url:    /lote/reporte
@@ -921,6 +812,11 @@ lote_reporte:
     - model/loteTableClass.php 
     - model/base/ciudadBaseTableClass.php
     - model/ciudadTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - model/base/unidadDistanciaBaseTableClass.php
+    - model/unidadDistanciaTableClass.php
+
 #--------------------------modulo-tipoProductoInsumo--------------------------
  
 #--------------------------modulo-productoInsumo --------------------------
@@ -1023,6 +919,7 @@ productoInsumo_reporte:
     - model/base/tipoProductoInsumoBaseTableClass.php
     - model/tipoProductoInsumoTableClass.php
     
+    
 tipoProductoInsumo_index:
   url:    /tipoProductoInsumo/index
   param:  { module: productoInsumo, action: indexTipoProductoInsumo, format: html }
@@ -1088,6 +985,7 @@ tipoProductoInsumo_reporte:
     - model/tipoProductoInsumoTableClass.php    
 #--------------------------modulo-tipoId --------------------------    
 
+
 #-------------------modulo - solicitud insumo----------------------------
 solicitudInsumo_index:
   url:    /solicitudInsumo/index
@@ -1149,53 +1047,6 @@ solicitudInsumo_reporte:
   load:
     - libs/fpdf/fpdf.php    
 #-------------------modulo - detalle solicitud insumo----------------------------
-detalleSolicitudInsumo_index:
-  url:    /detalleSolicitudInsumo/index
-  param:  { module: detalleSolicitudInsumo, action: index, format: html }
-  load:
-    - model/base/detalleSolicitudInsumoBaseTableClass.php
-    - model/detalleSolicitudInsumoTableClass.php
-    
-detalleSolicitudInsumo_insert:
-  url:    /detalleSolicitudInsumo/insertar
-  param:  { module: detalleSolicitudInsumo, action: insert, format: html }
-  load:
-    - model/base/detalleSolicitudInsumoBaseTableClass.php
-    - model/detalleSolicitudInsumoTableClass.php
-    
-detalleSolicitudInsumo_create:
-  url:    /detalleSolicitudInsumo/crear
-  param:  { module: detalleSolicitudInsumo, action: create, format: html }
-  load:
-    - model/base/detalleSolicitudInsumoBaseTableClass.php
-    - model/detalleSolicitudInsumoTableClass.php
-    
-detalleSolicitudInsumo_edit:
-  url:    /detalleSolicitudInsumo/editar
-  param:  { module: detalleSolicitudInsumo, action: edit, format: html }
-  load:
-    - model/base/detalleSolicitudInsumoBaseTableClass.php
-    - model/detalleSolicitudInsumoTableClass.php 
-    
-detalleSolicitudInsumo_update:
-  url:    /detalleSolicitudInsumo/actualizar
-  param:  { module: detalleSolicitudInsumo, action: update, format: html }
-  load:
-    - model/base/detalleSolicitudInsumoBaseTableClass.php
-    - model/detalleSolicitudInsumoTableClass.php 
-    
-detalleSolicitudInsumo_ver:
-  url:    /detalleSolicitudInsumo/ver
-  param:  { module: detalleSolicitudInsumo, action: ver, format: html }
-  load:
-    - model/base/detalleSolicitudInsumoBaseTableClass.php
-    - model/detalleSolicitudInsumoTableClass.php    
-    
-detalleSolicitudInsumo_reporte:
-  url:    /detalleSolicitudInsumo/reporte
-  param:  { module: detalleSolicitudInsumo, action: report, format: pdf } 
-  load:
-    - libs/fpdf/fpdf.php        
 
 #----------------------Trabajador-------------------------------- 
 
@@ -1382,72 +1233,4 @@ pagoTrabajador_ver:
     - model/base/detallePagoTrabajadorBaseTableClass.php
     - model/detallePagoTrabajadorTableClass.php
     
-#---------------------------------Detalle Pago Trabajador-----------------------
-
-detallePagoTrabajador_index:
-  url:    /detallePagoTrabajador/index
-  param:  { module: detallePagoTrabajador, action: index, format: html }
-  load:
-    - model/base/detallePagoTrabajadorBaseTableClass.php
-    - model/detallePagoTrabajadorTableClass.php
-    - model/base/pagoTrabajadorBaseTableClass.php
-    - model/pagoTrabajadorTableClass.php
-    - model/base/trabajadorBaseTableClass.php
-    - model/trabajadorTableClass.php
-    - model/base/empresaBaseTableClass.php
-    - model/empresaTableClass.php
-    
-detallePagoTrabajador_insert:
-  url:    /detallePagoTrabajador/insertar
-  param:  { module: detallePagoTrabajador, action: insert, format: html }
-  load:
-    - model/base/detallePagoTrabajadorBaseTableClass.php
-    - model/detallePagoTrabajadorTableClass.php
-    - model/base/pagoTrabajadorBaseTableClass.php
-    - model/pagoTrabajadorTableClass.php
-    - model/base/trabajadorBaseTableClass.php
-    - model/trabajadorTableClass.php
-    
-detallePagoTrabajador_create:
-  url:    /detallePagoTrabajador/crear
-  param:  { module: detallePagoTrabajador, action: create, format: html }
-  load:
-    - model/base/detallePagoTrabajadorBaseTableClass.php
-    - model/detallePagoTrabajadorTableClass.php
-    - model/base/pagoTrabajadorBaseTableClass.php
-    - model/pagoTrabajadorTableClass.php
-    - model/base/trabajadorBaseTableClass.php
-    - model/trabajadorTableClass.php
-    
-detallePagoTrabajador_edit:
-  url:    /detallePagoTrabajador/editar
-  param:  { module: detallePagoTrabajador, action: edit, format: html }
-  load:
-    - model/base/detallePagoTrabajadorBaseTableClass.php
-    - model/detallePagoTrabajadorTableClass.php
-    - model/base/pagoTrabajadorBaseTableClass.php
-    - model/pagoTrabajadorTableClass.php
-    - model/base/trabajadorBaseTableClass.php
-    - model/trabajadorTableClass.php
-    
-detallePagoTrabajador_update:
-  url:    /detallePagoTrabajador/actualizar
-  param:  { module: detallePagoTrabajador, action: update, format: html }
-  load:
-    - model/base/detallePagoTrabajadorBaseTableClass.php
-    - model/detallePagoTrabajadorTableClass.php
-    - model/base/pagoTrabajadorBaseTableClass.php
-    - model/pagoTrabajadorTableClass.php
-    - model/base/trabajadorBaseTableClass.php
-    - model/trabajadorTableClass.php
-    
-detallePagoTrabajador_ver:
-  url:    /detallePagoTrabajador/ver
-  param:  { module: detallePagoTrabajador, action: ver, format: html }
-  load:
-    - model/base/detallePagoTrabajadorBaseTableClass.php
-    - model/detallePagoTrabajadorTableClass.php
-    - model/base/pagoTrabajadorBaseTableClass.php
-    - model/pagoTrabajadorTableClass.php
-    - model/base/trabajadorBaseTableClass.php
-    - model/trabajadorTableClass.php
+#---------------------------------Detalle Pago Trabajador--------

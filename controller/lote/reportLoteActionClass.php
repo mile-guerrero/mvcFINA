@@ -58,15 +58,35 @@ class reportLoteActionClass extends controllerClass implements controllerActionI
       $this->objLote = loteTableClass::getAll($fields, true, $orderBy, 'ASC',null,null,$where);
      
       
-      $fields = array(     
+         $fields = array(     
+      unidadDistanciaTableClass::ID, 
+      unidadDistanciaTableClass::DESCRIPCION
+      );
+      $orderBy = array(
+      unidadDistanciaTableClass::DESCRIPCION    
+      ); 
+      $this->objLUD = unidadDistanciaTableClass::getAll($fields, false, $orderBy, 'ASC');
+     
+        
+        
+        $fields = array(     
       ciudadTableClass::ID, 
       ciudadTableClass::NOMBRE_CIUDAD
       );
       $orderBy = array(
       ciudadTableClass::NOMBRE_CIUDAD    
       ); 
-      $this->objCC = ciudadTableClass::getAll($fields, false, $orderBy, 'ASC');
-      
+      $this->objLC = ciudadTableClass::getAll($fields, false, $orderBy, 'ASC');
+     
+      $fields = array(     
+      productoInsumoTableClass::ID, 
+      productoInsumoTableClass::DESCRIPCION
+      );
+      $orderBy = array(
+      productoInsumoTableClass::DESCRIPCION    
+      ); 
+      $this->objLPI = productoInsumoTableClass::getAll($fields, true, $orderBy, 'ASC');
+     
       $this->defineView('indexLote', 'lote', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
       echo $exc->getMessage();

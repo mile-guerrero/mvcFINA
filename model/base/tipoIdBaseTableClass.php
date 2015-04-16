@@ -11,16 +11,12 @@ class tipoIdBaseTableClass extends tableBaseClass {
 
  private $id;
  private $descripcion;
- private $createdAt;
- private $updatedAt;
 
  
 
   const ID = 'id';
   const DESCRIPCION = 'descripcion';
   const DESCRIPCION_LENGTH = 60;
-  const CREATED_AT = 'created_at';
-  const UPDATED_AT = 'updated_at';
   
   public function get_id() {
     return $this->id;
@@ -29,15 +25,7 @@ class tipoIdBaseTableClass extends tableBaseClass {
   public function get_descripcion() {
     return $this->descripcion;
   }
-
-  public function get_createdAt() {
-    return $this->createdAt;
-  }
-
-  public function get_updatedAt() {
-    return $this->updatedAt;
-  }
-
+  
   public function set_id($id) {
     $this->id = $id;
   }
@@ -45,16 +33,6 @@ class tipoIdBaseTableClass extends tableBaseClass {
   public function set_descripcion($descripcion) {
     $this->descripcion = $descripcion;
   }
-
-  public function set_createdAt($createdAt) {
-    $this->createdAt = $createdAt;
-  }
-
-  public function set_updatedAt($updatedAt) {
-    $this->updatedAt = $updatedAt;
-  }
-
-    
  
   /**
    * Obtiene el nombre de la tabla

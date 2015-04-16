@@ -2,6 +2,8 @@
 <?php use mvc\i18n\i18nClass as i18n ?>
 <?php $idOS = ordenServicioTableClass::ID ?>
 <?php $fecha = ordenServicioTableClass::FECHA_MANTENIMIENTO ?>
+<?php $cantidad = ordenServicioTableClass::CANTIDAD ?>
+<?php $valor = ordenServicioTableClass::VALOR ?>
 <?php $trabajador = trabajadorTableClass::NOMBRET ?>
 <?php $trabajadorId = trabajadorTableClass::ID ?>
 <div class="container container-fluid" id="cuerpo">
@@ -15,6 +17,21 @@
       <label for="<?php echo ordenServiciotableClass::getNameField(ordenServicioTableClass::FECHA_MANTENIMIENTO, true) ?>" class="col-sm-2"> <?php echo i18n::__('fecha_M') ?>:</label>     
       <div class="col-sm-10">
    <input  class="form-control" value="<?php echo ((isset($objOS)== true) ? $objOS[0]->$fecha : '') ?>" type="datetime-local" name="<?php echo ordenServicioTableClass::getNameField(ordenServicioTableClass::FECHA_MANTENIMIENTO, true) ?>">
+      </div>
+  </div>
+  
+  <div class="form-group">
+      <label for="<?php echo ordenServiciotableClass::getNameField(ordenServicioTableClass::CANTIDAD, true) ?>" class="col-sm-2"> <?php echo i18n::__('fecha_M') ?>:</label>     
+      <div class="col-sm-10">
+          <input  class="form-control" value="<?php echo ((isset($objOS)== true) ? $objOS[0]->$cantidad : '') ?>" type="text" name="<?php echo ordenServicioTableClass::getNameField(ordenServicioTableClass::CANTIDAD, true) ?>">
+      </div>
+  </div>
+  
+  
+  <div class="form-group">
+      <label for="<?php echo ordenServiciotableClass::getNameField(ordenServicioTableClass::VALOR, true) ?>" class="col-sm-2"> <?php echo i18n::__('fecha_M') ?>:</label>     
+      <div class="col-sm-10">
+          <input  class="form-control" value="<?php echo ((isset($objOS)== true) ? $objOS[0]->$valor : '') ?>" type="text" name="<?php echo ordenServicioTableClass::getNameField(ordenServicioTableClass::VALOR, true) ?>">
       </div>
   </div>
   

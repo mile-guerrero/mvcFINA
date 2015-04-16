@@ -6,7 +6,7 @@
 
 <?php $id = proveedorTableClass::ID ?>
 <?php $nombre = proveedorTableClass::NOMBREP ?>
-<?php $apellido= proveedorTableClass::APELLIDO ?>
+<?php $documento= proveedorTableClass::DOCUMENTO ?>
 <?php $direccion= proveedorTableClass::DIRECCION ?>
 <?php $idCiudad= ciudadTableClass::ID ?>
 <?php $nomCiu= ciudadTableClass::NOMBRE_CIUDAD ?>
@@ -133,7 +133,9 @@
           <th>
             <?php echo i18n::__('nom') ?>
           </th>
-
+          <th>
+            <?php echo i18n::__('nom') ?>
+          </th>
           <th>
             <?php echo i18n::__('acciones') ?>
           </th>
@@ -149,6 +151,9 @@
                 </th>
                 <td>
                   <?php echo $key->$nombre ?>
+                </td>
+                <td>
+                  <?php echo $key->$documento ?>
                 </td>
 
                 <th>

@@ -3,53 +3,58 @@
 use mvc\model\table\tableBaseClass;
 
 /**
- * Description of detalleOrdenServicioCredencialBaseTableClass
+ * Description of manoObraBaseTableClass
  *
- * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
+ * 
  */
-class detalleOrdenServicioBaseTableClass extends tableBaseClass {
+class manoObraBaseTableClass extends tableBaseClass {
 
  private $id;
- private $ordenServicioId;
- private $productoInsumoId;
- private $cantidad;
- private $valor;
+ private $cantidadHora;
+ private $valorHora;
+ private $cooperativaId;
  private $maquinaId;
+ private $laborId;
  private $createdAt;
  private $updatedAt;
+ private $deletedAt;
+
 
   const ID = 'id';
-  const ORDEN_SERVICIO_ID = 'orden_servicio_id';
-  const PRODUCTO_INSUMO_ID = 'producto_insumo_id';
-  const CANTIDAD = 'cantidad';
-  const VALOR = 'valor';
+  const CANTIDAD_HORA = 'cantidad_hora';
+  const CANTIDAD_HORA_LENGTH = 30;
+  const VALOR_HORA = 'valor_hora';
+  const VALOR_HORA_LENGTH = 30;
+  const COOPERATIVA_ID = 'cooperativa_id';
   const MAQUINA_ID = 'maquina_id';
+  const LABOR_ID = 'labor_id';
   const CREATED_AT = 'created_at';
   const UPDATED_AT = 'updated_at';
+  const DELETED_AT = 'deleted_at';
   
-  
+ 
   public function get_id() {
     return $this->id;
   }
 
-  public function get_ordenServicioId() {
-    return $this->ordenServicioId;
+  public function get_cantidadHora() {
+    return $this->cantidadHora;
   }
 
-  public function get_productoInsumoId() {
-    return $this->productoInsumoId;
+  public function get_valorHora() {
+    return $this->valorHora;
   }
 
-  public function get_cantidad() {
-    return $this->cantidad;
-  }
-
-  public function get_valor() {
-    return $this->valor;
+  public function get_cooperativaId() {
+    return $this->cooperativaId;
   }
 
   public function get_maquinaId() {
     return $this->maquinaId;
+  }
+
+  public function get_laborId() {
+    return $this->laborId;
   }
 
   public function get_createdAt() {
@@ -60,28 +65,32 @@ class detalleOrdenServicioBaseTableClass extends tableBaseClass {
     return $this->updatedAt;
   }
 
+  public function get_deletedAt() {
+    return $this->deletedAt;
+  }
+
   public function set_id($id) {
     $this->id = $id;
   }
 
-  public function set_ordenServicioId($ordenServicioId) {
-    $this->ordenServicioId = $ordenServicioId;
+  public function set_cantidadHora($cantidadHora) {
+    $this->cantidadHora = $cantidadHora;
   }
 
-  public function set_productoInsumoId($productoInsumoId) {
-    $this->productoInsumoId = $productoInsumoId;
+  public function set_valorHora($valorHora) {
+    $this->valorHora = $valorHora;
   }
 
-  public function set_cantidad($cantidad) {
-    $this->cantidad = $cantidad;
-  }
-
-  public function set_valor($valor) {
-    $this->valor = $valor;
+  public function set_cooperativaId($cooperativaId) {
+    $this->cooperativaId = $cooperativaId;
   }
 
   public function set_maquinaId($maquinaId) {
     $this->maquinaId = $maquinaId;
+  }
+
+  public function set_laborId($laborId) {
+    $this->laborId = $laborId;
   }
 
   public function set_createdAt($createdAt) {
@@ -92,16 +101,21 @@ class detalleOrdenServicioBaseTableClass extends tableBaseClass {
     $this->updatedAt = $updatedAt;
   }
 
+  public function set_deletedAt($deletedAt) {
+    $this->deletedAt = $deletedAt;
+  }
+
+    
   
     /**
    * Obtiene el nombre de la tabla
    * @return string
    */
   static public function getNameTable() {
-    return 'detalle_orden_servicio';
+    return 'mano_obra';
   }
 
-  /**
+   /**
    * Método para obtener el nombre del campo más la tabla ya sea en formato
    * DB (.) o en formato HTML (_)
    *
@@ -124,8 +138,8 @@ class detalleOrdenServicioBaseTableClass extends tableBaseClass {
    * borrado físico [por defecto] de un registro en una tabla de la base de datos
    * @return \PDOException|boolean
    */
-  public static function delete($ids, $deletedLogical = false, $table = null) {
-    return parent::delete(self::getNameTable(), $ids, $deletedLogical);
+  public static function delete($ids, $deletedLogical = true, $table = null) {
+    return parent::delete($ids, $deletedLogical, self::getNameTable());
   }
 
   /**
@@ -157,8 +171,8 @@ class detalleOrdenServicioBaseTableClass extends tableBaseClass {
    * variables publica los nombres de las columnas de la consulta o una
    * instancia de \PDOException en caso de fracaso.
    */
-  public static function getAll($fields, $orderBy = null, $order = null, $limit = null, $offset = null, $where = null, $table = null) {
-    return parent::getAll(self::getNameTable(), $fields, $orderBy, $order, $limit, $offset, $where);
+  public static function getAll($fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null,$where = NULL, $table = null) {
+    return parent::getAll(self::getNameTable(), $fields, $deletedLogical, $orderBy, $order, $limit, $offset, $where, $table);
   }
 
   /**

@@ -21,7 +21,11 @@ class indexActionClass extends controllerClass implements controllerActionInterf
           ordenServicioTableClass::ID,
           ordenServicioTableClass::FECHA_MANTENIMIENTO,
           ordenServicioTableClass::TRABAJADOR_ID,
-		  ordenServicioTableClass::CREATED_AT,
+          ordenServicioTableClass::PRODUCTO_INSUMO_ID,
+          ordenServicioTableClass::CANTIDAD,
+          ordenServicioTableClass::VALOR,
+          ordenServicioTableClass::MAQUINA_ID,
+          ordenServicioTableClass::CREATED_AT,
           ordenServicioTableClass::UPDATED_AT
       );
       $orderBy = array(

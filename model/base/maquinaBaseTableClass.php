@@ -13,7 +13,7 @@ class maquinaBaseTableClass extends tableBaseClass {
  private $nombre;
  private $descripcion;
  private $idTipoUso;
- private $idOrigen;
+ private $origenMaquina;
  private $idProveedor;
  private $createdAt;
  private $updatedAt;
@@ -27,7 +27,8 @@ class maquinaBaseTableClass extends tableBaseClass {
   const DESCRIPCION = 'descripcion';
   const DESCRIPCION_LENGTH = 80;
   const TIPO_USO_ID = 'id_tipo_uso';
-  const ORIGEN_ID = 'id_origen';
+  const ORIGEN_MAQUINA = 'origen_maquina';
+  const ORIGEN_MAQUINA_LENGTH = 80;
   const PROVEEDOR_ID = 'id_proveedor';
   const CREATED_AT = 'created_at';
   const UPDATED_AT = 'updated_at';
@@ -50,8 +51,8 @@ class maquinaBaseTableClass extends tableBaseClass {
     return $this->idTipoUso;
   }
 
-  public function getIdOrigen() {
-    return $this->idOrigen;
+  public function getOrigenMaquina() {
+    return $this->origenMaquina;
   }
 
   public function getIdProveedor() {
@@ -86,8 +87,8 @@ class maquinaBaseTableClass extends tableBaseClass {
     $this->idTipoUso = $idTipoUso;
   }
 
-  public function setIdOrigen($idOrigen) {
-    $this->iOrigen = $idOrigen;
+  public function setOrigenMaquina($origenMaquina) {
+    $this->origenMaquina = $origenMaquina;
   }
 
   public function setIdProveedor($idProveedor) {

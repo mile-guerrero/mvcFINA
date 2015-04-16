@@ -68,9 +68,6 @@ maquina:
 cliente: 
   indexCliente:
     javascript:
-      - confirmar.js 
-  indexTipoId:
-    javascript:
       - confirmar.js    
 
 #-------------------modulo - lote----------------------------
@@ -98,11 +95,7 @@ solicitudInsumo:
   index:
     javascript:
       - confirmar.js
-#-------------------modulo - detalle solicitud insumo----------  
-detalleSolicitudInsumo: 
-  index:
-    javascript:
-      - confirmar.js
+
 
 #-------------------modulo - Trabajador-----------------------
 
