@@ -10,132 +10,133 @@
   font-size: 0.8em;
   text-shadow: 1px 1px 2px rgba(20, 20, 20, 1);
   top: 0px;
- }
+}
 .mvcPointer {
   cursor: pointer;
 }
 #imgPortadalogin4{
-  padding-top: 200px;
-  padding-right:1024px;
+  width: 100%;
+  height: 250px;
   background-image: url('../img/portada4.jpg');
 }
 #imgPortada{
-  padding-top: 200px;
-  padding-right:1024px;
+  width: 100%;
+  height: 250px;
   background-image: url('../img/portada.jpg');
 }
 #imgPortada2{
-background: center;
- padding-top: 200px;
-  padding-right:1024px;
+  background: center;
+  width: 100%;
+  height: 250px;
   background-image: url('../img/portadas2.jpg');
-  
+
 }
 #imgPortada3{
-background: center;
-   padding-top: 200px;
-  padding-right:1024px;
+  background: center;
+  width: 100%;
+  height: 250px;
   background-image: url('../img/portadas3.jpg');
 }
 #imgPortada4{
-background: center;
-   padding-top: 200px;
+  background: center;
+  padding-top: 200px;
   padding-right:1024px;
   background-image: url('../img/portadas4.jpg');
 }
 
 #imgespanol{
-background: center;
-margin-left: 50px;
- width:  60px;
- padding-top: 30px;
+  background: center;
+  margin-left: 50px;
+  width:  60px;
+  height:  50px;
   background-image: url('../img/espanol.gif');
-  
+
 }
 #imgingles{
-background: center;
-margin-left: 50px;
- width:  60px;
- padding-top: 30px;
+  background: center;
+  margin-left: 50px;
+  width:  60px;
+  height: 50px;
   background-image: url('../img/ingles.gif');
-  
+
 }
 #imgmasivo{
-background: center;
-margin-left: 20px;
- width:  60px;
- padding-top: 30px;
+  background: center;
+  margin-left: 20px;
+  width:  60px;
+  height: 50px;
   background-image: url('../img/masivo.gif');
-  
+
 }
 #imgfiltros{
-background: center;
- width:  60px;
- padding-top: 30px;
+  background: center;
+  width:  60px;
+  height: 50px;
   background-image: url('../img/filtros.gif');
-  
+
 }
 #imgelifiltro{
-background: center;
- width:  60px;
- padding-top: 30px;
+  background: center;
+  width:  60px;
+  height: 50px;
   background-image: url('../img/elifiltro.gif');
-  
+
 }
 #imgreporte{
-background: center;
- width:  60px;
- padding-top: 30px;
+  background: center;
+  width:  60px;
+  height: 50px;
   background-image: url('../img/reporte.gif');
-  
+
 }
 #imgnuevo{
-background: center;
- width:  60px;
- padding-top: 30px;
+  background: center;
+  width:  60px;
+  height: 50px;
   background-image: url('../img/nuevo.gif');
-  
+
 }
 #cuerpo{
-  width: 800px;
+  width: 900px;
 }
 
 
 header,section,aside,footer,article{
-    display:block;
+  display:block;
 }
 
 
 #encabezado{ 
+  width:900px; 
+  height: 300px;
 }
 #barramenu{  
 }
 #barramenu li{
 }
 #contenido{
-  clear:both;
-    width:280px;
-	float: left;
+  margin: 0px 0px 0px 0px;
+  width:100%;
 }
 #derecha{
-   /*background: #FFE4C4;*/
-	width: 800px;
-	padding: 15px 20px 15px 30px ;
-	float: right;
-	margin: 0px -50px 0px 0px;
-	-moz-border-radius: 0px;
-	-webkit-border-radius: 0px;
-	border-radius: 0px;
+  /*background: #FFE4C4;*/
+  width: 800px;
+  padding: 15px 20px 15px 30px ;
+  float: right;
+  margin: 0px -50px 0px 0px;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
 }
 
 #pie{
-    width:95%;
-    clear:both;
-    padding:15px;
-    text-align:center;
-    -moz-border-radius:0px 0px 0px 0px;
-    -webkit-border-radius:0px 0px 0px 0px;
-    background:#2E8B57;
+  width:95%;
+  clear:both;
+  padding:15px;
+  text-align:center;
+  -moz-border-radius:0px 0px 0px 0px;
+  -webkit-border-radius:0px 0px 0px 0px;
+  background:#2E8B57;
 }
 
 table > thead > tr > th:first-child {
@@ -174,48 +175,43 @@ table > thead > tr, table > tfoot > tr {
   margin-top: 15px;
   margin-bottom: 0px;
 }
-/*#tamano {
-  max-width: 300px;
-}*/
-/*#unidad {
-  max-width: 300px;
-  float: right;
-}*/
+
 
 .form-control-gonza1 {
-margin: 0px 0px 0px 0px;
-width: 300px;
-height: 34px;
-padding: 6px 12px;
-font-size: 14px;
-line-height: 1.42857143;
-color: #555;
-background-color: #fff;
-background-image: none;
-border: 1px solid #ccc;
-border-radius: 4px;
--webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
--webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
--o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  margin: 0px 0px 0px 0px;
+  width: 300px;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 
 .form-control-gonza2 {
-margin: 0px 0px 0px 16px;
-width: 300px;
-height: 34px;
-padding: 6px 12px;
-font-size: 14px;
-line-height: 1.42857143;
-color: #555;
-background-color: #fff;
-background-image: none;
-border: 1px solid #ccc;
-border-radius: 4px;
--webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
--webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
--o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  margin: 0px 0px 0px 16px;
+  width: 300px;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
+

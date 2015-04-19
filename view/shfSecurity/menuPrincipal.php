@@ -4,16 +4,16 @@
 <?php use mvc\config\configClass as config ?>
 <?php use mvc\request\requestClass as request ?>
 <?php use mvc\i18n\i18nClass as i18n?>
-  <header>
+<!--<header>
    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
+   Indicators 
   <ol class="carousel-indicators">
     <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
     <li data-target="#carousel-example-generic" data-slide-to="1"></li>
     <li data-target="#carousel-example-generic" data-slide-to="2"></li>
   </ol>
 
-  <!-- Wrapper for slides -->
+   Wrapper for slides 
   <div class="carousel-inner" role="listbox">
     <div class="item active">
       <img class="img-responsive"  id="imgPortadalogin4" src="" alt="portada1">
@@ -26,7 +26,7 @@
   
   </div>
 
-  <!-- Controls -->
+   Controls 
   <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
@@ -59,7 +59,7 @@
     
     
     
-    <!-- Collect the nav links, forms, and other content for toggling -->
+     Collect the nav links, forms, and other content for toggling 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         
@@ -95,8 +95,8 @@
           </ul>
         </li>
       </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+    </div> /.navbar-collapse 
+  </div> /.container-fluid 
   
 </nav>
 
@@ -113,7 +113,5 @@
   <article id=''>
 
   </article>
-</section>
-
-
+</section>-->
 
