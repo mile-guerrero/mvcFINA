@@ -22,12 +22,11 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       if (request::getInstance()->hasPost('filter')) {
         $filter = request::getInstance()->getPost('filter');
         //Validar datos
-
-        if (isset($filter['empresa']) and $filter['empresa'] !== null and $filter['empresa'] !== '') {
-          $where[pagoTrabajadorTableClass::EMPRESA_ID] = $filter['empresa'];
+        if(isset($filter['empresa']) and $filter['empresa'] !== null and $filter['empresa'] !== ""){
+        $where[pagoTrabajadorTableClass::EMPRESA_ID] = $filter['empresa'];
         }
         if (isset($filter['fechaIni']) and $filter['fechaIni'] !== null and $filter['fechaIni'] !== '' and (isset($filter['fechaFin']) and $filter['fechaFin'] !== null and $filter['fechaFin'] !== '')) {
-          $where[pagoTrabajadorTableClass::CREATED_AT] = array(
+          $where[pagoTrabajadorTableClass::FECHA_INICIAL] = array(
           date(config::getFormatTimestamp(), strtotime($filter['fechaIni'] . ' 00:00:00')),
           date(config::getFormatTimestamp(), strtotime($filter['fechaFin'] . ' 23:59:59'))
           );
@@ -39,7 +38,13 @@ class indexActionClass extends controllerClass implements controllerActionInterf
           pagoTrabajadorTableClass::FECHA_INICIAL,
           pagoTrabajadorTableClass::FECHA_FINAL,
           pagoTrabajadorTableClass::EMPRESA_ID,
-		  pagoTrabajadorTableClass::CREATED_AT,
+          pagoTrabajadorTableClass::TRABAJADOR_ID,
+          pagoTrabajadorTableClass::VALOR_SALARIO,
+          pagoTrabajadorTableClass::CANTIDAD_HORAS_EXTRAS,
+          pagoTrabajadorTableClass::VALOR_HORAS_EXTRAS,
+          pagoTrabajadorTableClass::HORAS_PERDIDAS,
+          pagoTrabajadorTableClass::TOTAL_PAGAR,
+          pagoTrabajadorTableClass::CREATED_AT,
           pagoTrabajadorTableClass::UPDATED_AT
       );
       $orderBy = array(
@@ -62,7 +67,16 @@ class indexActionClass extends controllerClass implements controllerActionInterf
         $orderBy = array(
             empresaTableClass::NOMBRE
         );
-        $this->objEmpresa = empresaTableClass::getAll($fields, false, $orderBy, 'ASC');
+        $this->objEmpresa = empresaTableClass::getAll($fields, true, $orderBy, 'ASC');
+        
+        $fields = array(
+            trabajadorTableClass::ID,
+            trabajadorTableClass::NOMBRET
+        );
+        $orderBy = array(
+            trabajadorTableClass::NOMBRET
+        );
+        $this->objT = trabajadorTableClass::getAll($fields, true, $orderBy, 'ASC');
       $this->defineView('index', 'pagoTrabajador', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
       echo $exc->getMessage();

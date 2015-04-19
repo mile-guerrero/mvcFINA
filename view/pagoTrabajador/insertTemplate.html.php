@@ -6,5 +6,5 @@
   <article id='derecha'>
   <h2 class="form-signin-heading"><?php echo i18n::__('nuevoPago') ?> </h2>
   </article>
-  <?php view::includePartial('pagoTrabajador/formularioPrincipal',array ('objEmpresa' => $objEmpresa))?>
+  <?php view::includePartial('pagoTrabajador/formularioPrincipal',array ('objEmpresa' => $objEmpresa, 'objT' => $objT))?>
 </div>

@@ -22,6 +22,7 @@ class editActionClass extends controllerClass implements controllerActionInterfa
       if (request::getInstance()->hasRequest(trabajadorTableClass::ID)) {
         $fields = array(
             trabajadorTableClass::ID,
+            trabajadorTableClass::DOCUMENTO,
             trabajadorTableClass::NOMBRET,
             trabajadorTableClass::APELLIDO,
             trabajadorTableClass::DIRECCION,

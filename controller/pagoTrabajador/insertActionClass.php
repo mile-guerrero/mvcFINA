@@ -24,7 +24,16 @@ class insertActionClass extends controllerClass implements controllerActionInter
         $orderBy = array(
             empresaTableClass::NOMBRE
         );
-        $this->objEmpresa = empresaTableClass::getAll($fields, false, $orderBy, 'ASC');
+        $this->objEmpresa = empresaTableClass::getAll($fields, true, $orderBy, 'ASC');
+        
+        $fields = array(
+            trabajadorTableClass::ID,
+            trabajadorTableClass::NOMBRET
+        );
+        $orderBy = array(
+            trabajadorTableClass::NOMBRET
+        );
+        $this->objT = trabajadorTableClass::getAll($fields, true, $orderBy, 'ASC');
             $this->mensaje ="";
             $this->defineView('insert', 'pagoTrabajador', session::getInstance()->getFormatOutput());
         } catch (PDOException $exc) {

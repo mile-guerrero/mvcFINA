@@ -21,16 +21,22 @@ class createActionClass extends controllerClass implements controllerActionInter
 
         $fecha = request::getInstance()->getPost(solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::FECHA_HORA, true));
         $trabajador = request::getInstance()->getPost(solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::TRABAJADOR_ID, true));
-
+        $cantidad = request::getInstance()->getPost(solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::CANTIDAD, true));
+        $idProducto = request::getInstance()->getPost(solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::PRODUCTO_INSUMO_ID, true));
+        $idLote = request::getInstance()->getPost(solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::LOTE_ID, true));
 //        if (strlen($nombre) > credencialTableClass::NOMBRE_LENGTH) {
 //          throw new PDOException(i18n::__(00001, null, 'errors', array(':longitud' => credencialTableClass::NOMBRE_LENGTH)), 00001);
 //        }
 
         $data = array(
             solicitudInsumoTableClass::FECHA_HORA => $fecha,
-            solicitudInsumoTableClass::TRABAJADOR_ID => $trabajador
+            solicitudInsumoTableClass::TRABAJADOR_ID => $trabajador,
+            solicitudInsumoTableClass::CANTIDAD => $cantidad,
+            solicitudInsumoTableClass::PRODUCTO_INSUMO_ID => $idProducto,
+            solicitudInsumoTableClass::LOTE_ID => $idLote
         );
         solicitudInsumoTableClass::insert($data);
+        session::getInstance()->setSuccess('El registro fue exitoso');
         routing::getInstance()->redirect('solicitudInsumo', 'index');
       } else {
         routing::getInstance()->redirect('solicitudInsumo', 'index');

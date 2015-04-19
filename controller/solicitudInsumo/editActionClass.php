@@ -22,12 +22,42 @@ class editActionClass extends controllerClass implements controllerActionInterfa
         $fields = array(
             solicitudInsumoTableClass::ID,
             solicitudInsumoTableClass::FECHA_HORA,
-            solicitudInsumoTableClass::TRABAJADOR_ID
+            solicitudInsumoTableClass::TRABAJADOR_ID,
+            solicitudInsumoTableClass::CANTIDAD,
+            solicitudInsumoTableClass::PRODUCTO_INSUMO_ID,
+            solicitudInsumoTableClass::LOTE_ID
         );
         $where = array(
             solicitudInsumoTableClass::ID => request::getInstance()->getRequest(solicitudInsumoTableClass::ID)
         );
-        $this->objOS = solicitudInsumoTableClass::getAll($fields, null, null, null, null, null, $where);
+        $this->objS = solicitudInsumoTableClass::getAll($fields, true, null, null, null, null, $where);
+        
+        $fields = array(
+            trabajadorTableClass::ID,
+            trabajadorTableClass::NOMBRET
+        );
+        $orderBy = array(
+            trabajadorTableClass::NOMBRET
+        );
+        $this->objT = trabajadorTableClass::getAll($fields, true, $orderBy, 'ASC');
+        
+        $fields = array(
+            productoInsumoTableClass::ID,
+            productoInsumoTableClass::DESCRIPCION
+        );
+        $orderBy = array(
+            productoInsumoTableClass::DESCRIPCION
+        );
+        $this->objP = productoInsumoTableClass::getAll($fields, true, $orderBy, 'ASC');
+        
+        $fields = array(
+            loteTableClass::ID,
+            loteTableClass::DESCRIPCION
+        );
+        $orderBy = array(
+            loteTableClass::DESCRIPCION
+        );
+        $this->objL = loteTableClass::getAll($fields, true, $orderBy, 'ASC');
         $this->defineView('edit', 'solicitudInsumo', session::getInstance()->getFormatOutput());
      
       }else{

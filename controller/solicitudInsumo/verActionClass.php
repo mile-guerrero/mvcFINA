@@ -20,26 +20,19 @@ class verActionClass extends controllerClass implements controllerActionInterfac
       $fields = array(
           solicitudInsumoTableClass::ID,
           solicitudInsumoTableClass::FECHA_HORA,
+          solicitudInsumoTableClass::TRABAJADOR_ID,
+          solicitudInsumoTableClass::CANTIDAD,
+          solicitudInsumoTableClass::PRODUCTO_INSUMO_ID,
+          solicitudInsumoTableClass::LOTE_ID,
           solicitudInsumoTableClass::CREATED_AT,
-          solicitudInsumoTableClass::UPDATED_AT
+          solicitudInsumoTableClass::UPDATED_AT,
+          solicitudInsumoTableClass::DELETED_AT
       );
 
       $where = array(
           solicitudInsumoTableClass::ID => request::getInstance()->getRequest(solicitudInsumoTableClass::ID)
       );
-      $this->objS = solicitudInsumoTableClass::getAll($fields,false, null, null, null, null, null, $where);
-      
-     $fields = array(     
-      trabajadorTableClass::ID, 
-      trabajadorTableClass::NOMBRET
-      );
-      $orderBy = array(
-      trabajadorTableClass::NOMBRET    
-      ); 
-       $where = array(
-            trabajadorTableClass::ID => request::getInstance()->getRequest(trabajadorTableClass::ID)
-        );
-      $this->objOST = trabajadorTableClass::getAll($fields, true, $orderBy, 'ASC', null, null,$where);
+      $this->objS = solicitudInsumoTableClass::getAll($fields, true, null, null, null, null, $where);
 
       $this->defineView('ver', 'solicitudInsumo', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {

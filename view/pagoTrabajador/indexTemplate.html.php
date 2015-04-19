@@ -5,6 +5,12 @@
 <?php $idEmpresa = pagoTrabajadorTableClass::EMPRESA_ID ?>
 <?php $fechaIni = pagoTrabajadorTableClass::FECHA_INICIAL ?>
 <?php $fechaFin = pagoTrabajadorTableClass::FECHA_FINAL ?>
+<?php $idTrabajador = pagoTrabajadorTableClass::TRABAJADOR_ID ?>
+<?php $valor = pagoTrabajadorTableClass::VALOR_SALARIO ?>
+<?php $cantidad = pagoTrabajadorTableClass::CANTIDAD_HORAS_EXTRAS?>
+<?php $valorHoras = pagoTrabajadorTableClass::VALOR_HORAS_EXTRAS ?>
+<?php $horas = pagoTrabajadorTableClass::HORAS_PERDIDAS?>
+<?php $total = pagoTrabajadorTableClass::TOTAL_PAGAR ?>
 <?php $idEmp = empresaTableClass::ID ?>
 <?php $nomEmpresa = empresaTableClass::NOMBRE ?>
 <?php $id = pagoTrabajadorTableClass::ID ?>
@@ -22,11 +28,52 @@
 
     <h1><?php echo i18n::__('pagoTrabajador') ?></h1> 
     <ul>      
-      <a class="btn btn-success btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('pagoTrabajador', 'insert') ?>"><?php echo i18n::__('nuevo') ?></a> 
-      <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModalFiltres"><?php echo i18n::__('filtros') ?></button>  
-      <a href="<?php echo routing::getInstance()->getUrlWeb('pagoTrabajador', 'index') ?>" class="btn btn-default btn-xs" ><?php echo i18n::__('eFiltros') ?></a>             
+      <a class="btn btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('pagoTrabajador', 'insert') ?>"><img class="img-responsive"  id="imgnuevo" src="" alt=" "><?php echo i18n::__('nuevo') ?></a> 
+      <a type="button" class="btn btn-xs" data-toggle="modal" data-target="#myModalFiltres"><img class="img-responsive"  id="imgfiltros" src="" alt=" "><?php echo i18n::__('filtros') ?></a>  
+      <a href="<?php echo routing::getInstance()->getUrlWeb('pagoTrabajador', 'index') ?>" class="btn btn-xs" ><img class="img-responsive"  id="imgelifiltro" src="" alt=" "><?php echo i18n::__('eFiltros') ?></a>             
+      <a type="button" class="btn  btn-xs" data-toggle="modal" data-target="#myModalReport" ><img class="img-responsive"  id="imgreporte" src="" alt=" "><?php echo i18n::__('informe') ?></a>
     </ul> 
 
+    <!---Informes--->
+       <div class="modal fade" id="myModalReport" tabindex="-1" role="modal" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('informe') ?></h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" id="reportForm" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('pagoTrabajador', 'report')?>">
+
+           <div class="form-group">
+                <label for="filterEmpresa" class="col-sm-2 control-label"><?php echo i18n::__('empresa') ?></label>
+                <div class="col-sm-10">
+                  <select class="form-control" id="filterEmpresa" name="filter[empresa]">
+                    <option value=""><?php echo i18n::__('selectEmpresa') ?></option>
+<?php foreach ($objEmpresa as $empresa): ?>
+                      <option value="<?php echo $empresa->$idEmp ?>"><?php echo $empresa->$nomEmpresa ?></option>
+<?php endforeach; ?>
+                  </select>
+                </div>
+              </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
+    <div class="col-sm-10">
+      <input type="date" class="form-control" id="reportFecha1" name="report[fecha1]">
+      <br>
+       <input type="date" class="form-control" id="reportFecha2" name="report[fecha2]">
+    </div>
+  </div>
+</form>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default btn btn-xs" data-dismiss="modal">  <?php echo i18n::__('cerrar') ?></button>
+        <button type="button" onclick="$('#reportForm').submit()" class="btn btn-warning btn btn-xs"><?php echo i18n::__('informe') ?></button>
+      </div>
+    </div>
+  </div>
+</div>
 
     <!-- Modal -->
     <div class="modal fade" id="myModalFiltres" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -34,7 +81,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('filters') ?></h4>
+            <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('filtros') ?></h4>
           </div>
           <div class="modal-body">
             <form class="form-horizontal" id="filterForm" role="form" action="<?php echo routing::getInstance()->getUrlWeb('pagoTrabajador', 'index') ?>" method="POST">
@@ -42,7 +89,7 @@
                 <label for="filterEmpresa" class="col-sm-2 control-label"><?php echo i18n::__('empresa') ?></label>
                 <div class="col-sm-10">
                   <select class="form-control" id="filterEmpresa" name="filter[empresa]">
-                    <option><?php echo i18n::__('selectEmpresa') ?></option>
+                    <option value=""><?php echo i18n::__('selectEmpresa') ?></option>
 <?php foreach ($objEmpresa as $empresa): ?>
                       <option value="<?php echo $empresa->$idEmp ?>"><?php echo $empresa->$nomEmpresa ?></option>
 <?php endforeach; ?>
@@ -68,8 +115,8 @@
 
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('cancel') ?></button>
-            <button type="button" onclick="$('#filterForm').submit()" class="btn btn-primary"><?php echo i18n::__('filtros') ?></button>
+            <button type="button" class="btn btn-default btn btn-xs" data-dismiss="modal"><?php echo i18n::__('cancel') ?></button>
+            <button type="button" onclick="$('#filterForm').submit()" class="btn btn-primary btn btn-xs"><?php echo i18n::__('filtros') ?></button>
           </div>
         </div>
       </div>
@@ -78,11 +125,11 @@
 
     <form class="form-signin">        
 <?php view::includeHandlerMessage() ?>        
-      <table class="table table-bordered table-responsive">
+      <table id="tabla" class="table table-bordered table-responsive">
         <thead>
           <tr>
             <th>
-              Fecha Pago
+              Fecha
             </th>
             <th>
               <?php echo i18n::__('empresa') ?>
@@ -104,7 +151,6 @@
               <th>
                 <a class="btn btn-warning btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('pagoTrabajador', 'ver', array(pagoTrabajadorTableClass::ID => $key->$id)) ?>" ><?php echo i18n::__('ver') ?></a>
                 <a class="btn btn-primary btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('pagoTrabajador', 'edit', array(pagoTrabajadorTableClass::ID => $key->$id)) ?>"><?php echo i18n::__('modificar') ?></a>
-                <a class="btn btn-success btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('detallePagoTrabajador', 'index', array(detallePagoTrabajadorTableClass::getNameField(detallePagoTrabajadorTableClass::PAGO_TRABAJADOR_ID, true) => $key->$id)) ?> "><?php echo i18n::__('detalle')?></a>
               </th>
             </tr>
 <?php endforeach; ?>

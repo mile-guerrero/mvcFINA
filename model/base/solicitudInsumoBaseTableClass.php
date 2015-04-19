@@ -30,78 +30,78 @@ class solicitudInsumoBaseTableClass extends tableBaseClass {
   const UPDATED_AT = 'updated_at';
   const DELETED_AT = 'deleted_at';
   
-  public function get_id() {
+  public function getId() {
     return $this->id;
   }
 
-  public function get_fechaHora() {
+  public function getFechaHora() {
     return $this->fechaHora;
   }
 
-  public function get_trabajadorId() {
+  public function getTrabajadorId() {
     return $this->trabajadorId;
   }
 
-  public function get_productoInsumoId() {
+  public function getProductoInsumoId() {
     return $this->productoInsumoId;
   }
 
-  public function get_cantidad() {
+  public function getCantidad() {
     return $this->cantidad;
   }
 
-  public function get_loteId() {
+  public function getLoteId() {
     return $this->loteId;
   }
 
-  public function get_createdAt() {
+  public function getCreatedAt() {
     return $this->createdAt;
   }
 
-  public function get_updatedAt() {
+  public function getUpdatedAt() {
     return $this->updatedAt;
   }
 
-  public function get_deletedAt() {
+  public function getDeletedAt() {
     return $this->deletedAt;
   }
 
-  public function set_id($id) {
+  public function setId($id) {
     $this->id = $id;
   }
 
-  public function set_fechaHora($fechaHora) {
+  public function setFechaHora($fechaHora) {
     $this->fechaHora = $fechaHora;
   }
 
-  public function set_trabajadorId($trabajadorId) {
+  public function setTrabajadorId($trabajadorId) {
     $this->trabajadorId = $trabajadorId;
   }
 
-  public function set_productoInsumoId($productoInsumoId) {
+  public function setProductoInsumoId($productoInsumoId) {
     $this->productoInsumoId = $productoInsumoId;
   }
 
-  public function set_cantidad($cantidad) {
+  public function setCantidad($cantidad) {
     $this->cantidad = $cantidad;
   }
 
-  public function set_loteId($loteId) {
+  public function setLoteId($loteId) {
     $this->loteId = $loteId;
   }
 
-  public function set_createdAt($createdAt) {
+  public function setCreatedAt($createdAt) {
     $this->createdAt = $createdAt;
   }
 
-  public function set_updatedAt($updatedAt) {
+  public function setUpdatedAt($updatedAt) {
     $this->updatedAt = $updatedAt;
   }
 
-  public function set_deletedAt($deletedAt) {
+  public function setDeletedAt($deletedAt) {
     $this->deletedAt = $deletedAt;
   }
-
+  
   
    /**
    * Obtiene el nombre de la tabla
@@ -167,7 +167,7 @@ class solicitudInsumoBaseTableClass extends tableBaseClass {
    * variables publica los nombres de las columnas de la consulta o una
    * instancia de \PDOException en caso de fracaso.
    */
-  public static function getAll($fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null,$where = NULL, $table = null) {
+  public static function getAll($fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null, $where = null, $table = null) {
     return parent::getAll(self::getNameTable(), $fields, $deletedLogical, $orderBy, $order, $limit, $offset, $where, $table);
   }
 

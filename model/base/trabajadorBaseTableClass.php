@@ -55,10 +55,10 @@ class trabajadorBaseTableClass extends tableBaseClass {
     return $this->apellido;
   }
 
-  public function get_documento() {
+  public function getDocumento() {
     return $this->documento;
   }
-  
+
   public function getDireccion() {
     return $this->direccion;
   }
@@ -106,10 +106,10 @@ class trabajadorBaseTableClass extends tableBaseClass {
   public function setApellido($apellido) {
     $this->apellido = $apellido;
   }
-  
-  public function set_documento($docuento) {
+
+  public function setDocumento($documento) {
     $this->documento = $documento;
-  }  
+  }
 
   public function setDireccion($direccion) {
     $this->direccion = $direccion;
@@ -146,7 +146,7 @@ class trabajadorBaseTableClass extends tableBaseClass {
   public function setDeletedAt($deletedAt) {
     $this->deletedAt = $deletedAt;
   }
-
+  
   
     
     

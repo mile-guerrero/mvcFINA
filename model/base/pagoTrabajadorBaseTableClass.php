@@ -44,7 +44,7 @@ class pagoTrabajadorBaseTableClass extends tableBaseClass {
   public function getId() {
     return $this->id;
   }
-  
+
   public function getFechaInicial() {
     return $this->fechaInicial;
   }
@@ -52,15 +52,15 @@ class pagoTrabajadorBaseTableClass extends tableBaseClass {
   public function getFechaFinal() {
     return $this->fechaFinal;
   }
-  
+
   public function getEmpresaId() {
     return $this->empresaId;
   }
-  
+
   public function getTrabajadorId() {
     return $this->trabajadorId;
   }
-  
+
   public function getValorSalario() {
     return $this->valorSalario;
   }
@@ -108,7 +108,7 @@ class pagoTrabajadorBaseTableClass extends tableBaseClass {
   public function setTrabajadorId($trabajadorId) {
     $this->trabajadorId = $trabajadorId;
   }
-  
+
   public function setValorSalario($valorSalario) {
     $this->valorSalario = $valorSalario;
   }
@@ -128,7 +128,7 @@ class pagoTrabajadorBaseTableClass extends tableBaseClass {
   public function setTotalPagar($totalPagar) {
     $this->totalPagar = $totalPagar;
   }
-  
+
   public function setCreatedAt($createdAt) {
     $this->createdAt = $createdAt;
   }
@@ -148,7 +148,7 @@ class pagoTrabajadorBaseTableClass extends tableBaseClass {
     return 'pago_trabajador';
   }
 
-   /**
+  /**
    * Método para obtener el nombre del campo más la tabla ya sea en formato
    * DB (.) o en formato HTML (_)
    *
@@ -204,7 +204,7 @@ class pagoTrabajadorBaseTableClass extends tableBaseClass {
    * variables publica los nombres de las columnas de la consulta o una
    * instancia de \PDOException en caso de fracaso.
    */
-  public static function getAll($fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null,$where = NULL, $table = null) {
+  public static function getAll($fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null, $where = null, $table = null) {
     return parent::getAll(self::getNameTable(), $fields, $deletedLogical, $orderBy, $order, $limit, $offset, $where, $table);
   }
 

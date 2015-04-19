@@ -20,10 +20,16 @@ class editActionClass extends controllerClass implements controllerActionInterfa
    
       if (request::getInstance()->hasRequest(pagoTrabajadorTableClass::ID)) {
         $fields = array(
-            pagoTrabajadorTableClass::ID,
-            pagoTrabajadorTableClass::FECHA_INICIAL,
-            pagoTrabajadorTableClass::FECHA_FINAL,
-            pagoTrabajadorTableClass::EMPRESA_ID
+          pagoTrabajadorTableClass::ID,
+          pagoTrabajadorTableClass::FECHA_INICIAL,
+          pagoTrabajadorTableClass::FECHA_FINAL,
+          pagoTrabajadorTableClass::EMPRESA_ID,
+          pagoTrabajadorTableClass::TRABAJADOR_ID,
+          pagoTrabajadorTableClass::VALOR_SALARIO,
+          pagoTrabajadorTableClass::CANTIDAD_HORAS_EXTRAS,
+          pagoTrabajadorTableClass::VALOR_HORAS_EXTRAS,
+          pagoTrabajadorTableClass::HORAS_PERDIDAS,
+          pagoTrabajadorTableClass::TOTAL_PAGAR
         );
         $where = array(
             pagoTrabajadorTableClass::ID => request::getInstance()->getRequest(pagoTrabajadorTableClass::ID)
@@ -37,7 +43,16 @@ class editActionClass extends controllerClass implements controllerActionInterfa
         $orderBy = array(
             empresaTableClass::NOMBRE
         );
-        $this->objEmpresa = empresaTableClass::getAll($fields, false, $orderBy, 'ASC');
+        $this->objEmpresa = empresaTableClass::getAll($fields, true, $orderBy, 'ASC');
+        
+        $fields = array(
+            trabajadorTableClass::ID,
+            trabajadorTableClass::NOMBRET
+        );
+        $orderBy = array(
+            trabajadorTableClass::NOMBRET
+        );
+        $this->objT = trabajadorTableClass::getAll($fields, true, $orderBy, 'ASC');
         $this->defineView('edit', 'pagoTrabajador', session::getInstance()->getFormatOutput());
      
       }else{

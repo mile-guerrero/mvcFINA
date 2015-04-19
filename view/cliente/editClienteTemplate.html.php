@@ -10,6 +10,4 @@
     </h2>
   </article>
 <?php view::includePartial('cliente/formularioPrincipalCliente', array('objCliente' => $objCliente, 'nombre' => $nombre,'objCTI' => $objCTI,'objCC' => $objCC)) ?>
-
-  
 </div>

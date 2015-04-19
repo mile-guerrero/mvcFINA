@@ -64,8 +64,8 @@
       </div> 
     </div> 
   
-  <input class="btn btn-lg btn-primary btn-xs" type="submit" value="<?php echo i18n::__(((isset($objMaquina)) ? 'update' : 'register')) ?>">
-<a class="btn btn-lg btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('maquina', 'indexMaquina') ?>" ><?php echo i18n::__('atras') ?> </a>
+  <input class="btn btn-lg btn-success btn-xs" type="submit" value="<?php echo i18n::__(((isset($objMaquina)) ? 'update' : 'register')) ?>">
+<a class="btn btn-lg btn-default btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('maquina', 'indexMaquina') ?>" ><?php echo i18n::__('atras') ?> </a>
 
 </form>
    </article>

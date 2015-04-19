@@ -15,5 +15,6 @@
     <i class="fa fa-leaf mvcPointer"></i>
   </div>
   <?php endif ?>
+  <?php echo session::getInstance()->getFlash('mvcSQL') ?>
 </body>
 </html>

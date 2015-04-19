@@ -4,5 +4,5 @@
 <?php use mvc\view\viewClass as view ?>
 <div class="container container-fluid" id="cuerpo">
 <h2 class="form-signin-heading"><?php echo i18n::__('solicitudInsumo') ?> </h2>
-<?php view::includePartial('solicitudInsumo/formularioPrincipal',array ('objST' => $objST))?>
+<?php view::includePartial('solicitudInsumo/formularioPrincipal',array ('objT' => $objT, 'objP' => $objP, 'objL' => $objL))?>
 </div>

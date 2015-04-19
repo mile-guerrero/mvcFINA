@@ -39,6 +39,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
 
       $fields = array(
           trabajadorTableClass::ID,
+          trabajadorTableClass::DOCUMENTO,
           trabajadorTableClass::NOMBRET,
           trabajadorTableClass::APELLIDO,
           trabajadorTableClass::DIRECCION,

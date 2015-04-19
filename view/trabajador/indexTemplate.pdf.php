@@ -2,6 +2,7 @@
 
 use mvc\routing\routingClass as routing;
 
+$documento = trabajadorTableClass::DOCUMENTO;
 $nom = trabajadorTableClass::NOMBRET;
 $apell = trabajadorTableClass::APELLIDO;
 $dire = trabajadorTableClass::DIRECCION;
@@ -44,6 +45,7 @@ $pdf->Ln();
 $pdf->Cell(190, 10, $mensaje, 1, 0, 'C');
 $pdf->Ln();
 foreach ($objT as $valor) {
+  $pdf->Cell(40, 10, utf8_decode($valor->$documento),1);
   $pdf->Cell(40, 10, utf8_decode($valor->$nom),1);
   $pdf->Cell(40, 10, utf8_decode($valor->$apell),1);
   $pdf->Cell(40, 10, utf8_decode($valor->$dire),1);

@@ -82,7 +82,7 @@ class indexMaquinaActionClass extends controllerClass implements controllerActio
       $orderBy = array(
       proveedorTableClass::ID   
       ); 
-      $this->objMP = proveedorTableClass::getAll($fields, true, $orderBy, 'ASC',null,null,$where);
+      $this->objMP = proveedorTableClass::getAll($fields, true, $orderBy, 'ASC', null, null, $where);
       
       
       $this->defineView('indexMaquina', 'maquina', session::getInstance()->getFormatOutput());

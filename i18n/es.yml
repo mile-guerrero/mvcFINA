@@ -111,6 +111,8 @@ dictionary:
     empresa:              Empresa
     selectEmpresa:        Seleccione la Empresa
     selectProveedor:      Seleccione el Proveedor
+    selectProducto:       Seleccione el Producto
+    selectLote:           Seleccione el Lote
     selectTPI:            Seleccione el tipo de insumo
     selectCiudad:         Seleccione la Ciudad
     selectOrigen:         Seleccione el Origen
@@ -144,6 +146,7 @@ dictionary:
     ?:                    ?
     Eliminacion exitosa:  Eliminacion exitosa
     documentos:           Documentos
+    documento:            Cedula
     identificacion:       Identificacion
     entrar:               Entrar
   errors:

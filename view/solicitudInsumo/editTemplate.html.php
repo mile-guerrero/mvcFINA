@@ -2,10 +2,9 @@
 <?php use mvc\routing\routingClass as routing ?>
 <?php use mvc\i18n\i18nClass as i18n ?>
 <?php use mvc\view\viewClass as view ?> 
-<?php $trabajador = ordenServicioTableClass::TRABAJADOR_ID ?>
 <div class="container container-fluid" id="cuerpo">
-    <h2 class="form-signin-heading"> <?php echo i18n::__('editar orden') ?> </h2>
-<?php view::includePartial('solicitudInsumo/formularioPrincipal',array('objOS'=>$objOS, 'trabajador_id'=>$trabajador)) ?>
-
-
+  <article id="derecha">
+    <h2 class="form-signin-heading"> <?php echo i18n::__('solicitudInsumo') ?> </h2>
+</article>
+  <?php view::includePartial('solicitudInsumo/formularioPrincipal',array('objS' =>$objS, 'objT' =>$objT, 'objP' =>$objP, 'objL' =>$objL)) ?>
 </div>

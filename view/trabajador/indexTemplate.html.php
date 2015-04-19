@@ -4,6 +4,7 @@
 <?php use mvc\view\viewClass as view?>
 <?php use mvc\session\sessionClass as session?>
 
+<?php $documento = trabajadorTableClass::DOCUMENTO ?>
 <?php $nom = trabajadorTableClass::NOMBRET ?>
 <?php $apellido = trabajadorTableClass::APELLIDO ?>
 <?php $direccion = trabajadorTableClass::DIRECCION ?>

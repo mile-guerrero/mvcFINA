@@ -20,6 +20,7 @@ class createActionClass extends controllerClass implements controllerActionInter
       if (request::getInstance()->isMethod('POST')) {
 
         
+        $documento = request::getInstance()->getPost(trabajadorTableClass::getNameField(trabajadorTableClass::DOCUMENTO, true));
         $nombre = request::getInstance()->getPost(trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRET, true));
         $apellido = request::getInstance()->getPost(trabajadorTableClass::getNameField(trabajadorTableClass::APELLIDO, true));
         $direccion = request::getInstance()->getPost(trabajadorTableClass::getNameField(trabajadorTableClass::DIRECCION, true));
@@ -34,6 +35,7 @@ class createActionClass extends controllerClass implements controllerActionInter
 //        }
 
         $data = array(
+            trabajadorTableClass::DOCUMENTO => $documento,
             trabajadorTableClass::NOMBRET => $nombre,
             trabajadorTableClass::APELLIDO => $apellido,
             trabajadorTableClass::DIRECCION => $direccion,

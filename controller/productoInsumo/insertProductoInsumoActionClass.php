@@ -24,7 +24,7 @@ class insertProductoInsumoActionClass extends controllerClass implements control
       $orderBy = array(
       unidadMedidaTableClass::DESCRIPCION   
       );      
-      $this->objPIUM = unidadMedidaTableClass::getAll($fields,true, $orderBy, 'ASC');
+      $this->objPIUM = unidadMedidaTableClass::getAll($fields, false, $orderBy, 'ASC');
       
       $fields = array(     
       tipoProductoInsumoTableClass::ID, 

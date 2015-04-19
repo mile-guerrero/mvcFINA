@@ -152,6 +152,7 @@ dictionary:
     crearCuenta:          Create Account
     recordar:             Remember
     documentos:           Documents
+    documento:            Cedula
     identificacion:       Identifieds
     entrar:               Entrar
   errors:

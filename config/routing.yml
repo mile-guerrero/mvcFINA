@@ -995,6 +995,10 @@ solicitudInsumo_index:
     - model/solicitudInsumoTableClass.php
     - model/base/trabajadorBaseTableClass.php
     - model/trabajadorTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
     
 solicitudInsumo_insert:
   url:    /solicitudInsumo/insertar
@@ -1004,15 +1008,23 @@ solicitudInsumo_insert:
     - model/solicitudInsumoTableClass.php
     - model/base/trabajadorBaseTableClass.php
     - model/trabajadorTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
     
 solicitudInsumo_create:
   url:    /solicitudInsumo/crear
-  param:  { module: osolicitudInsumo, action: create, format: html }
+  param:  { module: solicitudInsumo, action: create, format: html }
   load:
     - model/base/solicitudInsumoBaseTableClass.php
     - model/solicitudInsumoTableClass.php
     - model/base/trabajadorBaseTableClass.php
     - model/trabajadorTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
     
 solicitudInsumo_edit:
   url:    /solicitudInsumo/editar
@@ -1022,6 +1034,10 @@ solicitudInsumo_edit:
     - model/solicitudInsumoTableClass.php 
     - model/base/trabajadorBaseTableClass.php
     - model/trabajadorTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
     
 solicitudInsumo_update:
   url:    /solicitudInsumo/actualizar
@@ -1031,6 +1047,36 @@ solicitudInsumo_update:
     - model/solicitudInsumoTableClass.php 
     - model/base/trabajadorBaseTableClass.php
     - model/trabajadorTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    
+  solicitudInsumo_delete:
+  url:    /solicitudInsumo/eliminar
+  param:  { module: solicitudInsumo, action: delete, format: json }
+  load:
+    - model/base/solicitudInsumoBaseTableClass.php
+    - model/solicitudInsumoTableClass.php 
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    
+solicitudInsumo_deleteSelect:
+  url:    /solicitudInsumo/eliminarSeleccion
+  param:  { module: solicitudInsumo, action: deleteSelect, format: html }
+  load:
+    - model/base/solicitudInsumoBaseTableClass.php
+    - model/solicitudInsumoTableClass.php 
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
     
 solicitudInsumo_ver:
   url:    /solicitudInsumo/ver
@@ -1040,12 +1086,24 @@ solicitudInsumo_ver:
     - model/solicitudInsumoTableClass.php 
     - model/base/trabajadorBaseTableClass.php
     - model/trabajadorTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
     
 solicitudInsumo_reporte:
   url:    /solicitudInsumo/reporte
   param:  { module: solicitudInsumo, action: report, format: pdf } 
   load:
-    - libs/fpdf/fpdf.php    
+    - libs/fpdf/fpdf.php
+    - model/base/solicitudInsumoBaseTableClass.php
+    - model/solicitudInsumoTableClass.php 
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
 #-------------------modulo - detalle solicitud insumo----------------------------
 
 #----------------------Trabajador-------------------------------- 
@@ -1175,8 +1233,8 @@ pagoTrabajador_index:
     - model/pagoTrabajadorTableClass.php
     - model/base/empresaBaseTableClass.php
     - model/empresaTableClass.php
-    - model/base/detallePagoTrabajadorBaseTableClass.php
-    - model/detallePagoTrabajadorTableClass.php
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
     
 pagoTrabajador_insert:
   url:    /pagoTrabajador/insertar
@@ -1186,8 +1244,8 @@ pagoTrabajador_insert:
     - model/pagoTrabajadorTableClass.php
     - model/base/empresaBaseTableClass.php
     - model/empresaTableClass.php
-    - model/base/detallePagoTrabajadorBaseTableClass.php
-    - model/detallePagoTrabajadorTableClass.php
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
     
 pagoTrabajador_create:
   url:    /pagoTrabajador/crear
@@ -1197,8 +1255,8 @@ pagoTrabajador_create:
     - model/pagoTrabajadorTableClass.php
     - model/base/empresaBaseTableClass.php
     - model/empresaTableClass.php
-    - model/base/detallePagoTrabajadorBaseTableClass.php
-    - model/detallePagoTrabajadorTableClass.php
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
 
 pagoTrabajador_edit:
   url:    /pagoTrabajador/editar
@@ -1208,8 +1266,8 @@ pagoTrabajador_edit:
     - model/pagoTrabajadorTableClass.php
     - model/base/empresaBaseTableClass.php
     - model/empresaTableClass.php
-    - model/base/detallePagoTrabajadorBaseTableClass.php
-    - model/detallePagoTrabajadorTableClass.php
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
     
 pagoTrabajador_update:
   url:    /pagoTrabajador/actualizar
@@ -1219,8 +1277,8 @@ pagoTrabajador_update:
     - model/pagoTrabajadorTableClass.php
     - model/base/empresaBaseTableClass.php
     - model/empresaTableClass.php
-    - model/base/detallePagoTrabajadorBaseTableClass.php
-    - model/detallePagoTrabajadorTableClass.php
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
     
 pagoTrabajador_ver:
   url:    /pagoTrabajador/ver
@@ -1230,7 +1288,19 @@ pagoTrabajador_ver:
     - model/pagoTrabajadorTableClass.php
     - model/base/empresaBaseTableClass.php
     - model/empresaTableClass.php
-    - model/base/detallePagoTrabajadorBaseTableClass.php
-    - model/detallePagoTrabajadorTableClass.php
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    
+pagoTrabajador_reporte:
+  url:    /pagoTrabajador/reporte
+  param:  { module: pagoTrabajador, action: report, format: pdf } 
+  load:
+    - libs/fpdf/fpdf.php  
+    - model/base/pagoTrabajadorBaseTableClass.php
+    - model/pagoTrabajadorTableClass.php
+    - model/base/empresaBaseTableClass.php
+    - model/empresaTableClass.php
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
     
 #---------------------------------Detalle Pago Trabajador--------

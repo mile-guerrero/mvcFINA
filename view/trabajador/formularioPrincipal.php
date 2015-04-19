@@ -1,6 +1,7 @@
 <?php use mvc\routing\routingClass as routing ?>
 <?php use mvc\i18n\i18nClass as i18n ?>
 <?php $idTrabajador = trabajadorTableClass::ID ?>
+<?php $documento = trabajadorTableClass::DOCUMENTO ?>
 <?php $apellido = trabajadorTableClass::APELLIDO ?>
 <?php $direccion = trabajadorTableClass::DIRECCION ?>
 <?php $telefono = trabajadorTableClass::TELEFONO ?>
@@ -20,6 +21,13 @@
 <?php if (isset($objTrabajador) == true): ?>
     <input  name="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::ID, true) ?>" value="<?php echo $objTrabajador[0]->$idTrabajador ?>" type="hidden">
 <?php endif ?>
+    
+    <div class="form-group">
+      <label for="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::DOCUMENTO, true) ?>" class="col-sm-2"> <?php echo i18n::__('documento') ?>:</label>     
+      <div class="col-sm-10">
+        <input class="form-control" value="<?php echo ((isset($objTrabajador) == true) ? $objTrabajador[0]->$documento : '') ?>" type="text" name="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::DOCUMENTO, true) ?>" placeholder="<?php echo i18n::__('documento') ?>">
+      </div>
+    </div>
 
     <div class="form-group">
       <label for="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRET, true) ?>" class="col-sm-2"> <?php echo i18n::__('nom') ?>:</label>     

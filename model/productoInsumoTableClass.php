@@ -10,6 +10,23 @@ use mvc\config\configClass as config;
  */
 class productoInsumoTableClass extends productoInsumoBaseTableClass {
   
+  public static function getNameProductoInsumo($id){
+    try {
+      $sql = 'SELECT ' . productoInsumoTableClass::DESCRIPCION .  ' As descripcion  '
+             . '  FROM ' . productoInsumoTableClass::getNameTable() . '  '
+             . '  WHERE ' . productoInsumoTableClass::ID . ' = :id';
+      $params = array(
+          ':id' => $id
+      );
+      $answer = model::getInstance()->prepare($sql);
+      $answer->execute($params);
+      $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+      return $answer[0]->descripcion;
+   } catch (Exception $exc) {
+      throw $exc;
+    }
+  }
+  
    public static function getTotalPages($lines){
     try {
       $sql = 'SELECT count(' . productoInsumoTableClass::ID . ') AS cantidad ' .
@@ -21,7 +38,6 @@ class productoInsumoTableClass extends productoInsumoBaseTableClass {
       return ceil($answer[0]->cantidad/$lines);
     }  catch (PDOException $exc){
        throw  $exc;
-  }}
-
-
+  }
+}
 }

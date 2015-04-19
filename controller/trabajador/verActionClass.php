@@ -19,6 +19,7 @@ class verActionClass extends controllerClass implements controllerActionInterfac
     try {
       $fields = array(
           trabajadorTableClass::ID,
+          trabajadorTableClass::DOCUMENTO,
           trabajadorTableClass::NOMBRET,
           trabajadorTableClass::APELLIDO,
           trabajadorTableClass::DIRECCION,
