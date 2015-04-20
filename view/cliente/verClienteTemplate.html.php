@@ -42,7 +42,7 @@
           <td><?php echo $key->$apellido ?></td>
           </tr>
            <tr>
-          <th><?php echo i18n::__('apell') ?></th>      
+          <th><?php echo i18n::__('documento') ?></th>      
           <td><?php echo $key->$documento ?></td>
           </tr>
           <tr>

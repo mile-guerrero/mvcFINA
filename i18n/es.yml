@@ -6,6 +6,7 @@ dictionary:
     usu_id:               usuarioId
     informe:              Informes
     pass:                 Contraseña
+    confirmarPass:        Confirmar Contraseña
     editar usuario:       Editar Usuario
     editar proveedor:     Editar Proveedor
     nuevo usuario:        Nuevo Usuario
@@ -146,7 +147,7 @@ dictionary:
     ?:                    ?
     Eliminacion exitosa:  Eliminacion exitosa
     documentos:           Documentos
-    documento:            Cedula
+    documento:            N° Documento
     identificacion:       Identificacion
     entrar:               Entrar
   errors:

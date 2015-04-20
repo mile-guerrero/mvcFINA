@@ -6,6 +6,7 @@ dictionary:
     usu_id:               User Id
     informe:              Report
     pass:                 Password
+    confirmarPass:        Confirmar Password
     editar usuario:       Editar User
     nuevo usuario:        New User
     nom:                  Name

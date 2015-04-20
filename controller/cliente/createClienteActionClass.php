@@ -27,7 +27,7 @@ class createClienteActionClass extends controllerClass implements controllerActi
         $idTipo = trim(request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::ID_TIPO_ID, true)));
         $idCiudad = trim(request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::ID_CIUDAD, true)));
 
-        $this->validate($nombre, $apellido, $direccion, $telefono, $idTipo, $idCiudad);
+        $this->validate($nombre, $apellido, $documento, $direccion, $telefono, $idTipo, $idCiudad);
 
         $data = array(
             clienteTableClass::NOMBRE => $nombre,
@@ -50,7 +50,7 @@ class createClienteActionClass extends controllerClass implements controllerActi
     }
   }
 
-  public function validate($nombre, $apellido, $direccion, $telefono, $idTipo, $idCiudad) {
+  public function validate($nombre, $apellido, $documento, $direccion, $telefono, $idTipo, $idCiudad) {
 
     $flag = false;
     
@@ -103,8 +103,28 @@ class createClienteActionClass extends controllerClass implements controllerActi
       $flag = true;
       session::getInstance()->setFlash(clienteTableClass::getNameField(clienteTableClass::DIRECCION, true), true);
      }
-
-
+ //-------------------------------------------------------------------
+ if (strlen($documento) > clienteTableClass::DOCUMENTO_LENGTH) {
+      session::getInstance()->setError(i18n::__(00015, null, 'errors', array(':longitud' => clienteTableClass::DOCUMENTO_LENGTH)), 00015);
+      $flag = true;
+      session::getInstance()->setFlash(clienteTableClass::getNameField(clienteTableClass::DOCUMENTO, true), true);
+     }
+ if (strlen($documento) == null) {
+      session::getInstance()->setError(i18n::__(00009, null, 'errors', array(':campo vacio' => clienteTableClass::DOCUMENTO)), 00009);
+      $flag = true;
+      session::getInstance()->setFlash(clienteTableClass::getNameField(clienteTableClass::DOCUMENTO, true), true);
+     }
+  //-----------------------------------------------------------------
+  if (strlen($telefono) > clienteTableClass::TELEFONO_LENGTH) {
+      session::getInstance()->setError(i18n::__(00014, null, 'errors', array(':longitud' => clienteTableClass::TELEFONO_LENGTH)), 00014);
+      $flag = true;
+      session::getInstance()->setFlash(clienteTableClass::getNameField(clienteTableClass::TELEFONO, true), true);
+     }
+  if (strlen($telefono) == null) {
+      session::getInstance()->setError(i18n::__(00009, null, 'errors', array(':campo vacio' => clienteTableClass::TELEFONO)), 00009);
+      $flag = true;
+      session::getInstance()->setFlash(clienteTableClass::getNameField(clienteTableClass::TELEFONO, true), true);
+     }
 //  pasar el campo a numerico
 //    if (!preg_match("/[0-9]{9}$/", $telefono )) {
 //      session::getInstance()->setError(i18n::__(00010, null, 'errors', array(':numeros' => $telefono)), 00010);

@@ -35,9 +35,9 @@
     </div> 
     
     <div class="form-group">
-      <label for="<?php echo proveedorTableClass::getNameField(proveedorTableClass::DOCUMENTO, true) ?>" class="col-sm-2"> <?php echo i18n::__('apell') ?>:</label>     
+      <label for="<?php echo proveedorTableClass::getNameField(proveedorTableClass::DOCUMENTO, true) ?>" class="col-sm-2"> <?php echo i18n::__('documento') ?>:</label>     
       <div class="col-sm-10">            
-        <input class="form-control" value="<?php echo ((isset($objProveedor) == true) ? $objProveedor[0]->$documento : '') ?>" type="text" name="<?php echo proveedorTableClass::getNameField(proveedorTableClass::DOCUMENTO, true) ?>" placeholder="<?php echo i18n::__('apell') ?>">
+        <input class="form-control" value="<?php echo ((isset($objProveedor) == true) ? $objProveedor[0]->$documento : '') ?>" type="text" name="<?php echo proveedorTableClass::getNameField(proveedorTableClass::DOCUMENTO, true) ?>" placeholder="<?php echo i18n::__('documento') ?>">
       </div>
     </div> 
 

@@ -25,9 +25,9 @@
   </div>   
   
   <div class="form-group">
-      <label for="<?php echo usuariotableClass::getNameField(usuarioTableClass::PASSWORD, true) ?>" class="col-sm-2"> <?php echo i18n::__('pass') ?>:</label>     
+      <label for="<?php echo usuariotableClass::getNameField(usuarioTableClass::PASSWORD, true) ?>" class="col-sm-2"> <?php echo i18n::__('confirmarPass') ?>:</label>     
       <div class="col-sm-10"> 
-        <input class="form-control" id="<?php echo ''?>" value="<?php echo ((isset($objUsuarios)==true) ? $objUsuarios[0]->$password : '') ?>" type="password" name="<?php echo usuarioTableClass::getNameField(usuarioTableClass::PASSWORD, true) ?>" placeholder="<?php echo i18n::__('pass') ?>" required>
+        <input class="form-control" id="<?php echo ''?>" value="<?php echo ((isset($objUsuarios)==true) ? $objUsuarios[0]->$password : '') ?>" type="password" name="<?php echo usuarioTableClass::getNameField(usuarioTableClass::PASSWORD, true) ?>" placeholder="<?php echo i18n::__('confirmarPass') ?>" required>
       </div>
   </div>
     

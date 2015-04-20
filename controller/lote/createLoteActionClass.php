@@ -28,7 +28,8 @@ class createLoteActionClass extends controllerClass implements controllerActionI
         $presupuesto = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::PRESUPUESTO, true));
         $insumo = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::PRODUCTO_INSUMO_ID, true));
         $idCiudad = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::ID_CIUDAD, true));
-
+       
+        $this->validate($ubicacion, $tamano, $descripcion, $numero, $presupuesto);
 //        
  if (strlen($ubicacion) > loteTableClass::UBICACION_LENGTH) {
          session::getInstance()->setError(i18n::__(00005, null, 'errors', array(':longitud' =>  loteTableClass::UBICACION_LENGTH)), 00005);
@@ -47,6 +48,17 @@ class createLoteActionClass extends controllerClass implements controllerActionI
         routing::getInstance()->redirect('lote', 'insertLote');
          
         }
+          if (strlen($numero) > loteTableClass::NUMERO_PLANTULAS_LENGTH) {
+      session::getInstance()->setError(i18n::__(00001, null, 'errors', array(':longitud' =>loteTableClass::NUMERO_PLANTULAS_LENGTH)), 00001);
+      $flag = true;
+      session::getInstance()->setFlash(loteTableClass::getNameField(loteTableClass::NUMERO_PLANTULAS, true),true);
+      }
+
+    if (strlen($numero) == null) {
+      session::getInstance()->setError(i18n::__(00009, null, 'errors', array(':campo vacio' => loteTableClass::NUMERO_PLANTULAS)), 00009);
+      $flag = true;
+      session::getInstance()->setFlash(loteTableClass::getNameField(loteTableClass::NUMERO_PLANTULAS, true), true);
+     }
         $data = array(
             loteTableClass::UBICACION => $ubicacion,
             loteTableClass::TAMANO => $tamano,
@@ -58,6 +70,8 @@ class createLoteActionClass extends controllerClass implements controllerActionI
             loteTableClass::PRODUCTO_INSUMO_ID => $insumo,
             loteTableClass::ID_CIUDAD => $idCiudad
         );
+       
+
         loteTableClass::insert($data);
         routing::getInstance()->redirect('lote', 'indexLote');
       } else {
@@ -68,6 +82,9 @@ class createLoteActionClass extends controllerClass implements controllerActionI
       echo '<br>';
       echo $exc->getTraceAsString();
     }
+   if ($flag === true){
+    request::getInstance()->setMethod('GET');
+    routing::getInstance()->forward('lote', 'insert');
   }
-
+}
 }
