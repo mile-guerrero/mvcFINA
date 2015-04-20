@@ -128,7 +128,7 @@
         </div>
       </div>
       <div class="item">
-        <img class="img-responsive"  id="imgPortada4" src="" alt="portada3">
+        <img class="img-responsive"  id="imgPortada4" src="" alt="portada4">
         <div class="carousel-caption">
 
         </div>

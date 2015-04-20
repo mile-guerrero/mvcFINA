@@ -15,10 +15,10 @@
         <option value="pgsql" <?php echo (isset($_POST['driver']) and $_POST['driver'] === 'pgsql') ? 'selected' : '' ?>>PostgreSQL</option>
         <option value="mysql" <?php echo (isset($_POST['driver']) and $_POST['driver'] === 'mysql') ? 'selected' : '' ?>>MySQL</option>
       </select><br>
-      <input value="<?php echo (isset($_POST['port'])) ? $_POST['port'] : '' ?>" type="text" name="port" placeholder="Digite el puerto" required><br>
-      <input value="<?php echo (isset($_POST['dbName'])) ? $_POST['dbName'] : '' ?>" type="text" name="dbName" placeholder="Nombre de la base de datos" required><br>
-      <input value="<?php echo (isset($_POST['dbUser'])) ? $_POST['dbUser'] : '' ?>" type="text" name="dbUser" placeholder="Usuario de la base de datos" required><br>
-      <input value="<?php echo (isset($_POST['dbPass'])) ? $_POST['dbPass'] : '' ?>" type="password" name="dbPass" placeholder="Contraseña de la base de datos" required><br>
+      <input type="text" name="port" placeholder="Digite el puerto" required><br>
+      <input type="text" name="dbName" placeholder="Nombre de la base de datos" required><br>
+      <input type="text" name="dbUser" placeholder="Usuario de la base de datos" required><br>
+      <input type="password" name="dbPass" placeholder="Contraseña de la base de datos" required><br>
       <input type="submit" value="Continuar">
     </form>
     <?php if(isset($_GET['error']) and $_GET['error'] === true): ?>
