@@ -44,17 +44,6 @@
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
-
-.alert {
-  margin-top: 15px;
-  margin-bottom: 0px;
-}
-
-
-
-*{
-   
-}
 header,section,aside,footer,article{
     display:block;
 }
@@ -93,33 +82,46 @@ margin-left: 50px;
   background-image: url('../img/ingles.gif');
   
 }*/
+*{
+margin:0px;
+padding:0px;
+}
 body {
-  width:90%;
+  font-family: Calibri,Arial,Helvetica,sans-serif;
 }
+
+body {
+  margin: 0 0 0 0;
+  padding: 0;
+  background: #eaeaea;
+  text-align: center;
+  font-family: Calibri,Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  color: #333;
+}
+
 #contenido{
-  background: #FFE4C4;
-  margin: 155px 0px 0px 225px;
-  width:900px; 
-  height: 400px;
-}
-.col-sm-10 {
-width: 90%;
+  width:auto;  
+  float: right;
+  margin: -20px 200px 0px 0px;
 }
 
-#encabezado{  
-  width: 100%;
-  min-width: 942px;
-  height: 40px;
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  background-color: #333;
-  color: #fff;  
-  z-index: 12;
-  box-shadow: 0px 0px 15px -5px #000;
-  text-align: right;
+.alert {
+  margin-top: 15px;
+  margin-bottom: 0px;
 }
 
+
+#color1{
+background-color: #333;
+color: #fff;
+z-index: 12;
+box-shadow: 0px 0px 15px -5px #000;
+text-align: right;
+}
+#formulario1{
+  margin-left: 650px;
+}
 .form-control-gonza1 {
   margin: 8px 0px 0px 0px;
   width: 170px;
@@ -158,6 +160,66 @@ width: 90%;
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 
+#encabezado{  
+  width: 1024px;
+  height: 40px;
+  top: 0px;
+  left: 0px;
+  background-color: #dff0d8;
+  color: #fff;  
+  z-index: 12;
+  box-shadow: 0px 0px 15px -5px #000;
+  text-align: right;
+}
+
+
+#Logeo {  
+  margin: 5px 0px 0px 0px;
+  width: 100%;
+  top: 30px;
+  padding-top: 5px;
+  height: 124px;
+  left: 0px;
+  background-color: #888;
+  box-shadow: 0px 1px 4px #111;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.col-sm-10 {
+width: 100%;
+}
+
+
+
+#imgPortadalogin4{
+  width:900px; 
+  height: 400px;
+  background-image: url('../img/portada4.jpg');
+}
+#imgPortada{
+  width:900px; 
+  height: 400px;
+  background-image: url('../img/portada.jpg');
+}
+#imgPortada2{
+  width:900px; 
+  height: 400px;
+  background-image: url('../img/portadas2.jpg');
+
+}
+#imgPortada3{
+  width:900px; 
+  height: 400px;
+  background-image: url('../img/portadas3.jpg');
+}
+#imgPortada4{
+  width:900px; 
+  height: 400px;
+  background-image: url('../img/portadas4.jpg');
+}
+
 .goncho1 { 
   margin: 8px 0px 0px 0px;
 }
@@ -180,102 +242,13 @@ width: 90%;
   box-shadow: 1px 1px 2px #999999;
 }
 
-
 .form-group {
   margin-bottom: 0px;
 }
 
 
-.form-horizontal .radio,
-.form-horizontal .checkbox,
-.form-horizontal .radio-inline,
-.form-horizontal .checkbox-inline {
-  padding-top: 20px;
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.form-horizontal .form-group {
-  margin-right: 0px;
-  margin-left: 0px;
-}
-@media (min-width: 1024px) {
-  .form-horizontal .control-label {
-    padding-top: 7px;
-    margin-bottom: 0;
-    text-align: right;
-  }
-}
-.form-horizontal .has-feedback .form-control-feedback {
-  right: 15px;
-}
-@media (min-width: 1024px) {
-  .form-horizontal .form-group-lg .control-label {
-    padding-top: 14.3px;
-  }
-}
-@media (min-width: 1024px) {
-  .form-horizontal .form-group-sm .control-label {
-    padding-top: 10px;
-  }
-}
-
-#cuerpoLogeo {  
-  width: 100%;
-  position: absolute;
-  top: 30px;
-  padding-top: 5px;
-  height: 124px;
-  left: 0px;
-  background-color: #888;
-  box-shadow: 0px 1px 4px #111;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
 
 
-#imgPortadalogin4{
-  display: block;
-  left: 0px;
-  z-index: 3;
-  width:900px; 
-  height: 400px;
-  background-image: url('../img/portada4.jpg');
-}
-#imgPortada{
-  display: block;
-  left: 0px;
-  z-index: 3;
-  width:900px; 
-  height: 400px;
-  background-image: url('../img/portada.jpg');
-}
-#imgPortada2{
-  display: block;
-  left: 0px;
-  z-index: 3;
-background: center;
-width:900px; 
-  height: 400px;
-  background-image: url('../img/portadas2.jpg');
-  
-}
-#imgPortada3{
-  display: block;
-  left: 0px;
-  z-index: 3;
-background: center;
-width:900px; 
-  height: 400px;
-  background-image: url('../img/portadas3.jpg');
-}
-#imgPortada4{
-  display: block;
-  left: 0px;
-  z-index: 3;
-background: center;
-width:900px; 
-  height: 400px;
-  background-image: url('../img/portadas4.jpg');
-}
+
+
+

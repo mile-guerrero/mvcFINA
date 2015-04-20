@@ -9,42 +9,59 @@ use mvc\session\sessionClass as session ?>
 <?php
 use mvc\i18n\i18nClass as i18n ?>
 
- <div class="container container-fluid" id="cuerpoLogeo">
-  <header id="encabezado">
-   
- <form class="form-horizontal" role="form" action="<?php echo routing::getInstance()->getUrlWeb('shfSecurity', 'login') ?>" method="POST">
 
-      <div class="form-group"> 
-        <div class="col-sm-10">
-          <label class="form-signin-heading"><?php echo i18n::__('identificacion') ?></label> 
-          <label for="inputUser" class="sr-only">Email address</label>
-          <input class="form-control-gonza1" type="text" id="inputUser" name="inputUser" class="form-control" placeholder="<?php echo i18n::__('user') ?>" required autofocus>
-          <label for="inputPassword" class="sr-only">Password</label>
-          <input class="form-control-gonza2" type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="<?php echo i18n::__('pass') ?>" required>
-          <input class="goncho1" type="checkbox" value="true" name="chkRememberMe"> <?php echo i18n::__('recordar') ?>
-          <input  class="goncho2" type="submit" <?php echo i18n::__('entrar') ?> >
-          
-        </div>      
+<header>
+  <nav class="navbar navbar-default " id="color1">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button> 
       </div>
-      
-      <?php if (session::getInstance()->hasError() or session::getInstance()->hasInformation() or session::getInstance()->hasSuccess() or session::getInstance()->hasWarning()): ?>
-        <?php view::includeHandlerMessage() ?>
-      <?php endif ?>
-      
-       </form>          
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <form id="formulario1" class="form-horizontal" role="form" action="<?php echo routing::getInstance()->getUrlWeb('shfSecurity', 'login') ?>" method="POST">
 
+            <div class="form-group"> 
+              <div class="col-sm-10">
+                <label class="form-signin-heading"><?php echo i18n::__('identificacion') ?></label> 
+                <label for="inputUser" class="sr-only">Email address</label>
+                <input class="form-control-gonza1" type="text" id="inputUser" name="inputUser" class="form-control" placeholder="<?php echo i18n::__('user') ?>" required autofocus>
+                <label for="inputPassword" class="sr-only">Password</label>
+                <input class="form-control-gonza2" type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="<?php echo i18n::__('pass') ?>" required>
+                <input class="goncho1" type="checkbox" value="true" name="chkRememberMe"> <?php echo i18n::__('recordar') ?>
+                <input  class="goncho2" type="submit" <?php echo i18n::__('entrar') ?> >
 
-  </article>
+              </div>      
+            </div>
 
-</div>
+            <?php if (session::getInstance()->hasError() or session::getInstance()->hasInformation() or session::getInstance()->hasSuccess() or session::getInstance()->hasWarning()): ?>
+              <?php view::includeHandlerMessage() ?>
+            <?php endif ?>
 
-  </header>
-  <nav id="barramenu">
+          </form> 
+        </ul>
+      </div>
+    </div>
+    <div class="responcive" id="Logeo">  
 
-
+    </div>
   </nav>
-  <section id="contenido">
-  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+
+</header>
+
+<nav >
+
+</nav>
+
+
+
+<header id="contenido" class="container container-fluid responcive">
+  <div id="carousel-example-generic" class="carousel slide responcive" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
       <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -66,14 +83,14 @@ use mvc\i18n\i18nClass as i18n ?>
 
         </div>
       </div>
-      
+
       <div class="item">
         <img class="img-responsive"  id="imgPortadalogin4" src="" alt="portada2">
         <div class="carousel-caption">
 
         </div>
       </div>
-      
+
       <div class="item">
         <img class="img-responsive"  id="imgPortada3" src="" alt="portada3">
         <div class="carousel-caption">
@@ -98,20 +115,9 @@ use mvc\i18n\i18nClass as i18n ?>
       <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
     </a>
-  </div>
-  </section>
-  <article id='derecha'>
-
-    <!-- /container -->
-      
-<!--          <div class="checkbox">
-            <label>
-              <input  type="checkbox" value="true" name="chkRememberMe"> <?php echo i18n::__('recordar') ?> 
-            </label> 
-            <button  class="btn btn-lg btn-primary btn-block-gonzalo1" type="submit"><?php echo i18n::__('entrar') ?></button> 
-          
-          </div>-->
-            
-
-      
    
+  </div>
+</header>
+
+
+

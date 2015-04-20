@@ -6,7 +6,6 @@
 <?php use mvc\i18n\i18nClass as i18 ?>
 
 <header>
-  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
     
     <nav class="navbar navbar-default alert-success">
     <div class="container-fluid">
@@ -48,7 +47,7 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo i18::__('otros') ?> <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
-<!--               <li class="divider"></li>-->
+               <li class="divider"></li>
               <li><a href="<?php echo routing::getInstance()->getUrlWeb('usuarioCredencial', 'index') ?>"><?php echo i18::__('usuarioCredencial') ?></a></li>
             </ul>
           </li>
@@ -84,7 +83,7 @@
         </ul>
 
 
-
+      </div>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 
@@ -98,8 +97,9 @@
 
 
 <nav class="encabezado"> 
-<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-<!-- Indicators -->
+  <header>
+<div id="carousel-example-generic" class="carousel slide responcive" data-ride="carousel">
+    <!-- Indicators -->
     <ol class="carousel-indicators">
       <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
       <li data-target="#carousel-example-generic" data-slide-to="1"></li>
@@ -113,14 +113,21 @@
         <div class="carousel-caption">
 
         </div>
-        
       </div>
-      <div class="item ">
+      <div class="item">
         <img class="img-responsive"  id="imgPortada2" src="" alt="portada2">
         <div class="carousel-caption">
 
         </div>
       </div>
+      
+      <div class="item">
+        <img class="img-responsive"  id="imgPortadalogin4" src="" alt="portada2">
+        <div class="carousel-caption">
+
+        </div>
+      </div>
+      
       <div class="item">
         <img class="img-responsive"  id="imgPortada3" src="" alt="portada3">
         <div class="carousel-caption">
@@ -128,7 +135,7 @@
         </div>
       </div>
       <div class="item">
-        <img class="img-responsive"  id="imgPortada4" src="" alt="portada4">
+        <img class="img-responsive"  id="imgPortada4" src="" alt="portada3">
         <div class="carousel-caption">
 
         </div>
@@ -146,6 +153,7 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
+  </header>
   
 
 </nav>  

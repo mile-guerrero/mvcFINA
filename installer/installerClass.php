@@ -56,58 +56,48 @@ class installerClass {
             $Scope = $_POST['Scope'];
             $idioma = $_POST['idioma'];
             $FormatTimestamp = $_POST['FormatTimestamp'];
-            include_once 'ejemplo.php';
+            include_once 'control.php';
 
             $file = fopen('../config/config.php', 'w');
             fputs($file, $config);
             fclose($file);
+            
+            
+            $dsn = $driver . ':dbname=' . $dbName . ';host=' . $host . ';port=' . $port;
+            $usuario = $dbUser;
+            $contrasena = $dbPass;
+            
+            $pdo = new PDO($dsn, $usuario, $contrasena);
+//            $gbd = new PDO($dsn);
+            try {
+             $sql = "";
+            $file = fopen('../sql/psqldeagricola.sql', 'r');
+            while(!feof($file)){
+              $sql .= fgets($file);
+            }
+            
+            $pdo->beginTransaction(); 
+            $pdo->exec($sql);
+            $pdo->commit();
+              
+              include_once '../web/index.php';
+//              echo $sql;
+//            exit();
+            } catch (PDOException $exc) {
+              echo $exc->getTraceAsString();
+              exit();
+            }
 
             // aqui falta correr el archivo SQL en la base de datos
 
-            $host = 'localhost';
-            $db = 'ejemplo';
-            $username = 'postgres';
-            $password = 'root';
-            $dsn = "pgsql:host=$host;port=5432;dbname=$db;user=$username;password=$password";
-
-
             
-            $gbd = new PDO($dsn);
-            try {
-              $query = $gbd->prepare ("CREATE TABLE usuario(nombre varchar(80))");
-              $query->execute();
-              // display a message if connected to the PostgreSQL successfully
-              if ($conn) {
-                echo "Se conecto la Base de Datos <strong>$db</strong> Exitosamente y tablas!";
-              }
-            } catch (PDOException $e) {
-              // report error message
-              echo $e->getMessage();
-            }
-
-//            try {
-//              
-//              $usuario = "postgres";
-//              $contrasena = "root";
-//              $dbName = "ejemplo";
-//              $host = "localhost";
-//              $pgsql = new PDO('pgsql:dbname=$dbName;'
-//                      . 'host=$host;'
-//                      , $usuario, $contrasena ); 
-//              $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-//              
-//            } catch (PDOException $e) {
-//              echo 'Error conectando con la base de datos: ' . $e->getMessage();
-//            }
-//            $fp = fopen('../sql/bdagricola.sql','r');
-//            if (!$fp) {echo 'ERROR: No ha sido posible abrir el archivo. Revisa su nombre y sus permisos.'; exit;}
-//            fclose($fp);
-//            include_once 'view/felicidades.html.php';
+            
+          include_once '../web/index.php';
           } else {
             include_once 'view/configuration.html.php';
           }
 
-          break;
+          break;       
       }
     }
   }
