@@ -3,8 +3,9 @@
 <?php use mvc\i18n\i18nClass as i18n ?>
 <?php use mvc\view\viewClass as view ?> 
 <div class="container container-fluid" id="cuerpo">
-  <article id="derecha">
-    <h2 class="form-signin-heading"> <?php echo i18n::__('solicitudInsumo') ?> </h2>
-</article>
-  <?php view::includePartial('solicitudInsumo/formularioPrincipal',array('objS' =>$objS, 'objT' =>$objT, 'objP' =>$objP, 'objL' =>$objL)) ?>
+  <h2 class="form-signin-heading">
+    <?php echo i18n::__('solicitudInsumo') ?> 
+  </h2>
+   <?php view::includePartial('solicitudInsumo/formularioPrincipal', array('objS' => $objS, 'objT' => $objT, 'objP' => $objP, 'objL' => $objL)) ?>
 </div>
+  

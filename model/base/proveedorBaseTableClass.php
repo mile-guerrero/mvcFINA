@@ -95,7 +95,7 @@ class proveedorBaseTableClass extends tableBaseClass {
     $this->apellido = $apellido;
   }
   
-  public function set_documento($docuento) {
+  public function set_documento($documento) {
     $this->documento = $documento;
   }
 

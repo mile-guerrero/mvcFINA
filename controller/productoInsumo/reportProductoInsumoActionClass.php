@@ -18,22 +18,23 @@ class reportProductoInsumoActionClass extends controllerClass implements control
   public function execute() {
     try {
       $where = null;
-      if(request::getInstance()->hasPost('filter')){
-      $filter = request::getInstance()->getPost('filter');
+      if(request::getInstance()->hasPost('report')){
+      $report = request::getInstance()->getPost('report');
       //validar
-      if(isset($filter['descripcion']) and $filter['descripcion'] !== null and $filter['descripcion'] !== ""){
-        $where[productoInsumoTableClass::DESCRIPCION] = $filter['descripcion'];
+      if(isset($report['descripcion']) and $report['descripcion'] !== null and $report['descripcion'] !== ""){
+        $where[productoInsumoTableClass::DESCRIPCION] = $report['descripcion'];
       }      
-      if(isset($filter['ciudad']) and $filter['ciudad'] !== null and $filter['ciudad'] !== ""){
-        $where[productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID] = $filter['ciudad'];
+      if(isset($report['ciudad']) and $report['ciudad'] !== null and $report['ciudad'] !== ""){
+        $where[productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID] = $report['ciudad'];
       }
-      if((isset($filter['fechaIni']) and $filter['fechaIni'] !== null and $filter['fechaIni'] !== "") and (isset($filter['fechaFin']) and $filter['fechaFin'] !== null and $filter['fechaFin'] !== "" )){
+      if((isset($report['fechaIni']) and $report['fechaIni'] !== null and $report['fechaIni'] !== "") and (isset($report['fechaFin']) and $report['fechaFin'] !== null and $report['fechaFin'] !== "" )){
         $where[clienteTableClass::CREATED_AT] = array(
-           date(config::getFormatTimestamp(), strtotime($filter['fechaIni'].' 00:00:00')),
-           date(config::getFormatTimestamp(), strtotime($filter['fechaFin'].' 23:59:59'))
+           date(config::getFormatTimestamp(), strtotime($report['fechaIni'].' 00:00:00')),
+           date(config::getFormatTimestamp(), strtotime($report['fechaFin'].' 23:59:59'))
             );
       }     
       }
+      $this->mensaje = 'Informacion de Producto Insumo';
       $fields = array(
           productoInsumoTableClass::ID,
           productoInsumoTableClass::DESCRIPCION,
@@ -48,7 +49,7 @@ class reportProductoInsumoActionClass extends controllerClass implements control
       );
       
      
-      $this->objPI = productoInsumoTableClass::getAll($fields, true, $orderBy, 'ASC',null,null,$where);
+      $this->objPI = productoInsumoTableClass::getAll($fields, true, $orderBy, 'ASC', null, null,$where);
       
       $fields = array(
           tipoProductoInsumoTableClass::ID,

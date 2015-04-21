@@ -11,7 +11,7 @@ use mvc\i18n\i18nClass as i18n;
 /**
  * Description of ejemploClass
  *
- * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
+ * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
  */
 class indexProductoInsumoActionClass extends controllerClass implements controllerActionInterface {
 
@@ -23,12 +23,12 @@ class indexProductoInsumoActionClass extends controllerClass implements controll
       //validar
       if(isset($filter['descripcion']) and $filter['descripcion'] !== null and $filter['descripcion'] !== ""){
         $where[productoInsumoTableClass::DESCRIPCION] = $filter['descripcion'];
-      }      
-      if(isset($filter['ciudad']) and $filter['ciudad'] !== null and $filter['ciudad'] !== ""){
-        $where[productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID] = $filter['ciudad'];
+      }
+      if(isset($filter['iva']) and $filter['iva'] !== null and $filter['iva'] !== ""){
+        $where[productoInsumoTableClass::IVA] = $filter['iva'];
       }
       if((isset($filter['fechaIni']) and $filter['fechaIni'] !== null and $filter['fechaIni'] !== "") and (isset($filter['fechaFin']) and $filter['fechaFin'] !== null and $filter['fechaFin'] !== "" )){
-        $where[clienteTableClass::CREATED_AT] = array(
+        $where[productoInsumoTableClass::CREATED_AT] = array(
            date(config::getFormatTimestamp(), strtotime($filter['fechaIni'].' 00:00:00')),
            date(config::getFormatTimestamp(), strtotime($filter['fechaFin'].' 23:59:59'))
             );
@@ -55,16 +55,6 @@ class indexProductoInsumoActionClass extends controllerClass implements controll
       $this->cntPages = productoInsumoTableClass::getTotalPages(config::getRowGrid());
       
       $this->objPI = productoInsumoTableClass::getAll($fields, true, $orderBy, 'ASC',config::getRowGrid(), $page,$where);
-      
-      $fields = array(
-          tipoProductoInsumoTableClass::ID,
-          tipoProductoInsumoTableClass::DESCRIPCION
-      );
-      $orderBy = array(
-         tipoProductoInsumoTableClass::DESCRIPCION
-      );
-      $this->objTipo = tipoProductoInsumoTableClass::getAll($fields, true, $orderBy, 'ASC');
-
       $this->defineView('indexProductoInsumo', 'productoInsumo', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
       echo $exc->getMessage();

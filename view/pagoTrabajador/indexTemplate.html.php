@@ -129,9 +129,6 @@
         <thead>
           <tr>
             <th>
-              Fecha
-            </th>
-            <th>
               <?php echo i18n::__('empresa') ?>
             </th>
             <th>
@@ -142,9 +139,6 @@
         <tbody>
             <?php foreach ($objPT as $key): ?>
             <tr>
-               <td>
-                  <?php echo $key->$fechaIni ?>
-                </td>
                 <td>
                   <?php echo empresaTableClass::getNameEmpresa($key->$idEmpresa) ?>
                  </td>

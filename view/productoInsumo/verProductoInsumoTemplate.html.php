@@ -18,7 +18,7 @@
       
     </section>
     <article id='derecha'>
-       <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'indexProductoInsumo') ?>" > <?php echo i18n::__('atras') ?></a>
+       <a class="btn btn-danger btn-xs yo" href="<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'indexProductoInsumo') ?>" > <?php echo i18n::__('atras') ?></a>
 
       <table class="table table-bordered table-responsive">
           <tr>
@@ -37,13 +37,6 @@
                   <th><?php echo i18n::__('iva') ?></th>      
                   <td><?php echo $key->$iva ?></td>
                   </tr>
-                  </tr>
-                  <th>fecha creacion</th> 
-                       <th><?php echo $key->$created ?></th>
-                       </tr>
-                  <th>fecha modificacion</th> 
-                       <th><?php echo $key->$updated ?></th>
-                       </tr>
                   <?php endforeach; ?>
                   <?php foreach ($objPI as $key): ?>
                   <tr> 

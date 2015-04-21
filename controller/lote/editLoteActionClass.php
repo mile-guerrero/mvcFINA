@@ -18,7 +18,7 @@ class editLoteActionClass extends controllerClass implements controllerActionInt
   public function execute() {
     try {
 
-      if (request::getInstance()->hasRequest(usuarioTableClass::ID)) {
+      if (request::getInstance()->hasRequest(loteTableClass::ID)) {
         $fields = array(
             loteTableClass::ID,
             loteTableClass::UBICACION,

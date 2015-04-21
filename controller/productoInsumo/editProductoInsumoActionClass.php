@@ -11,7 +11,7 @@ use mvc\i18n\i18nClass as i18n;
 /**
  * Description of ejemploClass
  *
- * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
+ * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
  */
 class editProductoInsumoActionClass extends controllerClass implements controllerActionInterface {
 
@@ -37,7 +37,7 @@ class editProductoInsumoActionClass extends controllerClass implements controlle
       $orderBy = array(
       unidadMedidaTableClass::DESCRIPCION   
       );      
-      $this->objPIUM = unidadMedidaTableClass::getAll($fields,true, $orderBy, 'ASC');
+      $this->objPIUM = unidadMedidaTableClass::getAll($fields, false, $orderBy, 'ASC');
       
       $fields = array(     
       tipoProductoInsumoTableClass::ID, 

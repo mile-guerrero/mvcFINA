@@ -3,7 +3,7 @@
 use mvc\model\table\tableBaseClass;
 
 /**
- * Description of productoInsumoBaseTableClass
+ * Description of usuarioBaseTableClass
  *
  * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
  */
@@ -19,17 +19,15 @@ class productoInsumoBaseTableClass extends tableBaseClass {
  private $deletedAt;
  
 
-  const ID = 'id';  
-  const DESCRIPCION = 'descripcion';
-  const DESCRIPCION_LENGTH = 80;
-  const IVA = 'iva';
-  const IVA_LENGTH = 30;
-  const UNIDAD_MEDIDA_ID = 'unidad_medida_id';
-  const TIPO_PRODUCTO_INSUMO_ID = 'tipo_producto_insumo_id';
+  const ID = 'id';
   const CREATED_AT = 'created_at';
   const UPDATED_AT = 'updated_at';
   const DELETED_AT = 'deleted_at';
-  
+  const DESCRIPCION = 'descripcion';
+  const DESCRIPCION_LENGTH = 80;
+  const IVA = 'iva';
+  const UNIDAD_MEDIDA_ID = 'unidad_medida_id';
+  const TIPO_PRODUCTO_INSUMO_ID = 'tipo_producto_insumo_id';
   public function get_id() {
     return $this->id;
   }
@@ -160,7 +158,7 @@ class productoInsumoBaseTableClass extends tableBaseClass {
    * variables publica los nombres de las columnas de la consulta o una
    * instancia de \PDOException en caso de fracaso.
    */
-  public static function getAll($fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null,$where = NULL, $table = null) {
+  public static function getAll($fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null, $where = null, $table = null) {
     return parent::getAll(self::getNameTable(), $fields, $deletedLogical, $orderBy, $order, $limit, $offset, $where, $table);
   }
 

@@ -1,6 +1,7 @@
 <?php use mvc\routing\routingClass as routing ?>
 <?php use mvc\i18n\i18nClass as i18n ?>
 <?php $id = solicitudInsumoTableClass::ID ?>
+<?php $fecha = solicitudInsumoTableClass::FECHA_HORA ?>
 <?php $idTrabajador = solicitudInsumoTableClass::TRABAJADOR_ID ?>
 <?php $idTra = trabajadorTableClass::ID?>
 <?php $nomTrabajador = trabajadorTableClass::NOMBRET?>
