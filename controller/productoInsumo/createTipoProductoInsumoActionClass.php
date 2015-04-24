@@ -20,14 +20,8 @@ class createTipoProductoInsumoActionClass extends controllerClass implements con
       if (request::getInstance()->isMethod('POST')) {
 
         $descripcion = request::getInstance()->getPost(tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::DESCRIPCION, true));
-        
-    if (strlen($descripcion) > tipoProductoInsumoTableClass::DESCRIPCION_LENGTH) {
-         session::getInstance()->setError(i18n::__(00004, null, 'errors', array(':longitud' => tipoProductoInsumoTableClass::DESCRIPCION_LENGTH)), 00004);
-        routing::getInstance()->redirect('productoInsumo', 'insertTipoProductoInsumo');
-         
-        }
-        
-        
+               
+        $this->validate($descripcion);
 
         $data = array(
             tipoProductoInsumoTableClass::DESCRIPCION=> $descripcion
@@ -38,9 +32,37 @@ class createTipoProductoInsumoActionClass extends controllerClass implements con
         routing::getInstance()->redirect('productoInsumo', 'indexTipoProductoInsumo');
       }
     } catch (PDOException $exc) {
-      echo $exc->getMessage();
-      echo '<br>';
-      echo $exc->getTraceAsString();
+      routing::getInstance()->redirect('productoInsumo', 'insertTipoProductoInsumo');
+      session::getInstance()->setFlash('exc', $exc);
+    }
+  }
+
+public function validate($descripcion) {
+
+    $flag = false;
+    if (strlen($descripcion) > tipoProductoInsumoTableClass::DESCRIPCION_LENGTH) {
+      session::getInstance()->setError(i18n::__(00001, null, 'errors', array(':longitud' => tipoProductoInsumoTableClass::DESCRIPCION_LENGTH)), 00001);
+      session::getInstance()->setFlash(tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::DESCRIPCION_LENGTH, true), true);
+      
+    }
+    
+    if (!preg_match("/^[a-z]+$/i", $descripcion)) {
+      session::getInstance()->setError(i18n::__(00012, null, 'errors', array(':letras' => $descripcion)), 00012);
+      $flag = true;
+      session::getInstance()->setFlash(tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::DESCRIPCION, true), true);
+      
+    }
+
+    if (strlen($descripcion) == "") {
+      session::getInstance()->setError(i18n::__(00009, null, 'errors', array(':campo vacio' => productoInsumoTableClass::DESCRIPCION)), 00009);
+      $flag = true;
+      session::getInstance()->setFlash(tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::DESCRIPCION, true), true);
+      
+    }
+    
+    if ($flag === true){
+      request::getInstance()->setMethod('GET');
+      routing::getInstance()->forward('productoInsumo', 'insertTipoProductoInsumo');
     }
   }
 

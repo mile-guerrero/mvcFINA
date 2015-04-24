@@ -7,6 +7,8 @@
 <?php $apellido = clienteTableClass::APELLIDO ?>
 <?php $documento = clienteTableClass::DOCUMENTO ?>
 <?php $id = clienteTableClass::ID ?>
+
+
 <?php $idCiudaddes = ciudadTableClass::ID ?>
 <?php $descripcionciudad = ciudadTableClass::NOMBRE_CIUDAD ?>
 <?php $idci = clienteTableClass::ID_CIUDAD ?>
@@ -102,7 +104,7 @@
     </div>
   </div>
           
-           <div class="form-group">
+      <div class="form-group">
     <label for="filterCiudad" class="col-sm-2 control-label"><?php echo i18n::__('idCiudad') ?></label>
     <div class="col-sm-10">
       <select class="form-control" id="filterCiudad" name="filter[ciudad]">
@@ -113,6 +115,8 @@
           </select>
     </div>
   </div>
+          
+          
   <div class="form-group">
     <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
     <div class="col-sm-10">
@@ -134,11 +138,11 @@
       
       <form class="form-signin" id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('cliente', 'deleteSelectCliente') ?>" method="POST">        
         <?php view::includeHandlerMessage()?>       
-        <br>
+        
         <table id="tabla" class="table table-bordered table-responsive">
           <tr>
           <thead>
-          <th>
+          <th id="cuadrito">
             <input type="checkbox" id="chkAll">
           </th>
           <th>
@@ -148,9 +152,9 @@
             <?php echo i18n::__('apell') ?>
           </th>
           <th>
-            <?php echo i18n::__('apell') ?>
+            <?php echo i18n::__('documento') ?>
           </th>
-          <th>
+          <th id="acciones">
             <?php echo i18n::__('acciones') ?>
           </th>
           </tr>

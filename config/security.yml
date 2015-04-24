@@ -10,6 +10,12 @@ shfSecurity:
   exception:
     security: false
     
+    
+principal:
+  index:
+    security: true
+    credentials:
+      - [admin, Bahamon]    
 #-------------------modulo - default----------------------------    
 default:
   index:

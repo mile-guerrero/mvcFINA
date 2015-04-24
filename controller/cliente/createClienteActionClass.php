@@ -45,8 +45,9 @@ class createClienteActionClass extends controllerClass implements controllerActi
         routing::getInstance()->redirect('cliente', 'indexCliente');
       }
     } catch (PDOException $exc) {
-      routing::getInstance()->redirect('cliente', 'insertCliente');
-      session::getInstance()->setFlash('exc', $exc);
+      echo $exc->getMessage();
+      echo '<br>';
+      echo $exc->getTraceAsString();
     }
   }
 

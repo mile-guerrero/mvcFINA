@@ -36,7 +36,7 @@ config::setPathAbsolute('c:/xampp/htdocs/mvcfinal/');
 //para url por local host
 config::setUrlBase('http://localhost/mvcfinal/web/');
 // para www.....com
-//config::setUrlBase('http://www.agricontrol.com/web/');
+//config::setUrlBase('http://www.agricontrol.com/');
 
 config::setScope('prod'); // prod  -   dev
 if (session::getInstance()->hasDefaultCulture() === false) {

@@ -38,11 +38,9 @@ class installerClass {
           break;
         case 4:
           $flag = true;
-
           /*
            * realizar las validaciones
            */
-
           if ($flag === true) {
             $driver = $_SESSION['driver'];
             $host = $_SESSION['host'];
@@ -79,8 +77,7 @@ class installerClass {
             $pdo->beginTransaction(); 
             $pdo->exec($sql);
             $pdo->commit();
-              
-              include_once '../web/index.php';
+            include_once 'view/felicitaciones.html.php';
 //              echo $sql;
 //            exit();
             } catch (PDOException $exc) {
@@ -92,12 +89,16 @@ class installerClass {
 
             
             
-          include_once '../web/index.php';
+          
           } else {
             include_once 'view/configuration.html.php';
           }
 
-          break;       
+          break;    
+          include_once '../web/index.php';
+        case 5:
+          
+          break;
       }
     }
   }

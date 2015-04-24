@@ -9,17 +9,20 @@ use mvc\i18n\i18nClass as i18n ?>
 <?php $fecha_mantenimiento = ordenServicioTableClass::FECHA_MANTENIMIENTO ?>
 <div class="container container-fluid" id="cuerpo">
   <header id="">
-    <h1><?php echo i18n::__('orden') ?></h1>
+    
   </header>
   <nav id="">
+    
+     
+  </nav>
+  <section id=""></section>
+    
+    <article id='derecha'>
+<h1><?php echo i18n::__('orden') ?></h1>
     <ul>
 
       <a class="btn btn-success btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('ordenServicio', 'insert') ?>"><?php echo i18n::__('nuevo') ?></a>              
-    </ul> 
-  </nav>
-  <section id="">
-    <article id=''>
-
+    </ul>
       <table class="table table-bordered table-responsive">
         <tr>
         <thead>
@@ -27,10 +30,10 @@ use mvc\i18n\i18nClass as i18n ?>
         <th>
           <?php echo i18n::__('nombreTrabajador') ?>
         </th>
-        <th>
+        <th id="acciones">
 <?php echo i18n::__('acciones') ?>
         </th>              
-        </tr>
+        
         </thead>
         <tbody>
 <?php foreach ($objOS as $key): ?>
@@ -47,6 +50,6 @@ use mvc\i18n\i18nClass as i18n ?>
       </table>
       
     </article>
-  </section>
+  
 </div>
 

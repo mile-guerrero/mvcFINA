@@ -2,6 +2,10 @@
 culture:                  Español
 dictionary:
   default:
+    selectUnidadDis:      Seleccione el tipo de distacia
+    fecha siembra:        Fecha de siembra
+    numero:               Cantida de plantas a sembrar
+    presupuesto:          Presupuesto
     user:                 Usuario
     usu_id:               usuarioId
     informe:              Informes
@@ -47,7 +51,6 @@ dictionary:
     detalle:              Detalle
     fecha_M:              Fecha 
     tipo:                 TipoUsoId
-    origen:               OrigenId
     num id:               Documento De Identidad
     idTipo:               CodigoTipoId
     ciudad:               Ciudad
@@ -114,10 +117,10 @@ dictionary:
     selectProveedor:      Seleccione el Proveedor
     selectProducto:       Seleccione el Producto
     selectLote:           Seleccione el Lote
-    selectTPI:            Seleccione el tipo de insumo
+    seleccione insumo:    Seleccione el insumo
+    selectTPI:            Seleccione el tipo de insumo 
     selectCiudad:         Seleccione la Ciudad
-    selectOrigen:         Seleccione el Origen
-    selectTipoUso:        Seleccione el Tipo de Uso
+    selectTipoUso:        Seleccione el tipo de uso maquina
     selectUnidad:         Seleccione la Unidad de Medida
     selectUsuario:        Seleccione el Usuario
     selectCredencial:     Seleccione la Credencial

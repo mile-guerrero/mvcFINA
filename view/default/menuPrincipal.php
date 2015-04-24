@@ -26,44 +26,43 @@
             <ul class="dropdown-menu" role="menu">
               <li class=""><a href="<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'indexProductoInsumo') ?>"><?php echo i18::__('insumo') ?></a></li>
               <li><a href="<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'indexTipoProductoInsumo') ?>"><?php echo i18::__('tipo insumo') ?></a></li>
-            </ul>
+              <li class="divider"></li>
+              <li><a href="<?php echo routing::getInstance()->getUrlWeb('maquina', 'indexMaquina') ?>"><?php echo i18::__('maquina') ?></a></li>
+           </ul>
           </li>
 
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo i18::__('personas') ?> <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
-              <li><a href="<?php echo routing::getInstance()->getUrlWeb('cliente', 'indexCliente') ?>"><?php echo i18::__('cliente') ?></a></li>
-              <li><a href="<?php echo routing::getInstance()->getUrlWeb('maquina', 'indexProveedor') ?>"><?php echo i18::__('nomProveedor') ?></a></li>
-              <li><a href="<?php echo routing::getInstance()->getUrlWeb('credencial', 'index') ?>"><?php echo i18::__('credencial') ?></a></li>
               <li><a href="<?php echo routing::getInstance()->getUrlWeb('default', 'index') ?>"><?php echo i18::__('user') ?></a></li>
               <li class="divider"></li>
-              <li><a href="<?php echo routing::getInstance()->getUrlWeb('maquina', 'indexMaquina') ?>"><?php echo i18::__('maquina') ?></a></li>
-              <li class="divider"></li>
-              <li><a href="<?php echo routing::getInstance()->getUrlWeb('ordenServicio', 'index') ?>"><?php echo i18::__('orden') ?></a></li>
-            </ul>
+              <li><a href="<?php echo routing::getInstance()->getUrlWeb('trabajador', 'index') ?>"><?php echo i18::__('trabajador') ?></a></li>
+              <li><a href="<?php echo routing::getInstance()->getUrlWeb('cliente', 'indexCliente') ?>"><?php echo i18::__('cliente') ?></a></li>
+              <li><a href="<?php echo routing::getInstance()->getUrlWeb('maquina', 'indexProveedor') ?>"><?php echo i18::__('nomProveedor') ?></a></li>
+              </ul>
           </li>
-
-
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo i18::__('otros') ?> <span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-               <li class="divider"></li>
-              <li><a href="<?php echo routing::getInstance()->getUrlWeb('usuarioCredencial', 'index') ?>"><?php echo i18::__('usuarioCredencial') ?></a></li>
-            </ul>
-          </li>
-
 
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo i18::__('documentos') ?> <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
-              <li><a href="<?php echo routing::getInstance()->getUrlWeb('trabajador', 'index') ?>"><?php echo i18::__('trabajador') ?></a></li>
               <li><a href="<?php echo routing::getInstance()->getUrlWeb('pagoTrabajador', 'index') ?>"><?php echo i18::__('pagoTrabajador') ?></a></li>
               <li><a href="<?php echo routing::getInstance()->getUrlWeb('solicitudInsumo', 'index') ?>"><?php echo i18::__('solicitudInsumo') ?></a></li>
-              <li><a href="#">Something else here</a></li>
-              <li class="divider"></li>
-              <li><a href="#">Separated link</a></li>
-              <li class="divider"></li>
-              <li><a href="#">One more separated link</a></li>
+              <li><a href="<?php echo routing::getInstance()->getUrlWeb('ordenServicio', 'index') ?>"><?php echo i18::__('orden') ?></a></li>
+              <li><a href="#">pedido</a></li>
+              <li><a href="#">mano obra</a></li>
+              <li><a href="#"></a></li>
+            </ul>
+          </li>
+          
+          
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo i18::__('otros') ?> <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="<?php echo routing::getInstance()->getUrlWeb('usuarioCredencial', 'index') ?>"><?php echo i18::__('usuarioCredencial') ?></a></li>
+            <li><a href="<?php echo routing::getInstance()->getUrlWeb('credencial', 'index') ?>"><?php echo i18::__('credencial') ?></a></li>
+              <li><a href="#">cooperativa</a></li>
+              <li><a href="#">empresa</a></li>
+              <li><a href="#">labor</a></li>
             </ul>
           </li>
 

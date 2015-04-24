@@ -14,8 +14,11 @@
 <?php $descripciontipo = tipoIdTableClass::DESCRIPCION ?>
       <?php $idCiudaddes = ciudadTableClass::ID ?>
       <?php $idTipoId = tipoIdTableClass::ID ?>
+
 <div class="container container-fluid" id="cuerpo">
+  
   <article id='derecha'>
+    
     <form class="form-horizontal" role="form" method="post" action="<?php echo routing::getInstance()->getUrlWeb('cliente', ((isset($objCliente)) ? 'updateCliente' : 'createCliente')) ?>">
 <?php if (isset($objCliente) == true): ?>
         <input  name="<?php echo clienteTableClass::getNameField(clienteTableClass::ID, true) ?>" value="<?php echo $objCliente[0]->$idCliente ?>" type="hidden">

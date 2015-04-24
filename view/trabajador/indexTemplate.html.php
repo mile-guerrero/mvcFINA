@@ -136,7 +136,7 @@
         <table class="table table-bordered table-responsive">
           <tr>
           <thead>
-          <th>
+          <th id="cuadrito">
             <input type="checkbox" id="chkAll">
           </th>
           <th>
@@ -146,12 +146,10 @@
             <?php echo i18n::__('apell') ?>
           </th>
           <th>
-            <?php echo i18n::__('dir') ?>
+            <?php echo i18n::__('documento') ?>
           </th>
-          <th>
-            <?php echo i18n::__('tel') ?>
-          </th>
-          <th>
+          
+          <th id="acciones">
 <?php echo i18n::__('acciones') ?>
           </th>
           </tr>
@@ -169,11 +167,9 @@
   <?php echo $key->$apellido ?>
                 </td>
                 <td>
-  <?php echo $key->$direccion ?>
+  <?php echo $key->$documento ?>
                 </td>
-                <td>
-  <?php echo $key->$telefono ?>
-                </td>
+                
                 <td>
                   <a class="btn btn-warning btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('trabajador', 'ver', array(trabajadorTableClass::ID => $key->$id)) ?>"><?php echo i18n::__('ver') ?></a> 
                   <?php if(session::getInstance()->hasCredential('admin')):?>

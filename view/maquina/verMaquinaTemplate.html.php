@@ -21,12 +21,12 @@ use mvc\i18n\i18nClass as i18n ?>
     
   </section>
     <article id='derecha'>
-      <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('maquina', 'indexMaquina') ?>" > <?php echo i18n::__('atras') ?></a>
- 
+      <a class="btn btn-danger btn-xs yo" href="<?php echo routing::getInstance()->getUrlWeb('maquina', 'indexMaquina') ?>" > <?php echo i18n::__('atras') ?></a>
+      <br><br>
       <table class="table table-bordered table-responsive">
         <tr>
         <thead>
-        <th colspan="2"> <?php echo i18n::__('datos') ?></th>
+        <td colspan="2"> <?php echo i18n::__('datos') ?></td>
         </thead>
         </tr>
         <tbody>
@@ -40,7 +40,11 @@ use mvc\i18n\i18nClass as i18n ?>
               <th><?php echo i18n::__('des') ?></th>      
               <td><?php echo $key->$descripcion ?></td>
             </tr>
-                         
+            
+            <tr>
+              <th><?php echo i18n::__('origenM') ?></th>      
+              <td><?php echo $key-> $des_origen?></td>
+            </tr>
           
 
 <?php endforeach; ?>
@@ -53,10 +57,7 @@ use mvc\i18n\i18nClass as i18n ?>
         <?php endforeach; ?>
 
 
-          <tr>
-          <th><?php echo i18n::__('origenM') ?></th>      
-          <td><?php echo $TUM->$des_origen ?></td>
-          </tr>
+          
           
           <?php foreach ($objMaquina as $P): ?>
           <tr>

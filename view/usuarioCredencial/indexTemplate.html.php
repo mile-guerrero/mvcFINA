@@ -145,7 +145,7 @@
             <th>
               <?php echo i18n::__('credencial') ?>
             </th>
-            <th>
+            <th id="acciones">
               <?php echo i18n::__('acciones') ?>
             </th>
 

@@ -17,26 +17,27 @@ class reportTipoProductoInsumoActionClass extends controllerClass implements con
 
   public function execute() {
     try {
-     $this->mensaje = 'Hola a todos';
      $where = null;
-      if(request::getInstance()->hasPost('filter')){
-      $filter = request::getInstance()->getPost('filter');
+      if(request::getInstance()->hasPost('report')){
+      $report = request::getInstance()->getPost('report');
       //validar
       
-      if(isset($filter['descripcion']) and $filter['descripcion'] !== null and $filter['descripcion'] !== ""){
-        $where[tipoProductoInsumoTableClass::DESCRIPCION] = $filter['descripcion'];
+      if(isset($report['descripcion']) and $report['descripcion'] !== null and $report['descripcion'] !== ""){
+        $where[tipoProductoInsumoTableClass::DESCRIPCION] = $report['descripcion'];
       }
-      if((isset($filter['fechaIni']) and $filter['fechaIni'] !== null and $filter['fechaIni'] !== "") and (isset($filter['fechaFin']) and $filter['fechaFin'] !== null and $filter['fechaFin'] !== "" )){
+      if((isset($report['fechaIni']) and $report['fechaIni'] !== null and $report['fechaIni'] !== "") and (isset($report['fechaFin']) and $report['fechaFin'] !== null and $report['fechaFin'] !== "" )){
         $where[tipoProductoInsumoTableClass::CREATED_AT] = array(
-           date(config::getFormatTimestamp(), strtotime($filter['fechaIni'].' 00:00:00')),
-           date(config::getFormatTimestamp(), strtotime($filter['fechaFin'].' 23:59:59'))
+           date(config::getFormatTimestamp(), strtotime($report['fechaIni'].' 00:00:00')),
+           date(config::getFormatTimestamp(), strtotime($report['fechaFin'].' 23:59:59'))
             );
       }     
       }
+      $this->mensaje = 'Informacion de Tipo Producto Insumo';
       $fields = array(
           tipoProductoInsumoTableClass::ID,
           tipoProductoInsumoTableClass::DESCRIPCION,
           tipoProductoInsumoTableClass::CREATED_AT,
+          tipoProductoInsumoTableClass::UPDATED_AT
         );
       $orderBy = array(
          tipoProductoInsumoTableClass::ID

@@ -21,21 +21,29 @@ class deleteSelectTipoProductoInsumoActionClass extends controllerClass implemen
         $idsToDelete = request::getInstance()->getPost('chk');
         foreach ($idsToDelete as $id){
           $ids = array(
-             tipoProductoInsumoTableClass::ID => $id
+              tipoProductoInsumoTableClass::ID => $id
         );
         
-         tipoProductoInsumoTableClass::delete($ids, true);
+        tipoProductoInsumoTableClass::delete($ids, true);
       }
        session::getInstance()->setSuccess('Las Casillas Seleccionadas Fueron Eliminadas Exitosamente');
       
-        routing::getInstance()->redirect(' productoInsumo', 'indexTipoProductoInsumo');
+        routing::getInstance()->redirect('productoInsumo', 'indexTipoProductoInsumo');
       } else {
-        routing::getInstance()->redirect(' productoInsumo', 'indexTipoProductoInsumo');
+        routing::getInstance()->redirect('productoInsumo', 'indexTipoProductoInsumo');
       }
     } catch (PDOException $exc) {
       echo $exc->getMessage();
       echo '<br>';
       echo $exc->getTraceAsString();
+      switch ($exc->getCode()){
+        case 23503:
+          session::getInstance()->setError('Las Casillas Seleccionadas no se pueden borrar por que esta siendo utilizado');
+          routing::getInstance()->redirect('productoInsumo', 'indexTipoProductoInsumo');
+          break;
+          case 00000:
+          break;
+      }
     }
   }
 

@@ -136,17 +136,17 @@
       
       <form class="form-signin" id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('solicitudInsumo', 'deleteSelect') ?>" method="POST">        
         <?php view::includeHandlerMessage()?>       
-        <br>
+        
         <table id="tabla" class="table table-bordered table-responsive">
           <tr>
           <thead>
-          <th>
+          <th id="cuadrito">
             <input type="checkbox" id="chkAll">
           </th>
           <th>
             <?php echo i18n::__('cantidad') ?>
           </th>
-          <th>
+          <th id="acciones">
             <?php echo i18n::__('acciones') ?>
           </th>
           </tr>

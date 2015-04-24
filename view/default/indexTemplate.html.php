@@ -115,7 +115,7 @@
 
           <tr>
           <thead>
-          <th>
+          <th id="cuadrito">
             <input type="checkbox" id="chkAll">
           </th>
           <th>
@@ -124,7 +124,7 @@
           <th>
             <?php echo i18n::__('estado') ?>
           </th>
-          <th>
+          <th id="acciones">
             <?php echo i18n::__('acciones') ?>
           </th>
           </tr>

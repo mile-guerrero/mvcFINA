@@ -12,18 +12,17 @@
 <?php $descripcion = clienteTableClass::ID_TIPO_ID ?>
 <?php $nombre_ciudad = clienteTableClass::ID_CIUDAD ?>
 <div class="container container-fluid" id="cuerpo">
-  <header id="encabezado">
+  <header id="">
 
    
   </header>
-  <nav id="barramenu">
+  <nav id="">
   </nav>
   <section id="contenido">
-    
   </section>
     <article id='derecha'>
-      <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('cliente', 'indexCliente') ?>" > <?php echo i18n::__('atras') ?></a>
- 
+      <a class="btn btn-danger btn-xs yo" href="<?php echo routing::getInstance()->getUrlWeb('cliente', 'indexCliente') ?>" > <?php echo i18n::__('atras') ?></a>
+      <br><br>
       
       <table class="table table-bordered table-responsive">
         <tr>

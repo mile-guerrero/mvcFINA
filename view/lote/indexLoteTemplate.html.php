@@ -6,8 +6,11 @@
 
 <?php $ubi = loteTableClass::UBICACION ?>
 <?php $id = loteTableClass::ID ?>
+
+<?php $ciudadIds = loteTableClass::ID_CIUDAD ?>
 <?php $idCiudaddes = ciudadTableClass::ID ?>
 <?php $descripcionciudad = ciudadTableClass::NOMBRE_CIUDAD ?>
+
 <div class="container container-fluid" id="cuerpo">
   <header id="">
    
@@ -29,8 +32,10 @@
     <a href="<?php echo routing::getInstance()->getUrlWeb('lote', 'indexLote') ?>" class="btn  btn-xs" ><img class="img-responsive"  id="imgelifiltro" src="" alt=" "><?php echo i18n::__('eFiltros') ?></a> 
     <a type="button" class="btn btn-xs" data-toggle="modal" data-target="#myModalReport" ><img class="img-responsive"  id="imgreporte" src="" alt=" "><?php echo i18n::__('informe') ?></a>           
     </ul> 
+     
+     
 <!---Informes--->
-       <div class="modal fade" id="myModalReport" tabindex="-1" role="modal" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal fade" id="myModalReport" tabindex="-1" role="modal" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -45,17 +50,23 @@
       <input type="text" class="form-control" id="reportNombre" name="report[nombre]" placeholder="Nombre">
     </div>
   </div>
-           <div class="form-group">
-    <label for="reportCiudad" class="col-sm-2 control-label"><?php echo i18n::__('idCiudad') ?></label>
+           
+          
+     <div class="form-group">
+    <label for="filterCiudad" class="col-sm-2 control-label"><?php echo i18n::__('idCiudad') ?></label>
     <div class="col-sm-10">
-      <select class="form-control" id="reportCiudad" name="report[ciudad]">
-            <option><?php echo i18n::__('selectCiudad') ?></option>
-<?php foreach ($objCC as $ciudad): ?>
+      <select class="form-control" id="filterCiudad" name="filter[ciudad]">
+        <option value=""><?php echo i18n::__('selectCiudad') ?></option>
+<?php foreach ($objLC as $ciudad): ?>
             <option value="<?php echo $ciudad->$idCiudaddes ?>"><?php echo $ciudad->$descripcionciudad ?></option>
 <?php endforeach; ?>
           </select>
     </div>
   </div>
+          
+          
+          
+          
   <div class="form-group">
     <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
     <div class="col-sm-10">
@@ -75,7 +86,7 @@
   </div>
 </div>
 
-    <!-- Modal -->
+    <!-- Modal ---------------------------------------------------------------------->
     <div class="modal fade" id="myModalFiltres" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -93,30 +104,31 @@
               </div>
               
               <div class="form-group">
+                <label for="filterDescripcion" class="col-sm-2 control-label"><?php echo i18n::__('des') ?></label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="filterDescripcion" name="filter[descripcion]" placeholder="descripcion">
+                </div>
+              </div>
+              
+              <div class="form-group">
                 <label for="filterTamano" class="col-sm-2 control-label"><?php echo i18n::__('tamano') ?></label>
                 <div class="col-sm-10">
                   <input type="text" class="form-control" id="filterTamano" name="filter[tamano]" placeholder="Tamano">
                 </div>
               </div>
               
-              <div class="form-group">
-                <label for="filterDescripcion" class="col-sm-2 control-label"><?php echo i18n::__('des') ?></label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="filterDescripcion" name="filter[descripcion]" placeholder="descripcion">
-                </div>
-              </div>
-          <div class="form-group">
-                <label for="filterCiudad" class="col-sm-2 control-label"><?php echo i18n::__('idCiudad') ?></label>
-                <div class="col-sm-10">
-    
-   <select class="form-control" id="filterCiudad" name="filter[ciudad]">
-     <option value=""><?php echo i18n::__('selectCiudad') ?></option>
-       <?php foreach($objCC as $ci):?>
-       <option value="<?php echo $ci->$idCiudaddes?>"><?php echo $ci->$descripcionciudad?></option>
-       <?php endforeach;?>
-   </select>
-                </div>
-              </div>
+              
+           <div class="form-group">
+    <label for="filterCiudad" class="col-sm-2 control-label"><?php echo i18n::__('idCiudad') ?></label>
+    <div class="col-sm-10">
+      <select class="form-control" id="filterCiudad" name="filter[ciudad]">
+        <option value=""><?php echo i18n::__('selectCiudad') ?></option>
+<?php foreach ($objLC as $ciudad): ?>
+            <option value="<?php echo $ciudad->$idCiudaddes ?>"><?php echo $ciudad->$descripcionciudad ?></option>
+<?php endforeach; ?>
+          </select>
+    </div>
+  </div>
 
               <div class="form-group">
                 <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
@@ -148,13 +160,13 @@
         <table class="table table-bordered table-responsive">
           <tr>
             <thead>
-              <th>
+            <th id="cuadrito">
                 <input type="checkbox" id="chkAll">
               </th>
               <th>
                  <?php echo i18n::__('ubicacion') ?>
               </th>             
-              <th>
+              <th id="acciones">
 		        <?php echo i18n::__('acciones') ?>
 		      </th>
     </tr>

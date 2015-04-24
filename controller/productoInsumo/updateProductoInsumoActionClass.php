@@ -35,8 +35,9 @@ class updateProductoInsumoActionClass extends controllerClass implements control
             productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID => $tipo
         );
         productoInsumoTableClass::update($ids, $data);
-         
+        session::getInstance()->setSuccess('La Actualizacion Fue Exitoso');
         routing::getInstance()->redirect('productoInsumo', 'indexProductoInsumo');
+        
       }
     } catch (PDOException $exc) {
       echo $exc->getMessage();

@@ -284,10 +284,10 @@ CREATE TABLE lote
 	tamano BigInt NOT NULL,
 	unidad_distancia_id BIGINT NOT NULL,
 	descripcion VARCHAR(80) NOT NULL,		
-	fecha_inicio_siembra TIMESTAMP DEFAULT now() NOT NULL,
-	numero_plantulas BigInt NOT NULL,
-	presupuesto VARCHAR(80) NOT NULL,
-	producto_insumo_id BIGINT NOT NULL,	
+	fecha_inicio_siembra TIMESTAMP  NULL,
+	numero_plantulas BigInt NULL,
+	presupuesto VARCHAR(80) NULL,
+	producto_insumo_id BIGINT NULL,	
     id_ciudad BIGINT NOT NULL,		
 	created_at TIMESTAMP DEFAULT now() NOT NULL,
 	updated_at TIMESTAMP DEFAULT now() NOT NULL,
@@ -609,4 +609,41 @@ COMMIT;
 
 BEGIN;
 INSERT INTO "usuario_credencial" (usuario_id, credencial_id) VALUES (1, 1);
+COMMIT;
+
+BEGIN;
+INSERT INTO "unidad_distancia" (descripcion) VALUES ('kilometros');
+INSERT INTO "unidad_distancia" (descripcion) VALUES ('metros');
+COMMIT;
+
+BEGIN;
+INSERT INTO "unidad_medida" (descripcion) VALUES ('arroa');
+INSERT INTO "unidad_medida" (descripcion) VALUES ('kilogramos');
+COMMIT;
+
+BEGIN;
+INSERT INTO "departamento" (nombre_departamento) VALUES ('valle del cauca');
+INSERT INTO "departamento" (nombre_departamento) VALUES ('cundinamarca');
+COMMIT;
+
+BEGIN;
+INSERT INTO "ciudad" (nombre_ciudad, habitantes, departamento_id ) VALUES ('cali', 12213440, 1);
+INSERT INTO "ciudad" (nombre_ciudad, habitantes, departamento_id) VALUES ('pradera', 56000, 1);
+INSERT INTO "ciudad" (nombre_ciudad, habitantes, departamento_id) VALUES ('florida', 45000, 1);
+INSERT INTO "ciudad" (nombre_ciudad, habitantes, departamento_id) VALUES ('bogota', 23456788, 2);
+INSERT INTO "ciudad" (nombre_ciudad, habitantes, departamento_id) VALUES ('buga', 676938, 1);
+INSERT INTO "ciudad" (nombre_ciudad, habitantes, departamento_id) VALUES ('tulua', 12209921, 1);
+INSERT INTO "ciudad" (nombre_ciudad, habitantes, departamento_id) VALUES ('candelaria', 48000, 1);
+INSERT INTO "ciudad" (nombre_ciudad, habitantes, departamento_id) VALUES ('cerrito', 234000, 1);
+COMMIT;
+
+BEGIN;
+INSERT INTO "tipo_id" (descripcion) VALUES ('cedula');
+INSERT INTO "tipo_id" (descripcion) VALUES ('cedula extranjera');
+COMMIT;
+
+BEGIN;
+INSERT INTO "tipo_uso_maquina" (descripcion) VALUES ('manual');
+INSERT INTO "tipo_uso_maquina" (descripcion) VALUES ('automatica');
+INSERT INTO "tipo_uso_maquina" (descripcion) VALUES ('semi automatica');
 COMMIT;

@@ -5,9 +5,11 @@
 <?php $ubicacion = loteTableClass::UBICACION ?>
 <?php $descripcion = loteTableClass::DESCRIPCION ?>
 <?php $tamano = loteTableClass::TAMANO ?>
-<?php $created_at = loteTableClass::CREATED_AT ?>
-<?php $updated_at = loteTableClass::UPDATED_AT ?>
+<?php $fechaS = loteTableClass::FECHA_INICIO_SIEMBRA ?>
+<?php $numeroP = loteTableClass::NUMERO_PLANTULAS ?>
+<?php $presu = loteTableClass::PRESUPUESTO ?>
 <?php $nombre_ciudad = loteTableClass::ID_CIUDAD ?>
+<?php $nombreInsumo = loteTableClass::PRODUCTO_INSUMO_ID ?>
 <div class="container container-fluid" id="cuerpo">
   <header id="">
 
@@ -16,15 +18,15 @@
   <nav id="">
   </nav>
   <section id="contenido">
-    
-      </section>
+  </section>
     <article id='derecha'>
-       <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('lote', 'indexLote') ?>" > <?php echo i18n::__('atras') ?></a>
-
+       
+      <a class="btn btn-success btn-xs yo" href="<?php echo routing::getInstance()->getUrlWeb('lote', 'indexLote') ?>" > <?php echo i18n::__('atras') ?></a>
+      <br><br>
       <table class="table table-bordered table-responsive">
         <tr>
         <thead>
-        <th colspan="2"><?php echo i18n::__('datos') ?></th>
+        <td colspan="2"><?php echo i18n::__('datos') ?></td>
         </thead>
         </tr>
         <tbody>
@@ -32,6 +34,10 @@
             <tr>
               <th><?php echo i18n::__('ubicacion') ?></th>      
               <td><?php echo $key->$ubicacion ?></td>
+            </tr>
+            <tr>
+              <th><?php echo i18n::__('ciudad') ?></th>      
+              <td><?php echo ciudadTableClass::getNameCiudad($key->$nombre_ciudad) ?></td>
             </tr>
             <tr>
               <th><?php echo i18n::__('tamano') ?></th>      
@@ -43,22 +49,25 @@
             </tr>
             
             <tr>
-              <th>fecha creacion</th>                   
-              <th><?php echo $key->$created_at ?></th>
+              <th><?php echo i18n::__('fecha siembra') ?></th>      
+              <td><?php echo $key->$fechaS ?></td>
             </tr>
             <tr>
-              <th>fecha modificacion</th> 
-              <th><?php echo $key->$updated_at ?></th>
+              <th><?php echo i18n::__('insumo') ?></th>      
+              <td><?php echo productoInsumoTableClass::getNameProductoInsumo($key->$nombreInsumo) ?></td>
             </tr>
-
-<?php endforeach; ?>
+            <tr>
+              <th><?php echo i18n::__('numero') ?></th>      
+              <td><?php echo $key->$numeroP ?></td>
+            </tr>
+            <tr>
+              <th><?php echo i18n::__('presupuesto') ?></th>      
+              <td><?php echo $key->$presu ?></td>
+            </tr>
             
-       <?php foreach ($objLote as $ciudad): ?>     
-            <tr>
-              <th><?php echo i18n::__('ciudad') ?></th>      
-              <td><?php echo ciudadTableClass::getNameCiudad($ciudad->$nombre_ciudad) ?></td>
-            </tr>
-            <?php endforeach; ?>
+         
+<?php endforeach; ?>
+      
         </tbody>
       </table>
     </article>

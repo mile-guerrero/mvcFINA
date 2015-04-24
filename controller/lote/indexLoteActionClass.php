@@ -18,9 +18,9 @@ class indexLoteActionClass extends controllerClass implements controllerActionIn
   public function execute() {
     try {
       $where = null;
-      if(request::getInstance()->hasPost('filter')){
-      $filter = request::getInstance()->getPost('filter');
-      //validar
+      if (request::getInstance()->hasPost('filter')) {
+        $filter = request::getInstance()->getPost('filter');
+        //Validar datos
       if(isset($filter['ubicacion']) and $filter['ubicacion'] !== null and $filter['ubicacion'] !== ""){
         $where[loteTableClass::UBICACION] = $filter['ubicacion'];
       }
@@ -30,9 +30,9 @@ class indexLoteActionClass extends controllerClass implements controllerActionIn
       if(isset($filter['descripcion']) and $filter['descripcion'] !== null and $filter['descripcion'] !== ""){
         $where[loteTableClass::DESCRIPCION] = $filter['descripcion'];
       }
-      if(isset($filter['ciudad']) and $filter['ciudad'] !== null and $filter['ciudad'] !== ""){
-        $where[loteTableClass::ID_CIUDAD] = $filter['ciudad'];
-      }
+      if (isset($filter['ciudad']) and $filter['ciudad'] !== null and $filter['ciudad'] !== '') {
+          $where[loteTableClass::ID_CIUDAD] = $filter['ciudad'];
+        }
        
       if((isset($filter['fechaIni']) and $filter['fechaIni'] !== null and $filter['fechaIni'] !== "") and (isset($filter['fechaFin']) and $filter['fechaFin'] !== null and $filter['fechaFin'] !== "" )){
         $where[loteTableClass::CREATED_AT] = array(
@@ -80,7 +80,7 @@ class indexLoteActionClass extends controllerClass implements controllerActionIn
      
         
         
-        $fields = array(     
+      $fields = array(     
       ciudadTableClass::ID, 
       ciudadTableClass::NOMBRE_CIUDAD
       );
@@ -88,7 +88,8 @@ class indexLoteActionClass extends controllerClass implements controllerActionIn
       ciudadTableClass::NOMBRE_CIUDAD    
       ); 
       $this->objLC = ciudadTableClass::getAll($fields, false, $orderBy, 'ASC');
-     
+      
+      
       $fields = array(     
       productoInsumoTableClass::ID, 
       productoInsumoTableClass::DESCRIPCION

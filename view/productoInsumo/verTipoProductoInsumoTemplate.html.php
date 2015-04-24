@@ -15,7 +15,7 @@
     <section id="contenido">
     </section>
     <article id='derecha'>
-       <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'indexTipoProductoInsumo') ?>" > <?php echo i18n::__('atras') ?></a>
+       <a class="btn btn-danger btn-xs yo" href="<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'indexTipoProductoInsumo') ?>" > <?php echo i18n::__('atras') ?></a>
 
       
       <table class="table table-bordered table-responsive">
@@ -30,14 +30,6 @@
                   <th><?php echo i18n::__('des') ?></th>      
                   <td><?php echo $key->$des ?></td>
                   </tr>
-                  <tr>
-                   <th><?php echo i18n::__('fecha crear') ?></th>                   
-                   <th><?php echo $key->$created_at ?></th>
-                       </tr>
-                       <tr>
-                       <th>fecha modificacion</th> 
-                       <th><?php echo $key->$updated_at ?></th>
-                       </tr>
                                                 
                 <?php endforeach; ?>
            </tbody>

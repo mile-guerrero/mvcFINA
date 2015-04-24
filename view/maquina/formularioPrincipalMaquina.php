@@ -33,16 +33,12 @@
   </div>
   
   <div class="form-group">
-      <label for="<?php echo maquinaTableClass::getNameField(maquinaTableClass::ORIGEN_MAQUINA, true) ?>" class="col-sm-2"> <?php echo i18n::__('origen') ?>:  </label>     
+      <label for="<?php echo maquinaTableClass::getNameField(maquinaTableClass::ORIGEN_MAQUINA, true) ?>" class="col-sm-2"> <?php echo i18n::__('origenM') ?>:  </label>     
       <div class="col-sm-10">
-        <input class="form-control" value="<?php echo ((isset($objMaquina)== true) ? $objMaquina[0]->$origen_id : '') ?>" type="text" name="<?php echo maquinaTableClass::getNameField(maquinaTableClass::ORIGEN_MAQUINA, true) ?>" placeholder="<?php echo i18n::__('origen') ?>" required>
-      </div>
-  </div>
-  
-  <div class="form-group">
-      <label for="<?php echo maquinaTableClass::getNameField(maquinaTableClass::TIPO_USO_ID, true) ?>" class="col-sm-2"> <?php echo i18n::__('tipo') ?>:  </label>
-      <div class="col-sm-10"> 
-        <select class="form-control" id="<?php maquinaTableClass::getNameField(maquinaTableClass::ID, true)?>" name="<?php echo maquinaTableClass::getNameField(maquinaTableClass::TIPO_USO_ID, true);?>">
+        <input class="form-control-gonza1" value="<?php echo ((isset($objMaquina)== true) ? $objMaquina[0]->$origen_id : '') ?>" type="text" name="<?php echo maquinaTableClass::getNameField(maquinaTableClass::ORIGEN_MAQUINA, true) ?>" placeholder="<?php echo i18n::__('origenM') ?>" required>
+      
+        
+        <select class="form-control-gonza2" id="<?php maquinaTableClass::getNameField(maquinaTableClass::ID, true)?>" name="<?php echo maquinaTableClass::getNameField(maquinaTableClass::TIPO_USO_ID, true);?>">
        <option><?php echo i18n::__('selectTipoUso') ?></option>
        <?php foreach($objMTUM as $TUM):?>
        <option <?php echo (isset($objMaquina[0]->$tipo_uso) === true and $objMaquina[0]->$tipo_uso == $TUM->$tipo_usos) ? 'selected' : '' ?> value="<?php echo $TUM->$tipo_usos ?>"><?php echo $TUM->$des_usos?></option>

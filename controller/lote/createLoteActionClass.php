@@ -31,7 +31,39 @@ class createLoteActionClass extends controllerClass implements controllerActionI
        
         $this->validate($ubicacion, $tamano, $descripcion, $numero, $presupuesto);
 //        
- if (strlen($ubicacion) > loteTableClass::UBICACION_LENGTH) {
+ 
+        $data = array(
+            loteTableClass::UBICACION => $ubicacion,
+            loteTableClass::TAMANO => $tamano,
+            loteTableClass::UNIDAD_DISTANCIA_ID => $unidadDistancia,
+            loteTableClass::DESCRIPCION => $descripcion,
+            loteTableClass::FECHA_INICIO_SIEMBRA => $fechaSiembra,
+            loteTableClass::NUMERO_PLANTULAS => $numero,
+            loteTableClass::PRESUPUESTO => $presupuesto,
+            loteTableClass::PRODUCTO_INSUMO_ID => $insumo,
+            loteTableClass::ID_CIUDAD => $idCiudad
+        );
+       
+
+        loteTableClass::insert($data);
+        session::getInstance()->setSuccess('El registro fue exitoso');
+        routing::getInstance()->redirect('lote', 'indexLote');
+      } else {
+        routing::getInstance()->redirect('lote', 'indexLote');
+      }
+    } catch (PDOException $exc) {
+      echo $exc->getMessage();
+      echo '<br>';
+      echo $exc->getTraceAsString();
+    }
+   
+  }
+
+ public function validate($ubicacion, $tamano, $descripcion, $numero, $presupuesto){
+
+    $flag = false;
+
+if (strlen($ubicacion) > loteTableClass::UBICACION_LENGTH) {
          session::getInstance()->setError(i18n::__(00005, null, 'errors', array(':longitud' =>  loteTableClass::UBICACION_LENGTH)), 00005);
         routing::getInstance()->redirect('lote', 'insertLote');
          
@@ -59,30 +91,7 @@ class createLoteActionClass extends controllerClass implements controllerActionI
       $flag = true;
       session::getInstance()->setFlash(loteTableClass::getNameField(loteTableClass::NUMERO_PLANTULAS, true), true);
      }
-        $data = array(
-            loteTableClass::UBICACION => $ubicacion,
-            loteTableClass::TAMANO => $tamano,
-            loteTableClass::UNIDAD_DISTANCIA_ID => $unidadDistancia,
-            loteTableClass::DESCRIPCION => $descripcion,
-            loteTableClass::FECHA_INICIO_SIEMBRA => $fechaSiembra,
-            loteTableClass::NUMERO_PLANTULAS => $numero,
-            loteTableClass::PRESUPUESTO => $presupuesto,
-            loteTableClass::PRODUCTO_INSUMO_ID => $insumo,
-            loteTableClass::ID_CIUDAD => $idCiudad
-        );
-       
-
-        loteTableClass::insert($data);
-        routing::getInstance()->redirect('lote', 'indexLote');
-      } else {
-        routing::getInstance()->redirect('lote', 'indexLote');
-      }
-    } catch (PDOException $exc) {
-      echo $exc->getMessage();
-      echo '<br>';
-      echo $exc->getTraceAsString();
-    }
-   if ($flag === true){
+     if ($flag === true){
     request::getInstance()->setMethod('GET');
     routing::getInstance()->forward('lote', 'insert');
   }

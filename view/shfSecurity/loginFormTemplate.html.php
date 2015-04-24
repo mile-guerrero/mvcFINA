@@ -1,4 +1,4 @@
-<?php mvc\view\viewClass::includePartial('shfSecurity/menuPrincipal') ?>
+
 <?php
 
 use mvc\routing\routingClass as routing ?>
@@ -48,7 +48,9 @@ use mvc\i18n\i18nClass as i18n ?>
       </div>
     </div>
     <div class="responcive" id="Logeo">  
-
+  
+        <img class="img-responsive"  id="imgLogo"  alt=" ">
+        
     </div>
   </nav>
 

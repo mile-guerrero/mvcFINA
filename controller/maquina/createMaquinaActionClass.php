@@ -45,6 +45,7 @@ class createMaquinaActionClass extends controllerClass implements controllerActi
             maquinaTableClass::PROVEEDOR_ID => $proveedor    
         );
         maquinaTableClass::insert($data);
+        session::getInstance()->setSuccess('El registro fue exitoso');
         routing::getInstance()->redirect('maquina', 'indexMaquina');
       } else {
         routing::getInstance()->redirect('maquina', 'indexMaquina');
