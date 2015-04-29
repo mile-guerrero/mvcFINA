@@ -25,10 +25,17 @@
     <div class="form-group">
       <label for="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::DOCUMENTO, true) ?>" class="col-sm-2"> <?php echo i18n::__('documento') ?>:</label>     
       <div class="col-sm-10">
-        <input class="form-control" value="<?php echo ((isset($objTrabajador) == true) ? $objTrabajador[0]->$documento : '') ?>" type="text" name="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::DOCUMENTO, true) ?>" placeholder="<?php echo i18n::__('documento') ?>">
-      </div>
+        <input class="form-control-gonza1" value="<?php echo ((isset($objTrabajador) == true) ? $objTrabajador[0]->$documento : '') ?>" type="text" name="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::DOCUMENTO, true) ?>" placeholder="<?php echo i18n::__('documento') ?>">
+       
+        <select class="form-control-gonza2" id="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::ID, true) ?>" name="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::ID_TIPO_ID, true) ?>">
+<option><?php echo i18n::__('selectTipoId') ?></option>        
+<?php foreach ($objCTI as $tipoId): ?>
+            <option <?php echo (isset($objTrabajador[0]->$idTipo) === true and $objTrabajador[0]->$idTipo == $tipoId->$idTipoId) ? 'selected' : '' ?> value="<?php echo $tipoId->$idTipoId ?>"><?php echo $tipoId->$desc ?></option>
+<?php endforeach; ?>
+        </select> 
+      </div> 
     </div>
-
+    
     <div class="form-group">
       <label for="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRET, true) ?>" class="col-sm-2"> <?php echo i18n::__('nom') ?>:</label>     
       <div class="col-sm-10">
@@ -46,9 +53,17 @@
     <div class="form-group">
       <label for="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::DIRECCION, true) ?>" class="col-sm-2"> <?php echo i18n::__('dir') ?>: </label>     
       <div class="col-sm-10">             
-        <input class="form-control" value="<?php echo ((isset($objTrabajador) == true) ? $objTrabajador[0]->$direccion : '') ?>" type="text" name="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::DIRECCION, true) ?>" placeholder="<?php echo i18n::__('dir') ?>">
+        <input class="form-control-gonza1" value="<?php echo ((isset($objTrabajador) == true) ? $objTrabajador[0]->$direccion : '') ?>" type="text" name="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::DIRECCION, true) ?>" placeholder="<?php echo i18n::__('dir') ?>">
+      
+          <select class="form-control-gonza2" id="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::ID, true)?>" name="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::ID_CIUDAD, true) ?>">
+ <option><?php echo i18n::__('selectCiudad') ?></option>            
+<?php foreach ($objCC as $ciudad): ?>
+            <option <?php echo (isset($objTrabajador[0]->$ciudadId) === true and  $objTrabajador[0]->$ciudadId == $ciudad->$idCiudad) ? 'selected' : '' ?> value="<?php echo $ciudad->$idCiudad ?>"><?php echo $ciudad->$nomCiu ?></option>
+<?php endforeach; ?>
+          </select>
       </div>
     </div>
+    
 
     <div class="form-group">
       <label for="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::TELEFONO, true) ?>" class="col-sm-2"> <?php echo i18n::__('tel') ?>:  </label>     
@@ -64,30 +79,7 @@
       </div>
     </div>
 
-    <div class="form-group">
-      <label for="" class="col-sm-2"> <?php echo i18n::__('idTipo') ?> </label>
-      <div class="col-sm-10"> 
-        <select class="form-control" id="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::ID, true) ?>" name="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::ID_TIPO_ID, true) ?>">
-<option><?php echo i18n::__('selectTipoId') ?></option>        
-<?php foreach ($objCTI as $tipoId): ?>
-            <option <?php echo (isset($objTrabajador[0]->$idTipo) === true and $objTrabajador[0]->$idTipo == $tipoId->$idTipoId) ? 'selected' : '' ?> value="<?php echo $tipoId->$idTipoId ?>"><?php echo $tipoId->$desc ?></option>
-<?php endforeach; ?>
-        </select> 
-      </div> 
-    </div>   
-      
-      <div class="form-group">
-         <label for="" class="col-sm-2"> <?php echo i18n::__('idCiudad') ?> </label>
-         <div class="col-sm-10">
-          <select class="form-control" id="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::ID, true)?>" name="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::ID_CIUDAD, true) ?>">
- <option><?php echo i18n::__('selectCiudad') ?></option>            
-<?php foreach ($objCC as $ciudad): ?>
-            <option <?php echo (isset($objTrabajador[0]->$ciudadId) === true and  $objTrabajador[0]->$ciudadId == $ciudad->$idCiudad) ? 'selected' : '' ?> value="<?php echo $ciudad->$idCiudad ?>"><?php echo $ciudad->$nomCiu ?></option>
-<?php endforeach; ?>
-          </select>
-      </div>
-    </div>
-    
+
     <div class="form-group">
          <label for="" class="col-sm-2"> id credencial </label>
          <div class="col-sm-10">

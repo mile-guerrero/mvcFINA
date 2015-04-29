@@ -25,21 +25,7 @@
 <?php endif ?>
 <?php view::includeHandlerMessage() ?>
         <br>
-      <div class="form-group">
-      <label for="<?php echo clienteTableClass::getNameField(clienteTableClass::NOMBRE, true) ?>" class="col-sm-2"> <?php echo i18n::__('nom') ?>:</label>     
-        <div class="col-sm-10">
-          <input id="<?php echo clienteTableClass::getNameField(clienteTableClass::NOMBRE, true) ?>" class="form-control" value="<?php echo ((isset($objCliente) == true) ? $objCliente[0]->$nombre : '') ?>" type="text" name="<?php echo clienteTableClass::getNameField(clienteTableClass::NOMBRE, true) ?>" placeholder="<?php echo i18n::__('nom') ?>">
-        </div>
-      </div>  
-
-      <div class="form-group">
-        <label for="<?php echo clienteTableClass::getNameField(clienteTableClass::APELLIDO, true) ?>" class="col-sm-2"> <?php echo i18n::__('apell') ?>:</label>     
-        <div class="col-sm-10">            
-          <input class="form-control" value="<?php echo ((isset($objCliente) == true) ? $objCliente[0]->$apellido : '') ?>" type="text" name="<?php echo clienteTableClass::getNameField(clienteTableClass::APELLIDO, true) ?>" placeholder="<?php echo i18n::__('apell') ?>">
-        </div>
-      </div> 
-        
-      <div class="form-group">
+        <div class="form-group">
         <label for="<?php echo clienteTableClass::getNameField(clienteTableClass::DOCUMENTO, true) ?>" class="col-sm-2"> <?php echo i18n::__('documento') ?>:</label>     
         <div class="col-sm-10">            
           <input class="form-control-gonza1" value="<?php echo ((isset($objCliente) == true) ? $objCliente[0]->$documento : '') ?>" type="text" name="<?php echo clienteTableClass::getNameField(clienteTableClass::DOCUMENTO, true) ?>" placeholder="<?php echo i18n::__('documento') ?>">
@@ -55,6 +41,24 @@
           </select>  
         </div> 
       </div>    
+        
+        
+        
+      <div class="form-group">
+      <label for="<?php echo clienteTableClass::getNameField(clienteTableClass::NOMBRE, true) ?>" class="col-sm-2"> <?php echo i18n::__('nom') ?>:</label>     
+        <div class="col-sm-10">
+          <input id="<?php echo clienteTableClass::getNameField(clienteTableClass::NOMBRE, true) ?>" class="form-control" value="<?php echo ((isset($objCliente) == true) ? $objCliente[0]->$nombre : '') ?>" type="text" name="<?php echo clienteTableClass::getNameField(clienteTableClass::NOMBRE, true) ?>" placeholder="<?php echo i18n::__('nom') ?>">
+        </div>
+      </div>  
+
+      <div class="form-group">
+        <label for="<?php echo clienteTableClass::getNameField(clienteTableClass::APELLIDO, true) ?>" class="col-sm-2"> <?php echo i18n::__('apell') ?>:</label>     
+        <div class="col-sm-10">            
+          <input class="form-control" value="<?php echo ((isset($objCliente) == true) ? $objCliente[0]->$apellido : '') ?>" type="text" name="<?php echo clienteTableClass::getNameField(clienteTableClass::APELLIDO, true) ?>" placeholder="<?php echo i18n::__('apell') ?>">
+        </div>
+      </div> 
+        
+      
         
         
       <div class="form-group">

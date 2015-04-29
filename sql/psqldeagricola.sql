@@ -205,7 +205,7 @@ CREATE TABLE trabajador
 	nombreT VARCHAR(80) NOT NULL,
 	apellido VARCHAR(80) NOT NULL,
 	documento BigInt NOT NULL,
-	direccion BigInt NOT NULL,
+	direccion VARCHAR(80) NOT NULL,
 	telefono BigInt NOT NULL,
 	email VARCHAR(40) NOT NULL,
 	id_tipo_id BIGINT NOT NULL,

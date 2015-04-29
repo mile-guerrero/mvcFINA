@@ -19,33 +19,34 @@ text-align: right;
 
 
 #imgPortadalogin4{
+  
   width: 100%;
   height: 220px;
-  background-image: url('../img/portada4.jpg');
+  background-image: url('../img/portada4.png');
 }
 #imgPortada{
   width: 100%;
   height: 220px;
-  background-image: url('../img/portada.jpg');
+  background-image: url('../img/portada.png');
 }
 #imgPortada2{
   background: center;
   width: 100%;
   height: 220px;
-  background-image: url('../img/portadas2.jpg');
+  background-image: url('../img/portada3.png');
 
 }
 #imgPortada3{
   background: center;
   width: 100%;
   height: 220px;
-  background-image: url('../img/portadas3.jpg');
+  background-image: url('../img/portada1.png');
 }
 #imgPortada4{
   background: center;
   width: 100%;
   height: 220px;
-  background-image: url('../img/portadas4.jpg');
+  background-image: url('../img/portada2.png');
 }
 
 #imgespanol{

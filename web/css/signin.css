@@ -197,28 +197,28 @@ width: 100%;
 #imgPortadalogin4{
   width:900px; 
   height: 400px;
-  background-image: url('../img/portada4.jpg');
+  background-image: url('../img/principal3.png');
 }
 #imgPortada{
   width:900px; 
   height: 400px;
-  background-image: url('../img/portada.jpg');
+  background-image: url('../img/principal2.png');
 }
 #imgPortada2{
   width:900px; 
   height: 400px;
-  background-image: url('../img/portadas2.jpg');
+  background-image: url('../img/principal1.png');
 
 }
 #imgPortada3{
   width:900px; 
   height: 400px;
-  background-image: url('../img/portadas3.jpg');
+  background-image: url('../img/principal4.png');
 }
 #imgPortada4{
   width:900px; 
   height: 400px;
-  background-image: url('../img/portadas4.jpg');
+  background-image: url('../img/principal5.png');
 }
 /*#imgLogo{
   margin: 0px 0px 0px 300px;

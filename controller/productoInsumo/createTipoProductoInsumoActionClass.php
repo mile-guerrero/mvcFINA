@@ -27,6 +27,7 @@ class createTipoProductoInsumoActionClass extends controllerClass implements con
             tipoProductoInsumoTableClass::DESCRIPCION=> $descripcion
             );
        tipoProductoInsumoTableClass::insert($data);
+       session::getInstance()->setSuccess('El Registro Fue Exitoso ');
         routing::getInstance()->redirect('productoInsumo', 'indexTipoProductoInsumo');
       } else {
         routing::getInstance()->redirect('productoInsumo', 'indexTipoProductoInsumo');
