@@ -186,7 +186,9 @@
                       <?php if(session::getInstance()->hasCredential('admin')):?>
                       <a class="btn btn-primary btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('lote', 'editLote', array(loteTableClass::ID => $key->$id)) ?>"> <?php echo i18n::__('modificar') ?> </a>
                       <a data-toggle="modal" data-target="#myModalDelete<?php echo $key->$id ?>"  class="btn btn-danger btn-xs"> <?php echo i18n::__('eliminar') ?></a>
-                      <?php endif?>
+                      <a class="btn btn-primary btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('lote', 'editLoteMas', array(loteTableClass::ID => $key->$id)) ?>"> <?php echo i18n::__('mas') ?> </a>
+                      
+                        <?php endif?>
                       </th>                                                       
                  </tr>
   <div class="modal fade" id="myModalDelete<?php echo $key->$id ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

@@ -125,7 +125,7 @@ background: center;
   border-radius: 0px;
 }
 .yo{
-  margin: 0px 0px 0px -650px; 
+  margin: 0px 0px 0px -600px; 
 }
 #pie{
   width:95%;
@@ -145,7 +145,7 @@ table > thead > tr:first-child {
   width: 40px;
 }
 #acciones{
-  width: 200px;
+  width: 250px;
 }
 
 table > thead > tr, table > tfoot > tr {

@@ -18,34 +18,61 @@ class createLoteActionClass extends controllerClass implements controllerActionI
   public function execute() {
     try {
       if (request::getInstance()->isMethod('POST')) {
-
+       
         $ubicacion = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::UBICACION, true));
         $tamano = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::TAMANO, true));
         $unidadDistancia = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::UNIDAD_DISTANCIA_ID, true));
         $descripcion = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::DESCRIPCION, true));
-        $fechaSiembra = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::FECHA_INICIO_SIEMBRA, true));
-        $numero = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::NUMERO_PLANTULAS, true));
-        $presupuesto = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::PRESUPUESTO, true));
-        $insumo = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::PRODUCTO_INSUMO_ID, true));
+//        $fechaSiembra = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::FECHA_INICIO_SIEMBRA, true));
+//        $numero = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::NUMERO_PLANTULAS, true));
+//        $presupuesto = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::PRESUPUESTO, true));
+//        $insumo = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::PRODUCTO_INSUMO_ID, true));
         $idCiudad = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::ID_CIUDAD, true));
        
-        $this->validate($ubicacion, $tamano, $descripcion, $numero, $presupuesto);
+        $this->validate($ubicacion, $tamano, $descripcion);
 //        
  
-        $data = array(
-            loteTableClass::UBICACION => $ubicacion,
-            loteTableClass::TAMANO => $tamano,
-            loteTableClass::UNIDAD_DISTANCIA_ID => $unidadDistancia,
-            loteTableClass::DESCRIPCION => $descripcion,
-            loteTableClass::FECHA_INICIO_SIEMBRA => $fechaSiembra,
-            loteTableClass::NUMERO_PLANTULAS => $numero,
-            loteTableClass::PRESUPUESTO => $presupuesto,
-            loteTableClass::PRODUCTO_INSUMO_ID => $insumo,
-            loteTableClass::ID_CIUDAD => $idCiudad
-        );
-       
+//        $data = array(
+//            loteTableClass::UBICACION => $ubicacion,
+//            loteTableClass::TAMANO => $tamano,
+//            loteTableClass::UNIDAD_DISTANCIA_ID => $unidadDistancia,
+//            loteTableClass::DESCRIPCION => $descripcion,
+//            loteTableClass::FECHA_INICIO_SIEMBRA => $fechaSiembra,
+//            loteTableClass::NUMERO_PLANTULAS => $numero,
+//            loteTableClass::PRESUPUESTO => $presupuesto,
+//            loteTableClass::PRODUCTO_INSUMO_ID => $insumo,
+//            loteTableClass::ID_CIUDAD => $idCiudad
+//        );
+        
+        
+        
+     
+        
+        
+        
+        
+//        $fechaSiembra = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::FECHA_INICIO_SIEMBRA, true));
+//        if ($fechaSiembra !== null or $fechaSiembra !== "") {
+//          $data[loteTableClass::FECHA_INICIO_SIEMBRA] = $fechaSiembra;
+//        }
+//        $numero=null;
+//        if ($numero !== null or $numero !== "") {
+//         $numero = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::NUMERO_PLANTULAS, true));
+//        }
+//        
+//        $presupuesto=null;
+//        if ($presupuesto !== null or $presupuesto !== "") {
+//         $presupuesto = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::PRESUPUESTO, true));
+//        }
+//        
+//        
+//        $insumo=null;
+//        if ($insumo !== null or $insumo !== "") {
+//          $insumo = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::PRODUCTO_INSUMO_ID, true));
+//       }
 
-        loteTableClass::insert($data);
+
+        loteTableClass::loteInsert($ubicacion,$idCiudad,$tamano,$descripcion,$unidadDistancia);
         session::getInstance()->setSuccess('El registro fue exitoso');
         routing::getInstance()->redirect('lote', 'indexLote');
       } else {
@@ -59,7 +86,7 @@ class createLoteActionClass extends controllerClass implements controllerActionI
    
   }
 
- public function validate($ubicacion, $tamano, $descripcion, $numero, $presupuesto){
+ public function validate($ubicacion, $tamano, $descripcion){
 
     $flag = false;
 
@@ -80,17 +107,17 @@ if (strlen($ubicacion) > loteTableClass::UBICACION_LENGTH) {
         routing::getInstance()->redirect('lote', 'insertLote');
          
         }
-          if (strlen($numero) > loteTableClass::NUMERO_PLANTULAS_LENGTH) {
-      session::getInstance()->setError(i18n::__(00001, null, 'errors', array(':longitud' =>loteTableClass::NUMERO_PLANTULAS_LENGTH)), 00001);
-      $flag = true;
-      session::getInstance()->setFlash(loteTableClass::getNameField(loteTableClass::NUMERO_PLANTULAS, true),true);
-      }
+//          if (strlen($numero) > loteTableClass::NUMERO_PLANTULAS_LENGTH) {
+//      session::getInstance()->setError(i18n::__(00001, null, 'errors', array(':longitud' =>loteTableClass::NUMERO_PLANTULAS_LENGTH)), 00001);
+//      $flag = true;
+//      session::getInstance()->setFlash(loteTableClass::getNameField(loteTableClass::NUMERO_PLANTULAS, true),true);
+//      }
 
-    if (strlen($numero) == null) {
-      session::getInstance()->setError(i18n::__(00009, null, 'errors', array(':campo vacio' => loteTableClass::NUMERO_PLANTULAS)), 00009);
-      $flag = true;
-      session::getInstance()->setFlash(loteTableClass::getNameField(loteTableClass::NUMERO_PLANTULAS, true), true);
-     }
+//    if (strlen($numero) == null) {
+//      session::getInstance()->setError(i18n::__(00009, null, 'errors', array(':campo vacio' => loteTableClass::NUMERO_PLANTULAS)), 00009);
+//      $flag = true;
+//      session::getInstance()->setFlash(loteTableClass::getNameField(loteTableClass::NUMERO_PLANTULAS, true), true);
+//     }
      if ($flag === true){
     request::getInstance()->setMethod('GET');
     routing::getInstance()->forward('lote', 'insert');

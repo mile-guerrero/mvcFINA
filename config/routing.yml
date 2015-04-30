@@ -736,6 +736,33 @@ lote_create:
     - model/base/unidadDistanciaBaseTableClass.php
     - model/unidadDistanciaTableClass.php
     
+lote_insertMas:
+  url:    /lote/insertarMas
+  param:  { module: lote, action: editLoteMas, format: html }
+  load:
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php 
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - model/base/unidadDistanciaBaseTableClass.php
+    - model/unidadDistanciaTableClass.php
+        
+lote_createMas:
+  url:    /lote/crearMas
+  param:  { module: lote, action: updateLoteMas, format: html }
+  load:
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php 
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - model/base/unidadDistanciaBaseTableClass.php
+    - model/unidadDistanciaTableClass.php
+        
+    
 lote_edit:
   url:    /lote/editar
   param:  { module: lote, action: editLote, format: html }
@@ -800,6 +827,7 @@ lote_ver:
     - model/productoInsumoTableClass.php
     - model/base/unidadDistanciaBaseTableClass.php
     - model/unidadDistanciaTableClass.php
+    
     
 lote_reporte:
   url:    /lote/reporte

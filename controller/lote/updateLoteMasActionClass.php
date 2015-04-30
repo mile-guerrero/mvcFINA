@@ -14,7 +14,7 @@ use mvc\i18n\i18nClass as i18n;
  *
  * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
  */
-class updateLoteActionClass extends controllerClass implements controllerActionInterface {
+class updateLoteMasActionClass extends controllerClass implements controllerActionInterface {
 
   public function execute() {
     try {
@@ -41,6 +41,10 @@ class updateLoteActionClass extends controllerClass implements controllerActionI
             loteTableClass::TAMANO => $tamano,
             loteTableClass::UNIDAD_DISTANCIA_ID => $unidadDistancia,
             loteTableClass::DESCRIPCION => $descripcion,
+            loteTableClass::FECHA_INICIO_SIEMBRA => $fechaSiembra,
+            loteTableClass::NUMERO_PLANTULAS => $numero,
+            loteTableClass::PRESUPUESTO => $presupuesto,
+            loteTableClass::PRODUCTO_INSUMO_ID => $insumo,
             loteTableClass::ID_CIUDAD => $idCiudad
         );
         loteTableClass::update($ids, $data);
@@ -85,7 +89,7 @@ if (strlen($ubicacion) > loteTableClass::UBICACION_LENGTH) {
      if ($flag === true){
     request::getInstance()->setMethod('GET');
     request::getInstance()->addParamGet(array(loteTableClass::ID => request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::ID, true))));
-    routing::getInstance()->forward('lote', 'editLote');
+    routing::getInstance()->forward('lote', 'editLoteMas');
     
   }
 }

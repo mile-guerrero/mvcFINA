@@ -13,7 +13,7 @@ use mvc\i18n\i18nClass as i18n;
  *
  * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
  */
-class editLoteActionClass extends controllerClass implements controllerActionInterface {
+class editLoteMasActionClass extends controllerClass implements controllerActionInterface {
 
   public function execute() {
     try {
@@ -66,7 +66,7 @@ class editLoteActionClass extends controllerClass implements controllerActionInt
       $this->objLPI = productoInsumoTableClass::getAll($fields, true, $orderBy, 'ASC');
      
       
-        $this->defineView('editLote', 'lote', session::getInstance()->getFormatOutput());
+        $this->defineView('editLoteMas', 'lote', session::getInstance()->getFormatOutput());
         
       }else{
         routing::getInstance()->redirect('lote', 'indexLote');

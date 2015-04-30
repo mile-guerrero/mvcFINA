@@ -2,6 +2,7 @@
 culture:                  Español
 dictionary:
   default:
+    mas:                  Mas
     selectUnidadDis:      Seleccione el tipo de distacia
     fecha siembra:        Fecha de siembra
     numero:               Cantida de plantas a sembrar

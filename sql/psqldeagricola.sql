@@ -280,15 +280,15 @@ ALTER TABLE producto_insumo ADD CONSTRAINT pkproducto_insumo
 CREATE TABLE lote
 (
 	id BIGINT DEFAULT nextval('public.lote_id_seq'::regclass) NOT NULL,
-	ubicacion VARCHAR(80) NOT NULL,
-	tamano BigInt NOT NULL,
-	unidad_distancia_id BIGINT NOT NULL,
-	descripcion VARCHAR(80) NOT NULL,		
+	ubicacion VARCHAR(80)  NULL,
+	tamano BigInt  NULL,
+	unidad_distancia_id BIGINT  NULL,
+	descripcion VARCHAR(80)  NULL,		
 	fecha_inicio_siembra TIMESTAMP  NULL,
 	numero_plantulas BigInt NULL,
 	presupuesto VARCHAR(80) NULL,
 	producto_insumo_id BIGINT NULL,	
-    id_ciudad BIGINT NOT NULL,		
+    id_ciudad BIGINT NULL,		
 	created_at TIMESTAMP DEFAULT now() NOT NULL,
 	updated_at TIMESTAMP DEFAULT now() NOT NULL,
 	deleted_at TIMESTAMP NULL

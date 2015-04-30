@@ -40,5 +40,35 @@ class loteTableClass extends loteBaseTableClass {
       throw $exc;
     }
   }
+  
+  
+  public static function loteInsert($ubicacion,$idCiudad,$tamano,$descripcion,$unidadDistancia) {
+    try {
+      $sql = 'INSERT INTO' .'  '. loteTableClass::getNameTable() . ' ('. loteTableClass::UBICACION . ',' . loteTableClass::TAMANO .','. loteTableClass::UNIDAD_DISTANCIA_ID .','. loteTableClass::DESCRIPCION .','. loteTableClass::ID_CIUDAD .' ) '
+             . ' VALUES (' . "'" . $ubicacion . "'" .',' . $tamano . ','. $unidadDistancia . ',' . "'" . $descripcion . "'" . ',' . $idCiudad  . ' )';
+      
+             
+        model::getInstance()->beginTransaction();
+        model::getInstance()->exec($sql);
+        model::getInstance()->commit();
+    } catch (PDOException $exc) {
+      throw $exc;
+    }
+  }
+  
+  
+  public static function loteInsertMas($fechaSiembra,$numero,$insumo,$presupuesto) {
+    try {
+      $sql = 'INSERT INTO' .'  '. loteTableClass::getNameTable() . ' ('.  loteTableClass::FECHA_INICIO_SIEMBRA .','. loteTableClass::NUMERO_PLANTULAS . ','. loteTableClass::PRODUCTO_INSUMO_ID . ',' . loteTableClass::PRESUPUESTO . ' ) '
+             . ' VALUES ('  . "'" . $fechaSiembra  . "'" . ','. $numero . ',' . $insumo . ',' . $presupuesto . ' )';
+      
+             
+        model::getInstance()->beginTransaction();
+        model::getInstance()->exec($sql);
+        model::getInstance()->commit();
+    } catch (PDOException $exc) {
+      throw $exc;
+    }
+  }
 
 }

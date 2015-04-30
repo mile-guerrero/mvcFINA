@@ -21,7 +21,7 @@
   </section>
     <article id='derecha'>
        
-      <a class="btn btn-success btn-xs yo" href="<?php echo routing::getInstance()->getUrlWeb('lote', 'indexLote') ?>" > <?php echo i18n::__('atras') ?></a>
+      <a class="btn btn-success btn-xs " href="<?php echo routing::getInstance()->getUrlWeb('lote', 'indexLote') ?>" > <?php echo i18n::__('atras') ?></a>
       <br><br>
       <table class="table table-bordered table-responsive">
         <tr>
