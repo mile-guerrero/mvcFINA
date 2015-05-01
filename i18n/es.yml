@@ -2,6 +2,7 @@
 culture:                  Español
 dictionary:
   default:
+    introduccion:         El Sistema cuenta con la funcionabilidad de transferir y procesar datos e informes de manera controlada tomando como referencia los procesos y producción del sector agropecuario, teniendo la gran capacidad de guardar información siendo esta oculta y manejada por los administradores para su control y cambio de registros e inventarios, para mayor seguridad los empleados solo tendrán el campo de consultoría y reportes de tareas para completar la funcionabilidad del sistema de información
     mas:                  Mas
     selectUnidadDis:      Seleccione el tipo de distacia
     fecha siembra:        Fecha de siembra
@@ -168,3 +169,4 @@ dictionary:
     00011:                El email debe ser example@hotmail.com (:correo)
     00012:                No se permiten numeros, Solo letras (:letras)
     00013:                No se permiten numeros, Solo letras (:apellido)
+    

@@ -15,7 +15,6 @@
   <section id=""></section>
     <article id='derecha'>
       
-      <h1>      </h1>
-       
+     <h3><?php echo i18n::__('introduccion') ?></h3>       
     </article>
 </div>

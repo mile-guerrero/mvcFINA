@@ -57,10 +57,11 @@ class loteTableClass extends loteBaseTableClass {
   }
   
   
-  public static function loteInsertMas($fechaSiembra,$numero,$insumo,$presupuesto) {
+  public static function loteupdateMas($id,$fechaSiembra,$numero,$insumo,$presupuesto) {
     try {
-      $sql = 'INSERT INTO' .'  '. loteTableClass::getNameTable() . ' ('.  loteTableClass::FECHA_INICIO_SIEMBRA .','. loteTableClass::NUMERO_PLANTULAS . ','. loteTableClass::PRODUCTO_INSUMO_ID . ',' . loteTableClass::PRESUPUESTO . ' ) '
-             . ' VALUES ('  . "'" . $fechaSiembra  . "'" . ','. $numero . ',' . $insumo . ',' . $presupuesto . ' )';
+        
+      $sql = 'UPDATE ' . '  '. loteTableClass::getNameTable() . ' SET ' . ' '.  loteTableClass::FECHA_INICIO_SIEMBRA  .'='. "'" . $fechaSiembra  . "'" .','. loteTableClass::NUMERO_PLANTULAS . '=' .  $numero . ',' . loteTableClass::PRODUCTO_INSUMO_ID . '=' .  $insumo . ',' . loteTableClass::PRESUPUESTO . '=' . $presupuesto . '  '
+             . ' WHERE '  .  loteTableClass::ID  . '=' . $id .  ' ';
       
              
         model::getInstance()->beginTransaction();

@@ -66,14 +66,14 @@
 <div class="form-group">
       <label for="<?php echo loteTableClass::getNameField(loteTableClass::FECHA_INICIO_SIEMBRA, true) ?>" class="col-sm-2"> <?php echo i18n::__('fecha siembra') ?>: </label>     
       <div class="col-sm-10">
-        <input  class="form-control" value="<?php echo ((isset($objLote)==true) ? $objLote[0]->$fecha : '') ?>" type="datetime-local" name="<?php echo loteTableClass::getNameField(loteTableClass::FECHA_INICIO_SIEMBRA, true) ?>" placeholder="<?php echo i18n::__('fecha siembra') ?>" >
+        <input  class="form-control" value="<?php echo ((isset($objLote)==true) ? $objLote[0]->$fecha : '') ?>" type="datetime-local" name="<?php echo loteTableClass::getNameField(loteTableClass::FECHA_INICIO_SIEMBRA, true) ?>" placeholder="<?php echo i18n::__('fecha siembra') ?>" required>
       </div>
  </div>  
   
   <div class="form-group">
       <label for="<?php echo loteTableClass::getNameField(loteTableClass::NUMERO_PLANTULAS, true) ?>" class="col-sm-2"> <?php echo i18n::__('numero') ?>: </label>     
       <div class="col-sm-10">
-        <input  class="form-control-gonza1" value="null<?php echo ((isset($objLote)==true) ? $objLote[0]->$numero : '') ?>" type="text" name="<?php echo loteTableClass::getNameField(loteTableClass::NUMERO_PLANTULAS, true) ?>" placeholder="<?php echo i18n::__('numero') ?>" >
+        <input  class="form-control-gonza1" value="<?php echo ((isset($objLote)==true) ? $objLote[0]->$numero : '') ?>" type="text" name="<?php echo loteTableClass::getNameField(loteTableClass::NUMERO_PLANTULAS, true) ?>" placeholder="<?php echo i18n::__('numero') ?>" >
       
   
    
@@ -89,7 +89,7 @@
 <div class="form-group">
       <label for="<?php echo loteTableClass::getNameField(loteTableClass::PRESUPUESTO, true) ?>" class="col-sm-2"> <?php echo i18n::__('presupuesto') ?>: </label>     
       <div class="col-sm-10">
-          <input  class="form-control" value="null<?php echo ((isset($objLote)==true) ? $objLote[0]->$presupuesto : '') ?>" type="text" name="<?php echo loteTableClass::getNameField(loteTableClass::PRESUPUESTO, true) ?>" placeholder="<?php echo i18n::__('presupuesto') ?>" >
+          <input  class="form-control" value="<?php echo ((isset($objLote)==true) ? $objLote[0]->$presupuesto : '') ?>" type="text" name="<?php echo loteTableClass::getNameField(loteTableClass::PRESUPUESTO, true) ?>" placeholder="<?php echo i18n::__('presupuesto') ?>" >
       </div>
  </div>   
   
