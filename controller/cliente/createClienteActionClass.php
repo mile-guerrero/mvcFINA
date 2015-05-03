@@ -27,7 +27,7 @@ class createClienteActionClass extends controllerClass implements controllerActi
         $idTipo = trim(request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::ID_TIPO_ID, true)));
         $idCiudad = trim(request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::ID_CIUDAD, true)));
 
-        $this->validate($nombre, $apellido, $documento, $direccion, $telefono, $idTipo, $idCiudad);
+        $this->validate($nombre, $apellido, $documento, $direccion, $telefono);
 
         $data = array(
             clienteTableClass::NOMBRE => $nombre,
@@ -51,7 +51,7 @@ class createClienteActionClass extends controllerClass implements controllerActi
     }
   }
 
-  public function validate($nombre, $apellido, $documento, $direccion, $telefono, $idTipo, $idCiudad) {
+  public function validate($nombre, $apellido, $documento, $direccion, $telefono) {
 
     $flag = false;
     

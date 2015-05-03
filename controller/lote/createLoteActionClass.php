@@ -90,37 +90,51 @@ class createLoteActionClass extends controllerClass implements controllerActionI
 
     $flag = false;
 
-if (strlen($ubicacion) > loteTableClass::UBICACION_LENGTH) {
-         session::getInstance()->setError(i18n::__(00005, null, 'errors', array(':longitud' =>  loteTableClass::UBICACION_LENGTH)), 00005);
-        routing::getInstance()->redirect('lote', 'insertLote');
-         
-        }
-        
-        if (strlen($tamano) > loteTableClass::TAMANO_LENGTH) {
-         session::getInstance()->setError(i18n::__(00006, null, 'errors', array(':longitud' => loteTableClass::TAMANO_LENGTH)), 00006);
-        routing::getInstance()->redirect('lote', 'insertLote');
-         
-        }
-        
-        if (strlen($tamano) > loteTableClass::DESCRIPCION_LENGTH) {
-         session::getInstance()->setError(i18n::__(00004, null, 'errors', array(':longitud' => loteTableClass::DESCRIPCION_LENGTH)), 00004);
-        routing::getInstance()->redirect('lote', 'insertLote');
-         
-        }
-//          if (strlen($numero) > loteTableClass::NUMERO_PLANTULAS_LENGTH) {
-//      session::getInstance()->setError(i18n::__(00001, null, 'errors', array(':longitud' =>loteTableClass::NUMERO_PLANTULAS_LENGTH)), 00001);
-//      $flag = true;
-//      session::getInstance()->setFlash(loteTableClass::getNameField(loteTableClass::NUMERO_PLANTULAS, true),true);
-//      }
+//------------------validaciones de ubicacion-----------------------------------
+    if (strlen($ubicacion) > loteTableClass::UBICACION_LENGTH) {
+      session::getInstance()->setError(i18n::__(00005, null, 'errors', array(':longitud' => loteTableClass::UBICACION_LENGTH)), 00005);
+      $flag = true;
+    }
+    
+    if (strlen($ubicacion) == null) {
+      session::getInstance()->setError(i18n::__(00009, null, 'errors', array(':campo vacio' => loteTableClass::UBICACION)), 00009);
+      $flag = true;
+       }
+     
+//-----------------validaciones de tamaño---------------------------------------
+    if (strlen($tamano) > loteTableClass::TAMANO_LENGTH) {
+      session::getInstance()->setError(i18n::__(00006, null, 'errors', array(':longitud' => loteTableClass::TAMANO_LENGTH)), 00006);
+      $flag = true;
+    }
+    
+    if (strlen($tamano) == null) {
+      session::getInstance()->setError(i18n::__(00009, null, 'errors', array(':campo vacio' => loteTableClass::TAMANO)), 00009);
+      $flag = true;
+       }
+       
+  $patron = "/^[[:digit:]]+$/";
+  
+  if (!preg_match($patron, $tamano)) {
+      session::getInstance()->setError(i18n::__(00010, null, 'errors', array(':no permite letras' => loteTableClass::TAMANO)), 00010);
+      $flag = true;
+       }
+  
+//-----------------validaciones de descripcion----------------------------------
+    if (strlen($descripcion) > loteTableClass::DESCRIPCION_LENGTH) {
+      session::getInstance()->setError(i18n::__(00004, null, 'errors', array(':longitud' => loteTableClass::DESCRIPCION_LENGTH)), 00004);
+      $flag = true;
+    }
+    
+    if (strlen($descripcion) == null) {
+      session::getInstance()->setError(i18n::__(00009, null, 'errors', array(':campo vacio' => loteTableClass::DESCRIPCION)), 00009);
+      $flag = true;
+  }
 
-//    if (strlen($numero) == null) {
-//      session::getInstance()->setError(i18n::__(00009, null, 'errors', array(':campo vacio' => loteTableClass::NUMERO_PLANTULAS)), 00009);
-//      $flag = true;
-//      session::getInstance()->setFlash(loteTableClass::getNameField(loteTableClass::NUMERO_PLANTULAS, true), true);
-//     }
+//-----------------respuesta a error--------------------------------------------
+   
      if ($flag === true){
     request::getInstance()->setMethod('GET');
-    routing::getInstance()->forward('lote', 'insert');
+    routing::getInstance()->forward('lote', 'insertLote');
   }
 }
 }
