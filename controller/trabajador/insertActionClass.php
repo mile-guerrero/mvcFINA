@@ -42,7 +42,7 @@ class insertActionClass extends controllerClass implements controllerActionInter
       $orderBy = array(
       credencialTableClass::NOMBRE    
       ); 
-      $this->objCredencial = credencialTableClass::getAll($fields, false, $orderBy, 'ASC');
+      $this->objCredencial = credencialTableClass::getAll($fields, true, $orderBy, 'ASC');
 
       $this->defineView('insert', 'trabajador', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {

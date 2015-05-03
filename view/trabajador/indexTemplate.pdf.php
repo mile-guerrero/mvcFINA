@@ -18,7 +18,7 @@ class PDF extends FPDF {
 
   function Header() {
     
-    $this->Image(routing::getInstance()->getUrlImg('portada4.jpg'), 0, 0, 210);
+    $this->Image(routing::getInstance()->getUrlImg('portada4.png'), 0, 0, 210);
     $this->SetFont('Arial', 'B', '15');
     $this->Ln(30);
    # $this->Cell(80);
@@ -45,12 +45,12 @@ $pdf->Ln();
 $pdf->Cell(190, 10, $mensaje, 1, 0, 'C');
 $pdf->Ln();
 foreach ($objT as $valor) {
-  $pdf->Cell(40, 10, utf8_decode($valor->$documento),1);
-  $pdf->Cell(40, 10, utf8_decode($valor->$nom),1);
-  $pdf->Cell(40, 10, utf8_decode($valor->$apell),1);
-  $pdf->Cell(40, 10, utf8_decode($valor->$dire),1);
+  $pdf->Cell(30, 10, utf8_decode($valor->$documento),1);
+  $pdf->Cell(30, 10, utf8_decode($valor->$nom),1);
+  $pdf->Cell(30, 10, utf8_decode($valor->$apell),1);
+  $pdf->Cell(35, 10, utf8_decode($valor->$dire),1);
   $pdf->Cell(30, 10, utf8_decode($valor->$tel),1);
-  $pdf->Cell(40, 10, utf8_decode($valor->$email),1);
+  $pdf->Cell(35, 10, utf8_decode($valor->$email),1);
   $pdf->Ln();
 }
 $pdf->Ln();

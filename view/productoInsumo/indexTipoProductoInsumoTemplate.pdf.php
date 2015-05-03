@@ -8,7 +8,7 @@ class PDF extends FPDF {
 
   function Header() {
     
-    $this->Image(routing::getInstance()->getUrlImg('portada4.jpg'), 0, 0, 210);
+    $this->Image(routing::getInstance()->getUrlImg('portada4.png'), 0, 0, 210);
     $this->SetFont('Arial', 'B', '15');
     $this->Ln(30);
    # $this->Cell(80);

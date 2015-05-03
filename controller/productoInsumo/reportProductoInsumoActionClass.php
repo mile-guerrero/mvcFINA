@@ -28,7 +28,7 @@ class reportProductoInsumoActionClass extends controllerClass implements control
         $where[productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID] = $report['ciudad'];
       }
       if((isset($report['fechaIni']) and $report['fechaIni'] !== null and $report['fechaIni'] !== "") and (isset($report['fechaFin']) and $report['fechaFin'] !== null and $report['fechaFin'] !== "" )){
-        $where[clienteTableClass::CREATED_AT] = array(
+        $where[productoInsumoTableClass::CREATED_AT] = array(
            date(config::getFormatTimestamp(), strtotime($report['fechaIni'].' 00:00:00')),
            date(config::getFormatTimestamp(), strtotime($report['fechaFin'].' 23:59:59'))
             );
@@ -41,7 +41,7 @@ class reportProductoInsumoActionClass extends controllerClass implements control
           productoInsumoTableClass::IVA,
           productoInsumoTableClass::UNIDAD_MEDIDA_ID,
           productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID,
-		  productoInsumoTableClass::CREATED_AT,
+          productoInsumoTableClass::CREATED_AT,
           productoInsumoTableClass::UPDATED_AT
       );
       $orderBy = array(

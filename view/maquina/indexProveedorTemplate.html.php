@@ -124,6 +124,7 @@
 </div>
       <form class="form-signin" id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('maquina', 'deleteSelectProveedor') ?>" method="POST">        
         <?php view::includeHandlerMessage()?>
+          <br>
         <table class="table table-bordered table-responsive">
           <tr>
           <thead>

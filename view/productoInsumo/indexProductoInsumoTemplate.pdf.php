@@ -3,14 +3,14 @@ use mvc\routing\routingClass as routing;
   
   $des = productoInsumoTableClass::DESCRIPCION;
   $iva = productoInsumoTableClass::IVA;
-  $cre = productoInsumoTableClass::CREATED_AT;
-  $upd = productoInsumoTableClass::UPDATED_AT;
+  $created_at = productoInsumoTableClass::CREATED_AT;
+  $updated_at = productoInsumoTableClass::UPDATED_AT;
   $tipo = tipoProductoInsumoTableClass::DESCRIPCION;
 class PDF extends FPDF {
 
   function Header() {
     
-    $this->Image(routing::getInstance()->getUrlImg('portada4.jpg'), 0, 0, 210);
+    $this->Image(routing::getInstance()->getUrlImg('portada4.png'), 0, 0, 210);
     $this->SetFont('Arial', 'B', '15');
     $this->Ln(30);
    # $this->Cell(80);
@@ -39,18 +39,17 @@ $pdf->Ln();
 foreach ($objPI as $valor) {
   $pdf->Cell(70, 10, utf8_decode($valor->$des),1, 'C');
   $pdf->Cell(70, 10, utf8_decode($valor->$iva),1, 'C');
-
+}
 foreach ($objTipo as $valor) {
   $pdf->Cell(40, 10, utf8_decode($valor->$tipo),1);
   $pdf->Ln();
   $pdf->Ln();
-  
+}
 foreach ($objPI as $valor) {
-  $pdf->Cell(50, 10, utf8_decode($valor->$cre),1);
-  $pdf->Cell(50, 10, utf8_decode($valor->$upd),1);
+  $pdf->Cell(50, 10, utf8_decode($valor->$created_at),1);
+  $pdf->Cell(50, 10, utf8_decode($valor->$updated_at),1);
   $pdf->Ln();
 }
-}
-}
+
 $pdf->Output();
 ?>

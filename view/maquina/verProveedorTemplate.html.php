@@ -12,18 +12,19 @@
 <?php $created_at = proveedorTableClass::CREATED_AT ?>
 <?php $nombre_ciudad = proveedorTableClass::ID_CIUDAD ?>
 <div class="container container-fluid" id="cuerpo">
-  <header id="encabezado">
+  <header id="">
 
    
   </header>
-  <nav id="barramenu">
+  <nav id="">
   </nav>
   <section id="contenido">
     
   </section>
     <article id='derecha'>
       <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('maquina', 'indexProveedor') ?>" > <?php echo i18n::__('atras') ?></a>
- 
+      <br>
+      <br>
       
       <table class="table table-bordered table-responsive">
         <tr>
@@ -57,14 +58,14 @@
             <th>email</th>                   
             <td><?php echo $key->$email ?></td>
           </tr>
-          <tr>
+<!--          <tr>
             <th>fecha modificacion</th> 
             <th><?php echo $key->$updated_at ?></th>
           </tr> 
           <tr>
             <th>fecha creacion</th>                   
             <th><?php echo $key->$created_at ?></th>
-          </tr>
+          </tr>-->
 
         <?php endforeach; ?>
 

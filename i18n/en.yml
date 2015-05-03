@@ -148,7 +148,7 @@ dictionary:
     nomProveedor:         Provider
     personas:             People
     otros:                Others
-    cerrarSesion:         Sign Off
+    cerrarSesion:         Sign off
     idioma:               Language
     crearCuenta:          Create Account
     recordar:             Remember

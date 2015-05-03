@@ -56,7 +56,7 @@
     <label for="reportCiudad" class="col-sm-2 control-label"><?php echo i18n::__('idCiudad') ?></label>
     <div class="col-sm-10">
       <select class="form-control" id="reportCiudad" name="report[ciudad]">
-            <option><?php echo i18n::__('selectCiudad') ?></option>
+          <option value=""><?php echo i18n::__('selectCiudad') ?></option>
 <?php foreach ($objCC as $ciudad): ?>
             <option value="<?php echo $ciudad->$idCiudad ?>"><?php echo $ciudad->$nomCiu ?></option>
 <?php endforeach; ?>
@@ -102,7 +102,7 @@
     <label for="filterCiudad" class="col-sm-2 control-label"><?php echo i18n::__('idCiudad') ?></label>
     <div class="col-sm-10">
       <select class="form-control" id="filterCiudad" name="filter[ciudad]">
-            <option><?php echo i18n::__('selectCiudad') ?></option>
+          <option value=""><?php echo i18n::__('selectCiudad') ?></option>
 <?php foreach ($objCC as $ciudad): ?>
             <option value="<?php echo $ciudad->$idCiudad ?>"><?php echo $ciudad->$nomCiu ?></option>
 <?php endforeach; ?>

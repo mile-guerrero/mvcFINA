@@ -124,7 +124,8 @@
 
 
     <form class="form-signin">        
-<?php view::includeHandlerMessage() ?>        
+<?php view::includeHandlerMessage() ?> 
+        <br>
       <table id="tabla" class="table table-bordered table-responsive">
         <thead>
           <tr>

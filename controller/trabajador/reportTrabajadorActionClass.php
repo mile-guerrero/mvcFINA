@@ -53,7 +53,7 @@ class reportTrabajadorActionClass extends controllerClass implements controllerA
           trabajadorTableClass::UPDATED_AT
       );
       $orderBy = array(
-          trabajadorTableClass::NOMBRE
+          trabajadorTableClass::NOMBRET
       );
       $this->objT = trabajadorTableClass::getAll($fields, true, $orderBy, 'ASC', null, null, $where);
  

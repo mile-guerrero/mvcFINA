@@ -136,7 +136,7 @@
       
       <form class="form-signin" id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('solicitudInsumo', 'deleteSelect') ?>" method="POST">        
         <?php view::includeHandlerMessage()?>       
-        
+          <br>
         <table id="tabla" class="table table-bordered table-responsive">
           <tr>
           <thead>

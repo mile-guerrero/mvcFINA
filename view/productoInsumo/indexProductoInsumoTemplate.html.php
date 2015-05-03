@@ -49,9 +49,9 @@
   <div class="form-group">
     <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
     <div class="col-sm-10">
-      <input type="date" class="form-control" id="reportFecha1" name="report[fecha1]">
+      <input type="date" class="form-control" id="reportFechaIni" name="report[fechaIni]">
       <br>
-       <input type="date" class="form-control" id="reportFecha2" name="report[fecha2]">
+       <input type="date" class="form-control" id="reportFechaFin" name="report[fechaFin]">
     </div>
   </div>
 </form>
@@ -111,7 +111,8 @@
       
       
     <form class="form-singin" id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'deleteSelectProductoInsumo') ?>" method="POST">        
-       <?php view::includeHandlerMessage()?>   
+       <?php view::includeHandlerMessage()?> 
+        <br>
       <table class="table table-bordered table-responsive">
           <tr>
             <thead>

@@ -69,38 +69,40 @@ use mvc\i18n\i18nClass as i18n ?>
       <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
       <li data-target="#carousel-example-generic" data-slide-to="1"></li>
       <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+      <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+      <li data-target="#carousel-example-generic" data-slide-to="4"></li>
     </ol>
 
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
       <div class="item active">
-        <img class="img-responsive"  id="imgPortada" src="" alt="portada1">
+        <img class="img-responsive"  id="imgPortada" src="" alt="">
         <div class="carousel-caption">
 
         </div>
       </div>
       <div class="item">
-        <img class="img-responsive"  id="imgPortada2" src="" alt="portada2">
-        <div class="carousel-caption">
-
-        </div>
-      </div>
-
-      <div class="item">
-        <img class="img-responsive"  id="imgPortadalogin4" src="" alt="portada2">
+        <img class="img-responsive"  id="imgPortada2" src="" alt="">
         <div class="carousel-caption">
 
         </div>
       </div>
 
       <div class="item">
-        <img class="img-responsive"  id="imgPortada3" src="" alt="portada3">
+        <img class="img-responsive"  id="imgPortadalogin4" src="" alt="">
+        <div class="carousel-caption">
+
+        </div>
+      </div>
+
+      <div class="item">
+        <img class="img-responsive"  id="imgPortada3" src="" alt="">
         <div class="carousel-caption">
 
         </div>
       </div>
       <div class="item">
-        <img class="img-responsive"  id="imgPortada4" src="" alt="portada3">
+        <img class="img-responsive"  id="imgPortada4" src="" alt="">
         <div class="carousel-caption">
 
         </div>

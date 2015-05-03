@@ -40,7 +40,7 @@ class indexProductoInsumoActionClass extends controllerClass implements controll
           productoInsumoTableClass::IVA,
           productoInsumoTableClass::UNIDAD_MEDIDA_ID,
           productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID,
-		  productoInsumoTableClass::CREATED_AT,
+          productoInsumoTableClass::CREATED_AT,
           productoInsumoTableClass::UPDATED_AT
       );
       $orderBy = array(

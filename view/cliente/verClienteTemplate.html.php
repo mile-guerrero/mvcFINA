@@ -21,8 +21,9 @@
   <section id="contenido">
   </section>
     <article id='derecha'>
-      <a class="btn btn-danger btn-xs yo" href="<?php echo routing::getInstance()->getUrlWeb('cliente', 'indexCliente') ?>" > <?php echo i18n::__('atras') ?></a>
-      <br><br>
+      <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('cliente', 'indexCliente') ?>" > <?php echo i18n::__('atras') ?></a>
+      <br>
+      <br>
       
       <table class="table table-bordered table-responsive">
         <tr>
@@ -52,14 +53,14 @@
           <th><?php echo i18n::__('tel') ?></th>      
           <td><?php echo $key->$telefono ?></td>
           </tr>
-          <tr>
+<!--          <tr>
             <th>fecha modificacion</th> 
             <th><?php echo $key->$updated_at ?></th>
           </tr> 
           <tr>
             <th>fecha creacion</th>                   
             <th><?php echo $key->$created_at ?></th>
-          </tr>
+          </tr>-->
 
         <?php endforeach; ?>
 
