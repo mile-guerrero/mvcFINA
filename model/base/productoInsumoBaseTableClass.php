@@ -26,6 +26,7 @@ class productoInsumoBaseTableClass extends tableBaseClass {
   const DESCRIPCION = 'descripcion';
   const DESCRIPCION_LENGTH = 80;
   const IVA = 'iva';
+  const IVA_LENGTH = 10;
   const UNIDAD_MEDIDA_ID = 'unidad_medida_id';
   const TIPO_PRODUCTO_INSUMO_ID = 'tipo_producto_insumo_id';
   public function get_id() {

@@ -25,6 +25,7 @@ class updateProductoInsumoActionClass extends controllerClass implements control
         $unidad = request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::UNIDAD_MEDIDA_ID, true));
         $tipo = request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID, true));
         
+        $this->validate($descripcion, $iva);
         $ids = array(
             productoInsumoTableClass::ID => $id
         );
@@ -45,5 +46,46 @@ class updateProductoInsumoActionClass extends controllerClass implements control
       echo $exc->getTraceAsString();
     }
   }
+  
+  
+  public function validate($descripcion, $iva) {
+
+    $flag = false;
+    $patron = "/^[[:digit:]]+$/";
+//---------------------validacion descripcion----------------------------------- 
+    
+    if (strlen($descripcion) > productoInsumoTableClass::DESCRIPCION_LENGTH) {
+      session::getInstance()->setError(i18n::__(00004, null, 'errors', array(':longitud' => productoInsumoTableClass::DESCRIPCION_LENGTH)), 00004);
+      $flag = true;
+    }   
+    
+
+    if (strlen($descripcion) == "" or $iva === null) {
+      session::getInstance()->setError(i18n::__(00009, null, 'errors', array(':campo vacio' => productoInsumoTableClass::DESCRIPCION)), 00009);
+      $flag = true;
+    }
+//-----------------------validacion iva-----------------------------------------    
+     if (!is_numeric($iva) === "" or $iva === null) {
+      session::getInstance()->setError(i18n::__(00009, null, 'errors', array(':campo vacio' => productoInsumoTableClass::IVA)), 00009);
+      $flag = true;
+    }
+    
+    if (strlen($iva) > productoInsumoTableClass::IVA_LENGTH) {
+      session::getInstance()->setError(i18n::__(00014, null, 'errors', array(':longitud' => productoInsumoTableClass::IVA_LENGTH)), 00014);
+      $flag = true;
+    } 
+
+    if (!preg_match($patron, $iva)) {
+      session::getInstance()->setError(i18n::__(00010, null, 'errors', array(':no permite letras' => productoInsumoTableClass::IVA)), 00010);
+      $flag = true;
+       }
+//-----------------------validacion --------------------------------------------
+     if ($flag === true){
+    request::getInstance()->setMethod('GET');
+    request::getInstance()->addParamGet(array(productoInsumoTableClass::ID => request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::ID, true))));
+    routing::getInstance()->forward('productoInsumo', 'editProductoInsumo');
+    
+  }
+}
 
 }

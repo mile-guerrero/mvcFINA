@@ -22,6 +22,7 @@ class updateTipoProductoInsumoActionClass extends controllerClass implements con
         $id = request::getInstance()->getPost(tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::ID, true));
         $descripcion = request::getInstance()->getPost(tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::DESCRIPCION, true));
         
+          $this->validate($descripcion);
            $ids = array(
             tipoProductoInsumoTableClass::ID => $id
         );
@@ -29,6 +30,7 @@ class updateTipoProductoInsumoActionClass extends controllerClass implements con
             tipoProductoInsumoTableClass::DESCRIPCION => $descripcion,
         );
         tipoProductoInsumoTableClass::update($ids, $data);
+        session::getInstance()->setSuccess('La Actualizacion Fue Exitoso');
         routing::getInstance()->redirect('productoInsumo', 'indexTipoProductoInsumo');
       }
 
@@ -39,5 +41,29 @@ class updateTipoProductoInsumoActionClass extends controllerClass implements con
      
     }
   }
+public function validate($descripcion){
 
+    $flag = false;  
+
+//-----------------validaciones de numero---------------------------------------
+          if (strlen($descripcion) > tipoProductoInsumoTableClass::DESCRIPCION_LENGTH) {
+      session::getInstance()->setError(i18n::__(00004, null, 'errors', array(':longitud' =>tipoProductoInsumoTableClass::DESCRIPCION_LENGTH)), 00004);
+      $flag = true;
+      } 
+      
+      $patron = "/^[a-z]+$/i";
+  
+  if (!preg_match($patron, $descripcion)) {
+      session::getInstance()->setError(i18n::__(00012, null, 'errors', array(':no permite letras' => tipoProductoInsumoTableClass::DESCRIPCION)), 00012);
+      $flag = true;
+       }
+      
+//-----------------confirmacion de validacion-----------------------------------    
+     if ($flag === true){
+    request::getInstance()->setMethod('GET');
+    request::getInstance()->addParamGet(array(tipoProductoInsumoTableClass::ID => request::getInstance()->getPost(tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::ID, true))));
+    routing::getInstance()->forward('productoInsumo', 'editTipoProductoInsumo');
+    
+  }
+}
 }

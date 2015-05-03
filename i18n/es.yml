@@ -167,6 +167,7 @@ dictionary:
     00009:                No se puede dejar el campo vacio (:campo vacio)
     00010:                No se permiten letras, Solo numeros 
     00011:                El email debe ser example@hotmail.com (:correo)
-    00012:                No se permiten numeros, Solo letras (:letras)
+    00012:                No se permiten numeros, Solo letras 
     00013:                No se permiten numeros, Solo letras (:apellido)
+    00014:                El iva  excede la longitud permitida (:longitud)
     

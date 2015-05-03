@@ -42,24 +42,21 @@ public function validate($descripcion) {
 
     $flag = false;
     if (strlen($descripcion) > tipoProductoInsumoTableClass::DESCRIPCION_LENGTH) {
-      session::getInstance()->setError(i18n::__(00001, null, 'errors', array(':longitud' => tipoProductoInsumoTableClass::DESCRIPCION_LENGTH)), 00001);
-      session::getInstance()->setFlash(tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::DESCRIPCION_LENGTH, true), true);
-      
+      session::getInstance()->setError(i18n::__(00004, null, 'errors', array(':longitud' => tipoProductoInsumoTableClass::DESCRIPCION_LENGTH)), 00004);
+      $flag = true;
     }
     
-    if (!preg_match("/^[a-z]+$/i", $descripcion)) {
-      session::getInstance()->setError(i18n::__(00012, null, 'errors', array(':letras' => $descripcion)), 00012);
+    $patron = "/^[a-z]+$/i";
+  
+  if (!preg_match($patron, $descripcion)) {
+      session::getInstance()->setError(i18n::__(00012, null, 'errors', array(':no permite letras' => tipoProductoInsumoTableClass::DESCRIPCION)), 00012);
       $flag = true;
-      session::getInstance()->setFlash(tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::DESCRIPCION, true), true);
-      
-    }
+       }
 
-    if (strlen($descripcion) == "") {
+    if (strlen($descripcion) == "" or $descripcion === null) {
       session::getInstance()->setError(i18n::__(00009, null, 'errors', array(':campo vacio' => productoInsumoTableClass::DESCRIPCION)), 00009);
       $flag = true;
-      session::getInstance()->setFlash(tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::DESCRIPCION, true), true);
-      
-    }
+      }
     
     if ($flag === true){
       request::getInstance()->setMethod('GET');

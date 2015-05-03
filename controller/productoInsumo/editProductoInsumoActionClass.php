@@ -18,7 +18,7 @@ class editProductoInsumoActionClass extends controllerClass implements controlle
   public function execute() {
     try {
    
-      if (request::getInstance()->hasRequest(productoInsumoTableClass::ID)) {
+      if (request::getInstance()->hasGet(productoInsumoTableClass::ID)) {
         $fields = array(
             productoInsumoTableClass::ID,
             productoInsumoTableClass::DESCRIPCION,
@@ -27,7 +27,7 @@ class editProductoInsumoActionClass extends controllerClass implements controlle
             productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID
         );
         $where = array(
-            productoInsumoTableClass::ID => request::getInstance()->getRequest(productoInsumoTableClass::ID)
+            productoInsumoTableClass::ID => request::getInstance()->getGet(productoInsumoTableClass::ID)
         );
         $this->objPI = productoInsumoTableClass::getAll($fields, true, null, null, null, null, $where);
        $fields = array(

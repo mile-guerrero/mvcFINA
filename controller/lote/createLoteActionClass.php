@@ -96,7 +96,7 @@ class createLoteActionClass extends controllerClass implements controllerActionI
       $flag = true;
     }
     
-    if (strlen($ubicacion) == null) {
+    if (strlen($ubicacion) == null or $ubicacion === "") {
       session::getInstance()->setError(i18n::__(00009, null, 'errors', array(':campo vacio' => loteTableClass::UBICACION)), 00009);
       $flag = true;
        }
@@ -107,7 +107,7 @@ class createLoteActionClass extends controllerClass implements controllerActionI
       $flag = true;
     }
     
-    if (strlen($tamano) == null) {
+    if (strlen($tamano) == null or $tamano === "") {
       session::getInstance()->setError(i18n::__(00009, null, 'errors', array(':campo vacio' => loteTableClass::TAMANO)), 00009);
       $flag = true;
        }
@@ -125,7 +125,7 @@ class createLoteActionClass extends controllerClass implements controllerActionI
       $flag = true;
     }
     
-    if (strlen($descripcion) == null) {
+    if (strlen($descripcion) == null or $descripcion === "") {
       session::getInstance()->setError(i18n::__(00009, null, 'errors', array(':campo vacio' => loteTableClass::DESCRIPCION)), 00009);
       $flag = true;
   }
