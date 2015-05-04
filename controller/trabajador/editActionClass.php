@@ -19,7 +19,7 @@ class editActionClass extends controllerClass implements controllerActionInterfa
   public function execute() {
     try {
 
-      if (request::getInstance()->hasRequest(trabajadorTableClass::ID)) {
+      if (request::getInstance()->hasGet(trabajadorTableClass::ID)) {
         $fields = array(
             trabajadorTableClass::ID,
             trabajadorTableClass::DOCUMENTO,
@@ -33,7 +33,7 @@ class editActionClass extends controllerClass implements controllerActionInterfa
             trabajadorTableClass::ID_CREDENCIAL
         );
         $where = array(
-            trabajadorTableClass::ID => request::getInstance()->getRequest(trabajadorTableClass::ID)
+            trabajadorTableClass::ID => request::getInstance()->getGet(trabajadorTableClass::ID)
         );
         $this->objTrabajador = trabajadorTableClass::getAll($fields, true, null, null, null, null, $where);
         $fields = array(
