@@ -64,25 +64,25 @@ class updateLoteMasActionClass extends controllerClass implements controllerActi
     $patron = "/^[[:digit:]]+$/";
 
 //-----------------validaciones de numero---------------------------------------
-          if (strlen($numero) > loteTableClass::NUMERO_PLANTULAS_LENGTH) {
+      if (strlen($numero) > loteTableClass::NUMERO_PLANTULAS_LENGTH) {
       session::getInstance()->setError(i18n::__(00001, null, 'errors', array(':longitud' =>loteTableClass::NUMERO_PLANTULAS_LENGTH)), 00001);
       $flag = true;
       } 
       
-      if (!preg_match($patron, $numero)) {
-      session::getInstance()->setError(i18n::__(00010, null, 'errors', array(':no permite letras' => loteTableClass::NUMERO_PLANTULAS)), 00010);
-      $flag = true;
-       }
+//      if (!preg_match($patron, $numero)) {
+//      session::getInstance()->setError(i18n::__(00010, null, 'errors', array(':no permite letras' => loteTableClass::NUMERO_PLANTULAS)), 00010);
+//      $flag = true;
+//       }
 //-----------------validaciones de presupuesto----------------------------------      
       if (strlen($presupuesto) > loteTableClass::PRESUPUESTO_LENGTH) {
          session::getInstance()->setError(i18n::__(00006, null, 'errors', array(':longitud' => loteTableClass::PRESUPUESTO_LENGTH)), 00006);
         $flag = true;
         }
         
-      if (!preg_match($patron, $presupuesto)) {
-      session::getInstance()->setError(i18n::__(00010, null, 'errors', array(':no permite letras' => loteTableClass::PRESUPUESTO)), 00010);
-      $flag = true;
-       }
+//      if (!preg_match($patron, $presupuesto)) {
+//      session::getInstance()->setError(i18n::__(00010, null, 'errors', array(':no permite letras' => loteTableClass::PRESUPUESTO)), 00010);
+//      $flag = true;
+//       }
     
 //-----------------confirmacion de validacion-----------------------------------    
      if ($flag === true){

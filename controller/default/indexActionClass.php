@@ -34,6 +34,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       $fields = array(
           usuarioTableClass::ID,
           usuarioTableClass::USUARIO,
+          usuarioTableClass::PASSWORD,
           usuarioTableClass::CREATED_AT,
           usuarioTableClass::ACTIVED
       );

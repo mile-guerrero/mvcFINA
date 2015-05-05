@@ -12,16 +12,23 @@ use mvc\i18n\i18nClass as i18n;
  * Description of ejemploClass
  *
  * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
+ * @date: fecha de inicio del desarrollo.
  */
 class createActionClass extends controllerClass implements controllerActionInterface {
 
+  /**
+ * Description of ejemploClass
+ *
+ * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
+ * 
+ */
   public function execute() {
     try {
       if (request::getInstance()->isMethod('POST')===true) {
 
         $usuario = trim(request::getInstance()->getPost(usuarioTableClass::getNameField(usuarioTableClass::USUARIO, true)));
-        $password = request::getInstance()->getPost(usuarioTableClass::getNameField(usuarioTableClass::PASSWORD, true));
-        $password2 = request::getInstance()->getPost(usuarioTableClass::getNameField(usuarioTableClass::PASSWORD, true));
+        $password = request::getInstance()->getPost(usuarioTableClass::getNameField(usuarioTableClass::PASSWORD, true). '_1');
+        $password2 = request::getInstance()->getPost(usuarioTableClass::getNameField(usuarioTableClass::PASSWORD, true). '_2');
           
         $this->validate($usuario,$password,$password2);
         
@@ -30,6 +37,7 @@ class createActionClass extends controllerClass implements controllerActionInter
             usuarioTableClass::PASSWORD => md5($password)
         );
         usuarioTableClass::insert($data);
+        session::getInstance()->setSuccess('El registro fue Exitoso');
         routing::getInstance()->redirect('default', 'index');
       } else {
         routing::getInstance()->redirect('default', 'index');
@@ -42,21 +50,27 @@ class createActionClass extends controllerClass implements controllerActionInter
   }
 private function validate ($usuario,$password,$password2){
   $flag = false;
+  $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
+  //--------------validacion usuario--------------------------------------------
   if (strlen($usuario) > usuarioTableClass::USUARIO_LENGTH) {
          session::getInstance()->setError(i18n::__(00007, null, 'errors', array(':longitud' => usuarioTableClass::USUARIO_LENGTH)), 00007);
          $flag = true;
-         session::getInstance()->setFlash(usuarioTableClass::getNameField(usuarioTableClass::USUARIO, true),true);
          }
   
+  if (!preg_match($emailcorrecto, $usuario)) {
+         session::getInstance()->setError(i18n::__(00017, null, 'errors', array(':longitud' => usuarioTableClass::USUARIO)), 00017);
+         $flag = true;
+         }       
+         
+//----------------validacion de password----------------------------------------         
+         
   if (strlen($password) > usuarioTableClass::PASSWORD_LENGTH) {
          session::getInstance()->setError(i18n::__(00008, null, 'errors', array(':longitud' => usuarioTableClass::PASSWORD_LENGTH)), 00008);
          $flag = true;
-         session::getInstance()->setFlash(usuarioTableClass::getNameField(usuarioTableClass::PASSWORD, true),true);
         }
-  if($password === $password2){
-    session::getInstance()->setError(i18n::__(00009, null, 'errors'));
+  if($password !== $password2){
+    session::getInstance()->setError(i18n::__(00018, null, 'errors'));
     $flag = true;
-     session::getInstance()->setFlash(usuarioTableClass::getNameField(usuarioTableClass::PASSWORD, true),true);
   }      
   if ($flag === true){
     request::getInstance()->setMethod('GET');

@@ -1,5 +1,5 @@
 homepage:
-  url:    /
+  url:    /principal
   param:  { module: principal, action: index, format: html }
   
     

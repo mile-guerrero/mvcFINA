@@ -1,5 +1,7 @@
 <?php use mvc\routing\routingClass as routing ?>
 <?php use mvc\i18n\i18nClass as i18n ?>
+<?php use mvc\view\viewClass as view ?>
+<?php use mvc\session\sessionClass as session ?>
 <?php $idTrabajador = trabajadorTableClass::ID ?>
 <?php $documento = trabajadorTableClass::DOCUMENTO ?>
 <?php $apellido = trabajadorTableClass::APELLIDO ?>
@@ -21,7 +23,7 @@
 <?php if (isset($objTrabajador) == true): ?>
     <input  name="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::ID, true) ?>" value="<?php echo $objTrabajador[0]->$idTrabajador ?>" type="hidden">
 <?php endif ?>
-    
+    <?php view::includeHandlerMessage() ?>
     <div class="form-group">
       <label for="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::DOCUMENTO, true) ?>" class="col-sm-2"> <?php echo i18n::__('documento') ?>:</label>     
       <div class="col-sm-10">

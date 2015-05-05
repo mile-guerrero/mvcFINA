@@ -170,4 +170,8 @@ dictionary:
     00012:                No se permiten numeros, Solo letras 
     00013:                No se permiten numeros, Solo letras (:apellido)
     00014:                El iva  excede la longitud permitida (:longitud)
+    00015:                El origen de la maquina excede la longitud permitida (:longitud)
+    00016:                El numero de telefono es incorrecto
+    00017:                El email es incorrecto 
+    00018:                Las password no coinciden 
     

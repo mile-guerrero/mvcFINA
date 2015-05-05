@@ -89,7 +89,7 @@ class createLoteActionClass extends controllerClass implements controllerActionI
  public function validate($ubicacion, $tamano, $descripcion){
 
     $flag = false;
-
+    $patron = "/^[[:digit:]]+$/";
 //------------------validaciones de ubicacion-----------------------------------
     if (strlen($ubicacion) > loteTableClass::UBICACION_LENGTH) {
       session::getInstance()->setError(i18n::__(00005, null, 'errors', array(':longitud' => loteTableClass::UBICACION_LENGTH)), 00005);
@@ -112,7 +112,7 @@ class createLoteActionClass extends controllerClass implements controllerActionI
       $flag = true;
        }
        
-  $patron = "/^[[:digit:]]+$/";
+  
   
   if (!preg_match($patron, $tamano)) {
       session::getInstance()->setError(i18n::__(00010, null, 'errors', array(':no permite letras' => loteTableClass::TAMANO)), 00010);

@@ -21,7 +21,7 @@ use mvc\i18n\i18nClass as i18n ?>
     
   </section>
     <article id='derecha'>
-      <a class="btn btn-danger btn-xs yo" href="<?php echo routing::getInstance()->getUrlWeb('maquina', 'indexMaquina') ?>" > <?php echo i18n::__('atras') ?></a>
+      <a class="btn btn-danger btn-xs " href="<?php echo routing::getInstance()->getUrlWeb('maquina', 'indexMaquina') ?>" > <?php echo i18n::__('atras') ?></a>
       <br><br>
       <table class="table table-bordered table-responsive">
         <tr>

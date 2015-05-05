@@ -18,7 +18,7 @@ class editMaquinaActionClass extends controllerClass implements controllerAction
   public function execute() {
     try {
    
-      if (request::getInstance()->hasRequest(maquinaTableClass::ID)) {
+      if (request::getInstance()->hasGet(maquinaTableClass::ID)) {
         $fields = array(
             maquinaTableClass::ID,
             maquinaTableClass::NOMBRE,
@@ -28,7 +28,7 @@ class editMaquinaActionClass extends controllerClass implements controllerAction
             maquinaTableClass::PROVEEDOR_ID
         );
         $where = array(
-            maquinaTableClass::ID => request::getInstance()->getRequest(maquinaTableClass::ID)
+            maquinaTableClass::ID => request::getInstance()->getGet(maquinaTableClass::ID)
         );
         $this->objMaquina = maquinaTableClass::getAll($fields, true, null, null, null, null, $where);
   

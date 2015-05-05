@@ -33,7 +33,7 @@ class trabajadorBaseTableClass extends tableBaseClass {
   const DIRECCION = 'direccion';
   const DIRECCION_LENGTH = 30;
   const TELEFONO = 'telefono';
-  const TELEFONO_LENGTH = 12;
+  const TELEFONO_LENGTH = 10;
   const EMAIL = 'email';
   const EMAIL_LENGTH = 40;
   const ID_CIUDAD = 'id_ciudad';
