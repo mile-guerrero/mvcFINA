@@ -30,46 +30,6 @@ class createLoteActionClass extends controllerClass implements controllerActionI
         $idCiudad = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::ID_CIUDAD, true));
        
         $this->validate($ubicacion, $tamano, $descripcion);
-//        
- 
-//        $data = array(
-//            loteTableClass::UBICACION => $ubicacion,
-//            loteTableClass::TAMANO => $tamano,
-//            loteTableClass::UNIDAD_DISTANCIA_ID => $unidadDistancia,
-//            loteTableClass::DESCRIPCION => $descripcion,
-//            loteTableClass::FECHA_INICIO_SIEMBRA => $fechaSiembra,
-//            loteTableClass::NUMERO_PLANTULAS => $numero,
-//            loteTableClass::PRESUPUESTO => $presupuesto,
-//            loteTableClass::PRODUCTO_INSUMO_ID => $insumo,
-//            loteTableClass::ID_CIUDAD => $idCiudad
-//        );
-        
-        
-        
-     
-        
-        
-        
-        
-//        $fechaSiembra = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::FECHA_INICIO_SIEMBRA, true));
-//        if ($fechaSiembra !== null or $fechaSiembra !== "") {
-//          $data[loteTableClass::FECHA_INICIO_SIEMBRA] = $fechaSiembra;
-//        }
-//        $numero=null;
-//        if ($numero !== null or $numero !== "") {
-//         $numero = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::NUMERO_PLANTULAS, true));
-//        }
-//        
-//        $presupuesto=null;
-//        if ($presupuesto !== null or $presupuesto !== "") {
-//         $presupuesto = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::PRESUPUESTO, true));
-//        }
-//        
-//        
-//        $insumo=null;
-//        if ($insumo !== null or $insumo !== "") {
-//          $insumo = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::PRODUCTO_INSUMO_ID, true));
-//       }
 
 
         loteTableClass::loteInsert($ubicacion,$idCiudad,$tamano,$descripcion,$unidadDistancia);
@@ -89,7 +49,7 @@ class createLoteActionClass extends controllerClass implements controllerActionI
  public function validate($ubicacion, $tamano, $descripcion){
 
     $flag = false;
-    $patron = "/^[[:digit:]]+$/";
+    $patron = "/[0-9](9)$/";
 //------------------validaciones de ubicacion-----------------------------------
     if (strlen($ubicacion) > loteTableClass::UBICACION_LENGTH) {
       session::getInstance()->setError(i18n::__(00005, null, 'errors', array(':longitud' => loteTableClass::UBICACION_LENGTH)), 00005);

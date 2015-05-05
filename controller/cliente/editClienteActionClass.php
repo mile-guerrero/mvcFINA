@@ -17,7 +17,7 @@ class editClienteActionClass extends controllerClass implements controllerAction
   public function execute() {
     try {
 
-      if (request::getInstance()->hasRequest(clienteTableClass::ID)) {
+      if (request::getInstance()->hasGet(clienteTableClass::ID)) {
        $fields = array(
           clienteTableClass::ID,
           clienteTableClass::NOMBRE,
@@ -29,7 +29,7 @@ class editClienteActionClass extends controllerClass implements controllerAction
           clienteTableClass::ID_CIUDAD
         );
         $where = array(
-            clienteTableClass::ID => request::getInstance()->getRequest(clienteTableClass::ID)
+            clienteTableClass::ID => request::getInstance()->getGet(clienteTableClass::ID)
         );
         $this->objCliente = clienteTableClass::getAll($fields, true, null, null, null, null, $where);
         
