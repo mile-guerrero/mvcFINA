@@ -118,7 +118,7 @@ if (!preg_match($soloNumeros, $documento)) {
  
 //-------------------validacion de telefono-------------------------------------
   if (strlen($telefono) > clienteTableClass::TELEFONO_LENGTH) {
-      session::getInstance()->setError(i18n::__(00014, null, 'errors', array(':longitud' => clienteTableClass::TELEFONO_LENGTH)), 00014);
+      session::getInstance()->setError(i18n::__(00019, null, 'errors', array(':longitud' => clienteTableClass::TELEFONO_LENGTH)), 00019);
       $flag = true;
      }
   if (strlen($telefono) == null or $telefono === "") {

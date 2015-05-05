@@ -174,4 +174,5 @@ dictionary:
     00016:                El numero de telefono es incorrecto
     00017:                El email es incorrecto 
     00018:                Las password no coinciden 
+    00019:                El telefono excede la longitud permitida 
     

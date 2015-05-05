@@ -17,7 +17,7 @@ class editProveedorActionClass extends controllerClass implements controllerActi
 
   public function execute() {
     try {
-      if (request::getInstance()->hasRequest(proveedorTableClass::ID)) {
+      if (request::getInstance()->hasGet(proveedorTableClass::ID)) {
         $fields = array(
             proveedorTableClass::ID,
             proveedorTableClass::NOMBREP,
@@ -29,7 +29,7 @@ class editProveedorActionClass extends controllerClass implements controllerActi
             proveedorTableClass::ID_CIUDAD
         );
         $where = array(
-            proveedorTableClass::ID => request::getInstance()->getRequest(proveedorTableClass::ID)
+            proveedorTableClass::ID => request::getInstance()->getGet(proveedorTableClass::ID)
         );
          
         $this->objProveedor = proveedorTableClass::getAll($fields, true, null, null, null, null, $where);

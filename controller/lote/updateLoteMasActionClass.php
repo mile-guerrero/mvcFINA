@@ -47,7 +47,7 @@ class updateLoteMasActionClass extends controllerClass implements controllerActi
         $this->validate($numero, $presupuesto);
         
         loteTableClass::loteupdateMas($id,$fechaSiembra,$numero,$insumo,$presupuesto);
-        session::getInstance()->setSuccess('El registro fue exitoso');
+        session::getInstance()->setSuccess('La actualizacion fue correcta');
         routing::getInstance()->redirect('lote', 'indexLote');
       }
 

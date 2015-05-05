@@ -28,7 +28,7 @@ class updateProveedorActionClass extends controllerClass implements controllerAc
         $idCiudad = trim(request::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::ID_CIUDAD, true)));
 
 
-        $this->validate($nombre, $apellido, $direccion, $telefono, $email, $idCiudad);
+        $this->validate($documento,$nombre, $apellido, $direccion, $telefono, $email);
         
         $ids = array(
             proveedorTableClass::ID => $id
@@ -45,63 +45,113 @@ class updateProveedorActionClass extends controllerClass implements controllerAc
         );
 
         proveedorTableClass::update($ids, $data);
-      }
-      session::getInstance()->setSuccess('La Actualizacion fue Exitoso');
+        session::getInstance()->setSuccess('La Actualizacion fue Exitoso');
       routing::getInstance()->redirect('maquina', 'indexProveedor');
+      }
+      
     } catch (PDOException $exc) {
       routing::getInstance()->redirect('maquina', 'editProveedor');
       session::getInstance()->setFlash('exc', $exc);
     }
   }
 
-  public function validate($nombre, $apellido, $direccion, $telefono, $email, $idCiudad) {
+  public function validate($documento,$nombre, $apellido, $direccion, $telefono, $email) {
+
+    $flag = false;
+    $soloNumeros = "/^[[:digit:]]+$/";
+    $soloLetras = "/^[a-z]+$/i";
+    $soloTelefono = "/[0-9](9)$/";
+    $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
+ //---------------------validacion documento-------------------------------------
+  if (strlen($documento) > proveedorTableClass::DOCUMENTO_LENGTH) {
+      session::getInstance()->setError(i18n::__(00015, null, 'errors', array(':longitud' => proveedorTableClass::DOCUMENTO_LENGTH)), 00015);
+      $flag = true;
+     }
+ if (strlen($documento) == null or $documento === "") {
+      session::getInstance()->setError(i18n::__(00009, null, 'errors', array(':campo vacio' => proveedorTableClass::DOCUMENTO)), 00009);
+      $flag = true;
+     }
+if (!preg_match($soloNumeros, $documento)) {
+      session::getInstance()->setError(i18n::__(00010, null, 'errors', array(':no permite letras' => proveedorTableClass::DOCUMENTO)), 00010);
+      $flag = true;
+       }      
+    
+//---------------------validacion nombre----------------------------------------     
     if (strlen($nombre) > proveedorTableClass::NOMBREP_LENGTH) {
       session::getInstance()->setError(i18n::__(00001, null, 'errors', array(':longitud' => proveedorTableClass::NOMBREP_LENGTH)), 00001);
-      session::getInstance()->setFlash(proveedorTableClass::getNameField(proveedorTableClass::NOMBREP_LENGTH, true), true);
-    }
-
-    if (!preg_match("/^[a-z]+$/i", $nombre)) {
-      session::getInstance()->setError(i18n::__(00012, null, 'errors', array(':letras' => $nombre)), 00012);
       $flag = true;
-      session::getInstance()->setFlash(proveedorTableClass::getNameField(proveedorTableClass::NOMBREP, true), true);
-    }
+      }
 
-    if (strlen($nombre) == "") {
+    if (strlen($nombre)  == null or $nombre === "") {
       session::getInstance()->setError(i18n::__(00009, null, 'errors', array(':campo vacio' => proveedorTableClass::NOMBREP)), 00009);
       $flag = true;
-      session::getInstance()->setFlash(proveedorTableClass::getNameField(proveedorTableClass::NOMBREP, true), true);
-    }
-
+     }
+     
+    
+    if (!preg_match($soloLetras, $nombre)) {
+       session::getInstance()->setError(i18n::__(00012, null, 'errors', array(':no permite letras' => proveedorTableClass::NOMBREP)), 00012);
+       $flag = true;
+       }
+      
+//---------------------validacion apellido--------------------------------------  
     if (strlen($apellido) > proveedorTableClass::APELLIDO_LENGTH) {
       session::getInstance()->setError(i18n::__(00002, null, 'errors', array(':longitud' => proveedorTableClass::APELLIDO_LENGTH)), 00002);
       $flag = true;
-      session::getInstance()->setFlash(proveedorTableClass::getNameField(proveedorTableClass::APELLIDO, true), true);
-    }
-
-    if (!preg_match("/^[a-z]+$/i", $apellido)) {
-      session::getInstance()->setError(i18n::__(00012, null, 'errors', array(':letras' => $apellido)), 00012);
+     }
+    
+     if (strlen($apellido) == null or $apellido === "") {
+      session::getInstance()->setError(i18n::__(00009, null, 'errors', array(':campo vacio' => proveedorTableClass::APELLIDO)), 00009);
       $flag = true;
-      session::getInstance()->setFlash(proveedorTableClass::getNameField(proveedorTableClass::APELLIDO, true), true);
-    }
-
-    if (!is_numeric($telefono) === "" or $telefono === null) {
+     }
+     
+    if (!preg_match($soloLetras, $apellido)) {
+       session::getInstance()->setError(i18n::__(00012, null, 'errors', array(':no permite letras' => proveedorTableClass::APELLIDO)), 00012);
+       $flag = true;
+       }
+//---------------------validacion direccion-------------------------------------
+     if (strlen($direccion) > proveedorTableClass::DIRECCION_LENGTH) {
+      session::getInstance()->setError(i18n::__(00002, null, 'errors', array(':longitud' => proveedorTableClass::DIRECCION_LENGTH)), 00002);
+      $flag = true;
+     }
+     
+     if (strlen($direccion)  == null or $direccion === "") {
+      session::getInstance()->setError(i18n::__(00009, null, 'errors', array(':campo vacio' => proveedorTableClass::DIRECCION)), 00009);
+      $flag = true;
+     }
+ 
+//-------------------validacion de telefono-------------------------------------
+  if (strlen($telefono) > proveedorTableClass::TELEFONO_LENGTH) {
+      session::getInstance()->setError(i18n::__(00019, null, 'errors', array(':longitud' => proveedorTableClass::TELEFONO_LENGTH)), 00019);
+      $flag = true;
+     }
+  if (strlen($telefono) == null or $telefono === "") {
       session::getInstance()->setError(i18n::__(00009, null, 'errors', array(':campo vacio' => proveedorTableClass::TELEFONO)), 00009);
-    }
-
-    if (!is_numeric($telefono)) {
-      session::getInstance()->setError(i18n::__(00010, null, 'errors', array(':numeros' => $telefono)), 00010);
       $flag = true;
-      session::getInstance()->setFlash(proveedorTableClass::getNameField(proveedorTableClass::TELEFONO, true), true);
-    }
-
-    if (!eregi("^([a-zA-Z0-9._]+)@([a-zA-Z0-9.-]+).([a-zA-Z]{2,4})$", $email)) {
-      session::getInstance()->setError(i18n::__(00011, null, 'errors', array(':correo' => $email), 00011));
+     }
+ if (!preg_match($soloNumeros, $telefono)) {
+      session::getInstance()->setError(i18n::__(00016, null, 'errors', array(':no permite letras' => proveedorTableClass::TELEFONO)), 00016);
       $flag = true;
-      session::getInstance()->setFlash(proveedorTableClass::getNameField(proveedorTableClass::EMAIL, true), true);
+       }
+       
+ //-------------------validacion email------------------------------------------ 
+       
+ if (strlen($email) > proveedorTableClass::EMAIL_LENGTH) {
+      session::getInstance()->setError(i18n::__(00014, null, 'errors', array(':longitud' => proveedorTableClass::EMAIL_LENGTH)), 00014);
+      $flag = true;
+     }
+  if (strlen($email) == null or $email === "") {
+      session::getInstance()->setError(i18n::__(00009, null, 'errors', array(':campo vacio' => proveedorTableClass::EMAIL)), 00009);
+      $flag = true;
+     }      
+ if (!preg_match($emailcorrecto, $email)) {
+        session::getInstance()->setError(i18n::__(00011, null, 'errors', array(':correo' => $email), 00011));
+        $flag = true; 
     }
+//-------------------validacion ------------------------------------------------
 
     if ($flag === true) {
       request::getInstance()->setMethod('GET');
+      request::getInstance()->addParamGet(array(proveedorTableClass::ID => request::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::ID, true))));
       routing::getInstance()->forward('maquina', 'editProveedor');
     }
   }

@@ -37,7 +37,7 @@ class updateMaquinaActionClass extends controllerClass implements controllerActi
             maquinaTableClass::PROVEEDOR_ID => $proveedor,
         );
         maquinaTableClass::update($ids, $data);
-         
+         session::getInstance()->setSuccess('La actualizacion fue correcta'); 
         routing::getInstance()->redirect('maquina', 'indexMaquina');
       }
     } catch (PDOException $exc) {

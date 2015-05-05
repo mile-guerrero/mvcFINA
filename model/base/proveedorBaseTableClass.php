@@ -31,7 +31,7 @@ class proveedorBaseTableClass extends tableBaseClass {
   const DIRECCION = 'direccion';
   const DIRECCION_LENGTH = 15;
   const TELEFONO = 'telefono';
-  const TELEFONO_LENGTH = 15;
+  const TELEFONO_LENGTH = 10;
   const EMAIL = 'email';
   const EMAIL_LENGTH = 40;
   const ID_CIUDAD = 'id_ciudad';

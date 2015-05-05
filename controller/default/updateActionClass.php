@@ -34,7 +34,7 @@ class updateActionClass extends controllerClass implements controllerActionInter
             usuarioTableClass::PASSWORD => $password
         );
         usuarioTableClass::update($ids, $data);
-        session::getInstance()->setSuccess('El registro fue exitoso');
+        session::getInstance()->setSuccess('La actualizacion fue correcta');
         routing::getInstance()->redirect('default', 'index');
       }
 

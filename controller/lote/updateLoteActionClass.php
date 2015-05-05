@@ -40,7 +40,7 @@ class updateLoteActionClass extends controllerClass implements controllerActionI
             loteTableClass::ID_CIUDAD => $idCiudad
         );
         loteTableClass::update($ids, $data);
-        session::getInstance()->setSuccess('El registro fue exitoso');
+        session::getInstance()->setSuccess('La actualizacion fue correcta');
         routing::getInstance()->redirect('lote', 'indexLote');
       }
     } catch (PDOException $exc) {
