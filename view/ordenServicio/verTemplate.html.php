@@ -1,29 +1,27 @@
 <?php mvc\view\viewClass::includePartial('default/menuPrincipal') ?>
-<?php
-
-use mvc\routing\routingClass as routing ?>
-<?php
-use mvc\i18n\i18nClass as i18n ?>
+<?php use mvc\routing\routingClass as routing ?>
+<?php use mvc\i18n\i18nClass as i18n ?>
 <?php $id = ordenServicioTableClass::ID ?>
 <?php $fecha_mantenimiento = ordenServicioTableClass::FECHA_MANTENIMIENTO ?>
 <?php $cantidad = ordenServicioTableClass::CANTIDAD ?>
 <?php $valor = ordenServicioTableClass::VALOR ?>
 <?php $created_at = ordenServicioTableClass::CREATED_AT ?>
 <?php $updated_at = ordenServicioTableClass::UPDATED_AT ?>
-<?php $nombret = trabajadorTableClass::NOMBRET ?>
-<?php $pro = productoInsumoTableClass::DESCRIPCION ?>
-<?php $maq = maquinaTableClass::NOMBRE ?>
+<?php $idTrabajador = ordenServicioTableClass::TRABAJADOR_ID ?>
+<?php $idProducto = ordenServicioTableClass::PRODUCTO_INSUMO_ID ?>
+<?php $idMaquina = ordenServicioTableClass::MAQUINA_ID ?>
 
 <div class="container container-fluid" id="cuerpo">
   <header id="">
 
-    <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('ordenServicio', 'index') ?>" > <?php echo i18n::__('atras') ?></a>
-
   </header>
   <nav id="">
   </nav>
-  <section id="">
-    <article id=''>
+  <section id="contenido">
+    <article id='derecha'>
+        <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('ordenServicio', 'index') ?>" > <?php echo i18n::__('atras') ?></a>
+        <br>
+        <br>
       <table class="table table-bordered table-responsive">
         <tr>
         <thead>
@@ -31,51 +29,41 @@ use mvc\i18n\i18nClass as i18n ?>
         </thead>
         </tr>
         <tbody>
-            <?php foreach ($objOST as $tra): ?>
-          <tr>
-          <th>nombre</th>      
-          <th><?php echo $tra->$nombret ?></th>
-          </tr>
-<?php endforeach; ?>
 <?php foreach ($objOS as $key): ?>
             <tr>
               <th>Fecha Mantenimiento</th>      
-              <th><?php echo $key->$fecha_mantenimiento ?></th>
+              <td><?php echo $key->$fecha_mantenimiento ?></td>
             </tr>
-            
-            <tr> 
-              <th>fecha creacion</th>                   
-              <th><?php echo $key->$created_at ?></th>
-            </tr>
-            <tr>
-              <th>fecha modificacion</th> 
-              <th><?php echo $key->$updated_at ?></th>
-            </tr>                    
-<?php endforeach; ?>
-            <?php foreach ($objOS as $key): ?>
             <tr>
               <th>cantidad</th>      
-              <th><?php echo $key->$cantidad ?></th>
+              <td><?php echo $key->$cantidad ?></td>
             </tr>
             <tr>
               <th> valor</th>      
-              <th><?php echo $key->$valor ?></th>
+              <td><?php echo $key->$valor ?></td>
             </tr>
+            
+<?php endforeach; ?>
+             <?php foreach ($objOS as $trabajador): ?>
+          <tr>
+          <th>Trabajador</th>      
+          <td><?php echo trabajadorTableClass::getNameTrabajador($trabajador->$idTrabajador) ?></td>
+          </tr>
 <?php endforeach; ?>
             
-             <?php foreach ($objOSPI as $key): ?>
+             <?php foreach ($objOS as $producto): ?>
             <tr>
               <th>Insumo</th>      
-              <th><?php echo $key->$pro ?></th>
+              <td><?php echo productoInsumoTableClass::getNameProductoInsumo($producto->$idProducto) ?></td>
             </tr>
             
 <?php endforeach; ?>
             
    
-             <?php foreach ($objOSM as $key): ?>
+             <?php foreach ($objOS as $maquina): ?>
             <tr>
               <th>Maquina</th>      
-              <th><?php echo $key->$maq ?></th>
+              <td><?php echo maquinaTableClass::getNameMaquina($maquina->$idMaquina) ?></td>
             </tr>
             
 <?php endforeach; ?>

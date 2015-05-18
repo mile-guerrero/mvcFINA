@@ -2,8 +2,9 @@
 <?php use mvc\i18n\i18nClass as i18n ?>
 <?php use mvc\view\viewClass as view ?>
 <?php use mvc\session\sessionClass as session ?>
-
+<?php use mvc\request\requestClass as request ?>
 <?php $idCliente = clienteTableClass::ID ?>
+<?php $nombreC = clienteTableClass::NOMBRE ?>
 <?php $apellido = clienteTableClass::APELLIDO ?>
 <?php $documento = clienteTableClass::DOCUMENTO ?>
 <?php $direccion = clienteTableClass::DIRECCION ?>
@@ -23,13 +24,20 @@
 <?php if (isset($objCliente) == true): ?>
         <input  name="<?php echo clienteTableClass::getNameField(clienteTableClass::ID, true) ?>" value="<?php echo $objCliente[0]->$idCliente ?>" type="hidden">
 <?php endif ?>
-<?php view::includeHandlerMessage() ?>
+
+     <?php if(session::getInstance()->hasError('inputDocumento')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputDocumento') ?>
+    </div>
+    <?php endif ?>
+        
         <br>
         <div class="form-group">
         <label for="<?php echo clienteTableClass::getNameField(clienteTableClass::DOCUMENTO, true) ?>" class="col-sm-2"> <?php echo i18n::__('documento') ?>:</label>     
         <div class="col-sm-10">            
-          <input class="form-control-gonza1" value="<?php echo ((isset($objCliente) == true) ? $objCliente[0]->$documento : '') ?>" type="text" name="<?php echo clienteTableClass::getNameField(clienteTableClass::DOCUMENTO, true) ?>" placeholder="<?php echo i18n::__('documento') ?>"required>
-       
+          <input class="form-control-gonza1" value="<?php echo (session::getInstance()->hasFlash('inputDocumento')) ? request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::DOCUMENTO, true)) : ((isset($objCliente[0])) ? $objCliente[0]->$documento : '') ?>" type="text" name="<?php echo clienteTableClass::getNameField(clienteTableClass::DOCUMENTO, true) ?>" placeholder="<?php echo i18n::__('documento') ?>"required>
+     
         
         
    
@@ -43,28 +51,49 @@
       </div>    
         
         
+    <?php if(session::getInstance()->hasError('inputNombre')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputNombre') ?>
+    </div>
+    <?php endif ?>
         
       <div class="form-group">
       <label for="<?php echo clienteTableClass::getNameField(clienteTableClass::NOMBRE, true) ?>" class="col-sm-2"> <?php echo i18n::__('nom') ?>:</label>     
         <div class="col-sm-10">
-          <input id="<?php echo clienteTableClass::getNameField(clienteTableClass::NOMBRE, true) ?>" class="form-control" value="<?php echo ((isset($objCliente) == true) ? $objCliente[0]->$nombre : '') ?>" type="text" name="<?php echo clienteTableClass::getNameField(clienteTableClass::NOMBRE, true) ?>" placeholder="<?php echo i18n::__('nom') ?>"required>
+          <input  class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputNombre')) ? request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::NOMBRE, true)) : ((isset($objCliente[0])) ? $objCliente[0]->$nombreC : '') ?>" type="text" name="<?php echo clienteTableClass::getNameField(clienteTableClass::NOMBRE, true) ?>" placeholder="<?php echo i18n::__('nom') ?>"required>
         </div>
       </div>  
 
+        
+    <?php if(session::getInstance()->hasError('inputApellido')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputApellido') ?>
+    </div>
+    <?php endif ?>   
+        
       <div class="form-group">
         <label for="<?php echo clienteTableClass::getNameField(clienteTableClass::APELLIDO, true) ?>" class="col-sm-2"> <?php echo i18n::__('apell') ?>:</label>     
         <div class="col-sm-10">            
-          <input class="form-control" value="<?php echo ((isset($objCliente) == true) ? $objCliente[0]->$apellido : '') ?>" type="text" name="<?php echo clienteTableClass::getNameField(clienteTableClass::APELLIDO, true) ?>" placeholder="<?php echo i18n::__('apell') ?>"required>
+          <input class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputApellido')) ? request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::APELLIDO, true)) : ((isset($objCliente[0])) ? $objCliente[0]->$apellido : '') ?>" type="text" name="<?php echo clienteTableClass::getNameField(clienteTableClass::APELLIDO, true) ?>" placeholder="<?php echo i18n::__('apell') ?>"required>
         </div>
       </div> 
         
       
         
+     <?php if(session::getInstance()->hasError('inputDireccion')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputDireccion') ?>
+    </div>
+    <?php endif ?> 
+        
         
       <div class="form-group">
         <label for="<?php echo clienteTableClass::getNameField(clienteTableClass::DIRECCION, true) ?>" class="col-sm-2"> <?php echo i18n::__('dir') ?>: </label>     
         <div class="col-sm-10">             
-          <input class="form-control-gonza1" value="<?php echo ((isset($objCliente) == true) ? $objCliente[0]->$direccion : '') ?>" type="text" name="<?php echo clienteTableClass::getNameField(clienteTableClass::DIRECCION, true) ?>" placeholder="<?php echo i18n::__('dir') ?>"required>
+          <input class="form-control-gonza1" value="<?php echo (session::getInstance()->hasFlash('inputDireccion')) ? request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::DIRECCION, true)) : ((isset($objCliente[0])) ? $objCliente[0]->$direccion : '') ?>" type="text" name="<?php echo clienteTableClass::getNameField(clienteTableClass::DIRECCION, true) ?>" placeholder="<?php echo i18n::__('dir') ?>"required>
        
 
         
@@ -78,11 +107,19 @@
         </div> 
       </div>   
         
+      
+  <?php if(session::getInstance()->hasError('inputTelefono')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputTelefono') ?>
+    </div>
+    <?php endif ?>       
+        
         
       <div class="form-group">
         <label for="<?php echo clienteTableClass::getNameField(clienteTableClass::TELEFONO, true) ?>" class="col-sm-2"> <?php echo i18n::__('tel') ?>:  </label>     
         <div class="col-sm-10">              
-          <input class="form-control" value="<?php echo ((isset($objCliente) == true) ? $objCliente[0]->$telefono : '') ?>" type="text" name="<?php echo clienteTableClass::getNameField(clienteTableClass::TELEFONO, true) ?>" placeholder="<?php echo i18n::__('tel') ?>"required>
+          <input class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputTelefono')) ? request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::TELEFONO, true)) : ((isset($objCliente[0])) ? $objCliente[0]->$telefono : '') ?>" type="text" name="<?php echo clienteTableClass::getNameField(clienteTableClass::TELEFONO, true) ?>" placeholder="<?php echo i18n::__('tel') ?>"required>
         </div>
       </div>
 

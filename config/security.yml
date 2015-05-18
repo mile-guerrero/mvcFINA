@@ -126,38 +126,8 @@ usuarioCredencial:
       - [admin, consultor]
 
 #-------------------modulo - orden servicio-------------------
+#-------------------modulo - orden servicio-------------------
 ordenServicio:
-  index:
-    security: true
-    credentials:
-      - [admin, Bahamon]
-  insert:
-    security: true
-    credentials:
-      - [admin, bahamon]
-  create:
-    security: true
-    credentials:
-      - [admin, bahamon]
-  edit: 
-    security: true
-    credentials:
-      - [admin, bahamon]
-  update:
-    security: true
-    credentials:
-      - [admin, bahamon]
-  ver:
-    security: true
-    credentials:
-      - [admin, consultor]
-  report:
-    security: true
-    credentials:
-      - [admin, consultor]
-
-#-------------------modulo - detalle orden servicio-----------
-detalleOrdenServicio:
   index:
     security: true
     credentials:
@@ -349,6 +319,14 @@ lote:
     security: true
     credentials:
       - [admin, bahamon]
+  editLoteMas: 
+    security: true
+    credentials:
+      - [admin, bahamon]
+  updateLoteMas:
+    security: true
+    credentials:
+      - [admin, bahamon]    
   deleteLote:
     security: true
     credentials:
@@ -478,7 +456,44 @@ solicitudInsumo:
     credentials:
       - [admin, consultor]
 
-#-------------------modulo - detalle solicitud insumo----------  
+#-----------------------Pedido-------------------    
+pedido:
+  index:
+    security: true
+    credentials:
+      - [admin, Bahamon]
+  insert:
+    security: true
+    credentials:
+      - [admin, bahamon]
+  create:
+    security: true
+    credentials:
+      - [admin, bahamon]
+  edit: 
+    security: true
+    credentials:
+      - [admin, bahamon]
+  update:
+    security: true
+    credentials:
+      - [admin, bahamon]
+  delete:
+    security: true
+    credentials:
+      - [admin, bahamon]
+  deleteSelect:  
+    security: true
+    credentials:
+      - [admin, bahamon]
+  ver:
+    security: true
+    credentials:
+      - [admin, consultor]
+  report:
+    security: true 
+    credentials:
+      - [admin, consultor]  
 
 #-----------------------trabajador-------------------    
 trabajador:
@@ -518,3 +533,81 @@ trabajador:
     security: true 
     credentials:
       - [admin, consultor]
+      
+#-----------------------mano de obra-------------------    
+manoObra:
+  index:
+    security: true
+    credentials:
+      - [admin, Bahamon]
+  insert:
+    security: true
+    credentials:
+      - [admin, bahamon]
+  create:
+    security: true
+    credentials:
+      - [admin, bahamon]
+  edit: 
+    security: true
+    credentials:
+      - [admin, bahamon]
+  update:
+    security: true
+    credentials:
+      - [admin, bahamon]
+  delete:
+    security: true
+    credentials:
+      - [admin, bahamon]
+  deleteSelect:  
+    security: true
+    credentials:
+      - [admin, bahamon]
+  ver:
+    security: true
+    credentials:
+      - [admin, consultor]
+  report:
+    security: true 
+    credentials:
+      - [admin, consultor]  
+      
+#-----------------------pago del trabajador-------------------    
+pagoTrabajador:
+  index:
+    security: true
+    credentials:
+      - [admin, Bahamon]
+  insert:
+    security: true
+    credentials:
+      - [admin, bahamon]
+  create:
+    security: true
+    credentials:
+      - [admin, bahamon]
+  edit: 
+    security: true
+    credentials:
+      - [admin, bahamon]
+  update:
+    security: true
+    credentials:
+      - [admin, bahamon]
+  delete:
+    security: true
+    credentials:
+      - [admin, bahamon]
+  deleteSelect:  
+    security: true
+    credentials:
+      - [admin, bahamon]
+  ver:
+    security: true
+    credentials:
+      - [admin, consultor]
+  report:
+    security: true 
+    credentials:
+      - [admin, consultor]      

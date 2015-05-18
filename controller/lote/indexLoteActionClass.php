@@ -17,34 +17,13 @@ class indexLoteActionClass extends controllerClass implements controllerActionIn
 
   public function execute() {
     try {
+      
       $where = null;
-      if (request::getInstance()->hasPost('filter')) {
-        $filter = request::getInstance()->getPost('filter');
-        //Validar datos
-      if(isset($filter['ubicacion']) and $filter['ubicacion'] !== null and $filter['ubicacion'] !== ""){
-        $where[loteTableClass::UBICACION] = $filter['ubicacion'];
-      }
-      if(isset($filter['tamano']) and $filter['tamano'] !== null and $filter['tamano'] !== ""){
-        $where[loteTableClass::TAMANO] = $filter['tamano'];
-      }
-      if(isset($filter['descripcion']) and $filter['descripcion'] !== null and $filter['descripcion'] !== ""){
-        $where[loteTableClass::DESCRIPCION] = $filter['descripcion'];
-      }
-      if (isset($filter['ciudad']) and $filter['ciudad'] !== null and $filter['ciudad'] !== '') {
-          $where[loteTableClass::ID_CIUDAD] = $filter['ciudad'];
-        }
-       
-      if((isset($filter['fechaIni']) and $filter['fechaIni'] !== null and $filter['fechaIni'] !== "") and (isset($filter['fechaFin']) and $filter['fechaFin'] !== null and $filter['fechaFin'] !== "" )){
-        $where[loteTableClass::CREATED_AT] = array(
-           date(config::getFormatTimestamp(), strtotime($filter['fechaIni'].' 00:00:00')),
-           date(config::getFormatTimestamp(), strtotime($filter['fechaFin'].' 23:59:59'))
-            );
-      }     
-      }
+      
       $fields = array(
           loteTableClass::ID,
             loteTableClass::UBICACION,
-            loteTableClass::TAMANO,
+            /*loteTableClass::TAMANO,
             loteTableClass::UNIDAD_DISTANCIA_ID,
             loteTableClass::DESCRIPCION,
             loteTableClass::FECHA_INICIO_SIEMBRA,
@@ -53,7 +32,7 @@ class indexLoteActionClass extends controllerClass implements controllerActionIn
             loteTableClass::PRODUCTO_INSUMO_ID,
             loteTableClass::ID_CIUDAD, 
           loteTableClass::CREATED_AT,
-          loteTableClass::UPDATED_AT
+          loteTableClass::UPDATED_AT*/
       );
       $orderBy = array(
          loteTableClass::ID
@@ -69,7 +48,7 @@ class indexLoteActionClass extends controllerClass implements controllerActionIn
       $this->objLote = loteTableClass::getAll($fields, true, $orderBy, 'ASC',config::getRowGrid(), $page,$where);
      
       
-         $fields = array(     
+      $fields = array(     
       unidadDistanciaTableClass::ID, 
       unidadDistanciaTableClass::DESCRIPCION
       );

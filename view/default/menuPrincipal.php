@@ -49,9 +49,8 @@
                             <li><a href="<?php echo routing::getInstance()->getUrlWeb('pagoTrabajador', 'index') ?>"><?php echo i18::__('pagoTrabajador') ?></a></li>
                             <li><a href="<?php echo routing::getInstance()->getUrlWeb('solicitudInsumo', 'index') ?>"><?php echo i18::__('solicitudInsumo') ?></a></li>
                             <li><a href="<?php echo routing::getInstance()->getUrlWeb('ordenServicio', 'index') ?>"><?php echo i18::__('orden') ?></a></li>
-                            <li><a href="#">pedido</a></li>
-                            <li><a href="#">mano obra</a></li>
-                            <li><a href="#"></a></li>
+                            <li><a href="<?php echo routing::getInstance()->getUrlWeb('pedido', 'index') ?>"><?php echo i18::__('pedido') ?></a></li>
+                            <li><a href="<?php echo routing::getInstance()->getUrlWeb('manoObra', 'index') ?>">mano obra</a></li>
                         </ul>
                     </li>
 
@@ -74,7 +73,7 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="glyphicon glyphicon-user"> <?php echo session::getInstance()->getUserName() ?></i></a>
                         <ul class="dropdown-menu" role="menu">
-                            <a href="#"><img id="" class="img-rounded center-block" src="../img/Avatar.jpg" alt="Generic placeholder image" width="80" height="80"></a>
+                            <a href="#"><img id="" class="img-rounded center-block" src="../img/Avatar.jpg" alt="Subir foto" width="80" height="80"></a>
                             <br>
                             <li><a href="#">Modificar perfil</a></li>
                             <li><a href="<?php echo routing::getInstance()->getUrlWeb('shfSecurity', 'logout') ?> "><?php echo i18::__('cerrarSesion') ?></a></li>

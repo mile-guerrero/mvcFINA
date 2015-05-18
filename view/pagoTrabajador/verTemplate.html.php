@@ -23,7 +23,9 @@
   </section>
     <article id='derecha'>
        <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('pagoTrabajador', 'index') ?>" > <?php echo i18n::__('atras') ?></a>
-
+        <br>
+        <br> 
+       
       <table class="table table-bordered table-responsive">
         <tr>
         <thead>

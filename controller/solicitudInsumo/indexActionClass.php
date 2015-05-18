@@ -22,8 +22,8 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       if (request::getInstance()->hasPost('filter')) {
         $filter = request::getInstance()->getPost('filter');
         //Validar datos
-        if(isset($filter['empresa']) and $filter['empresa'] !== null and $filter['empresa'] !== ""){
-        $where[solicitudInsumoTableClass::TRABAJADOR_ID] = $filter['empresa'];
+        if(isset($filter['cantidad']) and $filter['cantidad'] !== null and $filter['cantidad'] !== ""){
+        $where[solicitudInsumoTableClass::CANTIDAD] = $filter['cantidad'];
         }
         if (isset($filter['fechaIni']) and $filter['fechaIni'] !== null and $filter['fechaIni'] !== '' and (isset($filter['fechaFin']) and $filter['fechaFin'] !== null and $filter['fechaFin'] !== '')) {
           $where[solicitudInsumoTableClass::FECHA_INICIAL] = array(
@@ -40,7 +40,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
           solicitudInsumoTableClass::CANTIDAD,
           solicitudInsumoTableClass::PRODUCTO_INSUMO_ID,
           solicitudInsumoTableClass::LOTE_ID,
-		  solicitudInsumoTableClass::CREATED_AT,
+          solicitudInsumoTableClass::CREATED_AT,
           solicitudInsumoTableClass::UPDATED_AT,
           solicitudInsumoTableClass::DELETED_AT
       );

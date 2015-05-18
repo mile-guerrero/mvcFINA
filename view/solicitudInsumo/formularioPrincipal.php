@@ -1,5 +1,6 @@
 <?php use mvc\routing\routingClass as routing ?>
 <?php use mvc\i18n\i18nClass as i18n ?>
+<?php use mvc\view\viewClass as view?>
 <?php $id = solicitudInsumoTableClass::ID ?>
 <?php $fecha = solicitudInsumoTableClass::FECHA_HORA ?>
 <?php $idTrabajador = solicitudInsumoTableClass::TRABAJADOR_ID ?>
@@ -18,7 +19,8 @@
   <?php if(isset($objS)== true): ?>
   <input  name="<?php echo solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::ID, true) ?>" value="<?php echo $objS[0]->$id ?>" type="hidden">
   <?php endif ?>
-  
+  <?php view::includeHandlerMessage()?>
+  <br>
   <div class="form-group">
       <label for="<?php echo solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::FECHA_HORA, true) ?>" class="col-sm-2"><?php echo i18n::__('fecha_M') ?>:</label>     
       <div class="col-sm-10">

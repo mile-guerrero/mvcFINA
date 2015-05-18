@@ -29,7 +29,7 @@ class updateActionClass extends controllerClass implements controllerActionInter
             credencialTableClass::NOMBRE => $nombre
         );
         credencialTableClass::update($ids, $data);
-         
+         session::getInstance()->setSuccess('La actualizacion fue correcta');
         routing::getInstance()->redirect('credencial', 'index');
       }
     } catch (PDOException $exc) {

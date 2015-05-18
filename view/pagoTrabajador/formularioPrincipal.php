@@ -1,5 +1,6 @@
 <?php use mvc\routing\routingClass as routing ?>
 <?php use mvc\i18n\i18nClass as i18n ?>
+<?php use mvc\view\viewClass as view?>
 <?php $idEmp = pagoTrabajadorTableClass::EMPRESA_ID?>
 <?php $idEmpresa = empresaTableClass::ID?>
 <?php $nomEmpresa = empresaTableClass::NOMBRE?>
@@ -21,6 +22,8 @@
     <input  name="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::ID, true) ?>" value="<?php echo $objPagoT[0]->$idPagoT ?>" type="hidden">
     <?php endif ?>
     
+    <?php view::includeHandlerMessage()?>
+    <br>
      <div class="form-group">
        <label for="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::FECHA_INICIAL, true) ?>" class="col-sm-2"><?php echo i18n::__('fechaPagoIni') ?>:</label>     
       <div class="col-sm-10">
@@ -38,35 +41,35 @@
     <div class="form-group">
        <label for="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::VALOR_SALARIO, true) ?>" class="col-sm-2"><?php echo i18n::__('valor') ?>:</label>     
       <div class="col-sm-10">
-        <input  class="form-control" value="<?php echo ((isset($objPagoT)== true) ? $objPagoT[0]->$valor : '') ?>" type="text" name="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::VALOR_SALARIO, true) ?>">
+          <input  class="form-control" value="<?php echo ((isset($objPagoT)== true) ? $objPagoT[0]->$valor : '') ?>" type="text" name="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::VALOR_SALARIO, true) ?>" placeholder="<?php echo i18n::__('valor') ?>">
       </div>
   </div>
     
     <div class="form-group">
        <label for="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::CANTIDAD_HORAS_EXTRAS, true) ?>" class="col-sm-2"><?php echo i18n::__('cantidad') ?>:</label>     
       <div class="col-sm-10">
-        <input  class="form-control" value="<?php echo ((isset($objPagoT)== true) ? $objPagoT[0]->$cantidad : '') ?>" type="text" name="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::CANTIDAD_HORAS_EXTRAS, true) ?>">
+          <input  class="form-control" value="<?php echo ((isset($objPagoT)== true) ? $objPagoT[0]->$cantidad : '') ?>" type="text" name="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::CANTIDAD_HORAS_EXTRAS, true) ?>" placeholder="<?php echo i18n::__('cantidad') ?>">
       </div>
   </div>
     
     <div class="form-group">
        <label for="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::VALOR_HORAS_EXTRAS, true) ?>" class="col-sm-2"><?php echo i18n::__('horasExtras') ?>:</label>     
       <div class="col-sm-10">
-        <input  class="form-control" value="<?php echo ((isset($objPagoT)== true) ? $objPagoT[0]->$valorHoras : '') ?>" type="text" name="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::VALOR_HORAS_EXTRAS, true) ?>">
+          <input  class="form-control" value="<?php echo ((isset($objPagoT)== true) ? $objPagoT[0]->$valorHoras : '') ?>" type="text" name="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::VALOR_HORAS_EXTRAS, true) ?>" placeholder="<?php echo i18n::__('horasExtras') ?>">
       </div>
   </div>
     
     <div class="form-group">
        <label for="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::HORAS_PERDIDAS, true) ?>" class="col-sm-2"><?php echo i18n::__('horasPerdidas') ?>:</label>     
       <div class="col-sm-10">
-        <input  class="form-control" value="<?php echo ((isset($objPagoT)== true) ? $objPagoT[0]->$horas : '') ?>" type="text" name="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::HORAS_PERDIDAS, true) ?>">
+          <input  class="form-control" value="<?php echo ((isset($objPagoT)== true) ? $objPagoT[0]->$horas : '') ?>" type="text" name="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::HORAS_PERDIDAS, true) ?>" placeholder="<?php echo i18n::__('horasPerdidas') ?>">
       </div>
   </div>
     
     <div class="form-group">
        <label for="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::TOTAL_PAGAR, true) ?>" class="col-sm-2"><?php echo i18n::__('totalPagar') ?>:</label>     
       <div class="col-sm-10">
-        <input  class="form-control" value="<?php echo ((isset($objPagoT)== true) ? $objPagoT[0]->$total : '') ?>" type="text" name="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::TOTAL_PAGAR, true) ?>">
+          <input  class="form-control" value="<?php echo ((isset($objPagoT)== true) ? $objPagoT[0]->$total : '') ?>" type="text" name="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::TOTAL_PAGAR, true) ?>" placeholder="<?php echo i18n::__('totalPagar') ?>">
       </div>
   </div>
     
@@ -93,9 +96,7 @@
           </select>
       </div>
     </div>
-    </div>   
-      
-
+     
     <input   class="btn btn-lg btn-success btn-xs" type="submit" value="<?php echo i18n::__(((isset($objPagoT)) ? 'update' : 'register')) ?>">
     <a class="btn btn-lg btn-default btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('pagoTrabajador', 'index') ?>" ><?php echo i18n::__('atras') ?> </a>
 

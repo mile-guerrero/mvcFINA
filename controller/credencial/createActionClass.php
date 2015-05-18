@@ -29,6 +29,7 @@ class createActionClass extends controllerClass implements controllerActionInter
           
         );
         credencialTableClass::insert($data);
+        session::getInstance()->setSuccess('El registro fue exitoso');
         routing::getInstance()->redirect('credencial', 'index');
       } else {
         routing::getInstance()->redirect('credencial', 'index');

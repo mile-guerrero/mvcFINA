@@ -29,6 +29,7 @@ class deleteActionClass extends controllerClass implements controllerActionInter
             'code'=> 200,
             'msg'=> 'Eliminacion exitosa'
             );
+        session::getInstance()->setSuccess('El campo Fue Eliminado Exitosamente');
         $this->defineView('delete', 'credencial', session::getInstance()->getFormatOutput());
       
       } else {

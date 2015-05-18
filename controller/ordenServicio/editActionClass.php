@@ -31,7 +31,33 @@ class editActionClass extends controllerClass implements controllerActionInterfa
         $where = array(
             ordenServicioTableClass::ID => request::getInstance()->getRequest(ordenServicioTableClass::ID)
         );
-        $this->objOS = ordenServicioTableClass::getAll($fields, null, null, null, null, null, $where);
+        $this->objOS = ordenServicioTableClass::getAll($fields, false, null, null, null, null, $where);
+        $fields = array(
+      trabajadorTableClass::ID,
+      trabajadorTableClass::NOMBRET
+      );
+      $orderBy = array(
+      trabajadorTableClass::NOMBRET   
+      );      
+      $this->objOST = trabajadorTableClass::getAll($fields, true, $orderBy, 'ASC');
+    
+      $fields = array(
+      productoInsumoTableClass::ID,
+      productoInsumoTableClass::DESCRIPCION
+      );
+      $orderBy = array(
+      productoInsumoTableClass::DESCRIPCION   
+      );      
+      $this->objOSPI = productoInsumoTableClass::getAll($fields, true, $orderBy, 'ASC');
+    
+       $fields = array(
+      maquinaTableClass::ID,
+      maquinaTableClass::NOMBRE
+      );
+      $orderBy = array(
+      maquinaTableClass::NOMBRE   
+      );      
+      $this->objOSM = maquinaTableClass::getAll($fields, true, $orderBy, 'ASC');
         $this->defineView('edit', 'ordenServicio', session::getInstance()->getFormatOutput());
      
       }else{

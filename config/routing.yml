@@ -280,6 +280,10 @@ ordenServicio_index:
     - model/ordenServicioTableClass.php
     - model/base/trabajadorBaseTableClass.php
     - model/trabajadorTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - model/base/maquinaBaseTableClass.php
+    - model/maquinaTableClass.php
     
 ordenServicio_insert:
   url:    /ordenServicio/insertar
@@ -289,6 +293,10 @@ ordenServicio_insert:
     - model/ordenServicioTableClass.php
     - model/base/trabajadorBaseTableClass.php
     - model/trabajadorTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - model/base/maquinaBaseTableClass.php
+    - model/maquinaTableClass.php
     
 ordenServicio_create:
   url:    /ordenServicio/crear
@@ -298,6 +306,10 @@ ordenServicio_create:
     - model/ordenServicioTableClass.php
     - model/base/trabajadorBaseTableClass.php
     - model/trabajadorTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - model/base/maquinaBaseTableClass.php
+    - model/maquinaTableClass.php
     
 ordenServicio_edit:
   url:    /ordenServicio/editar
@@ -307,6 +319,10 @@ ordenServicio_edit:
     - model/ordenServicioTableClass.php 
     - model/base/trabajadorBaseTableClass.php
     - model/trabajadorTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - model/base/maquinaBaseTableClass.php
+    - model/maquinaTableClass.php
     
 ordenServicio_update:
   url:    /ordenServicio/actualizar
@@ -316,6 +332,10 @@ ordenServicio_update:
     - model/ordenServicioTableClass.php 
     - model/base/trabajadorBaseTableClass.php
     - model/trabajadorTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - model/base/maquinaBaseTableClass.php
+    - model/maquinaTableClass.php
     
 ordenServicio_ver:
   url:    /ordenServicio/ver
@@ -325,16 +345,25 @@ ordenServicio_ver:
     - model/ordenServicioTableClass.php 
     - model/base/trabajadorBaseTableClass.php
     - model/trabajadorTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - model/base/maquinaBaseTableClass.php
+    - model/maquinaTableClass.php
     
 ordenServicio_reporte:
   url:    /ordenServicio/reporte
   param:  { module: ordenServicio, action: report, format: pdf } 
   load:
-    - libs/fpdf/fpdf.php    
- 
-#-------------------modulo - detalle orden servicio----------------------------
- 
-   
+    - libs/fpdf/fpdf.php
+    - model/base/ordenServicioBaseTableClass.php
+    - model/ordenServicioTableClass.php 
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - model/base/maquinaBaseTableClass.php
+    - model/maquinaTableClass.php    
+    
 #-------------------modulo - maquina----------------------------   
 maquina_index:
   url:    /maquina/index
@@ -615,6 +644,7 @@ cliente_create:
     - model/tipoIdTableClass.php 
     - model/base/ciudadBaseTableClass.php
     - model/ciudadTableClass.php
+    - libs/validator/cliente/clienteValidatorClass.php
     
 cliente_edit:
   url:    /cliente/editar
@@ -827,7 +857,19 @@ lote_ver:
     - model/productoInsumoTableClass.php
     - model/base/unidadDistanciaBaseTableClass.php
     - model/unidadDistanciaTableClass.php
-    
+
+lote_filtro:
+  url:    /lote/filtro
+  param:  { module: lote, action: filtroLote, format: html } 
+  load:
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php 
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - model/base/unidadDistanciaBaseTableClass.php
+    - model/unidadDistanciaTableClass.php    
     
 lote_reporte:
   url:    /lote/reporte
@@ -1078,7 +1120,7 @@ solicitudInsumo_update:
     - model/base/loteBaseTableClass.php
     - model/loteTableClass.php
     
-  solicitudInsumo_delete:
+solicitudInsumo_delete:
   url:    /solicitudInsumo/eliminar
   param:  { module: solicitudInsumo, action: delete, format: json }
   load:
@@ -1328,5 +1370,247 @@ pagoTrabajador_reporte:
     - model/empresaTableClass.php
     - model/base/trabajadorBaseTableClass.php
     - model/trabajadorTableClass.php
+    
+#----------------------Pedido--------------------------------    
+pedido_index:
+  url:    /pedido/index
+  param:  { module: pedido, action: index, format: html }
+  load:
+    - model/base/pedidoBaseTableClass.php
+    - model/pedidoTableClass.php
+    - model/base/empresaBaseTableClass.php
+    - model/empresaTableClass.php
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    
+    
+pedido_insert:
+  url:    /pedido/insertar
+  param:  { module: pedido, action: insert, format: html }
+  load:
+    - model/base/pedidoBaseTableClass.php
+    - model/pedidoTableClass.php
+    - model/base/empresaBaseTableClass.php
+    - model/empresaTableClass.php
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    
+pedido_create:
+  url:    /pedido/crear
+  param:  { module: pedido, action: create, format: html }
+  load:
+    - model/base/pedidoBaseTableClass.php
+    - model/pedidoTableClass.php
+    - model/base/empresaBaseTableClass.php
+    - model/empresaTableClass.php
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+
+pedido_edit:
+  url:    /pedido/editar
+  param:  { module: pedido, action: edit, format: html }
+  load:
+    - model/base/pedidoBaseTableClass.php
+    - model/pedidoTableClass.php
+    - model/base/empresaBaseTableClass.php
+    - model/empresaTableClass.php
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    
+pedido_update:
+  url:    /pedido/actualizar
+  param:  { module: pedido, action: update, format: html }
+  load:
+    - model/base/pedidoBaseTableClass.php
+    - model/pedidoTableClass.php
+    - model/base/empresaBaseTableClass.php
+    - model/empresaTableClass.php
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    
+pedido_delete:
+  url:    /pedido/eliminar
+  param:  { module: pedido, action: delete, format: json }
+  load:
+    - model/base/pedidoBaseTableClass.php
+    - model/pedidoTableClass.php
+    - model/base/empresaBaseTableClass.php
+    - model/empresaTableClass.php
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    
+pedido_deleteSelect:
+  url:    /pedido/eliminarSeleccion
+  param:  { module: pedido, action: deleteSelect, format: html }
+  load:
+    - model/base/pedidoBaseTableClass.php
+    - model/pedidoTableClass.php
+    - model/base/empresaBaseTableClass.php
+    - model/empresaTableClass.php
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    
+pedido_ver:
+  url:    /pedido/ver
+  param:  { module: pedido, action: ver, format: html }
+  load:
+    - model/base/pedidoBaseTableClass.php
+    - model/pedidoTableClass.php
+    - model/base/empresaBaseTableClass.php
+    - model/empresaTableClass.php
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    
+pedido_reporte:
+  url:    /pedido/reporte
+  param:  { module: pedido, action: report, format: pdf }
+  load:
+    - libs/fpdf/fpdf.php
+    - model/base/pedidoBaseTableClass.php
+    - model/pedidoTableClass.php
+    - model/base/empresaBaseTableClass.php
+    - model/empresaTableClass.php
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    
+#----------------------Mano de Obra--------------------------------    
+manoObra_index:
+  url:    /manoObra/index
+  param:  { module: manoObra, action: index, format: html }
+  load:
+    - model/base/manoObraBaseTableClass.php
+    - model/manoObraTableClass.php
+    - model/base/cooperativaBaseTableClass.php
+    - model/cooperativaTableClass.php
+    - model/base/laborBaseTableClass.php
+    - model/laborTableClass.php
+    - model/base/maquinaBaseTableClass.php
+    - model/maquinaTableClass.php
+    
+    
+manoObra_insert:
+  url:    /manoObra/insertar
+  param:  { module: manoObra, action: insert, format: html }
+  load:
+    - model/base/manoObraBaseTableClass.php
+    - model/manoObraTableClass.php
+    - model/base/cooperativaBaseTableClass.php
+    - model/cooperativaTableClass.php
+    - model/base/laborBaseTableClass.php
+    - model/laborTableClass.php
+    - model/base/maquinaBaseTableClass.php
+    - model/maquinaTableClass.php
+    
+manoObra_create:
+  url:    /manoObra/crear
+  param:  { module: manoObra, action: create, format: html }
+  load:
+    - model/base/manoObraBaseTableClass.php
+    - model/manoObraTableClass.php
+    - model/base/cooperativaBaseTableClass.php
+    - model/cooperativaTableClass.php
+    - model/base/laborBaseTableClass.php
+    - model/laborTableClass.php
+    - model/base/maquinaBaseTableClass.php
+    - model/maquinaTableClass.php
+    - libs/validator/manoObra/manoObraValidatorClass.php
+
+manoObra_edit:
+  url:    /manoObra/editar
+  param:  { module: manoObra, action: edit, format: html }
+  load:
+    - model/base/manoObraBaseTableClass.php
+    - model/manoObraTableClass.php
+    - model/base/cooperativaBaseTableClass.php
+    - model/cooperativaTableClass.php
+    - model/base/laborBaseTableClass.php
+    - model/laborTableClass.php
+    - model/base/maquinaBaseTableClass.php
+    - model/maquinaTableClass.php
+    
+manoObra_update:
+  url:    /manoObra/actualizar
+  param:  { module: manoObra, action: update, format: html }
+  load:
+    - model/base/manoObraBaseTableClass.php
+    - model/manoObraTableClass.php
+    - model/base/cooperativaBaseTableClass.php
+    - model/cooperativaTableClass.php
+    - model/base/laborBaseTableClass.php
+    - model/laborTableClass.php
+    - model/base/maquinaBaseTableClass.php
+    - model/maquinaTableClass.php
+    
+manoObra_delete:
+  url:    /manoObra/eliminar
+  param:  { module: manoObra, action: delete, format: json }
+  load:
+    - model/base/manoObraBaseTableClass.php
+    - model/manoObraTableClass.php
+    - model/base/cooperativaBaseTableClass.php
+    - model/cooperativaTableClass.php
+    - model/base/laborBaseTableClass.php
+    - model/laborTableClass.php
+    - model/base/maquinaBaseTableClass.php
+    - model/maquinaTableClass.php
+    
+manoObra_deleteSelect:
+  url:    /manoObra/eliminarSeleccion
+  param:  { module: manoObra, action: deleteSelect, format: html }
+  load:
+    - model/base/manoObraBaseTableClass.php
+    - model/manoObraTableClass.php
+    - model/base/cooperativaBaseTableClass.php
+    - model/cooperativaTableClass.php
+    - model/base/laborBaseTableClass.php
+    - model/laborTableClass.php
+    - model/base/maquinaBaseTableClass.php
+    - model/maquinaTableClass.php
+    
+manoObra_ver:
+  url:    /manoObra/ver
+  param:  { module: manoObra, action: ver, format: html }
+  load:
+    - model/base/manoObraBaseTableClass.php
+    - model/manoObraTableClass.php
+    - model/base/cooperativaBaseTableClass.php
+    - model/cooperativaTableClass.php
+    - model/base/laborBaseTableClass.php
+    - model/laborTableClass.php
+    - model/base/maquinaBaseTableClass.php
+    - model/maquinaTableClass.php
+    
+manoObra_reporte:
+  url:    /manoObra/reporte
+  param:  { module: manoObra, action: report, format: pdf }
+  load:
+    - libs/fpdf/fpdf.php
+    - model/base/manoObraBaseTableClass.php
+    - model/manoObraTableClass.php
+    - model/base/cooperativaBaseTableClass.php
+    - model/cooperativaTableClass.php
+    - model/base/laborBaseTableClass.php
+    - model/laborTableClass.php
+    - model/base/maquinaBaseTableClass.php
+    - model/maquinaTableClass.php
+
     
 #---------------------------------Detalle Pago Trabajador--------

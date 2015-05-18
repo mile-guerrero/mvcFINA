@@ -5,6 +5,7 @@
 <?php $usuario = usuarioCredencialTableClass::USUARIO_ID ?>
 <?php $usuarios = usuarioTableClass::ID ?>
 <?php $des_usuarios = usuarioTableClass::USUARIO ?>
+<?php $id_usuarios = usuarioTableClass::ID ?>
 <?php $credencial = usuarioCredencialTableClass::CREDENCIAL_ID ?>
 <?php $credencials = credencialTableClass::ID ?>
 <?php $des_credencials = credencialTableClass::NOMBRE ?>
@@ -14,14 +15,17 @@
   <?php if(isset($objUC)== true): ?>
   <input  name="<?php echo usuarioCredencialTableClass::getNameField(usuarioCredencialTableClass::ID, true) ?>" value="<?php echo $objUC[0]->$iddUC ?>" type="hidden">
   <?php endif ?>
-    <?php view::includeHandlerMessage()?>
+  
+  
+  
   <div class="form-group">
     <label for="<?php echo usuarioCredencialTableClass::getNameField(usuarioCredencialTableClass::USUARIO_ID, true) ?>" class="col-sm-2"><?php echo i18n::__('usu_id') ?>: </label>
       <div class="col-sm-10"> 
-       <select class="form-control" id="<?php usuarioCredencialTableClass::getNameField(usuarioCredencialTableClass::USUARIO_ID, TRUE)?>" name="<?php echo usuarioCredencialTableClass::getNameField(usuarioCredencialTableClass::USUARIO_ID, TRUE);?>">
-         
+       <select class="form-control " id="<?php usuarioCredencialTableClass::getNameField(usuarioCredencialTableClass::ID, true) ?>" name="<?php echo usuarioCredencialTableClass::getNameField(usuarioCredencialTableClass::USUARIO_ID, true); ?>">
+         <option><?php echo i18n::__('selectCiudad')?></option>
        <?php foreach($objUCU as $U):?>
-       <option value="<?php echo $U->$usuarios?>"><?php echo $U->$des_usuarios?></option>
+       <option <?php echo (isset($objUC[0]->$usuario) === true and $objUC[0]->$usuario == $U->$id_usuarios) ? 'selected' : '' ?> value="<?php echo $U->$id_usuarios ?>"><?php echo $U->$des_usuarios ?></option>  
+       
        <?php endforeach;?>
    </select>    
       </div> 
@@ -30,10 +34,10 @@
   <div class="form-group">
       <label for="<?php echo usuarioCredencialTableClass::getNameField(usuarioCredencialTableClass::CREDENCIAL_ID, true) ?>" class="col-sm-2"><?php echo i18n::__('cre_id') ?>: </label>
       <div class="col-sm-10"> 
-       <select class="form-control" id="<?php  usuarioCredencialTableClass::getNameField(usuarioCredencialTableClass::CREDENCIAL_ID, TRUE)?>" name="<?php echo  usuarioCredencialTableClass::getNameField(usuarioCredencialTableClass::CREDENCIAL_ID, TRUE);?>">
-       
-       <?php foreach($objUCC as $C):?>
-       <option value="<?php echo $C->$credencials ?>"><?php echo $C->$des_credencials?></option>
+       <select class="form-control " id="<?php usuarioCredencialTableClass::getNameField(usuarioCredencialTableClass::ID, true) ?>" name="<?php echo usuarioCredencialTableClass::getNameField(usuarioCredencialTableClass::CREDENCIAL_ID, true); ?>">
+       <option><?php echo i18n::__('selectCiudad')?></option>
+         <?php foreach($objUCC as $C):?>
+          <option <?php echo (isset($objUC[0]->$credencial) === true and $objUC[0]->$credencial == $C->$credencials) ? 'selected' : '' ?> value="<?php echo $C->$credencials ?>"><?php echo $C->$des_credencials ?></option>  
        <?php endforeach;?>
    </select>    
       </div> 

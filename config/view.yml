@@ -107,6 +107,18 @@ trabajador:
     javascript:
       - confirmar.js
  
- 
+#-------------------modulo - Pedido-----------------------
+      
+pedido: 
+  index:
+    javascript:
+      - confirmar.js
+      
+#-------------------modulo - Mano de obra-----------------------
+      
+manoObra: 
+  index:
+    javascript:
+      - confirmar.js 
       
       

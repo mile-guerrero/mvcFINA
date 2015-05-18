@@ -8,7 +8,7 @@
 <?php $idLote = solicitudInsumoTableClass::LOTE_ID ?>
 <?php $idTrabajador = solicitudInsumoTableClass::TRABAJADOR_ID ?>
 <div class="container container-fluid" id="cuerpo">
-  <header id="encabezado">
+  <header id="">
 
   </header>
   <nav id="barramenu">
@@ -16,6 +16,8 @@
   <section id="">
     <article id='derecha'>
       <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('solicitudInsumo', 'index') ?>" > <?php echo i18n::__('atras') ?></a>
+      <br>
+      <br>
       <table class="table table-bordered table-responsive">
         <tr>
         <thead>

@@ -39,7 +39,7 @@ class updateActionClass extends controllerClass implements controllerActionInter
             ordenServicioTableClass::MAQUINA_ID => $maquina
         );
         ordenServicioTableClass::update($ids, $data);
-         
+        session::getInstance()->setSuccess('La actualizacion fue correcta');
         routing::getInstance()->redirect('ordenServicio', 'index');
       }
     } catch (PDOException $exc) {

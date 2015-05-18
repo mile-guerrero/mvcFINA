@@ -46,12 +46,12 @@
       <div class="modal-body">
         <form class="form-horizontal" id="reportForm" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('solicitudInsumo', 'report')?>">
           <div class="form-group">
-    <label for="reportNombre" class="col-sm-2 control-label"><?php echo i18n::__('nom') ?></label>
+    <label for="reportCantidad" class="col-sm-2 control-label"><?php echo i18n::__('cantidad') ?></label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="reportNombre" name="report[nombre]" placeholder="Nombre">
+      <input type="text" class="form-control" id="reportCantidad" name="report[cantidad]" placeholder="<?php echo i18n::__('cantidad') ?>">
     </div>
   </div>
-           <div class="form-group">
+<!--           <div class="form-group">
     <label for="reportCiudad" class="col-sm-2 control-label"><?php echo i18n::__('idCiudad') ?></label>
     <div class="col-sm-10">
       <select class="form-control" id="reportCiudad" name="report[ciudad]">
@@ -61,7 +61,7 @@
 <?php endforeach; ?>
           </select>
     </div>
-  </div>
+  </div>-->
   <div class="form-group">
     <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
     <div class="col-sm-10">
@@ -91,20 +91,13 @@
       <div class="modal-body">
         <form class="form-horizontal" id="filterForm" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('solicitudInsumo', 'index')?>">
           <div class="form-group">
-    <label for="filterNombre" class="col-sm-2 control-label"><?php echo i18n::__('nom') ?></label>
+    <label for="filterCantidad" class="col-sm-2 control-label"><?php echo i18n::__('cantidad') ?></label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="filterNombre" name="filter[nombre]" placeholder="Nombre">
+      <input type="text" class="form-control" id="filterCantidad" name="filter[cantidad]" placeholder="<?php echo i18n::__('cantidad') ?>">
     </div>
   </div>
           
-  <div class="form-group">
-    <label for="filterApellido" class="col-sm-2 control-label"><?php echo i18n::__('apell') ?></label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="filterApellido" name="filter[apellido]" placeholder="Apellido">
-    </div>
-  </div>
-          
-           <div class="form-group">
+<!--           <div class="form-group">
     <label for="reportCiudad" class="col-sm-2 control-label"><?php echo i18n::__('idCiudad') ?></label>
     <div class="col-sm-10">
       <select class="form-control" id="reportCiudad" name="report[ciudad]">
@@ -114,7 +107,7 @@
 <?php endforeach; ?>
           </select>
     </div>
-  </div>
+  </div>-->
   <div class="form-group">
     <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
     <div class="col-sm-10">

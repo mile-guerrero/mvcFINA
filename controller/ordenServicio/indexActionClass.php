@@ -17,6 +17,24 @@ class indexActionClass extends controllerClass implements controllerActionInterf
 
   public function execute() {
     try {
+        $where = null;
+      if (request::getInstance()->hasPost('filter')) {
+        $filter = request::getInstance()->getPost('filter');
+        //Validar datos
+
+        if (isset($filter['fechaMantenimiento']) and $filter['fechaMantenimiento'] !== null and $filter['fechaMantenimiento'] !== '') {
+          $where[ordenServicioTableClass::FECHA_MANTENIMIENTO] = $filter['fechaMantenimiento'];
+        }
+        if (isset($filter['trabajador']) and $filter['trabajador'] !== null and $filter['trabajador'] !== '') {
+          $where[ordenServicioTableClass::TRABAJADOR_ID] = $filter['trabajador'];
+        }
+        if (isset($filter['fecha1']) and $filter['fecha1'] !== null and $filter['fecha1'] !== '' and (isset($filter['fecha2']) and $filter['fecha2'] !== null and $filter['fecha2'] !== '')) {
+          $where[ordenServicioTableClass::CREATED_AT] = array(
+          date(config::getFormatTimestamp(), strtotime($filter['fecha1'] . ' 00:00:00')),
+          date(config::getFormatTimestamp(), strtotime($filter['fecha2'] . ' 23:59:59'))
+          );
+        }
+      }
       $fields = array(
           ordenServicioTableClass::ID,
           ordenServicioTableClass::FECHA_MANTENIMIENTO,
@@ -31,8 +49,22 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       $orderBy = array(
          ordenServicioTableClass::ID
       );
-      $this->objOS = ordenServicioTableClass::getAll($fields,false, $orderBy,'ASC');
-      
+      $page = 0;
+      if (request::getInstance()->hasGet('page')) {
+        $this->page = request::getInstance()->getGet('page');
+        $page = request::getInstance()->getGet('page') - 1;
+        $page = $page * config::getRowGrid();
+      }
+      $this->cntPages = ordenServicioTableClass::getTotalPages(config::getRowGrid());
+      $this->objOS = ordenServicioTableClass::getAll($fields, false, $orderBy, 'ASC', config::getRowGrid(), $page, $where);
+      $fields = array(
+      trabajadorTableClass::ID,
+      trabajadorTableClass::NOMBRET
+      );
+      $orderBy = array(
+      trabajadorTableClass::NOMBRET   
+      );      
+      $this->objOST = trabajadorTableClass::getAll($fields, true, $orderBy, 'ASC');
        
       $this->defineView('index', 'ordenServicio', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {

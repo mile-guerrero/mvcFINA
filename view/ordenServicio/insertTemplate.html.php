@@ -6,6 +6,5 @@
   <article id='derecha'>
 <h2 class="form-signin-heading"><?php echo i18n::__('nuevo orden') ?> </h2>
   </article>
-   <?php view::includePartial('ordenServicio/formularioPrincipal')?>
   <?php view::includePartial('ordenServicio/formularioPrincipal',array ('objOST' => $objOST,'objOSPI' => $objOSPI,'objOSM' => $objOSM))?>
 </div>

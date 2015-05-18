@@ -22,9 +22,9 @@ class manoObraBaseTableClass extends tableBaseClass {
 
   const ID = 'id';
   const CANTIDAD_HORA = 'cantidad_hora';
-  const CANTIDAD_HORA_LENGTH = 30;
+  const CANTIDAD_HORA_LENGTH = 10;
   const VALOR_HORA = 'valor_hora';
-  const VALOR_HORA_LENGTH = 30;
+  const VALOR_HORA_LENGTH = 15;
   const COOPERATIVA_ID = 'cooperativa_id';
   const MAQUINA_ID = 'maquina_id';
   const LABOR_ID = 'labor_id';
@@ -115,7 +115,7 @@ class manoObraBaseTableClass extends tableBaseClass {
     return 'mano_obra';
   }
 
-   /**
+  /**
    * Método para obtener el nombre del campo más la tabla ya sea en formato
    * DB (.) o en formato HTML (_)
    *
@@ -171,7 +171,7 @@ class manoObraBaseTableClass extends tableBaseClass {
    * variables publica los nombres de las columnas de la consulta o una
    * instancia de \PDOException en caso de fracaso.
    */
-  public static function getAll($fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null,$where = NULL, $table = null) {
+  public static function getAll($fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null, $where = null, $table = null) {
     return parent::getAll(self::getNameTable(), $fields, $deletedLogical, $orderBy, $order, $limit, $offset, $where, $table);
   }
 
