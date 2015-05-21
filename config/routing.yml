@@ -71,12 +71,14 @@ default_insert:
     - model/base/usuarioBaseTableClass.php
     - model/usuarioTableClass.php
     
+    
 default_create:
   url:    /usuario/crear
   param:  { module: default, action: create, format: html }
   load:
     - model/base/usuarioBaseTableClass.php
     - model/usuarioTableClass.php
+    - libs/validator/default/defaultValidatorClass.php
     
 default_edit:
   url:    /usuario/editar
@@ -91,6 +93,7 @@ default_update:
   load:
     - model/base/usuarioBaseTableClass.php
     - model/usuarioTableClass.php 
+    - libs/validator/default/defaultValidatorClass.php
     
 default_delete:
   url:    /usuario/eliminar
@@ -538,6 +541,7 @@ proveedor_create:
     - model/proveedorTableClass.php
     - model/base/ciudadBaseTableClass.php
     - model/ciudadTableClass.php
+    - libs/validator/proveedor/proveedorValidatorClass.php
     
 proveedor_edit:
   url:    /proveedor/editar
@@ -556,6 +560,7 @@ proveedor_update:
     - model/proveedorTableClass.php
     - model/base/ciudadBaseTableClass.php
     - model/ciudadTableClass.php
+    - libs/validator/proveedor/proveedorValidatorClass.php
     
 proveedor_delete:
   url:    /proveedor/eliminar
@@ -667,6 +672,7 @@ cliente_update:
     - model/tipoIdTableClass.php 
     - model/base/ciudadBaseTableClass.php
     - model/ciudadTableClass.php
+    - libs/validator/cliente/clienteValidatorClass.php
     
 cliente_delete:
   url:    /cliente/eliminar
@@ -765,6 +771,7 @@ lote_create:
     - model/productoInsumoTableClass.php
     - model/base/unidadDistanciaBaseTableClass.php
     - model/unidadDistanciaTableClass.php
+    - libs/validator/lote/loteValidatorClass.php
     
 lote_insertMas:
   url:    /lote/insertarMas
@@ -791,6 +798,7 @@ lote_createMas:
     - model/productoInsumoTableClass.php
     - model/base/unidadDistanciaBaseTableClass.php
     - model/unidadDistanciaTableClass.php
+    - libs/validator/lote/loteValidatorClass.php
         
     
 lote_edit:
@@ -818,6 +826,7 @@ lote_update:
     - model/productoInsumoTableClass.php
     - model/base/unidadDistanciaBaseTableClass.php
     - model/unidadDistanciaTableClass.php
+    - libs/validator/lote/loteValidatorClass.php
     
 lote_delete:
   url:    /lote/eliminar
@@ -1094,6 +1103,7 @@ solicitudInsumo_create:
     - model/base/loteBaseTableClass.php
     - model/loteTableClass.php
     
+    
 solicitudInsumo_edit:
   url:    /solicitudInsumo/editar
   param:  { module: solicitudInsumo, action: edit, format: html }
@@ -1119,6 +1129,7 @@ solicitudInsumo_update:
     - model/productoInsumoTableClass.php
     - model/base/loteBaseTableClass.php
     - model/loteTableClass.php
+    
     
 solicitudInsumo_delete:
   url:    /solicitudInsumo/eliminar
@@ -1214,6 +1225,7 @@ trabajador_create:
     - model/ciudadTableClass.php
     - model/base/credencialBaseTableClass.php
     - model/credencialTableClass.php
+    - libs/validator/trabajador/trabajadorValidatorClass.php
 
 trabajador_edit:
   url:    /trabajador/editar
@@ -1240,6 +1252,7 @@ trabajador_update:
     - model/ciudadTableClass.php
     - model/base/credencialBaseTableClass.php
     - model/credencialTableClass.php
+    - libs/validator/trabajador/trabajadorValidatorClass.php
     
 trabajador_delete:
   url:    /trabajador/eliminar

@@ -8,6 +8,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+use mvc\validator\loteValidatorClass as validator;
 
 /**
  * Description of ejemploClass
@@ -31,6 +32,7 @@ class updateLoteMasActionClass extends controllerClass implements controllerActi
         $presupuesto = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::PRESUPUESTO, true));
         
         
+        
         if (strlen($numero) == null or $numero =='') {
            $numero = 'null';
         }
@@ -43,8 +45,8 @@ class updateLoteMasActionClass extends controllerClass implements controllerActi
            $presupuesto = 'null';
         }
         
-        
-        $this->validate($numero, $presupuesto);
+        validator::validateEditMas();
+//        $this->validate($numero, $presupuesto);
         
         loteTableClass::loteupdateMas($id,$fechaSiembra,$numero,$insumo,$presupuesto);
         session::getInstance()->setSuccess('La actualizacion fue correcta');
@@ -58,39 +60,39 @@ class updateLoteMasActionClass extends controllerClass implements controllerActi
      
     }
   }
-  public function validate($numero, $presupuesto){
-
-    $flag = false;
-    $patron = "/^[[:digit:]]+$/";
-
-//-----------------validaciones de numero---------------------------------------
-      if (strlen($numero) > loteTableClass::NUMERO_PLANTULAS_LENGTH) {
-      session::getInstance()->setError(i18n::__(00001, null, 'errors', array(':longitud' =>loteTableClass::NUMERO_PLANTULAS_LENGTH)), 00001);
-      $flag = true;
-      } 
-      
-//      if (!preg_match($patron, $numero)) {
-//      session::getInstance()->setError(i18n::__(00010, null, 'errors', array(':no permite letras' => loteTableClass::NUMERO_PLANTULAS)), 00010);
+//  public function validate($numero, $presupuesto){
+//
+//    $flag = false;
+//    $patron = "/^[[:digit:]]+$/";
+//
+////-----------------validaciones de numero---------------------------------------
+//      if (strlen($numero) > loteTableClass::NUMERO_PLANTULAS_LENGTH) {
+//      session::getInstance()->setError(i18n::__(00001, null, 'errors', array(':longitud' =>loteTableClass::NUMERO_PLANTULAS_LENGTH)), 00001);
 //      $flag = true;
-//       }
-//-----------------validaciones de presupuesto----------------------------------      
-      if (strlen($presupuesto) > loteTableClass::PRESUPUESTO_LENGTH) {
-         session::getInstance()->setError(i18n::__(00006, null, 'errors', array(':longitud' => loteTableClass::PRESUPUESTO_LENGTH)), 00006);
-        $flag = true;
-        }
-        
-//      if (!preg_match($patron, $presupuesto)) {
-//      session::getInstance()->setError(i18n::__(00010, null, 'errors', array(':no permite letras' => loteTableClass::PRESUPUESTO)), 00010);
-//      $flag = true;
-//       }
-    
-//-----------------confirmacion de validacion-----------------------------------    
-     if ($flag === true){
-    request::getInstance()->setMethod('GET');
-    request::getInstance()->addParamGet(array(loteTableClass::ID => request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::ID, true))));
-    routing::getInstance()->forward('lote', 'editLoteMas');
-    
-  }
-}
+//      } 
+//      
+////      if (!preg_match($patron, $numero)) {
+////      session::getInstance()->setError(i18n::__(00010, null, 'errors', array(':no permite letras' => loteTableClass::NUMERO_PLANTULAS)), 00010);
+////      $flag = true;
+////       }
+////-----------------validaciones de presupuesto----------------------------------      
+//      if (strlen($presupuesto) > loteTableClass::PRESUPUESTO_LENGTH) {
+//         session::getInstance()->setError(i18n::__(00006, null, 'errors', array(':longitud' => loteTableClass::PRESUPUESTO_LENGTH)), 00006);
+//        $flag = true;
+//        }
+//        
+////      if (!preg_match($patron, $presupuesto)) {
+////      session::getInstance()->setError(i18n::__(00010, null, 'errors', array(':no permite letras' => loteTableClass::PRESUPUESTO)), 00010);
+////      $flag = true;
+////       }
+//    
+////-----------------confirmacion de validacion-----------------------------------    
+//     if ($flag === true){
+//    request::getInstance()->setMethod('GET');
+//    request::getInstance()->addParamGet(array(loteTableClass::ID => request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::ID, true))));
+//    routing::getInstance()->forward('lote', 'editLoteMas');
+//    
+//  }
+//}
 
 }

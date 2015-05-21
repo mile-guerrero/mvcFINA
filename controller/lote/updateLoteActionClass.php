@@ -8,6 +8,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+use mvc\validator\loteValidatorClass as validator;
 
 /**
  * Description of ejemploClass
@@ -26,7 +27,9 @@ class updateLoteActionClass extends controllerClass implements controllerActionI
         $descripcion = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::DESCRIPCION, true));
         $idCiudad = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::ID_CIUDAD, true));
 
-        $this->validate($ubicacion, $tamano, $descripcion);
+        
+        validator::validateEdit();
+//        $this->validate($ubicacion, $tamano, $descripcion);
 
 
         $ids = array(

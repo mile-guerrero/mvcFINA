@@ -12,7 +12,7 @@
 <?php $idProducto = productoInsumoTableClass::ID ?>
 <?php $descProducto = productoInsumoTableClass::DESCRIPCION ?>
 <?php $idLote = loteTableClass::ID ?>
-<?php $descLote = loteTableClass::DESCRIPCION ?>
+<?php $descLote = loteTableClass::UBICACION ?>
 <div class="container container-fluid" id="cuerpo">
   <article id='derecha'>
 <form  class="form-horizontal" role="form" method="post" action="<?php echo routing::getInstance()->getUrlWeb('solicitudInsumo', ((isset($objS)) ? 'update' : 'create')) ?>">
@@ -62,7 +62,7 @@
   <div class="form-group">
          <label for="" class="col-sm-2"> <?php echo i18n::__('lote') ?> </label>
          <div class="col-sm-10">
-           <select class="form-control" id="<?php echo solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::LOTE_ID, true)?>" name="<?php echo solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::LOTE_ID, true) ?>">
+           <select class="form-control" id="<?php echo solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::ID, true)?>" name="<?php echo solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::LOTE_ID, true) ?>">
             <option><?php echo i18n::__('selectLote') ?></option>
 <?php foreach ($objL as $lot): ?>
             <option <?php echo (isset($objS[0]->$lote) === true and $objS[0]->$lote == $trabajador->$idLote) ? 'selected' : '' ?> value="<?php echo $lot->$idLote ?>"><?php echo $lot->$descLote ?></option>

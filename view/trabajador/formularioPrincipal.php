@@ -2,6 +2,7 @@
 <?php use mvc\i18n\i18nClass as i18n ?>
 <?php use mvc\view\viewClass as view ?>
 <?php use mvc\session\sessionClass as session ?>
+<?php use mvc\request\requestClass as request ?>
 <?php $idTrabajador = trabajadorTableClass::ID ?>
 <?php $documento = trabajadorTableClass::DOCUMENTO ?>
 <?php $apellido = trabajadorTableClass::APELLIDO ?>
@@ -23,14 +24,29 @@
 <?php if (isset($objTrabajador) == true): ?>
     <input  name="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::ID, true) ?>" value="<?php echo $objTrabajador[0]->$idTrabajador ?>" type="hidden">
 <?php endif ?>
-    <?php view::includeHandlerMessage() ?>
+   
+   <?php if(session::getInstance()->hasError('inputDocumento')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputDocumento') ?>
+    </div>
+    <?php endif ?>
+        
+        
+    <?php if(session::getInstance()->hasError('selectTipoId')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('selectTipoId') ?>
+    </div>
+    <?php endif ?>  
+    
     <div class="form-group">
       <label for="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::DOCUMENTO, true) ?>" class="col-sm-2"> <?php echo i18n::__('documento') ?>:</label>     
       <div class="col-sm-10">
-        <input class="form-control-gonza1" value="<?php echo ((isset($objTrabajador) == true) ? $objTrabajador[0]->$documento : '') ?>" type="text" name="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::DOCUMENTO, true) ?>" placeholder="<?php echo i18n::__('documento') ?>">
+        <input class="form-control-gonza1" value="<?php echo (session::getInstance()->hasFlash('inputDocumento')  or request::getInstance()->hasPost(trabajadorTableClass::getNameField(trabajadorTableClass::DOCUMENTO, true))) ? request::getInstance()->getPost(trabajadorTableClass::getNameField(trabajadorTableClass::DOCUMENTO, true)) : ((isset($objTrabajador[0])) ? $objTrabajador[0]->$documento : '') ?>" type="text" name="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::DOCUMENTO, true) ?>" placeholder="<?php echo i18n::__('documento') ?>" required>
        
         <select class="form-control-gonza2" id="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::ID, true) ?>" name="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::ID_TIPO_ID, true) ?>">
-<option><?php echo i18n::__('selectTipoId') ?></option>        
+<option value="<?php echo (session::getInstance()->hasFlash('selectTipoId') or request::getInstance()->hasPost(trabajadorTableClass::getNameField(trabajadorTableClass::ID_TIPO_ID, true))) ? request::getInstance()->getPost(trabajadorTableClass::getNameField(trabajadorTableClass::ID_TIPO_ID, true)) : ((isset($objTrabajador[0])) ? $objTrabajador[0]->$desc : '') ?>"><?php echo i18n::__('selectTipoId') ?></option>        
 <?php foreach ($objCTI as $tipoId): ?>
             <option <?php echo (isset($objTrabajador[0]->$idTipo) === true and $objTrabajador[0]->$idTipo == $tipoId->$idTipoId) ? 'selected' : '' ?> value="<?php echo $tipoId->$idTipoId ?>"><?php echo $tipoId->$desc ?></option>
 <?php endforeach; ?>
@@ -38,27 +54,58 @@
       </div> 
     </div>
     
+    <?php if(session::getInstance()->hasError('inputNombre')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputNombre') ?>
+    </div>
+    <?php endif ?>
+    
+    
     <div class="form-group">
       <label for="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRET, true) ?>" class="col-sm-2"> <?php echo i18n::__('nom') ?>:</label>     
       <div class="col-sm-10">
-        <input class="form-control" value="<?php echo ((isset($objTrabajador) == true) ? $objTrabajador[0]->$nombre : '') ?>" type="text" name="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRET, true) ?>" placeholder="<?php echo i18n::__('nom') ?>">
+        <input class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputNombre') or request::getInstance()->hasPost(trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRET, true))) ? request::getInstance()->getPost(trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRET, true)) : ((isset($objTrabajador[0])) ? $objTrabajador[0]->$nombre : '') ?>" type="text" name="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRET, true) ?>" placeholder="<?php echo i18n::__('nom') ?>" required>
       </div>
     </div>  
+    
+     <?php if(session::getInstance()->hasError('inputApellido')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputApellido') ?>
+    </div>
+    <?php endif ?>
 
     <div class="form-group">
       <label for="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::APELLIDO, true) ?>" class="col-sm-2"> <?php echo i18n::__('apell') ?>:</label>     
       <div class="col-sm-10">            
-        <input class="form-control" value="<?php echo ((isset($objTrabajador) == true) ? $objTrabajador[0]->$apellido : '') ?>" type="text" name="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::APELLIDO, true) ?>" placeholder="<?php echo i18n::__('apell') ?>">
+        <input class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputApellido') or request::getInstance()->hasPost(trabajadorTableClass::getNameField(trabajadorTableClass::APELLIDO, true))) ? request::getInstance()->getPost(trabajadorTableClass::getNameField(trabajadorTableClass::APELLIDO, true)) : ((isset($objTrabajador[0])) ? $objTrabajador[0]->$apellido : '') ?>" type="text" name="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::APELLIDO, true) ?>" placeholder="<?php echo i18n::__('apell') ?>" required>
       </div>
     </div> 
 
+    
+    <?php if(session::getInstance()->hasError('inputDireccion')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputDireccion') ?>
+    </div>
+    <?php endif ?> 
+     
+        
+    <?php if(session::getInstance()->hasError('selectCiudad')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('selectCiudad') ?>
+    </div>
+    <?php endif ?> 
+    
     <div class="form-group">
       <label for="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::DIRECCION, true) ?>" class="col-sm-2"> <?php echo i18n::__('dir') ?>: </label>     
       <div class="col-sm-10">             
-        <input class="form-control-gonza1" value="<?php echo ((isset($objTrabajador) == true) ? $objTrabajador[0]->$direccion : '') ?>" type="text" name="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::DIRECCION, true) ?>" placeholder="<?php echo i18n::__('dir') ?>">
+        <input class="form-control-gonza1" value="<?php echo (session::getInstance()->hasFlash('inputDireccion') or request::getInstance()->hasPost(trabajadorTableClass::getNameField(trabajadorTableClass::DIRECCION, true))) ? request::getInstance()->getPost(trabajadorTableClass::getNameField(trabajadorTableClass::DIRECCION, true)) : ((isset($objTrabajador[0])) ? $objTrabajador[0]->$direccion : '') ?>" type="text" name="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::DIRECCION, true) ?>" placeholder="<?php echo i18n::__('dir') ?>" required>
       
           <select class="form-control-gonza2" id="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::ID, true)?>" name="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::ID_CIUDAD, true) ?>">
- <option><?php echo i18n::__('selectCiudad') ?></option>            
+ <option value="<?php echo (session::getInstance()->hasFlash('selectCiudad') or request::getInstance()->hasPost(trabajadorTableClass::getNameField(trabajadorTableClass::ID_CIUDAD, true))) ? request::getInstance()->getPost(trabajadorTableClass::getNameField(trabajadorTableClass::ID_CIUDAD, true)) : ((isset($objTrabajador[0])) ? $objTrabajador[0]->$nomCiu : '') ?>"><?php echo i18n::__('selectCiudad') ?></option>            
 <?php foreach ($objCC as $ciudad): ?>
             <option <?php echo (isset($objTrabajador[0]->$ciudadId) === true and  $objTrabajador[0]->$ciudadId == $ciudad->$idCiudad) ? 'selected' : '' ?> value="<?php echo $ciudad->$idCiudad ?>"><?php echo $ciudad->$nomCiu ?></option>
 <?php endforeach; ?>
@@ -66,27 +113,50 @@
       </div>
     </div>
     
+     <?php if(session::getInstance()->hasError('inputTelefono')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputTelefono') ?>
+    </div>
+    <?php endif ?> 
+    
 
     <div class="form-group">
       <label for="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::TELEFONO, true) ?>" class="col-sm-2"> <?php echo i18n::__('tel') ?>:  </label>     
       <div class="col-sm-10">              
-        <input class="form-control" value="<?php echo ((isset($objTrabajador) == true) ? $objTrabajador[0]->$telefono : '') ?>" type="text" name="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::TELEFONO, true) ?>" placeholder="<?php echo i18n::__('tel') ?>"> 
+        <input class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputTelefono') or request::getInstance()->hasPost(trabajadorTableClass::getNameField(trabajadorTableClass::TELEFONO, true))) ? request::getInstance()->getPost(trabajadorTableClass::getNameField(trabajadorTableClass::TELEFONO, true)) : ((isset($objTrabajador[0])) ? $objTrabajador[0]->$telefono : '') ?>" type="text" name="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::TELEFONO, true) ?>" placeholder="<?php echo i18n::__('tel') ?>" required> 
       </div>
     </div>
+    
+    
+    <?php if(session::getInstance()->hasError('inputEmail')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputEmail') ?>
+    </div>
+    <?php endif ?> 
+    
     
     <div class="form-group">
       <label for="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::EMAIL, true) ?>" class="col-sm-2"> <?php echo i18n::__('email') ?>:  </label>     
       <div class="col-sm-10">              
-        <input class="form-control" value="<?php echo ((isset($objTrabajador) == true) ? $objTrabajador[0]->$email : '') ?>" type="text" name="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::EMAIL, true) ?>" placeholder="<?php echo i18n::__('email') ?>">
+        <input class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputEmail') or request::getInstance()->hasPost(trabajadorTableClass::getNameField(trabajadorTableClass::EMAIL, true))) ? request::getInstance()->getPost(trabajadorTableClass::getNameField(trabajadorTableClass::EMAIL, true)) : ((isset($objTrabajador[0])) ? $objTrabajador[0]->$email : '') ?>" type="text" name="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::EMAIL, true) ?>" placeholder="<?php echo i18n::__('email') ?>" required>
       </div>
     </div>
 
+    
+    <?php if(session::getInstance()->hasError('selectCredencial')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('selectCredencial') ?>
+    </div>
+    <?php endif ?>
 
     <div class="form-group">
          <label for="" class="col-sm-2"> id credencial </label>
          <div class="col-sm-10">
           <select class="form-control" id="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::ID, true)?>" name="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::ID_CREDENCIAL, true) ?>">
-   <option><?php echo i18n::__('selectCredencial') ?></option>         
+   <option value="<?php echo (session::getInstance()->hasFlash('selectCredencial') or request::getInstance()->hasPost(trabajadorTableClass::getNameField(trabajadorTableClass::ID_CREDENCIAL, true))) ? request::getInstance()->getPost(trabajadorTableClass::getNameField(trabajadorTableClass::ID_CREDENCIAL, true)) : ((isset($objTrabajador[0])) ? $objTrabajador[0]->$nomCredencial : '') ?>"><?php echo i18n::__('selectCredencial') ?></option>         
 <?php foreach ($objCredencial as $credencial): ?>
             <option <?php echo (isset($objTrabajador[0]->$cre) === true and $objTrabajador[0]->$cre == $credencial->$idCredencial) ? 'selected' : '' ?> value="<?php echo $credencial->$idCredencial ?>"><?php echo $credencial->$nomCredencial ?></option>
 <?php endforeach; ?>

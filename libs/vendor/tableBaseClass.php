@@ -136,7 +136,7 @@ namespace mvc\model\table {
       }
     }
 
-    /**
+   /**
      * Método para leer todos los registros de una tabla
      *
      * @param string $table Nombre de la tabla
@@ -180,6 +180,16 @@ namespace mvc\model\table {
           $flag = false;
         }
 
+        /**
+         * array(
+         *    campo => valor,
+         *    campo => array(
+         *      fecha1,
+         *      fecha2
+         *    ),
+         *    0 => valorSQL
+         * )
+         */
         if (is_array($where) === true) {
           foreach ($where as $field => $value) {
             if (is_array($value)) {
@@ -191,10 +201,18 @@ namespace mvc\model\table {
               }
             } else {
               if ($flag === false) {
-                $sql = $sql . ' WHERE ' . $field . ' = ' . ((is_numeric($value)) ? $value : "'$value'") . ' ';
+                if (is_numeric($field)) {
+                  $sql = $sql . ' WHERE ' . $value . ' ';
+                } else {
+                  $sql = $sql . ' WHERE ' . $field . ' = ' . ((is_numeric($value)) ? $value : "'$value'") . ' ';
+                }
                 $flag = true;
               } else {
-                $sql = $sql . ' AND ' . $field . ' = ' . ((is_numeric($value)) ? $value : "'$value'") . ' ';
+                if (is_numeric($field)) {
+                  $sql = $sql . ' AND ' . $value . ' ';
+                } else {
+                  $sql = $sql . ' AND ' . $field . ' = ' . ((is_numeric($value)) ? $value : "'$value'") . ' ';
+                }
               }
             }
           }
@@ -218,8 +236,6 @@ namespace mvc\model\table {
         if ($limit !== null and $offset !== null) {
           $sql = $sql . ' LIMIT ' . $limit . ' OFFSET ' . $offset;
         }
-        
-//        session::getInstance()->setFlash('mvcSQL', $sql);
 
         return model::getInstance()->query($sql)->fetchAll(\PDO::FETCH_OBJ);
       } catch (\PDOException $exc) {

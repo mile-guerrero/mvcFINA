@@ -29,6 +29,7 @@ class deleteClienteActionClass extends controllerClass implements controllerActi
             'code'=> 200,
             'msg'=> 'Eliminacion exitosa'
             );
+        session::getInstance()->setSuccess('El campo Fue Eliminado Exitosamente');
         $this->defineView('deleteCliente', 'cliente', session::getInstance()->getFormatOutput());
       
       } else {
