@@ -1,6 +1,8 @@
 <?php use mvc\routing\routingClass as routing ?>
 <?php use mvc\i18n\i18nClass as i18n ?>
-<?php use mvc\view\viewClass as view?>
+<?php use mvc\view\viewClass as view ?>
+<?php use mvc\session\sessionClass as session ?>
+<?php use mvc\request\requestClass as request ?>
 <?php $idLote = loteTableClass::ID ?>
 <?php $ubi = loteTableClass::UBICACION ?>
 <?php $tamano = loteTableClass::TAMANO ?>
@@ -26,7 +28,9 @@
   <?php if(isset($objLote)== true): ?>
   <input  name="<?php echo loteTableClass::getNameField(loteTableClass::ID,true) ?>" value="<?php echo $objLote[0]->$idLote ?>" type="hidden">
   <?php endif ?>
-    <?php view::includeHandlerMessage()?>
+   
+  
+  
   <div class="form-group">
       <label for="<?php echo loteTableClass::getNameField(loteTableClass::UBICACION, true) ?>" class="col-sm-2"> <?php echo i18n::__('ubicacion') ?>:</label>     
       <div class="col-sm-10">
@@ -62,6 +66,13 @@
         <input  class="form-control" value="<?php echo ((isset($objLote)==true) ? $objLote[0]->$descripcion : '') ?>" type="text" name="<?php echo loteTableClass::getNameField(loteTableClass::DESCRIPCION, true) ?>" placeholder="<?php echo i18n::__('des') ?>" required>
       </div>
  </div>
+  
+<!--  desde aqui empieza los campos a utilizar-->
+  
+
+
+  
+  
   
 <div class="form-group">
       <label for="<?php echo loteTableClass::getNameField(loteTableClass::FECHA_INICIO_SIEMBRA, true) ?>" class="col-sm-2"> <?php echo i18n::__('fecha siembra') ?>: </label>     

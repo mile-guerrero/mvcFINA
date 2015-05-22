@@ -1,6 +1,8 @@
 <?php use mvc\routing\routingClass as routing ?>
 <?php use mvc\i18n\i18nClass as i18n ?>
-<?php use mvc\view\viewClass as view?>
+<?php use mvc\view\viewClass as view ?>
+<?php use mvc\session\sessionClass as session ?>
+<?php use mvc\request\requestClass as request ?>
 <?php $idLote = loteTableClass::ID ?>
 <?php $ubi = loteTableClass::UBICACION ?>
 <?php $tamano = loteTableClass::TAMANO ?>
@@ -26,15 +28,32 @@
   <?php if(isset($objLote)== true): ?>
   <input  name="<?php echo loteTableClass::getNameField(loteTableClass::ID,true) ?>" value="<?php echo $objLote[0]->$idLote ?>" type="hidden">
   <?php endif ?>
-    <?php view::includeHandlerMessage()?>
+  
+  
+  <?php if(session::getInstance()->hasError('inputUbicacion')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputUbicacion') ?>
+    </div>
+    <?php endif ?>
+  
+  <?php if(session::getInstance()->hasError('selectCiudad')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('selectCiudad') ?>
+    </div>
+    <?php endif ?>
+  
+  
+   
   <div class="form-group">
       <label for="<?php echo loteTableClass::getNameField(loteTableClass::UBICACION, true) ?>" class="col-sm-2"> <?php echo i18n::__('ubicacion') ?>:</label>     
       <div class="col-sm-10">
-        <input  class="form-control-gonza1"  value="<?php echo ((isset($objLote)==true) ? $objLote[0]->$ubi : '') ?>" type="text" name="<?php echo loteTableClass::getNameField(loteTableClass::UBICACION, true) ?>" placeholder="<?php echo i18n::__('ubicacion') ?>" required>
+        <input  class="form-control-gonza1"  value="<?php echo (session::getInstance()->hasFlash('inputUbicacion') or request::getInstance()->hasPost(loteTableClass::getNameField(loteTableClass::UBICACION, true))) ? request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::UBICACION, true)) : ((isset($objLote[0])) ? $objLote[0]->$ubi : '') ?>" type="text" name="<?php echo loteTableClass::getNameField(loteTableClass::UBICACION, true) ?>" placeholder="<?php echo i18n::__('ubicacion') ?>" required>
       
               
-   <select class="form-control-gonza2" id="<?php loteTableClass::getNameField(loteTableClass::ID, true)?>" name="<?php echo loteTableClass::getNameField(loteTableClass::ID_CIUDAD, true);?>">
-       <option><?php echo i18n::__('selectCiudad') ?></option>
+   <select  class="form-control-gonza2" id="<?php loteTableClass::getNameField(loteTableClass::ID, true)?>" name="<?php echo loteTableClass::getNameField(loteTableClass::ID_CIUDAD, true);?>">
+       <option  value="<?php echo (session::getInstance()->hasFlash('selectCiudad') or request::getInstance()->hasPost(loteTableClass::getNameField(loteTableClass::ID_CIUDAD, true))) ? request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::ID_CIUDAD, true)) : ((isset($objLote[0])) ? '' : '') ?>" ><?php echo i18n::__('selectCiudad') ?></option>
        <?php foreach($objLC as $C):?>
        <option <?php echo (isset($objLote[0]->$idCiudad) === true and $objLote[0]->$idCiudad == $C->$idCiudaddes) ? 'selected' : '' ?>  value="<?php echo $C->$idCiudaddes?>"><?php echo $C->$descripcionciudad?></option>
        <?php endforeach;?>
@@ -42,13 +61,29 @@
       </div> 
     </div> 
   
+  
+  <?php if(session::getInstance()->hasError('inputTamano')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputTamano') ?>
+    </div>
+    <?php endif ?>
+  
+  
+   <?php if(session::getInstance()->hasError('selectUnidad')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('selectUnidad') ?>
+    </div>
+    <?php endif ?>
+  
  <div class="form-group">
       <label for="<?php echo loteTableClass::getNameField(loteTableClass::TAMANO, true) ?>" class="col-sm-2"> <?php echo i18n::__('tamano') ?>:</label>     
       <div class="col-sm-10">
-          <input  class=" form-control-gonza1" value="<?php echo ((isset($objLote)==true) ? $objLote[0]->$tamano : '') ?>" type="text" name="<?php echo loteTableClass::getNameField(loteTableClass::TAMANO, true) ?>" placeholder="<?php echo i18n::__('tamano') ?>" required>
+          <input  class=" form-control-gonza1"  value="<?php echo (session::getInstance()->hasFlash('inputTamano') or request::getInstance()->hasPost(loteTableClass::getNameField(loteTableClass::TAMANO, true))) ? request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::TAMANO, true)) : ((isset($objLote[0])) ? $objLote[0]->$tamano : '') ?>" type="text" name="<?php echo loteTableClass::getNameField(loteTableClass::TAMANO, true) ?>" placeholder="<?php echo i18n::__('tamano') ?>" required>
       
     <select  class="form-control-gonza2" id="<?php loteTableClass::getNameField(loteTableClass::ID, true)?>" name="<?php echo loteTableClass::getNameField(loteTableClass::UNIDAD_DISTANCIA_ID, true);?>">
-       <option ><?php echo i18n::__('selectUnidadDis') ?></option>
+       <option value="<?php echo (session::getInstance()->hasFlash('selectUnidad') or request::getInstance()->hasPost(loteTableClass::getNameField(loteTableClass::UNIDAD_DISTANCIA_ID, true))) ? request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::UNIDAD_DISTANCIA_ID, true)) : ((isset($objLote[0])) ? '' : '') ?>" ><?php echo i18n::__('selectUnidadDis') ?></option>
        <?php foreach($objLUD as $C):?>
        <option  <?php echo (isset($objLote[0]->$idUni) === true and $objLote[0]->$idUni == $C->$idUnidad) ? 'selected' : '' ?>  value="<?php echo $C->$idUnidad?>"><?php echo $C->$desUnidad?></option>
        <?php endforeach;?>
@@ -56,10 +91,18 @@
      </div>
     </div>  
   
+  
+  <?php if(session::getInstance()->hasError('inputDescripcion')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputDescripcion') ?>
+    </div>
+    <?php endif ?>
+  
  <div class="form-group">
       <label for="<?php echo loteTableClass::getNameField(loteTableClass::DESCRIPCION, true) ?>" class="col-sm-2"> <?php echo i18n::__('des') ?>: </label>     
       <div class="col-sm-10">
-        <input  class="form-control" value="<?php echo ((isset($objLote)==true) ? $objLote[0]->$descripcion : '') ?>" type="text" name="<?php echo loteTableClass::getNameField(loteTableClass::DESCRIPCION, true) ?>" placeholder="<?php echo i18n::__('des') ?>" required>
+        <input  class="form-control"  value="<?php echo (session::getInstance()->hasFlash('inputDescripcion') or request::getInstance()->hasPost(loteTableClass::getNameField(loteTableClass::DESCRIPCION, true))) ? request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::DESCRIPCION, true)) : ((isset($objLote[0])) ? $objLote[0]->$descripcion : '') ?>" type="text" name="<?php echo loteTableClass::getNameField(loteTableClass::DESCRIPCION, true) ?>" placeholder="<?php echo i18n::__('des') ?>" required>
       </div>
  </div>
   

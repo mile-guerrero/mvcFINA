@@ -411,6 +411,7 @@ maquina_create:
     - model/tipoUsoMaquinaTableClass.php
     - model/base/proveedorBaseTableClass.php
     - model/proveedorTableClass.php
+    - libs/validator/maquina/maquinaValidatorClass.php
     
 maquina_edit:
   url:    /maquina/editar
@@ -433,6 +434,7 @@ maquina_update:
     - model/tipoUsoMaquinaTableClass.php
     - model/base/proveedorBaseTableClass.php
     - model/proveedorTableClass.php
+    - libs/validator/maquina/maquinaValidatorClass.php
     
 maquina_delete:
   url:    /maquina/eliminar
@@ -929,6 +931,7 @@ productoInsumo_create:
     - model/unidadMedidaTableClass.php
     - model/base/tipoProductoInsumoBaseTableClass.php
     - model/tipoProductoInsumoTableClass.php
+    - libs/validator/productoInsumo/productoInsumoValidatorClass.php
     
 productoInsumo_edit:
   url:    /productoInsumo/editar
@@ -951,6 +954,7 @@ productoInsumo_update:
     - model/unidadMedidaTableClass.php
     - model/base/tipoProductoInsumoBaseTableClass.php
     - model/tipoProductoInsumoTableClass.php
+    - libs/validator/productoInsumo/productoInsumoValidatorClass.php
     
 productoInsumo_delete:
   url:    /productoInsumo/eliminar
@@ -1017,6 +1021,7 @@ tipoProductoInsumo_create:
   load:
     - model/base/tipoProductoInsumoBaseTableClass.php
     - model/tipoProductoInsumoTableClass.php
+    - libs/validator/tipoProductoInsumo/tipoProductoInsumoValidatorClass.php
     
 tipoProductoInsumo_edit:
   url:    /tipoProductoInsumo/editar
@@ -1031,6 +1036,7 @@ tipoProductoInsumo_update:
   load:
     - model/base/tipoProductoInsumoBaseTableClass.php
     - model/tipoProductoInsumoTableClass.php 
+    - libs/validator/tipoProductoInsumo/tipoProductoInsumoValidatorClass.php
     
 tipoProductoInsumo_delete:
   url:    /tipoProductoInsumo/eliminar

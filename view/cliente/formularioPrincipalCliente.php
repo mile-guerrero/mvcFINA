@@ -48,7 +48,7 @@
    
           
           <select class="form-control-gonza2" id="<?php clienteTableClass::getNameField(clienteTableClass::ID, TRUE) ?>" name="<?php echo clienteTableClass::getNameField(clienteTableClass::ID_TIPO_ID, TRUE); ?>" >
-            <option value="<?php echo (session::getInstance()->hasFlash('selectTipoId')  or request::getInstance()->hasPost(clienteTableClass::getNameField(clienteTableClass::ID_TIPO_ID, true))) ? request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::ID_TIPO_ID, true)) : ((isset($objCliente[0])) ? $objCliente[0]->$descripciontipo : '') ?>"><?php echo i18n::__('selectTipoId')?></option>
+            <option value="<?php echo (session::getInstance()->hasFlash('selectTipoId')  or request::getInstance()->hasPost(clienteTableClass::getNameField(clienteTableClass::ID_TIPO_ID, true))) ? request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::ID_TIPO_ID, true)) : ((isset($objCliente[0])) ? '' : '') ?>"><?php echo i18n::__('selectTipoId')?></option>
 <?php foreach ($objCTI as $IT): ?>
               <option <?php echo (isset($objCliente[0]->$idTipo) === true and $objCliente[0]->$idTipo == $IT->$idTipoId) ? 'selected' : '' ?> value="<?php echo $IT->$idTipoId ?>"><?php echo $IT->$descripciontipo ?></option>
 <?php endforeach; ?>
@@ -112,7 +112,7 @@
         
             
           <select class="form-control-gonza2" id="<?php clienteTableClass::getNameField(clienteTableClass::ID, true) ?>" name="<?php echo clienteTableClass::getNameField(clienteTableClass::ID_CIUDAD, true); ?>">
-           <option value="<?php echo (session::getInstance()->hasFlash('selectCiudad') or request::getInstance()->hasPost(clienteTableClass::getNameField(clienteTableClass::ID_CIUDAD, true))) ? request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::ID_CIUDAD, true)) : ((isset($objCliente[0])) ? $objCliente[0]->$descripcionciudad : '') ?>"><?php echo i18n::__('selectCiudad')?></option>
+           <option value="<?php echo (session::getInstance()->hasFlash('selectCiudad') or request::getInstance()->hasPost(clienteTableClass::getNameField(clienteTableClass::ID_CIUDAD, true))) ? request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::ID_CIUDAD, true)) : ((isset($objCliente[0])) ? '' : '') ?>"><?php echo i18n::__('selectCiudad')?></option>
 <?php foreach ($objCC as $C): ?>
               <option <?php echo (isset($objCliente[0]->$idCiudad) === true and $objCliente[0]->$idCiudad == $C->$idCiudaddes) ? 'selected' : '' ?> value="<?php echo $C->$idCiudaddes ?>"><?php echo $C->$descripcionciudad ?></option>
 <?php endforeach; ?>

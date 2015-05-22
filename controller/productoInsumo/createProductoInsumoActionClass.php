@@ -7,7 +7,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
-
+use mvc\validator\productoInsumoValidatorClass as validator;
 /**
  * Description of ejemploClass
  *
@@ -24,7 +24,9 @@ class createProductoInsumoActionClass extends controllerClass implements control
         $unidad = request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::UNIDAD_MEDIDA_ID, true));
         $tipo = request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID, true));
 
-        $this->validate($descripcion, $iva);
+        
+        validator::validateInsert();
+//        $this->validate($descripcion, $iva);
 
         $data = array(
              productoInsumoTableClass::DESCRIPCION => $descripcion,
@@ -44,42 +46,42 @@ class createProductoInsumoActionClass extends controllerClass implements control
     }
   }
   
-public function validate($descripcion, $iva) {
-
-    $flag = false;
-    $patron = "/^[[:digit:]]+$/";
-//---------------------validacion descripcion----------------------------------- 
-    
-    if (strlen($descripcion) > productoInsumoTableClass::DESCRIPCION_LENGTH) {
-      session::getInstance()->setError(i18n::__(00004, null, 'errors', array(':longitud' => productoInsumoTableClass::DESCRIPCION_LENGTH)), 00004);
-      $flag = true;
-    }   
-    
-
-    if (strlen($descripcion) == "" or $iva === null) {
-      session::getInstance()->setError(i18n::__(00009, null, 'errors', array(':campo vacio' => productoInsumoTableClass::DESCRIPCION)), 00009);
-      $flag = true;
-    }
-//-----------------------validacion iva-----------------------------------------    
-     if (!is_numeric($iva) === "" or $iva === null) {
-      session::getInstance()->setError(i18n::__(00009, null, 'errors', array(':campo vacio' => productoInsumoTableClass::IVA)), 00009);
-      $flag = true;
-    }
-    
-    if (strlen($iva) > productoInsumoTableClass::IVA_LENGTH) {
-      session::getInstance()->setError(i18n::__(00014, null, 'errors', array(':longitud' => productoInsumoTableClass::IVA_LENGTH)), 00014);
-      $flag = true;
-    } 
-
-    if (!preg_match($patron, $iva)) {
-      session::getInstance()->setError(i18n::__(00010, null, 'errors', array(':no permite letras' => productoInsumoTableClass::IVA)), 00010);
-      $flag = true;
-       }
-//-----------------------validacion --------------------------------------------    
-    if ($flag === true){
-      request::getInstance()->setMethod('GET');
-      routing::getInstance()->forward('productoInsumo', 'insertProductoInsumo');
-    }
-  }
+//public function validate($descripcion, $iva) {
+//
+//    $flag = false;
+//    $patron = "/^[[:digit:]]+$/";
+////---------------------validacion descripcion----------------------------------- 
+//    
+//    if (strlen($descripcion) > productoInsumoTableClass::DESCRIPCION_LENGTH) {
+//      session::getInstance()->setError(i18n::__(00004, null, 'errors', array(':longitud' => productoInsumoTableClass::DESCRIPCION_LENGTH)), 00004);
+//      $flag = true;
+//    }   
+//    
+//
+//    if (strlen($descripcion) == "" or $iva === null) {
+//      session::getInstance()->setError(i18n::__(00009, null, 'errors', array(':campo vacio' => productoInsumoTableClass::DESCRIPCION)), 00009);
+//      $flag = true;
+//    }
+////-----------------------validacion iva-----------------------------------------    
+//     if (!is_numeric($iva) === "" or $iva === null) {
+//      session::getInstance()->setError(i18n::__(00009, null, 'errors', array(':campo vacio' => productoInsumoTableClass::IVA)), 00009);
+//      $flag = true;
+//    }
+//    
+//    if (strlen($iva) > productoInsumoTableClass::IVA_LENGTH) {
+//      session::getInstance()->setError(i18n::__(00014, null, 'errors', array(':longitud' => productoInsumoTableClass::IVA_LENGTH)), 00014);
+//      $flag = true;
+//    } 
+//
+//    if (!preg_match($patron, $iva)) {
+//      session::getInstance()->setError(i18n::__(00010, null, 'errors', array(':no permite letras' => productoInsumoTableClass::IVA)), 00010);
+//      $flag = true;
+//       }
+////-----------------------validacion --------------------------------------------    
+//    if ($flag === true){
+//      request::getInstance()->setMethod('GET');
+//      routing::getInstance()->forward('productoInsumo', 'insertProductoInsumo');
+//    }
+//  }
 
 }

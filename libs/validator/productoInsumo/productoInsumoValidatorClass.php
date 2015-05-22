@@ -15,140 +15,114 @@ namespace mvc\validator {
     public static function validateInsert() {
       $flag = false;
       
-      if (self::notBlank(request::getInstance()->getPost(\manoObraTableClass::getNameField(\manoObraTableClass::CANTIDAD_HORA, true)))) {
-        $flag = true;
-        session::getInstance()->setFlash('inputCantidad', true);
-        session::getInstance()->setError('El nombre de usuario es requerido', 'inputCantidad');
-      } else if (is_numeric(request::getInstance()->getPost('inputCantidad'))) {
-        $flag = true;
-        session::getInstance()->setFlash('inputCantidad', true);
-        session::getInstance()->setError('El usuario no puede ser númerico', 'inputCantidad');
-      } else if(strlen(request::getInstance()->getPost('inputUser')) > \manoObraTableClass::CANTIDAD_HORA_LENGTH) {
-        $flag = true;
-        session::getInstance()->setFlash('inputCantidad', true);
-        session::getInstance()->setError('El usuario digitado es mayor en cantidad de caracteres a lo permitido', 'inputUser');
-      } else if(self::isUnique(\usuarioTableClass::ID, true, array(\usuarioTableClass::USER => request::getInstance()->getPost('inputUser')), \usuarioTableClass::getNameTable())) {
-        $flag = true;
-        session::getInstance()->setFlash('inputUser', true);
-        session::getInstance()->setError('El usuario digitado ya existe', 'inputUser');
-      }
-      if (self::notBlank(request::getInstance()->getPost('inputPass1')) or self::notBlank(request::getInstance()->getPost('inputPass2'))) {
-        $flag = true;
-        session::getInstance()->setFlash('inputPass', true);
-        session::getInstance()->setError('La contraseña es requerida', 'inputPass');
-      } else if (request::getInstance()->getPost('inputPass1') !== request::getInstance()->getPost('inputPass2')) {
-        $flag = true;
-        session::getInstance()->setFlash('inputPass', true);
-        session::getInstance()->setError('Las contraseñas no coinciden', 'inputPass');
-      }
+//      $soloNumeros = "/^[[:digit:]]+$/";
+      $soloLetras = "/^[a-z]+$/i";
+      $soloTelefono = "/^(\d{3,3}\-\d{3,3}\-\d{4,4})|^(\+\d\-\d{3,3}\-\d{4,4})/";
+      $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
       
-      if (self::notBlank(request::getInstance()->getPost('inputName'))) {
+      //-------------------------------campo descripcion-----------------------------
+          //----campo nulo----
+      if (self::notBlank(request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::DESCRIPCION, true)))) {
         $flag = true;
-        session::getInstance()->setFlash('inputName', true);
-        session::getInstance()->setError('El nombre del usuario es requerido', 'inputName');
-      } else if (is_numeric(request::getInstance()->getPost('inputName'))) {
+        session::getInstance()->setFlash('inputDescripcion', true);
+        session::getInstance()->setError('La descripcion del insumo es requerido', 'inputDescripcion');
+      } //----sobre pasar los caracteres----
+        else if(strlen(request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::DESCRIPCION, true))) > \productoInsumoTableClass::DESCRIPCION_LENGTH) {
         $flag = true;
-        session::getInstance()->setFlash('inputName', true);
-        session::getInstance()->setError('El nombre no puede ser númerico', 'inputName');
-      } else if (strlen(request::getInstance()->getPost('inputName')) > \datoUsuarioTableClass::NOMBRE_LENGTH) {
+        session::getInstance()->setFlash('inputDescripcion', true);
+        session::getInstance()->setError('La descripcion digitada es mayor en cantidad de caracteres a lo permitido', 'inputDescripcion');
+      } //-------------------------------campo iva-----------------------------
+          //----campo nulo----
+      if (self::notBlank(request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::IVA, true)))) {
         $flag = true;
-        session::getInstance()->setFlash('inputName', true);
-        session::getInstance()->setError('El nombre no puede exceder el número de caracteres permitido', 'inputName');
-      }
-      
-      if (self::notBlank(request::getInstance()->getPost('inputLastName'))) {
+        session::getInstance()->setFlash('inputIva', true);
+        session::getInstance()->setError('El iva del insumo es requerido', 'inputIva');
+        } //----sobre pasar los caracteres----
+        else if(strlen(request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::IVA, true))) > \productoInsumoTableClass::IVA_LENGTH) {
         $flag = true;
-        session::getInstance()->setFlash('inputLastName', true);
-        session::getInstance()->setError('El apellido del usuario es requerido', 'inputLastName');
-      } else if (is_numeric(request::getInstance()->getPost('inputLastName'))) {
+        session::getInstance()->setFlash('inputIva', true);
+        session::getInstance()->setError('El iva digitado es mayor en cantidad de caracteres a lo permitido', 'inputIva');
+      }  //----valida que sea numerico----      
+        else if (!is_numeric(request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::IVA, true)))) {
         $flag = true;
-        session::getInstance()->setFlash('inputLastName', true);
-        session::getInstance()->setError('El apellido no puede ser númerico', 'inputLastName');
-      } else if (strlen(request::getInstance()->getPost('inputLastName')) > \datoUsuarioTableClass::APELLIDOS_LENGTH) {
+        session::getInstance()->setFlash('inputIva', true);
+        session::getInstance()->setError('El iva no permite letras, solo numeros', 'inputIva');
+      }//-------------------------------campo unidad medida-----------------------------
+          //----campo nulo----
+      if (self::notBlank(request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::UNIDAD_MEDIDA_ID, true)))) {
         $flag = true;
-        session::getInstance()->setFlash('inputLastName', true);
-        session::getInstance()->setError('El apellido no puede exceder el número de caracteres permitido', 'inputLastName');
-      }
-      
-      if (self::notBlank(request::getInstance()->getPost('inputMovil'))) {
+        session::getInstance()->setFlash('selectUnidad', true);
+        session::getInstance()->setError('La unidad medida del insumo es requerido', 'selectUnidad');
+        }//-------------------------------campo tipo producto insumo-----------------------------
+          //----campo nulo----
+      if (self::notBlank(request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID, true)))) {
         $flag = true;
-        session::getInstance()->setFlash('inputMovil', true);
-        session::getInstance()->setError('El número de celular es requerido o cualquier otro número donde se le pueda contactar', 'inputMovil');
-      } else if (strlen(request::getInstance()->getPost('inputMovil')) > \datoUsuarioTableClass::MOVIL_LENGTH) {
-        $flag = true;
-        session::getInstance()->setFlash('inputMovil', true);
-        session::getInstance()->setError('El número de contacto no puede exceder el máximo de caracteres permitidos', 'inputMovil');
-      } else if (!preg_match('/^(\d{3,3}\-\d{3,3}\-\d{4,4})|^(\+\d\-\d{3,3}\-\d{4,4})/', trim(request::getInstance()->getPost('inputMovil')))) {
-        $flag = true;
-        session::getInstance()->setFlash('inputMovil', true);
-        session::getInstance()->setError('El número de contacto debe cumplir uno de estos patrones: ###-###-#### o +#-###-####', 'inputMovil');
-      }
-      
-      if (self::notBlank(request::getInstance()->getPost('inputEmail'))) {
-        $flag = true;
-        session::getInstance()->setFlash('inputEmail', true);
-        session::getInstance()->setError('El correo es obligatorio para el contacto por parte de la plataforma', 'inputEmail');
-      } else if (strlen(request::getInstance()->getPost('inputEmail')) > \datoUsuarioTableClass::CORREO_LENGTH) {
-        $flag = true;
-        session::getInstance()->setFlash('inputEmail', true);
-        session::getInstance()->setError('El correo no puede exceder el máximo de caracteres permitidos', 'inputEmail');
-      } else if (!preg_match("/([\w\.\-_]+)?\w+@[\w-_]+(\.\w+){1,}/", trim(request::getInstance()->getPost('inputEmail')))) {
-        $flag = true;
-        session::getInstance()->setFlash('inputEmail', true);
-        session::getInstance()->setError('Por favor digite un corre válido', 'inputEmail');
-      } else if(self::isUnique(\datoUsuarioTableClass::ID, true, array(\datoUsuarioTableClass::CORREO => trim(request::getInstance()->getPost('inputEmail'))), \datoUsuarioTableClass::getNameTable())) {
-        $flag = true;
-        session::getInstance()->setFlash('inputEmail', true);
-        session::getInstance()->setError('El correo digitado ya está siendo usado', 'inputEmail');
-      }
-      
-      if (self::notBlank(request::getInstance()->getPost('inputSexo'))) {
-        $flag = true;
-        session::getInstance()->setFlash('inputSexo', true);
-        session::getInstance()->setError('Debes selecionar un sexo', 'inputSexo');
-      } else if (!self::collection(trim(request::getInstance()->getPost('inputSexo')), array('t', 'f'))) {
-        $flag = true;
-        session::getInstance()->setFlash('inputSexo', true);
-        session::getInstance()->setError('La respuesta dada no es correcta', 'inputSexo');
-      }
-      
-      if (self::notBlank(request::getInstance()->getPost('inputAprendiz'))) {
-        $flag = true;
-        session::getInstance()->setFlash('inputAprendiz', true);
-        session::getInstance()->setError('Debes responder si eres un aprendiz o no', 'inputAprendiz');
-      } else if (!self::collection(trim(request::getInstance()->getPost('inputAprendiz')), array('true', 'false'))) {
-        $flag = true;
-        session::getInstance()->setFlash('inputAprendiz', true);
-        session::getInstance()->setError('La respuesta dada no es correcta', 'inputAprendiz');
-      }
-      
-      if (request::getInstance()->hasFile('inputFile')) {
-        $type = array(
-            'image/png',
-            'image/jpeg',
-            'image/jpg',
-            'image/gif'
-        );
-        if(request::getInstance()->getFile('inputFile')['error'] !== 0) {
-          $flag = true;
-          session::getInstance()->setFlash('inputFile', true);
-          session::getInstance()->setError('Ocurrio un error en la carga de la imágen, por favor vuelva a intentarlo', 'inputFile');
-        } else if ((array_search(request::getInstance()->getFile('inputFile')['type'], $type) === false)) {
-          $flag = true;
-          session::getInstance()->setFlash('inputFile', true);
-          session::getInstance()->setError('Solo se permiten imágenes del tipo jpg, png o gif', 'inputFile');
-        } else if (request::getInstance()->getFile('inputFile')['size'] > config::getFileSizeAvatar()) {
-          $flag = true;
-          session::getInstance()->setFlash('inputFile', true);
-          session::getInstance()->setError('Solo se permiten imágenes con un tamaño máximo de 150kB', 'inputFile');
-        } else if ($flag === true) {
-          session::getInstance()->setFlash('inputFile', true);
-          session::getInstance()->setError('Debido a errores en el formulario, por favor vuelve a cargar la imagen que vas a usar', 'inputFile');
+        session::getInstance()->setFlash('selectTipo', true);
+        session::getInstance()->setError('El tipo insumo del insumo es requerido', 'selectTipo');
         }
-      }
+      
+      //-------------------------------condiccion de bandera true-----------------------------
       if ($flag === true) {
         //request::getInstance()->setMethod('GET');
-        routing::getInstance()->forward('manoObra', 'insert');
+        routing::getInstance()->forward('productoInsumo', 'insertProductoInsumo');
+      }
+    }
+  
+  
+  public static function validateEdit() {
+       $flag = false;
+      
+//      $soloNumeros = "/^[[:digit:]]+$/";
+      $soloLetras = "/^[a-z]+$/i";
+      $soloTelefono = "/^(\d{3,3}\-\d{3,3}\-\d{4,4})|^(\+\d\-\d{3,3}\-\d{4,4})/";
+      $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
+      
+      //-------------------------------campo descripcion-----------------------------
+          //----campo nulo----
+      if (self::notBlank(request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::DESCRIPCION, true)))) {
+        $flag = true;
+        session::getInstance()->setFlash('inputDescripcion', true);
+        session::getInstance()->setError('La descripcion del insumo es requerido', 'inputDescripcion');
+      } //----sobre pasar los caracteres----
+        else if(strlen(request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::DESCRIPCION, true))) > \productoInsumoTableClass::DESCRIPCION_LENGTH) {
+        $flag = true;
+        session::getInstance()->setFlash('inputDescripcion', true);
+        session::getInstance()->setError('La descripcion digitada es mayor en cantidad de caracteres a lo permitido', 'inputDescripcion');
+      } //-------------------------------campo iva-----------------------------
+          //----campo nulo----
+      if (self::notBlank(request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::IVA, true)))) {
+        $flag = true;
+        session::getInstance()->setFlash('inputIva', true);
+        session::getInstance()->setError('El iva del insumo es requerido', 'inputIva');
+        } //----sobre pasar los caracteres----
+        else if(strlen(request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::IVA, true))) > \productoInsumoTableClass::IVA_LENGTH) {
+        $flag = true;
+        session::getInstance()->setFlash('inputIva', true);
+        session::getInstance()->setError('El iva digitado es mayor en cantidad de caracteres a lo permitido', 'inputIva');
+      }  //----valida que sea numerico----      
+        else if (!is_numeric(request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::IVA, true)))) {
+        $flag = true;
+        session::getInstance()->setFlash('inputIva', true);
+        session::getInstance()->setError('El iva no permite letras, solo numeros', 'inputIva');
+      }//-------------------------------campo unidad medida-----------------------------
+          //----campo nulo----
+      if (self::notBlank(request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::UNIDAD_MEDIDA_ID, true)))) {
+        $flag = true;
+        session::getInstance()->setFlash('selectUnidad', true);
+        session::getInstance()->setError('La unidad medida del insumo es requerido', 'selectUnidad');
+        }//-------------------------------campo tipo producto insumo-----------------------------
+          //----campo nulo----
+      if (self::notBlank(request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID, true)))) {
+        $flag = true;
+        session::getInstance()->setFlash('selectTipo', true);
+        session::getInstance()->setError('El tipo insumo del insumo es requerido', 'selectTipo');
+        }
+      //-------------------------------condiccion de bandera true-----------------------------
+      if ($flag === true) {
+        request::getInstance()->setMethod('GET');
+        request::getInstance()->addParamGet(array(\productoInsumoTableClass::ID => request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::ID, true))));
+        routing::getInstance()->forward('productoInsumo', 'editProductoInsumo');
+      
       }
     }
   }

@@ -283,7 +283,7 @@ namespace mvc\validator {
       if ($flag === true) {
         request::getInstance()->setMethod('GET');
         request::getInstance()->addParamGet(array(\proveedorTableClass::ID => request::getInstance()->getPost(\proveedorTableClass::getNameField(\proveedorTableClass::ID, true))));
-        routing::getInstance()->forward('maquina', 'insertProveedor');
+        routing::getInstance()->forward('maquina', 'editProveedor');
       }
     }
   }

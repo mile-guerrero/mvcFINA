@@ -317,7 +317,7 @@ namespace mvc\validator {
       if ($flag === true) {
         request::getInstance()->setMethod('GET');
         request::getInstance()->addParamGet(array(\trabajadorTableClass::ID => request::getInstance()->getPost(\trabajadorTableClass::getNameField(\trabajadorTableClass::ID, true))));
-        routing::getInstance()->forward('trabajador', 'insert');
+        routing::getInstance()->forward('trabajador', 'edit');
       }
     }
   }

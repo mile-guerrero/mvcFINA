@@ -70,6 +70,13 @@
       <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputDireccion') ?>
     </div>
     <?php endif ?> 
+    
+      <?php if(session::getInstance()->hasError('selectCiudad')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('selectCiudad') ?>
+    </div>
+    <?php endif ?> 
 
     <div class="form-group">
       <label for="<?php echo proveedorTableClass::getNameField(proveedorTableClass::DIRECCION, true) ?>" class="col-sm-2"> <?php echo i18n::__('dir') ?>: </label>     
@@ -77,15 +84,10 @@
         <input class="form-control-gonza1" value="<?php echo (session::getInstance()->hasFlash('inputDireccion') or request::getInstance()->hasPost(proveedorTableClass::getNameField(proveedorTableClass::DIRECCION, true))) ? request::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::DIRECCION, true)) : ((isset($objProveedor[0])) ? $objProveedor[0]->$direccion : '') ?>" type="text" name="<?php echo proveedorTableClass::getNameField(proveedorTableClass::DIRECCION, true) ?>" placeholder="<?php echo i18n::__('dir') ?>"required>
      
         
-        <?php if(session::getInstance()->hasError('selectCiudad')): ?>
-    <div class="alert alert-danger alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('selectCiudad') ?>
-    </div>
-    <?php endif ?> 
+      
         
            <select class="form-control-gonza2" id="<?php echo proveedorTableClass::getNameField(proveedorTableClass::ID, true)?>" name="<?php echo proveedorTableClass::getNameField(proveedorTableClass::ID_CIUDAD, true) ?>">
-            <option value="<?php echo (session::getInstance()->hasFlash('selectCiudad') or request::getInstance()->hasPost(proveedorTableClass::getNameField(proveedorTableClass::ID_CIUDAD, true))) ? request::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::ID_CIUDAD, true)) : ((isset($objProveedor[0])) ? $objProveedor[0]->$nomCiu : '') ?>" ><?php echo i18n::__('selectCiudad') ?></option>
+            <option value="<?php echo (session::getInstance()->hasFlash('selectCiudad') or request::getInstance()->hasPost(proveedorTableClass::getNameField(proveedorTableClass::ID_CIUDAD, true))) ? request::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::ID_CIUDAD, true)) : ((isset($objProveedor[0])) ? '' : '') ?>" ><?php echo i18n::__('selectCiudad') ?></option>
 <?php foreach ($objCiudad as $ciudad): ?>
             <option <?php echo (isset($objProveedor[0]->$ciudadId) === true and $objProveedor[0]->$ciudadId == $ciudad->$idCiudad) ? 'selected' : '' ?> value="<?php echo $ciudad->$idCiudad ?>"><?php echo $ciudad->$nomCiu ?></option>
 <?php endforeach; ?>

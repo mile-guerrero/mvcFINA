@@ -1,6 +1,8 @@
 <?php use mvc\routing\routingClass as routing ?>
 <?php use mvc\i18n\i18nClass as i18n ?>
-<?php use mvc\view\viewClass as view?>
+<?php use mvc\view\viewClass as view ?>
+<?php use mvc\session\sessionClass as session ?>
+<?php use mvc\request\requestClass as request ?>
 <?php $tipo = productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID ?>
 <?php $tipos = tipoProductoInsumoTableClass::ID ?>
 <?php $des_tipos = tipoProductoInsumoTableClass::DESCRIPCION ?>
@@ -16,27 +18,52 @@
   <?php if(isset($objPI)==true): ?>
   <input  name="<?php echo productoInsumoTableClass::getNameField(productoInsumoTableClass::ID,true) ?>" value="<?php echo $objPI[0]->$idPI ?>" type="hidden">
   <?php endif ?>
-    <?php view::includeHandlerMessage()?>
-  <br>
+   
+  
+  <?php if(session::getInstance()->hasError('inputDescripcion')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputDescripcion') ?>
+    </div>
+    <?php endif ?>
+  
+  
+  
    <div class="form-group">
       <label for="<?php echo productoInsumoTableClass::getNameField(productoInsumoTableClass::DESCRIPCION, true) ?>" class="col-sm-2">   <?php echo i18n::__('des') ?>: </label>     
       <div class="col-sm-10">
-        <input class="form-control" value="<?php echo ((isset($objPI)== true) ? $objPI[0]->$descripcion : '') ?>" type="text" name="<?php echo productoInsumoTableClass::getNameField(productoInsumoTableClass::DESCRIPCION, true) ?>" placeholder="<?php echo i18n::__('des') ?>" required>
+        <input class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputDescripcion') or request::getInstance()->hasPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::DESCRIPCION, true))) ? request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::DESCRIPCION, true)) : ((isset($objPI[0])) ? $objPI[0]->$descripcion : '') ?>" type="text" name="<?php echo productoInsumoTableClass::getNameField(productoInsumoTableClass::DESCRIPCION, true) ?>" placeholder="<?php echo i18n::__('des') ?>" required>
   </div>
 </div>
+  
+  <?php if(session::getInstance()->hasError('inputIva')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputIva') ?>
+    </div>
+    <?php endif ?>
   
    <div class="form-group">
       <label for="<?php echo productoInsumoTableClass::getNameField(productoInsumoTableClass::IVA, true) ?>" class="col-sm-2">    <?php echo i18n::__('iva') ?>: </label>     
       <div class="col-sm-10">
-        <input class="form-control" value="<?php echo ((isset($objPI)== true) ? $objPI[0]->$iva : '') ?>" type="text" name="<?php echo productoInsumoTableClass::getNameField(productoInsumoTableClass::IVA, true) ?>" placeholder="<?php echo i18n::__('iva') ?>" required>
+        <input class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputIva') or request::getInstance()->hasPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::IVA, true))) ? request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::IVA, true)) : ((isset($objPI[0])) ? $objPI[0]->$iva : '') ?>" type="text" name="<?php echo productoInsumoTableClass::getNameField(productoInsumoTableClass::IVA, true) ?>" placeholder="<?php echo i18n::__('iva') ?>" required>
    </div>
 </div>
+  
+  
+  <?php if(session::getInstance()->hasError('selectUnidad')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('selectUnidad') ?>
+    </div>
+    <?php endif ?>
+  
   
  <div class="form-group">
       <label for="<?php echo productoInsumoTableClass::getNameField(productoInsumoTableClass::UNIDAD_MEDIDA_ID, true) ?>" class="col-sm-2">   <?php echo i18n::__('unidad') ?>:  </label>
       <div class="col-sm-10"> 
         <select class="form-control" id="<?php productoInsumoTableClass::getNameField(productoInsumoTableClass::ID, true)?>" name="<?php echo productoInsumoTableClass::getNameField(productoInsumoTableClass::UNIDAD_MEDIDA_ID, true);?>">
-       <option><?php echo i18n::__('selectUnidad') ?></option>
+       <option value="<?php echo (session::getInstance()->hasFlash('selectUnidad') or request::getInstance()->hasPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::UNIDAD_MEDIDA_ID, true))) ? request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::UNIDAD_MEDIDA_ID, true)) : ((isset($objPI[0])) ? '' : '') ?>"  ><?php echo i18n::__('selectUnidad') ?></option>
        <?php foreach($objPIUM as $UM):?>
        <option <?php echo (isset($objPI[0]->$unidad) === true and $objPI[0]->$unidad == $UM->$unidades) ? 'selected' : '' ?> value="<?php echo $UM->$unidades?>"><?php echo $UM->$des_unidades?></option>
        <?php endforeach;?>
@@ -44,11 +71,20 @@
       </div> 
     </div> 
   
+  
+   <?php if(session::getInstance()->hasError('selectTipo')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('selectTipo') ?>
+    </div>
+    <?php endif ?>
+  
+  
  <div class="form-group">
       <label for="<?php echo productoInsumoTableClass::getNameField(productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID, true) ?>" class="col-sm-2">   <?php echo i18n::__('tipo') ?>:  </label>
       <div class="col-sm-10"> 
         <select class="form-control" id="<?php productoInsumoTableClass::getNameField(productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID, true)?>" name="<?php echo productoInsumoTableClass::getNameField(productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID, true);?>">
-       <option><?php echo i18n::__('selectTPI') ?></option>
+       <option value="<?php echo (session::getInstance()->hasFlash('selectTipo') or request::getInstance()->hasPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID, true))) ? request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID, true)) : ((isset($objPI[0])) ? '' : '') ?>" ><?php echo i18n::__('selectTPI') ?></option>
        <?php foreach($objPITPI as $TP):?>
        <option <?php echo (isset($objPI[0]->$tipo) === true and $objPI[0]->$tipo == $TP->$tipos) ? 'selected' : '' ?> value="<?php echo $TP->$tipos?>"><?php echo $TP->$des_tipos?></option>
        <?php endforeach;?>
