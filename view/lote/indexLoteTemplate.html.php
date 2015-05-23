@@ -51,6 +51,23 @@ use mvc\session\sessionClass as session ?>
           </div>
           <div class="modal-body">
             <form class="form-horizontal" id="filterForm" role="form" action="<?php echo routing::getInstance()->getUrlWeb('lote', 'indexLote') ?>" method="POST">
+              
+              <div class="form-group">
+                <label for="filterFechaIni" class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
+                <div class="col-sm-10">
+                  <input type="date" class="form-control" id="filterFechaIni" name="filter[fechaIni]" >
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label for="filterFechaFin" class="col-sm-2 control-label"><?php echo i18n::__('fecha fin') ?></label>
+                <div class="col-sm-10">
+                  <input type="date" class="form-control" id="filterFechaFin" name="filter[fechaFin]" >
+                </div>
+              </div>
+              
+              
+              
               <div class="form-group">
                 <label for="filterUbicacion" class="col-sm-2 control-label"><?php echo i18n::__('ubicacion') ?></label>
                 <div class="col-sm-10">
@@ -58,20 +75,40 @@ use mvc\session\sessionClass as session ?>
                 </div>
               </div>
 
-<!--              <div class="form-group">
-                <label for="filterDescripcion" class="col-sm-2 control-label"><?php echo i18n::__('des') ?></label>
+              
+               <div class="form-group">
+                <label for="filterTamanoIni" class="col-sm-2 control-label"><?php echo i18n::__('tamano') ?></label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="filterDescripcion" name="filter[descripcion]" placeholder="descripcion">
+                  <input type="text" class="form-control" id="filterTamanoIni" name="filter[tamanoIni]" placeholder="buscar por tamaño">
                 </div>
               </div>
-
+              
               <div class="form-group">
-                <label for="filterTamano" class="col-sm-2 control-label"><?php echo i18n::__('tamano') ?></label>
+                <label for="filterTamanoFin" class="col-sm-2 control-label"><?php echo i18n::__('tamano') ?></label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="filterTamano" name="filter[tamano]" placeholder="Tamano">
+                  <input type="text" class="form-control" id="filterTamanoFin" name="filter[tamanoFin]" placeholder="buscar por tamaño">
                 </div>
               </div>
-
+              
+              
+              <div class="form-group">
+                <label for="filterFechaIniSiembra" class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
+                <div class="col-sm-10">
+                  <input type="date" class="form-control" id="filterFechaIniSiembra" name="filter[fechaSI]" >
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label for="filterFechaFinSiembra" class="col-sm-2 control-label"><?php echo i18n::__('fecha fin') ?></label>
+                <div class="col-sm-10">
+                  <input type="date" class="form-control" id="filterFechaFinSiembra" name="filter[fechaSF]" >
+                </div>
+              </div>
+                         
+              
+              
+                          
+       <!--
 
               <div class="form-group">
                 <label for="filterCiudad" class="col-sm-2 control-label"><?php echo i18n::__('idCiudad') ?></label>
@@ -82,34 +119,6 @@ use mvc\session\sessionClass as session ?>
                       <option value="<?php echo $ciudad->$idCiudaddes ?>"><?php echo $ciudad->$descripcionciudad ?></option>
 <?php endforeach; ?>
                   </select>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
-                <div class="col-sm-10">
-                  <input type="date" class="form-control" id="filterFechaIni" name="filter[fechaIni]" >
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label  class="col-sm-2 control-label"><?php echo i18n::__('fecha fin') ?></label>
-                <div class="col-sm-10">
-                  <input type="date" class="form-control" id="filterFechaFin" name="filter[fechaFin]" >
-                </div>
-              </div>
-              
-              <div class="form-group">
-                <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
-                <div class="col-sm-10">
-                  <input type="date" class="form-control" id="filterFechaIni" name="filter[fechaIni1]" >
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label  class="col-sm-2 control-label"><?php echo i18n::__('fecha fin') ?></label>
-                <div class="col-sm-10">
-                  <input type="date" class="form-control" id="filterFechaFin" name="filter[fechaFin2]" >
                 </div>
               </div>-->
 

@@ -69,38 +69,5 @@ class loteTableClass extends loteBaseTableClass {
       throw $exc;
     }
   }
-
   
-  
-  public static function loteFiltro($fil,$campo) {
-    try {
-      
-      $sql = 'SELECT ' .  $campo  . '  as ' . loteTableClass::UBICACION . ', id as ' . loteTableClass::ID . ' '
-              . 'FROM' . '  ' . loteTableClass::getNameTable() . '  '
-              . '  WHERE ' . '  ' . loteTableClass::UBICACION . '  ' . 'LIKE' . '   ' . ':name1' . '   '
-              . 'OR' . '   ' . loteTableClass::UBICACION . '   ' . 'LIKE' . '   ' . ':name2' . '   '
-              . 'OR' . '   ' . loteTableClass::UBICACION . '   ' . 'LIKE' . '   ' . ':name3';
-
-      $params = array(
-          ':name1' => $fil . '%',
-          ':name2' => '%' . $fil . '%',
-          ':name3' => '%' . $fil
-      );
-
-      $answer = model::getInstance()->prepare($sql);
-      $answer->execute($params);
-      $answer = $answer->fetchAll(PDO::FETCH_OBJ);
-      return count($answer) > 0 ? $answer : false;
-      
-//        session::getInstance()->setFlash('mvcSQL', $sql);
-     echo ($answer[0]->ubicacion);
-
-        exit();
-      //SELECT ubicacion as descripcion FROM lote WHERE ubicacion LIKE :name1 OR ubicacion LIKE :name2 OR ubicacion LIKE :name3
-//      return ($answer[0]->ubicacion);
-      } catch (PDOException $exc) {
-      throw $exc;
-    }
-  }
-
 }

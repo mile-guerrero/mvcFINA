@@ -25,39 +25,36 @@ class indexLoteActionClass extends controllerClass implements controllerActionIn
       if(isset($filter['ubicacion']) and $filter['ubicacion'] !== null and $filter['ubicacion'] !== ""){
          $where[] = loteTableClass::getNameField(loteTableClass::UBICACION) . ' LIKE ' . '\'' . $filter['ubicacion'] . '%\'  '
               . 'OR ' . loteTableClass::getNameField(loteTableClass::UBICACION) . ' LIKE ' . '\'%' . $filter['ubicacion'] . '%\' '
-              . 'OR ' . loteTableClass::getNameField(loteTableClass::UBICACION) . ' LIKE ' . '\'%' . $filter['ubicacion'].'\' ';
-
-          
+              . 'OR ' . loteTableClass::getNameField(loteTableClass::UBICACION) . ' LIKE ' . '\'%' . $filter['ubicacion'].'\' ';       
+              }
+              
+      if((isset($filter['tamanoIni']) and $filter['tamanoIni'] !== null and $filter['tamanoIni'] !== "") and (isset($filter['tamanoFin']) and $filter['tamanoFin'] !== null and $filter['tamanoFin'] !== "" )){
+        $where[loteTableClass::TAMANO] = array(
+           $filter['tamanoIni'],
+           $filter['tamanoFin']
+            );
+      }       
+              
+      if((isset($filter['fechaIni']) and $filter['fechaIni'] !== null and $filter['fechaIni'] !== "") and (isset($filter['fechaFin']) and $filter['fechaFin'] !== null and $filter['fechaFin'] !== "" )){
+        $where[loteTableClass::CREATED_AT] = array(
+           date(config::getFormatTimestamp(), strtotime($filter['fechaIni'].' 00:00:00')),
+           date(config::getFormatTimestamp(), strtotime($filter['fechaFin'].' 23:59:59'))
+            );
+        } 
+        
+        if((isset($filter['fechaSI']) and $filter['fechaSI'] !== null and $filter['fechaSI'] !== "") and (isset($filter['fechaSF']) and $filter['fechaSF'] !== null and $filter['fechaSF'] !== "" )){
+        $where[loteTableClass::FECHA_INICIO_SIEMBRA] = array(
+           date(config::getFormatTimestamp(), strtotime($filter['fechaSI'].' 00:00:00')),
+           date(config::getFormatTimestamp(), strtotime($filter['fechaSF'].' 23:59:59'))
+            );
+        } 
       
-        
-//          print_r($where);
-//          exit();
-//          
-//          [loteTableClass::UBICACION] = $filter['ubicacion'] ;
-//          
-//          
-//        '  ' . loteTableClass::UBICACION . '  ' . 'LIKE' . '   ' . $filter['ubicacion'] . '%   '
-//              . 'OR' . '   ' . loteTableClass::UBICACION . '   ' . 'LIKE' . '   %' . $filter['ubicacion'] . '%   '
-//              . 'OR' . '   ' . loteTableClass::UBICACION . '   ' . 'LIKE' . '   %' . $filter['ubicacion'];
-        
-        
-      }
-//      if(isset($filter['tamano']) and $filter['tamano'] !== null and $filter['tamano'] !== ""){
-//        $where[loteTableClass::TAMANO] = $filter['tamano'];
-//      }
-//      if(isset($filter['descripcion']) and $filter['descripcion'] !== null and $filter['descripcion'] !== ""){
-//        $where[loteTableClass::DESCRIPCION] = $filter['descripcion'];
-//      }
+      
 //      if(isset($filter['ciudad']) and $filter['ciudad'] !== null and $filter['ciudad'] !== ""){
 //        $where[loteTableClass::ID_CIUDAD] = $filter['ciudad'];
 //      }
 //       
-//      if((isset($filter['fechaIni']) and $filter['fechaIni'] !== null and $filter['fechaIni'] !== "") and (isset($filter['fechaFin']) and $filter['fechaFin'] !== null and $filter['fechaFin'] !== "" )){
-//        $where[loteTableClass::CREATED_AT] = array(
-//           date(config::getFormatTimestamp(), strtotime($filter['fechaIni'].' 00:00:00')),
-//           date(config::getFormatTimestamp(), strtotime($filter['fechaFin'].' 23:59:59'))
-//            );
-//      }     
+//           
       }
       
       $fields = array(
