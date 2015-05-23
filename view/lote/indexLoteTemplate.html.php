@@ -50,11 +50,11 @@ use mvc\session\sessionClass as session ?>
             <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('filtros') ?></h4>
           </div>
           <div class="modal-body">
-            <form class="form-horizontal" id="filterForm" role="form" action="<?php echo routing::getInstance()->getUrlWeb('lote', 'filtroLote') ?>" method="POST">
+            <form class="form-horizontal" id="filterForm" role="form" action="<?php echo routing::getInstance()->getUrlWeb('lote', 'indexLote') ?>" method="POST">
               <div class="form-group">
                 <label for="filterUbicacion" class="col-sm-2 control-label"><?php echo i18n::__('ubicacion') ?></label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="filterUbicacion" name="ubicacion" placeholder="buscar por ubicacion">
+                  <input type="text" class="form-control" id="filterUbicacion" name="filter[ubicacion]" placeholder="buscar por ubicacion">
                 </div>
               </div>
 

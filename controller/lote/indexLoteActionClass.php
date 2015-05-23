@@ -19,6 +19,46 @@ class indexLoteActionClass extends controllerClass implements controllerActionIn
     try {
       
       $where = null;
+      if(request::getInstance()->hasPost('filter')){
+      $filter = request::getInstance()->getPost('filter');
+      //validar
+      if(isset($filter['ubicacion']) and $filter['ubicacion'] !== null and $filter['ubicacion'] !== ""){
+         $where[] = loteTableClass::getNameField(loteTableClass::UBICACION) . ' LIKE ' . '\'' . $filter['ubicacion'] . '%\'  '
+              . 'OR ' . loteTableClass::getNameField(loteTableClass::UBICACION) . ' LIKE ' . '\'%' . $filter['ubicacion'] . '%\' '
+              . 'OR ' . loteTableClass::getNameField(loteTableClass::UBICACION) . ' LIKE ' . '\'%' . $filter['ubicacion'].'\' ';
+
+          
+      
+        
+//          print_r($where);
+//          exit();
+//          
+//          [loteTableClass::UBICACION] = $filter['ubicacion'] ;
+//          
+//          
+//        '  ' . loteTableClass::UBICACION . '  ' . 'LIKE' . '   ' . $filter['ubicacion'] . '%   '
+//              . 'OR' . '   ' . loteTableClass::UBICACION . '   ' . 'LIKE' . '   %' . $filter['ubicacion'] . '%   '
+//              . 'OR' . '   ' . loteTableClass::UBICACION . '   ' . 'LIKE' . '   %' . $filter['ubicacion'];
+        
+        
+      }
+//      if(isset($filter['tamano']) and $filter['tamano'] !== null and $filter['tamano'] !== ""){
+//        $where[loteTableClass::TAMANO] = $filter['tamano'];
+//      }
+//      if(isset($filter['descripcion']) and $filter['descripcion'] !== null and $filter['descripcion'] !== ""){
+//        $where[loteTableClass::DESCRIPCION] = $filter['descripcion'];
+//      }
+//      if(isset($filter['ciudad']) and $filter['ciudad'] !== null and $filter['ciudad'] !== ""){
+//        $where[loteTableClass::ID_CIUDAD] = $filter['ciudad'];
+//      }
+//       
+//      if((isset($filter['fechaIni']) and $filter['fechaIni'] !== null and $filter['fechaIni'] !== "") and (isset($filter['fechaFin']) and $filter['fechaFin'] !== null and $filter['fechaFin'] !== "" )){
+//        $where[loteTableClass::CREATED_AT] = array(
+//           date(config::getFormatTimestamp(), strtotime($filter['fechaIni'].' 00:00:00')),
+//           date(config::getFormatTimestamp(), strtotime($filter['fechaFin'].' 23:59:59'))
+//            );
+//      }     
+      }
       
       $fields = array(
           loteTableClass::ID,
@@ -46,7 +86,6 @@ class indexLoteActionClass extends controllerClass implements controllerActionIn
       $this->cntPages = loteTableClass::getTotalPages(config::getRowGrid());
       
       $this->objLote = loteTableClass::getAll($fields, true, $orderBy, 'ASC',config::getRowGrid(), $page,$where);
-     
       
       $fields = array(     
       unidadDistanciaTableClass::ID, 

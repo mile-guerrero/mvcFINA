@@ -236,8 +236,18 @@ namespace mvc\model\table {
         if ($limit !== null and $offset !== null) {
           $sql = $sql . ' LIMIT ' . $limit . ' OFFSET ' . $offset;
         }
-
-        return model::getInstance()->query($sql)->fetchAll(\PDO::FETCH_OBJ);
+        
+        
+    
+      
+//      print_r($sql);
+//          exit();
+        //SELECT lote.id, lote.ubicacion FROM lote WHERE lote.deleted_at IS NULL AND ubicacion LIKE prueva% OR ubicacion LIKE %prueva% OR ubicacion LIKE %prueva ORDER BY lote.id ASC LIMIT 5 OFFSET 0
+       // SELECT lote.id, lote.ubicacion FROM lote WHERE lote.deleted_at IS NULL AND ubicacion LIKE villa% OR ubicacion LIKE %villa% OR ubicacion LIKE %villa AND ORDER BY lote.id ASC LIMIT 5 OFFSET 0
+        
+          
+          return model::getInstance()->query($sql)->fetchAll(\PDO::FETCH_OBJ);
+      
       } catch (\PDOException $exc) {
         throw $exc;
       }

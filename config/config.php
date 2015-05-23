@@ -32,7 +32,7 @@ if (config::getDbUnixSocket() !== null) {
 config::setPathAbsolute('c:/xampp/htdocs/mvcfinal/');
 config::setUrlBase('http://localhost/mvcfinal/web/');
 
-config::setScope('prod'); // prod
+config::setScope('prod'); // prod  dev
 
 if (session::getInstance()->hasDefaultCulture() === false) {
   config::setDefaultCulture('es');
