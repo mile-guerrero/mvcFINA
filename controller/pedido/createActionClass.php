@@ -7,6 +7,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+use mvc\validator\pedidoValidatorClass as validator;
 
 /**
  * Description of ejemploClass
@@ -24,10 +25,7 @@ class createActionClass extends controllerClass implements controllerActionInter
         $cantidad = request::getInstance()->getPost(pedidoTableClass::getNameField(pedidoTableClass::CANTIDAD, true));
         $idProducto = request::getInstance()->getPost(pedidoTableClass::getNameField(pedidoTableClass::PRODUCTO_INSUMO_ID, true));
         
-//        if (strlen($nombre) > credencialTableClass::NOMBRE_LENGTH) {
-//          throw new PDOException(i18n::__(00001, null, 'errors', array(':longitud' => credencialTableClass::NOMBRE_LENGTH)), 00001);
-//        }
-        $this->validate($cantidad);
+        validator::validateInsert();
 
         $data = array(
             pedidoTableClass::EMPRESA_ID => $idEmpresa,
@@ -47,32 +45,4 @@ class createActionClass extends controllerClass implements controllerActionInter
       session::getInstance()->setFlash('exc', $exc);
     }
   }
-
-public function validate($cantidad) {
-
-    $flag = false;
-    $patron = "/^[[:digit:]]+$/";
-//---------------------validacion descripcion----------------------------------- 
-    
-    if (strlen($cantidad) > pedidoTableClass::CANTIDAD_LENGTH) {
-      session::getInstance()->setError(i18n::__(00004, null, 'errors', array(':longitud' => pedidoTableClass::CANTIDAD_LENGTH)), 00004);
-      $flag = true;
-    } 
-    
-    if (!is_numeric($cantidad) == "" ) {
-      session::getInstance()->setError(i18n::__(00009, null, 'errors', array(':campo vacio' => pedidoTableClass::CANTIDAD_LENGTH)), 00009);
-      $flag = true;
-    }
-    
-    if (!preg_match($patron, $cantidad)) {
-      session::getInstance()->setError(i18n::__(00010, null, 'errors', array(':numeros' => $cantidad)), 00010);
-      $flag = true;
-       }
-//-----------------------validacion --------------------------------------------    
-    if ($flag === true){
-      request::getInstance()->setMethod('GET');
-      routing::getInstance()->forward('pedido', 'insert');
-    }
-  }
-
 }

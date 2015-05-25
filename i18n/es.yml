@@ -78,6 +78,7 @@ dictionary:
     nuevo:                Nuevo
     cliente:              Cliente
     editar cliente:       Editar Cliente
+    editar pedido:        Editar Pedido
     nuevo cliente:        Nuevo Cliente
     nuevo proveedor:      Nuevo Proveedor
     acciones:             Acciones
@@ -129,6 +130,11 @@ dictionary:
     pro:                  ProveedorId 
     nomProveedor:         Proveedor
     empresa:              Empresa
+    nuevaMano:            New Mano de Obra
+    editarMano:           Edit Mano de Obra
+    manoObra:             Mano de Obra
+    cooperativa:          Cooperativa
+    labor:                Labor
     selectEmpresa:        Seleccione la Empresa
     selectProveedor:      Seleccione el Proveedor
     selectProducto:       Seleccione el Producto
@@ -188,5 +194,6 @@ dictionary:
     00016:                El numero de telefono es incorrecto
     00017:                El email es incorrecto 
     00018:                Las password no coinciden 
-    00019:                El telefono excede la longitud permitida 
+    00019:                El telefono excede la longitud permitida
+    00020:                Ya existe el correo (:email)
     

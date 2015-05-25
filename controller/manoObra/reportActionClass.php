@@ -7,6 +7,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+use mvc\validator\manoObraValidatorClass as validator;
 
 /**
  * Description of ejemploClass
@@ -27,9 +28,9 @@ class reportActionClass extends controllerClass implements controllerActionInter
 //            $where[manoObraTableClass::CANTIDAD_HORA] = $report['cantidad'];
 //            session::getInstance()->setError(i18n::__(00010, null, 'errors', array(':numeros' => manoObraTableClass::CANTIDAD_HORA)), 00010);
 //            $flag = true;
-          if (!is_numeric('cantidad')) {
-            session::getInstance()->setError(i18n::__(00010, null, 'errors', array(':numeros' => 'cantidad')), 00010);
-       }
+//          if (!is_numeric('cantidad')) {
+//            session::getInstance()->setError(i18n::__(00010, null, 'errors', array(':numeros' => 'cantidad')), 00010);
+//       }
        
 //        if (isset($report['trabajador']) and $report['trabajador'] !== null and $report['trabajador'] !== '') {
 //          $where[manoObraTableClass::TRABAJADOR_ID] = $report['trabajador'];
@@ -47,6 +48,7 @@ class reportActionClass extends controllerClass implements controllerActionInter
       }
 //      $cantidad = 'cantidad';
 //      $this->validate($cantidad);
+      validator::validateInsert();
       $this->mensaje = 'Informacion de la Mano de Obra';
       $fields = array(
           manoObraTableClass::ID,

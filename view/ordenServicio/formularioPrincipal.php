@@ -1,6 +1,9 @@
 <?php use mvc\routing\routingClass as routing ?>
 <?php use mvc\i18n\i18nClass as i18n ?>
 <?php use mvc\view\viewClass as view?>
+<?php use mvc\session\sessionClass as session ?>
+<?php use mvc\request\requestClass as request ?>
+
 <?php $idOS = ordenServicioTableClass::ID ?>
 <?php $fecha = ordenServicioTableClass::FECHA_MANTENIMIENTO ?>
 <?php $cantidad = ordenServicioTableClass::CANTIDAD ?>
@@ -20,7 +23,9 @@
   <?php if(isset($objOS)== true): ?>
   <input  name="<?php echo ordenServicioTableClass::getNameField(ordenServicioTableClass::ID, true) ?>" value="<?php echo $objOS[0]->$idOS ?>" type="hidden">
   <?php endif ?>
-  <?php view::includeHandlerMessage()?>
+  
+  
+  
   <br>
   <div class="form-group">
       <label for="<?php echo ordenServiciotableClass::getNameField(ordenServicioTableClass::FECHA_MANTENIMIENTO, true) ?>" class="col-sm-2"> <?php echo i18n::__('fecha_M') ?>:</label>     
@@ -29,18 +34,31 @@
       </div>
   </div>
   
+  <?php if(session::getInstance()->hasError('inputCantidad')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputCantidad') ?>
+    </div>
+    <?php endif ?>
+  
   <div class="form-group">
       <label for="<?php echo ordenServiciotableClass::getNameField(ordenServicioTableClass::CANTIDAD, true) ?>" class="col-sm-2"> <?php echo i18n::__('cantidad') ?>:</label>     
       <div class="col-sm-10">
-          <input  class="form-control" value="<?php echo ((isset($objOS)== true) ? $objOS[0]->$cantidad : '') ?>" type="text" name="<?php echo ordenServicioTableClass::getNameField(ordenServicioTableClass::CANTIDAD, true) ?>" placeholder="<?php echo i18n::__('cantidad') ?>">
+          <input  class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputCantidad') or request::getInstance()->hasPost(ordenServiciotableClass::getNameField(ordenServiciotableClass::CANTIDAD, true))) ? request::getInstance()->getPost(ordenServiciotableClass::getNameField(ordenServiciotableClass::CANTIDAD, true)) : ((isset($objOS[0])) ? $objOS[0]->$cantidad : '') ?>" type="text" name="<?php echo ordenServicioTableClass::getNameField(ordenServicioTableClass::CANTIDAD, true) ?>" placeholder="<?php echo i18n::__('cantidad') ?>">
       </div>
   </div>
   
+  <?php if(session::getInstance()->hasError('inputValor')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputValor') ?>
+    </div>
+    <?php endif ?>
   
   <div class="form-group">
       <label for="<?php echo ordenServiciotableClass::getNameField(ordenServicioTableClass::VALOR, true) ?>" class="col-sm-2"> <?php echo i18n::__('valor') ?>:</label>     
       <div class="col-sm-10">
-          <input  class="form-control" value="<?php echo ((isset($objOS)== true) ? $objOS[0]->$valor : '') ?>" type="text" name="<?php echo ordenServicioTableClass::getNameField(ordenServicioTableClass::VALOR, true) ?>" placeholder="<?php echo i18n::__('valor') ?>">
+          <input  class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputValor') or request::getInstance()->hasPost(ordenServiciotableClass::getNameField(ordenServiciotableClass::VALOR, true))) ? request::getInstance()->getPost(ordenServiciotableClass::getNameField(ordenServiciotableClass::VALOR, true)) : ((isset($objOS[0])) ? $objOS[0]->$valor : '') ?>" type="text" name="<?php echo ordenServicioTableClass::getNameField(ordenServicioTableClass::VALOR, true) ?>" placeholder="<?php echo i18n::__('valor') ?>">
       </div>
   </div>
   

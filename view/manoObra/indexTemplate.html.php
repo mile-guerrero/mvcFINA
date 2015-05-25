@@ -137,7 +137,7 @@
       <table id="tabla" class="table table-bordered table-responsive">
         <thead>
           <tr>
-          <th>
+          <th id="cuadrito">
             <input type="checkbox" id="chkAll">
           </th>
             <th>

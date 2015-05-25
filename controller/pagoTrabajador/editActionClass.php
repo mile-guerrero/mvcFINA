@@ -18,7 +18,7 @@ class editActionClass extends controllerClass implements controllerActionInterfa
   public function execute() {
     try {
    
-      if (request::getInstance()->hasRequest(pagoTrabajadorTableClass::ID)) {
+      if (request::getInstance()->hasGet(pagoTrabajadorTableClass::ID)) {
         $fields = array(
           pagoTrabajadorTableClass::ID,
           pagoTrabajadorTableClass::FECHA_INICIAL,
@@ -32,7 +32,7 @@ class editActionClass extends controllerClass implements controllerActionInterfa
           pagoTrabajadorTableClass::TOTAL_PAGAR
         );
         $where = array(
-            pagoTrabajadorTableClass::ID => request::getInstance()->getRequest(pagoTrabajadorTableClass::ID)
+            pagoTrabajadorTableClass::ID => request::getInstance()->getGet(pagoTrabajadorTableClass::ID)
         );
         $this->objPagoT = pagoTrabajadorTableClass::getAll($fields, false, null, null, null, null, $where);
         

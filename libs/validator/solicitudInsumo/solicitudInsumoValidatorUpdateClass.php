@@ -11,19 +11,19 @@ namespace mvc\validator {
    *
    * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
    */
-  class pedidoValidatorClass extends validatorClass {
-    public static function validateInsert() {
+  class solicitudInsumoValidatorUpdateClass extends validatorClass {
+    public static function validateUpdate() {
       $flag = false;
       
-      if (self::notBlank(request::getInstance()->getPost(\pedidoTableClass::getNameField(\pedidoTableClass::CANTIDAD, true)))) {
+      if (self::notBlank(request::getInstance()->getPost(\solicitudInsumoTableClass::getNameField(\solicitudInsumoTableClass::CANTIDAD, true)))) {
         $flag = true;
         session::getInstance()->setFlash('inputCantidad', true);
         session::getInstance()->setError('La cantidad es requerida', 'inputCantidad');
-      } else if (!is_numeric(request::getInstance()->getPost(\pedidoTableClass::getNameField(\pedidoTableClass::CANTIDAD, true)))) {
+      } else if (!is_numeric(request::getInstance()->getPost(\solicitudInsumoTableClass::getNameField(\solicitudInsumoTableClass::CANTIDAD, true)))) {
         $flag = true;
         session::getInstance()->setFlash('inputCantidad', true);
         session::getInstance()->setError('La cantidad no puede ser letras', 'inputCantidad');
-      } else if(strlen(request::getInstance()->getPost(\pedidoTableClass::getNameField(\pedidoTableClass::CANTIDAD, true))) > \pedidoTableClass::CANTIDAD) {
+      } else if(strlen(request::getInstance()->getPost(\solicitudInsumoTableClass::getNameField(\solicitudInsumoTableClass::CANTIDAD, true))) > \solicitudInsumoTableClass::CANTIDAD) {
         $flag = true;
         session::getInstance()->setFlash('inputCantidad', true);
         session::getInstance()->setError('La catidad digitado sobre pasa los caracteres permitidos', 'inputCantidad');
@@ -71,8 +71,9 @@ namespace mvc\validator {
         }
       
       if ($flag === true) {
-        //request::getInstance()->setMethod('GET');
-        routing::getInstance()->forward('pedido', 'insert');
+        request::getInstance()->setMethod('GET');
+        request::getInstance()->addParamGet(array(\solicitudInsumoTableClass::ID => request::getInstance()->getPost(\solicitudInsumoTableClass::getNameField(\solicitudInsumoTableClass::ID, true))));
+        routing::getInstance()->forward('solicitudInsumo', 'edit');
       }
     }
   }

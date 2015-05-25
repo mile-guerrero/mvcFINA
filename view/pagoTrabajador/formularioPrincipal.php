@@ -1,6 +1,9 @@
 <?php use mvc\routing\routingClass as routing ?>
 <?php use mvc\i18n\i18nClass as i18n ?>
 <?php use mvc\view\viewClass as view?>
+<?php use mvc\session\sessionClass as session ?>
+<?php use mvc\request\requestClass as request ?>
+
 <?php $idEmp = pagoTrabajadorTableClass::EMPRESA_ID?>
 <?php $idEmpresa = empresaTableClass::ID?>
 <?php $nomEmpresa = empresaTableClass::NOMBRE?>
@@ -22,7 +25,6 @@
     <input  name="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::ID, true) ?>" value="<?php echo $objPagoT[0]->$idPagoT ?>" type="hidden">
     <?php endif ?>
     
-    <?php view::includeHandlerMessage()?>
     <br>
      <div class="form-group">
        <label for="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::FECHA_INICIAL, true) ?>" class="col-sm-2"><?php echo i18n::__('fechaPagoIni') ?>:</label>     
@@ -38,38 +40,73 @@
       </div>
   </div>
     
+    <?php if(session::getInstance()->hasError('inputValor')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputValor') ?>
+    </div>
+    <?php endif ?>
+    
     <div class="form-group">
        <label for="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::VALOR_SALARIO, true) ?>" class="col-sm-2"><?php echo i18n::__('valor') ?>:</label>     
       <div class="col-sm-10">
-          <input  class="form-control" value="<?php echo ((isset($objPagoT)== true) ? $objPagoT[0]->$valor : '') ?>" type="text" name="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::VALOR_SALARIO, true) ?>" placeholder="<?php echo i18n::__('valor') ?>">
+          <input  class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputValor') or request::getInstance()->hasPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::VALOR_SALARIO, true))) ? request::getInstance()->getPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::VALOR_SALARIO, true)) : ((isset($objPagoT[0])) ? $objPagoT[0]->$valor : '') ?>" type="text" name="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::VALOR_SALARIO, true) ?>" placeholder="<?php echo i18n::__('valor') ?>">
       </div>
   </div>
+    
+    <?php if(session::getInstance()->hasError('inputCantidad')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputCantidad') ?>
+    </div>
+    <?php endif ?>
     
     <div class="form-group">
        <label for="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::CANTIDAD_HORAS_EXTRAS, true) ?>" class="col-sm-2"><?php echo i18n::__('cantidad') ?>:</label>     
       <div class="col-sm-10">
-          <input  class="form-control" value="<?php echo ((isset($objPagoT)== true) ? $objPagoT[0]->$cantidad : '') ?>" type="text" name="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::CANTIDAD_HORAS_EXTRAS, true) ?>" placeholder="<?php echo i18n::__('cantidad') ?>">
+          <input  class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputCantidad') or request::getInstance()->hasPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::CANTIDAD_HORAS_EXTRAS, true))) ? request::getInstance()->getPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::CANTIDAD_HORAS_EXTRAS, true)) : ((isset($objPagoT[0])) ? $objPagoT[0]->$cantidad : '') ?>" type="text" name="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::CANTIDAD_HORAS_EXTRAS, true) ?>" placeholder="<?php echo i18n::__('cantidad') ?>">
       </div>
   </div>
+    
+    <?php if(session::getInstance()->hasError('inputHoras')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputHoras') ?>
+    </div>
+    <?php endif ?>
     
     <div class="form-group">
        <label for="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::VALOR_HORAS_EXTRAS, true) ?>" class="col-sm-2"><?php echo i18n::__('horasExtras') ?>:</label>     
       <div class="col-sm-10">
-          <input  class="form-control" value="<?php echo ((isset($objPagoT)== true) ? $objPagoT[0]->$valorHoras : '') ?>" type="text" name="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::VALOR_HORAS_EXTRAS, true) ?>" placeholder="<?php echo i18n::__('horasExtras') ?>">
+          <input  class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputHoras') or request::getInstance()->hasPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::VALOR_HORAS_EXTRAS, true))) ? request::getInstance()->getPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::VALOR_HORAS_EXTRAS, true)) : ((isset($objPagoT[0])) ? $objPagoT[0]->$valorHoras : '') ?>" type="text" name="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::VALOR_HORAS_EXTRAS, true) ?>" placeholder="<?php echo i18n::__('horasExtras') ?>">
       </div>
   </div>
+    
+    <?php if(session::getInstance()->hasError('inputHorasPerdidas')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputHorasPerdidas') ?>
+    </div>
+    <?php endif ?>
     
     <div class="form-group">
        <label for="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::HORAS_PERDIDAS, true) ?>" class="col-sm-2"><?php echo i18n::__('horasPerdidas') ?>:</label>     
       <div class="col-sm-10">
-          <input  class="form-control" value="<?php echo ((isset($objPagoT)== true) ? $objPagoT[0]->$horas : '') ?>" type="text" name="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::HORAS_PERDIDAS, true) ?>" placeholder="<?php echo i18n::__('horasPerdidas') ?>">
+          <input  class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputHorasPerdidas') or request::getInstance()->hasPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::HORAS_PERDIDAS, true))) ? request::getInstance()->getPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::HORAS_PERDIDAS, true)) : ((isset($objPagoT[0])) ? $objPagoT[0]->$horas : '') ?>" type="text" name="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::HORAS_PERDIDAS, true) ?>" placeholder="<?php echo i18n::__('horasPerdidas') ?>">
       </div>
   </div>
+    
+     <?php if(session::getInstance()->hasError('inputTotal')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputTotal') ?>
+    </div>
+    <?php endif ?>
     
     <div class="form-group">
        <label for="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::TOTAL_PAGAR, true) ?>" class="col-sm-2"><?php echo i18n::__('totalPagar') ?>:</label>     
       <div class="col-sm-10">
-          <input  class="form-control" value="<?php echo ((isset($objPagoT)== true) ? $objPagoT[0]->$total : '') ?>" type="text" name="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::TOTAL_PAGAR, true) ?>" placeholder="<?php echo i18n::__('totalPagar') ?>">
+          <input  class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputTotal') or request::getInstance()->hasPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::TOTAL_PAGAR, true))) ? request::getInstance()->getPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::TOTAL_PAGAR, true)) : ((isset($objPagoT[0])) ? $objPagoT[0]->$total : '') ?>" type="text" name="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::TOTAL_PAGAR, true) ?>" placeholder="<?php echo i18n::__('totalPagar') ?>">
       </div>
   </div>
     

@@ -62,6 +62,7 @@ dictionary:
     eliminar en masa:     Remove Calendar Boxes
     nuevo:                New
     cliente:              Customer
+    editar pedido:        Edit Pedido
     editar cliente:       Edit Customer
     nuevo cliente:        New Customer
     nuevo proveedor:      New Provider
@@ -116,8 +117,20 @@ dictionary:
     pro:                  Provider Id 
     nomProveedor:         Provider
     empresa:              Business
+    nuevaMano:            New Mano de Obra
+    editarMano:           Edit Mano de Obra
+    manoObra:             Mano de Obra
+    cooperativa:          Cooperativa
+    labor:                Labor
     selectEmpresa:        Select the Business
     selectProveedor:      Select Provider
+    selectProducto:       Seleccione el Producto
+    selectLote:           Seleccione el Lote
+    selectCooperativa:    Seleccione la Cooperativa
+    selectLabor:          Seleccione la Labor
+    selectMaquina:        Select the Machine
+    seleccione insumo:    Seleccione el insumo
+    selectTPI:            Seleccione el tipo de insumo
     selectCiudad:         Select the City
     selectOrigen:         Select the Origin
     selectTipoUso:        Select the Type of Uso

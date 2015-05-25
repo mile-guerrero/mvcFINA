@@ -49,50 +49,6 @@ class createActionClass extends controllerClass implements controllerActionInter
     }
   }
 
-public function validate($cantidad, $valor) {
-
-    $flag = false;
-    $patron = "/^[[:digit:]]+$/";
-//---------------------validacion descripcion----------------------------------- 
-    
-    if (strlen($cantidad) > manoObraTableClass::CANTIDAD_HORA_LENGTH) {
-      session::getInstance()->setError(i18n::__(00004, null, 'errors', array(':longitud' => manoObraTableClass::CANTIDAD_HORA_LENGTH)), 00004);
-      $flag = true;
-    } 
-    
-    if (!is_numeric($cantidad) == "" ) {
-      session::getInstance()->setError(i18n::__(00009, null, 'errors', array(':campo vacio' => manoObraTableClass::CANTIDAD_HORA)), 00009);
-      $flag = true;
-    }
-    
-    if (!preg_match($patron, $cantidad)) {
-      session::getInstance()->setError(i18n::__(00010, null, 'errors', array(':numeros' => $cantidad)), 00010);
-      $flag = true;
-       }
-
-    
-//-----------------------validacion iva-----------------------------------------    
-//     if (!is_numeric($valor) == "" ) {
-//      session::getInstance()->setError(i18n::__(00009, null, 'errors', array(':campo vacio' => manoObraTableClass::VALOR_HORA)), 00009);
-//      $flag = true;
-//    }
-    
-    if (strlen($valor) > manoObraTableClass::VALOR_HORA_LENGTH) {
-      session::getInstance()->setError(i18n::__(00014, null, 'errors', array(':longitud' => manoObraTableClass::VALOR_HORA_LENGTH)), 00014);
-      $flag = true;
-    } 
-
-    if (!preg_match($patron, $valor)) {
-      session::getInstance()->setError(i18n::__(00010, null, 'errors', array(':numeros' => $valor)), 00010);
-      $flag = true;
-       }
-//-----------------------validacion --------------------------------------------    
-    if ($flag === true){
-      request::getInstance()->setMethod('GET');
-      routing::getInstance()->forward('manoObra', 'insert');
-    }
-  }
-
 }
 
 

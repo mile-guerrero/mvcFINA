@@ -8,6 +8,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+use mvc\validator\solicitudInsumoValidatorUpdateClass as validator;
 
 /**
  * Description of ejemploClass
@@ -26,6 +27,8 @@ class updateActionClass extends controllerClass implements controllerActionInter
         $idProducto = request::getInstance()->getPost(solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::PRODUCTO_INSUMO_ID, true));
         $idLote = request::getInstance()->getPost(solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::LOTE_ID, true));
 
+        validator::validateUpdate();
+        
         $ids = array(
             solicitudInsumoTableClass::ID => $id
         );
@@ -41,9 +44,8 @@ class updateActionClass extends controllerClass implements controllerActionInter
         routing::getInstance()->redirect('solicitudInsumo', 'index');
       }
     } catch (PDOException $exc) {
-      echo $exc->getMessage();
-      echo '<br>';
-      echo $exc->getTraceAsString();
+      routing::getInstance()->redirect('solicitudInsumo', 'edit');
+      session::getInstance()->setFlash('exc', $exc);
     }
   }
 

@@ -8,7 +8,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
-
+use mvc\validator\manoObraValidatorUpdateClass as validator;
 /**
  * Description of ejemploClass
  *
@@ -26,6 +26,8 @@ class updateActionClass extends controllerClass implements controllerActionInter
         $labor = request::getInstance()->getPost(manoObraTableClass::getNameField(manoObraTableClass::LABOR_ID, true));
         $maquina = request::getInstance()->getPost(manoObraTableClass::getNameField(manoObraTableClass::MAQUINA_ID, true));
         
+        validator::validateUpdate();
+        
         $ids = array(
             manoObraTableClass::ID => $id
         );
@@ -41,9 +43,8 @@ class updateActionClass extends controllerClass implements controllerActionInter
         routing::getInstance()->redirect('manoObra', 'index');
       }
     } catch (PDOException $exc) {
-      echo $exc->getMessage();
-      echo '<br>';
-      echo $exc->getTraceAsString();
+      routing::getInstance()->redirect('manoObra', 'edit');
+      session::getInstance()->setFlash('exc', $exc);
     }
   }
 

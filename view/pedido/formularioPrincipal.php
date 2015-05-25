@@ -1,6 +1,9 @@
 <?php use mvc\routing\routingClass as routing ?>
 <?php use mvc\i18n\i18nClass as i18n ?>
 <?php use mvc\view\viewClass as view?>
+<?php use mvc\session\sessionClass as session ?>
+<?php use mvc\request\requestClass as request ?>
+
 <?php $idEmp= pedidoTableClass::EMPRESA_ID ?>
 <?php $idPro= pedidoTableClass::ID_PROVEEDOR ?>
 <?php $cantidad= pedidoTableClass::CANTIDAD ?>
@@ -17,12 +20,18 @@
     <?php if (isset($objPedido) == true): ?>
     <input  name="<?php echo pedidoTableClass::getNameField(pedidoTableClass::ID, true) ?>" value="<?php echo $objPedido[0]->$idPedido ?>" type="hidden">
     <?php endif ?>
-  <?php view::includeHandlerMessage()?>
+
+    <?php if(session::getInstance()->hasError('inputCantidad')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputCantidad') ?>
+    </div>
+    <?php endif ?>
   <br>
     <div class="form-group">
       <label for="<?php echo pedidoTableClass::getNameField(pedidoTableClass::CANTIDAD, true) ?>" class="col-sm-2"> <?php echo i18n::__('cantidad') ?>:</label>     
       <div class="col-sm-10">
-          <input  class="form-control" value="<?php echo ((isset($objPedido)== true) ? $objPedido[0]->$cantidad : '') ?>" type="text" name="<?php echo pedidoTableClass::getNameField(pedidoTableClass::CANTIDAD, true) ?>" placeholder="<?php echo i18n::__('cantidad') ?>">
+          <input  class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputCantidad') or request::getInstance()->hasPost(pedidoTableClass::getNameField(pedidoTableClass::CANTIDAD, true))) ? request::getInstance()->getPost(pedidoTableClass::getNameField(pedidoTableClass::CANTIDAD, true)) : ((isset($objPedido[0])) ? $objPedido[0]->$cantidad : '') ?>" type="text" name="<?php echo pedidoTableClass::getNameField(pedidoTableClass::CANTIDAD, true) ?>" placeholder="<?php echo i18n::__('cantidad') ?>">
       </div>
   </div>
     

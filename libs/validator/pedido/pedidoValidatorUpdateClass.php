@@ -11,8 +11,8 @@ namespace mvc\validator {
    *
    * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
    */
-  class pedidoValidatorClass extends validatorClass {
-    public static function validateInsert() {
+  class pedidoValidatorUpdateClass extends validatorClass {
+    public static function validateUpdate() {
       $flag = false;
       
       if (self::notBlank(request::getInstance()->getPost(\pedidoTableClass::getNameField(\pedidoTableClass::CANTIDAD, true)))) {
@@ -71,8 +71,9 @@ namespace mvc\validator {
         }
       
       if ($flag === true) {
-        //request::getInstance()->setMethod('GET');
-        routing::getInstance()->forward('pedido', 'insert');
+        request::getInstance()->setMethod('GET');
+        request::getInstance()->addParamGet(array(\pedidoTableClass::ID => request::getInstance()->getPost(\pedidoTableClass::getNameField(\pedidoTableClass::ID, true))));
+        routing::getInstance()->forward('pedido', 'edit');
       }
     }
   }

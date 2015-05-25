@@ -37,10 +37,10 @@ class insertActionClass extends controllerClass implements controllerActionInter
 
       $fields = array(
           loteTableClass::ID,
-          loteTableClass::UBICACION
+          loteTableClass::DESCRIPCION
       );
       $orderBy = array(
-          loteTableClass::UBICACION
+          loteTableClass::DESCRIPCION
       );
       $this->objL = loteTableClass::getAll($fields, true, $orderBy, 'ASC');
 

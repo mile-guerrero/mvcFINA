@@ -18,7 +18,7 @@ class editActionClass extends controllerClass implements controllerActionInterfa
   public function execute() {
     try {
    
-      if (request::getInstance()->hasRequest(ordenServicioTableClass::ID)) {
+      if (request::getInstance()->hasGet(ordenServicioTableClass::ID)) {
         $fields = array(
             ordenServicioTableClass::ID,
             ordenServicioTableClass::FECHA_MANTENIMIENTO,
@@ -29,7 +29,7 @@ class editActionClass extends controllerClass implements controllerActionInterfa
             ordenServicioTableClass::MAQUINA_ID
         );
         $where = array(
-            ordenServicioTableClass::ID => request::getInstance()->getRequest(ordenServicioTableClass::ID)
+            ordenServicioTableClass::ID => request::getInstance()->getGet(ordenServicioTableClass::ID)
         );
         $this->objOS = ordenServicioTableClass::getAll($fields, false, null, null, null, null, $where);
         $fields = array(

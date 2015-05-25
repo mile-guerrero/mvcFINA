@@ -16,9 +16,8 @@ use mvc\i18n\i18nClass as i18n;
 class editActionClass extends controllerClass implements controllerActionInterface {
 
   public function execute() {
-    try {
-   
-      if (request::getInstance()->hasRequest(manoObraTableClass::ID)) {
+    try {   
+      if (request::getInstance()->hasGet(manoObraTableClass::ID)) {
         $fields = array(
           manoObraTableClass::ID,
           manoObraTableClass::CANTIDAD_HORA,
@@ -31,7 +30,7 @@ class editActionClass extends controllerClass implements controllerActionInterfa
           manoObraTableClass::DELETED_AT
         );
         $where = array(
-            manoObraTableClass::ID => request::getInstance()->getRequest(manoObraTableClass::ID)
+            manoObraTableClass::ID => request::getInstance()->getGet(manoObraTableClass::ID)
         );
         $this->objManoObra = manoObraTableClass::getAll($fields, true, null, null, null, null, $where);
         $fields = array(

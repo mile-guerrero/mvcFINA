@@ -13,9 +13,9 @@ namespace mvc\validator {
      *
      * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
      */
-    class pagoTrabajadorValidatorClass extends validatorClass {
+    class pagoTrabajadorValidatorUpdateClass extends validatorClass {
 
-        public static function validateInsert() {
+        public static function validateUpdate() {
             $flag = false;
 
             if (self::notBlank(request::getInstance()->getPost(\pagoTrabajadorTableClass::getNameField(\pagoTrabajadorTableClass::CANTIDAD_HORAS_EXTRAS, true)))) {
@@ -116,8 +116,9 @@ namespace mvc\validator {
             }
 
             if ($flag === true) {
-                //request::getInstance()->setMethod('GET');
-                routing::getInstance()->forward('pagoTrabajador', 'insert');
+                request::getInstance()->setMethod('GET');
+                request::getInstance()->addParamGet(array(\pagoTrabajadorTableClass::ID => request::getInstance()->getPost(\pagoTrabajadorTableClass::getNameField(\pagoTrabajadorTableClass::ID, true))));
+                routing::getInstance()->forward('pagoTrabajador', 'edit');
             }
         }
 

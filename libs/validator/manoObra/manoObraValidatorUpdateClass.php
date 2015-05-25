@@ -11,31 +11,35 @@ namespace mvc\validator {
    *
    * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
    */
-  class pedidoValidatorClass extends validatorClass {
-    public static function validateInsert() {
+  class manoObraValidatorUpdateClass extends validatorClass {
+    public static function validateUpdate() {
       $flag = false;
       
-      if (self::notBlank(request::getInstance()->getPost(\pedidoTableClass::getNameField(\pedidoTableClass::CANTIDAD, true)))) {
+      if (self::notBlank(request::getInstance()->getPost(\manoObraTableClass::getNameField(\manoObraTableClass::CANTIDAD_HORA, true)))) {
         $flag = true;
         session::getInstance()->setFlash('inputCantidad', true);
         session::getInstance()->setError('La cantidad es requerida', 'inputCantidad');
-      } else if (!is_numeric(request::getInstance()->getPost(\pedidoTableClass::getNameField(\pedidoTableClass::CANTIDAD, true)))) {
+      } else if (!is_numeric(request::getInstance()->getPost(\manoObraTableClass::getNameField(\manoObraTableClass::CANTIDAD_HORA, true)))) {
         $flag = true;
         session::getInstance()->setFlash('inputCantidad', true);
         session::getInstance()->setError('La cantidad no puede ser letras', 'inputCantidad');
-      } else if(strlen(request::getInstance()->getPost(\pedidoTableClass::getNameField(\pedidoTableClass::CANTIDAD, true))) > \pedidoTableClass::CANTIDAD) {
+      } else if(strlen(request::getInstance()->getPost(\manoObraTableClass::getNameField(\manoObraTableClass::CANTIDAD_HORA, true))) > \manoObraTableClass::CANTIDAD_HORA_LENGTH) {
         $flag = true;
         session::getInstance()->setFlash('inputCantidad', true);
         session::getInstance()->setError('La catidad digitado sobre pasa los caracteres permitidos', 'inputCantidad');
-//      }
-//        if (self::notBlank(request::getInstance()->getPost(\solicitudInsumoTableClass::getNameField(\solicitudInsumoTableClass::VALOR_HORA, true)))) {
-//        $flag = true;
-//        session::getInstance()->setFlash('inputValor', true);
-//        session::getInstance()->setError('El valor es requerida', 'inputValor');
-//      } else if (!is_numeric(request::getInstance()->getPost(\solicitudInsumoTableClass::getNameField(\manoObraTableClass::VALOR_HORA, true)))) {
-//        $flag = true;
-//        session::getInstance()->setFlash('inputValor', true);
-//        session::getInstance()->setError('El valor no puede ser letras', 'inputValor');
+      }
+        if (self::notBlank(request::getInstance()->getPost(\manoObraTableClass::getNameField(\manoObraTableClass::VALOR_HORA, true)))) {
+        $flag = true;
+        session::getInstance()->setFlash('inputValor', true);
+        session::getInstance()->setError('El valor es requerida', 'inputValor');
+      } else if (!is_numeric(request::getInstance()->getPost(\manoObraTableClass::getNameField(\manoObraTableClass::VALOR_HORA, true)))) {
+        $flag = true;
+        session::getInstance()->setFlash('inputValor', true);
+        session::getInstance()->setError('El valor no puede ser letras', 'inputValor');
+      } else if(strlen(request::getInstance()->getPost(\manoObraTableClass::getNameField(\manoObraTableClass::VALOR_HORA, true))) > \manoObraTableClass::VALOR_HORA_LENGTH) {
+        $flag = true;
+        session::getInstance()->setFlash('inputValor', true);
+        session::getInstance()->setError('La catidad digitado sobre pasa los caracteres permitidos', 'inputValor');
 //      } else if(strlen(request::getInstance()->getPost('inputCantidad')) > \manoObraTableClass::CANTIDAD_HORA_LENGTH) {
 //        $flag = true;
 //        session::getInstance()->setFlash('inputCantidad', true);
@@ -71,8 +75,9 @@ namespace mvc\validator {
         }
       
       if ($flag === true) {
-        //request::getInstance()->setMethod('GET');
-        routing::getInstance()->forward('pedido', 'insert');
+        request::getInstance()->setMethod('GET');
+        request::getInstance()->addParamGet(array(\manoObraTableClass::ID => request::getInstance()->getPost(\manoObraTableClass::getNameField(\manoObraTableClass::ID, true))));
+        routing::getInstance()->forward('manoObra', 'edit');
       }
     }
   }

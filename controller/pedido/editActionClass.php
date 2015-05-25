@@ -18,7 +18,7 @@ class editActionClass extends controllerClass implements controllerActionInterfa
   public function execute() {
     try {
    
-      if (request::getInstance()->hasRequest(pedidoTableClass::ID)) {
+      if (request::getInstance()->hasGet(pedidoTableClass::ID)) {
         $fields = array(
             pedidoTableClass::ID,
             pedidoTableClass::EMPRESA_ID,
@@ -27,7 +27,7 @@ class editActionClass extends controllerClass implements controllerActionInterfa
             pedidoTableClass::PRODUCTO_INSUMO_ID
         );
         $where = array(
-            pedidoTableClass::ID => request::getInstance()->getRequest(pedidoTableClass::ID)
+            pedidoTableClass::ID => request::getInstance()->getGet(pedidoTableClass::ID)
         );
         $this->objPedido = pedidoTableClass::getAll($fields, true, null, null, null, null, $where);
         

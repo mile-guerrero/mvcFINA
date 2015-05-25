@@ -313,6 +313,7 @@ ordenServicio_create:
     - model/productoInsumoTableClass.php
     - model/base/maquinaBaseTableClass.php
     - model/maquinaTableClass.php
+    - libs/validator/ordenServicio/ordenServicioValidatorClass.php
     
 ordenServicio_edit:
   url:    /ordenServicio/editar
@@ -339,6 +340,7 @@ ordenServicio_update:
     - model/productoInsumoTableClass.php
     - model/base/maquinaBaseTableClass.php
     - model/maquinaTableClass.php
+    - libs/validator/ordenServicio/ordenServicioValidatorUpdateClass.php
     
 ordenServicio_ver:
   url:    /ordenServicio/ver
@@ -1108,6 +1110,7 @@ solicitudInsumo_create:
     - model/productoInsumoTableClass.php
     - model/base/loteBaseTableClass.php
     - model/loteTableClass.php
+    - libs/validator/solicitudInsumo/solicitudInsumoValidatorClass.php
     
     
 solicitudInsumo_edit:
@@ -1135,7 +1138,7 @@ solicitudInsumo_update:
     - model/productoInsumoTableClass.php
     - model/base/loteBaseTableClass.php
     - model/loteTableClass.php
-    
+    - libs/validator/solicitudInsumo/solicitudInsumoValidatorUpdateClass.php
     
 solicitudInsumo_delete:
   url:    /solicitudInsumo/eliminar
@@ -1344,6 +1347,7 @@ pagoTrabajador_create:
     - model/empresaTableClass.php
     - model/base/trabajadorBaseTableClass.php
     - model/trabajadorTableClass.php
+    - libs/validator/pagoTrabajador/pagoTrabajadorValidatorClass.php
 
 pagoTrabajador_edit:
   url:    /pagoTrabajador/editar
@@ -1366,6 +1370,7 @@ pagoTrabajador_update:
     - model/empresaTableClass.php
     - model/base/trabajadorBaseTableClass.php
     - model/trabajadorTableClass.php
+    - libs/validator/pagoTrabajador/pagoTrabajadorValidatorUpdateClass.php
     
 pagoTrabajador_ver:
   url:    /pagoTrabajador/ver
@@ -1430,6 +1435,7 @@ pedido_create:
     - model/proveedorTableClass.php
     - model/base/productoInsumoBaseTableClass.php
     - model/productoInsumoTableClass.php
+    - libs/validator/pedido/pedidoValidatorClass.php
 
 pedido_edit:
   url:    /pedido/editar
@@ -1456,6 +1462,7 @@ pedido_update:
     - model/proveedorTableClass.php
     - model/base/productoInsumoBaseTableClass.php
     - model/productoInsumoTableClass.php
+    - libs/validator/pedido/pedidoValidatorUpdateClass.php
     
 pedido_delete:
   url:    /pedido/eliminar
@@ -1577,6 +1584,7 @@ manoObra_update:
     - model/laborTableClass.php
     - model/base/maquinaBaseTableClass.php
     - model/maquinaTableClass.php
+    - libs/validator/manoObra/manoObraValidatorUpdateClass.php
     
 manoObra_delete:
   url:    /manoObra/eliminar

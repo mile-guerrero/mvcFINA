@@ -2,6 +2,8 @@
 <?php use mvc\i18n\i18nClass as i18n ?>
 <?php use mvc\view\viewClass as view?>
 <?php use mvc\session\sessionClass as session ?>
+<?php use mvc\request\requestClass as request ?>
+
 <?php $id = manoObraTableClass::ID ?>
 <?php $cantidad = manoObraTableClass::CANTIDAD_HORA ?>
 <?php $valor = manoObraTableClass::VALOR_HORA ?>
@@ -14,7 +16,7 @@
 <?php $descLabor = laborTableClass::DESCRIPCION ?>
 <?php $idMaquina = maquinaTableClass::ID ?>
 <?php $descMaquina = maquinaTableClass::NOMBRE ?>
-<?php use mvc\request\requestClass as request ?>
+
 
 <div class="container container-fluid" id="cuerpo">
    <article id='derecha'>
@@ -38,11 +40,17 @@
       </div>
   </div>
   
+  <?php if(session::getInstance()->hasError('inputValor')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputValor') ?>
+    </div>
+    <?php endif ?>
   
   <div class="form-group">
       <label for="<?php echo manoObraTableClass::getNameField(manoObraTableClass::VALOR_HORA, true) ?>" class="col-sm-2"> <?php echo i18n::__('valor') ?>:</label>     
       <div class="col-sm-10">
-          <input  class="form-control" value="<?php echo ((isset($objManoObra)== true) ? $objManoObra[0]->$valor : '') ?>" type="text" name="<?php echo manoObraTableClass::getNameField(manoObraTableClass::VALOR_HORA, true) ?>" placeholder="<?php echo i18n::__('valor') ?>">
+          <input  class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputValor') or request::getInstance()->hasPost(manoObraTableClass::getNameField(manoObraTableClass::VALOR_HORA, true))) ? request::getInstance()->getPost(manoObraTableClass::getNameField(manoObraTableClass::VALOR_HORA, true)) : ((isset($objManoObra[0])) ? $objManoObra[0]->$valor : '') ?>" type="text" name="<?php echo manoObraTableClass::getNameField(manoObraTableClass::VALOR_HORA, true) ?>" placeholder="<?php echo i18n::__('valor') ?>">
       </div>
   </div>
   

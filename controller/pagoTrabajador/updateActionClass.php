@@ -8,6 +8,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+use mvc\validator\pagoTrabajadorValidatorUpdateClass as validator;
 
 /**
  * Description of ejemploClass
@@ -30,6 +31,8 @@ class updateActionClass extends controllerClass implements controllerActionInter
         $horas = request::getInstance()->getPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::HORAS_PERDIDAS, true));
         $total = request::getInstance()->getPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::TOTAL_PAGAR, true));
 
+        validator::validateUpdate();
+        
         $ids = array(
             pagoTrabajadorTableClass::ID => $id
         );
@@ -50,9 +53,8 @@ class updateActionClass extends controllerClass implements controllerActionInter
         routing::getInstance()->redirect('pagoTrabajador', 'index');
       }
     } catch (PDOException $exc) {
-      echo $exc->getMessage();
-      echo '<br>';
-      echo $exc->getTraceAsString();
+      routing::getInstance()->redirect('pagoTrabajador', 'edit');
+      session::getInstance()->setFlash('exc', $exc);
     }
   }
 
