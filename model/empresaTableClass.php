@@ -26,19 +26,19 @@ class empresaTableClass extends empresaBaseTableClass {
     
   }
   
-//  public static function getTotalPages($lines){
-//    try {
-//      $sql = 'SELECT count(' . proveedorTableClass::ID . ') AS cantidad '.
-//              ' FROM ' . proveedorTableClass::getNameTable() .
-//              ' WHERE '. proveedorTableClass::DELETED_AT . ' IS NULL ';
-//      $answer = model::getInstance()->prepare($sql);
-//      $answer->execute();
-//      $answer = $answer->fetchAll(PDO::FETCH_OBJ);
-//      return ceil($answer[0]->cantidad/$lines);
-//    }  catch (PDOException $exc){
-//       throw  $exc;
-//    }
-//  }
+  public static function getTotalPages($lines){
+    try {
+      $sql = 'SELECT count(' . empresaTableClass::ID . ') AS cantidad '.
+              ' FROM ' . empresaTableClass::getNameTable() .
+              ' WHERE '. empresaTableClass::DELETED_AT . ' IS NULL ';
+      $answer = model::getInstance()->prepare($sql);
+      $answer->execute();
+      $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+      return ceil($answer[0]->cantidad/$lines);
+    }  catch (PDOException $exc){
+       throw  $exc;
+    }
+  }
 //public static function getNameProveedor($id){
 //    try {
 //      $sql = 'SELECT ' . proveedorTableClass::NOMBRE .  ' As nombre  '

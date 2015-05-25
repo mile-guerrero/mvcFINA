@@ -26,7 +26,5 @@ class cooperativaTableClass extends cooperativaBaseTableClass {
       throw $exc;
     }
   }
-  
-   
-  
+
 }

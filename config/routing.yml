@@ -1633,3 +1633,196 @@ manoObra_reporte:
 
     
 #---------------------------------Detalle Pago Trabajador--------
+
+#--------------------------modulo-cooperativa--------------------------
+cooperativa_index:
+  url:    /cooperativa/index
+  param:  { module: cooperativa, action: index, format: html }
+  load:
+    - model/base/cooperativaBaseTableClass.php
+    - model/cooperativaTableClass.php
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+
+cooperativa_insert:
+  url:    /cooperativa/insertar
+  param:  { module: cooperativa, action: insert, format: html }
+  load:
+    - model/base/cooperativaBaseTableClass.php
+    - model/cooperativaTableClass.php
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+    
+cooperativa_create:
+  url:    /cooperativa/crear
+  param:  { module: cooperativa, action: create, format: html }
+  load:
+    - model/base/cooperativaBaseTableClass.php
+    - model/cooperativaTableClass.php
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+cooperativa_edit:
+  url:    /cooperativa/edit
+  param:  { module: cooperativa, action: edit, format: html }
+  load:
+    - model/base/cooperativaBaseTableClass.php
+    - model/cooperativaTableClass.php
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+cooperativa_update:
+  url:    /cooperativa/update
+  param:  { module: cooperativa, action: update, format: html }
+  load:
+    - model/base/cooperativaBaseTableClass.php
+    - model/cooperativaTableClass.php
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php	
+    
+cooperativa_delete:
+  url:    /cooperativa/eliminar
+  param:  { module: cooperativa, action: delete, format: json }
+  load:
+    - model/base/cooperativaBaseTableClass.php
+    - model/cooperativaTableClass.php
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php	
+  
+cooperativa_ver:
+  url:    /cooperativa/ver
+  param:  { module: cooperativa, action: ver, format: html }
+  load:
+    - model/base/cooperativaBaseTableClass.php
+    - model/cooperativaTableClass.php
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php	
+    
+cooperativa_deleteSelect:
+  url:    /cooperativa/eliminarSeleccion
+  param:  { module: cooperativa, action: deleteSelect, format: html }
+  load:
+    - model/base/cooperativaBaseTableClass.php
+    - model/cooperativaTableClass.php
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+    
+cooperativa_reporte:
+  url:    /cooperativa/reporte
+  param:  { module: cooperativa, action: report, format: pdf } 
+  load:
+    - model/base/cooperativaBaseTableClass.php
+    - model/cooperativaTableClass.php
+    - model/base/ciudadBaseTableClass.php
+    - model/ciudadTableClass.php
+    #--------------------------modulo-empresa--------------------------
+empresa_index:
+  url:    /empresa/index
+  param:  { module: empresa, action: index, format: html }
+  load:
+    - model/base/empresaBaseTableClass.php
+    - model/empresaTableClass.php
+    
+empresa_insert:
+  url:    /empresa/insertar
+  param:  { module: empresa, action: insert, format: html }
+  load:
+    - model/base/empresaBaseTableClass.php
+    - model/empresaTableClass.php
+   
+empresa_create:
+  url:    /empresa/crear
+  param:  { module: empresa, action: create, format: html }
+  load:
+    - model/base/empresaBaseTableClass.php
+    - model/empresaTableClass.php
+    
+empresa_edit:
+  url:    /empresa/edit
+  param:  { module: empresa, action: edit, format: html }
+  load:
+    - model/base/empresaBaseTableClass.php
+    - model/empresaTableClass.php
+    
+empresa_update:
+  url:    /empresa/update
+  param:  { module: empresa, action: update, format: html }
+  load:
+    - model/base/empresaBaseTableClass.php
+    - model/empresaTableClass.php
+   
+empresa_ver:
+  url:    /empresa/ver
+  param:  { module: empresa, action: ver, format: html }
+  load:
+    - model/base/empresaBaseTableClass.php
+    - model/empresaTableClass.php
+    
+empresa_delete:
+  url:    /empresa/eliminar
+  param:  { module: empresa, action: delete, format: json }
+  load:
+      - model/base/empresaBaseTableClass.php
+      - model/empresaTableClass.php
+
+   
+empresa_deleteSelect:
+  url:    /empresa/eliminarSeleccion
+  param:  { module: empresa, action: deleteSelect, format: json }
+  load:
+      - model/base/empresaBaseTableClass.php
+      - model/empresaTableClass.php
+empresa_reporte:
+  url:    /empresa/reporte
+  param:  { module: empresa, action: report, format: pdf } 
+  load:
+    - model/base/empresaBaseTableClass.php
+    - model/empresaTableClass.php
+    
+    #--------------------------modulo-labor--------------------------
+labor_index:
+  url:    /labor/index
+  param:  { module: labor, action: index, format: html }
+  load:
+    - model/base/laborBaseTableClass.php
+    - model/laborTableClass.php
+
+labor_insert:
+  url:    /labor/insertar
+  param:  { module: labor, action: insert, format: html }
+  load:
+    - model/base/laborBaseTableClass.php
+    - model/laborTableClass.php
+    
+labor_create:
+  url:    /labor/crear
+  param:  { module: labor, action: create, format: html }
+  load:
+    - model/base/laborBaseTableClass.php
+    - model/laborTableClass.php
+   
+labor_edit:
+  url:    /labor/edit
+  param:  { module: labor, action: edit, format: html }
+  load:
+    - model/base/laborBaseTableClass.php
+    - model/laborTableClass.php
+    
+labor_update:
+  url:    /labor/update
+  param:  { module: labor, action: update, format: html }
+  load:
+    - model/base/laborBaseTableClass.php
+    - model/laborTableClass.php
+   
+labor_ver:
+  url:    /labor/ver
+  param:  { module: labor, action: ver, format: html }
+  load:
+    - model/base/laborBaseTableClass.php
+    - model/laborTableClass.php
+
+labor_reporte:
+  url:    /labor/reporte
+  param:  { module: labor, action: report, format: pdf } 
+  load:
+    - model/base/laborBaseTableClass.php
+    - model/laborTableClass.php

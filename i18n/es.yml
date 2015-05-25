@@ -4,6 +4,14 @@ dictionary:
   default:
     introduccion:         El Sistema cuenta con la funcionabilidad de transferir y procesar datos e informes de manera controlada tomando como referencia los procesos y producción del sector agropecuario, teniendo la gran capacidad de guardar información siendo esta oculta y manejada por los administradores para su control y cambio de registros e inventarios, para mayor seguridad los empleados solo tendrán el campo de consultoría y reportes de tareas para completar la funcionabilidad del sistema de información
     mas:                  Mas
+    labor:                labor
+    editar labor:         editar labor
+    nueva labor:          nueva labor
+    editar cooperativa:   Editar cooperativa
+    editar empresa:       Editar empresa
+    cooperativa:          Cooperativa
+    nueva cooperativa:    Nueva cooperativa
+    nueva empresa:        nueva empresa
     FCiudad:              buscar por ciudad
     FUnidadMedida:        buscar por unidad de peso
     FTipoInsumo:          buscar por tipo insumo

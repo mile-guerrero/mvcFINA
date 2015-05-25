@@ -121,4 +121,24 @@ manoObra:
     javascript:
       - confirmar.js 
       
+#-------------------modulo - cooperativa-----------------------
+
+cooperativa: 
+  index:
+    javascript:
+      - confirmar.js
       
+#-------------------modulo - empresa-----------------------
+      
+empresa: 
+  index:
+    javascript:
+      - confirmar.js
+      
+#-------------------modulo - labor-----------------------
+      
+labor: 
+  index:
+    javascript:
+      - confirmar.js
+       
