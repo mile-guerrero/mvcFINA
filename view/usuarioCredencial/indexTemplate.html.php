@@ -32,6 +32,71 @@
       <a href="<?php echo routing::getInstance()->getUrlWeb('usuarioCredencial', 'index') ?>" class="btn  btn-xs" ><img class="img-responsive"  id="imgelifiltro" src="" alt=" "><?php echo i18n::__('eFiltros') ?></a> 
       <a type="button" class="btn  btn-xs" data-toggle="modal" data-target="#myModalReport" ><img class="img-responsive"  id="imgreporte" src="" alt=" "><?php echo i18n::__('informe') ?></a>           
     </ul> 
+      
+<!-- filtros -->
+    <div class="modal fade" id="myModalFiltres" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('filtros') ?></h4>
+          </div>
+          <div class="modal-body">
+            <form class="form-horizontal" id="filterForm" role="form" action="<?php echo routing::getInstance()->getUrlWeb('usuarioCredencial', 'index') ?>" method="POST">
+              
+              
+              <div class="form-group">
+                <label for="filterUsuario" class="col-sm-2 control-label"><?php echo i18n::__('user') ?></label>
+                <div class="col-sm-10">
+                  <select class="form-control" id="filterUsuario" name="filter[usuario]">
+                    <option value=""><?php echo i18n::__('fUsuario') ?></option>
+              <?php foreach ($objUCU as $key): ?>  
+              <option value="<?php echo $key->$usuid ?>"> <?php echo $key->$usuariosid ?></option>
+              <?php endforeach; ?>
+              </select>
+                </div>
+              </div>
+              
+              <div class="form-group">
+           <label for="filterCredencial" class="col-sm-2 control-label"><?php echo i18n::__('credencial') ?></label>
+                <div class="col-sm-10">
+                  <select class="form-control" id="filterCredencial" name="filter[credencial]">
+                    <option value=""><?php echo i18n::__('fUsuario') ?></option>
+              <?php foreach ($objUCC as $key): ?>  
+              <option value="<?php echo $key->$credeid ?>"> <?php echo $key->$nomcredeid ?></option>
+              <?php endforeach; ?>
+              </select>
+                </div>
+              </div>
+              
+              
+            
+          
+
+              <div class="form-group">
+                <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
+                <div class="col-sm-10">
+                  <input type="date" class="form-control-filtro1" id="filterFechaIni" name="filter[fechaIni]" >
+               
+<!--                <label  class="col-sm-2 control-label"><?php echo i18n::__('fecha fin') ?></label>-->
+              
+                  <input type="date" class="form-control-filtro2" id="filterFechaFin" name="filter[fechaFin]" >
+                </div>
+              </div>
+
+            </form>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default btn-xs" data-dismiss="modal"><?php echo i18n::__('cerrar') ?></button>
+            <button type="button" onclick="$('#filterForm').submit()" class="btn btn-primary btn-xs"><?php echo i18n::__('filtrar') ?></button>
+          </div>
+        </div>
+      </div>
+    </div>                 
+      
+      
+      
 <!---Informes--->
        <div class="modal fade" id="myModalReport" tabindex="-1" role="modal" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -84,57 +149,7 @@
   </div>
 </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="myModalFiltres" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('filtros') ?></h4>
-          </div>
-          <div class="modal-body">
-            <form class="form-horizontal" id="filterForm" role="form" action="<?php echo routing::getInstance()->getUrlWeb('usuarioCredencial', 'index') ?>" method="POST">
-              
-              
-              <div class="form-group">
-                <label for="filterUsuario" class="col-sm-2 control-label"><?php echo i18n::__('user') ?></label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="filterUsuario" name="filter[usuario]" placeholder="usuario">
-                </div>
-              </div>
-              
-              <div class="form-group">
-                <label for="filterCredencial" class="col-sm-2 control-label"><?php echo i18n::__('credencial') ?></label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="filterCredencial" name="filter[credencial]" placeholder="descripcion">
-                </div>
-              </div>
-          
-
-              <div class="form-group">
-                <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
-                <div class="col-sm-10">
-                  <input type="date" class="form-control" id="filterFechaIni" name="filter[fechaIni]" >
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label  class="col-sm-2 control-label"><?php echo i18n::__('fecha fin') ?></label>
-                <div class="col-sm-10">
-                  <input type="date" class="form-control" id="filterFechaFin" name="filter[fechaFin]" >
-                </div>
-              </div>
-
-            </form>
-
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default btn-xs" data-dismiss="modal"><?php echo i18n::__('cerrar') ?></button>
-            <button type="button" onclick="$('#filterForm').submit()" class="btn btn-primary btn-xs"><?php echo i18n::__('filtrar') ?></button>
-          </div>
-        </div>
-      </div>
-    </div>            
+     
                 <?php view::includeHandlerMessage()?>
       <table class="table table-bordered table-responsive">
 

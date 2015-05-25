@@ -21,18 +21,29 @@ class indexProductoInsumoActionClass extends controllerClass implements controll
       if(request::getInstance()->hasPost('filter')){
       $filter = request::getInstance()->getPost('filter');
       //validar
+      
+      
+      //fin validaciones
       if(isset($filter['descripcion']) and $filter['descripcion'] !== null and $filter['descripcion'] !== ""){
-        $where[productoInsumoTableClass::DESCRIPCION] = $filter['descripcion'];
-      }
-      if(isset($filter['iva']) and $filter['iva'] !== null and $filter['iva'] !== ""){
-        $where[productoInsumoTableClass::IVA] = $filter['iva'];
-      }
+        $where[] = productoInsumoTableClass::getNameField(productoInsumoTableClass::DESCRIPCION) . ' LIKE ' . '\'' . $filter['descripcion'] . '%\'  '
+              . 'OR ' . productoInsumoTableClass::getNameField(productoInsumoTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $filter['descripcion'] . '%\' '
+              . 'OR ' . productoInsumoTableClass::getNameField(productoInsumoTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $filter['descripcion'].'\' ';       
+              }              
+     
       if((isset($filter['fechaIni']) and $filter['fechaIni'] !== null and $filter['fechaIni'] !== "") and (isset($filter['fechaFin']) and $filter['fechaFin'] !== null and $filter['fechaFin'] !== "" )){
         $where[productoInsumoTableClass::CREATED_AT] = array(
            date(config::getFormatTimestamp(), strtotime($filter['fechaIni'].' 00:00:00')),
            date(config::getFormatTimestamp(), strtotime($filter['fechaFin'].' 23:59:59'))
             );
-      }     
+      }
+      
+      if(isset($filter['unidadMedida']) and $filter['unidadMedida'] !== null and $filter['unidadMedida'] !== ""){
+        $where[productoInsumoTableClass::UNIDAD_MEDIDA_ID] = $filter['unidadMedida'];
+      }
+      
+      if(isset($filter['tipoInsumo']) and $filter['tipoInsumo'] !== null and $filter['tipoInsumo'] !== ""){
+        $where[productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID] = $filter['tipoInsumo'];
+      }
       }
       $fields = array(
           productoInsumoTableClass::ID,
@@ -55,6 +66,27 @@ class indexProductoInsumoActionClass extends controllerClass implements controll
       $this->cntPages = productoInsumoTableClass::getTotalPages(config::getRowGrid());
       
       $this->objPI = productoInsumoTableClass::getAll($fields, true, $orderBy, 'ASC',config::getRowGrid(), $page,$where);
+    
+      $fields = array(     
+      unidadMedidaTableClass::ID, 
+      unidadMedidaTableClass::DESCRIPCION
+      );
+      $orderBy = array(
+      unidadMedidaTableClass::DESCRIPCION    
+      ); 
+      $this->objUM = unidadMedidaTableClass::getAll($fields, false, $orderBy, 'ASC');
+      
+      $fields = array(     
+      tipoProductoInsumoTableClass::ID, 
+      tipoProductoInsumoTableClass::DESCRIPCION
+      );
+      $orderBy = array(
+      tipoProductoInsumoTableClass::DESCRIPCION    
+      ); 
+      $this->objPITPI = tipoProductoInsumoTableClass::getAll($fields, true, $orderBy, 'ASC');
+     
+      
+      
       $this->defineView('indexProductoInsumo', 'productoInsumo', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
       echo $exc->getMessage();

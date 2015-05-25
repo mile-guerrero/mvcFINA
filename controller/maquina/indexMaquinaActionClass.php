@@ -22,26 +22,38 @@ class indexMaquinaActionClass extends controllerClass implements controllerActio
       $filter = request::getInstance()->getPost('filter');
       //validar
       if(isset($filter['nombre']) and $filter['nombre'] !== null and $filter['nombre'] !== ""){
-        $where[maquinaTableClass::NOMBRE] = $filter['nombre'];
-      }
-      if(isset($filter['descripcion']) and $filter['descripcion'] !== null and $filter['descripcion'] !== ""){
-        $where[maquinaTableClass::DESCRIPCION] = $filter['descripcion'];
-      }
-      if(isset($filter['origen']) and $filter['origen'] !== null and $filter['origen'] !== ""){
-        $where[maquinaTableClass::ORIGEN_MAQUINA] = $filter['origen'];
-      }
-      if(isset($filter['tipo']) and $filter['tipo'] !== null and $filter['tipo'] !== ""){
-        $where[maquinaTableClass::TIPO_USO_ID] = $filter['tipo'];
-      }
-      if(isset($filter['proveedor']) and $filter['proveedor'] !== null and $filter['proveedor'] !== ""){
-        $where[maquinaTableClass::PROVEEDOR_ID] = $filter['proveedor'];
-      }
-      if((isset($filter['fechaIni']) and $filter['fechaIni'] !== null and $filter['fechaIni'] !== "") and (isset($filter['fechaFin']) and $filter['fechaFin'] !== null and $filter['fechaFin'] !== "" )){
+        $where[] = maquinaTableClass::getNameField(maquinaTableClass::NOMBRE) . ' LIKE ' . '\'' . $filter['nombre'] . '%\'  '
+              . 'OR ' . maquinaTableClass::getNameField(maquinaTableClass::NOMBRE) . ' LIKE ' . '\'%' . $filter['nombre'] . '%\' '
+              . 'OR ' . maquinaTableClass::getNameField(maquinaTableClass::NOMBRE) . ' LIKE ' . '\'%' . $filter['nombre'].'\' ';       
+              }
+              
+              if((isset($filter['fechaIni']) and $filter['fechaIni'] !== null and $filter['fechaIni'] !== "") and (isset($filter['fechaFin']) and $filter['fechaFin'] !== null and $filter['fechaFin'] !== "" )){
         $where[maquinaTableClass::CREATED_AT] = array(
            date(config::getFormatTimestamp(), strtotime($filter['fechaIni'].' 00:00:00')),
            date(config::getFormatTimestamp(), strtotime($filter['fechaFin'].' 23:59:59'))
             );
-      }     
+      }
+      
+      if(isset($filter['descripcion']) and $filter['descripcion'] !== null and $filter['descripcion'] !== ""){
+        $where[] = maquinaTableClass::getNameField(maquinaTableClass::DESCRIPCION) . ' LIKE ' . '\'' . $filter['descripcion'] . '%\'  '
+              . 'OR ' . maquinaTableClass::getNameField(maquinaTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $filter['descripcion'] . '%\' '
+              . 'OR ' . maquinaTableClass::getNameField(maquinaTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $filter['descripcion'].'\' ';       
+              }
+              
+      if(isset($filter['origen']) and $filter['origen'] !== null and $filter['origen'] !== ""){
+        $where[] = maquinaTableClass::getNameField(maquinaTableClass::ORIGEN_MAQUINA) . ' LIKE ' . '\'' . $filter['origen'] . '%\'  '
+              . 'OR ' . maquinaTableClass::getNameField(maquinaTableClass::ORIGEN_MAQUINA) . ' LIKE ' . '\'%' . $filter['origen'] . '%\' '
+              . 'OR ' . maquinaTableClass::getNameField(maquinaTableClass::ORIGEN_MAQUINA) . ' LIKE ' . '\'%' . $filter['origen'].'\' ';       
+              }
+//      
+      if(isset($filter['tipo']) and $filter['tipo'] !== null and $filter['tipo'] !== ""){
+        $where[maquinaTableClass::TIPO_USO_ID] = $filter['tipo'];
+      }
+      
+      if(isset($filter['proveedor']) and $filter['proveedor'] !== null and $filter['proveedor'] !== ""){
+        $where[maquinaTableClass::PROVEEDOR_ID] = $filter['proveedor'];
+      }
+           
       }
       $fields = array(
           maquinaTableClass::ID,
@@ -82,7 +94,7 @@ class indexMaquinaActionClass extends controllerClass implements controllerActio
       $orderBy = array(
       proveedorTableClass::ID   
       ); 
-      $this->objMP = proveedorTableClass::getAll($fields, true, $orderBy, 'ASC', null, null, $where);
+      $this->objMP = proveedorTableClass::getAll($fields, true, $orderBy, 'ASC');
       
       
       $this->defineView('indexMaquina', 'maquina', session::getInstance()->getFormatOutput());

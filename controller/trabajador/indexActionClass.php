@@ -24,11 +24,25 @@ class indexActionClass extends controllerClass implements controllerActionInterf
         //Validar datos
 
         if (isset($filter['nombre']) and $filter['nombre'] !== null and $filter['nombre'] !== '') {
-          $where[trabajadorTableClass::NOMBRET] = $filter['nombre'];
+         $where[] = trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRET) . ' LIKE ' . '\'' . $filter['nombre'] . '%\'  '
+              . 'OR ' . trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRET) . ' LIKE ' . '\'%' . $filter['nombre'] . '%\' '
+              . 'OR ' . trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRET) . ' LIKE ' . '\'%' . $filter['nombre'].'\' ';       
+              }
+              
+              if (isset($filter['apellido']) and $filter['apellido'] !== null and $filter['apellido'] !== '') {
+         $where[] = trabajadorTableClass::getNameField(trabajadorTableClass::APELLIDO) . ' LIKE ' . '\'' . $filter['apellido'] . '%\'  '
+              . 'OR ' . trabajadorTableClass::getNameField(trabajadorTableClass::APELLIDO) . ' LIKE ' . '\'%' . $filter['apellido'] . '%\' '
+              . 'OR ' . trabajadorTableClass::getNameField(trabajadorTableClass::APELLIDO) . ' LIKE ' . '\'%' . $filter['apellido'].'\' ';       
+              }
+        
+        if (isset($filter['documento']) and $filter['documento'] !== null and $filter['documento'] !== '') {
+          $where[trabajadorTableClass::DOCUMENTO] = $filter['documento'];
         }
+        
         if (isset($filter['ciudad']) and $filter['ciudad'] !== null and $filter['ciudad'] !== '') {
           $where[trabajadorTableClass::ID_CIUDAD] = $filter['ciudad'];
         }
+        
         if (isset($filter['fecha1']) and $filter['fecha1'] !== null and $filter['fecha1'] !== '' and (isset($filter['fecha2']) and $filter['fecha2'] !== null and $filter['fecha2'] !== '')) {
           $where[trabajadorTableClass::CREATED_AT] = array(
           date(config::getFormatTimestamp(), strtotime($filter['fecha1'] . ' 00:00:00')),

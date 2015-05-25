@@ -26,7 +26,51 @@
       <a type="button" class="btn btn-xs" data-toggle="modal" data-target="#myModalFiltres"><img class="img-responsive"  id="imgfiltros" src="" alt=" "><?php echo i18n::__('filtros') ?></a> 
       <a href="<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'indexTipoProductoInsumo') ?>" class="btn  btn-xs" ><img class="img-responsive"  id="imgelifiltro" src="" alt=" "><?php echo i18n::__('eFiltros') ?></a>
       <a type="button" class="btn btn-xs" data-toggle="modal" data-target="#myModalReport" ><img class="img-responsive"  id="imgreporte" src="" alt=" "><?php echo i18n::__('informe') ?></a>            
-     </ul> 
+     </ul>
+    
+      <!-- filtros -->
+    <div class="modal fade" id="myModalFiltres" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('filtros') ?></h4>
+          </div>
+          <div class="modal-body">
+            <form class="form-horizontal" id="filterForm" role="form" action="<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'indexTipoProductoInsumo') ?>" method="POST">
+             
+              <div class="form-group">
+                <label for="filterDescripcion" class="col-sm-2 control-label"><?php echo i18n::__('des') ?></label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="filterDescripcion" name="filter[descripcion]" placeholder="descripcion">
+                </div>
+              </div>
+          
+
+              <div class="form-group">
+                <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
+                <div class="col-sm-10">
+                  <input type="date" class="form-control-filtro1" id="filterFechaIni" name="filter[fechaIni]" >
+                
+<!--                <label  class="col-sm-2 control-label"><?php echo i18n::__('fecha fin') ?></label>-->
+                
+                  <input type="date" class="form-control-filtro2" id="filterFechaFin" name="filter[fechaFin]" >
+                </div>
+              </div>
+
+            </form>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default btn-xs" data-dismiss="modal"><?php echo i18n::__('cerrar') ?></button>
+            <button type="button" onclick="$('#filterForm').submit()" class="btn btn-primary btn-xs"><?php echo i18n::__('filtrar') ?></button>
+          </div>
+        </div>
+      </div>
+    </div> 
+      
+      
+      
 <!---Informes--->
        <div class="modal fade" id="myModalReport" tabindex="-1" role="modal" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -63,49 +107,7 @@
   </div>
 </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="myModalFiltres" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('filtros') ?></h4>
-          </div>
-          <div class="modal-body">
-            <form class="form-horizontal" id="filterForm" role="form" action="<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'indexTipoProductoInsumo') ?>" method="POST">
-             
-              <div class="form-group">
-                <label for="filterDescripcion" class="col-sm-2 control-label"><?php echo i18n::__('des') ?></label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="filterDescripcion" name="filter[descripcion]" placeholder="descripcion">
-                </div>
-              </div>
-          
-
-              <div class="form-group">
-                <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
-                <div class="col-sm-10">
-                  <input type="date" class="form-control" id="filterFechaIni" name="filter[fechaIni]" >
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label  class="col-sm-2 control-label"><?php echo i18n::__('fecha fin') ?></label>
-                <div class="col-sm-10">
-                  <input type="date" class="form-control" id="filterFechaFin" name="filter[fechaFin]" >
-                </div>
-              </div>
-
-            </form>
-
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default btn-xs" data-dismiss="modal"><?php echo i18n::__('cerrar') ?></button>
-            <button type="button" onclick="$('#filterForm').submit()" class="btn btn-primary btn-xs"><?php echo i18n::__('filtrar') ?></button>
-          </div>
-        </div>
-      </div>
-    </div>  
+     
       
       
       <form class="form-signin" id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'deleteSelectTipoProductoInsumo') ?>" method="POST">        

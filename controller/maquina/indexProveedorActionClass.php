@@ -24,8 +24,21 @@ class indexProveedorActionClass extends controllerClass implements controllerAct
         //Validar datos
 
         if (isset($filter['nombre']) and $filter['nombre'] !== null and $filter['nombre'] !== '') {
-          $where[proveedorTableClass::NOMBREP] = $filter['nombre'];
+         $where[] = proveedorTableClass::getNameField(proveedorTableClass::NOMBREP) . ' LIKE ' . '\'' . $filter['nombre'] . '%\'  '
+              . 'OR ' . proveedorTableClass::getNameField(proveedorTableClass::NOMBREP) . ' LIKE ' . '\'%' . $filter['nombre'] . '%\' '
+              . 'OR ' . proveedorTableClass::getNameField(proveedorTableClass::NOMBREP) . ' LIKE ' . '\'%' . $filter['nombre'].'\' ';       
+              }
+        
+        if (isset($filter['apellido']) and $filter['apellido'] !== null and $filter['apellido'] !== '') {
+         $where[] = proveedorTableClass::getNameField(proveedorTableClass::APELLIDO) . ' LIKE ' . '\'' . $filter['apellido'] . '%\'  '
+              . 'OR ' . proveedorTableClass::getNameField(proveedorTableClass::APELLIDO) . ' LIKE ' . '\'%' . $filter['apellido'] . '%\' '
+              . 'OR ' . proveedorTableClass::getNameField(proveedorTableClass::APELLIDO) . ' LIKE ' . '\'%' . $filter['apellido'].'\' ';       
+              }
+        
+        if (isset($filter['documento']) and $filter['documento'] !== null and $filter['documento'] !== '') {
+          $where[proveedorTableClass::DOCUMENTO] = $filter['documento'];
         }
+        
         if (isset($filter['ciudad']) and $filter['ciudad'] !== null and $filter['ciudad'] !== '') {
           $where[proveedorTableClass::ID_CIUDAD] = $filter['ciudad'];
         }

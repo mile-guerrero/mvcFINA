@@ -54,6 +54,25 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       
       $this->objUC = usuarioCredencialTableClass::getAll($fields, false, $orderBy, 'ASC',config::getRowGrid(), $page,$where);
      
+      $fields = array(     
+      usuarioTableClass::ID, 
+      usuarioTableClass::USUARIO
+      );
+      $orderBy = array(
+      usuarioTableClass::USUARIO    
+      ); 
+      $this->objUCU = usuarioTableClass::getAll($fields, true, $orderBy, 'ASC');
+      
+      $fields = array(     
+      credencialTableClass::ID, 
+      credencialTableClass::NOMBRE
+      );
+      $orderBy = array(
+      credencialTableClass::NOMBRE    
+      ); 
+      $this->objUCC = credencialTableClass::getAll($fields, true, $orderBy, 'ASC');
+      
+      
       $this->defineView('index', 'usuarioCredencial', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
       echo $exc->getMessage();

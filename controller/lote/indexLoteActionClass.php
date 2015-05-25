@@ -22,6 +22,11 @@ class indexLoteActionClass extends controllerClass implements controllerActionIn
       if(request::getInstance()->hasPost('filter')){
       $filter = request::getInstance()->getPost('filter');
       //validar
+      
+      
+      
+      //-----------------fin validacion--------
+      }
       if(isset($filter['ubicacion']) and $filter['ubicacion'] !== null and $filter['ubicacion'] !== ""){
          $where[] = loteTableClass::getNameField(loteTableClass::UBICACION) . ' LIKE ' . '\'' . $filter['ubicacion'] . '%\'  '
               . 'OR ' . loteTableClass::getNameField(loteTableClass::UBICACION) . ' LIKE ' . '\'%' . $filter['ubicacion'] . '%\' '
@@ -50,12 +55,10 @@ class indexLoteActionClass extends controllerClass implements controllerActionIn
         } 
       
       
-//      if(isset($filter['ciudad']) and $filter['ciudad'] !== null and $filter['ciudad'] !== ""){
-//        $where[loteTableClass::ID_CIUDAD] = $filter['ciudad'];
-//      }
-//       
-//           
+      if(isset($filter['ciudad']) and $filter['ciudad'] !== null and $filter['ciudad'] !== ""){
+        $where[loteTableClass::ID_CIUDAD] = $filter['ciudad'];
       }
+        
       
       $fields = array(
           loteTableClass::ID,
@@ -120,6 +123,6 @@ class indexLoteActionClass extends controllerClass implements controllerActionIn
       echo '<br>';
       echo $exc->getTraceAsString();
     }
-}
+ }
 
 }

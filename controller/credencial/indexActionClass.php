@@ -22,8 +22,11 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       $filter = request::getInstance()->getPost('filter');
       //validar
       if(isset($filter['nombre']) and $filter['nombre'] !== null and $filter['nombre'] !== ""){
-        $where[credencialTableClass::NOMBRE] = $filter['nombre'];
-      }
+        $where[] = credencialTableClass::getNameField(credencialTableClass::NOMBRE) . ' LIKE ' . '\'' . $filter['nombre'] . '%\'  '
+              . 'OR ' . credencialTableClass::getNameField(credencialTableClass::NOMBRE) . ' LIKE ' . '\'%' . $filter['nombre'] . '%\' '
+              . 'OR ' . credencialTableClass::getNameField(credencialTableClass::NOMBRE) . ' LIKE ' . '\'%' . $filter['nombre'].'\' ';       
+              }
+              
        if((isset($filter['fechaIni']) and $filter['fechaIni'] !== null and $filter['fechaIni'] !== "") and (isset($filter['fechaFin']) and $filter['fechaFin'] !== null and $filter['fechaFin'] !== "" )){
         $where[credencialTableClass::CREATED_AT] = array(
            date(config::getFormatTimestamp(), strtotime($filter['fechaIni'].' 00:00:00')),

@@ -6,6 +6,7 @@
 
 <?php $id = proveedorTableClass::ID ?>
 <?php $nombre = proveedorTableClass::NOMBREP ?>
+<?php $apellido = proveedorTableClass::APELLIDO ?>
 <?php $documento= proveedorTableClass::DOCUMENTO ?>
 <?php $direccion= proveedorTableClass::DIRECCION ?>
 <?php $idCiudad= ciudadTableClass::ID ?>
@@ -31,6 +32,79 @@
       <a href="<?php echo routing::getInstance()->getUrlWeb('maquina', 'indexProveedor') ?>" class="btn btn-xs" ><img class="img-responsive"  id="imgelifiltro" src="" alt=" "><?php echo i18n::__('eFiltros') ?></a> 
       <a type="button" class="btn  btn-xs" data-toggle="modal" data-target="#myModalReport" ><img class="img-responsive"  id="imgreporte" src="" alt=" "><?php echo i18n::__('informe') ?></a>           
    </ul> 
+
+
+  <!-- filtros -->
+     <div class="modal fade" id="myModalFilters" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('filtros') ?></h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" id="filterForm" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('maquina', 'indexProveedor')?>">
+          
+          <div class="form-group">
+    <label class="col-sm-2 control-label">Fecha Creacion</label>
+    <div class="col-sm-10">
+      <input type="date" class="form-control-filtro1" id="filterFecha1" name="filter[fecha1]">
+      
+       <input type="date" class="form-control-filtro2" id="filterFecha2" name="filter[fecha2]">
+    </div>
+  </div>
+          
+          
+          <div class="form-group">
+    <label for="filterCiudad" class="col-sm-2 control-label"><?php echo i18n::__('idCiudad') ?></label>
+    <div class="col-sm-10">
+      <select class="form-control" id="filterCiudad" name="filter[ciudad]">
+        <option value=""><?php echo i18n::__('selectCiudad') ?></option>
+<?php foreach ($objCC as $ciudad): ?>
+            <option value="<?php echo $ciudad->$idCiudad ?>"><?php echo $ciudad->$nomCiu ?></option>
+<?php endforeach; ?>
+          </select>
+    </div>
+  </div>
+          
+          
+          <div class="form-group">
+    <label for="filterDocumento" class="col-sm-2 control-label"><?php echo i18n::__('documento') ?></label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="filterDocumento" name="filter[documento]" placeholder="buscar por documento">
+    </div>
+  </div>
+          
+        
+          <div class="form-group">
+    <label for="filterNombre" class="col-sm-2 control-label"><?php echo i18n::__('nom') ?></label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="filterNombre" name="filter[nombre]" placeholder="buscar por nombre">
+    </div>
+  </div>
+          
+          
+          <div class="form-group">
+    <label for="filterApellido" class="col-sm-2 control-label"><?php echo i18n::__('apell') ?></label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="filterApellido" name="filter[apellido]" placeholder="buscar por apellido">
+    </div>
+  </div>
+          
+  
+</form>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default btn btn-xs" data-dismiss="modal">  <?php echo i18n::__('cancel') ?></button>
+        <button type="button" onclick="$('#filterForm').submit()" class="btn btn-primary btn btn-xs"><?php echo i18n::__('filtros') ?></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 <!---Informes--->
        <div class="modal fade" id="myModalReport" tabindex="-1" role="modal" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -77,51 +151,7 @@
   </div>
 </div>
 
-    <!-- Modal -->
-     <div class="modal fade" id="myModalFilters" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('filtros') ?></h4>
-      </div>
-      <div class="modal-body">
-        <form class="form-horizontal" id="filterForm" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('maquina', 'indexProveedor')?>">
-          <div class="form-group">
-    <label for="filterNombre" class="col-sm-2 control-label"><?php echo i18n::__('nom') ?></label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="filterNombre" name="filter[nombre]" placeholder="Nombre">
-    </div>
-  </div>
-           <div class="form-group">
-    <label for="filterCiudad" class="col-sm-2 control-label"><?php echo i18n::__('idCiudad') ?></label>
-    <div class="col-sm-10">
-      <select class="form-control" id="filterCiudad" name="filter[ciudad]">
-        <option value=""><?php echo i18n::__('selectCiudad') ?></option>
-<?php foreach ($objCC as $ciudad): ?>
-            <option value="<?php echo $ciudad->$idCiudad ?>"><?php echo $ciudad->$nomCiu ?></option>
-<?php endforeach; ?>
-          </select>
-    </div>
-  </div>
-  <div class="form-group">
-    <label class="col-sm-2 control-label">Fecha Creacion</label>
-    <div class="col-sm-10">
-      <input type="date" class="form-control" id="filterFecha1" name="filter[fecha1]">
-      <br>
-       <input type="date" class="form-control" id="filterFecha2" name="filter[fecha2]">
-    </div>
-  </div>
-</form>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default btn btn-xs" data-dismiss="modal">  <?php echo i18n::__('cancel') ?></button>
-        <button type="button" onclick="$('#filterForm').submit()" class="btn btn-primary btn btn-xs"><?php echo i18n::__('filtros') ?></button>
-      </div>
-    </div>
-  </div>
-</div>
+  
       <form class="form-signin" id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('maquina', 'deleteSelectProveedor') ?>" method="POST">        
         <?php view::includeHandlerMessage()?>
           <br>
@@ -133,6 +163,9 @@
           </th>
           <th>
             <?php echo i18n::__('nom') ?>
+          </th>
+          <th>
+            <?php echo i18n::__('apell') ?>
           </th>
           <th>
             <?php echo i18n::__('documento') ?>
@@ -152,6 +185,9 @@
                 </th>
                 <td>
                   <?php echo $key->$nombre ?>
+                </td>
+                <td>
+                  <?php echo $key->$apellido ?>
                 </td>
                 <td>
                   <?php echo $key->$documento ?>

@@ -52,17 +52,30 @@ use mvc\session\sessionClass as session ?>
           <div class="modal-body">
             <form class="form-horizontal" id="filterForm" role="form" action="<?php echo routing::getInstance()->getUrlWeb('lote', 'indexLote') ?>" method="POST">
               
-              <div class="form-group">
-                <label for="filterFechaIni" class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
+             <div class="form-group">
+                <label for="filterCiudad" class="col-sm-2 control-label"><?php echo i18n::__('filtroCiudad') ?></label>
                 <div class="col-sm-10">
-                  <input type="date" class="form-control" id="filterFechaIni" name="filter[fechaIni]" >
+                  <select class="form-control" id="filterCiudad" name="filter[ciudad]">
+                    <option value=""><?php echo i18n::__('FCiudad') ?></option>
+<?php foreach ($objLC as $ciudad): ?>
+                      <option value="<?php echo $ciudad->$idCiudaddes ?>"><?php echo $ciudad->$descripcionciudad ?></option>
+<?php endforeach; ?>
+                  </select>
                 </div>
               </div>
               
+              
+              
+              
               <div class="form-group">
-                <label for="filterFechaFin" class="col-sm-2 control-label"><?php echo i18n::__('fecha fin') ?></label>
+                <label for="filterFechaIni" class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
                 <div class="col-sm-10">
-                  <input type="date" class="form-control" id="filterFechaFin" name="filter[fechaFin]" >
+                  <input type="date" class="form-control-filtro1" id="filterFechaIni" name="filter[fechaIni]" >
+              
+              
+<!--                <label for="filterFechaFin" class="col-sm-2 control-label"><?php echo i18n::__('fecha fin') ?></label>-->
+                
+                  <input type="date" class="form-control-filtro2" id="filterFechaFin" name="filter[fechaFin]" >
                 </div>
               </div>
               
@@ -79,49 +92,28 @@ use mvc\session\sessionClass as session ?>
                <div class="form-group">
                 <label for="filterTamanoIni" class="col-sm-2 control-label"><?php echo i18n::__('tamano') ?></label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="filterTamanoIni" name="filter[tamanoIni]" placeholder="buscar por tamaño">
-                </div>
-              </div>
+                  <input type="text" class="form-control-filtro1" id="filterTamanoIni" name="filter[tamanoIni]" placeholder="buscar por tamaño">
+               
               
-              <div class="form-group">
-                <label for="filterTamanoFin" class="col-sm-2 control-label"><?php echo i18n::__('tamano') ?></label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="filterTamanoFin" name="filter[tamanoFin]" placeholder="buscar por tamaño">
+<!--                <label for="filterTamanoFin" class="col-sm-2 control-label"><?php echo i18n::__('tamano') ?></label>-->
+               
+                  <input type="text" class="form-control-filtro2" id="filterTamanoFin" name="filter[tamanoFin]" placeholder="buscar por tamaño">
                 </div>
               </div>
               
               
               <div class="form-group">
-                <label for="filterFechaIniSiembra" class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
+                <label for="filterFechaIniSiembra" class="col-sm-2 control-label"><?php echo i18n::__('fechaFsiembra') ?></label>
                 <div class="col-sm-10">
-                  <input type="date" class="form-control" id="filterFechaIniSiembra" name="filter[fechaSI]" >
+                  <input type="date" class="form-control-filtro1" id="filterFechaIniSiembra" name="filter[fechaSI]" >
+                
+         
+<!--                <label for="filterFechaFinSiembra" class="col-sm-2 control-label"><?php echo i18n::__('fecha fin') ?></label>-->
+               
+                  <input type="date" class="form-control-filtro2" id="filterFechaFinSiembra" name="filter[fechaSF]" >
                 </div>
               </div>
-              
-              <div class="form-group">
-                <label for="filterFechaFinSiembra" class="col-sm-2 control-label"><?php echo i18n::__('fecha fin') ?></label>
-                <div class="col-sm-10">
-                  <input type="date" class="form-control" id="filterFechaFinSiembra" name="filter[fechaSF]" >
-                </div>
-              </div>
-                         
-              
-              
-                          
-       <!--
-
-              <div class="form-group">
-                <label for="filterCiudad" class="col-sm-2 control-label"><?php echo i18n::__('idCiudad') ?></label>
-                <div class="col-sm-10">
-                  <select class="form-control" id="filterCiudad" name="filter[ciudad]">
-                    <option value=""><?php echo i18n::__('selectCiudad') ?></option>
-<?php foreach ($objLC as $ciudad): ?>
-                      <option value="<?php echo $ciudad->$idCiudaddes ?>"><?php echo $ciudad->$descripcionciudad ?></option>
-<?php endforeach; ?>
-                  </select>
-                </div>
-              </div>-->
-
+                        
             </form>
 
           </div>
