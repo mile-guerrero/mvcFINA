@@ -5,11 +5,14 @@ dictionary:
     introduccion:         El Sistema cuenta con la funcionabilidad de transferir y procesar datos e informes de manera controlada tomando como referencia los procesos y producción del sector agropecuario, teniendo la gran capacidad de guardar información siendo esta oculta y manejada por los administradores para su control y cambio de registros e inventarios, para mayor seguridad los empleados solo tendrán el campo de consultoría y reportes de tareas para completar la funcionabilidad del sistema de información
     mas:                  Mas
     labor:                labor
+    selectMaquina:        Selecione la maquina
     editar labor:         editar labor
     nueva labor:          nueva labor
     editar cooperativa:   Editar cooperativa
     editar empresa:       Editar empresa
     cooperativa:          Cooperativa
+    selectCooperativa:    Seleccione la cooperativa
+    selectLabor:          Seleccione la labor
     nueva cooperativa:    Nueva cooperativa
     nueva empresa:        nueva empresa
     FCiudad:              buscar por ciudad
@@ -59,7 +62,7 @@ dictionary:
     fechaPagoIni:         Fecha de Pago Inicial
     fechaPagoFin:         Fecha de Pago Final
     salario:              Salario
-    horasExtras:          Horas Extras
+    horasExtras:          Valor horas Extras
     horasPerdidas:        Horas Perdidas
     totalPagar:           Total Pagar
     nuevoPago:            Nuevo Pago al Trabajador
@@ -124,13 +127,13 @@ dictionary:
     usu_id:               UsuarioId
     update:               Actualizar 
     email:                Email
-    valor:                Valor
+    valor:                Valor salario
     fecha_M:              Fecha del Mantenimiento
     origen:               Origen
     pro:                  ProveedorId 
     nomProveedor:         Proveedor
     empresa:              Empresa
-    nuevaMano:            New Mano de Obra
+    nuevaMano:            Nueva Mano de Obra
     editarMano:           Edit Mano de Obra
     manoObra:             Mano de Obra
     cooperativa:          Cooperativa

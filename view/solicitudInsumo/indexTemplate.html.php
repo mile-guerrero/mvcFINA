@@ -13,6 +13,8 @@
 <?php $idProducto = productoInsumoTableClass::ID ?>
 <?php $descProducto = productoInsumoTableClass::DESCRIPCION ?>
 <?php $idLote = loteTableClass::ID ?>
+<?php $desLote = solicitudInsumoTableClass::LOTE_ID ?>
+
 <div class="container container-fluid" id="cuerpo">
   <header id="">
    
@@ -131,13 +133,14 @@
         <?php view::includeHandlerMessage()?>       
           <br>
         <table id="tabla" class="table table-bordered table-responsive">
-          <tr>
+          
           <thead>
+            <tr>
           <th id="cuadrito">
             <input type="checkbox" id="chkAll">
           </th>
           <th>
-            <?php echo i18n::__('cantidad') ?>
+            <?php echo i18n::__('lote') ?>
           </th>
           <th id="acciones">
             <?php echo i18n::__('acciones') ?>
@@ -151,7 +154,7 @@
                   <input type="checkbox" name="chk[]" value="<?php echo $key->$id ?>">
                 </th>
                 <td>
-                  <?php echo $key->$cantidad ?>
+                  <?php echo loteTableClass::getNameLote($key->$desLote) ?>
                 </td>
                 <th>
                   <a class="btn btn-warning btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('solicitudInsumo', 'ver', array(solicitudInsumoTableClass::ID => $key->$id)) ?>" > <?php echo i18n::__('ver') ?></a>

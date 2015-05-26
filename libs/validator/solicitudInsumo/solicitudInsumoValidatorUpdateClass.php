@@ -23,7 +23,7 @@ namespace mvc\validator {
         $flag = true;
         session::getInstance()->setFlash('inputCantidad', true);
         session::getInstance()->setError('La cantidad no puede ser letras', 'inputCantidad');
-      } else if(strlen(request::getInstance()->getPost(\solicitudInsumoTableClass::getNameField(\solicitudInsumoTableClass::CANTIDAD, true))) > \solicitudInsumoTableClass::CANTIDAD) {
+      } else if(strlen(request::getInstance()->getPost(\solicitudInsumoTableClass::getNameField(\solicitudInsumoTableClass::CANTIDAD, true))) > \solicitudInsumoTableClass::CANTIDAD_LENGTH) {
         $flag = true;
         session::getInstance()->setFlash('inputCantidad', true);
         session::getInstance()->setError('La catidad digitado sobre pasa los caracteres permitidos', 'inputCantidad');

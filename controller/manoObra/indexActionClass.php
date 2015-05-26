@@ -59,10 +59,10 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       $this->objManoObra = manoObraTableClass::getAll($fields, true, $orderBy, 'ASC', config::getRowGrid(), $page, $where);
       $fields = array(
            cooperativaTableClass::ID,
-           cooperativaTableClass::DESCRIPCION
+           cooperativaTableClass::NOMBRE
       );
       $orderBy = array(
-      cooperativaTableClass::DESCRIPCION   
+      cooperativaTableClass::NOMBRE   
       );      
       $this->objCooperativa = cooperativaTableClass::getAll($fields, true, $orderBy, 'ASC');
        

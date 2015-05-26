@@ -141,7 +141,10 @@
             <input type="checkbox" id="chkAll">
           </th>
             <th>
-              <?php echo i18n::__('cantidad') ?>
+              <?php echo i18n::__('cooperativa') ?>
+            </th>
+             <th>
+              <?php echo i18n::__('maquina') ?>
             </th>
             <th id="acciones">
           <?php echo i18n::__('acciones') ?>
@@ -155,7 +158,10 @@
                   <input type="checkbox" name="chk[]" value="<?php echo $key->$id ?>">
                 </th>
                 <td>
-                  <?php echo $key->$cantidad ?>
+                <?php echo cooperativaTableClass::getNameCooperativa($key->$idCooperativa) ?>
+                 </td>
+                 <td>
+                <?php echo maquinaTableClass::getNameMaquina($key->$idMaquina) ?>
                  </td>
               <th>
                   <a class="btn btn-warning btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('manoObra', 'ver', array(manoObraTableClass::ID => $key->$id)) ?>" ><?php echo i18n::__('ver') ?></a>

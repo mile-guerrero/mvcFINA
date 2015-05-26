@@ -52,10 +52,10 @@ class editActionClass extends controllerClass implements controllerActionInterfa
         
         $fields = array(
             loteTableClass::ID,
-            loteTableClass::DESCRIPCION
+            loteTableClass::UBICACION
         );
         $orderBy = array(
-            loteTableClass::DESCRIPCION
+            loteTableClass::UBICACION
         );
         $this->objL = loteTableClass::getAll($fields, true, $orderBy, 'ASC');
         $this->defineView('edit', 'solicitudInsumo', session::getInstance()->getFormatOutput());

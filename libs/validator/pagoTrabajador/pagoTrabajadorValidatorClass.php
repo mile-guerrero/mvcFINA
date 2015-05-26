@@ -17,20 +17,29 @@ namespace mvc\validator {
 
         public static function validateInsert() {
             $flag = false;
-
+//      $soloNumeros = "/^[[:digit:]]+$/";
+      $soloLetras = "/^[a-z]+$/i";
+      $soloTelefono = "/^(\d{3,3}\-\d{3,3}\-\d{4,4})|^(\+\d\-\d{3,3}\-\d{4,4})/";
+      $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
+      
+      //------------------------------------campo cantida horas extras---------------------
+                //----campo nulo----
             if (self::notBlank(request::getInstance()->getPost(\pagoTrabajadorTableClass::getNameField(\pagoTrabajadorTableClass::CANTIDAD_HORAS_EXTRAS, true)))) {
                 $flag = true;
                 session::getInstance()->setFlash('inputCantidad', true);
-                session::getInstance()->setError('La cantidad es requerida', 'inputCantidad');
-            } else if (!is_numeric(request::getInstance()->getPost(\pagoTrabajadorTableClass::getNameField(\pagoTrabajadorTableClass::CANTIDAD_HORAS_EXTRAS, true)))) {
+                session::getInstance()->setError('La cantidad del documento es requerida', 'inputCantidad');
+            } //----campo solo numeros----
+              else if (!is_numeric(request::getInstance()->getPost(\pagoTrabajadorTableClass::getNameField(\pagoTrabajadorTableClass::CANTIDAD_HORAS_EXTRAS, true)))) {
                 $flag = true;
                 session::getInstance()->setFlash('inputCantidad', true);
                 session::getInstance()->setError('La cantidad no puede ser letras', 'inputCantidad');
-            } else if(strlen(request::getInstance()->getPost(\pagoTrabajadorTableClass::getNameField(\pagoTrabajadorTableClass::CANTIDAD_HORAS_EXTRAS, true))) > \pagoTrabajadorTableClass::CANTIDAD_HORAS_EXTRAS_LENGTH) {
+            } //----campo sobre pasa caracteres----
+            else if(strlen(request::getInstance()->getPost(\pagoTrabajadorTableClass::getNameField(\pagoTrabajadorTableClass::CANTIDAD_HORAS_EXTRAS, true))) > \pagoTrabajadorTableClass::CANTIDAD_HORAS_EXTRAS_LENGTH) {
                 $flag = true;
                 session::getInstance()->setFlash('inputCantidad', true);
-                session::getInstance()->setError('La catidad digitado sobre pasa los caracteres permitidos', 'inputCantidad');
-            }    
+                session::getInstance()->setError('La catidad digitada sobre pasa los caracteres permitidos', 'inputCantidad');
+            }  ///--------------- campo valor salario -----------------------------------  
+              //----campo nulo----
             if (self::notBlank(request::getInstance()->getPost(\pagoTrabajadorTableClass::getNameField(\pagoTrabajadorTableClass::VALOR_SALARIO, true)))) {
                 $flag = true;
                 session::getInstance()->setFlash('inputValor', true);
@@ -43,7 +52,7 @@ namespace mvc\validator {
                 $flag = true;
                 session::getInstance()->setFlash('inputValor', true);
                 session::getInstance()->setError('La catidad digitado sobre pasa los caracteres permitidos', 'inputValor');
-            }    
+            }    //--------------------campo valor horas extras----------------------
             if (self::notBlank(request::getInstance()->getPost(\pagoTrabajadorTableClass::getNameField(\pagoTrabajadorTableClass::VALOR_HORAS_EXTRAS, true)))) {
                 $flag = true;
                 session::getInstance()->setFlash('inputHoras', true);
@@ -56,7 +65,7 @@ namespace mvc\validator {
                 $flag = true;
                 session::getInstance()->setFlash('inputHoras', true);
                 session::getInstance()->setError('La catidad digitado sobre pasa los caracteres permitidos', 'inputHoras');
-            }    
+            }  //-------------------------------- campo horas perdidas ---------------------------  
             if (self::notBlank(request::getInstance()->getPost(\pagoTrabajadorTableClass::getNameField(\pagoTrabajadorTableClass::HORAS_PERDIDAS, true)))) {
                 $flag = true;
                 session::getInstance()->setFlash('inputHorasPerdidas', true);
@@ -69,7 +78,7 @@ namespace mvc\validator {
                 $flag = true;
                 session::getInstance()->setFlash('inputHorasPerdidas', true);
                 session::getInstance()->setError('La catidad digitado sobre pasa los caracteres permitidos', 'inputHorasPerdidas');
-            }
+            }//--------------------------campo total pagar -----------------------------------
             if (self::notBlank(request::getInstance()->getPost(\pagoTrabajadorTableClass::getNameField(\pagoTrabajadorTableClass::TOTAL_PAGAR, true)))) {
                 $flag = true;
                 session::getInstance()->setFlash('inputTotal', true);
@@ -79,41 +88,12 @@ namespace mvc\validator {
                 session::getInstance()->setFlash('inputTotal', true);
                 session::getInstance()->setError('El total no puede ser letras', 'inputTotal');
             } else if(strlen(request::getInstance()->getPost(\pagoTrabajadorTableClass::getNameField(\pagoTrabajadorTableClass::TOTAL_PAGAR, true))) > \pagoTrabajadorTableClass::TOTAL_PAGAR_LENGTH) {
-                $flag = true;
+               
+              //---------------------condiccion de bandera true----------------------------
+              $flag = true;
                 session::getInstance()->setFlash('inputTotal', true);
                 session::getInstance()->setError('La catidad digitado sobre pasa los caracteres permitidos', 'inputTotal');
-//      } else if(strlen(request::getInstance()->getPost('inputCantidad')) > \manoObraTableClass::CANTIDAD_HORA_LENGTH) {
-//        $flag = true;
-//        session::getInstance()->setFlash('inputCantidad', true);
-//        session::getInstance()->setError('El usuario digitado es mayor en cantidad de caracteres a lo permitido', 'inputCantidad');
-//      } else if(self::isUnique(\usuarioTableClass::ID, true, array(\manoObraTableClass::CANTIDAD_HORA_LENGTH => request::getInstance()->getPost('inputCantidad')), \usuarioTableClass::getNameTable())) {
-//        $flag = true;
-//        session::getInstance()->setFlash('inputCantidad', true);
-//        session::getInstance()->setError('El usuario digitado ya existe', 'inputCantidad');
-//      }
-//      if (request::getInstance()->hasFile('inputFile')) {
-//        $type = array(
-//            'image/png',
-//            'image/jpeg',
-//            'image/jpg',
-//            'image/gif'
-//        );
-//        if(request::getInstance()->getFile('inputFile')['error'] !== 0) {
-//          $flag = true;
-//          session::getInstance()->setFlash('inputFile', true);
-//          session::getInstance()->setError('Ocurrio un error en la carga de la imágen, por favor vuelva a intentarlo', 'inputFile');
-//        } else if ((array_search(request::getInstance()->getFile('inputFile')['type'], $type) === false)) {
-//          $flag = true;
-//          session::getInstance()->setFlash('inputFile', true);
-//          session::getInstance()->setError('Solo se permiten imágenes del tipo jpg, png o gif', 'inputFile');
-//        } else if (request::getInstance()->getFile('inputFile')['size'] > config::getFileSizeAvatar()) {
-//          $flag = true;
-//          session::getInstance()->setFlash('inputFile', true);
-//          session::getInstance()->setError('Solo se permiten imágenes con un tamaño máximo de 150kB', 'inputFile');
-//        } else if ($flag === true) {
-//          session::getInstance()->setFlash('inputFile', true);
-//          session::getInstance()->setError('Debido a errores en el formulario, por favor vuelve a cargar la imagen que vas a usar', 'inputFile');
-            }
+               }
 
             if ($flag === true) {
                 //request::getInstance()->setMethod('GET');

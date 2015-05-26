@@ -12,7 +12,7 @@ class loteTableClass extends loteBaseTableClass {
 
   public static function getNameLote($id) {
     try {
-      $sql = 'SELECT ' . loteTableClass::DESCRIPCION . ' As descripcion  '
+      $sql = 'SELECT ' . loteTableClass::UBICACION . ' As descripcion  '
               . '  FROM ' . loteTableClass::getNameTable() . '  '
               . '  WHERE ' . loteTableClass::ID . ' = :id';
       $params = array(

@@ -79,10 +79,10 @@ class indexActionClass extends controllerClass implements controllerActionInterf
 
       $fields = array(
           loteTableClass::ID,
-          loteTableClass::DESCRIPCION
+          loteTableClass::UBICACION
       );
       $orderBy = array(
-          loteTableClass::DESCRIPCION
+          loteTableClass::UBICACION
       );
       $this->objL = loteTableClass::getAll($fields, true, $orderBy, 'ASC');
     

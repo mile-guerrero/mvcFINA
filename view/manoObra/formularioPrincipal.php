@@ -11,7 +11,7 @@
 <?php $labor = manoObraTableClass::LABOR_ID ?>
 <?php $maquina = manoObraTableClass::MAQUINA_ID ?>
 <?php $idCooperativa = cooperativaTableClass::ID?>
-<?php $descCooperativa = cooperativaTableClass::DESCRIPCION?>
+<?php $descCooperativa = cooperativaTableClass::NOMBRE?>
 <?php $idLabor = laborTableClass::ID ?>
 <?php $descLabor = laborTableClass::DESCRIPCION ?>
 <?php $idMaquina = maquinaTableClass::ID ?>
@@ -25,36 +25,12 @@
   <input  name="<?php echo manoObraTableClass::getNameField(manoObraTableClass::ID, true) ?>" value="<?php echo $objManoObra[0]->$id ?>" type="hidden">
   <?php endif ?>
   
-  <?php if(session::getInstance()->hasError('inputCantidad')): ?>
-    <div class="alert alert-danger alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputCantidad') ?>
-    </div>
-    <?php endif ?>
+ 
+
+
+ 
   
-  <br>
-  <div class="form-group">
-      <label for="<?php echo manoObraTableClass::getNameField(manoObraTableClass::CANTIDAD_HORA, true) ?>" class="col-sm-2"> <?php echo i18n::__('cantidad') ?>:</label>     
-      <div class="col-sm-10">
-          <input  class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputCantidad')) ? request::getInstance()->getPost(manoObraTableClass::getNameField(manoObraTableClass::CANTIDAD_HORA, true)) : ((isset($objManoObra[0])) ? $objManoObra[0]->$cantidad : '') ?>" type="text" name="<?php echo manoObraTableClass::getNameField(manoObraTableClass::CANTIDAD_HORA, true) ?>" placeholder="<?php echo i18n::__('cantidad') ?>">
-      </div>
-  </div>
-  
-  <?php if(session::getInstance()->hasError('inputValor')): ?>
-    <div class="alert alert-danger alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputValor') ?>
-    </div>
-    <?php endif ?>
-  
-  <div class="form-group">
-      <label for="<?php echo manoObraTableClass::getNameField(manoObraTableClass::VALOR_HORA, true) ?>" class="col-sm-2"> <?php echo i18n::__('valor') ?>:</label>     
-      <div class="col-sm-10">
-          <input  class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputValor') or request::getInstance()->hasPost(manoObraTableClass::getNameField(manoObraTableClass::VALOR_HORA, true))) ? request::getInstance()->getPost(manoObraTableClass::getNameField(manoObraTableClass::VALOR_HORA, true)) : ((isset($objManoObra[0])) ? $objManoObra[0]->$valor : '') ?>" type="text" name="<?php echo manoObraTableClass::getNameField(manoObraTableClass::VALOR_HORA, true) ?>" placeholder="<?php echo i18n::__('valor') ?>">
-      </div>
-  </div>
-  
-  <div class="form-group">
+<div class="form-group">
          <label for="" class="col-sm-2"> <?php echo i18n::__('cooperativa') ?> </label>
          <div class="col-sm-10">
            <select class="form-control" id="<?php echo manoObraTableClass::getNameField(manoObraTableClass::COOPERATIVA_ID, true)?>" name="<?php echo manoObraTableClass::getNameField(manoObraTableClass::COOPERATIVA_ID, true) ?>">
@@ -65,11 +41,20 @@
           </select>
       </div>
     </div> 
-
-  <div class="form-group">
-         <label for="" class="col-sm-2"> <?php echo i18n::__('labor') ?> </label>
+  
+   <div class="form-group">
+         <label for="" class="col-sm-2"> <?php echo i18n::__('maquina') ?> </label>
          <div class="col-sm-10">
-           <select class="form-control" id="<?php echo manoObraTableClass::getNameField(manoObraTableClass::LABOR_ID, true)?>" name="<?php echo manoObraTableClass::getNameField(manoObraTableClass::LABOR_ID, true) ?>">
+           <select class="form-control-gonza1" id="<?php echo manoObraTableClass::getNameField(manoObraTableClass::MAQUINA_ID, true)?>" name="<?php echo manoObraTableClass::getNameField(manoObraTableClass::MAQUINA_ID, true) ?>">
+            <option><?php echo i18n::__('selectMaquina') ?></option>
+<?php foreach ($objMaquina as $maq): ?>
+            <option <?php echo (isset($objManoObra[0]->$maquina) === true and $objManoObra[0]->$maquina == $maq->$idMaquina) ? 'selected' : '' ?> value="<?php echo $maq->$idMaquina ?>"><?php echo $maq->$descMaquina ?></option>
+<?php endforeach; ?>
+          </select>
+     
+
+  
+           <select class="form-control-gonza2" id="<?php echo manoObraTableClass::getNameField(manoObraTableClass::LABOR_ID, true)?>" name="<?php echo manoObraTableClass::getNameField(manoObraTableClass::LABOR_ID, true) ?>">
             <option><?php echo i18n::__('selectLabor') ?></option>
 <?php foreach ($objLabor as $lab): ?>
             <option <?php echo (isset($objManoObra[0]->$labor) === true and $objManoObra[0]->$labor == $lab->$idLabor) ? 'selected' : '' ?> value="<?php echo $lab->$idLabor ?>"><?php echo $lab->$descLabor ?></option>
@@ -77,18 +62,37 @@
           </select>
       </div>
     </div>
-  
-  <div class="form-group">
-         <label for="" class="col-sm-2"> <?php echo i18n::__('maquina') ?> </label>
-         <div class="col-sm-10">
-           <select class="form-control" id="<?php echo manoObraTableClass::getNameField(manoObraTableClass::MAQUINA_ID, true)?>" name="<?php echo manoObraTableClass::getNameField(manoObraTableClass::MAQUINA_ID, true) ?>">
-            <option><?php echo i18n::__('selectMaquina') ?></option>
-<?php foreach ($objMaquina as $maq): ?>
-            <option <?php echo (isset($objManoObra[0]->$maquina) === true and $objManoObra[0]->$maquina == $maq->$idMaquina) ? 'selected' : '' ?> value="<?php echo $maq->$idMaquina ?>"><?php echo $maq->$descMaquina ?></option>
-<?php endforeach; ?>
-          </select>
-      </div>
+  <?php if(session::getInstance()->hasError('inputCantidad')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputCantidad') ?>
     </div>
+    <?php endif ?>
+  
+  <?php if(session::getInstance()->hasError('inputValor')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputValor') ?>
+    </div>
+    <?php endif ?>
+  
+ 
+  <div class="form-group">
+      <label for="<?php echo manoObraTableClass::getNameField(manoObraTableClass::CANTIDAD_HORA, true) ?>" class="col-sm-2"> <?php echo i18n::__('cantidad') ?>:</label>     
+      <div class="col-sm-10">
+          <input  class="form-control-gonza1" value="<?php echo (session::getInstance()->hasFlash('inputCantidad')) ? request::getInstance()->getPost(manoObraTableClass::getNameField(manoObraTableClass::CANTIDAD_HORA, true)) : ((isset($objManoObra[0])) ? $objManoObra[0]->$cantidad : '') ?>" type="text" name="<?php echo manoObraTableClass::getNameField(manoObraTableClass::CANTIDAD_HORA, true) ?>" placeholder="<?php echo i18n::__('cantidad') ?>">
+      
+  
+  
+  
+<!--  <div class="form-group">
+      <label for="<?php echo manoObraTableClass::getNameField(manoObraTableClass::VALOR_HORA, true) ?>" class="col-sm-2"> <?php echo i18n::__('valor') ?>:</label>     
+      <div class="col-sm-10">-->
+          <input  class="form-control-gonza2" value="<?php echo (session::getInstance()->hasFlash('inputValor') or request::getInstance()->hasPost(manoObraTableClass::getNameField(manoObraTableClass::VALOR_HORA, true))) ? request::getInstance()->getPost(manoObraTableClass::getNameField(manoObraTableClass::VALOR_HORA, true)) : ((isset($objManoObra[0])) ? $objManoObra[0]->$valor : '') ?>" type="text" name="<?php echo manoObraTableClass::getNameField(manoObraTableClass::VALOR_HORA, true) ?>" placeholder="<?php echo i18n::__('valor') ?>">
+      </div>
+  </div>
+  
+  
 
   
   <input  class="btn btn-lg btn-success btn-xs" type="submit" value="<?php echo i18n::__(((isset($objManoObra)) ? 'update' : 'register')) ?>">

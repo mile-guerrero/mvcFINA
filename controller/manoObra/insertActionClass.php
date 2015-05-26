@@ -19,10 +19,10 @@ class insertActionClass extends controllerClass implements controllerActionInter
     try {
       $fields = array(
            cooperativaTableClass::ID,
-           cooperativaTableClass::DESCRIPCION
+           cooperativaTableClass::NOMBRE
       );
       $orderBy = array(
-      cooperativaTableClass::DESCRIPCION   
+      cooperativaTableClass::NOMBRE   
       );      
       $this->objCooperativa = cooperativaTableClass::getAll($fields, true, $orderBy, 'ASC');
     

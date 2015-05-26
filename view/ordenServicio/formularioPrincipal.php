@@ -26,65 +26,13 @@
   
   
   
-  <br>
+  
   <div class="form-group">
       <label for="<?php echo ordenServiciotableClass::getNameField(ordenServicioTableClass::FECHA_MANTENIMIENTO, true) ?>" class="col-sm-2"> <?php echo i18n::__('fecha_M') ?>:</label>     
       <div class="col-sm-10">
    <input  class="form-control" value="<?php echo ((isset($objOS)== true) ? $objOS[0]->$fecha : '') ?>" type="datetime-local" name="<?php echo ordenServicioTableClass::getNameField(ordenServicioTableClass::FECHA_MANTENIMIENTO, true) ?>">
       </div>
   </div>
-  
-  <?php if(session::getInstance()->hasError('inputCantidad')): ?>
-    <div class="alert alert-danger alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputCantidad') ?>
-    </div>
-    <?php endif ?>
-  
-  <div class="form-group">
-      <label for="<?php echo ordenServiciotableClass::getNameField(ordenServicioTableClass::CANTIDAD, true) ?>" class="col-sm-2"> <?php echo i18n::__('cantidad') ?>:</label>     
-      <div class="col-sm-10">
-          <input  class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputCantidad') or request::getInstance()->hasPost(ordenServiciotableClass::getNameField(ordenServiciotableClass::CANTIDAD, true))) ? request::getInstance()->getPost(ordenServiciotableClass::getNameField(ordenServiciotableClass::CANTIDAD, true)) : ((isset($objOS[0])) ? $objOS[0]->$cantidad : '') ?>" type="text" name="<?php echo ordenServicioTableClass::getNameField(ordenServicioTableClass::CANTIDAD, true) ?>" placeholder="<?php echo i18n::__('cantidad') ?>">
-      </div>
-  </div>
-  
-  <?php if(session::getInstance()->hasError('inputValor')): ?>
-    <div class="alert alert-danger alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputValor') ?>
-    </div>
-    <?php endif ?>
-  
-  <div class="form-group">
-      <label for="<?php echo ordenServiciotableClass::getNameField(ordenServicioTableClass::VALOR, true) ?>" class="col-sm-2"> <?php echo i18n::__('valor') ?>:</label>     
-      <div class="col-sm-10">
-          <input  class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputValor') or request::getInstance()->hasPost(ordenServiciotableClass::getNameField(ordenServiciotableClass::VALOR, true))) ? request::getInstance()->getPost(ordenServiciotableClass::getNameField(ordenServiciotableClass::VALOR, true)) : ((isset($objOS[0])) ? $objOS[0]->$valor : '') ?>" type="text" name="<?php echo ordenServicioTableClass::getNameField(ordenServicioTableClass::VALOR, true) ?>" placeholder="<?php echo i18n::__('valor') ?>">
-      </div>
-  </div>
-  
-  <div class="form-group">
-         <label for="" class="col-sm-2"> <?php echo i18n::__('trabajador') ?> </label>
-         <div class="col-sm-10">
-           <select class="form-control" id="<?php echo ordenServicioTableClass::getNameField(ordenServicioTableClass::TRABAJADOR_ID, true)?>" name="<?php echo ordenServicioTableClass::getNameField(ordenServicioTableClass::TRABAJADOR_ID, true) ?>">
-            <option><?php echo i18n::__('selectTrabajador') ?></option>
-<?php foreach ($objOST as $trabajador): ?>
-            <option <?php echo (isset($objOS[0]->$idTrabajador) === true and $objOS[0]->$idTrabajador == $trabajador->$idTra) ? 'selected' : '' ?> value="<?php echo $trabajador->$idTra ?>"><?php echo $trabajador->$nomTrabajador ?></option>
-<?php endforeach; ?>
-          </select>
-      </div>
-    </div> 
-  
-  <div class="form-group">
-         <label for="" class="col-sm-2"> <?php echo i18n::__('product') ?> </label>
-         <div class="col-sm-10">
-           <select class="form-control" id="<?php echo ordenServicioTableClass::getNameField(ordenServicioTableClass::PRODUCTO_INSUMO_ID, true)?>" name="<?php echo ordenServicioTableClass::getNameField(ordenServicioTableClass::PRODUCTO_INSUMO_ID, true) ?>">
-            <option><?php echo i18n::__('selectProducto') ?></option>
-<?php foreach ($objOSPI as $produc): ?>
-            <option <?php echo (isset($objOS[0]->$producto) === true and $objOS[0]->$producto == $produc->$idProducto) ? 'selected' : '' ?> value="<?php echo $produc->$idProducto ?>"><?php echo $produc->$descProducto ?></option>
-<?php endforeach; ?>
-          </select>
-      </div>
-    </div>
   
   <div class="form-group">
          <label for="" class="col-sm-2"> <?php echo i18n::__('maquina') ?> </label>
@@ -97,6 +45,56 @@
           </select>
       </div>
     </div>
+  
+   <?php if(session::getInstance()->hasError('inputCantidad')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputCantidad') ?>
+    </div>
+    <?php endif ?>
+  
+  
+  <div class="form-group">
+         <label for="" class="col-sm-2"> <?php echo i18n::__('product') ?> </label>
+         <div class="col-sm-10">
+           <select class="form-control-gonza1" id="<?php echo ordenServicioTableClass::getNameField(ordenServicioTableClass::PRODUCTO_INSUMO_ID, true)?>" name="<?php echo ordenServicioTableClass::getNameField(ordenServicioTableClass::PRODUCTO_INSUMO_ID, true) ?>">
+            <option><?php echo i18n::__('selectProducto') ?></option>
+<?php foreach ($objOSPI as $produc): ?>
+            <option <?php echo (isset($objOS[0]->$producto) === true and $objOS[0]->$producto == $produc->$idProducto) ? 'selected' : '' ?> value="<?php echo $produc->$idProducto ?>"><?php echo $produc->$descProducto ?></option>
+<?php endforeach; ?>
+          </select>
+      
+ 
+          <input  class="form-control-gonza2" value="<?php echo (session::getInstance()->hasFlash('inputCantidad') or request::getInstance()->hasPost(ordenServiciotableClass::getNameField(ordenServiciotableClass::CANTIDAD, true))) ? request::getInstance()->getPost(ordenServiciotableClass::getNameField(ordenServiciotableClass::CANTIDAD, true)) : ((isset($objOS[0])) ? $objOS[0]->$cantidad : '') ?>" type="text" name="<?php echo ordenServicioTableClass::getNameField(ordenServicioTableClass::CANTIDAD, true) ?>" placeholder="<?php echo i18n::__('cantidad') ?>">
+      </div>
+  </div>
+  
+  <?php if(session::getInstance()->hasError('inputValor')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputValor') ?>
+    </div>
+    <?php endif ?>
+  
+  <div class="form-group">
+         <label for="" class="col-sm-2"> <?php echo i18n::__('trabajador') ?> </label>
+         <div class="col-sm-10">
+           <select class="form-control-gonza1" id="<?php echo ordenServicioTableClass::getNameField(ordenServicioTableClass::TRABAJADOR_ID, true)?>" name="<?php echo ordenServicioTableClass::getNameField(ordenServicioTableClass::TRABAJADOR_ID, true) ?>">
+            <option><?php echo i18n::__('selectTrabajador') ?></option>
+<?php foreach ($objOST as $trabajador): ?>
+            <option <?php echo (isset($objOS[0]->$idTrabajador) === true and $objOS[0]->$idTrabajador == $trabajador->$idTra) ? 'selected' : '' ?> value="<?php echo $trabajador->$idTra ?>"><?php echo $trabajador->$nomTrabajador ?></option>
+<?php endforeach; ?>
+          </select>
+     
+          <input  class="form-control-gonza2" value="<?php echo (session::getInstance()->hasFlash('inputValor') or request::getInstance()->hasPost(ordenServiciotableClass::getNameField(ordenServiciotableClass::VALOR, true))) ? request::getInstance()->getPost(ordenServiciotableClass::getNameField(ordenServiciotableClass::VALOR, true)) : ((isset($objOS[0])) ? $objOS[0]->$valor : '') ?>" type="text" name="<?php echo ordenServicioTableClass::getNameField(ordenServicioTableClass::VALOR, true) ?>" placeholder="<?php echo i18n::__('valor') ?>">
+      </div>
+  </div>
+  
+  
+  
+  
+  
+  
 
   
   <input  class="btn btn-lg btn-success btn-xs" type="submit" value="<?php echo i18n::__(((isset($objOS)) ? 'update' : 'register')) ?>">

@@ -20,20 +20,6 @@
     <?php if (isset($objPedido) == true): ?>
     <input  name="<?php echo pedidoTableClass::getNameField(pedidoTableClass::ID, true) ?>" value="<?php echo $objPedido[0]->$idPedido ?>" type="hidden">
     <?php endif ?>
-
-    <?php if(session::getInstance()->hasError('inputCantidad')): ?>
-    <div class="alert alert-danger alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputCantidad') ?>
-    </div>
-    <?php endif ?>
-  <br>
-    <div class="form-group">
-      <label for="<?php echo pedidoTableClass::getNameField(pedidoTableClass::CANTIDAD, true) ?>" class="col-sm-2"> <?php echo i18n::__('cantidad') ?>:</label>     
-      <div class="col-sm-10">
-          <input  class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputCantidad') or request::getInstance()->hasPost(pedidoTableClass::getNameField(pedidoTableClass::CANTIDAD, true))) ? request::getInstance()->getPost(pedidoTableClass::getNameField(pedidoTableClass::CANTIDAD, true)) : ((isset($objPedido[0])) ? $objPedido[0]->$cantidad : '') ?>" type="text" name="<?php echo pedidoTableClass::getNameField(pedidoTableClass::CANTIDAD, true) ?>" placeholder="<?php echo i18n::__('cantidad') ?>">
-      </div>
-  </div>
     
     <div class="form-group">
          <label for="" class="col-sm-2"> <?php echo i18n::__('empresa') ?> </label>
@@ -46,18 +32,28 @@
           </select>
       </div>
     </div>   
-    
-    <div class="form-group">
+
+    <?php if(session::getInstance()->hasError('inputCantidad')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputCantidad') ?>
+    </div>
+    <?php endif ?>
+  <div class="form-group">
          <label for="" class="col-sm-2"> <?php echo i18n::__('product') ?> </label>
          <div class="col-sm-10">
-           <select class="form-control" id="<?php echo pedidoTableClass::getNameField(pedidoTableClass::PRODUCTO_INSUMO_ID, true)?>" name="<?php echo pedidoTableClass::getNameField(pedidoTableClass::PRODUCTO_INSUMO_ID, true) ?>">
+           <select class="form-control-gonza1" id="<?php echo pedidoTableClass::getNameField(pedidoTableClass::PRODUCTO_INSUMO_ID, true)?>" name="<?php echo pedidoTableClass::getNameField(pedidoTableClass::PRODUCTO_INSUMO_ID, true) ?>">
             <option><?php echo i18n::__('selectProducto') ?></option>
 <?php foreach ($objProducto as $produc): ?>
             <option <?php echo (isset($objPedido[0]->$producto) === true and $objPedido[0]->$producto == $produc->$idProducto) ? 'selected' : '' ?> value="<?php echo $produc->$idProducto ?>"><?php echo $produc->$descProducto ?></option>
 <?php endforeach; ?>
           </select>
+     
+          <input  class="form-control-gonza2" value="<?php echo (session::getInstance()->hasFlash('inputCantidad') or request::getInstance()->hasPost(pedidoTableClass::getNameField(pedidoTableClass::CANTIDAD, true))) ? request::getInstance()->getPost(pedidoTableClass::getNameField(pedidoTableClass::CANTIDAD, true)) : ((isset($objPedido[0])) ? $objPedido[0]->$cantidad : '') ?>" type="text" name="<?php echo pedidoTableClass::getNameField(pedidoTableClass::CANTIDAD, true) ?>" placeholder="<?php echo i18n::__('cantidad') ?>">
       </div>
-    </div>
+  </div>
+    
+
       
       <div class="form-group">
       <label for="" class="col-sm-2">  <?php echo i18n::__('pro') ?>:   </label>
