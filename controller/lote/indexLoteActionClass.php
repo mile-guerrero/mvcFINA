@@ -28,9 +28,9 @@ class indexLoteActionClass extends controllerClass implements controllerActionIn
       //-----------------fin validacion--------
       }
       if(isset($filter['ubicacion']) and $filter['ubicacion'] !== null and $filter['ubicacion'] !== ""){
-         $where[] = loteTableClass::getNameField(loteTableClass::UBICACION) . ' LIKE ' . '\'' . $filter['ubicacion'] . '%\'  '
+         $where[] = '(' . loteTableClass::getNameField(loteTableClass::UBICACION) . ' LIKE ' . '\'' . $filter['ubicacion'] . '%\'  '
               . 'OR ' . loteTableClass::getNameField(loteTableClass::UBICACION) . ' LIKE ' . '\'%' . $filter['ubicacion'] . '%\' '
-              . 'OR ' . loteTableClass::getNameField(loteTableClass::UBICACION) . ' LIKE ' . '\'%' . $filter['ubicacion'].'\' ';       
+              . 'OR ' . loteTableClass::getNameField(loteTableClass::UBICACION) . ' LIKE ' . '\'%' . $filter['ubicacion'].'\') ';       
               }
               
       if((isset($filter['tamanoIni']) and $filter['tamanoIni'] !== null and $filter['tamanoIni'] !== "") and (isset($filter['tamanoFin']) and $filter['tamanoFin'] !== null and $filter['tamanoFin'] !== "" )){

@@ -24,15 +24,15 @@ class indexProveedorActionClass extends controllerClass implements controllerAct
         //Validar datos
 
         if (isset($filter['nombre']) and $filter['nombre'] !== null and $filter['nombre'] !== '') {
-         $where[] = proveedorTableClass::getNameField(proveedorTableClass::NOMBREP) . ' LIKE ' . '\'' . $filter['nombre'] . '%\'  '
+         $where[] = '(' . proveedorTableClass::getNameField(proveedorTableClass::NOMBREP) . ' LIKE ' . '\'' . $filter['nombre'] . '%\'  '
               . 'OR ' . proveedorTableClass::getNameField(proveedorTableClass::NOMBREP) . ' LIKE ' . '\'%' . $filter['nombre'] . '%\' '
-              . 'OR ' . proveedorTableClass::getNameField(proveedorTableClass::NOMBREP) . ' LIKE ' . '\'%' . $filter['nombre'].'\' ';       
+              . 'OR ' . proveedorTableClass::getNameField(proveedorTableClass::NOMBREP) . ' LIKE ' . '\'%' . $filter['nombre'].'\') ';       
               }
         
         if (isset($filter['apellido']) and $filter['apellido'] !== null and $filter['apellido'] !== '') {
-         $where[] = proveedorTableClass::getNameField(proveedorTableClass::APELLIDO) . ' LIKE ' . '\'' . $filter['apellido'] . '%\'  '
+         $where[] ='(' .  proveedorTableClass::getNameField(proveedorTableClass::APELLIDO) . ' LIKE ' . '\'' . $filter['apellido'] . '%\'  '
               . 'OR ' . proveedorTableClass::getNameField(proveedorTableClass::APELLIDO) . ' LIKE ' . '\'%' . $filter['apellido'] . '%\' '
-              . 'OR ' . proveedorTableClass::getNameField(proveedorTableClass::APELLIDO) . ' LIKE ' . '\'%' . $filter['apellido'].'\' ';       
+              . 'OR ' . proveedorTableClass::getNameField(proveedorTableClass::APELLIDO) . ' LIKE ' . '\'%' . $filter['apellido'].'\') ';       
               }
         
         if (isset($filter['documento']) and $filter['documento'] !== null and $filter['documento'] !== '') {

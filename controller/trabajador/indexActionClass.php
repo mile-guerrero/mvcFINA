@@ -24,15 +24,15 @@ class indexActionClass extends controllerClass implements controllerActionInterf
         //Validar datos
 
         if (isset($filter['nombre']) and $filter['nombre'] !== null and $filter['nombre'] !== '') {
-         $where[] = trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRET) . ' LIKE ' . '\'' . $filter['nombre'] . '%\'  '
+         $where[] = '(' . trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRET) . ' LIKE ' . '\'' . $filter['nombre'] . '%\'  '
               . 'OR ' . trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRET) . ' LIKE ' . '\'%' . $filter['nombre'] . '%\' '
-              . 'OR ' . trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRET) . ' LIKE ' . '\'%' . $filter['nombre'].'\' ';       
+              . 'OR ' . trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRET) . ' LIKE ' . '\'%' . $filter['nombre'].'\') ';       
               }
               
               if (isset($filter['apellido']) and $filter['apellido'] !== null and $filter['apellido'] !== '') {
-         $where[] = trabajadorTableClass::getNameField(trabajadorTableClass::APELLIDO) . ' LIKE ' . '\'' . $filter['apellido'] . '%\'  '
+         $where[] = '(' . trabajadorTableClass::getNameField(trabajadorTableClass::APELLIDO) . ' LIKE ' . '\'' . $filter['apellido'] . '%\'  '
               . 'OR ' . trabajadorTableClass::getNameField(trabajadorTableClass::APELLIDO) . ' LIKE ' . '\'%' . $filter['apellido'] . '%\' '
-              . 'OR ' . trabajadorTableClass::getNameField(trabajadorTableClass::APELLIDO) . ' LIKE ' . '\'%' . $filter['apellido'].'\' ';       
+              . 'OR ' . trabajadorTableClass::getNameField(trabajadorTableClass::APELLIDO) . ' LIKE ' . '\'%' . $filter['apellido'].'\') ';       
               }
         
         if (isset($filter['documento']) and $filter['documento'] !== null and $filter['documento'] !== '') {

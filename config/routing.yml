@@ -1669,6 +1669,8 @@ cooperativa_create:
     - model/cooperativaTableClass.php
     - model/base/ciudadBaseTableClass.php
     - model/ciudadTableClass.php
+    - libs/validator/cooperativa/cooperativaValidatorClass.php
+    
 cooperativa_edit:
   url:    /cooperativa/edit
   param:  { module: cooperativa, action: edit, format: html }
@@ -1677,6 +1679,7 @@ cooperativa_edit:
     - model/cooperativaTableClass.php
     - model/base/ciudadBaseTableClass.php
     - model/ciudadTableClass.php
+    
 cooperativa_update:
   url:    /cooperativa/update
   param:  { module: cooperativa, action: update, format: html }
@@ -1684,7 +1687,8 @@ cooperativa_update:
     - model/base/cooperativaBaseTableClass.php
     - model/cooperativaTableClass.php
     - model/base/ciudadBaseTableClass.php
-    - model/ciudadTableClass.php	
+    - model/ciudadTableClass.php
+    - libs/validator/cooperativa/cooperativaValidatorClass.php
     
 cooperativa_delete:
   url:    /cooperativa/eliminar
@@ -1721,6 +1725,7 @@ cooperativa_reporte:
     - model/cooperativaTableClass.php
     - model/base/ciudadBaseTableClass.php
     - model/ciudadTableClass.php
+    
     #--------------------------modulo-empresa--------------------------
 empresa_index:
   url:    /empresa/index
@@ -1742,6 +1747,7 @@ empresa_create:
   load:
     - model/base/empresaBaseTableClass.php
     - model/empresaTableClass.php
+    - libs/validator/empresa/empresaValidatorClass.php
     
 empresa_edit:
   url:    /empresa/edit
@@ -1756,6 +1762,7 @@ empresa_update:
   load:
     - model/base/empresaBaseTableClass.php
     - model/empresaTableClass.php
+    - libs/validator/empresa/empresaValidatorClass.php
    
 empresa_ver:
   url:    /empresa/ver
@@ -1806,6 +1813,7 @@ labor_create:
   load:
     - model/base/laborBaseTableClass.php
     - model/laborTableClass.php
+    - libs/validator/labor/laborValidatorClass.php
    
 labor_edit:
   url:    /labor/edit
@@ -1820,6 +1828,7 @@ labor_update:
   load:
     - model/base/laborBaseTableClass.php
     - model/laborTableClass.php
+    - libs/validator/labor/laborValidatorClass.php
    
 labor_ver:
   url:    /labor/ver

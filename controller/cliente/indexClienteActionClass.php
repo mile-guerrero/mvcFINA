@@ -23,15 +23,15 @@ class indexClienteActionClass extends controllerClass implements controllerActio
         //Validar datos
 
         if (isset($filter['nombre']) and $filter['nombre'] !== null and $filter['nombre'] !== '') {
-          $where[] = clienteTableClass::getNameField(clienteTableClass::NOMBRE) . ' LIKE ' . '\'' . $filter['nombre'] . '%\'  '
+          $where[] ='(' .  clienteTableClass::getNameField(clienteTableClass::NOMBRE) . ' LIKE ' . '\'' . $filter['nombre'] . '%\'  '
               . 'OR ' . clienteTableClass::getNameField(clienteTableClass::NOMBRE) . ' LIKE ' . '\'%' . $filter['nombre'] . '%\' '
-              . 'OR ' . clienteTableClass::getNameField(clienteTableClass::NOMBRE) . ' LIKE ' . '\'%' . $filter['nombre'].'\' ';       
+              . 'OR ' . clienteTableClass::getNameField(clienteTableClass::NOMBRE) . ' LIKE ' . '\'%' . $filter['nombre'].'\') ';       
               }
               
         if (isset($filter['apellido']) and $filter['apellido'] !== null and $filter['apellido'] !== '') {
-         $where[] = clienteTableClass::getNameField(clienteTableClass::APELLIDO) . ' LIKE ' . '\'' . $filter['apellido'] . '%\'  '
+         $where[] = '(' . clienteTableClass::getNameField(clienteTableClass::APELLIDO) . ' LIKE ' . '\'' . $filter['apellido'] . '%\'  '
               . 'OR ' . clienteTableClass::getNameField(clienteTableClass::APELLIDO) . ' LIKE ' . '\'%' . $filter['apellido'] . '%\' '
-              . 'OR ' . clienteTableClass::getNameField(clienteTableClass::APELLIDO) . ' LIKE ' . '\'%' . $filter['apellido'].'\' ';       
+              . 'OR ' . clienteTableClass::getNameField(clienteTableClass::APELLIDO) . ' LIKE ' . '\'%' . $filter['apellido'].'\') ';       
               }
         
         if (isset($filter['documento']) and $filter['documento'] !== null and $filter['documento'] !== '') {

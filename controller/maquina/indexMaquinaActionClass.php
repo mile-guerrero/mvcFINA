@@ -22,9 +22,9 @@ class indexMaquinaActionClass extends controllerClass implements controllerActio
       $filter = request::getInstance()->getPost('filter');
       //validar
       if(isset($filter['nombre']) and $filter['nombre'] !== null and $filter['nombre'] !== ""){
-        $where[] = maquinaTableClass::getNameField(maquinaTableClass::NOMBRE) . ' LIKE ' . '\'' . $filter['nombre'] . '%\'  '
+        $where[] ='(' .  maquinaTableClass::getNameField(maquinaTableClass::NOMBRE) . ' LIKE ' . '\'' . $filter['nombre'] . '%\'  '
               . 'OR ' . maquinaTableClass::getNameField(maquinaTableClass::NOMBRE) . ' LIKE ' . '\'%' . $filter['nombre'] . '%\' '
-              . 'OR ' . maquinaTableClass::getNameField(maquinaTableClass::NOMBRE) . ' LIKE ' . '\'%' . $filter['nombre'].'\' ';       
+              . 'OR ' . maquinaTableClass::getNameField(maquinaTableClass::NOMBRE) . ' LIKE ' . '\'%' . $filter['nombre'].'\') ';       
               }
               
               if((isset($filter['fechaIni']) and $filter['fechaIni'] !== null and $filter['fechaIni'] !== "") and (isset($filter['fechaFin']) and $filter['fechaFin'] !== null and $filter['fechaFin'] !== "" )){
@@ -35,15 +35,15 @@ class indexMaquinaActionClass extends controllerClass implements controllerActio
       }
       
       if(isset($filter['descripcion']) and $filter['descripcion'] !== null and $filter['descripcion'] !== ""){
-        $where[] = maquinaTableClass::getNameField(maquinaTableClass::DESCRIPCION) . ' LIKE ' . '\'' . $filter['descripcion'] . '%\'  '
+        $where[] = '(' . maquinaTableClass::getNameField(maquinaTableClass::DESCRIPCION) . ' LIKE ' . '\'' . $filter['descripcion'] . '%\'  '
               . 'OR ' . maquinaTableClass::getNameField(maquinaTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $filter['descripcion'] . '%\' '
-              . 'OR ' . maquinaTableClass::getNameField(maquinaTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $filter['descripcion'].'\' ';       
+              . 'OR ' . maquinaTableClass::getNameField(maquinaTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $filter['descripcion'].'\') ';       
               }
               
       if(isset($filter['origen']) and $filter['origen'] !== null and $filter['origen'] !== ""){
-        $where[] = maquinaTableClass::getNameField(maquinaTableClass::ORIGEN_MAQUINA) . ' LIKE ' . '\'' . $filter['origen'] . '%\'  '
+        $where[] ='(' .  maquinaTableClass::getNameField(maquinaTableClass::ORIGEN_MAQUINA) . ' LIKE ' . '\'' . $filter['origen'] . '%\'  '
               . 'OR ' . maquinaTableClass::getNameField(maquinaTableClass::ORIGEN_MAQUINA) . ' LIKE ' . '\'%' . $filter['origen'] . '%\' '
-              . 'OR ' . maquinaTableClass::getNameField(maquinaTableClass::ORIGEN_MAQUINA) . ' LIKE ' . '\'%' . $filter['origen'].'\' ';       
+              . 'OR ' . maquinaTableClass::getNameField(maquinaTableClass::ORIGEN_MAQUINA) . ' LIKE ' . '\'%' . $filter['origen'].'\') ';       
               }
 //      
       if(isset($filter['tipo']) and $filter['tipo'] !== null and $filter['tipo'] !== ""){

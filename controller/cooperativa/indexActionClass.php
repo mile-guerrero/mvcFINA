@@ -62,10 +62,14 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       $this->objCooperativa = cooperativaTableClass::getAll($fields, true, $orderBy, 'ASC', config::getRowGrid(), $page,$where);
       
       
-      $fields = array(     
-      ciudadTableClass::ID, 
- 
+      $fields = array(
+      ciudadBaseTableClass::ID,
+      ciudadTableClass::NOMBRE_CIUDAD
       );
+      $orderBy = array(
+      ciudadBaseTableClass::NOMBRE_CIUDAD
+      );
+      $this->objCC = ciudadTableClass::getAll($fields, false, $orderBy, 'ASC');
       
       
       $this->defineView('index', 'cooperativa', session::getInstance()->getFormatOutput());

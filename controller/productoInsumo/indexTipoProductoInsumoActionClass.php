@@ -23,9 +23,9 @@ class indexTipoProductoInsumoActionClass extends controllerClass implements cont
       //validar
       
       if(isset($filter['descripcion']) and $filter['descripcion'] !== null and $filter['descripcion'] !== ""){
-        $where[] = tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::DESCRIPCION) . ' LIKE ' . '\'' . $filter['descripcion'] . '%\'  '
+        $where[] = '(' . tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::DESCRIPCION) . ' LIKE ' . '\'' . $filter['descripcion'] . '%\'  '
               . 'OR ' . tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $filter['descripcion'] . '%\' '
-              . 'OR ' . tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $filter['descripcion'].'\' ';       
+              . 'OR ' . tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $filter['descripcion'].'\') ';       
               }
               
       if((isset($filter['fechaIni']) and $filter['fechaIni'] !== null and $filter['fechaIni'] !== "") and (isset($filter['fechaFin']) and $filter['fechaFin'] !== null and $filter['fechaFin'] !== "" )){

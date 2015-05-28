@@ -8,6 +8,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+use mvc\validator\cooperativaValidatorClass as validator;
 
 /**
  * Description of ejemploClass
@@ -26,7 +27,9 @@ class updateActionClass extends controllerClass implements controllerActionInter
         $telefono = request::getInstance()->getPost(cooperativaTableClass::getNameField(cooperativaTableClass::TELEFONO, true));
         $idCiudad = request::getInstance()->getPost(cooperativaTableClass::getNameField(cooperativaTableClass::ID_CIUDAD, true));
        
-        $this->validate($nombre, $descripcion, $direccion, $telefono);
+        
+                validator::validateEdit();
+//        $this->validate($nombre, $descripcion, $direccion, $telefono);
          
      
         $ids = array(
@@ -51,78 +54,78 @@ class updateActionClass extends controllerClass implements controllerActionInter
      
     }
   }
-  public function validate($nombre, $descripcion, $direccion, $telefono) {
-
-    $flag = false;
-    $soloNumeros = "/^[[:digit:]]+$/";
-    $soloLetras = "/^[a-z]+$/i";
-    $soloTelefono = "/[0-9](9)$/";
-    
-
-//---------------------validacion nombre----------------------------------------     
-    if (strlen($nombre) > cooperativaTableClass::NOMBRE_LENGTH) {
-      session::getInstance()->setError(i18n::__(00001, null, 'errors', array(':longitud' => cooperativaTableClass::NOMBRE_LENGTH)), 00001);
-      $flag = true;
-      }
-
-    if (strlen($nombre)  == null or $nombre === "") {
-      session::getInstance()->setError(i18n::__(00009, null, 'errors', array(':campo vacio' => cooperativaTableClass::NOMBRE)), 00009);
-      $flag = true;
-     }
-     
-    
-    if (!preg_match($soloLetras, $nombre)) {
-       session::getInstance()->setError(i18n::__(00012, null, 'errors', array(':no permite letras' => cooperativaTableClass::NOMBRE)), 00012);
-       $flag = true;
-       }
-      
-//---------------------validacion descripcion--------------------------------------  
-    if (strlen($descripcion) > cooperativaTableClass::DESCRIPCION_LENGTH) {
-      session::getInstance()->setError(i18n::__(00002, null, 'errors', array(':longitud' => cooperativaTableClass::DESCRIPCION_LENGTH)), 00002);
-      $flag = true;
-     }
-    
-     if (strlen($descripcion) == null or $apellido === "") {
-      session::getInstance()->setError(i18n::__(00009, null, 'errors', array(':campo vacio' => cooperativaTableClass::DESCRIPCION)), 00009);
-      $flag = true;
-     }
-     
-    if (!preg_match($soloLetras, $descripcion)) {
-       session::getInstance()->setError(i18n::__(00012, null, 'errors', array(':no permite letras' => cooperativaTableClass::DESCRIPCION)), 00012);
-       $flag = true;
-       }
-//---------------------validacion direccion-------------------------------------
-     if (strlen($direccion) > cooperativaTableClass::DIRECCION_LENGTH) {
-      session::getInstance()->setError(i18n::__(00002, null, 'errors', array(':longitud' => cooperativaTableClass::DIRECCION_LENGTH)), 00002);
-      $flag = true;
-     }
-     
-     if (strlen($direccion)  == null or $direccion === "") {
-      session::getInstance()->setError(i18n::__(00009, null, 'errors', array(':campo vacio' => cooperativaclienteTableClass::DIRECCION)), 00009);
-      $flag = true;
-     }
- 
-//-------------------validacion de telefono-------------------------------------
-  if (strlen($telefono) > cooperativaTableClass::TELEFONO_LENGTH) {
-      session::getInstance()->setError(i18n::__(00014, null, 'errors', array(':longitud' => cooperativaTableClass::TELEFONO_LENGTH)), 00014);
-      $flag = true;
-     }
-  if (strlen($telefono) == null or $telefono === "") {
-      session::getInstance()->setError(i18n::__(00009, null, 'errors', array(':campo vacio' => cooperativaTableClass::TELEFONO)), 00009);
-      $flag = true;
-     }
- if (!preg_match($soloNumeros, $telefono)) {
-      session::getInstance()->setError(i18n::__(00016, null, 'errors', array(':no permite letras' => clienteTableClass::TELEFONO)), 00016);
-      $flag = true;
-       }
-
-//-------------------validacion ------------------------------------------------
-    if ($flag === true){
-    request::getInstance()->setMethod('GET');
-    request::getInstance()->addParamGet(array(cooperativaTableClass::ID => request::getInstance()->getPost(cooperativaTableClass::getNameField(cooperativaTableClass::ID, true))));
-    routing::getInstance()->forward('cooperativa', 'edit');
-  }
-  }
+//  public function validate($nombre, $descripcion, $direccion, $telefono) {
+//
+//    $flag = false;
+//    $soloNumeros = "/^[[:digit:]]+$/";
+//    $soloLetras = "/^[a-z]+$/i";
+//    $soloTelefono = "/[0-9](9)$/";
+//    
+//
+////---------------------validacion nombre----------------------------------------     
+//    if (strlen($nombre) > cooperativaTableClass::NOMBRE_LENGTH) {
+//      session::getInstance()->setError(i18n::__(00001, null, 'errors', array(':longitud' => cooperativaTableClass::NOMBRE_LENGTH)), 00001);
+//      $flag = true;
+//      }
+//
+//    if (strlen($nombre)  == null or $nombre === "") {
+//      session::getInstance()->setError(i18n::__(00009, null, 'errors', array(':campo vacio' => cooperativaTableClass::NOMBRE)), 00009);
+//      $flag = true;
+//     }
+//     
+//    
+//    if (!preg_match($soloLetras, $nombre)) {
+//       session::getInstance()->setError(i18n::__(00012, null, 'errors', array(':no permite letras' => cooperativaTableClass::NOMBRE)), 00012);
+//       $flag = true;
+//       }
+//      
+////---------------------validacion descripcion--------------------------------------  
+//    if (strlen($descripcion) > cooperativaTableClass::DESCRIPCION_LENGTH) {
+//      session::getInstance()->setError(i18n::__(00002, null, 'errors', array(':longitud' => cooperativaTableClass::DESCRIPCION_LENGTH)), 00002);
+//      $flag = true;
+//     }
+//    
+//     if (strlen($descripcion) == null or $apellido === "") {
+//      session::getInstance()->setError(i18n::__(00009, null, 'errors', array(':campo vacio' => cooperativaTableClass::DESCRIPCION)), 00009);
+//      $flag = true;
+//     }
+//     
+//    if (!preg_match($soloLetras, $descripcion)) {
+//       session::getInstance()->setError(i18n::__(00012, null, 'errors', array(':no permite letras' => cooperativaTableClass::DESCRIPCION)), 00012);
+//       $flag = true;
+//       }
+////---------------------validacion direccion-------------------------------------
+//     if (strlen($direccion) > cooperativaTableClass::DIRECCION_LENGTH) {
+//      session::getInstance()->setError(i18n::__(00002, null, 'errors', array(':longitud' => cooperativaTableClass::DIRECCION_LENGTH)), 00002);
+//      $flag = true;
+//     }
+//     
+//     if (strlen($direccion)  == null or $direccion === "") {
+//      session::getInstance()->setError(i18n::__(00009, null, 'errors', array(':campo vacio' => cooperativaclienteTableClass::DIRECCION)), 00009);
+//      $flag = true;
+//     }
+// 
+////-------------------validacion de telefono-------------------------------------
+//  if (strlen($telefono) > cooperativaTableClass::TELEFONO_LENGTH) {
+//      session::getInstance()->setError(i18n::__(00014, null, 'errors', array(':longitud' => cooperativaTableClass::TELEFONO_LENGTH)), 00014);
+//      $flag = true;
+//     }
+//  if (strlen($telefono) == null or $telefono === "") {
+//      session::getInstance()->setError(i18n::__(00009, null, 'errors', array(':campo vacio' => cooperativaTableClass::TELEFONO)), 00009);
+//      $flag = true;
+//     }
+// if (!preg_match($soloNumeros, $telefono)) {
+//      session::getInstance()->setError(i18n::__(00016, null, 'errors', array(':no permite letras' => clienteTableClass::TELEFONO)), 00016);
+//      $flag = true;
+//       }
+//
+////-------------------validacion ------------------------------------------------
+//    if ($flag === true){
+//    request::getInstance()->setMethod('GET');
+//    request::getInstance()->addParamGet(array(cooperativaTableClass::ID => request::getInstance()->getPost(cooperativaTableClass::getNameField(cooperativaTableClass::ID, true))));
+//    routing::getInstance()->forward('cooperativa', 'edit');
+//  }
+//  }
 }
 
 

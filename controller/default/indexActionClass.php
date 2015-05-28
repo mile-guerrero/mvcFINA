@@ -22,9 +22,9 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       $filter = request::getInstance()->getPost('filter');
       //validar
       if(isset($filter['usuario']) and $filter['usuario'] !== null and $filter['usuario'] !== ""){
-        $where[] = usuarioTableClass::getNameField(usuarioTableClass::USUARIO) . ' LIKE ' . '\'' . $filter['usuario'] . '%\'  '
+        $where[] = '(' . usuarioTableClass::getNameField(usuarioTableClass::USUARIO) . ' LIKE ' . '\'' . $filter['usuario'] . '%\'  '
               . 'OR ' . usuarioTableClass::getNameField(usuarioTableClass::USUARIO) . ' LIKE ' . '\'%' . $filter['usuario'] . '%\' '
-              . 'OR ' . usuarioTableClass::getNameField(usuarioTableClass::USUARIO) . ' LIKE ' . '\'%' . $filter['usuario'].'\' ';       
+              . 'OR ' . usuarioTableClass::getNameField(usuarioTableClass::USUARIO) . ' LIKE ' . '\'%' . $filter['usuario'].'\') ';       
               }
       
       
