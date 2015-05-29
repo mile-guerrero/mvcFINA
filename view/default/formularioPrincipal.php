@@ -3,6 +3,7 @@
 <?php use mvc\view\viewClass as view ?>
 <?php use mvc\session\sessionClass as session ?>
 <?php use mvc\request\requestClass as request ?>
+
 <?php $idUsuario = usuarioTableClass::ID ?>
 <?php $password = usuarioTableClass::PASSWORD ?>
 <div class="container container-fluid" id="cuerpo">
@@ -13,8 +14,8 @@
   <?php endif ?>
   
   <?php if(session::getInstance()->hasError('inputUsuario')): ?>
-    <div class="alert alert-danger alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+  <div class="alert alert-danger alert-dismissible" role="alert" id="error">
+    <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
       <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputUsuario') ?>
     </div>
     <?php endif ?>
@@ -28,8 +29,8 @@
   </div>  
   
   <?php if(session::getInstance()->hasError('inputPass1')): ?>
-    <div class="alert alert-danger alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    <div class="alert alert-danger alert-dismissible" role="alert" id="error">
+      <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
       <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputPass1') ?>
     </div>
     <?php endif ?>
