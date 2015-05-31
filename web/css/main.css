@@ -304,5 +304,17 @@ table > thead > tr, table > tfoot > tr {
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 
-
+#error{
+  width: 620px;
+  height: 34px;
+  margin: 0px 0px 10px 130px;
+  padding:  5px 0px 0px 10px;
+    }
+    
+#close{
+  width: 15px; 
+  margin: 2px 30px 10px 0px;
+    }
+    
+    
 

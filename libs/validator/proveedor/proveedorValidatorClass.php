@@ -133,7 +133,7 @@ namespace mvc\validator {
         else if (!preg_match($emailcorrecto, (request::getInstance()->getPost(\proveedorTableClass::getNameField(\proveedorTableClass::EMAIL, true))))){
         $flag = true;
         session::getInstance()->setFlash('inputEmail', true);
-        session::getInstance()->setError('Por favor digite un corre válido ', 'inputEmail');
+        session::getInstance()->setError('Por favor digite un correo válido ', 'inputEmail');
       }   //----datos duplicados----
 //        else if(self::isUnique(\usuarioTableClass::ID, true, array(\usuarioTableClass::USER => request::getInstance()->getPost('inputUser')), \usuarioTableClass::getNameTable())) {
 //        $flag = true;
