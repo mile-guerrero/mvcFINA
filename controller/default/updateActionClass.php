@@ -9,14 +9,24 @@ use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 use mvc\validator\defaultValidatorClass as validator;
+use hook\log\logHookClass as log;
 
 /**
- * Description of ejemploClass
- *
- * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
+ * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon 
+ * @date: fecha de inicio del desarrollo.
+ * @category: modulo de defautl.
  */
 class updateActionClass extends controllerClass implements controllerActionInterface {
 
+  
+   /**
+* @author: Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon .
+* @date: fecha de inicio del desarrollo.
+* @return   usuarioTableClass::ID retorna $id (integer),
+            usuarioTableClass::USUARIO retorna $usuario (string),
+            usuarioTableClass::PASSWORD retorna $password (string),
+ * estos datos retornan en la variable $data y el $id retorna en la variable $ids
+*/
   public function execute() {
     try {
       if (request::getInstance()->isMethod('POST')) {
@@ -37,16 +47,21 @@ class updateActionClass extends controllerClass implements controllerActionInter
         );
         usuarioTableClass::update($ids, $data);
         session::getInstance()->setSuccess('La actualizacion fue correcta');
+        $observacion ='se ha modificado el usuario';
+        log::register('Modificar', usuarioTableClass::getNameTable(),$observacion,$id);
         routing::getInstance()->redirect('default', 'index');
-      }
+      }//cierre del if que trae el POST
 
-    } catch (PDOException $exc) {
+    }//cierre del try
+      catch (PDOException $exc) {
       echo $exc->getMessage();
       echo '<br>';
       echo $exc->getTraceAsString();
      
-    }
-  }
+    }//cierre del catch
+}//cierre de la funcion execute
+
+}//cierre de la clase
 //private function validate ($usuario,$password,$password2){
 //  $flag = false;
 //  $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
@@ -78,4 +93,3 @@ class updateActionClass extends controllerClass implements controllerActionInter
 //  }
 //        
 //}
-}

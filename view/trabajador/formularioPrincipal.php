@@ -46,9 +46,10 @@
         <input class="form-control-gonza1" value="<?php echo (session::getInstance()->hasFlash('inputDocumento')  or request::getInstance()->hasPost(trabajadorTableClass::getNameField(trabajadorTableClass::DOCUMENTO, true))) ? request::getInstance()->getPost(trabajadorTableClass::getNameField(trabajadorTableClass::DOCUMENTO, true)) : ((isset($objTrabajador[0])) ? $objTrabajador[0]->$documento : '') ?>" type="text" name="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::DOCUMENTO, true) ?>" placeholder="<?php echo i18n::__('documento') ?>" required>
        
         <select class="form-control-gonza2" id="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::ID, true) ?>" name="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::ID_TIPO_ID, true) ?>">
-<option value="<?php echo (session::getInstance()->hasFlash('selectTipoId') or request::getInstance()->hasPost(trabajadorTableClass::getNameField(trabajadorTableClass::ID_TIPO_ID, true))) ? request::getInstance()->getPost(trabajadorTableClass::getNameField(trabajadorTableClass::ID_TIPO_ID, true)) : ((isset($objTrabajador[0])) ? '' : '') ?>"><?php echo i18n::__('selectTipoId') ?></option>        
+<!--<option value="<?php //echo (session::getInstance()->hasFlash('selectTipoId') or request::getInstance()->hasPost(trabajadorTableClass::getNameField(trabajadorTableClass::ID_TIPO_ID, true))) ? request::getInstance()->getPost(trabajadorTableClass::getNameField(trabajadorTableClass::ID_TIPO_ID, true)) : ((isset($objTrabajador[0])) ? '' : '') ?>"><?php echo i18n::__('selectTipoId') ?></option>-->
+<option value=""><?php echo i18n::__('selectTipoId') ?></option>        
 <?php foreach ($objCTI as $tipoId): ?>
-            <option <?php echo (isset($objTrabajador[0]->$idTipo) === true and $objTrabajador[0]->$idTipo == $tipoId->$idTipoId) ? 'selected' : '' ?> value="<?php echo $tipoId->$idTipoId ?>"><?php echo $tipoId->$desc ?></option>
+<option <?php echo (request::getInstance()->hasPost(trabajadorTableClass::getNameField(trabajadorTableClass::ID_TIPO_ID, true)) === true and request::getInstance()->getPost(trabajadorTableClass::getNameField(trabajadorTableClass::ID_TIPO_ID, true)) == $tipoId->$idTipoId) ? 'selected' : (isset($objTrabajador[0]->$idTipo) === true and $objTrabajador[0]->$idTipo == $tipoId->$idTipoId) ? 'selected' : '' ?> value="<?php echo $tipoId->$idTipoId ?>"><?php echo $tipoId->$desc ?></option>
 <?php endforeach; ?>
         </select> 
       </div> 

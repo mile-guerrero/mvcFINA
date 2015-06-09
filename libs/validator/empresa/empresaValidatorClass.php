@@ -45,7 +45,7 @@ namespace mvc\validator {
         session::getInstance()->setFlash('inputDireccion', true);
         session::getInstance()->setError('La direccion del cliente es requerido', 'inputDireccion');
         } //----sobre pasar los caracteres----
-        else if(strlen(request::getInstance()->getPost(\empresaTableClass::getNameField(\empresaTableClass::DIRECCION, true))) > \eTableClass::DIRECCION_LENGTH) {
+        else if(strlen(request::getInstance()->getPost(\empresaTableClass::getNameField(\empresaTableClass::DIRECCION, true))) > \empresaTableClass::DIRECCION_LENGTH) {
         $flag = true;
         session::getInstance()->setFlash('inputDireccion', true);
         session::getInstance()->setError('La direccion digitada es mayor en cantidad de caracteres a lo permitido', 'inputDireccion');
@@ -66,7 +66,7 @@ namespace mvc\validator {
         else if (!is_numeric(request::getInstance()->getPost(\empresaTableClass::getNameField(\empresaTableClass::TELEFONO, true)))) {
         $flag = true;
         session::getInstance()->setFlash('inputTelefono', true);
-        session::getInstance()->setError('El documento no permite letras, solo numeros', 'inputTelefono');
+        session::getInstance()->setError('El telefono no permite letras, solo numeros', 'inputTelefono');
       }
       
       //-------------------------------campo email-----------------------------
@@ -128,7 +128,7 @@ namespace mvc\validator {
         session::getInstance()->setFlash('inputDireccion', true);
         session::getInstance()->setError('La direccion del cliente es requerido', 'inputDireccion');
         } //----sobre pasar los caracteres----
-        else if(strlen(request::getInstance()->getPost(\empresaTableClass::getNameField(\empresaTableClass::DIRECCION, true))) > \eTableClass::DIRECCION_LENGTH) {
+        else if(strlen(request::getInstance()->getPost(\empresaTableClass::getNameField(\empresaTableClass::DIRECCION, true))) > \empresaTableClass::DIRECCION_LENGTH) {
         $flag = true;
         session::getInstance()->setFlash('inputDireccion', true);
         session::getInstance()->setError('La direccion digitada es mayor en cantidad de caracteres a lo permitido', 'inputDireccion');
@@ -149,7 +149,7 @@ namespace mvc\validator {
         else if (!is_numeric(request::getInstance()->getPost(\empresaTableClass::getNameField(\empresaTableClass::TELEFONO, true)))) {
         $flag = true;
         session::getInstance()->setFlash('inputTelefono', true);
-        session::getInstance()->setError('El documento no permite letras, solo numeros', 'inputTelefono');
+        session::getInstance()->setError('El telefono no permite letras, solo numeros', 'inputTelefono');
       }
       
       //-------------------------------campo email-----------------------------

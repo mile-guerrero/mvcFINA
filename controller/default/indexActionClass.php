@@ -9,12 +9,23 @@ use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
 /**
- * Description of ejemploClass
- *
- * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
+ * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon 
+ * @date: fecha de inicio del desarrollo.
+ * @category: modulo de defautl.
  */
 class indexActionClass extends controllerClass implements controllerActionInterface {
 
+  
+   /**
+* @author: Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon .
+* @date: fecha de inicio del desarrollo.
+* @return   usuarioTableClass::ID retorna (integer),
+            usuarioTableClass::USUARIO retorna  (string),
+            usuarioTableClass::CREATED_AT retorna  (timestamp),
+            usuarioTableClass::PASSWORD retorna  (timestamp),
+            usuarioTableClass::ACTIVED retorna  (integer),
+ * estos datos retornan en la variable $fields
+*/
   public function execute() {
     try {
       $where = null;
@@ -25,7 +36,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
         $where[] = '(' . usuarioTableClass::getNameField(usuarioTableClass::USUARIO) . ' LIKE ' . '\'' . $filter['usuario'] . '%\'  '
               . 'OR ' . usuarioTableClass::getNameField(usuarioTableClass::USUARIO) . ' LIKE ' . '\'%' . $filter['usuario'] . '%\' '
               . 'OR ' . usuarioTableClass::getNameField(usuarioTableClass::USUARIO) . ' LIKE ' . '\'%' . $filter['usuario'].'\') ';       
-              }
+              }//cierre del filtro usuario
       
       
        if((isset($filter['fechaIni']) and $filter['fechaIni'] !== null and $filter['fechaIni'] !== "") and (isset($filter['fechaFin']) and $filter['fechaFin'] !== null and $filter['fechaFin'] !== "" )){
@@ -33,8 +44,8 @@ class indexActionClass extends controllerClass implements controllerActionInterf
            date(config::getFormatTimestamp(), strtotime($filter['fechaIni'].' 00:00:00')),
            date(config::getFormatTimestamp(), strtotime($filter['fechaFin'].' 23:59:59'))
             );
-      }     
-      }
+      }//cierre del filtro fechaIni y fechaFin      
+      }//cierre del POST del reporte
       $fields = array(
           usuarioTableClass::ID,
           usuarioTableClass::USUARIO,
@@ -50,17 +61,18 @@ class indexActionClass extends controllerClass implements controllerActionInterf
         $this->page = request::getInstance()->getGet('page');
         $page = request::getInstance()->getGet('page') - 1;
         $page = $page * config::getRowGrid();
-      }
+      }//cierre de paginado
       $this->cntPages = usuarioTableClass::getTotalPages(config::getRowGrid());
       
       $this->objUsuarios = usuarioTableClass::getAll($fields, true, $orderBy, 'ASC',config::getRowGrid(), $page,$where);
 //      $this->objUsuarios = usuarioTableClass::getAll($fields, true);
       $this->defineView('index', 'default', session::getInstance()->getFormatOutput());
-    } catch (PDOException $exc) {
+    } //cierre del try
+     catch (PDOException $exc) {
       echo $exc->getMessage();
       echo '<br>';
       echo $exc->getTraceAsString();
-    }
-}
+     }//cierre del catch
+}//cierre de la funcion execute
 
-}
+}//cierre de la clase

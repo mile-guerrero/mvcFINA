@@ -17,7 +17,6 @@ class loteBaseTableClass extends tableBaseClass {
   private $fechaInicioSiembra;
   private $numeroPlantulas;
   private $presupuesto;
-  private $loteId;
   private $productoInsumoId;
   private $idCiudad;  
   private $createdAt;
@@ -37,7 +36,6 @@ class loteBaseTableClass extends tableBaseClass {
   const NUMERO_PLANTULAS_LENGTH = 30;
   const PRESUPUESTO = 'presupuesto';
   const PRESUPUESTO_LENGTH = 30;
-  const LOTE_ID = 'lote_id';
   const PRODUCTO_INSUMO_ID = 'producto_insumo_id';
   const ID_CIUDAD = 'id_ciudad';
   const CREATED_AT = 'created_at';
@@ -76,9 +74,7 @@ class loteBaseTableClass extends tableBaseClass {
     return $this->presupuesto;
   }
 
-  public function get_loteId() {
-    return $this->loteId;
-  }
+ 
 
   public function get_productoInsumoId() {
     return $this->productoInsumoId;
@@ -132,9 +128,6 @@ class loteBaseTableClass extends tableBaseClass {
     $this->presupuesto = $presupuesto;
   }
 
-  public function set_loteId($loteId) {
-    $this->loteId = $loteId;
-  }
 
   public function set_productoInsumoId($productoInsumoId) {
     $this->productoInsumoId = $productoInsumoId;

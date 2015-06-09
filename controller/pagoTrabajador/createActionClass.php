@@ -8,6 +8,7 @@ use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 use mvc\validator\pagoTrabajadorValidatorClass as validator;
+use hook\log\logHookClass as log;
 
 /**
  * Description of ejemploClass
@@ -41,11 +42,14 @@ class createActionClass extends controllerClass implements controllerActionInter
           pagoTrabajadorTableClass::CANTIDAD_HORAS_EXTRAS => $cantidad,
           pagoTrabajadorTableClass::VALOR_HORAS_EXTRAS => $valorHoras,
           pagoTrabajadorTableClass::HORAS_PERDIDAS => $horas,
-          pagoTrabajadorTableClass::TOTAL_PAGAR => $total
+          pagoTrabajadorTableClass::TOTAL_PAGAR => $total,
+            '__sequence' => 'pago_trabajador_id_seq'
             
         );
-        pagoTrabajadorTableClass::insert($data);
+        $id = pagoTrabajadorTableClass::insert($data);
         session::getInstance()->setSuccess('El registro fue Exitoso');
+        $observacion ='se ha insertando un nuevo pago a trabajador';
+        log::register('Insertar', pagoTrabajadorTableClass::getNameTable(),$observacion,$id);
         routing::getInstance()->redirect('pagoTrabajador', 'index');
       } else {
         routing::getInstance()->redirect('pagoTrabajador', 'index');

@@ -8,6 +8,7 @@ use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 use mvc\validator\tipoProductoInsumoValidatorClass as validator;
+use hook\log\logHookClass as log;
 /**
  * Description of ejemploClass
  *
@@ -25,10 +26,13 @@ class createTipoProductoInsumoActionClass extends controllerClass implements con
 //        $this->validate($descripcion);
 
         $data = array(
-            tipoProductoInsumoTableClass::DESCRIPCION=> $descripcion
+            tipoProductoInsumoTableClass::DESCRIPCION=> $descripcion,
+            '__sequence' => 'tipo_producto_insumo_id_seq'
             );
-       tipoProductoInsumoTableClass::insert($data);
+       $id = tipoProductoInsumoTableClass::insert($data);
        session::getInstance()->setSuccess('El Registro Fue Exitoso ');
+        $observacion ='se ha insertando un nuevo tipo producto insumo';
+        log::register('Insertar', tipoProductoInsumoTableClass::getNameTable(),$observacion,$id);
         routing::getInstance()->redirect('productoInsumo', 'indexTipoProductoInsumo');
       } else {
         routing::getInstance()->redirect('productoInsumo', 'indexTipoProductoInsumo');

@@ -7,6 +7,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+use hook\log\logHookClass as log;
 
 /**
  * Description of ejemploClass
@@ -29,6 +30,10 @@ class deleteTipoProductoInsumoActionClass extends controllerClass implements con
             'code'=> 200,
             'msg'=> 'Eliminacion exitosa'
             );
+        
+        $observacion ='se ha eliminado un tipo producto insumo';
+        log::register('Eliminar', tipoProductoInsumoTableClass::getNameTable(),$observacion,$id);
+        session::getInstance()->setSuccess('El campo Fue Eliminado Exitosamente');
         $this->defineView('deleteTipoProductoInsumo', 'productoInsumo', session::getInstance()->getFormatOutput());
       
       } else {

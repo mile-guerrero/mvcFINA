@@ -8,6 +8,7 @@ use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 use mvc\validator\trabajadorValidatorClass as validator;
+use hook\log\logHookClass as log;
 
 /**
  * Description of ejemploClass
@@ -44,10 +45,13 @@ class createActionClass extends controllerClass implements controllerActionInter
             trabajadorTableClass::EMAIL => $email,
             trabajadorTableClass::ID_TIPO_ID => $idTipo,
             trabajadorTableClass::ID_CIUDAD => $idCiudad,
-            trabajadorTableClass::ID_CREDENCIAL => $idCredencial
+            trabajadorTableClass::ID_CREDENCIAL => $idCredencial,
+            '__sequence' => 'trabajador_id_seq'
         );
-        trabajadorTableClass::insert($data);
+        $id = trabajadorTableClass::insert($data);
         session::getInstance()->setSuccess('El registro fue Exitoso');
+        $observacion ='se ha insertando un nuevo trabajador';
+        log::register('Insertar', trabajadorTableClass::getNameTable(),$observacion,$id);
         routing::getInstance()->redirect('trabajador', 'index');
       } else {
         routing::getInstance()->redirect('trabajador', 'index');

@@ -9,12 +9,27 @@ use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
 /**
- * Description of ejemploClass
- *
- * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
- */
+* @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon 
+* @date: fecha de inicio del desarrollo.
+* @category: modulo de cliente.
+*/
 class verClienteActionClass extends controllerClass implements controllerActionInterface {
 
+  
+  /**
+* @author: Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon .
+* @date: fecha de inicio del desarrollo.
+* @return   clienteTableClass::ID retorna (integer),
+            clienteTableClass::NOMBRE retorna  (string),
+            clienteTableClass::APELLIDO retorna  (string),
+            clienteTableClass::DOCUMENTO retorna  (integer),
+            clienteTableClass::DIRECCION retorna  (string),
+            clienteTableClass::TELEFONO retorna  (integer),
+            clienteTableClass::ID_TIPO_ID retorna (integer),
+            clienteTableClass::ID_CIUDAD retorna  (integer),
+            clienteTableClass::UPDATE_AT retorna  (timestamp),
+ * estos datos retornan en la variable $fields el $id retorna en la variable $WHERE
+*/
   public function execute() {
     try {
       $fields = array(
@@ -37,11 +52,12 @@ class verClienteActionClass extends controllerClass implements controllerActionI
       
      
       $this->defineView('verCliente', 'cliente', session::getInstance()->getFormatOutput());
-    } catch (PDOException $exc) {
+    }//cierre del try
+     catch (PDOException $exc) {
       echo $exc->getMessage();
       echo '<br>';
       echo $exc->getTraceAsString();
-    }
-}
+    }//cierre del catch
+}//cierre de la funcion execute
 
-}
+}//cierre de la clase

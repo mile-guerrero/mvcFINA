@@ -8,6 +8,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+use hook\log\logHookClass as log;
 
 /**
  * Description of ejemploClass
@@ -32,6 +33,8 @@ class updateActionClass extends controllerClass implements controllerActionInter
         );
         usuarioCredencialTableClass::update($ids, $data);
          session::getInstance()->setSuccess('La actualizacion fue correcta');
+         $observacion ='se ha modificado el usuario credencial';
+        log::register('Modificar', usuarioCredencialTableClass::getNameTable(),$observacion,$id);
         routing::getInstance()->redirect('usuarioCredencial', 'index');
       }
     } catch (PDOException $exc) {

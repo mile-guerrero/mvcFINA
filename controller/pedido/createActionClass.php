@@ -8,6 +8,7 @@ use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 use mvc\validator\pedidoValidatorClass as validator;
+use hook\log\logHookClass as log;
 
 /**
  * Description of ejemploClass
@@ -31,11 +32,14 @@ class createActionClass extends controllerClass implements controllerActionInter
             pedidoTableClass::EMPRESA_ID => $idEmpresa,
             pedidoTableClass::ID_PROVEEDOR => $idProveedor,
             pedidoTableClass::CANTIDAD => $cantidad,
-            pedidoTableClass::PRODUCTO_INSUMO_ID => $idProducto
+            pedidoTableClass::PRODUCTO_INSUMO_ID => $idProducto,
+            '__sequence' => 'pedido_id_seq'
           
         );
-        pedidoTableClass::insert($data);
+        $id = pedidoTableClass::insert($data);
         session::getInstance()->setSuccess('El registro fue exitoso');
+        $observacion ='se ha insertando un nuevo pedido';
+        log::register('Insertar', pedidoTableClass::getNameTable(),$observacion,$id);
         routing::getInstance()->redirect('pedido', 'index');
       } else {
         routing::getInstance()->redirect('pedido', 'index');

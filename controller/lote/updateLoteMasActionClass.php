@@ -9,14 +9,23 @@ use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 use mvc\validator\loteValidatorClass as validator;
-
+use hook\log\logHookClass as log;
 /**
- * Description of ejemploClass
- *
- * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
+ * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon 
+ * @date: fecha de inicio del desarrollo.
+ * @category: modulo de maquina.
  */
 class updateLoteMasActionClass extends controllerClass implements controllerActionInterface {
 
+  
+  /**
+* @author: Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon .
+* @date: fecha de inicio del desarrollo.
+* @return   loteTableClass::NUMERO_PLANTULAS retorna $nombre (integer),
+            loteTableClass::PRODUCTO_INSUMO_ID retorna $apellido (integer),
+            loteTableClass::PRESUPUESTO retorna $documento (integer),            
+ * estos datos retornan en la variable $data y el $id retorna en la variable $ids
+*/
   public function execute() {
     try {
       if (request::getInstance()->isMethod('POST')) {
@@ -35,31 +44,36 @@ class updateLoteMasActionClass extends controllerClass implements controllerActi
         
         if (strlen($numero) == null or $numero =='') {
            $numero = 'null';
-        }
+        }//cierre de validacin de nulo
         
         if (strlen($insumo) == null or $insumo =='') {
            $insumo = 'null';
-        }
+        }//cierre de validacin de nulo
          
          if (strlen($presupuesto) == null or $presupuesto =='') {
            $presupuesto = 'null';
-        }
+        }//cierre de validacin de nulo
         
         validator::validateEditMas();
 //        $this->validate($numero, $presupuesto);
         
         loteTableClass::loteupdateMas($id,$fechaSiembra,$numero,$insumo,$presupuesto);
         session::getInstance()->setSuccess('La actualizacion fue correcta');
+        $observacion ='se ha modificado el lote mas';
+        log::register('Modificar', loteTableClass::getNameTable(),$observacion,$id);
         routing::getInstance()->redirect('lote', 'indexLote');
       }
 
-    } catch (PDOException $exc) {
+    }//cierre del try 
+      catch (PDOException $exc) {
       echo $exc->getMessage();
       echo '<br>';
       echo $exc->getTraceAsString();
      
-    }
-  }
+     }//cierre del catch
+}//cierre de la funcion execute
+
+}//cierre de la clase
 //  public function validate($numero, $presupuesto){
 //
 //    $flag = false;
@@ -95,4 +109,3 @@ class updateLoteMasActionClass extends controllerClass implements controllerActi
 //  }
 //}
 
-}

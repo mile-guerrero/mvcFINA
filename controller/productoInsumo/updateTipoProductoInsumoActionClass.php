@@ -9,6 +9,7 @@ use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 use mvc\validator\tipoProductoInsumoValidatorClass as validator;
+use hook\log\logHookClass as log;
 /**
  * Description of ejemploClass
  *
@@ -32,6 +33,8 @@ class updateTipoProductoInsumoActionClass extends controllerClass implements con
         );
         tipoProductoInsumoTableClass::update($ids, $data);
         session::getInstance()->setSuccess('La Actualizacion Fue Exitoso');
+        $observacion ='se ha modificado el tipo producto insumo';
+        log::register('Modificar', tipoProductoInsumoTableClass::getNameTable(),$observacion,$id);
         routing::getInstance()->redirect('productoInsumo', 'indexTipoProductoInsumo');
       }
 

@@ -9,12 +9,27 @@ use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
 /**
- * Description of ejemploClass
- *
- * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
+ * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon 
+ * @date: fecha de inicio del desarrollo.
+ * @category: modulo de maquina.
  */
 class insertLoteActionClass extends controllerClass implements controllerActionInterface {
 
+  
+  /**
+* @author: Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon .
+* @date: fecha de inicio del desarrollo.
+* @return   ciudadTableClass::ID retorna (integer),
+            ciudadTableClass::NOMBRE_CIUDAD retorna  (string),
+            unidadDistanciaTableClass::ID (integer)  , 
+            unidadDistanciaTableClass::DESCRIPCION (string)  
+            productoInsumoTableClass::ID  (integer) , 
+            productoInsumoTableClass::DESCRIPCION    (string)   
+
+    
+            
+ * estos datos retornan en la variable $fields
+*/
   public function execute() {
     try {
          $fields = array(     
@@ -47,11 +62,12 @@ class insertLoteActionClass extends controllerClass implements controllerActionI
       $this->objLPI = productoInsumoTableClass::getAll($fields, true, $orderBy, 'ASC');
      
       $this->defineView('insertLote', 'lote', session::getInstance()->getFormatOutput());
-    } catch (PDOException $exc) {
+    }//cierre del try
+      catch (PDOException $exc) {
       echo $exc->getMessage();
       echo '<br>';
       echo $exc->getTraceAsString();
-    }
-}
+  }//cierre del catch
+}//cierre de la funcion execute
 
-}
+}//cierre de la clase

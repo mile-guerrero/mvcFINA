@@ -8,11 +8,12 @@ use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 use mvc\validator\loteValidatorClass as validator;
+use hook\log\logHookClass as log;
 
 /**
- * Description of ejemploClass
- *
- * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
+ * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon 
+ * @date: fecha de inicio del desarrollo.
+ * @category: modulo de maquina.
  */
 class createLoteActionClass extends controllerClass implements controllerActionInterface {
 
@@ -37,17 +38,21 @@ class createLoteActionClass extends controllerClass implements controllerActionI
 
         loteTableClass::loteInsert($ubicacion,$idCiudad,$tamano,$descripcion,$unidadDistancia);
         session::getInstance()->setSuccess('El registro fue exitoso');
+        $observacion ='se ha insertando un nuevo lote';
+        log::register('Insertar', loteTableClass::getNameTable(),$observacion,null);
         routing::getInstance()->redirect('lote', 'indexLote');
       } else {
         routing::getInstance()->redirect('lote', 'indexLote');
       }
-    } catch (PDOException $exc) {
+    }//cierre del try
+      catch (PDOException $exc) {
       echo $exc->getMessage();
       echo '<br>';
       echo $exc->getTraceAsString();
-    }
-   
-  }
+     }//cierre del catch
+}//cierre de la funcion execute
+
+}//cierre de la clase
 
 // public function validate($ubicacion, $tamano, $descripcion){
 //
@@ -100,4 +105,3 @@ class createLoteActionClass extends controllerClass implements controllerActionI
 //    routing::getInstance()->forward('lote', 'insertLote');
 //  }
 //}
-}

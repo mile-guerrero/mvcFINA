@@ -9,9 +9,9 @@ use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
 /**
- * Description of ejemploClass
- *
- * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
+ * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon 
+ * @date: fecha de inicio del desarrollo.
+ * @category: modulo de maquina.
  */
 class editLoteActionClass extends controllerClass implements controllerActionInterface {
 
@@ -72,11 +72,12 @@ class editLoteActionClass extends controllerClass implements controllerActionInt
         routing::getInstance()->redirect('lote', 'indexLote');
       }
 
-    } catch (PDOException $exc) {
+    }//cierre del try
+      catch (PDOException $exc) {
       echo $exc->getMessage();
       echo '<br>';
       echo $exc->getTraceAsString();
-    }
-  }
+    }//cierre del catch
+}//cierre de la funcion execute
 
-}
+}//cierre de la clase

@@ -7,6 +7,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+use hook\log\logHookClass as log;
 
 /**
  * Description of ejemploClass
@@ -26,6 +27,8 @@ class deleteSelectActionClass extends controllerClass implements controllerActio
         trabajadorTableClass::delete($ids, true);
       }
       session::getInstance()->setSuccess('Las Casillas Seleccionadas Fueron Eliminadas Exitosamente');
+       $observacion ='se ha eliminado una seleccion en  trabajador ';
+        log::register('EliminarSeleccion', trabajadorTableClass::getNameTable(),$observacion,$id);
         routing::getInstance()->redirect('trabajador', 'index');
       } else {
         routing::getInstance()->redirect('trabajador', 'index');

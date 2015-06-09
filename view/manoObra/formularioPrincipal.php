@@ -10,8 +10,8 @@
 <?php $cooperativa = manoObraTableClass::COOPERATIVA_ID ?>
 <?php $labor = manoObraTableClass::LABOR_ID ?>
 <?php $maquina = manoObraTableClass::MAQUINA_ID ?>
-<?php $idCooperativa = cooperativaTableClass::ID?>
-<?php $descCooperativa = cooperativaTableClass::NOMBRE?>
+<?php $idCooperativa = cooperativaTableClass::ID ?>
+<?php $descCooperativa = cooperativaTableClass::NOMBRE ?>
 <?php $idLabor = laborTableClass::ID ?>
 <?php $descLabor = laborTableClass::DESCRIPCION ?>
 <?php $idMaquina = maquinaTableClass::ID ?>
@@ -35,9 +35,9 @@
          <div class="col-sm-10">
            <select class="form-control" id="<?php echo manoObraTableClass::getNameField(manoObraTableClass::COOPERATIVA_ID, true)?>" name="<?php echo manoObraTableClass::getNameField(manoObraTableClass::COOPERATIVA_ID, true) ?>">
             <option><?php echo i18n::__('selectCooperativa') ?></option>
-<?php foreach ($objCooperativa as $coope): ?>
-            <option <?php echo (isset($objManoObra[0]->$cooperativa) === true and $objManoObra[0]->$cooperativa == $coope->$idCooperativa) ? 'selected' : '' ?> value="<?php echo $coope->$idCooperativa ?>"><?php echo $coope->$descCooperativa ?></option>
-<?php endforeach; ?>
+<?php foreach ($objCooperativa as $key): ?>            
+            <option <?php echo (isset($objManoObra[0]->$cooperativa) === true and $objManoObra[0]->$cooperativa == $key->$idCooperativa) ? 'selected' : '' ?> value="<?php echo $key->$idCooperativa ?>"><?php echo $key->$descCooperativa ?></option>
+              <?php endforeach; ?>
           </select>
       </div>
     </div> 

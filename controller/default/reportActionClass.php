@@ -9,12 +9,20 @@ use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
 /**
- * Description of ejemploClass
- *
- * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
+ * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon 
+ * @date: fecha de inicio del desarrollo.
+ * @category: modulo de defautl.
  */
 class reportActionClass extends controllerClass implements controllerActionInterface {
-
+ /**
+* @author: Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon .
+* @date: fecha de inicio del desarrollo.
+* @return   usuarioTableClass::ID retorna (integer),
+            usuarioTableClass::USUARIO retorna  (string),
+            usuarioTableClass::CREATED_AT retorna  (timestamp),
+            usuarioTableClass::ACTIVED retorna  (integer),
+ * estos datos retornan en la variable $fields
+*/
   public function execute() {
     try {
       
@@ -25,14 +33,14 @@ class reportActionClass extends controllerClass implements controllerActionInter
       //validar
       if(isset($filter['usuario']) and $filter['usuario'] !== null and $filter['usuario'] !== ""){
         $where[usuarioTableClass::USUARIO] = $filter['usuario'];
-      }
+      }//cierre del filtro usuario
        if((isset($filter['fechaIni']) and $filter['fechaIni'] !== null and $filter['fechaIni'] !== "") and (isset($filter['fechaFin']) and $filter['fechaFin'] !== null and $filter['fechaFin'] !== "" )){
         $where[usuarioTableClass::CREATED_AT] = array(
            date(config::getFormatTimestamp(), strtotime($filter['fechaIni'].' 00:00:00')),
            date(config::getFormatTimestamp(), strtotime($filter['fechaFin'].' 23:59:59'))
             );
-      }     
-      }
+      }//cierre del filtro fecha1 y fecha2     
+      }//cierre del POST del reporte
       $fields = array(
           usuarioTableClass::ID,
           usuarioTableClass::USUARIO,
@@ -45,13 +53,14 @@ class reportActionClass extends controllerClass implements controllerActionInter
       $this->objUsuarios = usuarioTableClass::getAll($fields, true, $orderBy, 'ASC',null,null,$where);
  
       $this->defineView('index', 'default', session::getInstance()->getFormatOutput());
-    } catch (PDOException $exc) {
+    } //cierre del try
+     catch (PDOException $exc) {
       echo $exc->getMessage();
       echo '<br>';
       echo '<pre>';
       print_r($exc->getTrace());
       echo '</pre>';
-    }
-  }
+    }//cierre del catch
+}//cierre de la funcion execute
 
-}
+}//cierre de la clase

@@ -37,11 +37,11 @@ namespace mvc\validator {
         session::getInstance()->setFlash('inputDocumento', true);
         session::getInstance()->setError('El documento digitado es mayor en cantidad de caracteres a lo permitido', 'inputDocumento');
       } //----datos duplicados----
-//        else if(self::isUnique(\usuarioTableClass::ID, true, array(\usuarioTableClass::USER => request::getInstance()->getPost('inputUser')), \usuarioTableClass::getNameTable())) {
-//        $flag = true;
-//        session::getInstance()->setFlash('inputUser', true);
-//        session::getInstance()->setError('El usuario digitado ya existe', 'inputUser');
-//      }
+        else if (self::isUnique(\proveedorTableClass::ID, true, array(\proveedorTableClass::DOCUMENTO => request::getInstance()->getPost(\proveedorTableClass::getNameField(\proveedorTableClass::DOCUMENTO, true))), \proveedorTableClass::getNameTable())) {
+                $flag = true;
+                session::getInstance()->setFlash('inputDocumento', true);
+                session::getInstance()->setError('El documento digitado ya existe', 'inputDocumento');
+            }
       
       //-------------------------------campo nombre-----------------------------
           //----campo nulo----

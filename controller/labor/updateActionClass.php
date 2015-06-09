@@ -1,6 +1,4 @@
-
 <?php
-
 use mvc\interfaces\controllerActionInterface;
 use mvc\controller\controllerClass;
 use mvc\config\configClass as config;
@@ -8,8 +6,8 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
-use mvc\validator\cooperativaValidatorClass as validator;
-
+use mvc\validator\laborValidatorClass as validator;
+use hook\log\logHookClass as log;
 
 /**
  * Description of ejemploClass
@@ -21,6 +19,7 @@ class updateActionClass extends controllerClass implements controllerActionInter
   public function execute() {
     try {
       if (request::getInstance()->isMethod('POST')) {
+        
         $id = request::getInstance()->getPost(laborTableClass::getNameField(laborTableClass::ID, true));
         $descripcion = request::getInstance()->getPost(laborTableClass::getNameField(laborTableClass::DESCRIPCION, true));
         $valor = request::getInstance()->getPost(laborTableClass::getNameField(laborTableClass::VALOR, true));
@@ -39,6 +38,8 @@ class updateActionClass extends controllerClass implements controllerActionInter
         );
         laborTableClass::update($ids, $data);
          session::getInstance()->setSuccess('La actualizacion fue correcta');
+         $observacion ='se ha modificado la labor';
+        log::register('Modificar', laborTableClass::getNameTable(),$observacion,$id);
         routing::getInstance()->redirect('labor', 'index');
       }
 
@@ -49,6 +50,7 @@ class updateActionClass extends controllerClass implements controllerActionInter
      
     }
   }
+}
 //  public function validate($descripcion, $valor) {
 //
 //    $flag = false;
@@ -94,6 +96,6 @@ class updateActionClass extends controllerClass implements controllerActionInter
 //    routing::getInstance()->forward('labor', 'edit');
 //  }
 //  }
-}
+
 
 

@@ -37,11 +37,12 @@ namespace mvc\validator {
         session::getInstance()->setFlash('inputUsuario', true);
         session::getInstance()->setError('Por favor digite un corre válido ', 'inputUsuario');
       }   //----datos duplicados----
-//        else if(self::isUnique(\usuarioTableClass::ID, true, array(\usuarioTableClass::USER => request::getInstance()->getPost('inputUser')), \usuarioTableClass::getNameTable())) {
-//        $flag = true;
-//        session::getInstance()->setFlash('inputUser', true);
-//        session::getInstance()->setError('El usuario digitado ya existe', 'inputUser');
-//      }
+       else if (self::isUnique(\usuarioTableClass::ID, true, array(\usuarioTableClass::USUARIO => request::getInstance()->getPost(\usuarioTableClass::getNameField(\usuarioTableClass::USUARIO, true))), \usuarioTableClass::getNameTable())) {
+                $flag = true;
+                session::getInstance()->setFlash('inputUsuario', true);
+                session::getInstance()->setError('El usuario digitado ya existe', 'inputUsuario');
+            }
+
       //------------------------------------campo password---------------------
         //----campo nulo----
       if (self::notBlank(request::getInstance()->getPost(\usuarioTableClass::getNameField(\usuarioTableClass::PASSWORD, true).'_1')) or self::notBlank(request::getInstance()->getPost(\usuarioTableClass::getNameField(\usuarioTableClass::PASSWORD, true).'_2'))) {
@@ -96,11 +97,11 @@ namespace mvc\validator {
         session::getInstance()->setFlash('inputUsuario', true);
         session::getInstance()->setError('Por favor digite un corre válido ', 'inputUsuario');
       }   //----datos duplicados----
-//        else if(self::isUnique(\usuarioTableClass::ID, true, array(\usuarioTableClass::USER => request::getInstance()->getPost('inputUser')), \usuarioTableClass::getNameTable())) {
-//        $flag = true;
-//        session::getInstance()->setFlash('inputUser', true);
-//        session::getInstance()->setError('El usuario digitado ya existe', 'inputUser');
-//      }
+//        else if (self::isUnique(\usuarioTableClass::ID, true, array(\usuarioTableClass::USUARIO => request::getInstance()->getPost(\usuarioTableClass::getNameField(\usuarioTableClass::USUARIO, true))), \usuarioTableClass::getNameTable())) {
+//                $flag = true;
+//                session::getInstance()->setFlash('inputUsuario', true);
+//                session::getInstance()->setError('El usuario digitado ya existe', 'inputUsuario');
+//            }
       //------------------------------------campo password---------------------
         //----campo nulo----
       if (self::notBlank(request::getInstance()->getPost(\usuarioTableClass::getNameField(\usuarioTableClass::PASSWORD, true).'_1')) or self::notBlank(request::getInstance()->getPost(\usuarioTableClass::getNameField(\usuarioTableClass::PASSWORD, true).'_2'))) {

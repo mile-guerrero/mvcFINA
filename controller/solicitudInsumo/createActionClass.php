@@ -8,7 +8,7 @@ use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 use mvc\validator\solicitudInsumoValidatorClass as validator;
-
+use hook\log\logHookClass as log;
 /**
  * Description of ejemploClass
  *
@@ -35,10 +35,13 @@ class createActionClass extends controllerClass implements controllerActionInter
             solicitudInsumoTableClass::TRABAJADOR_ID => $trabajador,
             solicitudInsumoTableClass::CANTIDAD => $cantidad,
             solicitudInsumoTableClass::PRODUCTO_INSUMO_ID => $idProducto,
-            solicitudInsumoTableClass::LOTE_ID => $idLote
+            solicitudInsumoTableClass::LOTE_ID => $idLote,
+            '__sequence' => 'solicitud_insumo_id_seq'
         );
-        solicitudInsumoTableClass::insert($data);
+        $id = solicitudInsumoTableClass::insert($data);
         session::getInstance()->setSuccess('El registro fue exitoso');
+        $observacion ='se ha insertando una nueva solicitud insumo';
+        log::register('Insertar', solicitudInsumoTableClass::getNameTable(),$observacion,$id);
         routing::getInstance()->redirect('solicitudInsumo', 'index');
       } else {
         routing::getInstance()->redirect('solicitudInsumo', 'index');

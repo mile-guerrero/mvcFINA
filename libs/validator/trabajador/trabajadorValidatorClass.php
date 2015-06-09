@@ -37,11 +37,11 @@ namespace mvc\validator {
         session::getInstance()->setFlash('inputDocumento', true);
         session::getInstance()->setError('El documento digitado es mayor en cantidad de caracteres a lo permitido', 'inputDocumento');
       } //----datos duplicados----
-//        else if(self::isUnique(\usuarioTableClass::ID, true, array(\usuarioTableClass::USER => request::getInstance()->getPost('inputUser')), \usuarioTableClass::getNameTable())) {
-//        $flag = true;
-//        session::getInstance()->setFlash('inputUser', true);
-//        session::getInstance()->setError('El usuario digitado ya existe', 'inputUser');
-//      }
+        else if (self::isUnique(\trabajadorTableClass::ID, true, array(\trabajadorTableClass::DOCUMENTO => request::getInstance()->getPost(\trabajadorTableClass::getNameField(\trabajadorTableClass::DOCUMENTO, true))), \trabajadorTableClass::getNameTable())) {
+                $flag = true;
+                session::getInstance()->setFlash('inputDocumento', true);
+                session::getInstance()->setError('El documento digitado ya existe', 'inputDocumento');
+            }
       
       //-------------------------------campo nombre-----------------------------
           //----campo nulo----
@@ -152,11 +152,11 @@ namespace mvc\validator {
         session::getInstance()->setFlash('inputEmail', true);
         session::getInstance()->setError('Por favor digite un corre válido ', 'inputEmail');
       }   //----datos duplicados----
-//        else if(self::isUnique(\usuarioTableClass::ID, true, array(\usuarioTableClass::USER => request::getInstance()->getPost('inputUser')), \usuarioTableClass::getNameTable())) {
-//        $flag = true;
-//        session::getInstance()->setFlash('inputUser', true);
-//        session::getInstance()->setError('El usuario digitado ya existe', 'inputUser');
-//      }   
+        else if (self::isUnique(\trabajadorTableClass::ID, true, array(\trabajadorTableClass::EMAIL => request::getInstance()->getPost(\trabajadorTableClass::getNameField(\trabajadorTableClass::EMAIL, true))), \trabajadorTableClass::getNameTable())) {
+                $flag = true;
+                session::getInstance()->setFlash('inputEmail', true);
+                session::getInstance()->setError('El email digitado ya existe', 'inputEmail');
+            }
           
 
       //-------------------------------condiccion de bandera true-----------------------------
@@ -191,11 +191,11 @@ namespace mvc\validator {
         session::getInstance()->setFlash('inputDocumento', true);
         session::getInstance()->setError('El documento digitado es mayor en cantidad de caracteres a lo permitido', 'inputDocumento');
       } //----datos duplicados----
-//        else if(self::isUnique(\usuarioTableClass::ID, true, array(\usuarioTableClass::USER => request::getInstance()->getPost('inputUser')), \usuarioTableClass::getNameTable())) {
-//        $flag = true;
-//        session::getInstance()->setFlash('inputUser', true);
-//        session::getInstance()->setError('El usuario digitado ya existe', 'inputUser');
-//      }
+//       else if (self::isUnique(\trabajadorTableClass::ID, true, array(\trabajadorTableClass::DOCUMENTO => request::getInstance()->getPost(\trabajadorTableClass::getNameField(\trabajadorTableClass::DOCUMENTO, true))), \trabajadorTableClass::getNameTable())) {
+//                $flag = true;
+//                session::getInstance()->setFlash('inputDocumento', true);
+//                session::getInstance()->setError('El documento digitado ya existe', 'inputDocumento');
+//            }
       
       //-------------------------------campo nombre-----------------------------
           //----campo nulo----
@@ -306,11 +306,11 @@ namespace mvc\validator {
         session::getInstance()->setFlash('inputEmail', true);
         session::getInstance()->setError('Por favor digite un corre válido ', 'inputEmail');
       }   //----datos duplicados----
-//        else if(self::isUnique(\usuarioTableClass::ID, true, array(\usuarioTableClass::USER => request::getInstance()->getPost('inputUser')), \usuarioTableClass::getNameTable())) {
-//        $flag = true;
-//        session::getInstance()->setFlash('inputUser', true);
-//        session::getInstance()->setError('El usuario digitado ya existe', 'inputUser');
-//      }   
+//     else if (self::isUnique(\trabajadorTableClass::ID, true, array(\trabajadorTableClass::EMAIL => request::getInstance()->getPost(\trabajadorTableClass::getNameField(\trabajadorTableClass::EMAIL, true))), \trabajadorTableClass::getNameTable())) {
+//                $flag = true;
+//                session::getInstance()->setFlash('inputEmail', true);
+//                session::getInstance()->setError('El email digitado ya existe', 'inputEmail');
+//            }   
           
 
       //-------------------------------condiccion de bandera true-----------------------------

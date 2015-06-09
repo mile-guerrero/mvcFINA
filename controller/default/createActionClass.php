@@ -8,21 +8,23 @@ use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 use mvc\validator\defaultValidatorClass as validator;
+use hook\log\logHookClass as log;
 
 /**
- * Description of ejemploClass
- *
- * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
+ * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon 
  * @date: fecha de inicio del desarrollo.
+ * @category: modulo de defautl.
  */
 class createActionClass extends controllerClass implements controllerActionInterface {
 
+ 
   /**
- * Description of ejemploClass
- *
- * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
- * 
- */
+   * @author: Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon .
+   * @date: fecha de inicio del desarrollo.
+   * @return   usuarioTableClass::USUARIO retorna $usuario (string),
+               usuarioTableClass::PASSWORD retorna $usuario (string),
+   * estos datos retornan en la variable $data
+   */
   public function execute() {
     try {
       if (request::getInstance()->isMethod('POST')===true) {
@@ -36,20 +38,31 @@ class createActionClass extends controllerClass implements controllerActionInter
         
         $data = array(
             usuarioTableClass::USUARIO => $usuario,
-            usuarioTableClass::PASSWORD => md5($password)
+            usuarioTableClass::PASSWORD => md5($password),
+            '__sequence' => 'usuario_id_seq'
         );
-        usuarioTableClass::insert($data);
+       $id = usuarioTableClass::insert($data);        
         session::getInstance()->setSuccess('El registro fue Exitoso');
+        $observacion ='se ha insertando un nuevo usuario';
+        log::register('Insertar', usuarioTableClass::getNameTable(),$observacion,$id);
         routing::getInstance()->redirect('default', 'index');
-      } else {
+      } //cierre del POST 
+       else {
         routing::getInstance()->redirect('default', 'index');
-      }
-    } catch (PDOException $exc) {
+      }//cierre del else
+    }//cierre del try
+      catch (PDOException $exc) {
       echo $exc->getMessage();
       echo '<br>';
       echo $exc->getTraceAsString();
-    }
-  }
+    }//cierre del catch
+}//cierre de la funcion execute
+
+}//cierre de la clase
+
+
+
+
 //private function validate ($usuario,$password,$password2){
 //  $flag = false;
 //  $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
@@ -80,4 +93,4 @@ class createActionClass extends controllerClass implements controllerActionInter
 //  }
 //        
 //}
-}
+

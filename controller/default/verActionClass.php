@@ -9,12 +9,23 @@ use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
 /**
- * Description of ejemploClass
- *
- * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
+ * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon 
+ * @date: fecha de inicio del desarrollo.
+ * @category: modulo de defautl.
  */
 class verActionClass extends controllerClass implements controllerActionInterface {
 
+  
+   /**
+* @author: Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon .
+* @date: fecha de inicio del desarrollo.
+* @return   usuarioTableClass::ID retorna (integer),
+            usuarioTableClass::USUARIO retorna  (string),
+            usuarioTableClass::CREATED_AT retorna  (timestamp),            
+            usuarioTableClass::UPDATE_AT retorna  (timestamp),
+            usuarioTableClass::ACTIVED retorna (integer),
+ * estos datos retornan en la variable $fields el $id retorna en la variable $WHERE
+*/
   public function execute() {
     try {
       $fields = array(
@@ -35,11 +46,12 @@ class verActionClass extends controllerClass implements controllerActionInterfac
 //      $this->objUsuarios = usuarioTableClass::getAll($fields, true, $orderBy);
 
       $this->defineView('ver', 'default', session::getInstance()->getFormatOutput());
-    } catch (PDOException $exc) {
+    }//cierre del try 
+      catch (PDOException $exc) {
       echo $exc->getMessage();
       echo '<br>';
       echo $exc->getTraceAsString();
-    }
-}
+     }//cierre del catch
+}//cierre de la funcion execute
 
-}
+}//cierre de la clase

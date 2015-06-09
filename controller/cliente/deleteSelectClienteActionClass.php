@@ -7,14 +7,21 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+use hook\log\logHookClass as log;
 
 /**
- * Description of ejemploClass
- *
- * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
- */
+* @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon 
+* @date: fecha de inicio del desarrollo.
+* @category: modulo de cliente.
+*/
 class deleteSelectClienteActionClass extends controllerClass implements controllerActionInterface {
 
+  /**
+* @author: Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon .
+* @date: fecha de inicio del desarrollo.
+* @return   clienteTableClass::ID retorna $id (string),
+ * estos datos retornan en la variable $ids
+*/
   public function execute() {
     try {
       if (request::getInstance()->isMethod('POST')) {
@@ -25,13 +32,17 @@ class deleteSelectClienteActionClass extends controllerClass implements controll
         );
         
         clienteTableClass::delete($ids, true);
-      }
+      }//cierre del foreach
       session::getInstance()->setSuccess('Las Casillas Seleccionadas Fueron Eliminadas Exitosamente');
+      $observacion ='se ha eliminado una seleccion en cliente';
+        log::register('EliminarSeleccion', clienteTableClass::getNameTable(),$observacion,$id);
         routing::getInstance()->redirect('cliente', 'indexCliente');
-      } else {
+      }//cierre del if
+        else {
         routing::getInstance()->redirect('cliente', 'indexCliente');
-      }
-    } catch (PDOException $exc) {
+      }//cierre del else
+    }//cierre del try
+      catch (PDOException $exc) {
       echo $exc->getMessage();
       echo '<br>';
       echo $exc->getTraceAsString();
@@ -43,8 +54,8 @@ class deleteSelectClienteActionClass extends controllerClass implements controll
 //          case 00000:
 //          break;
 //      }
-    }
-  }
+    }//cierre del catch
+  }//cierre de la funcion execute
 
-}
+}//cierre de la clase
 

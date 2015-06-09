@@ -9,14 +9,27 @@ use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 use mvc\validator\clienteValidatorClass as validator;
-
+use hook\log\logHookClass as log;
 /**
- * Description of ejemploClass
- *
- * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
- */
+* @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon 
+* @date: fecha de inicio del desarrollo.
+* @category: modulo de cliente.
+*/
 class updateClienteActionClass extends controllerClass implements controllerActionInterface {
 
+  /**
+* @author: Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon .
+* @date: fecha de inicio del desarrollo.
+* @return   clienteTableClass::NOMBRE retorna $nombre (string),
+            clienteTableClass::APELLIDO retorna $apellido (string),
+            clienteTableClass::DOCUMENTO retorna $documento (integer),
+            clienteTableClass::DIRECCION retorna $direccion (string),
+            clienteTableClass::TELEFONO retorna $telefono (integer),
+            clienteTableClass::ID_TIPO_ID retorna $idTipo (integer),
+            clienteTableClass::ID_CIUDAD retorna $idCiudad (integer),
+            clienteTableClass::ID retorna $id (integer),
+ * estos datos retornan en la variable $data y el $id retorna en la variable $ids
+*/
   public function execute() {
     try {
       if (request::getInstance()->isMethod('POST')) {
@@ -41,21 +54,24 @@ class updateClienteActionClass extends controllerClass implements controllerActi
             clienteTableClass::DIRECCION => $direccion,
             clienteTableClass::TELEFONO => $telefono,
             clienteTableClass::ID_TIPO_ID => $idTipo,
-            clienteTableClass::ID_CIUDAD => $idCiudad,
+            clienteTableClass::ID_CIUDAD => $idCiudad
         );
-        clienteTableClass::update($ids, $data);
+          clienteTableClass::update($ids, $data);
+        
          session::getInstance()->setSuccess('La actualizacion fue correcta');
+         $observacion ='se ha modificado el cliente';
+        log::register('Modificar', clienteTableClass::getNameTable(),$observacion,$id);
         routing::getInstance()->redirect('cliente', 'indexCliente');
-      }
+      }//cierre del if
 
-    } catch (PDOException $exc) {
+    }//cierre del try
+     catch (PDOException $exc) {
       echo $exc->getMessage();
       echo '<br>';
       echo $exc->getTraceAsString();
-     
-    }
-  }
-}
+     }//cierre del catch
+  }//cierre de la funcion execute
+}//cierre de la clase
 //public function validate($nombre, $apellido, $documento, $direccion, $telefono) {
 //
 //    $flag = false;

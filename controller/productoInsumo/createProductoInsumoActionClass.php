@@ -8,6 +8,8 @@ use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 use mvc\validator\productoInsumoValidatorClass as validator;
+use hook\log\logHookClass as log;
+
 /**
  * Description of ejemploClass
  *
@@ -32,17 +34,21 @@ class createProductoInsumoActionClass extends controllerClass implements control
              productoInsumoTableClass::DESCRIPCION => $descripcion,
              productoInsumoTableClass::IVA => $iva,
              productoInsumoTableClass::UNIDAD_MEDIDA_ID => $unidad,
-             productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID => $tipo
+             productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID => $tipo,
+             '__sequence' => 'producto_insumo_id_seq'
         );
-         productoInsumoTableClass::insert($data);
+         $id = productoInsumoTableClass::insert($data);
          session::getInstance()->setSuccess('El Registro Fue Exitoso ');
+          $observacion ='se ha insertando un nuevo producto insumo';
+        log::register('Insertar', productoInsumoTableClass::getNameTable(),$observacion,$id);
         routing::getInstance()->redirect('productoInsumo', 'indexProductoInsumo');
       } else {
         routing::getInstance()->redirect('productoInsumo', 'indexProductoInsumo');
       }
     } catch (PDOException $exc) {
-      routing::getInstance()->redirect('productoInsumo', 'insertProductoInsumo');
-      session::getInstance()->setFlash('exc', $exc);
+      echo $exc->getMessage();
+      echo '<br>';
+      echo $exc->getTraceAsString();
     }
   }
   

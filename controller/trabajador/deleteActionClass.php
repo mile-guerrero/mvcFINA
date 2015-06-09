@@ -7,6 +7,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+use hook\log\logHookClass as log;
 
 /**
  * Description of ejemploClass
@@ -30,7 +31,10 @@ class deleteActionClass extends controllerClass implements controllerActionInter
            'code' => 200,
            'msg'  => 'La Eliminacion fue Exitosa'
            );
-       $this->defineView('delete', 'trabajador', session::getInstance()->getFormatOutput());
+       
+       $observacion ='se ha eliminado un trabajador';
+       log::register('Eliminar', trabajadorTableClass::getNameTable(),$observacion,$id);
+       $this->defineView('delete', 'trabajador', session::getInstance()->getFormatOutput());       
        session::getInstance()->setSuccess('La Eliminacion fue Exitosa');
       } else {
         routing::getInstance()->redirect('trabajador', 'index');

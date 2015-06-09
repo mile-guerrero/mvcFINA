@@ -11,7 +11,11 @@ use mvc\i18n\i18nClass as i18n;
 /**
  * Description of ejemploClass
  *
- * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
+ *@author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
+ *@date: fecha de inicio del desarrollo.
+ *@static: se define si la clase es de tipo estatica.
+ *@category:modulo de cooperativa
+
  */
 class insertActionClass extends controllerClass implements controllerActionInterface {
 

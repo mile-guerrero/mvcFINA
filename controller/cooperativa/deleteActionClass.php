@@ -12,9 +12,18 @@ use mvc\i18n\i18nClass as i18n;
  * Description of ejemploClass
  *
  * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
+ * @date: fecha de inicio del desarrollo.
+ * @static: se define si la clase es de tipo estatica.
+ * @category:modulo de cooperativa
  */
 class deleteActionClass extends controllerClass implements controllerActionInterface {
-
+/**
+ * @author: Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
+ * @date: fecha de inicio del desarrollo.
+ * @return cooperativaTableClass::ID retorna $id(integer),
+ *        
+ * estos datos retornan en la variable $ids
+ */
   public function execute() {
     try {
       if (request::getInstance()->isMethod('POST')and request::getInstance()->isAjaxRequest()) {
@@ -29,6 +38,10 @@ class deleteActionClass extends controllerClass implements controllerActionInter
             'code'=> 200,
             'msg'=> 'Eliminacion exitosa'
             );
+        
+        $observacion ='se ha eliminado un cooperativa';
+       log::register('Eliminar', cooperativaTableClass::getNameTable(),$observacion,$id);
+       session::getInstance()->setSuccess('El campo Fue Eliminado Exitosamente');
         $this->defineView('delete', 'cooperativa', session::getInstance()->getFormatOutput());
       
       } else {

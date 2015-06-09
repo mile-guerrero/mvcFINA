@@ -18,17 +18,17 @@ class editActionClass extends controllerClass implements controllerActionInterfa
   public function execute() {
     try {
    
-      if (request::getInstance()->hasGet(laborTableClass::ID)) {
+     if (request::getInstance()->hasGet(laborTableClass::ID)) {
         $fields = array(
             laborTableClass::ID,
             laborTableClass::DESCRIPCION,
             laborTableClass::VALOR      
         );
         $where = array(
-            laborTableClass::ID => request::getInstance()->getGet(laborTableClass::ID)
+             laborTableClass::ID => request::getInstance()->getGet(laborTableClass::ID)
         );
         $this->objLabor = laborTableClass::getAll($fields, false, null, null, null, null, $where);
-        
+       
       
         $this->defineView('edit', 'labor', session::getInstance()->getFormatOutput());
      

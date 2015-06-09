@@ -8,6 +8,7 @@ use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 use mvc\validator\proveedorValidatorClass as validator;
+use hook\log\logHookClass as log;
 /**
  * Description of ejemploClass
  *
@@ -37,11 +38,13 @@ class createProveedorActionClass extends controllerClass implements controllerAc
             proveedorTableClass::DIRECCION => $direccion,
             proveedorTableClass::TELEFONO => $telefono,
             proveedorTableClass::EMAIL => $email,
-            proveedorTableClass::ID_CIUDAD => $idCiudad
-            
+            proveedorTableClass::ID_CIUDAD => $idCiudad,
+            '__sequence' => 'proveedor_id_seq'            
         );
-        proveedorTableClass::insert($data);
+        $id = proveedorTableClass::insert($data);
         session::getInstance()->setSuccess('El registro fue exitoso');
+         $observacion ='se ha registrado un nuevo proveedor';
+        log::register('Insertar', proveedorTableClass::getNameTable(),$observacion,$id);
         routing::getInstance()->redirect('maquina', 'indexProveedor');
       } else {
         routing::getInstance()->redirect('maquina', 'indexProveedor');

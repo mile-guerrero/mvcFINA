@@ -8,6 +8,7 @@ use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 use mvc\validator\maquinaValidatorClass as validator;
+use hook\log\logHookClass as log;
 /**
  * Description of ejemploClass
  *
@@ -33,11 +34,14 @@ class createMaquinaActionClass extends controllerClass implements controllerActi
             maquinaTableClass::DESCRIPCION => $descripcion,
             maquinaTableClass::ORIGEN_MAQUINA => $origen,
             maquinaTableClass::TIPO_USO_ID => $tipo,
-            maquinaTableClass::PROVEEDOR_ID => $proveedor    
+            maquinaTableClass::PROVEEDOR_ID => $proveedor,
+            '__sequence' => 'maquina_id_seq'    
         );
         
-        maquinaTableClass::insert($data);
+        $id = maquinaTableClass::insert($data);
         session::getInstance()->setSuccess('El registro fue exitoso');
+        $observacion ='se ha insertando una nueva maquina';
+        log::register('Insertar', maquinaTableClass::getNameTable(),$observacion,$id);
         routing::getInstance()->redirect('maquina', 'indexMaquina');
       } else {
         routing::getInstance()->redirect('maquina', 'indexMaquina');

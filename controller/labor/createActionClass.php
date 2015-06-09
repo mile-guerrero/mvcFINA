@@ -7,7 +7,8 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
-use mvc\validator\cooperativaValidatorClass as validator;
+use mvc\validator\laborValidatorClass as validator;
+use hook\log\logHookClass as log;
 
 /**
  * Description of ejemploClass
@@ -29,9 +30,12 @@ class createActionClass extends controllerClass implements controllerActionInter
         $data = array(
             laborTableClass::DESCRIPCION => $des,
             laborTableClass::VALOR => $valor,
+            '__sequence' => 'labor_id_seq'
         );
-        laborBaseTableClass::insert($data);
+        $id = laborBaseTableClass::insert($data);
         session::getInstance()->setSuccess('El registro fue exitoso');
+        $observacion ='se ha insertando una nueva labor';
+        log::register('Insertar', laborTableClass::getNameTable(),$observacion,$id);
         routing::getInstance()->redirect('labor', 'index');
       } else {
         routing::getInstance()->redirect('labor', 'index');

@@ -9,12 +9,28 @@ use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
 /**
- * Description of ejemploClass
- *
- * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
- */
+* @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon 
+* @date: fecha de inicio del desarrollo.
+* @category: modulo de cliente.
+*/
 class indexClienteActionClass extends controllerClass implements controllerActionInterface {
 
+   /**
+* @author: Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon .
+* @date: fecha de inicio del desarrollo.
+* @return   clienteTableClass::ID retorna (integer),
+            clienteTableClass::NOMBRE retorna  (string),
+            clienteTableClass::APELLIDO retorna  (string),
+            clienteTableClass::DOCUMENTO retorna  (integer),
+            clienteTableClass::DIRECCION retorna  (string),
+            clienteTableClass::TELEFONO retorna  (integer),
+            clienteTableClass::ID_TIPO_ID retorna (integer),
+            clienteTableClass::ID_CIUDAD retorna  (integer),
+            clienteTableClass::UPDATE_AT retorna  (timestamp),
+            ciudadTableClass::ID retorna  (integer),
+            ciudadTableClass::NOMBRE_CIUDAD retorna  (string),
+ * estos datos retornan en la variable $fields
+*/
   public function execute() {
     try {
     $where = null;
@@ -26,28 +42,29 @@ class indexClienteActionClass extends controllerClass implements controllerActio
           $where[] ='(' .  clienteTableClass::getNameField(clienteTableClass::NOMBRE) . ' LIKE ' . '\'' . $filter['nombre'] . '%\'  '
               . 'OR ' . clienteTableClass::getNameField(clienteTableClass::NOMBRE) . ' LIKE ' . '\'%' . $filter['nombre'] . '%\' '
               . 'OR ' . clienteTableClass::getNameField(clienteTableClass::NOMBRE) . ' LIKE ' . '\'%' . $filter['nombre'].'\') ';       
-              }
+              }//cierre del filtro nombre
               
         if (isset($filter['apellido']) and $filter['apellido'] !== null and $filter['apellido'] !== '') {
          $where[] = '(' . clienteTableClass::getNameField(clienteTableClass::APELLIDO) . ' LIKE ' . '\'' . $filter['apellido'] . '%\'  '
               . 'OR ' . clienteTableClass::getNameField(clienteTableClass::APELLIDO) . ' LIKE ' . '\'%' . $filter['apellido'] . '%\' '
               . 'OR ' . clienteTableClass::getNameField(clienteTableClass::APELLIDO) . ' LIKE ' . '\'%' . $filter['apellido'].'\') ';       
-              }
+              }//cierre del filtro apellio
         
         if (isset($filter['documento']) and $filter['documento'] !== null and $filter['documento'] !== '') {
           $where[clienteTableClass::DOCUMENTO] = $filter['documento'];
-        }
+        }//cierre del filtro documento
         
         if (isset($filter['ciudad']) and $filter['ciudad'] !== null and $filter['ciudad'] !== '') {
           $where[clienteTableClass::ID_CIUDAD] = $filter['ciudad'];
-        }
+        }//cierre del filtro ciudad
+        
         if (isset($filter['fecha1']) and $filter['fecha1'] !== null and $filter['fecha1'] !== '' and (isset($filter['fecha2']) and $filter['fecha2'] !== null and $filter['fecha2'] !== '')) {
           $where[clienteTableClass::CREATED_AT] = array(
           date(config::getFormatTimestamp(), strtotime($filter['fecha1'] . ' 00:00:00')),
           date(config::getFormatTimestamp(), strtotime($filter['fecha2'] . ' 23:59:59'))
           );
-        }
-      }
+        }//cierre del filtro fecha1 y fecha2
+      }//cierre del POST filter
         
       $fields = array(
           clienteTableClass::ID,
@@ -69,7 +86,7 @@ class indexClienteActionClass extends controllerClass implements controllerActio
         $this->page = request::getInstance()->getGet('page');
         $page = request::getInstance()->getGet('page') - 1;
         $page = $page * config::getRowGrid();
-      }
+      }//cierre del if del paguinado
       $this->cntPages = clienteTableClass::getTotalPages(config::getRowGrid());
       $this->objCliente = clienteTableClass::getAll($fields, true, $orderBy, 'ASC', config::getRowGrid(), $page,$where);
       $fields = array(     
@@ -82,11 +99,12 @@ class indexClienteActionClass extends controllerClass implements controllerActio
       $this->objCC = ciudadTableClass::getAll($fields, false, $orderBy, 'ASC');
     
       $this->defineView('indexCliente', 'cliente', session::getInstance()->getFormatOutput());
-    } catch (PDOException $exc) {
+    } //cierre del try
+     catch (PDOException $exc) {
       echo $exc->getMessage();
       echo '<br>';
       echo $exc->getTraceAsString();
-    }
-}
+    }//cierre del catch
+}//cierre de la funcion execute
 
-}
+}//cierre de la clase

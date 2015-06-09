@@ -7,6 +7,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+use hook\log\logHookClass as log;
 
 /**
  * Description of ejemploClass
@@ -24,11 +25,17 @@ class deleteMaquinaActionClass extends controllerClass implements controllerActi
         $ids = array(
             maquinaTableClass::ID => $id
         );
+        
+        $observacion ='se ha eliminado una maquina';
+       log::register('Eliminar', maquinaTableClass::getNameTable(),$observacion,$id);
         maquinaTableClass::delete($ids, true);
       $this->arrayAjax = array(
             'code'=> 200,
             'msg'=> 'Eliminacion exitosa'
             );
+       $observacion ='se ha eliminado un maquina';
+       log::register('Eliminar', maquinaTableClass::getNameTable(),$observacion,$id);
+        session::getInstance()->setSuccess('El campo Fue Eliminado Exitosamente');
         $this->defineView('deleteMaquina', 'maquina', session::getInstance()->getFormatOutput());
       
       } else {

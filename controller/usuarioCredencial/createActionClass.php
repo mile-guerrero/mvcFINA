@@ -7,6 +7,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+use hook\log\logHookClass as log;
 
 /**
  * Description of ejemploClass
@@ -25,10 +26,13 @@ class createActionClass extends controllerClass implements controllerActionInter
  
         $data = array(
             usuarioCredencialTableClass::USUARIO_ID => $usuario,
-            usuarioCredencialTableClass::CREDENCIAL_ID => $credencial
+            usuarioCredencialTableClass::CREDENCIAL_ID => $credencial,
+            '__sequence' => 'usuario_credencial_id_seq'
         );
-        usuarioCredencialTableClass::insert($data);
+        $id = usuarioCredencialTableClass::insert($data);
         session::getInstance()->setSuccess('El registro fue exitoso');
+        $observacion ='se ha insertando un nuevo usuarioCredencial';
+        log::register('Insertar', usuarioCredencialTableClass::getNameTable(),$observacion,$id);
         routing::getInstance()->redirect('usuarioCredencial', 'index');
          
         

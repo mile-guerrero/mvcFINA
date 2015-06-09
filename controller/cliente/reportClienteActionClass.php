@@ -9,12 +9,30 @@ use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
 /**
- * Description of ejemploClass
- *
- * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
- */
+* @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon 
+* @date: fecha de inicio del desarrollo.
+* @category: modulo de cliente.
+*/
 class reportClienteActionClass extends controllerClass implements controllerActionInterface {
 
+  /**
+* @author: Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon .
+* @date: fecha de inicio del desarrollo.
+* @return   clienteTableClass::ID retorna (integer),
+            clienteTableClass::NOMBRE retorna  (string),
+            clienteTableClass::APELLIDO retorna  (string),
+            clienteTableClass::DOCUMENTO retorna  (integer),
+            clienteTableClass::DIRECCION retorna  (string),
+            clienteTableClass::TELEFONO retorna  (integer),
+            clienteTableClass::ID_TIPO_ID retorna (integer),
+            clienteTableClass::ID_CIUDAD retorna  (integer),
+            clienteTableClass::UPDATE_AT retorna  (timestamp),
+            ciudadTableClass::ID retorna  (integer),
+            ciudadTableClass::NOMBRE_CIUDAD retorna  (string),
+            tipoIdTableClass::ID retorna  (integer),
+            tipoIdTableClass::DESCRIPCION retorna  (string), 
+ * estos datos retornan en la variable $fields
+*/
   public function execute() {
     try {
       $where = null;
@@ -24,17 +42,20 @@ class reportClienteActionClass extends controllerClass implements controllerActi
 
         if (isset($report['nombre']) and $report['nombre'] !== null and $report['nombre'] !== '') {
           $where[clienteTableClass::NOMBRE] = $report['nombre'];
-        }
+        }//cierre del filtro nombre
+        
         if (isset($report['ciudad']) and $report['ciudad'] !== null and $report['ciudad'] !== '') {
           $where[clienteTableClass::ID_CIUDAD] = $report['ciudad'];
-        }
+        }//cierre del filtro ciudad
+        
         if (isset($report['fecha1']) and $report['fecha1'] !== null and $report['fecha1'] !== '' and (isset($report['fecha2']) and $report['fecha2'] !== null and $report['fecha2'] !== '')) {
           $where[clienteTableClass::CREATED_AT] = array(
           date(config::getFormatTimestamp(), strtotime($report['fecha1'] . ' 00:00:00')),
           date(config::getFormatTimestamp(), strtotime($report['fecha2'] . ' 23:59:59'))
           );
-        }
-      }
+        }//cierre del filtro fecha1 y fecha2
+        
+      }//cierre del POST del reporte
       $this->mensaje = 'Informacion de Clientes';
       $fields = array(
           clienteTableClass::ID,
@@ -72,13 +93,14 @@ class reportClienteActionClass extends controllerClass implements controllerActi
       $this->objCTI = tipoIdTableClass::getAll($fields, false, $orderBy, 'ASC');
  
       $this->defineView('indexCliente', 'cliente', session::getInstance()->getFormatOutput());
-    } catch (PDOException $exc) {
+    } //cierre del try
+     catch (PDOException $exc) {
       echo $exc->getMessage();
       echo '<br>';
       echo '<pre>';
       print_r($exc->getTrace());
       echo '</pre>';
-    }
-  }
+    }//cierre del catch
+  }//cierre de la funcion execute
 
-}
+}//cierre de la clase

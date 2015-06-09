@@ -8,7 +8,9 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
-use mvc\validator\cooperativaValidatorClass as validator;
+use mvc\validator\empresaValidatorClass as validator;
+use hook\log\logHookClass as log;
+
 /**
  * Description of ejemploClass
  *
@@ -30,7 +32,7 @@ class updateActionClass extends controllerClass implements controllerActionInter
          
      
         $ids = array(
-            cooperativaTableClass::ID => $id
+            empresaTableClass::ID => $id
         );
         $data = array(
            empresaTableClass::NOMBRE => $nombre,
@@ -40,6 +42,8 @@ class updateActionClass extends controllerClass implements controllerActionInter
         );
         empresaTableClass::update($ids, $data);
          session::getInstance()->setSuccess('La actualizacion fue correcta');
+         $observacion ='se ha modificado la empresa';
+        log::register('Modificar', empresaTableClass::getNameTable(),$observacion,$id);
         routing::getInstance()->redirect('empresa', 'index');
       }
 

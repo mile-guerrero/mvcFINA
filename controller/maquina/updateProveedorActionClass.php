@@ -8,6 +8,7 @@ use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 use mvc\validator\proveedorValidatorClass as validator;
+use hook\log\logHookClass as log;
 
 /**
  * Description of ejemploClass
@@ -47,6 +48,8 @@ class updateProveedorActionClass extends controllerClass implements controllerAc
 
         proveedorTableClass::update($ids, $data);
         session::getInstance()->setSuccess('La Actualizacion fue Exitoso');
+        $observacion ='se ha modificado el proveedor';
+        log::register('Modificar', proveedorTableClass::getNameTable(),$observacion,$id);
       routing::getInstance()->redirect('maquina', 'indexProveedor');
       }
       

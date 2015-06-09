@@ -9,12 +9,23 @@ use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
 /**
- * Description of ejemploClass
- *
- * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
- */
+* @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon 
+* @date: fecha de inicio del desarrollo.
+* @category: modulo de cliente.
+*/
 class traductorActionClass extends controllerClass implements controllerActionInterface {
 
+  
+  /**
+* @author: Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon .
+* @date: fecha de inicio del desarrollo.
+* @return   este metodo se calcula para controlar el cambio de idioma en el sistema para ello se 
+   * declaran las siguientes variables 
+   * $language  es la cultura que esta por defecto $es $en 
+   * $PATH_INFO 
+   * $QUERY_STRING 
+   * $dir  es donde se arma la direcion del traductor
+*/
   public function execute() {
     try {
       //if (request::getInstance()->isMethod('POST')) {
@@ -28,7 +39,7 @@ class traductorActionClass extends controllerClass implements controllerActionIn
         
         if (request::getInstance()->hasGet('QUERY_STRING')) {
           $QUERY_STRING = html_entity_decode(request::getInstance()->getGet('QUERY_STRING'));
-        }
+        }//cierre del if
         
         session::getInstance()->setDefaultCulture($language);
 //        config::setDefaultCulture($language);
@@ -38,11 +49,12 @@ class traductorActionClass extends controllerClass implements controllerActionIn
       //} else {
         //routing::getInstance()->redirect('default', 'index');
       //}
-    } catch (PDOException $exc) {
+    } //cierre del try
+      catch (PDOException $exc) {
       echo $exc->getMessage();
       echo '<br>';
       echo $exc->getTraceAsString();
-    }
-  }
+    }//cierre del catch
+  }//cierre de la funcion execute
 
-}
+}//cierre de la clase

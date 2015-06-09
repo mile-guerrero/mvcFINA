@@ -85,7 +85,7 @@ namespace mvc\validator {
         else if (!is_numeric(request::getInstance()->getPost(\cooperativaTableClass::getNameField(\cooperativaTableClass::TELEFONO, true)))) {
         $flag = true;
         session::getInstance()->setFlash('inputTelefono', true);
-        session::getInstance()->setError('El documento no permite letras, solo numeros', 'inputTelefono');
+        session::getInstance()->setError('El telefono no permite letras, solo numeros', 'inputTelefono');
       }
       
         
@@ -178,7 +178,7 @@ namespace mvc\validator {
         else if (!is_numeric(request::getInstance()->getPost(\cooperativaTableClass::getNameField(\cooperativaTableClass::TELEFONO, true)))) {
         $flag = true;
         session::getInstance()->setFlash('inputTelefono', true);
-        session::getInstance()->setError('El documento no permite letras, solo numeros', 'inputTelefono');
+        session::getInstance()->setError('El telefono no permite letras, solo numeros', 'inputTelefono');
       }
      
        //-------------------------------campo ciudad-----------------------------

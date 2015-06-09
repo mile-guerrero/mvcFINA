@@ -9,6 +9,7 @@ use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 use mvc\validator\maquinaValidatorClass as validator;
+use hook\log\logHookClass as log;
 /**
  * Description of ejemploClass
  *
@@ -40,6 +41,8 @@ class updateMaquinaActionClass extends controllerClass implements controllerActi
         );
         maquinaTableClass::update($ids, $data);
          session::getInstance()->setSuccess('La actualizacion fue correcta'); 
+         $observacion ='se ha modificado la maquina';
+        log::register('Modificar', maquinaTableClass::getNameTable(),$observacion,$id);
         routing::getInstance()->redirect('maquina', 'indexMaquina');
       }
     } catch (PDOException $exc) {

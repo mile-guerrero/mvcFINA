@@ -121,7 +121,7 @@
     <div class="form-group">
       <label for="<?php echo proveedorTableClass::getNameField(proveedorTableClass::EMAIL, true) ?>" class="col-sm-2"> <?php echo i18n::__('email') ?>:</label>     
       <div class="col-sm-10">            
-        <input  class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputEmail') or request::getInstance()->hasPost(proveedorTableClass::getNameField(proveedorTableClass::TELEFONO, true))) ? request::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::TELEFONO, true)) : ((isset($objProveedor[0])) ? $objProveedor[0]->$email : '') ?>" type="text" name="<?php echo proveedorTableClass::getNameField(proveedorTableClass::EMAIL, true) ?>" placeholder="<?php echo i18n::__('email') ?>"required>
+        <input  class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputEmail') or request::getInstance()->hasPost(proveedorTableClass::getNameField(proveedorTableClass::EMAIL, true))) ? request::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::EMAIL, true)) : ((isset($objProveedor[0])) ? $objProveedor[0]->$email : '') ?>" type="text" name="<?php echo proveedorTableClass::getNameField(proveedorTableClass::EMAIL, true) ?>" placeholder="<?php echo i18n::__('email') ?>"required>
       </div>
     </div> 
     

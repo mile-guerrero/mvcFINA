@@ -9,14 +9,30 @@ use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 use mvc\validator\cooperativaValidatorClass as validator;
+use hook\log\logHookClass as log;
 
 /**
  * Description of ejemploClass
  *
  * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
+  * @date: fecha de inicio del desarrollo.
+ * @static: se define si la clase es de tipo estatica.
+ * @category: medulo de cooperativa
+
  */
 class updateActionClass extends controllerClass implements controllerActionInterface {
-
+/**
+  * @author: Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
+  * @date: fecha de inicio del desarrollo.
+  * @return cooperativaTableClass::ID retorna $id(integer),
+  *        cooperativaTableClass::NOMBRE retorna $nombre(string),
+  *        cooperativaTableClass::DESCRIPCION retorna $descripcion(string),
+  *        cooperativaTableClass::DIRECCION retorna $direccion(string),
+  *        cooperativaTableClass::TELEFONO retorna $telefono(integer),  
+  *        cooperativaTableClass::ID_CIUDAD retorna $id_ciudad(integer),
+ 
+  * estos datos retornan en la variable $ids
+  */
   public function execute() {
     try {
       if (request::getInstance()->isMethod('POST')) {
@@ -44,6 +60,8 @@ class updateActionClass extends controllerClass implements controllerActionInter
         );
         cooperativaTableClass::update($ids, $data);
          session::getInstance()->setSuccess('La actualizacion fue correcta');
+         $observacion ='se ha modificado la cooperativa';
+        log::register('Modificar', cooperativaTableClass::getNameTable(),$observacion,$id);
         routing::getInstance()->redirect('cooperativa', 'index');
       }
 

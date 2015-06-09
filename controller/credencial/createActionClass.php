@@ -7,14 +7,22 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+use hook\log\logHookClass as log;
 
 /**
- * Description of ejemploClass
- *
- * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
+ * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon 
+ * @date: fecha de inicio del desarrollo.
+ * @category: modulo de credencial.
  */
 class createActionClass extends controllerClass implements controllerActionInterface {
 
+  
+  /**
+   * @author: Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon .
+   * @date: fecha de inicio del desarrollo.
+   * @return   credencialTableClass::NOMBRE retorna $nombre (string),
+   * estos datos retornan en la variable $data
+   */
   public function execute() {
     try {
       if (request::getInstance()->isMethod('POST')) {
@@ -26,20 +34,25 @@ class createActionClass extends controllerClass implements controllerActionInter
         
         $data = array(
             credencialTableClass::NOMBRE => $nombre,
+            '__sequence' => 'credencial_id_seq'
           
         );
-        credencialTableClass::insert($data);
+        $id = credencialTableClass::insert($data);
         session::getInstance()->setSuccess('El registro fue exitoso');
+        $observacion ='se ha insertando una nueva credencial';
+        log::register('Insertar', credencialTableClass::getNameTable(),$observacion,$id);
         routing::getInstance()->redirect('credencial', 'index');
-      } else {
+      } //cierre del POST 
+       else {
         routing::getInstance()->redirect('credencial', 'index');
-      }
-    } catch (PDOException $exc) {
+      }//cierre del else
+    } //cierre de la try
+      catch (PDOException $exc) {
       echo $exc->getMessage();
       echo '<br>';
       echo $exc->getTraceAsString();
-    }
-  }
+    }//cierre del catch
+  }//cierre de la funcion execute 
   public function validate($nombre) {
      $flag = false;
     
@@ -68,4 +81,4 @@ class createActionClass extends controllerClass implements controllerActionInter
   }
     
   }
-}
+}//cierre de la clase

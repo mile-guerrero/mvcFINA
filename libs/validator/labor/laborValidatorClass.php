@@ -74,7 +74,7 @@ namespace mvc\validator {
       $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
       
       
-      //-------------------------------campo descripcion-----------------------------
+     //-------------------------------campo descripcion-----------------------------
           //----campo nulo----
       if (self::notBlank(request::getInstance()->getPost(\laborTableClass::getNameField(\laborTableClass::DESCRIPCION, true)))) {
         $flag = true;
@@ -109,7 +109,6 @@ namespace mvc\validator {
         session::getInstance()->setFlash('inputValor', true);
         session::getInstance()->setError('El documento no permite letras, solo numeros', 'inputValor');
       }
-
       //-------------------------------condiccion de bandera true-----------------------------
       if ($flag === true) {
         request::getInstance()->setMethod('GET');

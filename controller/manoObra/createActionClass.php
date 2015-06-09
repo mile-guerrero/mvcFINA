@@ -8,6 +8,7 @@ use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 use mvc\validator\manoObraValidatorClass as validator;
+use hook\log\logHookClass as log;
 
 /**
  * Description of ejemploClass
@@ -34,11 +35,13 @@ class createActionClass extends controllerClass implements controllerActionInter
             manoObraTableClass::VALOR_HORA => $valor,
             manoObraTableClass::COOPERATIVA_ID => $cooperativa,
             manoObraTableClass::LABOR_ID => $labor,            
-            manoObraTableClass::MAQUINA_ID => $maquina
-            
+            manoObraTableClass::MAQUINA_ID => $maquina,
+            '__sequence' => 'mano_obra_id_seq'            
         );
-        manoObraTableClass::insert($data);
+        $id = manoObraTableClass::insert($data);
         session::getInstance()->setSuccess('El registro fue exitoso');
+        $observacion ='se ha insertando una nueva mano obra';
+        log::register('Insertar', manoObraTableClass::getNameTable(),$observacion,$id);
         routing::getInstance()->redirect('manoObra', 'index');
       } else {
         routing::getInstance()->redirect('manoObra', 'index');

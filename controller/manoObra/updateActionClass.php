@@ -9,6 +9,7 @@ use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 use mvc\validator\manoObraValidatorUpdateClass as validator;
+use hook\log\logHookClass as log;
 /**
  * Description of ejemploClass
  *
@@ -40,6 +41,8 @@ class updateActionClass extends controllerClass implements controllerActionInter
         );
         manoObraTableClass::update($ids, $data);
         session::getInstance()->setSuccess('La actualizacion fue correcta');
+        $observacion ='se ha modificado la mano de obra';
+        log::register('Modificar', manoObraTableClass::getNameTable(),$observacion,$id);
         routing::getInstance()->redirect('manoObra', 'index');
       }
     } catch (PDOException $exc) {

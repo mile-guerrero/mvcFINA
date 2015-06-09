@@ -8,6 +8,7 @@ use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 use mvc\validator\ordenServicioValidatorClass as validator;
+use hook\log\logHookClass as log;
 
 /**
  * Description of ejemploClass
@@ -35,11 +36,14 @@ class createActionClass extends controllerClass implements controllerActionInter
             ordenServicioTableClass::CANTIDAD => $cantidad,
             ordenServicioTableClass::VALOR => $valor,
             ordenServicioTableClass::PRODUCTO_INSUMO_ID => $producto,            
-            ordenServicioTableClass::MAQUINA_ID => $maquina
+            ordenServicioTableClass::MAQUINA_ID => $maquina,
+            '__sequence' => 'orden_servicio_id_seq'
             
         );
-        ordenServicioTableClass::insert($data);
+        $id = ordenServicioTableClass::insert($data);
         session::getInstance()->setSuccess('El registro fue exitoso');
+        $observacion ='se ha insertando un nuevo orden servicio';
+        log::register('Insertar', ordenServicioTableClass::getNameTable(),$observacion,$id);
         routing::getInstance()->redirect('ordenServicio', 'index');
       } else {
         routing::getInstance()->redirect('ordenServicio', 'index');
