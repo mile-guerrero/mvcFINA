@@ -1,16 +1,11 @@
 <?php mvc\view\viewClass::includePartial('default/menuPrincipal') ?>
-<?php
-
-use mvc\routing\routingClass as routing ?>
-<?php
-use mvc\i18n\i18nClass as i18n ?>
-<?php
-use mvc\view\viewClass as view ?>
-<?php
-use mvc\session\sessionClass as session ?>
+<?php use mvc\routing\routingClass as routing ?>
+<?php use mvc\i18n\i18nClass as i18n ?>
+<?php use mvc\view\viewClass as view?>
+<?php use mvc\session\sessionClass as session?>
 
 <?php $descripcion = cooperativaTableClass::DESCRIPCION ?>
-<?php $nomb = cooperativaTableClass::NOMBRE ?>
+<?php $nombre = cooperativaTableClass::NOMBRE ?>
 <?php $id = cooperativaTableClass::ID ?>
 <?php $idCiudaddes = ciudadTableClass::ID ?>
 <?php $idCiudad = cooperativaTableClass::ID_CIUDAD ?>
@@ -176,35 +171,35 @@ use mvc\session\sessionClass as session ?>
                 <input type="checkbox" name="chk[]" value="<?php echo $key->$id ?>">
               </th>
               <td>
-  <?php echo $key->$nomb ?> 
+  <?php echo $key->$nombre ?> 
               </td>     
               <th>               
                 <a class="btn btn-warning btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('cooperativa', 'ver', array(cooperativaTableClass::ID => $key->$id)) ?>" > <?php echo i18n::__('ver') ?></a> 
             <?php if (session::getInstance()->hasCredential('admin')): ?>
                   <a class="btn btn-primary btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('cooperativa', 'edit', array(cooperativaTableClass::ID => $key->$id)) ?>"> <?php echo i18n::__('modificar') ?> </a>
-                  <a data-toggle="modal" data-target="#myModalDelete<?php echo $key->$id ?>"  class="btn btn-danger btn-xs"> <?php echo i18n::__('eliminar') ?></a>
+                 <a data-toggle="modal" data-target="#myModalDelete<?php echo $key->$id ?>" class="btn btn-danger btn-xs"><?php echo i18n::__('eliminar') ?></a>
   <?php endif ?>
               </th>                                                       
             </tr>
-<?php endforeach; ?>
-        <div class="modal fade" id="myModalDelete<?php echo $key->$id ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('confirmar eliminar') ?></h4>
-              </div>
-              <div class="modal-body">
-<?php echo i18n::__('Desea  eliminar este campo') ?> <?php echo $key->$nomb ?><?php echo i18n::__('?') ?>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default btn-xs" data-dismiss="modal"><?php echo i18n::__('cerrar') ?></button>
-                <button type="button" class="btn btn-danger btn-xs" onclick="eliminar(<?php echo $key->$id ?>, '<?php echo cooperativaTableClass::getNameField(cooperativaTableClass::ID, true) ?>', '<?php echo routing::getInstance()->getUrlWeb('cooperativa', 'delete') ?>')"><?php echo i18n::__('eliminar') ?></button>
+
+       <div class="modal fade" id="myModalDelete<?php echo $key->$id ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('confirmar eliminar') ?></h4>
+      </div>
+      <div class="modal-body">
+        <?php echo i18n::__('Desea  eliminar este campo') ?> <?php echo $key->$nombre ?><?php echo i18n::__('?') ?>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default btn-xs" data-dismiss="modal"><?php echo i18n::__('cerrar') ?></button>
+        <button type="button" class="btn btn-danger btn-xs" onclick="eliminar(<?php echo $key->$id ?>,'<?php echo cooperativaTableClass::getNameField(cooperativaTableClass::ID, true) ?>','<?php echo routing::getInstance()->getUrlWeb('cooperativa', 'delete') ?>')"><?php echo i18n::__('eliminar') ?></button>
               </div>
             </div>
           </div>
         </div>                                         
-
+<?php endforeach; ?>
         </tbody>
       </table>
     </form> 
@@ -217,8 +212,8 @@ use mvc\session\sessionClass as session ?>
       </select> <?php echo i18n::__('de') ?> <?php echo $cntPages ?>
     </div>
     <form id="frmDelete" action="<?php echo routing::getInstance()->getUrlWeb('cooperativa', 'delete') ?>" method="POST">
-      <input type="hidden" id="idDelete" name="<?php echo cooperativaTableClass::getNameField(cooperativaTableClass::ID, true) ?>">
-    </form>
+        <input type="hidden" id="idDelete" name="<?php echo cooperativaTableClass::getNameField(cooperativaTableClass::ID, true) ?>">
+      </form>
 
   </article>
 
