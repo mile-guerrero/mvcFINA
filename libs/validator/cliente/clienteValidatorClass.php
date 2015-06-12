@@ -258,5 +258,69 @@ namespace mvc\validator {
       
       }
     }
+    
+    public static function validateFiltros($documento) {
+      $flag = false;
+//      $soloNumeros = "/^[[:digit:]]+$/";
+      $soloLetras = "/^[a-z]+$/i";
+      $soloTelefono = "/^(\d{3,3}\-\d{3,3}\-\d{4,4})|^(\+\d\-\d{3,3}\-\d{4,4})/";
+      $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
+      
+      //------------------------------------campo documento---------------------
+         //----solo numeros----
+        
+        if (!is_numeric(request::getInstance()->getPost($documento))) {
+        $flag = true;
+        session::getInstance()->setFlash('inputDocumento', true);
+        session::getInstance()->setError('El documento no permite letras, solo numeros', 'inputDocumento');
+      } //----sobre pasar los caracteres----
+        else if(strlen(request::getInstance()->getPost(\clienteTableClass::getNameField(\clienteTableClass::DOCUMENTO, true))) > \clienteTableClass::DOCUMENTO_LENGTH) {
+        $flag = true;
+        session::getInstance()->setFlash('inputDocumento', true);
+        session::getInstance()->setError('El documento digitado es mayor en cantidad de caracteres a lo permitido', 'inputDocumento');
+      }       
+      //-------------------------------campo nombre-----------------------------
+          //----solo permitir letras----
+//        if (!preg_match($soloLetras, (request::getInstance()->getPost(\clienteTableClass::getNameField(\clienteTableClass::NOMBRE, true))))){
+//        $flag = true;
+//        session::getInstance()->setFlash('inputNombre', true);
+//        session::getInstance()->setError('El documento no permite numeros, solo letras', 'inputNombre');
+//      } //----sobre pasar los caracteres----
+//        else if(strlen(request::getInstance()->getPost(\clienteTableClass::getNameField(\clienteTableClass::NOMBRE, true))) > \clienteTableClass::NOMBRE_LENGTH) {
+//        $flag = true;
+//        session::getInstance()->setFlash('inputNombre', true);
+//        session::getInstance()->setError('El nombre digitado es mayor en cantidad de caracteres a lo permitido', 'inputNombre');
+//      }
+//
+//   //-------------------------------campo apellido-----------------------------
+//         //----solo permitir letras----
+//       if (!preg_match($soloLetras, (request::getInstance()->getPost(\clienteTableClass::getNameField(\clienteTableClass::APELLIDO, true))))){
+//        $flag = true;
+//        session::getInstance()->setFlash('inputApellido', true);
+//        session::getInstance()->setError('El documento no permite numeros, solo letras', 'inputApellido');
+//      } //----sobre pasar los caracteres----
+//        else if(strlen(request::getInstance()->getPost(\clienteTableClass::getNameField(\clienteTableClass::APELLIDO, true))) > \clienteTableClass::APELLIDO_LENGTH) {
+//        $flag = true;
+//        session::getInstance()->setFlash('inputApellido', true);
+//        session::getInstance()->setError('El nombre digitado es mayor en cantidad de caracteres a lo permitido', 'inputApellido');
+//      }   
+//      
+      
+  
+      
+       //-------------------------------campo ciudad-----------------------------
+          //----campo nulo----
+//      if (self::notBlank(request::getInstance()->getPost(\clienteTableClass::getNameField(\clienteTableClass::ID_CIUDAD, true)))) {
+//        $flag = true;
+//        session::getInstance()->setFlash('selectCiudad', true);
+//        session::getInstance()->setError('La ciudad del cliente es requerido', 'selectCiudad');
+//        } 
+
+      //-------------------------------condiccion de bandera true-----------------------------
+      if ($flag === true) {
+        //request::getInstance()->setMethod('GET');
+        routing::getInstance()->forward('cliente', 'indexCliente');
+      }
+    }
   }  
 }

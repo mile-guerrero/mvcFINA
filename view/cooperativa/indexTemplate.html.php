@@ -176,13 +176,13 @@
               <th>               
                 <a class="btn btn-warning btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('cooperativa', 'ver', array(cooperativaTableClass::ID => $key->$id)) ?>" > <?php echo i18n::__('ver') ?></a> 
             <?php if (session::getInstance()->hasCredential('admin')): ?>
-                  <a class="btn btn-primary btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('cooperativa', 'edit', array(cooperativaTableClass::ID => $key->$id)) ?>"> <?php echo i18n::__('modificar') ?> </a>
-                 <a data-toggle="modal" data-target="#myModalDelete<?php echo $key->$id ?>" class="btn btn-danger btn-xs"><?php echo i18n::__('eliminar') ?></a>
+                <a class="btn btn-primary btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('cooperativa', 'edit', array(cooperativaTableClass::ID => $key->$id)) ?>"> <?php echo i18n::__('modificar') ?> </a>
+                <a data-toggle="modal" data-target="#myModalDelete<?php echo $key->$id ?>" class="btn btn-danger btn-xs"><?php echo i18n::__('eliminar') ?></a>
   <?php endif ?>
               </th>                                                       
             </tr>
 
-       <div class="modal fade" id="myModalDelete<?php echo $key->$id ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+ <div class="modal fade" id="myModalDelete<?php echo $key->$id ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">

@@ -79,7 +79,7 @@
         <select class="form-control-gonza2" id="<?php maquinaTableClass::getNameField(maquinaTableClass::ID, true)?>" name="<?php echo maquinaTableClass::getNameField(maquinaTableClass::TIPO_USO_ID, true);?>">
        <option value="<?php echo (session::getInstance()->hasFlash('selectTipo') or request::getInstance()->hasPost(maquinaTableClass::getNameField(maquinaTableClass::TIPO_USO_ID, true))) ? request::getInstance()->getPost(maquinaTableClass::getNameField(maquinaTableClass::TIPO_USO_ID, true)) : ((isset($objMaquina[0])) ? '' : '') ?>" ><?php echo i18n::__('selectTipoUso') ?></option>
        <?php foreach($objMTUM as $TUM):?>
-       <option <?php echo (isset($objMaquina[0]->$tipo_uso) === true and $objMaquina[0]->$tipo_uso == $TUM->$tipo_usos) ? 'selected' : '' ?> value="<?php echo $TUM->$tipo_usos ?>"><?php echo $TUM->$des_usos?></option>
+      <option <?php echo (request::getInstance()->hasPost(maquinaTableClass::getNameField(maquinaTableClass::TIPO_USO_ID, true)) === true and request::getInstance()->getPost(maquinaTableClass::getNameField(maquinaTableClass::TIPO_USO_ID, true)) == $TUM->$tipo_usos) ? 'selected' : (isset($objMaquina[0]->$tipo_uso) === true and $objMaquina[0]->$tipo_uso == $TUM->$tipo_usos) ? 'selected' : '' ?> value="<?php echo $TUM->$tipo_usos ?>"><?php echo $TUM->$des_usos?></option>
        <?php endforeach;?>
    </select>   
       </div> 
@@ -100,7 +100,7 @@
     <select class="form-control" id="<?php maquinaTableClass::getNameField(maquinaTableClass::ID, true)?>" name="<?php echo maquinaTableClass::getNameField(maquinaTableClass::PROVEEDOR_ID, true);?>">
        <option value="<?php echo (session::getInstance()->hasFlash('selectProveedor') or request::getInstance()->hasPost(maquinaTableClass::getNameField(maquinaTableClass::PROVEEDOR_ID, true))) ? request::getInstance()->getPost(maquinaTableClass::getNameField(maquinaTableClass::PROVEEDOR_ID, true)) : ((isset($objMaquina[0])) ? '' : '') ?>" ><?php echo i18n::__('selectProveedor') ?></option>
        <?php foreach($objMP as $P):?>
-       <option <?php echo (isset($objMaquina[0]->$proveedor_id) === true and $objMaquina[0]->$proveedor_id == $P->$proveedor_ids) ? 'selected' : '' ?> value="<?php echo $P->$proveedor_ids?>"><?php echo $P->$des_proveedor?></option>
+       <option <?php echo (request::getInstance()->hasPost(maquinaTableClass::getNameField(maquinaTableClass::PROVEEDOR_ID, true)) === true and request::getInstance()->getPost(maquinaTableClass::getNameField(maquinaTableClass::PROVEEDOR_ID, true)) == $P->$proveedor_ids) ? 'selected' : (isset($objMaquina[0]->$proveedor_id) === true and $objMaquina[0]->$proveedor_id == $P->$proveedor_ids) ? 'selected' : '' ?> value="<?php echo $P->$proveedor_ids?>"><?php echo $P->$des_proveedor?></option>
        <?php endforeach;?>
    </select> 
       </div> 

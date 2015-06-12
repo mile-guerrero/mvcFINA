@@ -78,7 +78,7 @@
      	  <select class="form-control-gonza2" id="<?php echo cooperativaTableClass::getNameField(cooperativaTableClass::ID, true)?>" name="<?php echo cooperativaTableClass::getNameField(cooperativaTableClass::ID_CIUDAD, true) ?>">
             <option value="<?php echo (session::getInstance()->hasFlash('selectCiudad')  or request::getInstance()->hasPost(cooperativaTableClass::getNameField(cooperativaTableClass::ID_CIUDAD, true))) ? request::getInstance()->getPost(cooperativaTableClass::getNameField(cooperativaTableClass::ID_CIUDAD, true)) : ((isset($objCooperativa[0])) ? '' : '') ?>"  ><?php echo i18n::__('selectCiudad') ?></option>
 <?php foreach ($objCC as $C): ?>
-              <option <?php echo (isset($objCooperativa[0]->$idCiudad) === true and $objCooperativa[0]->$idCiudad == $C->$idCiudaddes) ? 'selected' : '' ?> value="<?php echo $C->$idCiudaddes ?>"><?php echo $C->$descripcionciudad ?></option>
+              <option <?php echo (request::getInstance()->hasPost(cooperativaTableClass::getNameField(cooperativaTableClass::ID_CIUDAD, true)) === true and request::getInstance()->getPost(cooperativaTableClass::getNameField(cooperativaTableClass::ID_CIUDAD, true)) == $C->$idCiudaddes) ? 'selected' : (isset($objCooperativa[0]->$idCiudad) === true and $objCooperativa[0]->$idCiudad == $C->$idCiudaddes) ? 'selected' : '' ?>  value="<?php echo $C->$idCiudaddes ?>"><?php echo $C->$descripcionciudad ?></option>
 <?php endforeach; ?>
           </select>
         </div> 

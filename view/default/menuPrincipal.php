@@ -51,6 +51,8 @@
                             <li><a href="<?php echo routing::getInstance()->getUrlWeb('ordenServicio', 'index') ?>"><?php echo i18::__('orden') ?></a></li>
                             <li><a href="<?php echo routing::getInstance()->getUrlWeb('pedido', 'index') ?>"><?php echo i18::__('pedido') ?></a></li>
                             <li><a href="<?php echo routing::getInstance()->getUrlWeb('manoObra', 'index') ?>">mano obra</a></li>
+                            <li><a href="<?php echo routing::getInstance()->getUrlWeb('facturaVenta', 'index') ?>"><?php echo i18::__('factura') ?></a></li>
+                            <li><a href="<?php echo routing::getInstance()->getUrlWeb('facturaCompra', 'index') ?>"><?php echo i18::__('facturaCompra') ?></a></li>
                         </ul>
                     </li>
 

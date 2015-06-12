@@ -31,7 +31,7 @@ namespace mvc\validator {
         if (self::notBlank(request::getInstance()->getPost(\ordenServicioTableClass::getNameField(\ordenServicioTableClass::VALOR, true)))) {
         $flag = true;
         session::getInstance()->setFlash('inputValor', true);
-        session::getInstance()->setError('El valor es requerida', 'inputValor');
+        session::getInstance()->setError('El valor es requerido', 'inputValor');
       } else if (!is_numeric(request::getInstance()->getPost(\ordenServicioTableClass::getNameField(\ordenServicioTableClass::VALOR, true)))) {
         $flag = true;
         session::getInstance()->setFlash('inputValor', true);
@@ -40,6 +40,27 @@ namespace mvc\validator {
         $flag = true;
         session::getInstance()->setFlash('inputValor', true);
         session::getInstance()->setError('La catidad digitado sobre pasa los caracteres permitidos', 'inputValor');
+        
+         //-------------------------------campo Trabajador-----------------------------
+          //----campo nulo----
+      } if (self::notBlank(request::getInstance()->getPost(\ordenServicioTableClass::getNameField(\ordenServicioTableClass::TRABAJADOR_ID, true)))) {
+        $flag = true;
+        session::getInstance()->setFlash('selectTrabajador', true);
+        session::getInstance()->setError('El trabajador es requerido', 'selectTrabajador');
+        //-------------------------------campo Producto-----------------------------
+          //----campo nulo----
+      } if (self::notBlank(request::getInstance()->getPost(\ordenServicioTableClass::getNameField(\ordenServicioTableClass::PRODUCTO_INSUMO_ID, true)))) {
+        $flag = true;
+        session::getInstance()->setFlash('selectProducto', true);
+        session::getInstance()->setError('El producto es requerido', 'selectProducto');
+        
+        //-------------------------------campo Maquina-----------------------------
+          //----campo nulo----
+      } if (self::notBlank(request::getInstance()->getPost(\ordenServicioTableClass::getNameField(\ordenServicioTableClass::MAQUINA_ID, true)))) {
+        $flag = true;
+        session::getInstance()->setFlash('selectMaquina', true);
+        session::getInstance()->setError('La maquina es requerida', 'selectMaquina');
+        
 //      } else if(strlen(request::getInstance()->getPost('inputCantidad')) > \manoObraTableClass::CANTIDAD_HORA_LENGTH) {
 //        $flag = true;
 //        session::getInstance()->setFlash('inputCantidad', true);

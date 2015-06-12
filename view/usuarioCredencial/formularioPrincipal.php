@@ -25,7 +25,7 @@
          <option><?php echo i18n::__('selectCiudad')?></option>
        <?php foreach($objUCU as $U):?>
        <option <?php echo (isset($objUC[0]->$usuario) === true and $objUC[0]->$usuario == $U->$id_usuarios) ? 'selected' : '' ?> value="<?php echo $U->$id_usuarios ?>"><?php echo $U->$des_usuarios ?></option>  
-       
+<!--       <option <?php //echo (request::getInstance()->hasPost(usuarioCredencialTableClass::getNameField(usuarioCredencialTableClass::USUARIO_ID, true)) === true and request::getInstance()->getPost(usuarioCredencialTableClass::getNameField(usuarioCredencialTableClass::USUARIO_ID, true)) == $U->$id_usuarios) ? 'selected' : (isset($objUC[0]->$usuario) === true and $objUC[0]->$usuario == $U->$id_usuarios) ? 'selected' : '' ?>  value="<?php //echo $U->$id_usuarios ?>"><?php //echo $U->$des_usuarios ?></option> -->
        <?php endforeach;?>
    </select>    
       </div> 

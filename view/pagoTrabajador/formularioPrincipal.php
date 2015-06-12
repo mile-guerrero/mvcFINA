@@ -47,7 +47,7 @@
     
     
     <?php if(session::getInstance()->hasError('selectFechaIni')): ?>
-    <div class="alert alert-danger alert-dismissible" role="alert" id="error">
+   <div class="alert alert-danger alert-dismissible" role="alert" id="error">
     <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
       <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('selectFechaIni') ?>
     </div>
@@ -56,7 +56,7 @@
     <?php if(session::getInstance()->hasError('selectFechaFin')): ?>
     <div class="alert alert-danger alert-dismissible" role="alert" id="error">
     <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('selectFechaFin') ?>
+       <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('selectFechaFin') ?>
     </div>
     <?php endif ?>
     
@@ -101,7 +101,7 @@
     <?php if(session::getInstance()->hasError('inputHorasPerdidas')): ?>
     <div class="alert alert-danger alert-dismissible" role="alert" id="error">
     <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputHorasPerdidas') ?>
+       <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputHorasPerdidas') ?>
     </div>
     <?php endif ?>
     
@@ -123,7 +123,7 @@
     <?php if(session::getInstance()->hasError('inputHoras')): ?>
     <div class="alert alert-danger alert-dismissible" role="alert" id="error">
     <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputHoras') ?>
+       <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputHoras') ?>
     </div>
     <?php endif ?>
     
@@ -131,7 +131,7 @@
     <?php if(session::getInstance()->hasError('inputCantidad')): ?>
     <div class="alert alert-danger alert-dismissible" role="alert" id="error">
     <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputCantidad') ?>
+       <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputCantidad') ?>
     </div>
     <?php endif ?>
     
@@ -153,7 +153,7 @@
      <?php if(session::getInstance()->hasError('inputTotal')): ?>
     <div class="alert alert-danger alert-dismissible" role="alert" id="error">
     <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputTotal') ?>
+       <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputTotal') ?>
     </div>
     <?php endif ?>
     

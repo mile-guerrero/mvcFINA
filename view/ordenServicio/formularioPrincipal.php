@@ -34,11 +34,18 @@
       </div>
   </div>
   
+  <?php if(session::getInstance()->hasError('selectMaquina')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert" id="error">
+    <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+       <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('selectMaquina') ?>
+    </div>
+    <?php endif ?>
+  
   <div class="form-group">
          <label for="" class="col-sm-2"> <?php echo i18n::__('maquina') ?> </label>
          <div class="col-sm-10">
            <select class="form-control" id="<?php echo ordenServicioTableClass::getNameField(ordenServicioTableClass::MAQUINA_ID, true)?>" name="<?php echo ordenServicioTableClass::getNameField(ordenServicioTableClass::MAQUINA_ID, true) ?>">
-            <option><?php echo i18n::__('selectMaquina') ?></option>
+               <option value="<?php echo (session::getInstance()->hasFlash('selectMaquina') or request::getInstance()->hasPost(ordenServiciotableClass::getNameField(ordenServiciotableClass::MAQUINA_ID, true))) ? request::getInstance()->getPost(ordenServiciotableClass::getNameField(ordenServiciotableClass::MAQUINA_ID, true)) : ((isset($objOS[0])) ? '' : '') ?>"><?php echo i18n::__('selectMaquina') ?></option>
 <?php foreach ($objOSM as $maq): ?>
             <option <?php echo (isset($objOS[0]->$maquina) === true and $objOS[0]->$maquina == $maq->$idMaquina) ? 'selected' : '' ?> value="<?php echo $maq->$idMaquina ?>"><?php echo $maq->$descMaquina ?></option>
 <?php endforeach; ?>
@@ -46,19 +53,27 @@
       </div>
     </div>
   
+  <?php if(session::getInstance()->hasError('selectProducto')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert" id="error">
+    <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('selectProducto') ?>
+    </div>
+    <?php endif ?>
+  
    <?php if(session::getInstance()->hasError('inputCantidad')): ?>
-    <div class="alert alert-danger alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    <div class="alert alert-danger alert-dismissible" role="alert" id="error">
+    <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
       <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputCantidad') ?>
     </div>
     <?php endif ?>
+  
   
   
   <div class="form-group">
          <label for="" class="col-sm-2"> <?php echo i18n::__('product') ?> </label>
          <div class="col-sm-10">
            <select class="form-control-gonza1" id="<?php echo ordenServicioTableClass::getNameField(ordenServicioTableClass::PRODUCTO_INSUMO_ID, true)?>" name="<?php echo ordenServicioTableClass::getNameField(ordenServicioTableClass::PRODUCTO_INSUMO_ID, true) ?>">
-            <option><?php echo i18n::__('selectProducto') ?></option>
+               <option value="<?php echo (session::getInstance()->hasFlash('selectProducto') or request::getInstance()->hasPost(ordenServiciotableClass::getNameField(ordenServiciotableClass::PRODUCTO_INSUMO_ID, true))) ? request::getInstance()->getPost(ordenServiciotableClass::getNameField(ordenServiciotableClass::PRODUCTO_INSUMO_ID, true)) : ((isset($objOS[0])) ? '' : '') ?>"><?php echo i18n::__('selectProducto') ?></option>
 <?php foreach ($objOSPI as $produc): ?>
             <option <?php echo (isset($objOS[0]->$producto) === true and $objOS[0]->$producto == $produc->$idProducto) ? 'selected' : '' ?> value="<?php echo $produc->$idProducto ?>"><?php echo $produc->$descProducto ?></option>
 <?php endforeach; ?>
@@ -69,18 +84,26 @@
       </div>
   </div>
   
+  <?php if(session::getInstance()->hasError('selectTrabajador')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert" id="error">
+    <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('selectTrabajador') ?>
+    </div>
+    <?php endif ?>
+  
   <?php if(session::getInstance()->hasError('inputValor')): ?>
-    <div class="alert alert-danger alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    <div class="alert alert-danger alert-dismissible" role="alert" id="error">
+    <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
       <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputValor') ?>
     </div>
     <?php endif ?>
+   
   
   <div class="form-group">
          <label for="" class="col-sm-2"> <?php echo i18n::__('trabajador') ?> </label>
          <div class="col-sm-10">
            <select class="form-control-gonza1" id="<?php echo ordenServicioTableClass::getNameField(ordenServicioTableClass::TRABAJADOR_ID, true)?>" name="<?php echo ordenServicioTableClass::getNameField(ordenServicioTableClass::TRABAJADOR_ID, true) ?>">
-            <option><?php echo i18n::__('selectTrabajador') ?></option>
+               <option value="<?php echo (session::getInstance()->hasFlash('selectTrabajador') or request::getInstance()->hasPost(ordenServiciotableClass::getNameField(ordenServiciotableClass::TRABAJADOR_ID, true))) ? request::getInstance()->getPost(ordenServiciotableClass::getNameField(ordenServiciotableClass::TRABAJADOR_ID, true)) : ((isset($objOS[0])) ? '' : '') ?>"><?php echo i18n::__('selectTrabajador') ?></option>
 <?php foreach ($objOST as $trabajador): ?>
             <option <?php echo (isset($objOS[0]->$idTrabajador) === true and $objOS[0]->$idTrabajador == $trabajador->$idTra) ? 'selected' : '' ?> value="<?php echo $trabajador->$idTra ?>"><?php echo $trabajador->$nomTrabajador ?></option>
 <?php endforeach; ?>

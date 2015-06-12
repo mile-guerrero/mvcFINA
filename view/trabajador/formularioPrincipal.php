@@ -108,7 +108,7 @@
           <select class="form-control-gonza2" id="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::ID, true)?>" name="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::ID_CIUDAD, true) ?>">
  <option value="<?php echo (session::getInstance()->hasFlash('selectCiudad') or request::getInstance()->hasPost(trabajadorTableClass::getNameField(trabajadorTableClass::ID_CIUDAD, true))) ? request::getInstance()->getPost(trabajadorTableClass::getNameField(trabajadorTableClass::ID_CIUDAD, true)) : ((isset($objTrabajador[0])) ? '' : '') ?>"><?php echo i18n::__('selectCiudad') ?></option>            
 <?php foreach ($objCC as $ciudad): ?>
-            <option <?php echo (isset($objTrabajador[0]->$ciudadId) === true and  $objTrabajador[0]->$ciudadId == $ciudad->$idCiudad) ? 'selected' : '' ?> value="<?php echo $ciudad->$idCiudad ?>"><?php echo $ciudad->$nomCiu ?></option>
+ <option <?php echo (request::getInstance()->hasPost(trabajadorTableClass::getNameField(trabajadorTableClass::ID_CIUDAD, true)) === true and request::getInstance()->getPost(trabajadorTableClass::getNameField(trabajadorTableClass::ID_CIUDAD, true)) == $ciudad->$idCiudad) ? 'selected' : (isset($objTrabajador[0]->$ciudadId) === true and $objTrabajador[0]->$ciudadId == $ciudad->$idCiudad) ? 'selected' : '' ?>  value="<?php echo $ciudad->$idCiudad ?>"><?php echo $ciudad->$nomCiu ?></option>
 <?php endforeach; ?>
           </select>
       </div>
@@ -159,7 +159,7 @@
           <select class="form-control" id="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::ID, true)?>" name="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::ID_CREDENCIAL, true) ?>">
    <option value="<?php echo (session::getInstance()->hasFlash('selectCredencial') or request::getInstance()->hasPost(trabajadorTableClass::getNameField(trabajadorTableClass::ID_CREDENCIAL, true))) ? request::getInstance()->getPost(trabajadorTableClass::getNameField(trabajadorTableClass::ID_CREDENCIAL, true)) : ((isset($objTrabajador[0])) ? '' : '') ?>"><?php echo i18n::__('selectCredencial') ?></option>         
 <?php foreach ($objCredencial as $credencial): ?>
-            <option <?php echo (isset($objTrabajador[0]->$cre) === true and $objTrabajador[0]->$cre == $credencial->$idCredencial) ? 'selected' : '' ?> value="<?php echo $credencial->$idCredencial ?>"><?php echo $credencial->$nomCredencial ?></option>
+            <option <?php echo (request::getInstance()->hasPost(trabajadorTableClass::getNameField(trabajadorTableClass::ID_CREDENCIAL, true)) === true and request::getInstance()->getPost(trabajadorTableClass::getNameField(trabajadorTableClass::ID_CREDENCIAL, true)) == $credencial->$idCredencial) ? 'selected' : (isset($objTrabajador[0]->$cre) === true and $objTrabajador[0]->$cre == $credencial->$idCredencial) ? 'selected' : '' ?> value="<?php echo $credencial->$idCredencial ?>"><?php echo $credencial->$nomCredencial ?></option>
 <?php endforeach; ?>
           </select>
       </div>

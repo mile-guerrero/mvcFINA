@@ -705,6 +705,7 @@ cliente_index:
     - model/tipoIdTableClass.php 
     - model/base/ciudadBaseTableClass.php
     - model/ciudadTableClass.php
+    - libs/validator/cliente/clienteValidatorClass.php
     
 cliente_menuPrincipal:
   url:    /cliente/menuPrincipal
@@ -1922,7 +1923,7 @@ cooperativa_delete:
     - model/base/cooperativaBaseTableClass.php
     - model/cooperativaTableClass.php
     - model/base/ciudadBaseTableClass.php
-    - model/ciudadTableClass.php	
+    - model/ciudadTableClass.php
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
@@ -2099,3 +2100,256 @@ labor_reporte:
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
+
+#----------------------Documento Factura Venta--------------------------------
+
+facturaVenta_index:
+  url:    /facturaVenta/index
+  param:  { module: facturaVenta, action: index, format: html }
+  load:
+    - model/base/facturaVentaBaseTableClass.php
+    - model/facturaVentaTableClass.php
+    - model/base/detalleFacturaVentaBaseTableClass.php
+    - model/detalleFacturaVentaTableClass.php
+    
+facturaVenta_insert:
+  url:    /facturaVenta/insertar
+  param:  { module: facturaVenta, action: insert, format: html }
+  load:
+    - model/base/facturaVentaBaseTableClass.php
+    - model/facturaVentaTableClass.php
+    - model/base/detalleFacturaVentaBaseTableClass.php
+    - model/detalleFacturaVentaTableClass.php
+    
+facturaVenta_create:
+  url:    /facturaVenta/crear
+  param:  { module: facturaVenta, action: create, format: html }
+  load:
+    - model/base/facturaVentaBaseTableClass.php
+    - model/facturaVentaTableClass.php
+    - model/base/detalleFacturaVentaBaseTableClass.php
+    - model/detalleFacturaVentaTableClass.php
+
+facturaVenta_edit:
+  url:    /facturaVenta/editar
+  param:  { module: facturaVenta, action: edit, format: html }
+  load:
+    - model/base/facturaVentaBaseTableClass.php
+    - model/facturaVentaTableClass.php
+    - model/base/detalleFacturaVentaBaseTableClass.php
+    - model/detalleFacturaVentaTableClass.php
+    
+facturaVenta_update:
+  url:    /facturaVenta/actualizar
+  param:  { module: facturaVenta, action: update, format: html }
+  load:
+    - model/base/facturaVentaBaseTableClass.php
+    - model/facturaVentaTableClass.php
+    - model/base/detalleFacturaVentaBaseTableClass.php
+    - model/detalleFacturaVentaTableClass.php
+    
+facturaVenta_ver:
+  url:    /facturaVenta/ver
+  param:  { module: facturaVenta, action: ver, format: html }
+  load:
+    - model/base/facturaVentaBaseTableClass.php
+    - model/facturaVentaTableClass.php
+    - model/base/detalleFacturaVentaBaseTableClass.php
+    - model/detalleFacturaVentaTableClass.php
+    
+#---------------------------------Detalle Factura Venta-----------------------
+
+detalleFacturaVenta_index:
+  url:    /detalleFacturaVenta/index
+  param:  { module: detalleFacturaVenta, action: index, format: html }
+  load:
+    - model/base/detalleFacturaVentaBaseTableClass.php
+    - model/detalleFacturaVentaTableClass.php
+    - model/base/facturaVentaBaseTableClass.php
+    - model/facturaVentaTableClass.php
+    - model/base/clienteBaseTableClass.php
+    - model/clienteTableClass.php
+    
+    
+detalleFacturaVenta_insert:
+  url:    /detalleFacturaVenta/insertar
+  param:  { module: detalleFacturaVenta, action: insert, format: html }
+  load:
+    - model/base/detalleFacturaVentaBaseTableClass.php
+    - model/detalleFacturaVentaTableClass.php
+    - model/base/facturaVentaBaseTableClass.php
+    - model/facturaVentaTableClass.php
+    - model/base/clienteBaseTableClass.php
+    - model/clienteTableClass.php
+    
+detalleFacturaVenta_create:
+  url:    /detalleFacturaVenta/crear
+  param:  { module: detalleFacturaVenta, action: create, format: html }
+  load:
+    - model/base/detalleFacturaVentaBaseTableClass.php
+    - model/detalleFacturaVentaTableClass.php
+    - model/base/facturaVentaBaseTableClass.php
+    - model/facturaVentaTableClass.php
+    - model/base/clienteBaseTableClass.php
+    - model/clienteTableClass.php
+    - libs/validator/detalleFacturaVenta/detalleFacturaVentaValidatorClass.php
+    
+detalleFacturaVenta_edit:
+  url:    /detalleFacturaVenta/editar
+  param:  { module: detalleFacturaVenta, action: edit, format: html }
+  load:
+    - model/base/detalleFacturaVentaBaseTableClass.php
+    - model/detalleFacturaVentaTableClass.php
+    - model/base/facturaVentaBaseTableClass.php
+    - model/facturaVentaTableClass.php
+    - model/base/clienteBaseTableClass.php
+    - model/clienteTableClass.php
+    
+detalleFacturaVenta_update:
+  url:    /detalleFacturaVenta/actualizar
+  param:  { module: detalleFacturaVenta, action: update, format: html }
+  load:
+    - model/base/detalleFacturaVentaBaseTableClass.php
+    - model/detalleFacturaVentaTableClass.php
+    - model/base/facturaVentaBaseTableClass.php
+    - model/facturaVentaTableClass.php
+    - model/base/clienteBaseTableClass.php
+    - model/clienteTableClass.php
+    
+detalleFacturaVenta_ver:
+  url:    /detalleFacturaVenta/ver
+  param:  { module: detalleFacturaVenta, action: ver, format: html }
+  load:
+    - model/base/detalleFacturaVentaBaseTableClass.php
+    - model/detalleFacturaVentaTableClass.php
+    - model/base/facturaVentaBaseTableClass.php
+    - model/facturaVentaTableClass.php
+    - model/base/clienteBaseTableClass.php
+    - model/clienteTableClass.php
+    
+    
+#----------------------Documento Factura Compra--------------------------------
+
+facturaCompra_index:
+  url:    /facturaCompra/index
+  param:  { module: facturaCompra, action: index, format: html }
+  load:
+    - model/base/facturaCompraBaseTableClass.php
+    - model/facturaCompraTableClass.php
+    - model/base/detalleFacturaCompraBaseTableClass.php
+    - model/detalleFacturaCompraTableClass.php
+    
+facturaCompra_insert:
+  url:    /facturaCompra/insertar
+  param:  { module: facturaCompra, action: insert, format: html }
+  load:
+    - model/base/facturaCompraBaseTableClass.php
+    - model/facturaCompraTableClass.php
+    - model/base/detalleFacturaCompraBaseTableClass.php
+    - model/detalleFacturaCompraTableClass.php
+    
+facturaCompra_create:
+  url:    /facturaCompra/crear
+  param:  { module: facturaCompra, action: create, format: html }
+  load:
+    - model/base/facturaCompraBaseTableClass.php
+    - model/facturaCompraTableClass.php
+    - model/base/detalleFacturaCompraBaseTableClass.php
+    - model/detalleFacturaCompraTableClass.php
+
+facturaCompra_edit:
+  url:    /facturaCompra/editar
+  param:  { module: facturaCompra, action: edit, format: html }
+  load:
+    - model/base/facturaCompraBaseTableClass.php
+    - model/facturaCompraTableClass.php
+    - model/base/detalleFacturaCompraBaseTableClass.php
+    - model/detalleFacturaCompraTableClass.php
+    
+facturaCompra_update:
+  url:    /facturaCompra/actualizar
+  param:  { module: ffacturaCompra, action: update, format: html }
+  load:
+    - model/base/facturaCompraBaseTableClass.php
+    - model/facturaCompraTableClass.php
+    - model/base/detalleFacturaCompraBaseTableClass.php
+    - model/detalleFacturaCompraTableClass.php
+    
+facturaCompra_ver:
+  url:    /facturaCompra/ver
+  param:  { module: facturaCompra, action: ver, format: html }
+  load:
+    - model/base/facturaCompraBaseTableClass.php
+    - model/facturaCompraTableClass.php
+    - model/base/detalleFacturaCompraBaseTableClass.php
+    - model/detalleFacturaCompraTableClass.php
+    
+#---------------------------------Detalle Factura Compra-----------------------
+
+detalleFacturaCompra_index:
+  url:    /detalleFacturaCompra/index
+  param:  { module: detalleFacturaCompra, action: index, format: html }
+  load:
+    - model/base/detalleFacturaCompraBaseTableClass.php
+    - model/detalleFacturaCompraTableClass.php
+    - model/base/facturaCompraBaseTableClass.php
+    - model/facturaCompraTableClass.php
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
+    
+    
+detalleFacturaCompra_insert:
+  url:    /detalleFacturaCompra/insertar
+  param:  { module: detalleFacturaCompra, action: insert, format: html }
+  load:
+    - model/base/detalleFacturaCompraBaseTableClass.php
+    - model/detalleFacturaCompraTableClass.php
+    - model/base/facturaCompraBaseTableClass.php
+    - model/facturaCompraTableClass.php
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
+    
+detalleFacturaCompra_create:
+  url:    /detalleFacturaCompra/crear
+  param:  { module: detalleFacturaCompra, action: create, format: html }
+  load:
+    - model/base/detalleFacturaCompraBaseTableClass.php
+    - model/detalleFacturaCompraTableClass.php
+    - model/base/facturaCompraBaseTableClass.php
+    - model/facturaCompraTableClass.php
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
+    
+detalleFacturaCompra_edit:
+  url:    /detalleFacturaCompra/editar
+  param:  { module: detalleFacturaCompra, action: edit, format: html }
+  load:
+    - model/base/detalleFacturaCompraBaseTableClass.php
+    - model/detalleFacturaCompraTableClass.php
+    - model/base/facturaCompraBaseTableClass.php
+    - model/facturaCompraTableClass.php
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
+    
+detalleFacturaCompra_update:
+  url:    /detalleFacturaCompra/actualizar
+  param:  { module: detalleFacturaCompra, action: update, format: html }
+  load:
+    - model/base/detalleFacturaCompraBaseTableClass.php
+    - model/detalleFacturaCompraTableClass.php
+    - model/base/facturaCompraBaseTableClass.php
+    - model/facturaCompraTableClass.php
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
+    
+detalleFacturaCompra_ver:
+  url:    /detalleFacturaCompra/ver
+  param:  { module: detalleFacturaCompra, action: ver, format: html }
+  load:
+    - model/base/detalleFacturaCompraBaseTableClass.php
+    - model/detalleFacturaCompraTableClass.php
+    - model/base/facturaCompraBaseTableClass.php
+    - model/facturaCompraTableClass.php
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
+        

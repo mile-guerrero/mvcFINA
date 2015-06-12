@@ -4,6 +4,20 @@ dictionary:
   default:
     introduccion:         El Sistema cuenta con la funcionabilidad de transferir y procesar datos e informes de manera controlada tomando como referencia los procesos y producción del sector agropecuario, teniendo la gran capacidad de guardar información siendo esta oculta y manejada por los administradores para su control y cambio de registros e inventarios, para mayor seguridad los empleados solo tendrán el campo de consultoría y reportes de tareas para completar la funcionabilidad del sistema de información
     mas:                  Mas
+    factura:              Factura venta
+    selectCliente:        Seleccionar cliente
+    fecha:                Fecha
+    nuevaFactura:         Nueva factura venta
+    detalleFactura:       Detalle factura venta
+    nuevoDetalleFactura:  Nuevo detalle de factura venta
+    editDetalleFactura:   Editar detalle de factura venta
+    facturaCompra:        Factura compra
+    nuevaFacturaCompra:   Nueva factura compra
+    detalleFacturaCompra: Detalle factura compra
+    nuevoDetallFacCompra: Nuevo detalle de factura compra
+    editDetalleFacCompra: Editar detalle de factura compra
+    valorPorUnidad:       Valor por unidad
+    total:                Total
     labor:                labor
     selectMaquina:        Selecione la maquina
     editar labor:         editar labor
@@ -183,7 +197,7 @@ dictionary:
     00002:                El apellido excede la longitud permitida (:longitud)
     00003:                Los datos de usuario y contrseña son inválidos.
     00004:                La descripcion  excede la longitud permitida (:longitud)
-    00005:                La ubicacion  excede la longitud permitida (:longitud)
+    00005:                La ubicacion excede la longitud permitida (:longitud)
     00006:                El campo tamaño  excede la longitud permitida (:longitud)
     00007:                El nombre de usuario excede la longitud permitida (:longitud)
     00008:                La contraseña  excede la longitud permitida (:longitud)
@@ -199,4 +213,5 @@ dictionary:
     00018:                Las password no coinciden 
     00019:                El telefono excede la longitud permitida
     00020:                Ya existe el correo (:email)
+    00021:                El documento excede la longitud permitida (:longitud)
     

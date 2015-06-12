@@ -27,6 +27,26 @@ namespace mvc\validator {
         $flag = true;
         session::getInstance()->setFlash('inputCantidad', true);
         session::getInstance()->setError('La catidad digitado sobre pasa los caracteres permitidos', 'inputCantidad');
+        
+       //-------------------------------campo Empresa-----------------------------
+          //----campo nulo----
+      } if (self::notBlank(request::getInstance()->getPost(\pedidoTableClass::getNameField(\pedidoTableClass::EMPRESA_ID, true)))) {
+        $flag = true;
+        session::getInstance()->setFlash('selectEmpresa', true);
+        session::getInstance()->setError('La empresa es requerida', 'selectEmpresa');
+        //-------------------------------campo Labor-----------------------------
+          //----campo nulo----
+      } if (self::notBlank(request::getInstance()->getPost(\pedidoTableClass::getNameField(\pedidoTableClass::PRODUCTO_INSUMO_ID, true)))) {
+        $flag = true;
+        session::getInstance()->setFlash('selectProducto', true);
+        session::getInstance()->setError('El producto es requerido', 'selectProducto');
+        
+        //-------------------------------campo Maquina-----------------------------
+          //----campo nulo----
+      } if (self::notBlank(request::getInstance()->getPost(\pedidoTableClass::getNameField(\pedidoTableClass::ID_PROVEEDOR, true)))) {
+        $flag = true;
+        session::getInstance()->setFlash('selectProveedor', true);
+        session::getInstance()->setError('El proveedor es requerido', 'selectProveedor');
 //      }
 //        if (self::notBlank(request::getInstance()->getPost(\solicitudInsumoTableClass::getNameField(\solicitudInsumoTableClass::VALOR_HORA, true)))) {
 //        $flag = true;

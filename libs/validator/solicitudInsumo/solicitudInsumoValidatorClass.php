@@ -27,6 +27,26 @@ namespace mvc\validator {
         $flag = true;
         session::getInstance()->setFlash('inputCantidad', true);
         session::getInstance()->setError('La catidad digitado sobre pasa los caracteres permitidos', 'inputCantidad');
+
+        //-------------------------------campo Trabajador-----------------------------
+          //----campo nulo----
+      } if (self::notBlank(request::getInstance()->getPost(\solicitudInsumoTableClass::getNameField(\solicitudInsumoTableClass::TRABAJADOR_ID, true)))) {
+        $flag = true;
+        session::getInstance()->setFlash('selectTrabajador', true);
+        session::getInstance()->setError('El trabajador es requerido', 'selectTrabajador');
+        //-------------------------------campo Producto-----------------------------
+          //----campo nulo----
+      } if (self::notBlank(request::getInstance()->getPost(\solicitudInsumoTableClass::getNameField(\solicitudInsumoTableClass::PRODUCTO_INSUMO_ID, true)))) {
+        $flag = true;
+        session::getInstance()->setFlash('selectProducto', true);
+        session::getInstance()->setError('El producto es requerido', 'selectProducto');
+        
+        //-------------------------------campo Lote-----------------------------
+          //----campo nulo----
+      } if (self::notBlank(request::getInstance()->getPost(\solicitudInsumoTableClass::getNameField(\solicitudInsumoTableClass::LOTE_ID, true)))) {
+        $flag = true;
+        session::getInstance()->setFlash('selectLote', true);
+        session::getInstance()->setError('El lote es requerido', 'selectLote');
 //      }
 //        if (self::notBlank(request::getInstance()->getPost(\solicitudInsumoTableClass::getNameField(\solicitudInsumoTableClass::VALOR_HORA, true)))) {
 //        $flag = true;

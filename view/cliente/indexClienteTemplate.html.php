@@ -2,7 +2,9 @@
 <?php use mvc\routing\routingClass as routing ?>
 <?php use mvc\i18n\i18nClass as i18n ?>
 <?php use mvc\view\viewClass as view?>
-<?php use mvc\session\sessionClass as session?>
+<?php use mvc\session\sessionClass as session ?>
+<?php use mvc\request\requestClass as request ?>
+
 <?php $nom = clienteTableClass::NOMBRE ?>
 <?php $apellido = clienteTableClass::APELLIDO ?>
 <?php $documento = clienteTableClass::DOCUMENTO ?>
@@ -70,6 +72,8 @@
   </div>
           
      
+     <?php view::includeHandlerMessage()?>
+          
      <div class="form-group">
     <label for="filterDocumento" class="col-sm-2 control-label"><?php echo i18n::__('documento') ?></label>
     <div class="col-sm-10">
@@ -78,7 +82,8 @@
   </div>      
           
 
-          
+    
+      
           <div class="form-group">
     <label for="filterNombre" class="col-sm-2 control-label"><?php echo i18n::__('nom') ?></label>
     <div class="col-sm-10">
@@ -86,7 +91,8 @@
     </div>
   </div>
           
-          
+     
+         
   <div class="form-group">
     <label for="filterApellido" class="col-sm-2 control-label"><?php echo i18n::__('apell') ?></label>
     <div class="col-sm-10">

@@ -7,6 +7,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+//use mvc\validator\clienteValidatorClass as validator;
 
 /**
 * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon 
@@ -33,11 +34,26 @@ class indexClienteActionClass extends controllerClass implements controllerActio
 */
   public function execute() {
     try {
+      
+      
+      
+      
     $where = null;
+   
+    
       if (request::getInstance()->hasPost('filter')) {
         $filter = request::getInstance()->getPost('filter');
         //Validar datos
-
+       
+        if (request::getInstance()->isMethod('POST')) {
+           $documento = $filter['documento'];
+        if (strlen($documento) > clienteTableClass::DOCUMENTO_LENGTH) {
+      session::getInstance()->setError(i18n::__(00021, null, 'errors', array(':longitud' => clienteTableClass::DOCUMENTO_LENGTH)), 00021);
+     //routing::getInstance()->forward('cliente', 'indexCliente');
+      }
+      
+      }
+        
         if (isset($filter['nombre']) and $filter['nombre'] !== null and $filter['nombre'] !== '') {
           $where[] ='(' .  clienteTableClass::getNameField(clienteTableClass::NOMBRE) . ' LIKE ' . '\'' . $filter['nombre'] . '%\'  '
               . 'OR ' . clienteTableClass::getNameField(clienteTableClass::NOMBRE) . ' LIKE ' . '\'%' . $filter['nombre'] . '%\' '
@@ -48,8 +64,8 @@ class indexClienteActionClass extends controllerClass implements controllerActio
          $where[] = '(' . clienteTableClass::getNameField(clienteTableClass::APELLIDO) . ' LIKE ' . '\'' . $filter['apellido'] . '%\'  '
               . 'OR ' . clienteTableClass::getNameField(clienteTableClass::APELLIDO) . ' LIKE ' . '\'%' . $filter['apellido'] . '%\' '
               . 'OR ' . clienteTableClass::getNameField(clienteTableClass::APELLIDO) . ' LIKE ' . '\'%' . $filter['apellido'].'\') ';       
-              }//cierre del filtro apellio
-        
+              }//cierre del filtro apellio    
+                
         if (isset($filter['documento']) and $filter['documento'] !== null and $filter['documento'] !== '') {
           $where[clienteTableClass::DOCUMENTO] = $filter['documento'];
         }//cierre del filtro documento
@@ -64,8 +80,9 @@ class indexClienteActionClass extends controllerClass implements controllerActio
           date(config::getFormatTimestamp(), strtotime($filter['fecha2'] . ' 23:59:59'))
           );
         }//cierre del filtro fecha1 y fecha2
+          
       }//cierre del POST filter
-        
+      
       $fields = array(
           clienteTableClass::ID,
           clienteTableClass::NOMBRE,
@@ -100,11 +117,20 @@ class indexClienteActionClass extends controllerClass implements controllerActio
     
       $this->defineView('indexCliente', 'cliente', session::getInstance()->getFormatOutput());
     } //cierre del try
+    
      catch (PDOException $exc) {
-      echo $exc->getMessage();
-      echo '<br>';
-      echo $exc->getTraceAsString();
+        $soloNumeros = "/^[[:digit:]]+$/";
+       if (!preg_match($soloNumeros, $documento))  {
+      session::getInstance()->setError(i18n::__(00010, null, 'errors', array(':no permite letras' => clienteTableClass::DOCUMENTO_LENGTH)), 00010);
+      routing::getInstance()->redirect('cliente', 'indexCliente');
+
+      //$this->defineView('indexCliente', 'cliente', session::getInstance()->getFormatOutput());
+      }
+//      echo $exc->getMessage();
+//      echo '<br>';
+//      echo $exc->getTraceAsString();
     }//cierre del catch
+   
 }//cierre de la funcion execute
 
 }//cierre de la clase

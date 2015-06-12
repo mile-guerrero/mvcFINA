@@ -65,7 +65,7 @@
         <select class="form-control" id="<?php productoInsumoTableClass::getNameField(productoInsumoTableClass::ID, true)?>" name="<?php echo productoInsumoTableClass::getNameField(productoInsumoTableClass::UNIDAD_MEDIDA_ID, true);?>">
        <option value="<?php echo (session::getInstance()->hasFlash('selectUnidad') or request::getInstance()->hasPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::UNIDAD_MEDIDA_ID, true))) ? request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::UNIDAD_MEDIDA_ID, true)) : ((isset($objPI[0])) ? '' : '') ?>"  ><?php echo i18n::__('selectUnidad') ?></option>
        <?php foreach($objPIUM as $UM):?>
-       <option <?php echo (isset($objPI[0]->$unidad) === true and $objPI[0]->$unidad == $UM->$unidades) ? 'selected' : '' ?> value="<?php echo $UM->$unidades?>"><?php echo $UM->$des_unidades?></option>
+       <option <?php echo (request::getInstance()->hasPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::UNIDAD_MEDIDA_ID, true)) === true and request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::UNIDAD_MEDIDA_ID, true)) == $UM->$unidades) ? 'selected' : (isset($objPI[0]->$unidad) === true and $objPI[0]->$unidad == $UM->$unidades) ? 'selected' : '' ?> value="<?php echo $UM->$unidades?>"><?php echo $UM->$des_unidades?></option>
        <?php endforeach;?>
    </select>   
       </div> 
@@ -86,7 +86,7 @@
         <select class="form-control" id="<?php productoInsumoTableClass::getNameField(productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID, true)?>" name="<?php echo productoInsumoTableClass::getNameField(productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID, true);?>">
        <option value="<?php echo (session::getInstance()->hasFlash('selectTipo') or request::getInstance()->hasPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID, true))) ? request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID, true)) : ((isset($objPI[0])) ? '' : '') ?>" ><?php echo i18n::__('selectTPI') ?></option>
        <?php foreach($objPITPI as $TP):?>
-       <option <?php echo (isset($objPI[0]->$tipo) === true and $objPI[0]->$tipo == $TP->$tipos) ? 'selected' : '' ?> value="<?php echo $TP->$tipos?>"><?php echo $TP->$des_tipos?></option>
+       <option <?php echo (request::getInstance()->hasPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID, true)) === true and request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID, true)) == $TP->$tipos) ? 'selected' : (isset($objPI[0]->$tipo) === true and $objPI[0]->$tipo == $TP->$tipos) ? 'selected' : '' ?> value="<?php echo $TP->$tipos?>"><?php echo $TP->$des_tipos?></option>
        <?php endforeach;?>
    </select>    
       </div> 

@@ -55,7 +55,7 @@
    <select  class="form-control-gonza2" id="<?php loteTableClass::getNameField(loteTableClass::ID, true)?>" name="<?php echo loteTableClass::getNameField(loteTableClass::ID_CIUDAD, true);?>">
        <option  value="<?php echo (session::getInstance()->hasFlash('selectCiudad') or request::getInstance()->hasPost(loteTableClass::getNameField(loteTableClass::ID_CIUDAD, true))) ? request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::ID_CIUDAD, true)) : ((isset($objLote[0])) ? '' : '') ?>" ><?php echo i18n::__('selectCiudad') ?></option>
        <?php foreach($objLC as $C):?>
-       <option <?php echo (isset($objLote[0]->$idCiudad) === true and $objLote[0]->$idCiudad == $C->$idCiudaddes) ? 'selected' : '' ?>  value="<?php echo $C->$idCiudaddes?>"><?php echo $C->$descripcionciudad?></option>
+       <option <?php echo (request::getInstance()->hasPost(loteTableClass::getNameField(loteTableClass::ID_CIUDAD, true)) === true and request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::ID_CIUDAD, true)) == $C->$idCiudaddes) ? 'selected' : (isset($objLote[0]->$idCiudad) === true and $objLote[0]->$idCiudad == $C->$idCiudaddes) ? 'selected' : '' ?>  value="<?php echo $C->$idCiudaddes?>"><?php echo $C->$descripcionciudad?></option>
        <?php endforeach;?>
    </select>
       </div> 
@@ -85,7 +85,7 @@
     <select  class="form-control-gonza2" id="<?php loteTableClass::getNameField(loteTableClass::ID, true)?>" name="<?php echo loteTableClass::getNameField(loteTableClass::UNIDAD_DISTANCIA_ID, true);?>">
        <option value="<?php echo (session::getInstance()->hasFlash('selectUnidad') or request::getInstance()->hasPost(loteTableClass::getNameField(loteTableClass::UNIDAD_DISTANCIA_ID, true))) ? request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::UNIDAD_DISTANCIA_ID, true)) : ((isset($objLote[0])) ? '' : '') ?>" ><?php echo i18n::__('selectUnidadDis') ?></option>
        <?php foreach($objLUD as $C):?>
-       <option  <?php echo (isset($objLote[0]->$idUni) === true and $objLote[0]->$idUni == $C->$idUnidad) ? 'selected' : '' ?>  value="<?php echo $C->$idUnidad?>"><?php echo $C->$desUnidad?></option>
+       <option <?php echo (request::getInstance()->hasPost(loteTableClass::getNameField(loteTableClass::UNIDAD_DISTANCIA_ID, true)) === true and request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::UNIDAD_DISTANCIA_ID, true)) == $C->$idUnidad) ? 'selected' : (isset($objLote[0]->$idUni) === true and $objLote[0]->$idUni == $C->$idUnidad) ? 'selected' : '' ?>  value="<?php echo $C->$idUnidad?>"><?php echo $C->$desUnidad?></option>
        <?php endforeach;?>
    </select>
      </div>
