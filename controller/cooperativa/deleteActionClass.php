@@ -7,23 +7,15 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+use hook\log\logHookClass as log;
 
 /**
  * Description of ejemploClass
  *
  * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
- * @date: fecha de inicio del desarrollo.
- * @static: se define si la clase es de tipo estatica.
- * @category:modulo de cooperativa
  */
 class deleteActionClass extends controllerClass implements controllerActionInterface {
-/**
- * @author: Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
- * @date: fecha de inicio del desarrollo.
- * @return cooperativaTableClass::ID retorna $id(integer),
- *        
- * estos datos retornan en la variable $ids
- */
+
   public function execute() {
     try {
       if (request::getInstance()->isMethod('POST')and request::getInstance()->isAjaxRequest()) {
@@ -33,13 +25,13 @@ class deleteActionClass extends controllerClass implements controllerActionInter
         $ids = array(
             cooperativaTableClass::ID => $id
         );
-            cooperativaTableClass::delete($ids, true);
-        $this->arrayAjax = array(
+        cooperativaTableClass::delete($ids, true);
+       $this->arrayAjax = array(
             'code'=> 200,
             'msg'=> 'Eliminacion exitosa'
             );
-        
-        $observacion ='se ha eliminado un cooperativa';
+       
+       $observacion ='se ha eliminado una mano de obra';
        log::register('Eliminar', cooperativaTableClass::getNameTable(),$observacion,$id);
        session::getInstance()->setSuccess('El campo Fue Eliminado Exitosamente');
         $this->defineView('delete', 'cooperativa', session::getInstance()->getFormatOutput());

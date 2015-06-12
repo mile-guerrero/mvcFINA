@@ -211,9 +211,23 @@
 <?php endfor; ?>
       </select> <?php echo i18n::__('de') ?> <?php echo $cntPages ?>
     </div>
-    <form id="frmDelete" action="<?php echo routing::getInstance()->getUrlWeb('cooperativa', 'delete') ?>" method="POST">
-        <input type="hidden" id="idDelete" name="<?php echo cooperativaTableClass::getNameField(cooperativaTableClass::ID, true) ?>">
-      </form>
+ <div class="modal fade" id="myModalDelete<?php echo $key->$id ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('confirmar eliminar') ?></h4>
+      </div>
+      <div class="modal-body">
+        <?php echo i18n::__('Desea  eliminar este campo') ?><?php echo i18n::__('?') ?>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default btn-xs" data-dismiss="modal"><?php echo i18n::__('cerrar') ?></button>
+        <button type="button" class="btn btn-danger btn-xs" onclick="eliminar(<?php echo $key->$id ?>,'<?php echo cooperativaTableClass::getNameField(cooperativaTableClass::ID, true) ?>','<?php echo routing::getInstance()->getUrlWeb('cooperativa', 'delete') ?>')"><?php echo i18n::__('eliminar') ?></button>
+      </div>
+    </div>
+  </div>
+</div>
 
   </article>
 

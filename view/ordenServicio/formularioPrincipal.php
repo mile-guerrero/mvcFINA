@@ -30,7 +30,7 @@
   <div class="form-group">
       <label for="<?php echo ordenServiciotableClass::getNameField(ordenServicioTableClass::FECHA_MANTENIMIENTO, true) ?>" class="col-sm-2"> <?php echo i18n::__('fecha_M') ?>:</label>     
       <div class="col-sm-10">
-   <input  class="form-control" value="<?php echo ((isset($objOS)== true) ? $objOS[0]->$fecha : '') ?>" type="datetime-local" name="<?php echo ordenServicioTableClass::getNameField(ordenServicioTableClass::FECHA_MANTENIMIENTO, true) ?>">
+   <input  class="form-control" value="<?php echo ((isset($objOS)== true) ? date('Y-m-d\Th:m:i',strtotime($objOS[0]->$fecha)) : '') ?>" type="datetime-local" name="<?php echo ordenServicioTableClass::getNameField(ordenServicioTableClass::FECHA_MANTENIMIENTO, true) ?>">
       </div>
   </div>
   

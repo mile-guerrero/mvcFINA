@@ -28,7 +28,7 @@
   <div class="form-group">
       <label for="<?php echo solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::FECHA_HORA, true) ?>" class="col-sm-2"><?php echo i18n::__('fecha_M') ?>:</label>     
       <div class="col-sm-10">
-   <input  class="form-control" value="<?php echo ((isset($objS)== true) ? $objS[0]->$fecha : '') ?>" type="datetime-local" name="<?php echo solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::FECHA_HORA, true) ?>">
+   <input  class="form-control" value="<?php echo ((isset($objS)== true) ? date('Y-m-d\Th:m:i',strtotime($objS[0]->$fecha)) : '') ?>" type="datetime-local" name="<?php echo solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::FECHA_HORA, true) ?>">
       </div>
   </div>
   
