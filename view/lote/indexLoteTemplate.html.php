@@ -135,58 +135,78 @@ use mvc\session\sessionClass as session ?>
             <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('informe') ?></h4>
           </div>
           <div class="modal-body">
-            <form class="form-horizontal" id="reportForm" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('cliente', 'reportCliente') ?>">
+            <form class="form-horizontal" id="reportForm" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('lote', 'reportLote') ?>">
+              
+              
               <div class="form-group">
-                <label for="reportNombre" class="col-sm-2 control-label"><?php echo i18n::__('nom') ?></label>
+                <label for="reportCiudad" class="col-sm-2 control-label"><?php echo i18n::__('filtroCiudad') ?></label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="reportNombre" name="report[nombre]" placeholder="Nombre">
-                </div>
-              </div>
-
-
-              <div class="form-group">
-                <label for="filterCiudad" class="col-sm-2 control-label"><?php echo i18n::__('idCiudad') ?></label>
-                <div class="col-sm-10">
-                  <select class="form-control" id="filterCiudad" name="filter[ciudad]">
-                    <option value=""><?php echo i18n::__('selectCiudad') ?></option>
+                  <select class="form-control" id="reportCiudad" name="report[ciudad]">
+                    <option value=""><?php echo i18n::__('FCiudad') ?></option>
 <?php foreach ($objLC as $ciudad): ?>
                       <option value="<?php echo $ciudad->$idCiudaddes ?>"><?php echo $ciudad->$descripcionciudad ?></option>
 <?php endforeach; ?>
                   </select>
                 </div>
               </div>
-
-
-
-
+              
+              
+              
+              
               <div class="form-group">
-                <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
+                <label for="reportFechaIni" class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
                 <div class="col-sm-10">
-                  <input type="date" class="form-control" id="reportFecha1" name="report[fechaIni]">
-                  <br>
-                  <input type="date" class="form-control" id="reportFecha2" name="report[fechaFin]">
+                  <input type="date" class="form-control-filtro1" id="reportFechaIni" name="report[fechaIni]" >
+              
+              
+<!--                <label for="filterFechaFin" class="col-sm-2 control-label"><?php echo i18n::__('fecha fin') ?></label>-->
+                
+                  <input type="date" class="form-control-filtro2" id="reportFechaFin" name="report[fechaFin]" >
+                </div>
+              </div>
+              
+              
+              
+              <div class="form-group">
+                <label for="reportUbicacion" class="col-sm-2 control-label"><?php echo i18n::__('ubicacion') ?></label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="reportUbicacion" name="report[ubicacion]" placeholder="buscar por ubicacion">
+                </div>
+              </div>
+
+              
+               <div class="form-group">
+                <label for="reportTamanoIni" class="col-sm-2 control-label"><?php echo i18n::__('tamano') ?></label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control-filtro1" id="reportTamanoIni" name="filter[tamanoIni]" placeholder="buscar por tamaño">
+               
+              
+<!--                <label for="filterTamanoFin" class="col-sm-2 control-label"><?php echo i18n::__('tamano') ?></label>-->
+               
+                  <input type="text" class="form-control-filtro2" id="reportTamanoFin" name="report[tamanoFin]" placeholder="buscar por tamaño">
                 </div>
               </div>
               
               
               <div class="form-group">
-                <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
+                <label for="reportFechaIniSiembra" class="col-sm-2 control-label"><?php echo i18n::__('fechaFsiembra') ?></label>
                 <div class="col-sm-10">
-                  <input type="date" class="form-control" id="reportFecha1" name="report[fecha3]">
-                  <br>
-                  <input type="date" class="form-control" id="reportFecha2" name="report[fecha4]">
+                  <input type="date" class="form-control-filtro1" id="reportFechaIniSiembra" name="report[fechaSI]" >
+                
+         
+<!--                <label for="filterFechaFinSiembra" class="col-sm-2 control-label"><?php echo i18n::__('fecha fin') ?></label>-->
+               
+                  <input type="date" class="form-control-filtro2" id="reportFechaFinSiembra" name="report[fechaSF]" >
                 </div>
               </div>
-              
-            </form>
-            </form>
-          </div>
+                  </form>
           <div class="modal-footer">
             <button type="button" class="btn btn-default btn btn-xs" data-dismiss="modal">  <?php echo i18n::__('cerrar') ?></button>
             <button type="button" onclick="$('#reportForm').submit()" class="btn btn-warning btn btn-xs"><?php echo i18n::__('informe') ?></button>
-          </div>
+          </div>            
         </div>
       </div>
+    </div>
     </div>
 <!--    fin informe-->
 

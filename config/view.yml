@@ -135,10 +135,4 @@ empresa:
     javascript:
       - confirmar.js
       
-#-------------------modulo - labor-----------------------
-      
-labor: 
-  index:
-    javascript:
-      - confirmar.js
        

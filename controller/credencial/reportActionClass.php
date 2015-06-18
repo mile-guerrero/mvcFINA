@@ -32,19 +32,24 @@ class reportActionClass extends controllerClass implements controllerActionInter
      
       
        $where = null;
-      if(request::getInstance()->hasPost('filter')){
-      $filter = request::getInstance()->getPost('filter');
+      if(request::getInstance()->hasPost('report')){
+      $report = request::getInstance()->getPost('report');
       //validar
-      if(isset($filter['nombre']) and $filter['nombre'] !== null and $filter['nombre'] !== ""){
-        $where[credencialTableClass::NOMBRE] = $filter['nombre'];
-      }//cierre del filtro nombre
-       if((isset($filter['fechaIni']) and $filter['fechaIni'] !== null and $filter['fechaIni'] !== "") and (isset($filter['fechaFin']) and $filter['fechaFin'] !== null and $filter['fechaFin'] !== "" )){
+      if(isset($report['nombre']) and $report['nombre'] !== null and $report['nombre'] !== ""){
+        $where[] = '(' . credencialTableClass::getNameField(credencialTableClass::NOMBRE) . ' LIKE ' . '\'' . $report['nombre'] . '%\'  '
+              . 'OR ' . credencialTableClass::getNameField(credencialTableClass::NOMBRE) . ' LIKE ' . '\'%' . $report['nombre'] . '%\' '
+              . 'OR ' . credencialTableClass::getNameField(credencialTableClass::NOMBRE) . ' LIKE ' . '\'%' . $report['nombre'].'\') ';       
+              }//cierre del filtro nombre
+              
+       if((isset($report['fechaIni']) and $report['fechaIni'] !== null and $report['fechaIni'] !== "") and (isset($report['fechaFin']) and $report['fechaFin'] !== null and $report['fechaFin'] !== "" )){
         $where[credencialTableClass::CREATED_AT] = array(
-           date(config::getFormatTimestamp(), strtotime($filter['fechaIni'].' 00:00:00')),
-           date(config::getFormatTimestamp(), strtotime($filter['fechaFin'].' 23:59:59'))
+           date(config::getFormatTimestamp(), strtotime($report['fechaIni'].' 00:00:00')),
+           date(config::getFormatTimestamp(), strtotime($report['fechaFin'].' 23:59:59'))
             );
-      }//cierre del filtro fecha1 y fecha2     
+      }//cierre del filtro fecha1 y fecha2       
       }//cierre del POST del reporte
+      
+      $this->mensaje = 'Informacion de Credenciales';
       $fields = array(
           credencialTableClass::ID,
           credencialTableClass::NOMBRE,

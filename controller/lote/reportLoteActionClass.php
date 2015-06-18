@@ -38,39 +38,52 @@ class reportLoteActionClass extends controllerClass implements controllerActionI
   public function execute() {
     try {
      $where = null;
-      if(request::getInstance()->hasPost('filter')){
-      $filter = request::getInstance()->getPost('filter');
+      if(request::getInstance()->hasPost('report')){
+      $report = request::getInstance()->getPost('report');
       //validar
-      if(isset($filter['ubicacion']) and $filter['ubicacion'] !== null and $filter['ubicacion'] !== ""){
-        $where[loteTableClass::UBICACION] = $filter['ubicacion'];
-      }//cierre del filtro ubicacion
-      
-      if(isset($filter['tamano']) and $filter['tamano'] !== null and $filter['tamano'] !== ""){
-        $where[loteTableClass::TAMANO] = $filter['tamano'];
-      }//cierre del filtro tamano
-      
-      if(isset($filter['descripcion']) and $filter['descripcion'] !== null and $filter['descripcion'] !== ""){
-        $where[loteTableClass::DESCRIPCION] = $filter['descripcion'];
-      }//cierre del filtro descripcion
-      
-      if(isset($filter['ciudad']) and $filter['ciudad'] !== null and $filter['ciudad'] !== ""){
-        $where[loteTableClass::ID_CIUDAD] = $filter['ciudad'];
-      }//cierre del filtro ciudad
-       
-      if((isset($filter['fechaIni']) and $filter['fechaIni'] !== null and $filter['fechaIni'] !== "") and (isset($filter['fechaFin']) and $filter['fechaFin'] !== null and $filter['fechaFin'] !== "" )){
-        $where[loteTableClass::CREATED_AT] = array(
-           date(config::getFormatTimestamp(), strtotime($filter['fechaIni'].' 00:00:00')),
-           date(config::getFormatTimestamp(), strtotime($filter['fechaFin'].' 23:59:59'))
+      if(isset($report['ubicacion']) and $report['ubicacion'] !== null and $report['ubicacion'] !== ""){
+         $where[] = '(' . loteTableClass::getNameField(loteTableClass::UBICACION) . ' LIKE ' . '\'' . $report['ubicacion'] . '%\'  '
+              . 'OR ' . loteTableClass::getNameField(loteTableClass::UBICACION) . ' LIKE ' . '\'%' . $report['ubicacion'] . '%\' '
+              . 'OR ' . loteTableClass::getNameField(loteTableClass::UBICACION) . ' LIKE ' . '\'%' . $report['ubicacion'].'\') ';       
+              }//cierre del filtro ubicacion
+              
+      if((isset($report['tamanoIni']) and $report['tamanoIni'] !== null and $report['tamanoIni'] !== "") and (isset($report['tamanoFin']) and $report['tamanoFin'] !== null and $report['tamanoFin'] !== "" )){
+        $where[loteTableClass::TAMANO] = array(
+           $report['tamanoIni'],
+           $report['tamanoFin']
             );
-      }//cierre del filtro fechaIni y fechaFin
+      }//cierre del filtro tamanoIni y tamanoFin       
+              
+      if((isset($report['fechaIni']) and $report['fechaIni'] !== null and $report['fechaIni'] !== "") and (isset($report['fechaFin']) and $report['fechaFin'] !== null and $report['fechaFin'] !== "" )){
+        $where[loteTableClass::CREATED_AT] = array(
+           date(config::getFormatTimestamp(), strtotime($report['fechaIni'].' 00:00:00')),
+           date(config::getFormatTimestamp(), strtotime($report['fechaFin'].' 23:59:59'))
+            );
+        } //cierre del filtro fechaIni y fechaFin
         
-      }//cierre del POST del reporte
+        if((isset($report['fechaSI']) and $report['fechaSI'] !== null and $report['fechaSI'] !== "") and (isset($report['fechaSF']) and $report['fechaSF'] !== null and $report['fechaSF'] !== "" )){
+        $where[loteTableClass::FECHA_INICIO_SIEMBRA] = array(
+           date(config::getFormatTimestamp(), strtotime($report['fechaSI'].' 00:00:00')),
+           date(config::getFormatTimestamp(), strtotime($report['fechaSF'].' 23:59:59'))
+            );
+        } //cierre del filtro fechaSI y fechaSF
+      
+      
+      if(isset($report['ciudad']) and $report['ciudad'] !== null and $report['ciudad'] !== ""){
+        $where[loteTableClass::ID_CIUDAD] = $report['ciudad'];
+      }//cierre del filtro ciudad
+      }//cierre del POST report 
+      
+      $this->mensaje = 'Informacion de Lote';
       $fields = array(
           loteTableClass::ID,
           loteTableClass::UBICACION,
           loteTableClass::TAMANO,
           loteTableClass::DESCRIPCION,
           loteTableClass::ID_CIUDAD, 
+          loteTableClass::PRESUPUESTO,
+          loteTableClass::FECHA_INICIO_SIEMBRA,
+          loteTableClass::PRODUCTO_INSUMO_ID,
           loteTableClass::CREATED_AT,
           loteTableClass::UPDATED_AT
       );

@@ -41,6 +41,9 @@ class updateLoteMasActionClass extends controllerClass implements controllerActi
         $presupuesto = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::PRESUPUESTO, true));
         
         
+//        if (strlen($fechaSiembra) == null or $fechaSiembra =='') {
+//           $fechaSiembra = 'null';
+//        }//cierre de validacin de nulo
         
         if (strlen($numero) == null or $numero =='') {
            $numero = 'null';

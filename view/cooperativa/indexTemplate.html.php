@@ -45,6 +45,15 @@
             <form class="form-horizontal" id="filterForm" role="form" action="<?php echo routing::getInstance()->getUrlWeb('cooperativa', 'index') ?>"  method="POST" >
               
               <div class="form-group">
+    <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
+    <div class="col-sm-10">
+      <input type="date" class="form-control-filtro1" id="filterFechaIni" name="filter[fechaIni]">
+      
+       <input type="date" class="form-control-filtro2" id="filterFechaFin" name="filter[fechaFin]">
+    </div>
+  </div>
+              
+              <div class="form-group">
                 <label for="filterNombre" class="col-sm-2 control-label"><?php echo i18n::__('nom') ?></label>
                 <div class="col-sm-10">
                   <input type="text" class="form-control" id="filterNombre" name="filter[nombre]" placeholder="Nombre">
@@ -71,14 +80,7 @@
               </div>
 
 
-              <div class="form-group">
-                <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
-                <div class="col-sm-10">
-                  <input type="date" class="form-control" id="filterFecha1" name="filter[fechaIni]">
-                  <br>
-                  <input type="date" class="form-control" id="filterFecha2" name="filter[fechaFin]">
-                </div>
-              </div>
+              
             </form>
 
           </div>
@@ -100,6 +102,17 @@
       </div>
       <div class="modal-body">
         <form class="form-horizontal" id="reportForm" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('cooperativa', 'report')?>">
+          
+          <div class="form-group">
+    <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
+    <div class="col-sm-10">
+      <input type="date" class="form-control-filtro1" id="reportFechaIni" name="report[fechaIni]">
+      
+       <input type="date" class="form-control-filtro2" id="reportFechaFin" name="report[fechaFin]">
+    </div>
+  </div>
+          
+          
           <div class="form-group">
     <label for="reportNombre" class="col-sm-2 control-label"><?php echo i18n::__('nom') ?></label>
     <div class="col-sm-10">
@@ -108,29 +121,27 @@
   </div>
            
           
+          <div class="form-group">
+                <label for="reportDescripcion" class="col-sm-2 control-label"><?php echo i18n::__('des') ?></label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="reportDescripcion" name="report[descripcion]" placeholder="Descripcion">
+                </div>
+              </div>
+          
      <div class="form-group">
-    <label for="filterCiudad" class="col-sm-2 control-label"><?php echo i18n::__('idCiudad') ?></label>
+    <label for="reportCiudad" class="col-sm-2 control-label"><?php echo i18n::__('idCiudad') ?></label>
     <div class="col-sm-10">
-      <select class="form-control" id="filterCiudad" name="filter[ciudad]">
-        <option value=""><?php echo i18n::__('selectCiudad') ?></option>
-<?php foreach ($objLC as $ciudad): ?>
-            <option value="<?php echo $ciudad->$idCiudaddes ?>"><?php echo $ciudad->$descripcionciudad ?></option>
+      <select class="form-control" id="reportCiudad" name="report[ciudad]">
+         <option value=""><?php echo i18n::__('selectCiudad') ?></option>
+<?php foreach ($objCC as $ciudad): ?>
+                      <option value="<?php echo $ciudad->$idCiudaddes ?>"><?php echo $ciudad->$descripcionciudad ?></option>
 <?php endforeach; ?>
-          </select>
-    </div>
-  </div>
+                  </select>
+                </div>
+              </div>
           
           
-          
-          
-  <div class="form-group">
-    <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
-    <div class="col-sm-10">
-      <input type="date" class="form-control" id="reportFecha1" name="report[fecha1]">
-      <br>
-       <input type="date" class="form-control" id="reportFecha2" name="report[fecha2]">
-    </div>
-  </div>
+  
 </form>
         </form>
       </div>

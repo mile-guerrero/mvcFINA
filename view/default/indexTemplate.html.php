@@ -29,49 +29,7 @@
     </ul> 
       
       
-      
-<!---Informes--->
-       <div class="modal fade" id="myModalReport" tabindex="-1" role="modal" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('informe') ?></h4>
-      </div>
-      <div class="modal-body">
-        <form class="form-horizontal" id="reportForm" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('default', 'report')?>">
-          <div class="form-group">
-                <label for="filterUsuario" class="col-sm-2 control-label"><?php echo i18n::__('user') ?></label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="filterUsuario" name="filter[usuario]" placeholder="Nombre">
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
-                <div class="col-sm-10">
-                  <input type="date" class="form-control" id="filterFechaIni" name="filter[fechaIni]" >
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label  class="col-sm-2 control-label"><?php echo i18n::__('fecha fin') ?></label>
-                <div class="col-sm-10">
-                  <input type="date" class="form-control" id="filterFechaFin" name="filter[fechaFin]" >
-                </div>
-              </div>
-</form>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default btn btn-xs" data-dismiss="modal">  <?php echo i18n::__('cerrar') ?></button>
-        <button type="button" onclick="$('#reportForm').submit()" class="btn btn-warning btn btn-xs"><?php echo i18n::__('informe') ?></button>
-      </div>
-    </div>
-  </div>
-</div>
-
-    <!-- filtros -->
+       <!-- filtros -->
     <div class="modal fade" id="myModalFiltres" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -114,6 +72,50 @@
         </div>
       </div>
     </div>
+      
+      
+<!---Informes--->
+       <div class="modal fade" id="myModalReport" tabindex="-1" role="modal" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('informe') ?></h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" id="reportForm" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('default', 'report')?>">
+         
+          
+          <div class="form-group">
+                <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
+                <div class="col-sm-10">
+                  <input type="date" class="form-control-filtro1" id="reportFechaIni" name="report[fechaIni]" >
+<!--            <label  class="col-sm-2 control-label"><?php echo i18n::__('fecha fin') ?></label>-->
+                
+                  <input type="date" class="form-control-filtro2" id="reportFechaFin" name="report[fechaFin]" >
+                </div>
+              </div>
+          <div class="form-group">
+                <label for="reportUsuario" class="col-sm-2 control-label"><?php echo i18n::__('user') ?></label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="reportUsuario" name="report[usuario]" placeholder="Nombre">
+                </div>
+              </div>
+
+
+              
+</form>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default btn btn-xs" data-dismiss="modal">  <?php echo i18n::__('cerrar') ?></button>
+        <button type="button" onclick="$('#reportForm').submit()" class="btn btn-warning btn btn-xs"><?php echo i18n::__('informe') ?></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+   
 <form class="form-signin" id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('default', 'deleteSelect') ?>" method="POST">        
         <?php view::includeHandlerMessage()?>
     <br>

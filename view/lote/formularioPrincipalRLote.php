@@ -70,21 +70,35 @@
 <!--  desde aqui empieza los campos a utilizar-->
   
 
-
+<?php if(session::getInstance()->hasError('inputFecha')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert" id="error">
+    <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+       <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputFecha') ?>
+    </div>
+    <?php endif ?>
   
   
   
 <div class="form-group">
       <label for="<?php echo loteTableClass::getNameField(loteTableClass::FECHA_INICIO_SIEMBRA, true) ?>" class="col-sm-2"> <?php echo i18n::__('fecha siembra') ?>: </label>     
       <div class="col-sm-10">
-        <input  class="form-control" value="<?php echo ((isset($objLote)== true) ? date('Y-m-d\Th:m:i',strtotime($objLote[0]->$fecha)) : '') ?>" type="datetime-local" name="<?php echo loteTableClass::getNameField(loteTableClass::FECHA_INICIO_SIEMBRA, true) ?>" placeholder="<?php echo i18n::__('fecha siembra') ?>" required>
+        <input  class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputFecha') or request::getInstance()->hasPost(loteTableClass::getNameField(loteTableClass::FECHA_INICIO_SIEMBRA, true))) ? request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::FECHA_INICIO_SIEMBRA, true)) : ((isset($objLote[0])) ? $objLote[0]->$fecha : '') ?>" type="datetime-local" name="<?php echo loteTableClass::getNameField(loteTableClass::FECHA_INICIO_SIEMBRA, true) ?>" placeholder="<?php echo i18n::__('fecha siembra') ?>"required>
       </div>
  </div>  
+
+<?php if(session::getInstance()->hasError('inputPlantulas')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert" id="error">
+    <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+       <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputPlantulas') ?>
+    </div>
+    <?php endif ?>
+
+
   
   <div class="form-group">
       <label for="<?php echo loteTableClass::getNameField(loteTableClass::NUMERO_PLANTULAS, true) ?>" class="col-sm-2"> <?php echo i18n::__('numero') ?>: </label>     
       <div class="col-sm-10">
-        <input  class="form-control-gonza1" value="<?php echo ((isset($objLote)==true) ? $objLote[0]->$numero : '') ?>" type="text" name="<?php echo loteTableClass::getNameField(loteTableClass::NUMERO_PLANTULAS, true) ?>" placeholder="<?php echo i18n::__('numero') ?>" >
+        <input  class="form-control-gonza1" value="<?php echo (session::getInstance()->hasFlash('inputPlantulas') or request::getInstance()->hasPost(loteTableClass::getNameField(loteTableClass::NUMERO_PLANTULAS, true))) ? request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::NUMERO_PLANTULAS, true)) : ((isset($objLote[0])) ? $objLote[0]->$numero : '') ?>" type="text" name="<?php echo loteTableClass::getNameField(loteTableClass::NUMERO_PLANTULAS, true) ?>" placeholder="<?php echo i18n::__('numero') ?>" >
       
   
    
@@ -96,11 +110,18 @@
    </select>
      </div>
     </div>
+
+<?php if(session::getInstance()->hasError('inputPresupuesto')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert" id="error">
+    <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+       <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputPresupuesto') ?>
+    </div>
+    <?php endif ?>
   
 <div class="form-group">
       <label for="<?php echo loteTableClass::getNameField(loteTableClass::PRESUPUESTO, true) ?>" class="col-sm-2"> <?php echo i18n::__('presupuesto') ?>: </label>     
       <div class="col-sm-10">
-          <input  class="form-control" value="<?php echo ((isset($objLote)==true) ? $objLote[0]->$presupuesto : '') ?>" type="text" name="<?php echo loteTableClass::getNameField(loteTableClass::PRESUPUESTO, true) ?>" placeholder="<?php echo i18n::__('presupuesto') ?>" >
+          <input  class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputPresupuesto') or request::getInstance()->hasPost(loteTableClass::getNameField(loteTableClass::PRESUPUESTO, true))) ? request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::PRESUPUESTO, true)) : ((isset($objLote[0])) ? $objLote[0]->$presupuesto : '') ?>" type="text" name="<?php echo loteTableClass::getNameField(loteTableClass::PRESUPUESTO, true) ?>" placeholder="<?php echo i18n::__('presupuesto') ?>" >
       </div>
  </div>   
   

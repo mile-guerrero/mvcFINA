@@ -58,10 +58,10 @@ class indexActionClass extends controllerClass implements controllerActionInterf
 
       $this->cntPages = detalleFacturaCompraTableClass::getTotalPages(3);
       
-      if(request::getInstance()->hasGet(detalleFacturaCompraTableClass::getNameField(detalleFacturaCompraTableClass::FACTURA_ID, true))){
-        
-        $pagoTrabajadorTd = request::getInstance()->getGet(detalleFacturaCompraTableClass::getNameField(detalleFacturaCompraTableClass::FACTURA_ID, true));
-      }
+//      if(request::getInstance()->hasGet(detalleFacturaCompraTableClass::getNameField(detalleFacturaCompraTableClass::FACTURA_COMPRA_ID, true))){
+//        
+//       // $pagoTrabajadorTd = request::getInstance()->getGet(detalleFacturaCompraTableClass::getNameField(detalleFacturaCompraTableClass::FACTURA_ID, true));
+//      }
       
 
       $this->objDetalleFactura = detalleFacturaCompraTableClass::getAll($fields, false, $orderBy, 'ASC', 3, $page, $where);

@@ -37,11 +37,16 @@ class indexActionClass extends controllerClass implements controllerActionInterf
         //Validar datos
 
         if (isset($filter['nombre']) and $filter['nombre'] !== null and $filter['nombre'] !== '') {
-          $where[cooperativaTableClass::NOMBRE] = $filter['nombre'];
-        }
+          $where[] ='(' .  cooperativaTableClass::getNameField(cooperativaTableClass::NOMBRE) . ' LIKE ' . '\'' . $filter['nombre'] . '%\'  '
+              . 'OR ' . cooperativaTableClass::getNameField(cooperativaTableClass::NOMBRE) . ' LIKE ' . '\'%' . $filter['nombre'] . '%\' '
+              . 'OR ' . cooperativaTableClass::getNameField(cooperativaTableClass::NOMBRE) . ' LIKE ' . '\'%' . $filter['nombre'].'\') ';       
+              }//cierre del filtro nombre
         if (isset($filter['descripcion']) and $filter['descripcion'] !== null and $filter['descripcion'] !== '') {
-          $where[cooperativaTableClass::DESCRIPCION] = $filter['descripcion'];
-        }
+          $where[] ='(' .  cooperativaTableClass::getNameField(cooperativaTableClass::DESCRIPCION) . ' LIKE ' . '\'' . $filter['nombre'] . '%\'  '
+              . 'OR ' . cooperativaTableClass::getNameField(cooperativaTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $filter['nombre'] . '%\' '
+              . 'OR ' . cooperativaTableClass::getNameField(cooperativaTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $filter['nombre'].'\') ';       
+              }//cierre del filtro 
+              
         if (isset($filter['ciudad']) and $filter['ciudad'] !== null and $filter['ciudad'] !== '') {
           $where[cooperativaTableClass::ID_CIUDAD] = $filter['ciudad'];
         }
@@ -60,7 +65,8 @@ class indexActionClass extends controllerClass implements controllerActionInterf
           cooperativaTableClass::DESCRIPCION,
           cooperativaTableClass::DIRECCION,
           cooperativaTableClass::TELEFONO,
-          cooperativaTableClass::ID_CIUDAD
+          cooperativaTableClass::ID_CIUDAD,
+          cooperativaTableClass::DELETED_AT
       );
       $orderBy = array(
          cooperativaTableClass::ID

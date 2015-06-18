@@ -43,7 +43,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
            date(config::getFormatTimestamp(), strtotime($filter['fechaFin'].' 23:59:59'))
             );
       }//cierre del filtro fecha1 y fecha2       
-      }//cierre del POST del reporte
+      }//cierre del POST del FILTRO 
       $fields = array(
           credencialTableClass::ID,
           credencialTableClass::NOMBRE,

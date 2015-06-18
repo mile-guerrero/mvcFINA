@@ -37,7 +37,7 @@ class updateActionClass extends controllerClass implements controllerActionInter
           detalleFacturaCompraTableClass::VALOR_UNIDAD => $valorUnidad,
           detalleFacturaCompraTableClass::VALOR_TOTAL => $valorTotal,
           detalleFacturaCompraTableClass::FACTURA_COMPRA_ID => $facturaCompra,
-          detalleFacturaCompraTableClass::PROVEEDOR_ID_ID => $idProveedor
+          detalleFacturaCompraTableClass::PROVEEDOR_ID => $idProveedor
             
         );
         detalleFacturaCompraTableClass::update($ids, $data);

@@ -71,8 +71,6 @@
     </div>
   </div>
           
-     
-     <?php view::includeHandlerMessage()?>
           
      <div class="form-group">
     <label for="filterDocumento" class="col-sm-2 control-label"><?php echo i18n::__('documento') ?></label>
@@ -126,13 +124,19 @@
       </div>
       <div class="modal-body">
         <form class="form-horizontal" id="reportForm" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('cliente', 'reportCliente')?>">
-          <div class="form-group">
-    <label for="reportNombre" class="col-sm-2 control-label"><?php echo i18n::__('nom') ?></label>
+          
+         
+    
+         <div class="form-group">
+    <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="reportNombre" name="report[nombre]" placeholder="Nombre">
+      <input type="date" class="form-control-filtro1" id="reportFecha1" name="report[fecha1]">
+      
+       <input type="date" class="form-control-filtro2" id="reportFecha2" name="report[fecha2]">
     </div>
   </div>
-           <div class="form-group">
+          
+          <div class="form-group">
     <label for="reportCiudad" class="col-sm-2 control-label"><?php echo i18n::__('idCiudad') ?></label>
     <div class="col-sm-10">
       <select class="form-control" id="reportCiudad" name="report[ciudad]">
@@ -143,24 +147,43 @@
           </select>
     </div>
   </div>
-  <div class="form-group">
-    <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
+          
+          
+     <div class="form-group">
+    <label for="reportDocumento" class="col-sm-2 control-label"><?php echo i18n::__('documento') ?></label>
     <div class="col-sm-10">
-      <input type="date" class="form-control" id="reportFecha1" name="report[fecha1]">
-      <br>
-       <input type="date" class="form-control" id="reportFecha2" name="report[fecha2]">
+      <input type="text" class="form-control" id="reportDocumento" name="report[documento]" placeholder="buscar por el documento">
+    </div>
+  </div>      
+          
+
+          <div class="form-group">
+    <label for="reportNombre" class="col-sm-2 control-label"><?php echo i18n::__('nom') ?></label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="reportNombre" name="report[nombre]" placeholder="buscar por nombre">
     </div>
   </div>
-</form>
-        </form>
+          
+     
+         
+  <div class="form-group">
+    <label for="reportApellido" class="col-sm-2 control-label"><?php echo i18n::__('apell') ?></label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="reportApellido" name="report[apellido]" placeholder="buscar por apellido">
+    </div>
+  </div>   
+         
+  
       </div>
+       </form>
       <div class="modal-footer">
         <button type="button" class="btn btn-default btn btn-xs" data-dismiss="modal">  <?php echo i18n::__('cerrar') ?></button>
         <button type="button" onclick="$('#reportForm').submit()" class="btn btn-warning btn btn-xs"><?php echo i18n::__('informe') ?></button>
-      </div>
+      </div>          
     </div>
   </div>
 </div>
+        
     
       
       <form class="form-signin" id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('cliente', 'deleteSelectCliente') ?>" method="POST">        

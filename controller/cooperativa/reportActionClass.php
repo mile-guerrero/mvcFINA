@@ -40,16 +40,26 @@ class reportActionClass extends controllerClass implements controllerActionInter
         $report = request::getInstance()->getPost('report');
         //Validar datos
 
-        if (isset($report['nombre']) and $report['nombre'] !== null and $report['nombre'] !== '') {
-          $where[cooperativaTableClass::NOMBRE] = $report['nombre'];
-        }
+       if (isset($report['nombre']) and $report['nombre'] !== null and $report['nombre'] !== '') {
+         $where[] ='(' .  cooperativaTableClass::getNameField(cooperativaTableClass::NOMBRE) . ' LIKE ' . '\'' . $report['nombre'] . '%\'  '
+              . 'OR ' . cooperativaTableClass::getNameField(cooperativaTableClass::NOMBRE) . ' LIKE ' . '\'%' . $report['nombre'] . '%\' '
+              . 'OR ' . cooperativaTableClass::getNameField(cooperativaTableClass::NOMBRE) . ' LIKE ' . '\'%' . $report['nombre'].'\') ';       
+              }//cierre del filtro nombre
+              
+        if (isset($report['descripcion']) and $report['descripcion'] !== null and $report['descripcion'] !== '') {
+           $where[] ='(' .  cooperativaTableClass::getNameField(cooperativaTableClass::DESCRIPCION) . ' LIKE ' . '\'' . $report['nombre'] . '%\'  '
+              . 'OR ' . cooperativaTableClass::getNameField(cooperativaTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $report['nombre'] . '%\' '
+              . 'OR ' . cooperativaTableClass::getNameField(cooperativaTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $report['nombre'].'\') ';       
+              }//cierre del filtro 
+              
         if (isset($report['ciudad']) and $report['ciudad'] !== null and $report['ciudad'] !== '') {
           $where[cooperativaTableClass::ID_CIUDAD] = $report['ciudad'];
         }
-        if (isset($report['fecha1']) and $report['fecha1'] !== null and $report['fecha1'] !== '' and (isset($report['fecha2']) and $report['fecha2'] !== null and $report['fecha2'] !== '')) {
+        
+        if (isset($report['fechaIni']) and $report['fechaIni'] !== null and $report['fechaIni'] !== '' and (isset($report['fechaFin']) and $filter['fechaFin'] !== null and $filter['fechaFin'] !== '')) {
           $where[cooperativaTableClass::CREATED_AT] = array(
-          date(config::getFormatTimestamp(), strtotime($report['fecha1'] . ' 00:00:00')),
-          date(config::getFormatTimestamp(), strtotime($report['fecha2'] . ' 23:59:59'))
+          date(config::getFormatTimestamp(), strtotime($report['fechaIni'] . ' 00:00:00')),
+          date(config::getFormatTimestamp(), strtotime($report['fechaFin'] . ' 23:59:59'))
           );
         }
       }
@@ -59,15 +69,17 @@ class reportActionClass extends controllerClass implements controllerActionInter
           cooperativaTableClass::NOMBRE,
           cooperativaTableClass::DESCRIPCION,
           cooperativaTableClass::DIRECCION,
-          cooperativaTableClass::TELEFONO,          
+          cooperativaTableClass::TELEFONO,   
+          cooperativaTableClass::ID_CIUDAD,
           cooperativaTableClass::CREATED_AT,
-          cooperativaTableClass::UPDATED_AT,
-		  cooperativaTableClass::UPDATED_AT
+          cooperativaTableClass::UPDATED_AT
       );
       $orderBy = array(
          cooperativaTableClass::ID
       );
-      $this->objCC = cooperativaTableClass::getAll($fields, true, $orderBy, 'ASC',null,null,$where);
+      
+      
+      $this->objCooperativa = cooperativaTableClass::getAll($fields, true, $orderBy, 'ASC',null,null,$where);
  
        $fields = array(
           ciudadTableClass::ID,
@@ -76,7 +88,7 @@ class reportActionClass extends controllerClass implements controllerActionInter
       $orderBy = array(
          ciudadTableClass::ID
       );
-      $this->objCC = ciudadTableClass::getAll($fields, false, $orderBy, 'ASC');
+      $this->objCiudad = ciudadTableClass::getAll($fields, false, $orderBy, 'ASC');
  
       $this->defineView('index', 'cooperativa', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {

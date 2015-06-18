@@ -29,9 +29,8 @@
     <h1><?php echo i18n::__('detallePago') ?></h1> 
     <ul>      
         <a class="btn btn-success btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('detalleFacturaCompra', 'insert', array(detalleFacturaCompraTableClass::getNameField(detalleFacturaCompraTableClass::FACTURA_COMPRA_ID, true) => request::getInstance()->getGet(detalleFacturaCompraTableClass::getNameField(detalleFacturaCompraTableClass::FACTURA_COMPRA_ID, true)))) ?>"><?php echo i18n::__('nuevo') ?></a> 
-      <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModalFiltres"><?php echo i18n::__('filtros') ?></button>  
-      <a href="<?php echo routing::getInstance()->getUrlWeb('detalleFacturaCompra', 'index') ?>" class="btn btn-default btn-xs" ><?php echo i18n::__('eFiltros') ?></a>
-     <a class="btn btn-warning btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('facturaCompra', 'index')?>" ><?php echo i18n::__('atras') ?></a>
+      <a type="button" class="btn btn-xs" data-toggle="modal" data-target="#myModalFiltres"><img class="img-responsive"  id="imgfiltros" src="" alt=" "><?php echo i18n::__('filtros') ?>
+      <a href="<?php echo routing::getInstance()->getUrlWeb('cooperativa', 'index') ?>" class="btn btn-xs" ><img class="img-responsive"  id="imgelifiltro" src="" alt=" "><?php echo i18n::__('eFiltros') ?></a>             
     </ul> 
 
 

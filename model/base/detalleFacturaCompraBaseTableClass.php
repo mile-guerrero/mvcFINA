@@ -27,7 +27,7 @@ class detalleFacturaCompraBaseTableClass extends tableBaseClass {
   const CANTIDAD = 'cantidad';
   const VALOR_UNIDAD = 'valor_unidad';
   const VALOR_TOTAL = 'valor_total';
-  const PROVEEDOR_ID = 'proveedor_id';
+  const PROVEEDOR_ID = 'id_proveedor';
   const FACTURA_COMPRA_ID = 'factura_compra_id';
   const CREATED_AT = 'created_at';
   const UPDATED_AT = 'updated_at';

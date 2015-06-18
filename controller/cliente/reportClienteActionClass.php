@@ -41,8 +41,20 @@ class reportClienteActionClass extends controllerClass implements controllerActi
         //Validar datos
 
         if (isset($report['nombre']) and $report['nombre'] !== null and $report['nombre'] !== '') {
-          $where[clienteTableClass::NOMBRE] = $report['nombre'];
-        }//cierre del filtro nombre
+          $where[] ='(' .  clienteTableClass::getNameField(clienteTableClass::NOMBRE) . ' LIKE ' . '\'' . $report['nombre'] . '%\'  '
+              . 'OR ' . clienteTableClass::getNameField(clienteTableClass::NOMBRE) . ' LIKE ' . '\'%' . $report['nombre'] . '%\' '
+              . 'OR ' . clienteTableClass::getNameField(clienteTableClass::NOMBRE) . ' LIKE ' . '\'%' . $report['nombre'].'\') ';       
+              }//cierre del filtro nombre
+              
+        if (isset($report['apellido']) and $report['apellido'] !== null and $report['apellido'] !== '') {
+         $where[] = '(' . clienteTableClass::getNameField(clienteTableClass::APELLIDO) . ' LIKE ' . '\'' . $report['apellido'] . '%\'  '
+              . 'OR ' . clienteTableClass::getNameField(clienteTableClass::APELLIDO) . ' LIKE ' . '\'%' . $report['apellido'] . '%\' '
+              . 'OR ' . clienteTableClass::getNameField(clienteTableClass::APELLIDO) . ' LIKE ' . '\'%' . $report['apellido'].'\') ';       
+              }//cierre del filtro apellio    
+                
+        if (isset($report['documento']) and $report['documento'] !== null and $report['documento'] !== '') {
+          $where[clienteTableClass::DOCUMENTO] = $report['documento'];
+        }//cierre del filtro documento
         
         if (isset($report['ciudad']) and $report['ciudad'] !== null and $report['ciudad'] !== '') {
           $where[clienteTableClass::ID_CIUDAD] = $report['ciudad'];
@@ -54,8 +66,8 @@ class reportClienteActionClass extends controllerClass implements controllerActi
           date(config::getFormatTimestamp(), strtotime($report['fecha2'] . ' 23:59:59'))
           );
         }//cierre del filtro fecha1 y fecha2
-        
-      }//cierre del POST del reporte
+          
+      }//cierre del POST filter
       $this->mensaje = 'Informacion de Clientes';
       $fields = array(
           clienteTableClass::ID,
@@ -63,6 +75,8 @@ class reportClienteActionClass extends controllerClass implements controllerActi
           clienteTableClass::APELLIDO,
           clienteTableClass::DOCUMENTO,
           clienteTableClass::DIRECCION,
+          clienteTableClass::ID_TIPO_ID,
+           clienteTableClass::ID_CIUDAD,
           clienteTableClass::TELEFONO,          
           clienteTableClass::CREATED_AT,
           clienteTableClass::UPDATED_AT
@@ -70,6 +84,7 @@ class reportClienteActionClass extends controllerClass implements controllerActi
       $orderBy = array(
          clienteTableClass::ID
       );
+     
       $this->objC = clienteTableClass::getAll($fields, true, $orderBy, 'ASC',null,null,$where);
  
        $fields = array(
@@ -90,6 +105,7 @@ class reportClienteActionClass extends controllerClass implements controllerActi
          tipoIdTableClass::ID
       );
       
+     
       $this->objCTI = tipoIdTableClass::getAll($fields, false, $orderBy, 'ASC');
  
       $this->defineView('indexCliente', 'cliente', session::getInstance()->getFormatOutput());

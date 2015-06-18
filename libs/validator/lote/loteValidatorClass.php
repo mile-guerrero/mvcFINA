@@ -52,7 +52,7 @@ namespace mvc\validator {
         else if (!is_numeric(request::getInstance()->getPost(\loteTableClass::getNameField(\loteTableClass::TAMANO, true)))) {
         $flag = true;
         session::getInstance()->setFlash('inputTamano', true);
-        session::getInstance()->setError('El documento no permite letras, solo numeros', 'inputTamano');
+        session::getInstance()->setError('El tamaño no permite letras, solo numeros', 'inputTamano');
       }//-------------------------------campo unidad distancia-----------------------------
           //----campo nulo----
       if (self::notBlank(request::getInstance()->getPost(\loteTableClass::getNameField(\loteTableClass::UNIDAD_DISTANCIA_ID, true)))) {
@@ -120,7 +120,7 @@ namespace mvc\validator {
         else if (!is_numeric(request::getInstance()->getPost(\loteTableClass::getNameField(\loteTableClass::TAMANO, true)))) {
         $flag = true;
         session::getInstance()->setFlash('inputTamano', true);
-        session::getInstance()->setError('El documento no permite letras, solo numeros', 'inputTamano');
+        session::getInstance()->setError('El tamaño no permite letras, solo numeros', 'inputTamano');
       }//-------------------------------campo unidad distancia-----------------------------
           //----campo nulo----
       if (self::notBlank(request::getInstance()->getPost(\loteTableClass::getNameField(\loteTableClass::UNIDAD_DISTANCIA_ID, true)))) {
@@ -154,39 +154,22 @@ namespace mvc\validator {
     public static function validateEditMas() {
       $flag = false;
       
-//      $soloNumeros = "/^[[:digit:]]+$/";
+      $soloNumeros = "/^[[:digit:]]+$/";
       $soloLetras = "/^[a-z]+$/i";
       $soloTelefono = "/^(\d{3,3}\-\d{3,3}\-\d{4,4})|^(\+\d\-\d{3,3}\-\d{4,4})/";
       $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
       
-      //-------------------------------campo fecha siembra----------------------
-          //----campo nulo----
-      if (self::notBlank(request::getInstance()->getPost(\loteTableClass::getNameField(\loteTableClass::UBICACION, true)))) {
-        $flag = true;
-        session::getInstance()->setFlash('inputUbicacion', true);
-        session::getInstance()->setError('La ubicacion del lote es requerido', 'inputUbicacion');
-      } //----sobre pasar los caracteres----
-        else if(strlen(request::getInstance()->getPost(\loteTableClass::getNameField(\loteTableClass::UBICACION, true))) > \loteTableClass::UBICACION_LENGTH) {
-        $flag = true;
-        session::getInstance()->setFlash('inputUbicacion', true);
-        session::getInstance()->setError('La ubicacion digitada es mayor en cantidad de caracteres a lo permitido', 'inputUbicacion');
-      }//-------------------------------campo plantulas a sembrar---------------
+      //-------------------------------campo plantulas a sembrar---------------
          //----sobre pasar los caracteres----
         if(strlen(request::getInstance()->getPost(\loteTableClass::getNameField(\loteTableClass::NUMERO_PLANTULAS, true))) > \loteTableClass::NUMERO_PLANTULAS_LENGTH) {
         $flag = true;
         session::getInstance()->setFlash('inputPlantulas', true);
-        session::getInstance()->setError('La cantidad de plantulas a sembrar es mayor en cantidad de caracteres a lo permitido', 'inputPlantulas');
+        session::getInstance()->setError('La cantidad de plantulas es mayor en cantidad de caracteres a lo permitido', 'inputPlantulas');
       }  //----valida que sea numerico----      
-        else if (!is_numeric(request::getInstance()->getPost(\loteTableClass::getNameField(\loteTableClass::NUMERO_PLANTULAS, true)))) {
-        $flag = true;
-        session::getInstance()->setFlash('inputPlantulas', true);
-        session::getInstance()->setError('La cantidad de plantulas a sembrar no permite letras, solo numeros', 'inputPlantulas');
-      }///-------------------------------campo producto insumo------------------
-          //----campo nulo----
-//      if (self::notBlank(request::getInstance()->getPost(\loteTableClass::getNameField(\loteTableClass::PRODUCTO_INSUMO_ID, true)))) {
+//        else if (!is_numeric(request::getInstance()->getPost(\loteTableClass::getNameField(\loteTableClass::NUMERO_PLANTULAS, true)))) {
 //        $flag = true;
-//        session::getInstance()->setFlash('inputProducto', true);
-//        session::getInstance()->setError('El insumo del lote es requerido', 'inputProducto');
+//        session::getInstance()->setFlash('inputPlantulas', true);
+//        session::getInstance()->setError('La cantidad de plantulas a sembrar no permite letras, solo numeros', 'inputPlantulas');
 //      } //-------------------------------campo presupuesto---------------
        //----sobre pasar los caracteres----
          if(strlen(request::getInstance()->getPost(\loteTableClass::getNameField(\loteTableClass::PRESUPUESTO, true))) > \loteTableClass::PRESUPUESTO_LENGTH) {
@@ -194,12 +177,11 @@ namespace mvc\validator {
         session::getInstance()->setFlash('inputPresupuesto', true);
         session::getInstance()->setError('El presupuesto digitado es mayor en cantidad de caracteres a lo permitido', 'inputPresupuesto');
       }  //----valida que sea numerico----      
-        else if (!is_numeric(request::getInstance()->getPost(\loteTableClass::getNameField(\loteTableClass::PRESUPUESTO, true)))) {
-        $flag = true;
-        session::getInstance()->setFlash('inputPresupuesto', true);
-        session::getInstance()->setError('El presupuesto no permite letras, solo numeros', 'inputPresupuesto');
-      }
-
+//      else if (!is_numeric(request::getInstance()->getPost(\loteTableClass::getNameField(\loteTableClass::PRESUPUESTO, true)))) {
+//        $flag = true;
+//        session::getInstance()->setFlash('inputPresupuesto', true);
+//        session::getInstance()->setError('El presupuesto no permite letras, solo numeros', 'inputPresupuesto');
+//      }
       //-------------------------------condiccion de bandera true-----------------------------
       if ($flag === true) {
         request::getInstance()->setMethod('GET');
