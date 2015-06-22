@@ -24,9 +24,18 @@ class indexActionClass extends controllerClass implements controllerActionInterf
         //Validar datos
 
         if (isset($filter['descripcion']) and $filter['descripcion'] !== null and $filter['descripcion'] !== '') {
-          $where[laborTableClass::DESCRIPCION] = $filter['descripcion'];
-        }
+          $where[] ='(' .  laborTableClass::getNameField(laborTableClass::DESCRIPCION) . ' LIKE ' . '\'' . $filter['descripcion'] . '%\'  '
+              . 'OR ' . laborTableClass::getNameField(laborTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $filter['descripcion'] . '%\' '
+              . 'OR ' . laborTableClass::getNameField(laborTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $filter['descripcion'].'\') ';       
+              }//cierre del filtro nombre
        
+        if (isset($filter['valor1']) and $filter['valor1'] !== null and $filter['valor1'] !== '' and (isset($filter['valor2']) and $filter['valor2'] !== null and $filter['valor2'] !== '')) {
+          $where[laborTableClass::VALOR] = array(
+         $filter['valor1'],
+         $filter['valor2']
+          );
+        } 
+        
         if (isset($filter['fechaIni']) and $filter['fechaIni'] !== null and $filter['fechaIni'] !== '' and (isset($filter['fechaFin']) and $filter['fechaFin'] !== null and $filter['fechaFin'] !== '')) {
           $where[laborTableClass::CREATED_AT] = array(
           date(config::getFormatTimestamp(), strtotime($filter['fechaIni'] . ' 00:00:00')),

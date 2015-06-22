@@ -2035,6 +2035,7 @@ empresa_reporte:
   url:    /empresa/reporte
   param:  { module: empresa, action: report, format: pdf } 
   load:
+    - libs/fpdf/fpdf.php 
     - model/base/empresaBaseTableClass.php
     - model/empresaTableClass.php
     - hooks/logHookClass.php
@@ -2096,6 +2097,7 @@ labor_reporte:
   url:    /labor/reporte
   param:  { module: labor, action: report, format: pdf } 
   load:
+    - libs/fpdf/fpdf.php 
     - model/base/laborBaseTableClass.php
     - model/laborTableClass.php
     - hooks/logHookClass.php

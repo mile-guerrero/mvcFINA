@@ -44,6 +44,16 @@ use mvc\session\sessionClass as session ?>
           <div class="modal-body">
             <form class="form-horizontal" id="filterForm" role="form" action="<?php echo routing::getInstance()->getUrlWeb('labor', 'index') ?>"  method="POST" >
 
+              
+              <div class="form-group">
+    <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
+    <div class="col-sm-10">
+      <input type="date" class="form-control-filtro1" id="filterFechaIni" name="filter[fechaIni]">
+      
+       <input type="date" class="form-control-filtro2" id="filterFechaFin" name="filter[fechaFin]">
+    </div>
+  </div>
+              
               <div class="form-group">
                 <label for="filterDescripcion" class="col-sm-2 control-label"><?php echo i18n::__('des') ?></label>
                 <div class="col-sm-10">
@@ -51,23 +61,15 @@ use mvc\session\sessionClass as session ?>
                 </div>
               </div>
 
-              <div class="form-group">
-                <label for="filterValor" class="col-sm-2 control-label"><?php echo i18n::__('valor') ?></label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="filterValor" name="filter[valor]" placeholder="Valor">
-                </div>
-              </div>
-
-
-
-              <div class="form-group">
-                <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
-                <div class="col-sm-10">
-                  <input type="date" class="form-control" id="filterFecha1" name="filter[fechaIni]">
-                  <br>
-                  <input type="date" class="form-control" id="filterFecha2" name="filter[fechaFin]">
-                </div>
-              </div>
+               <div class="form-group">
+    <label class="col-sm-2 control-label"><?php echo i18n::__('valor') ?></label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control-filtro1" id="filtervalor1" name="filter[valor1]">
+      
+       <input type="text" class="form-control-filtro2" id="filtervalor2" name="filter[valor2]">
+    </div>
+  </div>
+              
             </form>
 
           </div>
@@ -89,6 +91,15 @@ use mvc\session\sessionClass as session ?>
           </div>
           <div class="modal-body">
             <form class="form-horizontal" id="reportForm" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('labor', 'report') ?>">
+               <div class="form-group">
+    <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
+    <div class="col-sm-10">
+      <input type="date" class="form-control-filtro1" id="reportFechaIni" name="report[fechaIni]">
+      
+       <input type="date" class="form-control-filtro2" id="reportFechaFin" name="report[fechaFin]">
+    </div>
+  </div>
+              
               <div class="form-group">
                 <label for="reportDescripcion" class="col-sm-2 control-label"><?php echo i18n::__('des') ?></label>
                 <div class="col-sm-10">
@@ -96,18 +107,14 @@ use mvc\session\sessionClass as session ?>
                 </div>
               </div>
 
-
-
-
-              <div class="form-group">
-                <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
-                <div class="col-sm-10">
-                  <input type="date" class="form-control" id="reportFecha1" name="report[fecha1]">
-                  <br>
-                  <input type="date" class="form-control" id="reportFecha2" name="report[fecha2]">
-                </div>
-              </div>
-            </form>
+               <div class="form-group">
+    <label class="col-sm-2 control-label"><?php echo i18n::__('valor') ?></label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control-filtro1" id="reportvalor1" name="report[valor1]">
+      
+       <input type="text" class="form-control-filtro2" id="reportvalor2" name="report[valor2]">
+    </div>
+  </div>
             </form>
           </div>
           <div class="modal-footer">

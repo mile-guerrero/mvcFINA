@@ -22,14 +22,23 @@ class reportActionClass extends controllerClass implements controllerActionInter
         $report = request::getInstance()->getPost('report');
         //Validar datos
 
-        if (isset($report['descripcion']) and $report['descripcion'] !== null and $report['descripcion'] !== '') {
-          $where[laborTableClass::DESCRIPCION] = $report['descripcion'];
-        }
-      
-        if (isset($report['fecha1']) and $report['fecha1'] !== null and $report['fecha1'] !== '' and (isset($report['fecha2']) and $report['fecha2'] !== null and $report['fecha2'] !== '')) {
+          if (isset($report['descripcion']) and $report['descripcion'] !== null and $report['descripcion'] !== '') {
+          $where[] ='(' .  laborTableClass::getNameField(laborTableClass::DESCRIPCION) . ' LIKE ' . '\'' . $report['descripcion'] . '%\'  '
+              . 'OR ' . laborTableClass::getNameField(laborTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $report['descripcion'] . '%\' '
+              . 'OR ' . laborTableClass::getNameField(laborTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $report['descripcion'].'\') ';       
+              }//cierre del filtro nombre
+       
+        if (isset($report['valor1']) and $report['valor1'] !== null and $report['valor1'] !== '' and (isset($report['valor2']) and $report['valor2'] !== null and $report['valor2'] !== '')) {
+          $where[laborTableClass::VALOR] = array(
+         $report['valor1'],
+         $report['valor2']
+          );
+        } 
+        
+        if (isset($report['fechaIni']) and $report['fechaIni'] !== null and $report['fechaIni'] !== '' and (isset($report['fechaFin']) and $report['fechaFin'] !== null and $report['fechaFin'] !== '')) {
           $where[laborTableClass::CREATED_AT] = array(
-          date(config::getFormatTimestamp(), strtotime($report['fecha1'] . ' 00:00:00')),
-          date(config::getFormatTimestamp(), strtotime($report['fecha2'] . ' 23:59:59'))
+          date(config::getFormatTimestamp(), strtotime($report['fechaIni'] . ' 00:00:00')),
+          date(config::getFormatTimestamp(), strtotime($report['fechaFin'] . ' 23:59:59'))
           );
         }
       }
@@ -44,7 +53,7 @@ class reportActionClass extends controllerClass implements controllerActionInter
       $orderBy = array(
          laborTableClass::ID
       );
-      $this->objCC = laborTableClass::getAll($fields, false, $orderBy, 'ASC',null,null,$where);
+      $this->objLabor = laborTableClass::getAll($fields, false, $orderBy, 'ASC',null,null,$where);
  
  
  
