@@ -2,6 +2,7 @@
 <?php use mvc\routing\routingClass as routing ?>
 <?php use mvc\i18n\i18nClass as i18n ?>
 <?php use mvc\view\viewClass as view ?>
+<?php use mvc\session\sessionClass as session ?>
 
 <?php $id = manoObraTableClass::ID ?>
 <?php $cantidad = manoObraTableClass::CANTIDAD_HORA ?>
@@ -9,6 +10,8 @@
 <?php $idCooperativa = manoObraTableClass::COOPERATIVA_ID ?>
 <?php $idLabor = manoObraTableClass::LABOR_ID ?>
 <?php $idMaquina = manoObraTableClass::MAQUINA_ID ?>
+<?php $cooperativa = cooperativaTableClass::ID ?>
+<?php $descCooperativa = cooperativaTableClass::NOMBRE ?>
 
 <div class="container container-fluid" id="cuerpo">
   <header id="">
@@ -20,7 +23,7 @@
   <section id="">
 
   </section>
-  <article id='derecha'>
+  <article id="derecha">
 
     <h1><?php echo i18n::__('manoObra') ?></h1> 
     <ul>      
@@ -39,25 +42,27 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('informe') ?></h4>
       </div>
+        
+        
       <div class="modal-body">
         <form class="form-horizontal" id="reportForm" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('manoObra', 'report')?>">
-<div class="form-group">
+<!--<div class="form-group">
     <label for="reportCantidad" class="col-sm-2 control-label"><?php echo i18n::__('cantidad') ?></label>
     <div class="col-sm-10">
       <input type="text" class="form-control" id="reportCantidad" name="report[cantidad]" placeholder="<?php echo i18n::__('cantidad') ?>">
     </div>
-  </div>
-<!--           <div class="form-group">
-                <label for="reportTrabajador" class="col-sm-2 control-label"><?php echo i18n::__('trabajador') ?></label>
+  </div>-->
+           <div class="form-group">
+                <label for="reportCooperativa" class="col-sm-2 control-label"><?php echo i18n::__('cooperativa') ?></label>
                 <div class="col-sm-10">
-                  <select class="form-control" id="filterTrabajador" name="report[trabajador]">
-                    <option value=""><?php echo i18n::__('selectTrabajador') ?></option>
-<?php foreach ($objOST as $trabajador): ?>
-                      <option value="<?php echo $trabajador->$idTra ?>"><?php echo $trabajador->$nomTrabajador ?></option>
+                  <select class="form-control" id="reportCooperativa" name="report[cooperativa]">
+                    <option value=""><?php echo i18n::__('selectCooperativa') ?></option>
+<?php foreach ($objCooperativa as $key): ?>
+                      <option value="<?php echo $key->$cooperativa ?>"><?php echo $key->$descCooperativa ?></option>
 <?php endforeach; ?>
                   </select>
                 </div>
-              </div>-->
+              </div>
   <div class="form-group">
     <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
     <div class="col-sm-10">
@@ -87,23 +92,24 @@
           </div>
           <div class="modal-body">
             <form class="form-horizontal" id="filterForm" role="form" action="<?php echo routing::getInstance()->getUrlWeb('manoObra', 'index') ?>" method="POST">
-<div class="form-group">
+                
+<!--<div class="form-group">
     <label for="filterCantidad" class="col-sm-2 control-label"><?php echo i18n::__('cantidad') ?></label>
     <div class="col-sm-10">
       <input type="text" class="form-control" id="filterCantidad" name="filter[cantidad]" placeholder="<?php echo i18n::__('cantidad') ?>">
     </div>
-  </div>
-                <!--              <div class="form-group">
-                <label for="filterTrabajador" class="col-sm-2 control-label"><?php echo i18n::__('trabajador') ?></label>
+  </div>-->
+                <div class="form-group">
+                <label for="filtersCooperativa" class="col-sm-2 control-label"><?php echo i18n::__('cooperativa') ?></label>
                 <div class="col-sm-10">
-                  <select class="form-control" id="filterTrabajador" name="filter[trabajador]">
-                    <option value=""><?php echo i18n::__('selectTrabajador') ?></option>
-<?php foreach ($objOST as $trabajador): ?>
-                      <option value="<?php echo $trabajador->$idTra ?>"><?php echo $trabajador->$nomTrabajador ?></option>
+                  <select class="form-control" id="filtersCooperativa" name="filter[cooperativa]">
+                    <option value=""><?php echo i18n::__('selectCooperativa') ?></option>
+<?php foreach ($objCooperativa as $key): ?>
+                      <option value="<?php echo $key->$cooperativa ?>"><?php echo $key->$descCooperativa ?></option>
 <?php endforeach; ?>
                   </select>
                 </div>
-              </div>-->
+              </div>
 
               <div class="form-group">
                 <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>

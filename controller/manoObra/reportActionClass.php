@@ -11,10 +11,27 @@ use mvc\validator\manoObraValidatorClass as validator;
 
 /**
  * Description of ejemploClass
+ * @date: 2015/06/01.
+ * @category: Modulo mano de obra.
  *
  * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
  */
 class reportActionClass extends controllerClass implements controllerActionInterface {
+    
+   /**
+   * Método para leer el registro que se desea consultar
+   *
+   * @param array $fields Array con los nombres de los campos a solicitar
+   * @param array $orderBy [optional] Array con el o los nombres de los campos
+   * por los cuales se ordenará la consulta
+   * @param string $order [optional] Forma de ordenar la consulta
+   * (por defecto NULL), pude ser ASC o DESC
+   * @param $page Forma de ver cuantas paginas se encuentran.
+   * @param $where Forma de consultar informes
+   * de datos a mostrar.
+   * @return datatype description: \PDOException|boolean.
+   * 
+   */
 
   public function execute() {
     try {
@@ -35,8 +52,8 @@ class reportActionClass extends controllerClass implements controllerActionInter
 //        if (isset($report['trabajador']) and $report['trabajador'] !== null and $report['trabajador'] !== '') {
 //          $where[manoObraTableClass::TRABAJADOR_ID] = $report['trabajador'];
 //        }
-        if (isset($report['cantidad']) and $report['cantidad'] !== null and $report['cantidad'] !== '') {
-          $where[manoObraTableClass::CANTIDAD_HORA] = $report['cantidad'];
+        if (isset($report['cooperativa']) and $report['cooperativa'] !== null and $report['cooperativa'] !== '') {
+          $where[manoObraTableClass::COOPERATIVA_ID] = $report['cooperativa'];
         }
   
         if (isset($report['fecha1']) and $report['fecha1'] !== null and $report['fecha1'] !== '' and (isset($report['fecha2']) and $report['fecha2'] !== null and $report['fecha2'] !== '')) {
@@ -48,7 +65,7 @@ class reportActionClass extends controllerClass implements controllerActionInter
       }
 //      $cantidad = 'cantidad';
 //      $this->validate($cantidad);
-      validator::validateInsert();
+//      validator::validateInsert();
       $this->mensaje = 'Informacion de la Mano de Obra';
       $fields = array(
           manoObraTableClass::ID,
@@ -68,10 +85,10 @@ class reportActionClass extends controllerClass implements controllerActionInter
  
       $fields = array(
            cooperativaTableClass::ID,
-           cooperativaTableClass::DESCRIPCION
+           cooperativaTableClass::NOMBRE
       );
       $orderBy = array(
-      cooperativaTableClass::DESCRIPCION   
+           cooperativaTableClass::NOMBRE   
       );      
       $this->objCooperativa = cooperativaTableClass::getAll($fields, true, $orderBy, 'ASC');
  

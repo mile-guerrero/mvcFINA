@@ -20,5 +20,23 @@ class laborTableClass extends laborBaseTableClass {
       return ceil($answer[0]->cantidad/$lines);
     }  catch (PDOException $exc){
        throw  $exc;
-  }}
+  }
+}
+public static function getNameLabor($id){
+    try {
+      $sql = 'SELECT ' . laborTableClass::DESCRIPCION .  ' As descripcion  '
+             . '  FROM ' . laborTableClass::getNameTable() . '  '
+             . '  WHERE ' . laborTableClass::ID . ' = :id';
+      $params = array(
+          ':id' => $id
+      );
+      $answer = model::getInstance()->prepare($sql);
+      $answer->execute($params);
+      $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+      return $answer[0]->descripcion;
+      
+    } catch (Exception $exc) {
+      throw $exc;
+    }
+}
 }

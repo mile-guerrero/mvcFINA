@@ -7,23 +7,42 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+use mvc\validator\manoObraValidatorFiltersClass as validator;
 
 /**
  * Description of ejemploClass
+ * @date: 2015/06/01.
+ * @category: Modulo mano de obra.
  *
  * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
  */
 class indexActionClass extends controllerClass implements controllerActionInterface {
+    
+   /**
+   * Método para leer todos los registros de una tabla
+   *
+   * @param array $fields Array con los nombres de los campos a solicitar
+   * @param array $orderBy [optional] Array con el o los nombres de los campos
+   * por los cuales se ordenará la consulta
+   * @param string $order [optional] Forma de ordenar la consulta
+   * (por defecto NULL), pude ser ASC o DESC
+   * @param $page Forma de ver cuantas paginas se encuentran.
+   * @param $where Forma de hacer filtros
+   * de datos a mostrar.
+   * @return datatype description: \PDOException|boolean.
+   * 
+   */
 
   public function execute() {
     try {
         $where = null;
+        $flag = false;
       if (request::getInstance()->hasPost('filter')) {
         $filter = request::getInstance()->getPost('filter');
         //Validar datos
-
-      if (isset($filter['cantidad']) and $filter['cantidad'] !== null and $filter['cantidad'] !== '') {
-          $where[manoObraTableClass::CANTIDAD_HORA] = $filter['cantidad'];
+      
+      if (isset($filter['cooperativa']) and $filter['cooperativa'] !== null and $filter['cooperativa'] !== '') {
+          $where[manoObraTableClass::COOPERATIVA_ID] = $filter['cooperativa'];
         }
 //        if (isset($filter['trabajador']) and $filter['trabajador'] !== null and $filter['trabajador'] !== '') {
 //          $where[manoObraTableClass::TRABAJADOR_ID] = $filter['trabajador'];
@@ -35,6 +54,8 @@ class indexActionClass extends controllerClass implements controllerActionInterf
           );
         }
       }
+      
+//      validator::validateFilters();
       $fields = array(
           manoObraTableClass::ID,
           manoObraTableClass::CANTIDAD_HORA,
@@ -62,7 +83,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
            cooperativaTableClass::NOMBRE
       );
       $orderBy = array(
-      cooperativaTableClass::NOMBRE   
+           cooperativaTableClass::NOMBRE   
       );      
       $this->objCooperativa = cooperativaTableClass::getAll($fields, true, $orderBy, 'ASC');
        

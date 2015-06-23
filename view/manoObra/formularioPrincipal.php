@@ -11,7 +11,7 @@
 <?php $labor = manoObraTableClass::LABOR_ID ?>
 <?php $maquina = manoObraTableClass::MAQUINA_ID ?>
 <?php $idCooperativa = cooperativaTableClass::ID?>
-<?php $descCooperativa = cooperativaTableClass::DESCRIPCION?>
+<?php $descCooperativa = cooperativaTableClass::NOMBRE?>
 <?php $idLabor = laborTableClass::ID ?>
 <?php $descLabor = laborTableClass::DESCRIPCION ?>
 <?php $idMaquina = maquinaTableClass::ID ?>
