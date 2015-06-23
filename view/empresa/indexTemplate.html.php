@@ -45,6 +45,14 @@
             <form class="form-horizontal" id="filterForm" role="form" action="<?php echo routing::getInstance()->getUrlWeb('empresa', 'index') ?>"  method="POST" >
               
               <div class="form-group">
+              <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
+               <div class="col-sm-10">
+               <input type="date" class="form-control-filtro1" id="reportFechaIni" name="report[fechaIni]">
+                <input type="date" class="form-control-filtro2" id="reportFechaFin" name="report[fechaFin]">
+                </div>
+              </div>
+    
+              <div class="form-group">
                 <label for="filterNombre" class="col-sm-2 control-label"><?php echo i18n::__('nom') ?></label>
                 <div class="col-sm-10">
                   <input type="text" class="form-control" id="filterNombre" name="filter[nombre]" placeholder="Nombre">
@@ -58,15 +66,7 @@
                 </div>
               </div>
 
-
-              <div class="form-group">
-                <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
-                <div class="col-sm-10">
-                  <input type="date" class="form-control" id="filterFecha1" name="filter[fechaIni]">
-                  <br>
-                  <input type="date" class="form-control" id="filterFecha2" name="filter[fechaFin]">
-                </div>
-              </div>
+  
             </form>
 
           </div>

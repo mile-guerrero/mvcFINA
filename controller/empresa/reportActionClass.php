@@ -22,17 +22,28 @@ class reportActionClass extends controllerClass implements controllerActionInter
         $report = request::getInstance()->getPost('report');
         //Validar datos
 
-        if (isset($report['nombre']) and $report['nombre'] !== null and $report['nombre'] !== '') {
-          $where[empresaTableClass::NOMBRE] = $report['nombre'];
-        }
-      
-        if (isset($report['fecha1']) and $report['fecha1'] !== null and $report['fecha1'] !== '' and (isset($report['fecha2']) and $report['fecha2'] !== null and $report['fecha2'] !== '')) {
-          $where[empresaTableClass::CREATED_AT] = array(
-          date(config::getFormatTimestamp(), strtotime($report['fecha1'] . ' 00:00:00')),
-          date(config::getFormatTimestamp(), strtotime($report['fecha2'] . ' 23:59:59'))
+        if (isset($filter['nombre']) and $filter['nombre'] !== null and $filter['nombre'] !== '') {
+          $where[] ='(' .  empresaTableClass::getNameField(empresaTableClass::NOMBRE) . ' LIKE ' . '\'' . $filter['nombre'] . '%\'  '
+              . 'OR ' . empresaTableClass::getNameField(empresaTableClass::NOMBRE) . ' LIKE ' . '\'%' . $filter['nombre'] . '%\' '
+              . 'OR ' . empresaTableClass::getNameField(empresaTableClass::NOMBRE) . ' LIKE ' . '\'%' . $filter['nombre'].'\') ';       
+              }//cierre del filtro nombre
+       
+         if (isset($filter['direccion']) and $filter['direccion'] !== null and $filter['direccion'] !== '') {
+          $where[] ='(' .  empresaTableClass::getNameField(empresaTableClass::DIRECCION) . ' LIKE ' . '\'' . $filter['direccion'] . '%\'  '
+              . 'OR ' . empresaTableClass::getNameField(empresaTableClass::DIRECCION) . ' LIKE ' . '\'%' . $filter['direccion'] . '%\' '
+              . 'OR ' . empresaTableClass::getNameField(empresaTableClass::DIRECCION) . ' LIKE ' . '\'%' . $filter['direccion'].'\') ';       
+              }//cierre del filtro nombre
+       
+              
+        
+        if (isset($filter['fechaIni']) and $filter['fechaIni'] !== null and $filter['fechaIni'] !== '' and (isset($filter['fechaFin']) and $filter['fechaFin'] !== null and $filter['fechaFin'] !== '')) {
+          $where[laborTableClass::CREATED_AT] = array(
+          date(config::getFormatTimestamp(), strtotime($filter['fechaIni'] . ' 00:00:00')),
+          date(config::getFormatTimestamp(), strtotime($filter['fechaFin'] . ' 23:59:59'))
           );
         }
       }
+       
       $this->mensaje = 'Informacion de Empresa';
       $fields = array(
           empresaTableClass::ID,
@@ -47,7 +58,7 @@ class reportActionClass extends controllerClass implements controllerActionInter
       $orderBy = array(
          empresaTableClass::ID
       );
-      $this->objCC = empresaTableClass::getAll($fields, true, $orderBy, 'ASC',null,null,$where);
+      $this->objEmpresa = empresaTableClass::getAll($fields, true, $orderBy, 'ASC',null,null,$where);
  
  
  

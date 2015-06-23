@@ -23,10 +23,20 @@ class indexActionClass extends controllerClass implements controllerActionInterf
         $filter = request::getInstance()->getPost('filter');
         //Validar datos
 
-        if (isset($filter['nombre']) and $filter['nombre'] !== null and $filter['nombre'] !== '') {
-          $where[empresaTableClass::NOMBRE] = $filter['nombre'];
-        }
+       if (isset($filter['nombre']) and $filter['nombre'] !== null and $filter['nombre'] !== '') {
+          $where[] ='(' .  empresaTableClass::getNameField(empresaTableClass::NOMBRE) . ' LIKE ' . '\'' . $filter['nombre'] . '%\'  '
+              . 'OR ' . empresaTableClass::getNameField(empresaTableClass::NOMBRE) . ' LIKE ' . '\'%' . $filter['nombre'] . '%\' '
+              . 'OR ' . empresaTableClass::getNameField(empresaTableClass::NOMBRE) . ' LIKE ' . '\'%' . $filter['nombre'].'\') ';       
+              }//cierre del filtro nombre
        
+         if (isset($filter['direccion']) and $filter['direccion'] !== null and $filter['direccion'] !== '') {
+          $where[] ='(' .  empresaTableClass::getNameField(empresaTableClass::DIRECCION) . ' LIKE ' . '\'' . $filter['direccion'] . '%\'  '
+              . 'OR ' . empresaTableClass::getNameField(empresaTableClass::DIRECCION) . ' LIKE ' . '\'%' . $filter['direccion'] . '%\' '
+              . 'OR ' . empresaTableClass::getNameField(empresaTableClass::DIRECCION) . ' LIKE ' . '\'%' . $filter['direccion'].'\') ';       
+              }//cierre del filtro nombre
+       
+              
+        
         if (isset($filter['fechaIni']) and $filter['fechaIni'] !== null and $filter['fechaIni'] !== '' and (isset($filter['fechaFin']) and $filter['fechaFin'] !== null and $filter['fechaFin'] !== '')) {
           $where[empresaTableClass::CREATED_AT] = array(
           date(config::getFormatTimestamp(), strtotime($filter['fechaIni'] . ' 00:00:00')),
