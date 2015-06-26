@@ -136,48 +136,71 @@
       </div>
       <div class="modal-body">
         <form class="form-horizontal" id="reportForm" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('maquina', 'reportMaquina')?>">
-          <div class="form-group">
-    <label for="reportNombre" class="col-sm-2 control-label"><?php echo i18n::__('nom') ?></label>
+          
+          
+           <div class="form-group">
+                <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
+                <div class="col-sm-10">
+                  <input type="date" class="form-control-filtro1" id="reportFechaIni" name="report[fechaIni]" >
+               
+<!--                <label  class="col-sm-2 control-label"><?php echo i18n::__('fecha fin') ?></label>-->
+               
+                  <input type="date" class="form-control-filtro2" id="reportFechaFin" name="report[fechaFin]" >
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label for="reportNombre" class="col-sm-2 control-label"><?php echo i18n::__('nom') ?></label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="reportNombre" name="report[nombre]" placeholder="<?php echo i18n::__('nom') ?>">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="reportDescripcion" class="col-sm-2 control-label"><?php echo i18n::__('des') ?></label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="reportDescripcion" name="report[descripcion]" placeholder="<?php echo i18n::__('des') ?>">
+                </div>
+              </div>
+              
+              
+              
+              <div class="form-group">
+                <label for="reportOrigen" class="col-sm-2 control-label"><?php echo i18n::__('origenM') ?></label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="reportOrigen" name="report[origen]" placeholder="<?php echo i18n::__('origenM') ?>">
+                </div>
+              </div>
+              
+              
+              
+              
+              <div class="form-group">
+    <label for="reportTipo" class="col-sm-2 control-label"><?php echo i18n::__('tipo uso') ?></label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="reportNombre" name="report[nombre]" placeholder="Nombre">
-    </div>
-  </div>
-           
-    
-  <div class="form-group">
-    <label for="filterCiudad" class="col-sm-2 control-label"><?php echo i18n::__('tipo uso') ?></label>
-    <div class="col-sm-10">
-      <select class="form-control" id="filterCiudad" name="filter[tipo]">
+      <select class="form-control" id="reportTipo" name="report[tipo]">
         <option value=""><?php echo i18n::__('selectTipoUso') ?></option>
-<?php foreach ($objMTUM as $ciudad): ?>
-            <option value="<?php echo $ciudad->$idtipo ?>"><?php echo $ciudad->$destipo ?></option>
+<?php foreach ($objMTUM as $tipoU): ?>
+            <option value="<?php echo $tipoU->$idtipo ?>"><?php echo $tipoU->$destipo ?></option>
 <?php endforeach; ?>
           </select>
     </div>
   </div>            
-            
-   <div class="form-group">
-    <label for="filterCiudad" class="col-sm-2 control-label"><?php echo i18n::__('nomProveedor') ?></label>
+              
+              
+              
+              <div class="form-group">
+    <label for="reportProveedor" class="col-sm-2 control-label"><?php echo i18n::__('nomProveedor') ?></label>
     <div class="col-sm-10">
-      <select class="form-control" id="filterCiudad" name="filter[proveedor]">
+      <select class="form-control" id="reportProveedor" name="report[proveedor]">
         <option value=""><?php echo i18n::__('selectProveedor') ?></option>
-<?php foreach ($objMP as $ciudad): ?>
-            <option value="<?php echo $ciudad->$idpro ?>"><?php echo $ciudad->$despro ?></option>
+<?php foreach ($objMP as $pro): ?>
+            <option value="<?php echo $pro->$idpro ?>"><?php echo $pro->$despro ?></option>
 <?php endforeach; ?>
           </select>
     </div>
-  </div>         
+  </div>            
           
-          
-  <div class="form-group">
-    <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
-    <div class="col-sm-10">
-      <input type="date" class="form-control" id="reportFecha1" name="report[fecha1]">
-      <br>
-       <input type="date" class="form-control" id="reportFecha2" name="report[fecha2]">
-    </div>
-  </div>
-</form>
         </form>
       </div>
       <div class="modal-footer">

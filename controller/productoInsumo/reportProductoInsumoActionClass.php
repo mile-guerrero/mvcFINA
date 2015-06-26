@@ -21,18 +21,26 @@ class reportProductoInsumoActionClass extends controllerClass implements control
       if(request::getInstance()->hasPost('report')){
       $report = request::getInstance()->getPost('report');
       //validar
-      if(isset($report['descripcion']) and $report['descripcion'] !== null and $report['descripcion'] !== ""){
-        $where[productoInsumoTableClass::DESCRIPCION] = $report['descripcion'];
-      }      
-      if(isset($report['ciudad']) and $report['ciudad'] !== null and $report['ciudad'] !== ""){
-        $where[productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID] = $report['ciudad'];
-      }
+       if(isset($report['descripcion']) and $report['descripcion'] !== null and $report['descripcion'] !== ""){
+        $where[] = '(' . productoInsumoTableClass::getNameField(productoInsumoTableClass::DESCRIPCION) . ' LIKE ' . '\'' . $report['descripcion'] . '%\'  '
+              . 'OR ' . productoInsumoTableClass::getNameField(productoInsumoTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $report['descripcion'] . '%\' '
+              . 'OR ' . productoInsumoTableClass::getNameField(productoInsumoTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $report['descripcion'].'\') ';       
+              }              
+     
       if((isset($report['fechaIni']) and $report['fechaIni'] !== null and $report['fechaIni'] !== "") and (isset($report['fechaFin']) and $report['fechaFin'] !== null and $report['fechaFin'] !== "" )){
         $where[productoInsumoTableClass::CREATED_AT] = array(
            date(config::getFormatTimestamp(), strtotime($report['fechaIni'].' 00:00:00')),
            date(config::getFormatTimestamp(), strtotime($report['fechaFin'].' 23:59:59'))
             );
-      }     
+      }
+      
+      if(isset($report['unidadMedida']) and $report['unidadMedida'] !== null and $report['unidadMedida'] !== ""){
+        $where[productoInsumoTableClass::UNIDAD_MEDIDA_ID] = $report['unidadMedida'];
+      }
+      
+      if(isset($report['tipoInsumo']) and $report['tipoInsumo'] !== null and $report['tipoInsumo'] !== ""){
+        $where[productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID] = $report['tipoInsumo'];
+      }
       }
       $this->mensaje = 'Informacion de Producto Insumo';
       $fields = array(
@@ -50,6 +58,18 @@ class reportProductoInsumoActionClass extends controllerClass implements control
       
      
       $this->objPI = productoInsumoTableClass::getAll($fields, true, $orderBy, 'ASC', null, null,$where);
+      
+      
+      $fields = array(     
+      unidadMedidaTableClass::ID, 
+      unidadMedidaTableClass::DESCRIPCION
+      );
+      $orderBy = array(
+      unidadMedidaTableClass::DESCRIPCION    
+      ); 
+      $this->objPIUM = unidadMedidaTableClass::getAll($fields, false, $orderBy, 'ASC');
+      
+      
       
       $fields = array(
           tipoProductoInsumoTableClass::ID,

@@ -24,8 +24,21 @@ class reportProveedorActionClass extends controllerClass implements controllerAc
         //Validar datos
 
         if (isset($report['nombre']) and $report['nombre'] !== null and $report['nombre'] !== '') {
-          $where[proveedorTableClass::NOMBREP] = $report['nombre'];
+         $where[] = '(' . proveedorTableClass::getNameField(proveedorTableClass::NOMBREP) . ' LIKE ' . '\'' . $report['nombre'] . '%\'  '
+              . 'OR ' . proveedorTableClass::getNameField(proveedorTableClass::NOMBREP) . ' LIKE ' . '\'%' . $report['nombre'] . '%\' '
+              . 'OR ' . proveedorTableClass::getNameField(proveedorTableClass::NOMBREP) . ' LIKE ' . '\'%' . $report['nombre'].'\') ';       
+              }
+        
+        if (isset($report['apellido']) and $report['apellido'] !== null and $report['apellido'] !== '') {
+         $where[] ='(' .  proveedorTableClass::getNameField(proveedorTableClass::APELLIDO) . ' LIKE ' . '\'' . $report['apellido'] . '%\'  '
+              . 'OR ' . proveedorTableClass::getNameField(proveedorTableClass::APELLIDO) . ' LIKE ' . '\'%' . $report['apellido'] . '%\' '
+              . 'OR ' . proveedorTableClass::getNameField(proveedorTableClass::APELLIDO) . ' LIKE ' . '\'%' . $report['apellido'].'\') ';       
+              }
+        
+        if (isset($report['documento']) and $report['documento'] !== null and $report['documento'] !== '') {
+          $where[proveedorTableClass::DOCUMENTO] = $report['documento'];
         }
+        
         if (isset($report['ciudad']) and $report['ciudad'] !== null and $report['ciudad'] !== '') {
           $where[proveedorTableClass::ID_CIUDAD] = $report['ciudad'];
         }
@@ -37,7 +50,7 @@ class reportProveedorActionClass extends controllerClass implements controllerAc
         }
       }
       
-      $this->mensaje = 'Informacion de Proveedores';
+      $this->mensaje = 'Informacion de Proveedor';
       $fields = array(
           proveedorTableClass::ID,
           proveedorTableClass::NOMBREP,
@@ -53,7 +66,7 @@ class reportProveedorActionClass extends controllerClass implements controllerAc
       $orderBy = array(
          proveedorTableClass::NOMBREP
       );
-      $this->objP = proveedorTableClass::getAll($fields, true, $orderBy, 'ASC', null, null, $where);
+      $this->objProveedor = proveedorTableClass::getAll($fields, true, $orderBy, 'ASC', null, null, $where);
  
        $fields = array(
           ciudadTableClass::ID,

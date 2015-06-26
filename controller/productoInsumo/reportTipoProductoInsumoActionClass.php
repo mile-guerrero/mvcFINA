@@ -23,8 +23,11 @@ class reportTipoProductoInsumoActionClass extends controllerClass implements con
       //validar
       
       if(isset($report['descripcion']) and $report['descripcion'] !== null and $report['descripcion'] !== ""){
-        $where[tipoProductoInsumoTableClass::DESCRIPCION] = $report['descripcion'];
-      }
+        $where[] = '(' . tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::DESCRIPCION) . ' LIKE ' . '\'' . $report['descripcion'] . '%\'  '
+              . 'OR ' . tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $report['descripcion'] . '%\' '
+              . 'OR ' . tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $report['descripcion'].'\') ';       
+              }
+              
       if((isset($report['fechaIni']) and $report['fechaIni'] !== null and $report['fechaIni'] !== "") and (isset($report['fechaFin']) and $report['fechaFin'] !== null and $report['fechaFin'] !== "" )){
         $where[tipoProductoInsumoTableClass::CREATED_AT] = array(
            date(config::getFormatTimestamp(), strtotime($report['fechaIni'].' 00:00:00')),

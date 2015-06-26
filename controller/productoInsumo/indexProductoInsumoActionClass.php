@@ -74,7 +74,7 @@ class indexProductoInsumoActionClass extends controllerClass implements controll
       $orderBy = array(
       unidadMedidaTableClass::DESCRIPCION    
       ); 
-      $this->objUM = unidadMedidaTableClass::getAll($fields, false, $orderBy, 'ASC');
+      $this->objPIUM = unidadMedidaTableClass::getAll($fields, false, $orderBy, 'ASC');
       
       $fields = array(     
       tipoProductoInsumoTableClass::ID, 

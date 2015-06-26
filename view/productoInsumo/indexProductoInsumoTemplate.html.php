@@ -8,6 +8,8 @@
 <?php $id = tipoProductoInsumoTableClass::ID ?>
 <?php $idtipo = tipoProductoInsumoTableClass::ID ?>
 <?php $destipo = tipoProductoInsumoTableClass::DESCRIPCION ?>
+<?php $unidadM = unidadMedidaTableClass::DESCRIPCION ?>
+<?php $idUnidadM = unidadMedidaTableClass::ID ?>
 <div class="container container-fluid" id="cuerpo">
   <header id="">
     
@@ -29,43 +31,10 @@
       <a href="<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'indexProductoInsumo') ?>" class="btn btn-xs" ><img class="img-responsive"  id="imgelifiltro" src="" alt=" "><?php echo i18n::__('eFiltros') ?></a>
       <a type="button" class="btn btn-xs" data-toggle="modal" data-target="#myModalReport" ><img class="img-responsive"  id="imgreporte" src="" alt=" "><?php echo i18n::__('informe') ?></a>            
    </ul> 
-<!---Informes--->
-       <div class="modal fade" id="myModalReport" tabindex="-1" role="modal" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('informe') ?></h4>
-      </div>
-      <div class="modal-body">
-        <form class="form-horizontal" id="reportForm" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'reportProductoInsumo')?>">
-          <div class="form-group">
-    <label for="reportDescripcion" class="col-sm-2 control-label"><?php echo i18n::__('nom') ?></label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="reportDescripcion" name="report[descripcion]" placeholder="Nombre">
-    </div>
-  </div>
-           
-  <div class="form-group">
-    <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
-    <div class="col-sm-10">
-      <input type="date" class="form-control" id="reportFechaIni" name="report[fechaIni]">
-      <br>
-       <input type="date" class="form-control" id="reportFechaFin" name="report[fechaFin]">
-    </div>
-  </div>
-</form>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default btn btn-xs" data-dismiss="modal">  <?php echo i18n::__('cerrar') ?></button>
-        <button type="button" onclick="$('#reportForm').submit()" class="btn btn-warning btn btn-xs"><?php echo i18n::__('informe') ?></button>
-      </div>
-    </div>
-  </div>
-</div>
-
-    <!-- Modal -->
+      
+      
+      
+      <!-- filtro -->
     <div class="modal fade" id="myModalFilters" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -77,6 +46,30 @@
             <form class="form-horizontal" id="filterForm" role="form" action="<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'indexProductoInsumo') ?>" method="POST">
              
               <div class="form-group">
+                <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
+                <div class="col-sm-10">
+                  <input type="date" class="form-control-filtro1" id="filterFechaIni" name="filter[fechaIni]" >
+               
+<!--                <label  class="col-sm-2 control-label"><?php echo i18n::__('fecha fin') ?></label>-->
+               
+                  <input type="date" class="form-control-filtro2" id="filterFechaFin" name="filter[fechaFin]" >
+                </div>
+              </div>
+              
+              <div class="form-group">
+    <label for="filterUnidadMedida" class="col-sm-2 control-label"><?php echo i18n::__('unidad') ?></label>
+    <div class="col-sm-10">
+      <select class="form-control" id="filterUnidadMedida" name="filter[unidadMedida]">
+        <option value=""><?php echo i18n::__('selectTipoUso') ?></option>
+<?php foreach ($objPIUM as $unidadMedida): ?>
+            <option value="<?php echo $unidadMedida->$idUnidadM ?>"><?php echo $unidadMedida->$unidadM ?></option>
+<?php endforeach; ?>
+          </select>
+    </div>
+  </div>
+              
+              
+              <div class="form-group">
                 <label for="filterDescripcion" class="col-sm-2 control-label"><?php echo i18n::__('des') ?></label>
                 <div class="col-sm-10">
                   <input type="text" class="form-control" id="filterDescripcion" name="filter[descripcion]" placeholder="descripcion">
@@ -84,19 +77,7 @@
               </div>
           
 
-              <div class="form-group">
-                <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
-                <div class="col-sm-10">
-                  <input type="date" class="form-control" id="filterFechaIni" name="filter[fechaIni]" >
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label  class="col-sm-2 control-label"><?php echo i18n::__('fecha fin') ?></label>
-                <div class="col-sm-10">
-                  <input type="date" class="form-control" id="filterFechaFin" name="filter[fechaFin]" >
-                </div>
-              </div>
+              
 
             </form>
 
@@ -108,6 +89,66 @@
         </div>
       </div>
     </div>  
+      
+      
+      
+      
+<!---Informes--->
+       <div class="modal fade" id="myModalReport" tabindex="-1" role="modal" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('informe') ?></h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" id="reportForm" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'reportProductoInsumo')?>">
+          
+          
+        <div class="form-group">
+                <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
+                <div class="col-sm-10">
+                  <input type="date" class="form-control-filtro1" id="filterFechaIni" name="filter[fechaIni]" >
+               
+<!--                <label  class="col-sm-2 control-label"><?php echo i18n::__('fecha fin') ?></label>-->
+               
+                  <input type="date" class="form-control-filtro2" id="filterFechaFin" name="filter[fechaFin]" >
+                </div>
+              </div>
+          
+          <div class="form-group">
+    <label for="reportUnidadMedida" class="col-sm-2 control-label"><?php echo i18n::__('unidad') ?></label>
+    <div class="col-sm-10">
+      <select class="form-control" id="reportUnidadMedida" name="report[unidadMedida]">
+        <option value=""><?php echo i18n::__('selectTipoUso') ?></option>
+<?php foreach ($objPIUM as $unidadMedida): ?>
+            <option value="<?php echo $unidadMedida->$idUnidadM ?>"><?php echo $unidadMedida->$unidadM ?></option>
+<?php endforeach; ?>
+          </select>
+    </div>
+  </div>      
+          
+          
+          <div class="form-group">
+    <label for="reportDescripcion" class="col-sm-2 control-label"><?php echo i18n::__('nom') ?></label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="reportDescripcion" name="report[descripcion]" placeholder="Nombre">
+    </div>
+  </div>
+           
+  
+</form>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default btn btn-xs" data-dismiss="modal">  <?php echo i18n::__('cerrar') ?></button>
+        <button type="button" onclick="$('#reportForm').submit()" class="btn btn-warning btn btn-xs"><?php echo i18n::__('informe') ?></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
       
       
     <form class="form-singin" id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'deleteSelectProductoInsumo') ?>" method="POST">        
