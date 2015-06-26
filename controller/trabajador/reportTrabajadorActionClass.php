@@ -24,11 +24,25 @@ class reportTrabajadorActionClass extends controllerClass implements controllerA
         //Validar datos
 
         if (isset($report['nombre']) and $report['nombre'] !== null and $report['nombre'] !== '') {
-          $where[trabajadorTableClass::NOMBRET] = $report['nombre'];
+         $where[] = '(' . trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRET) . ' LIKE ' . '\'' . $report['nombre'] . '%\'  '
+              . 'OR ' . trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRET) . ' LIKE ' . '\'%' . $report['nombre'] . '%\' '
+              . 'OR ' . trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRET) . ' LIKE ' . '\'%' . $report['nombre'].'\') ';       
+              }
+              
+              if (isset($report['apellido']) and $report['apellido'] !== null and $report['apellido'] !== '') {
+         $where[] = '(' . trabajadorTableClass::getNameField(trabajadorTableClass::APELLIDO) . ' LIKE ' . '\'' . $report['apellido'] . '%\'  '
+              . 'OR ' . trabajadorTableClass::getNameField(trabajadorTableClass::APELLIDO) . ' LIKE ' . '\'%' . $report['apellido'] . '%\' '
+              . 'OR ' . trabajadorTableClass::getNameField(trabajadorTableClass::APELLIDO) . ' LIKE ' . '\'%' . $report['apellido'].'\') ';       
+              }
+        
+        if (isset($report['documento']) and $report['documento'] !== null and $report['documento'] !== '') {
+          $where[trabajadorTableClass::DOCUMENTO] = $report['documento'];
         }
+        
         if (isset($report['ciudad']) and $report['ciudad'] !== null and $report['ciudad'] !== '') {
           $where[trabajadorTableClass::ID_CIUDAD] = $report['ciudad'];
         }
+        
         if (isset($report['fecha1']) and $report['fecha1'] !== null and $report['fecha1'] !== '' and (isset($report['fecha2']) and $report['fecha2'] !== null and $report['fecha2'] !== '')) {
           $where[trabajadorTableClass::CREATED_AT] = array(
           date(config::getFormatTimestamp(), strtotime($report['fecha1'] . ' 00:00:00')),
