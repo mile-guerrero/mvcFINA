@@ -22,7 +22,7 @@
     <label for="<?php echo usuarioCredencialTableClass::getNameField(usuarioCredencialTableClass::USUARIO_ID, true) ?>" class="col-sm-2"><?php echo i18n::__('usu_id') ?>: </label>
       <div class="col-sm-10"> 
        <select class="form-control " id="<?php usuarioCredencialTableClass::getNameField(usuarioCredencialTableClass::ID, true) ?>" name="<?php echo usuarioCredencialTableClass::getNameField(usuarioCredencialTableClass::USUARIO_ID, true); ?>">
-         <option><?php echo i18n::__('selectCiudad')?></option>
+         <option><?php echo i18n::__('selectUsuario')?></option>
        <?php foreach($objUCU as $U):?>
        <option <?php echo (isset($objUC[0]->$usuario) === true and $objUC[0]->$usuario == $U->$id_usuarios) ? 'selected' : '' ?> value="<?php echo $U->$id_usuarios ?>"><?php echo $U->$des_usuarios ?></option>  
 <!--       <option <?php //echo (request::getInstance()->hasPost(usuarioCredencialTableClass::getNameField(usuarioCredencialTableClass::USUARIO_ID, true)) === true and request::getInstance()->getPost(usuarioCredencialTableClass::getNameField(usuarioCredencialTableClass::USUARIO_ID, true)) == $U->$id_usuarios) ? 'selected' : (isset($objUC[0]->$usuario) === true and $objUC[0]->$usuario == $U->$id_usuarios) ? 'selected' : '' ?>  value="<?php //echo $U->$id_usuarios ?>"><?php //echo $U->$des_usuarios ?></option> -->
@@ -35,7 +35,7 @@
       <label for="<?php echo usuarioCredencialTableClass::getNameField(usuarioCredencialTableClass::CREDENCIAL_ID, true) ?>" class="col-sm-2"><?php echo i18n::__('cre_id') ?>: </label>
       <div class="col-sm-10"> 
        <select class="form-control " id="<?php usuarioCredencialTableClass::getNameField(usuarioCredencialTableClass::ID, true) ?>" name="<?php echo usuarioCredencialTableClass::getNameField(usuarioCredencialTableClass::CREDENCIAL_ID, true); ?>">
-       <option><?php echo i18n::__('selectCiudad')?></option>
+       <option><?php echo i18n::__('selectCredencial')?></option>
          <?php foreach($objUCC as $C):?>
           <option <?php echo (isset($objUC[0]->$credencial) === true and $objUC[0]->$credencial == $C->$credencials) ? 'selected' : '' ?> value="<?php echo $C->$credencials ?>"><?php echo $C->$des_credencials ?></option>  
        <?php endforeach;?>

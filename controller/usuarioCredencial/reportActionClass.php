@@ -18,21 +18,21 @@ class reportActionClass extends controllerClass implements controllerActionInter
   public function execute() {
     try {
       
-      $this->mensaje = 'Hola a todos';
+      $this->mensaje = 'Informe de usuario credencial';
      $where = null;
-      if(request::getInstance()->hasPost('filter')){
-      $filter = request::getInstance()->getPost('filter');
+      if(request::getInstance()->hasPost('report')){
+      $report = request::getInstance()->getPost('report');
       //validar
-      if(isset($filter['usuario']) and $filter['usuario'] !== null and $filter['usuario'] !== ""){
-        $where[usuarioCredencialTableClass::USUARIO_ID] = $filter['usuario'];
+      if(isset($report['usuario']) and $report['usuario'] !== null and $report['usuario'] !== ""){
+        $where[usuarioCredencialTableClass::USUARIO_ID] = $report['usuario'];
       }
-      if(isset($filter['credencial']) and $filter['credencial'] !== null and $filter['credencial'] !== ""){
-        $where[usuarioCredencialTableClass::CREDENCIAL_ID] = $filter['credencial'];
+      if(isset($report['credencial']) and $report['credencial'] !== null and $report['credencial'] !== ""){
+        $where[usuarioCredencialTableClass::CREDENCIAL_ID] = $report['credencial'];
       }
-      if((isset($filter['fechaIni']) and $filter['fechaIni'] !== null and $filter['fechaIni'] !== "") and (isset($filter['fechaFin']) and $filter['fechaFin'] !== null and $filter['fechaFin'] !== "" )){
+      if((isset($report['fechaIni']) and $report['fechaIni'] !== null and $report['fechaIni'] !== "") and (isset($report['fechaFin']) and $report['fechaFin'] !== null and $report['fechaFin'] !== "" )){
         $where[usuarioCredencialTableClass::CREATED_AT] = array(
-           date(config::getFormatTimestamp(), strtotime($filter['fechaIni'].' 00:00:00')),
-           date(config::getFormatTimestamp(), strtotime($filter['fechaFin'].' 23:59:59'))
+           date(config::getFormatTimestamp(), strtotime($report['fechaIni'].' 00:00:00')),
+           date(config::getFormatTimestamp(), strtotime($report['fechaFin'].' 23:59:59'))
             );
       } 
       }

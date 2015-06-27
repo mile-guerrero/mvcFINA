@@ -44,6 +44,14 @@
           <div class="modal-body">
             <form class="form-horizontal" id="filterForm" role="form" action="<?php echo routing::getInstance()->getUrlWeb('usuarioCredencial', 'index') ?>" method="POST">
               
+                        <div class="form-group">
+    <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
+    <div class="col-sm-10">
+      <input type="date" class="form-control-filtro1" id="filterFechaIni" name="filter[fechaIni]">
+      
+       <input type="date" class="form-control-filtro2" id="filterFechaFin" name="filter[fechaFin]">
+    </div>
+  </div>
               
               <div class="form-group">
                 <label for="filterUsuario" class="col-sm-2 control-label"><?php echo i18n::__('user') ?></label>
@@ -61,7 +69,7 @@
            <label for="filterCredencial" class="col-sm-2 control-label"><?php echo i18n::__('credencial') ?></label>
                 <div class="col-sm-10">
                   <select class="form-control" id="filterCredencial" name="filter[credencial]">
-                    <option value=""><?php echo i18n::__('fUsuario') ?></option>
+                    <option value=""><?php echo i18n::__('fCredencial') ?></option>
               <?php foreach ($objUCC as $key): ?>  
               <option value="<?php echo $key->$credeid ?>"> <?php echo $key->$nomcredeid ?></option>
               <?php endforeach; ?>
@@ -73,16 +81,7 @@
             
           
 
-              <div class="form-group">
-                <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
-                <div class="col-sm-10">
-                  <input type="date" class="form-control-filtro1" id="filterFechaIni" name="filter[fechaIni]" >
-               
-<!--                <label  class="col-sm-2 control-label"><?php echo i18n::__('fecha fin') ?></label>-->
-              
-                  <input type="date" class="form-control-filtro2" id="filterFechaFin" name="filter[fechaFin]" >
-                </div>
-              </div>
+             
 
             </form>
 
@@ -108,38 +107,46 @@
       <div class="modal-body">
         <form class="form-horizontal" id="reportForm" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('usuarioCredencial', 'report')?>">
           
-          <div class="form-group">
-    <label for="reportUsuario" class="col-sm-2 control-label"><?php echo i18n::__('idCiudad') ?></label>
+        
+            
+            
+             <div class="form-group">
+                <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
+                <div class="col-sm-10">
+                  <input type="date" class="form-control-filtro1" id="reportFechaIni" name="report[fechaIni]" >
+               
+<!--                <label  class="col-sm-2 control-label"><?php echo i18n::__('fecha fin') ?></label>-->
+              
+                  <input type="date" class="form-control-filtro2" id="reportFechaFin" name="report[fechaFin]" >
+                </div>
+              </div>
+              
+              <div class="form-group">  
+    <label for="reportUsuario" class="col-sm-2 control-label"><?php echo i18n::__('user') ?></label>
+    
     <div class="col-sm-10">
+      
       <select class="form-control" id="reportUsuario" name="report[usuario]">
-            <option><?php echo i18n::__('selectCiudad') ?></option>
-<?php foreach ($objUCU as $u): ?>
-            <option value="<?php echo $u->$usuid ?>"><?php echo $u->$usuariosid ?></option>
-<?php endforeach; ?>
-          </select>
-    </div>
-  </div>
+            <option value=""><?php echo i18n::__('fUsuario') ?></option>
+              <?php foreach ($objUCU as $key): ?>  
+              <option value="<?php echo $key->$usuid ?>"> <?php echo $key->$usuariosid ?></option>
+              <?php endforeach; ?>
+              </select>
+                </div>
+              </div>
            <div class="form-group">
-    <label for="reportCredencial" class="col-sm-2 control-label"><?php echo i18n::__('idCiudad') ?></label>
+    <label for="reportCredencial" class="col-sm-2 control-label"><?php echo i18n::__('credencial') ?></label>
     <div class="col-sm-10">
       <select class="form-control" id="reportCredencial" name="report[credencial]">
-            <option><?php echo i18n::__('selectCiudad') ?></option>
-<?php foreach ($objUCC as $c): ?>
-            <option value="<?php echo $c->$credeid ?>"><?php echo $c->$nomcredeid ?></option>
-<?php endforeach; ?>
-          </select>
-    </div>
-  </div>
-  <div class="form-group">
-    <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
-    <div class="col-sm-10">
-      <input type="date" class="form-control" id="reportFecha1" name="report[fecha1]">
-      <br>
-       <input type="date" class="form-control" id="reportFecha2" name="report[fecha2]">
-    </div>
-  </div>
-</form>
-        </form>
+            <option value=""><?php echo i18n::__('fCredencial') ?></option>
+              <?php foreach ($objUCC as $key): ?>  
+              <option value="<?php echo $key->$credeid ?>"> <?php echo $key->$nomcredeid ?></option>
+              <?php endforeach; ?>
+              </select>
+                </div>
+              </div>
+  
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default btn btn-xs" data-dismiss="modal">  <?php echo i18n::__('cerrar') ?></button>
