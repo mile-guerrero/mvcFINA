@@ -26,8 +26,8 @@
   <?php endif ?>
   
 <?php if(session::getInstance()->hasError('selectCooperativa')): ?>
-    <div class="alert alert-danger alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+  <div class="alert alert-danger alert-dismissible" role="alert" id="error">
+      <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
       <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('selectCooperativa') ?>
     </div>
     <?php endif ?>
@@ -37,23 +37,23 @@
          <div class="col-sm-10">
            <select class="form-control" id="<?php echo manoObraTableClass::getNameField(manoObraTableClass::COOPERATIVA_ID, true)?>" name="<?php echo manoObraTableClass::getNameField(manoObraTableClass::COOPERATIVA_ID, true) ?>">
                <option value="<?php echo (session::getInstance()->hasFlash('selectCooperativa') or request::getInstance()->hasPost(manoObraTableClass::getNameField(manoObraTableClass::COOPERATIVA_ID, true))) ? request::getInstance()->getPost(manoObraTableClass::getNameField(manoObraTableClass::COOPERATIVA_ID, true)) : ((isset($objManoObra[0])) ? '' : '') ?>"><?php echo i18n::__('selectCooperativa') ?></option>
-<?php foreach ($objCooperativa as $coope): ?>
-            <option <?php echo (isset($objManoObra[0]->$cooperativa) === true and $objManoObra[0]->$cooperativa == $coope->$idCooperativa) ? 'selected' : '' ?> value="<?php echo $coope->$idCooperativa ?>"><?php echo $coope->$descCooperativa ?></option>
+<?php foreach ($objCooperativa as $key): ?>
+               <option <?php echo (request::getInstance()->hasPost(manoObraTableClass::getNameField(manoObraTableClass::COOPERATIVA_ID, true)) === true and request::getInstance()->getPost(manoObraTableClass::getNameField(manoObraTableClass::COOPERATIVA_ID, true)) == $key->$idCooperativa) ? 'selected' : (isset($objManoObra[0]->$cooperativa) === true and $objManoObra[0]->$cooperativa == $key->$idCooperativa) ? 'selected' : '' ?> value="<?php echo $key->$idCooperativa ?>"><?php echo $key->$descCooperativa ?></option>
 <?php endforeach; ?>
           </select>
       </div>
     </div> 
   
   <?php if(session::getInstance()->hasError('selectMaquina')): ?>
-    <div class="alert alert-danger alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+  <div class="alert alert-danger alert-dismissible" role="alert" id="error">
+      <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
       <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('selectMaquina') ?>
     </div>
     <?php endif ?>
   
   <?php if(session::getInstance()->hasError('selectLabor')): ?>
-    <div class="alert alert-danger alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+  <div class="alert alert-danger alert-dismissible" role="alert" id="error">
+      <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
       <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('selectLabor') ?>
     </div>
     <?php endif ?>
@@ -63,8 +63,8 @@
          <div class="col-sm-10">
            <select class="form-control-gonza1" id="<?php echo manoObraTableClass::getNameField(manoObraTableClass::MAQUINA_ID, true)?>" name="<?php echo manoObraTableClass::getNameField(manoObraTableClass::MAQUINA_ID, true) ?>">
                <option value="<?php echo (session::getInstance()->hasFlash('selectMaquina') or request::getInstance()->hasPost(manoObraTableClass::getNameField(manoObraTableClass::MAQUINA_ID, true))) ? request::getInstance()->getPost(manoObraTableClass::getNameField(manoObraTableClass::MAQUINA_ID, true)) : ((isset($objManoObra[0])) ? '' : '') ?>""><?php echo i18n::__('selectMaquina') ?></option>
-<?php foreach ($objMaquina as $maq): ?>
-            <option <?php echo (isset($objManoObra[0]->$maquina) === true and $objManoObra[0]->$maquina == $maq->$idMaquina) ? 'selected' : '' ?> value="<?php echo $maq->$idMaquina ?>"><?php echo $maq->$descMaquina ?></option>
+<?php foreach ($objMaquina as $key): ?>
+            <option <?php echo (request::getInstance()->hasPost(manoObraTableClass::getNameField(manoObraTableClass::MAQUINA_ID, true)) === true and request::getInstance()->getPost(manoObraTableClass::getNameField(manoObraTableClass::MAQUINA_ID, true)) == $key->$idCooperativa) ? 'selected' : (isset($objManoObra[0]->$maquina) === true and $objManoObra[0]->$maquina == $key->$idMaquina) ? 'selected' : '' ?> value="<?php echo $key->$idMaquina ?>"><?php echo $key->$descMaquina ?></option>
 <?php endforeach; ?>
           </select>
      
@@ -73,22 +73,22 @@
   
            <select class="form-control-gonza2" id="<?php echo manoObraTableClass::getNameField(manoObraTableClass::LABOR_ID, true)?>" name="<?php echo manoObraTableClass::getNameField(manoObraTableClass::LABOR_ID, true) ?>">
                <option value="<?php echo (session::getInstance()->hasFlash('selectLabor') or request::getInstance()->hasPost(manoObraTableClass::getNameField(manoObraTableClass::LABOR_ID, true))) ? request::getInstance()->getPost(manoObraTableClass::getNameField(manoObraTableClass::LABOR_ID, true)) : ((isset($objManoObra[0])) ? '' : '') ?>"><?php echo i18n::__('selectLabor') ?></option>
-<?php foreach ($objLabor as $lab): ?>
-            <option <?php echo (isset($objManoObra[0]->$labor) === true and $objManoObra[0]->$labor == $lab->$idLabor) ? 'selected' : '' ?> value="<?php echo $lab->$idLabor ?>"><?php echo $lab->$descLabor ?></option>
+<?php foreach ($objLabor as $key): ?>
+            <option <?php echo (request::getInstance()->hasPost(manoObraTableClass::getNameField(manoObraTableClass::LABOR_ID, true)) === true and request::getInstance()->getPost(manoObraTableClass::getNameField(manoObraTableClass::LABOR_ID, true)) == $key->$idLabor) ? 'selected' : (isset($objManoObra[0]->$labor) === true and $objManoObra[0]->$labor == $key->$idLabor) ? 'selected' : '' ?> value="<?php echo $key->$idLabor ?>"><?php echo $key->$descLabor ?></option>
 <?php endforeach; ?>
           </select>
       </div>
     </div>
   <?php if(session::getInstance()->hasError('inputCantidad')): ?>
-    <div class="alert alert-danger alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+  <div class="alert alert-danger alert-dismissible" role="alert" id="error">
+      <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
       <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputCantidad') ?>
     </div>
     <?php endif ?>
   
   <?php if(session::getInstance()->hasError('inputValor')): ?>
-    <div class="alert alert-danger alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+  <div class="alert alert-danger alert-dismissible" role="alert" id="error">
+      <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
       <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputValor') ?>
     </div>
     <?php endif ?>

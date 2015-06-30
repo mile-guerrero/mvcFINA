@@ -46,8 +46,8 @@
          <div class="col-sm-10">
            <select class="form-control" id="<?php echo ordenServicioTableClass::getNameField(ordenServicioTableClass::MAQUINA_ID, true)?>" name="<?php echo ordenServicioTableClass::getNameField(ordenServicioTableClass::MAQUINA_ID, true) ?>">
                <option value="<?php echo (session::getInstance()->hasFlash('selectMaquina') or request::getInstance()->hasPost(ordenServiciotableClass::getNameField(ordenServiciotableClass::MAQUINA_ID, true))) ? request::getInstance()->getPost(ordenServiciotableClass::getNameField(ordenServiciotableClass::MAQUINA_ID, true)) : ((isset($objOS[0])) ? '' : '') ?>"><?php echo i18n::__('selectMaquina') ?></option>
-<?php foreach ($objOSM as $maq): ?>
-            <option <?php echo (isset($objOS[0]->$maquina) === true and $objOS[0]->$maquina == $maq->$idMaquina) ? 'selected' : '' ?> value="<?php echo $maq->$idMaquina ?>"><?php echo $maq->$descMaquina ?></option>
+<?php foreach ($objOSM as $key): ?>
+            <option <?php echo (request::getInstance()->hasPost(ordenServicioTableClass::getNameField(ordenServicioTableClass::MAQUINA_ID, true)) === true and request::getInstance()->getPost(ordenServicioTableClass::getNameField(ordenServicioTableClass::MAQUINA_ID, true)) == $key->$idMaquina) ? 'selected' : (isset($objOS[0]->$maquina) === true and $objOS[0]->$maquina == $key->$idMaquina) ? 'selected' : '' ?> value="<?php echo $key->$idMaquina ?>"><?php echo $key->$descMaquina ?></option>
 <?php endforeach; ?>
           </select>
       </div>
@@ -74,8 +74,8 @@
          <div class="col-sm-10">
            <select class="form-control-gonza1" id="<?php echo ordenServicioTableClass::getNameField(ordenServicioTableClass::PRODUCTO_INSUMO_ID, true)?>" name="<?php echo ordenServicioTableClass::getNameField(ordenServicioTableClass::PRODUCTO_INSUMO_ID, true) ?>">
                <option value="<?php echo (session::getInstance()->hasFlash('selectProducto') or request::getInstance()->hasPost(ordenServiciotableClass::getNameField(ordenServiciotableClass::PRODUCTO_INSUMO_ID, true))) ? request::getInstance()->getPost(ordenServiciotableClass::getNameField(ordenServiciotableClass::PRODUCTO_INSUMO_ID, true)) : ((isset($objOS[0])) ? '' : '') ?>"><?php echo i18n::__('selectProducto') ?></option>
-<?php foreach ($objOSPI as $produc): ?>
-            <option <?php echo (isset($objOS[0]->$producto) === true and $objOS[0]->$producto == $produc->$idProducto) ? 'selected' : '' ?> value="<?php echo $produc->$idProducto ?>"><?php echo $produc->$descProducto ?></option>
+<?php foreach ($objOSPI as $key): ?>
+            <option <?php echo (request::getInstance()->hasPost(ordenServicioTableClass::getNameField(ordenServicioTableClass::PRODUCTO_INSUMO_ID, true)) === true and request::getInstance()->getPost(ordenServicioTableClass::getNameField(ordenServicioTableClass::PRODUCTO_INSUMO_ID, true)) == $key->$idProducto) ? 'selected' : (isset($objOS[0]->$producto) === true and $objOS[0]->$producto == $key->$idProducto) ? 'selected' : '' ?> value="<?php echo $key->$idProducto ?>"><?php echo $key->$descProducto ?></option>
 <?php endforeach; ?>
           </select>
       
@@ -104,8 +104,8 @@
          <div class="col-sm-10">
            <select class="form-control-gonza1" id="<?php echo ordenServicioTableClass::getNameField(ordenServicioTableClass::TRABAJADOR_ID, true)?>" name="<?php echo ordenServicioTableClass::getNameField(ordenServicioTableClass::TRABAJADOR_ID, true) ?>">
                <option value="<?php echo (session::getInstance()->hasFlash('selectTrabajador') or request::getInstance()->hasPost(ordenServiciotableClass::getNameField(ordenServiciotableClass::TRABAJADOR_ID, true))) ? request::getInstance()->getPost(ordenServiciotableClass::getNameField(ordenServiciotableClass::TRABAJADOR_ID, true)) : ((isset($objOS[0])) ? '' : '') ?>"><?php echo i18n::__('selectTrabajador') ?></option>
-<?php foreach ($objOST as $trabajador): ?>
-            <option <?php echo (isset($objOS[0]->$idTrabajador) === true and $objOS[0]->$idTrabajador == $trabajador->$idTra) ? 'selected' : '' ?> value="<?php echo $trabajador->$idTra ?>"><?php echo $trabajador->$nomTrabajador ?></option>
+<?php foreach ($objOST as $key): ?>
+            <option <?php echo (request::getInstance()->hasPost(ordenServicioTableClass::getNameField(ordenServicioTableClass::TRABAJADOR_ID, true)) === true and request::getInstance()->getPost(ordenServicioTableClass::getNameField(ordenServicioTableClass::TRABAJADOR_ID, true)) == $key->$idTra) ? 'selected' : (isset($objOS[0]->$idTrabajador) === true and $objOS[0]->$idTrabajador == $key->$idTra) ? 'selected' : '' ?> value="<?php echo $key->$idTra ?>"><?php echo $key->$nomTrabajador ?></option>
 <?php endforeach; ?>
           </select>
      

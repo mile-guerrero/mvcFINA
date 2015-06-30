@@ -22,8 +22,8 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       if (request::getInstance()->hasPost('filter')) {
         $filter = request::getInstance()->getPost('filter');
         //Validar datos
-        if(isset($filter['cantidad']) and $filter['cantidad'] !== null and $filter['cantidad'] !== ""){
-        $where[solicitudInsumoTableClass::CANTIDAD] = $filter['cantidad'];
+        if(isset($filter['lote']) and $filter['lote'] !== null and $filter['lote'] !== ""){
+        $where[solicitudInsumoTableClass::LOTE_ID] = $filter['lote'];
         }
         if (isset($filter['fechaIni']) and $filter['fechaIni'] !== null and $filter['fechaIni'] !== '' and (isset($filter['fechaFin']) and $filter['fechaFin'] !== null and $filter['fechaFin'] !== '')) {
           $where[solicitudInsumoTableClass::FECHA_INICIAL] = array(
@@ -84,7 +84,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       $orderBy = array(
           loteTableClass::UBICACION
       );
-      $this->objL = loteTableClass::getAll($fields, true, $orderBy, 'ASC');
+      $this->objLote = loteTableClass::getAll($fields, true, $orderBy, 'ASC');
     
       $this->defineView('index', 'solicitudInsumo', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {

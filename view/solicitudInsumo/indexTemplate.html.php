@@ -13,6 +13,7 @@
 <?php $idProducto = productoInsumoTableClass::ID ?>
 <?php $descProducto = productoInsumoTableClass::DESCRIPCION ?>
 <?php $idLote = loteTableClass::ID ?>
+<?php $ubicacionLote = loteTableClass::UBICACION ?>
 <?php $desLote = solicitudInsumoTableClass::LOTE_ID ?>
 
 <div class="container container-fluid" id="cuerpo">
@@ -47,29 +48,24 @@
       </div>
       <div class="modal-body">
         <form class="form-horizontal" id="reportForm" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('solicitudInsumo', 'report')?>">
-          <div class="form-group">
-    <label for="reportCantidad" class="col-sm-2 control-label"><?php echo i18n::__('cantidad') ?></label>
+          
+           <div class="form-group">
+    <label for="reportLote" class="col-sm-2 control-label"><?php echo i18n::__('lote') ?></label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="reportCantidad" name="report[cantidad]" placeholder="<?php echo i18n::__('cantidad') ?>">
-    </div>
-  </div>
-<!--           <div class="form-group">
-    <label for="reportCiudad" class="col-sm-2 control-label"><?php echo i18n::__('idCiudad') ?></label>
-    <div class="col-sm-10">
-      <select class="form-control" id="reportCiudad" name="report[ciudad]">
-        <option value=""><?php echo i18n::__('selectCiudad') ?></option>
-<?php foreach ($objP as $producto): ?>
-            <option value="<?php echo $producto->$idProducto ?>"><?php echo $producto->$descProducto ?></option>
+      <select class="form-control" id="reportLote" name="report[lote]">
+        <option value=""><?php echo i18n::__('selectLote') ?></option>
+<?php foreach ($objLote as $key): ?>
+            <option value="<?php echo $key->$idLote ?>"><?php echo $key->$ubicacionLote ?></option>
 <?php endforeach; ?>
           </select>
     </div>
-  </div>-->
+  </div>
   <div class="form-group">
     <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
     <div class="col-sm-10">
-      <input type="date" class="form-control" id="reportFecha1" name="report[fecha1]">
-      <br>
-       <input type="date" class="form-control" id="reportFecha2" name="report[fecha2]">
+      <input type="date" class="form-control-filtro1" id="reportFecha1" name="report[fecha1]">
+      
+       <input type="date" class="form-control-filtro2" id="reportFecha2" name="report[fecha2]">
     </div>
   </div>
 </form>
@@ -92,37 +88,31 @@
       </div>
       <div class="modal-body">
         <form class="form-horizontal" id="filterForm" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('solicitudInsumo', 'index')?>">
-          <div class="form-group">
-    <label for="filterCantidad" class="col-sm-2 control-label"><?php echo i18n::__('cantidad') ?></label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="filterCantidad" name="filter[cantidad]" placeholder="<?php echo i18n::__('cantidad') ?>">
-    </div>
-  </div>
           
-<!--           <div class="form-group">
-    <label for="reportCiudad" class="col-sm-2 control-label"><?php echo i18n::__('idCiudad') ?></label>
+<div class="form-group">
+    <label for="filterLote" class="col-sm-2 control-label"><?php echo i18n::__('lote') ?></label>
     <div class="col-sm-10">
-      <select class="form-control" id="reportCiudad" name="report[ciudad]">
-        <option value=""><?php echo i18n::__('selectCiudad') ?></option>
-<?php foreach ($objP as $producto): ?>
-            <option value="<?php echo $producto->$idProducto ?>"><?php echo $producto->$descProducto ?></option>
+      <select class="form-control" id="filterLote" name="filter[lote]">
+        <option value=""><?php echo i18n::__('selectLote') ?></option>
+<?php foreach ($objLote as $key): ?>
+            <option value="<?php echo $key->$idLote ?>"><?php echo $key->$ubicacionLote ?></option>
 <?php endforeach; ?>
           </select>
     </div>
-  </div>-->
+  </div>
   <div class="form-group">
     <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
     <div class="col-sm-10">
-      <input type="date" class="form-control" id="filterFecha1" name="filter[fecha1]">
-      <br>
-       <input type="date" class="form-control" id="filterFecha2" name="filter[fecha2]">
+      <input type="date" class="form-control-filtro1" id="filterFecha1" name="filter[fecha1]">
+      
+       <input type="date" class="form-control-filtro2" id="filterFecha2" name="filter[fecha2]">
     </div>
   </div>
 </form>
         
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default btn btn-xs" data-dismiss="modal">  <?php echo i18n::__('cancel') ?></button>
+        <button type="button" class="btn btn-default btn btn-xs" data-dismiss="modal">  <?php echo i18n::__('cerrar') ?></button>
         <button type="button" onclick="$('#filterForm').submit()" class="btn btn-primary btn btn-xs"><?php echo i18n::__('filtros') ?></button>
       </div>
     </div>

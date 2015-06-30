@@ -33,8 +33,8 @@
          <div class="col-sm-10">
            <select class="form-control" id="<?php echo pedidoTableClass::getNameField(pedidoTableClass::EMPRESA_ID, true)?>" name="<?php echo pedidoTableClass::getNameField(pedidoTableClass::EMPRESA_ID, true) ?>">
                <option value="<?php echo (session::getInstance()->hasFlash('selectEmpresa') or request::getInstance()->hasPost(pedidoTableClass::getNameField(pedidoTableClass::EMPRESA_ID, true))) ? request::getInstance()->getPost(pedidoTableClass::getNameField(pedidoTableClass::EMPRESA_ID, true)) : ((isset($objPedido[0])) ? '' : '') ?>"><?php echo i18n::__('selectEmpresa') ?></option>
-<?php foreach ($objEmpresa as $empresa): ?>
-            <option <?php echo (isset($objPedido[0]->$idEmp) === true and $objPedido[0]->$idEmp == $empresa->$idEmpresa) ? 'selected' : '' ?> value="<?php echo $empresa->$idEmpresa ?>"><?php echo $empresa->$nomEmpresa ?></option>
+<?php foreach ($objEmpresa as $key): ?>
+            <option <?php echo (request::getInstance()->hasPost(pedidoTableClass::getNameField(pedidoTableClass::EMPRESA_ID, true)) === true and request::getInstance()->getPost(pedidoTableClass::getNameField(pedidoTableClass::EMPRESA_ID, true)) == $key->$idEmpresa) ? 'selected' : (isset($objPedido[0]->$idEmp) === true and $objPedido[0]->$idEmpresa == $key->$idEmp) ? 'selected' : '' ?> value="<?php echo $key->$idEmpresa ?>"><?php echo $key->$nomEmpresa ?></option>
 <?php endforeach; ?>
           </select>
       </div>
@@ -60,8 +60,8 @@
          <div class="col-sm-10">
            <select class="form-control-gonza1" id="<?php echo pedidoTableClass::getNameField(pedidoTableClass::PRODUCTO_INSUMO_ID, true)?>" name="<?php echo pedidoTableClass::getNameField(pedidoTableClass::PRODUCTO_INSUMO_ID, true) ?>">
                <option value="<?php echo (session::getInstance()->hasFlash('selectProducto') or request::getInstance()->hasPost(pedidoTableClass::getNameField(pedidoTableClass::PRODUCTO_INSUMO_ID, true))) ? request::getInstance()->getPost(pedidoTableClass::getNameField(pedidoTableClass::PRODUCTO_INSUMO_ID, true)) : ((isset($objPedido[0])) ? '' : '') ?>"><?php echo i18n::__('selectProducto') ?></option>
-<?php foreach ($objProducto as $produc): ?>
-            <option <?php echo (isset($objPedido[0]->$producto) === true and $objPedido[0]->$producto == $produc->$idProducto) ? 'selected' : '' ?> value="<?php echo $produc->$idProducto ?>"><?php echo $produc->$descProducto ?></option>
+<?php foreach ($objProducto as $key): ?>
+            <option <?php echo (request::getInstance()->hasPost(pedidoTableClass::getNameField(pedidoTableClass::PRODUCTO_INSUMO_ID, true)) === true and request::getInstance()->getPost(pedidoTableClass::getNameField(pedidoTableClass::PRODUCTO_INSUMO_ID, true)) == $key->$idProducto) ? 'selected' : (isset($objPedido[0]->$producto) === true and $objPedido[0]->$idProducto == $key->$producto) ? 'selected' : '' ?> value="<?php echo $key->$idProducto ?>"><?php echo $key->$descProducto ?></option>
 <?php endforeach; ?>
           </select>
      
@@ -83,8 +83,8 @@
       <div class="col-sm-10"> 
     <select class="form-control" id="<?php pedidoTableClass::getNameField(pedidoTableClass::ID_PROVEEDOR, true)?>" name="<?php echo pedidoTableClass::getNameField(pedidoTableClass::ID_PROVEEDOR, true);?>">
         <option value="<?php echo (session::getInstance()->hasFlash('selectProveedor') or request::getInstance()->hasPost(pedidoTableClass::getNameField(pedidoTableClass::ID_PROVEEDOR, true))) ? request::getInstance()->getPost(pedidoTableClass::getNameField(pedidoTableClass::ID_PROVEEDOR, true)) : ((isset($objPedido[0])) ? '' : '') ?>"><?php echo i18n::__('selectProveedor') ?></option>
-       <?php foreach($objProveedor as $proveedor):?>
-       <option <?php echo (isset($objPedido[0]->$idPro) === true and $objPedido[0]->$idPro == $proveedor->$idProveedor) ? 'selected' : '' ?> value="<?php echo $proveedor->$idProveedor?>"><?php echo $proveedor->$nomProveedor?></option>
+       <?php foreach($objProveedor as $key):?>
+       <option <?php echo (request::getInstance()->hasPost(pedidoTableClass::getNameField(pedidoTableClass::ID_PROVEEDOR, true)) === true and request::getInstance()->getPost(pedidoTableClass::getNameField(pedidoTableClass::ID_PROVEEDOR, true)) == $key->$idProveedor) ? 'selected' : (isset($objPedido[0]->$idPro) === true and $objPedido[0]->$idProveedor == $key->$idPro) ? 'selected' : '' ?> value="<?php echo $key->$idProveedor?>"><?php echo $key->$nomProveedor?></option>
        <?php endforeach;?>
    </select> 
       </div> 

@@ -23,12 +23,12 @@ class reportActionClass extends controllerClass implements controllerActionInter
         $report = request::getInstance()->getPost('report');
         //Validar datos
        
-//        if (isset($report['trabajador']) and $report['trabajador'] !== null and $report['trabajador'] !== '') {
-//          $where[manoObraTableClass::TRABAJADOR_ID] = $report['trabajador'];
-//        }
-        if (isset($report['cantidad']) and $report['cantidad'] !== null and $report['cantidad'] !== '') {
-          $where[solicitudInsumoTableClass::CANTIDAD] = $report['cantidad'];
+        if (isset($report['lote']) and $report['lote'] !== null and $report['lote'] !== '') {
+          $where[solicitudInsumoTableClass::LOTE_ID] = $report['lote'];
         }
+//        if (isset($report['cantidad']) and $report['cantidad'] !== null and $report['cantidad'] !== '') {
+//          $where[solicitudInsumoTableClass::CANTIDAD] = $report['cantidad'];
+//        }
   
         if (isset($report['fecha1']) and $report['fecha1'] !== null and $report['fecha1'] !== '' and (isset($report['fecha2']) and $report['fecha2'] !== null and $report['fecha2'] !== '')) {
           $where[solicitudInsumoTableClass::CREATED_AT] = array(
@@ -62,6 +62,15 @@ class reportActionClass extends controllerClass implements controllerActionInter
       trabajadorTableClass::NOMBRET   
       );      
       $this->objT = trabajadorTableClass::getAll($fields, true, $orderBy, 'ASC');
+      
+      $fields = array(
+          loteTableClass::ID,
+          loteTableClass::UBICACION
+      );
+      $orderBy = array(
+      loteTableClass::UBICACION  
+      );      
+      $this->objLote = loteTableClass::getAll($fields, true, $orderBy, 'ASC');
  
       $this->defineView('index', 'solicitudInsumo', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {

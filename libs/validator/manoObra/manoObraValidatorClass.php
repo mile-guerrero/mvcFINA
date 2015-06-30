@@ -40,6 +40,25 @@ namespace mvc\validator {
         $flag = true;
         session::getInstance()->setFlash('inputValor', true);
         session::getInstance()->setError('La catidad digitado sobre pasa los caracteres permitidos', 'inputValor');
+        //-------------------------------campo Cooperativa-----------------------------
+          //----campo nulo----
+      } if (self::notBlank(request::getInstance()->getPost(\manoObraTableClass::getNameField(\manoObraTableClass::COOPERATIVA_ID, true)))) {
+        $flag = true;
+        session::getInstance()->setFlash('selectCooperativa', true);
+        session::getInstance()->setError('La cooperativa es requerida', 'selectCooperativa');
+        //-------------------------------campo Labor-----------------------------
+          //----campo nulo----
+      } if (self::notBlank(request::getInstance()->getPost(\manoObraTableClass::getNameField(\manoObraTableClass::LABOR_ID, true)))) {
+        $flag = true;
+        session::getInstance()->setFlash('selectLabor', true);
+        session::getInstance()->setError('La labor es requerida', 'selectLabor');
+        
+        //-------------------------------campo Maquina-----------------------------
+          //----campo nulo----
+      } if (self::notBlank(request::getInstance()->getPost(\manoObraTableClass::getNameField(\manoObraTableClass::MAQUINA_ID, true)))) {
+        $flag = true;
+        session::getInstance()->setFlash('selectMaquina', true);
+        session::getInstance()->setError('La maquina es requerida', 'selectMaquina');
       
 //      } else if(strlen(request::getInstance()->getPost('inputCantidad')) > \manoObraTableClass::CANTIDAD_HORA_LENGTH) {
 //        $flag = true;
