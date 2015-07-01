@@ -26,7 +26,9 @@ class editLoteMasActionClass extends controllerClass implements controllerAction
             loteTableClass::UBICACION,
             loteTableClass::TAMANO,
             loteTableClass::UNIDAD_DISTANCIA_ID,
+            loteTableClass::UNIDAD_MEDIDA_ID,
             loteTableClass::DESCRIPCION,
+            loteTableClass::PRODUCCION,
             loteTableClass::FECHA_INICIO_SIEMBRA,
             loteTableClass::NUMERO_PLANTULAS,
             loteTableClass::PRESUPUESTO,
@@ -38,7 +40,7 @@ class editLoteMasActionClass extends controllerClass implements controllerAction
         );
         $this->objLote = loteTableClass::getAll($fields, true, null, null, null, null, $where);
        
-         $fields = array(     
+      $fields = array(     
       unidadDistanciaTableClass::ID, 
       unidadDistanciaTableClass::DESCRIPCION
       );
@@ -46,6 +48,16 @@ class editLoteMasActionClass extends controllerClass implements controllerAction
       unidadDistanciaTableClass::DESCRIPCION    
       ); 
       $this->objLUD = unidadDistanciaTableClass::getAll($fields, false, $orderBy, 'ASC');
+      
+      
+      $fields = array(     
+          unidadMedidaTableClass::ID, 
+          unidadMedidaTableClass::DESCRIPCION
+      );
+      $orderBy = array(
+          unidadMedidaTableClass::DESCRIPCION    
+      ); 
+      $this->objLUMedida = unidadMedidaTableClass::getAll($fields, false, $orderBy, 'ASC');
      
         
         

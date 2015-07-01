@@ -837,6 +837,8 @@ lote_index:
     - model/productoInsumoTableClass.php    
     - model/base/unidadDistanciaBaseTableClass.php
     - model/unidadDistanciaTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     
 lote_menuPrincipal:
   url:    /lote/menuPrincipal
@@ -850,6 +852,8 @@ lote_menuPrincipal:
     - model/productoInsumoTableClass.php
     - model/base/unidadDistanciaBaseTableClass.php
     - model/unidadDistanciaTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
 
 lote_insert:
   url:    /lote/insertar
@@ -863,6 +867,8 @@ lote_insert:
     - model/productoInsumoTableClass.php
     - model/base/unidadDistanciaBaseTableClass.php
     - model/unidadDistanciaTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
         
 lote_create:
   url:    /lote/crear
@@ -880,6 +886,8 @@ lote_create:
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     
 lote_insertMas:
   url:    /lote/insertarMas
@@ -893,6 +901,8 @@ lote_insertMas:
     - model/productoInsumoTableClass.php
     - model/base/unidadDistanciaBaseTableClass.php
     - model/unidadDistanciaTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
         
 lote_createMas:
   url:    /lote/crearMas
@@ -910,6 +920,8 @@ lote_createMas:
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
         
     
 lote_edit:
@@ -924,6 +936,8 @@ lote_edit:
     - model/productoInsumoTableClass.php
     - model/base/unidadDistanciaBaseTableClass.php
     - model/unidadDistanciaTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     
 lote_update:
   url:    /lote/actualizar
@@ -941,6 +955,8 @@ lote_update:
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     
 lote_delete:
   url:    /lote/eliminar
@@ -957,6 +973,8 @@ lote_delete:
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     
 lote_deleteSelect:
   url:    /lote/eliminarSeleccion
@@ -973,6 +991,8 @@ lote_deleteSelect:
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     
 lote_ver:
   url:    /lote/ver
@@ -986,6 +1006,8 @@ lote_ver:
     - model/productoInsumoTableClass.php
     - model/base/unidadDistanciaBaseTableClass.php
     - model/unidadDistanciaTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
 
 lote_filtro:
   url:    /lote/filtro
@@ -998,7 +1020,9 @@ lote_filtro:
     - model/base/productoInsumoBaseTableClass.php
     - model/productoInsumoTableClass.php
     - model/base/unidadDistanciaBaseTableClass.php
-    - model/unidadDistanciaTableClass.php    
+    - model/unidadDistanciaTableClass.php 
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     
 lote_reporte:
   url:    /lote/reporte
@@ -1016,6 +1040,8 @@ lote_reporte:
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
 
 #--------------------------modulo-tipoProductoInsumo--------------------------
  
@@ -2031,6 +2057,10 @@ empresa_deleteSelect:
   load:
       - model/base/empresaBaseTableClass.php
       - model/empresaTableClass.php
+      - hooks/logHookClass.php
+      - model/base/bitacoraBaseTableClass.php
+      - model/bitacoraTableClass.php
+      
 empresa_reporte:
   url:    /empresa/reporte
   param:  { module: empresa, action: report, format: pdf } 
@@ -2355,4 +2385,90 @@ detalleFacturaCompra_ver:
     - model/facturaCompraTableClass.php
     - model/base/proveedorBaseTableClass.php
     - model/proveedorTableClass.php
+    
+#---------------------------------enfermedad-----------------------
+
+enfermedad_index:
+  url:    /enfermedad/index
+  param:  { module: enfermedad, action: index, format: html }
+  load:
+    - model/base/enfermedadBaseTableClass.php
+    - model/enfermedadTableClass.php
+    
+    
+enfermedad_insert:
+  url:    /enfermedad/insertar
+  param:  { module: enfermedad, action: insert, format: html }
+  load:
+    - model/base/enfermedadBaseTableClass.php
+    - model/enfermedadTableClass.php
+    
+enfermedad_create:
+  url:    /enfermedad/crear
+  param:  { module: enfermedad, action: create, format: html }
+  load:
+    - model/base/enfermedadBaseTableClass.php
+    - model/enfermedadTableClass.php
+    - libs/validator/enfermedad/enfermedadValidatorClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
+    
+enfermedad_edit:
+  url:    /enfermedad/editar
+  param:  { module: enfermedad, action: edit, format: html }
+  load:
+    - model/base/enfermedadBaseTableClass.php
+    - model/enfermedadTableClass.php
+    
+enfermedad_update:
+  url:    /enfermedad/actualizar
+  param:  { module: enfermedad, action: update, format: html }
+  load:
+    - model/base/enfermedadBaseTableClass.php
+    - model/enfermedadTableClass.php
+    - libs/validator/enfermedad/enfermedadValidatorClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
+    
+enfermedad_delete:
+  url:    /enfermedad/eliminar
+  param:  { module: enfermedad, action: delete, format: json }
+  load:
+    - model/base/enfermedadBaseTableClass.php
+    - model/enfermedadTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
+      
+
+   
+enfermedad_deleteSelect:
+  url:    /enfermedad/eliminarSeleccion
+  param:  { module: enfermedad, action: deleteSelect, format: json }
+  load:
+      - model/base/enfermedadBaseTableClass.php
+      - model/enfermedadTableClass.php
+      - hooks/logHookClass.php
+      - model/base/bitacoraBaseTableClass.php
+      - model/bitacoraTableClass.php  
+    
+enfermedad_ver:
+  url:    /enfermedad/ver
+  param:  { module: enfermedad, action: ver, format: html }
+  load:
+    - model/base/enfermedadBaseTableClass.php
+    - model/enfermedadTableClass.php   
+    
+enfermedad_reporte:
+  url:    /enfermedad/reporte
+  param:  { module: enfermedad, action: report, format: pdf } 
+  load:
+    - libs/fpdf/fpdf.php 
+    - model/base/enfermedadBaseTableClass.php
+    - model/enfermedadTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php    
         

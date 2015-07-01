@@ -49,9 +49,6 @@ maquina:
   indexMaquina:
     javascript:
       - confirmar.js
-  indexOrigenMaquina:
-    javascript:
-      - confirmar.js 
   indexTipoUsoMaquina:
     javascript:
       - confirmar.js 
@@ -134,5 +131,11 @@ empresa:
   index:
     javascript:
       - confirmar.js
+      
+#-------------------modulo - enfermedad-------------------------
+enfermedad: 
+  index:
+    javascript:
+      - confirmar.js      
       
        

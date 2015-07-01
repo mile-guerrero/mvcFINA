@@ -28,6 +28,8 @@
                             <li class=""><a href="<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'indexProductoInsumo') ?>"><?php echo i18::__('insumo') ?></a></li>
                             <li><a href="<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'indexTipoProductoInsumo') ?>"><?php echo i18::__('tipo insumo') ?></a></li>
                             <li class="divider"></li>
+                            <li><a href="<?php echo routing::getInstance()->getUrlWeb('enfermedad', 'index') ?>"><?php echo i18::__('enfermedad') ?></a></li>
+                            <li class="divider"></li>
                             <li><a href="<?php echo routing::getInstance()->getUrlWeb('maquina', 'indexMaquina') ?>"><?php echo i18::__('maquina') ?></a></li>
                         </ul>
                     </li>

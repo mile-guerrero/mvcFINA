@@ -3,57 +3,46 @@
 use mvc\model\table\tableBaseClass;
 
 /**
- * Description of usuarioBaseTableClass
+ * Description of enfermedadClass
  *
  * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
  */
-class productoInsumoBaseTableClass extends tableBaseClass {
-
- private $id;
- private $descripcion;
- private $iva;
- private $cantidad;
- private $unidadMedidaId;
- private $tipoProductoInsumoId;
- private $createdAt;
- private $updatedAt;
- private $deletedAt;
- 
+class enfermedadBaseTableClass extends tableBaseClass {
+  
+  private $id;
+  private $nombre;
+  private $descripcion;
+  private $tratamiento;
+  private $createdAt;
+  private $updatedAt;
+  private $deletedAt;
 
   const ID = 'id';
+  const NOMBRE = 'nombre';
+  const NOMBRE_LENGTH = 80;
+  const DESCRIPCION = 'descripcion';
+  const DESCRIPCION_LENGTH = 400;
+  const TRATAMIENTO = 'tratamiento';
+  const TRATAMIENTO_LENGTH = 400;
   const CREATED_AT = 'created_at';
   const UPDATED_AT = 'updated_at';
   const DELETED_AT = 'deleted_at';
-  const DESCRIPCION = 'descripcion';
-  const DESCRIPCION_LENGTH = 80;
-  const IVA = 'iva';
-  const IVA_LENGTH = 10;
-  const CANTIDAD = 'cantidad';
-  const CANTIDAD_LENGTH = 20;
-  const UNIDAD_MEDIDA_ID = 'unidad_medida_id';
-  const TIPO_PRODUCTO_INSUMO_ID = 'tipo_producto_insumo_id';
+
+  
   public function get_id() {
     return $this->id;
+  }
+
+  public function get_nombre() {
+    return $this->nombre;
   }
 
   public function get_descripcion() {
     return $this->descripcion;
   }
 
-  public function get_iva() {
-    return $this->iva;
-  }
-  
-  public function get_cantidad() {
-    return $this->cantidad;
-  }
-
-  public function get_unidadMedidaId() {
-    return $this->unidadMedidaId;
-  }
-
-  public function get_tipoProductoInsumoId() {
-    return $this->tipoProductoInsumoId;
+  public function get_tratamiento() {
+    return $this->tratamiento;
   }
 
   public function get_createdAt() {
@@ -72,24 +61,16 @@ class productoInsumoBaseTableClass extends tableBaseClass {
     $this->id = $id;
   }
 
+  public function set_nombre($nombre) {
+    $this->nombre = $nombre;
+  }
+
   public function set_descripcion($descripcion) {
     $this->descripcion = $descripcion;
   }
 
-  public function set_iva($iva) {
-    $this->iva = $iva;
-  }
-
-  public function set_cantidad($cantidad) {
-    $this->cantidad = $cantidad;
-  }
-  
-  public function set_unidadMedidaId($unidadMedidaId) {
-    $this->unidadMedidaId = $unidadMedidaId;
-  }
-
-  public function set_tipoProductoInsumoId($tipoProductoInsumoId) {
-    $this->tipoProductoInsumoId = $tipoProductoInsumoId;
+  public function set_tratamiento($tratamiento) {
+    $this->tratamiento = $tratamiento;
   }
 
   public function set_createdAt($createdAt) {
@@ -104,14 +85,13 @@ class productoInsumoBaseTableClass extends tableBaseClass {
     $this->deletedAt = $deletedAt;
   }
 
-    
-
-    /**
+      
+  /**
    * Obtiene el nombre de la tabla
    * @return string
    */
   static public function getNameTable() {
-    return 'producto_insumo';
+    return 'enfermedad';
   }
 
   /**
@@ -170,7 +150,7 @@ class productoInsumoBaseTableClass extends tableBaseClass {
    * variables publica los nombres de las columnas de la consulta o una
    * instancia de \PDOException en caso de fracaso.
    */
-  public static function getAll($fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null, $where = null, $table = null) {
+  public static function getAll($fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null,$where = NULL, $table = null) {
     return parent::getAll(self::getNameTable(), $fields, $deletedLogical, $orderBy, $order, $limit, $offset, $where, $table);
   }
 

@@ -55,10 +55,10 @@ class loteTableClass extends loteBaseTableClass {
     }
   }
 
-  public static function loteupdateMas($id, $fechaSiembra, $numero, $insumo, $presupuesto) {
+  public static function loteupdateMas($id, $fechaSiembra, $numero, $insumo, $presupuesto, $produccion, $unidadMedida) {
     try {
 
-      $sql = 'UPDATE ' . '  ' . loteTableClass::getNameTable() . ' SET ' . ' ' . loteTableClass::FECHA_INICIO_SIEMBRA . '=' . "'" . $fechaSiembra . "'" . ',' . loteTableClass::NUMERO_PLANTULAS . '=' . $numero . ',' . loteTableClass::PRODUCTO_INSUMO_ID . '=' . $insumo . ',' . loteTableClass::PRESUPUESTO . '=' . $presupuesto . '  '
+      $sql = 'UPDATE ' . '  ' . loteTableClass::getNameTable() . ' SET ' . ' ' . loteTableClass::FECHA_INICIO_SIEMBRA . '=' . "'" . $fechaSiembra . "'" . ',' . loteTableClass::NUMERO_PLANTULAS . '=' . $numero . ',' . loteTableClass::PRODUCTO_INSUMO_ID . '=' . $insumo . ',' . loteTableClass::PRESUPUESTO . '=' . $presupuesto . ',' . loteTableClass::PRODUCCION . '=' . $produccion . ',' . loteTableClass::UNIDAD_MEDIDA_ID . '=' . $unidadMedida . '  '
               . ' WHERE ' . loteTableClass::ID . '=' . $id . ' ';
 
 

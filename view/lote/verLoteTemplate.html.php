@@ -10,6 +10,7 @@
 <?php $presu = loteTableClass::PRESUPUESTO ?>
 <?php $nombre_ciudad = loteTableClass::ID_CIUDAD ?>
 <?php $nombreInsumo = loteTableClass::PRODUCTO_INSUMO_ID ?>
+ <?php $desUnidadMedida = loteTableClass::UNIDAD_MEDIDA_ID ?>
 <div class="container container-fluid" id="cuerpo">
   <header id="">
 
@@ -63,6 +64,10 @@
             <tr>
               <th><?php echo i18n::__('presupuesto') ?></th>      
               <td><?php echo $key->$presu ?></td>
+            </tr>
+            <tr>
+              <th><?php echo i18n::__('produccion') ?></th>      
+              <td><?php echo $key->$presu .' '. unidadMedidaTableClass::getNameUnidadMedida($key->$desUnidadMedida) ?></td>
             </tr>
             
          

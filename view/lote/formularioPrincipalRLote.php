@@ -11,6 +11,12 @@
 <?php $numero = loteTableClass::NUMERO_PLANTULAS ?>
 <?php $presupuesto = loteTableClass::PRESUPUESTO ?>
 
+<?php $produccion = loteTableClass::PRODUCCION ?>
+
+<?php $idUnidadMedidaId = loteTableClass::UNIDAD_MEDIDA_ID ?>
+<?php $idUnidadMedida = unidadMedidaTableClass::ID ?>
+<?php $desUnidadMedida = unidadMedidaTableClass::DESCRIPCION ?>
+
 <?php $idUni = loteTableClass::UNIDAD_DISTANCIA_ID ?>
 <?php $idUnidad = unidadDistanciaTableClass::ID ?>
 <?php $desUnidad = unidadDistanciaTableClass::DESCRIPCION ?>
@@ -124,6 +130,30 @@
           <input  class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputPresupuesto') or request::getInstance()->hasPost(loteTableClass::getNameField(loteTableClass::PRESUPUESTO, true))) ? request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::PRESUPUESTO, true)) : ((isset($objLote[0])) ? $objLote[0]->$presupuesto : '') ?>" type="text" name="<?php echo loteTableClass::getNameField(loteTableClass::PRESUPUESTO, true) ?>" placeholder="<?php echo i18n::__('presupuesto') ?>" >
       </div>
  </div>   
+
+
+
+<?php if(session::getInstance()->hasError('inputProduccion')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert" id="error">
+    <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+       <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputProduccion') ?>
+    </div>
+    <?php endif ?>
+  
+<div class="form-group">
+      <label for="<?php echo loteTableClass::getNameField(loteTableClass::PRODUCCION, true) ?>" class="col-sm-2"> <?php echo i18n::__('produccion') ?>: </label>     
+      <div class="col-sm-10">
+          <input  class="form-control-gonza1" value="<?php echo (session::getInstance()->hasFlash('inputProduccion') or request::getInstance()->hasPost(loteTableClass::getNameField(loteTableClass::PRODUCCION, true))) ? request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::PRODUCCION, true)) : ((isset($objLote[0])) ? $objLote[0]->$produccion : '') ?>" type="text" name="<?php echo loteTableClass::getNameField(loteTableClass::PRODUCCION, true) ?>" placeholder="<?php echo i18n::__('produccion') ?>" >
+     
+          
+    <select  class="form-control-gonza2" id="<?php loteTableClass::getNameField(loteTableClass::ID, true)?>" name="<?php echo loteTableClass::getNameField(loteTableClass::UNIDAD_MEDIDA_ID, true);?>">
+       <option ><?php echo i18n::__('selectUnidadDis') ?></option>
+       <?php foreach($objLUMedida as $C):?>
+       <option  <?php echo (isset($objLote[0]->$idUnidadMedidaId) === true and $objLote[0]->$idUnidadMedidaId == $C->$idUnidadMedida) ? 'selected' : '' ?>  value="<?php echo $C->$idUnidadMedida?>"><?php echo $C->$desUnidadMedida?></option>
+       <?php endforeach;?>
+   </select>
+     </div>
+    </div> 
   
   
    

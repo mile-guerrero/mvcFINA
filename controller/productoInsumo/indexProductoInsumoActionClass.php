@@ -49,6 +49,7 @@ class indexProductoInsumoActionClass extends controllerClass implements controll
           productoInsumoTableClass::ID,
           productoInsumoTableClass::DESCRIPCION,
           productoInsumoTableClass::IVA,
+          productoInsumoTableClass::CANTIDAD,
           productoInsumoTableClass::UNIDAD_MEDIDA_ID,
           productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID,
           productoInsumoTableClass::CREATED_AT,

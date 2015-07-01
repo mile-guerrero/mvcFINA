@@ -21,6 +21,7 @@ class verProductoInsumoActionClass extends controllerClass implements controller
           productoInsumoTableClass::ID,
           productoInsumoTableClass::DESCRIPCION,
           productoInsumoTableClass::IVA,
+          productoInsumoTableClass::CANTIDAD,
           productoInsumoTableClass::UNIDAD_MEDIDA_ID,
           productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID,
           productoInsumoTableClass::CREATED_AT,

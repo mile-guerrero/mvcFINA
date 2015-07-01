@@ -24,6 +24,7 @@ class updateProductoInsumoActionClass extends controllerClass implements control
         $id = request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::ID, true));
         $descripcion = request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::DESCRIPCION, true));
         $iva = request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::IVA, true));
+        $cantidad = request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::CANTIDAD, true));
         $unidad = request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::UNIDAD_MEDIDA_ID, true));
         $tipo = request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID, true));
         
@@ -35,6 +36,7 @@ class updateProductoInsumoActionClass extends controllerClass implements control
         $data = array(
             productoInsumoTableClass::DESCRIPCION => $descripcion,
             productoInsumoTableClass::IVA => $iva,
+            productoInsumoTableClass::CANTIDAD => $cantidad,
             productoInsumoTableClass::UNIDAD_MEDIDA_ID => $unidad,
             productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID => $tipo
         );

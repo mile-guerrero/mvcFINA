@@ -723,3 +723,42 @@ labor:
     security: true  
     credentials:
       - [admin, consultor]      
+      
+#-------------------modulo - enfermedad----------------------------  
+enfermedad:
+  index:
+    security: true
+    credentials:
+      - [admin, Bahamon]
+  insert:
+    security: true
+    credentials:
+      - [admin, bahamon]
+  create:
+    security: true
+    credentials:
+      - [admin, bahamon]
+  edit: 
+    security: true
+    credentials:
+      - [admin, bahamon]
+  update:
+    security: true
+    credentials:
+      - [admin, bahamon]
+  delete:
+    security: true
+    credentials:
+      - [admin, bahamon]
+  deleteSelect:  
+    security: true
+    credentials:
+      - [admin]
+  ver:
+    security: true
+    credentials:
+      - [admin, consultor]
+  report:
+    security: true  
+    credentials:
+      - [admin, consultor]      

@@ -13,10 +13,12 @@ class loteBaseTableClass extends tableBaseClass {
   private $ubicacion;
   private $tamano;
   private $unidadDistanciaId;
+  private $unidadMedidaId;
   private $descripcion;
   private $fechaInicioSiembra;
   private $numeroPlantulas;
   private $presupuesto;
+  private $produccion;
   private $productoInsumoId;
   private $idCiudad;  
   private $createdAt;
@@ -28,7 +30,10 @@ class loteBaseTableClass extends tableBaseClass {
   const UBICACION_LENGTH = 60;
   const TAMANO = 'tamano';
   const TAMANO_LENGTH = 30;
+  const PRODUCCION = 'produccion';
+  const PRODUCCION_LENGTH = 30;
   const UNIDAD_DISTANCIA_ID = 'unidad_distancia_id';  
+  const UNIDAD_MEDIDA_ID = 'unidad_medida_id'; 
   const DESCRIPCION = 'descripcion';
   const DESCRIPCION_LENGTH = 80;
   const FECHA_INICIO_SIEMBRA = 'fecha_inicio_siembra';
@@ -58,6 +63,10 @@ class loteBaseTableClass extends tableBaseClass {
   public function get_unidadDistanciaId() {
     return $this->unidadDistanciaId;
   }
+  
+  public function get_unidadMedidaId() {
+    return $this->unidadMedidaId;
+  }
 
   public function get_descripcion() {
     return $this->descripcion;
@@ -72,6 +81,10 @@ class loteBaseTableClass extends tableBaseClass {
 
   public function get_presupuesto() {
     return $this->presupuesto;
+  }
+  
+  public function get_produccion() {
+    return $this->produccion;
   }
 
  
@@ -111,9 +124,17 @@ class loteBaseTableClass extends tableBaseClass {
   public function set_unidadDistanciaId($unidadDistanciaId) {
     $this->unidadDistanciaId = $unidadDistanciaId ;
   }
+  
+  public function set_unidadMedidaId($unidadMedidaId) {
+    $this->unidadMedidaId = $unidadMedidaId ;
+  }
 
   public function set_descripcion($descripcion) {
     $this->descripcion = $descripcion;
+  }
+  
+  public function set_produccion($produccion) {
+    $this->produccion = $produccion;
   }
   
   public function set_fechaInicioSiembra($fechaInicioSiembra) {
