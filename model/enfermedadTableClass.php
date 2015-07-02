@@ -23,7 +23,58 @@ class enfermedadTableClass extends enfermedadBaseTableClass {
        throw  $exc;
   }
   
-    } 
+    }
+    
+    public static function getNameEnfermedad($id){
+    try {
+      $sql = 'SELECT ' . enfermedadTableClass::NOMBRE .  ' As nombre  '
+             . '  FROM ' . enfermedadTableClass::getNameTable() . '  '
+             . '  WHERE ' . enfermedadTableClass::ID . ' = :id';
+      $params = array(
+          ':id' => $id
+      );
+      $answer = model::getInstance()->prepare($sql);
+      $answer->execute($params);
+      $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+      return $answer[0]->nombre;
+   } catch (Exception $exc) {
+      throw $exc;
+    }
+  }
+  
+  public static function getNameDes($id){
+    try {
+      $sql = 'SELECT ' . enfermedadTableClass::DESCRIPCION .  ' As descripcion  '
+             . '  FROM ' . enfermedadTableClass::getNameTable() . '  '
+             . '  WHERE ' . enfermedadTableClass::ID . ' = :id';
+      $params = array(
+          ':id' => $id
+      );
+      $answer = model::getInstance()->prepare($sql);
+      $answer->execute($params);
+      $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+      return $answer[0]->descripcion;
+   } catch (Exception $exc) {
+      throw $exc;
+    }
+  }
+  
+   public static function getNameTratamiento($id){
+    try {
+      $sql = 'SELECT ' . enfermedadTableClass::TRATAMIENTO .  ' As tratamiento  '
+             . '  FROM ' . enfermedadTableClass::getNameTable() . '  '
+             . '  WHERE ' . enfermedadTableClass::ID . ' = :id';
+      $params = array(
+          ':id' => $id
+      );
+      $answer = model::getInstance()->prepare($sql);
+      $answer->execute($params);
+      $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+      return $answer[0]->tratamiento;
+   } catch (Exception $exc) {
+      throw $exc;
+    }
+  }
    
   
 }

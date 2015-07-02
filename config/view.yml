@@ -138,4 +138,11 @@ enfermedad:
     javascript:
       - confirmar.js      
       
+#-------------------modulo - historial-------------------------
+historial: 
+  index:
+    javascript:
+      - confirmar.js    
+      
+      
        

@@ -3,6 +3,7 @@
 <?php use mvc\view\viewClass as view ?>
 <?php use mvc\session\sessionClass as session ?>
 <?php use mvc\request\requestClass as request ?>
+
 <?php $idCliente = clienteTableClass::ID ?>
 <?php $nombreC = clienteTableClass::NOMBRE ?>
 <?php $apellido = clienteTableClass::APELLIDO ?>

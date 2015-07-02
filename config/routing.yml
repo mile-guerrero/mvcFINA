@@ -2471,4 +2471,96 @@ enfermedad_reporte:
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php    
+    
+#---------------------------------historial-----------------------
+
+historial_index:
+  url:    /historial/index
+  param:  { module: historial, action: index, format: html }
+  load:
+    - model/base/historialBaseTableClass.php
+    - model/historialTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - model/base/enfermedadBaseTableClass.php
+    - model/enfermedadTableClass.php
+    
+    
+historial_insert:
+  url:    /historial/insertar
+  param:  { module: historial, action: insert, format: html }
+  load:
+    - model/base/historialBaseTableClass.php
+    - model/historialTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - model/base/enfermedadBaseTableClass.php
+    - model/enfermedadTableClass.php
+    
+historial_create:
+  url:    /historial/crear
+  param:  { module: historial, action: create, format: html }
+  load:
+    - model/base/historialBaseTableClass.php
+    - model/historialTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - model/base/enfermedadBaseTableClass.php
+    - model/enfermedadTableClass.php
+    - libs/validator/historial/historialValidatorClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
+    
+historial_edit:
+  url:    /historial/editar
+  param:  { module: historial, action: edit, format: html }
+  load:
+    - model/base/historialBaseTableClass.php
+    - model/historialTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - model/base/enfermedadBaseTableClass.php
+    - model/enfermedadTableClass.php
+    
+historial_update:
+  url:    /historial/actualizar
+  param:  { module: historial, action: update, format: html }
+  load:
+    - model/base/historialBaseTableClass.php
+    - model/historialTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - model/base/enfermedadBaseTableClass.php
+    - model/enfermedadTableClass.php
+    - libs/validator/historial/historialValidatorClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
+        
+historial_ver:
+  url:    /historial/ver
+  param:  { module: historial, action: ver, format: html }
+  load:
+    - model/base/historialBaseTableClass.php
+    - model/historialTableClass.php   
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - model/base/enfermedadBaseTableClass.php
+    - model/enfermedadTableClass.php
+    
+historial_reporte:
+  url:    /historial/reporte
+  param:  { module: historial, action: report, format: pdf } 
+  load:
+    - libs/fpdf/fpdf.php 
+    - model/base/historialBaseTableClass.php
+    - model/historialTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - model/base/enfermedadBaseTableClass.php
+    - model/enfermedadTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php    
         

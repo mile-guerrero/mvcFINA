@@ -761,4 +761,35 @@ enfermedad:
   report:
     security: true  
     credentials:
+      - [admin, consultor]  
+      
+#-------------------modulo - historial----------------------------
+historial:
+  index:
+    security: true
+    credentials:
+      - [admin, Bahamon]
+  insert:
+    security: true
+    credentials:
+      - [admin, bahamon]
+  create:
+    security: true
+    credentials:
+      - [admin, bahamon]
+  edit: 
+    security: true
+    credentials:
+      - [admin, bahamon]
+  update:
+    security: true
+    credentials:
+      - [admin, bahamon]
+  ver:
+    security: true
+    credentials:
+      - [admin, consultor]
+  report:
+    security: true
+    credentials:
       - [admin, consultor]      
