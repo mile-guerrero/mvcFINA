@@ -182,6 +182,11 @@ namespace mvc\validator {
 //        session::getInstance()->setFlash('inputPresupuesto', true);
 //        session::getInstance()->setError('El presupuesto no permite letras, solo numeros', 'inputPresupuesto');
 //      }
+      if(strlen(request::getInstance()->getPost(\loteTableClass::getNameField(\loteTableClass::PRODUCCION, true))) > \loteTableClass::PRODUCCION_LENGTH) {
+        $flag = true;
+        session::getInstance()->setFlash('inputProduccion', true);
+        session::getInstance()->setError('La produccion digitado es mayor en cantidad de caracteres a lo permitido', 'inputProduccion');
+      }     
       //-------------------------------condiccion de bandera true-----------------------------
       if ($flag === true) {
         request::getInstance()->setMethod('GET');

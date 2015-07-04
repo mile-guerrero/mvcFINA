@@ -307,7 +307,7 @@ CREATE TABLE lote
 	numero_plantulas BigInt NULL,
 	produccion BigInt NULL,
 	unidad_medida_id BIGINT NULL,
-	presupuesto VARCHAR(80) NULL,
+	presupuesto BIGINT(80) NULL,
 	producto_insumo_id BIGINT NULL,	
     id_ciudad BIGINT NULL,		
 	created_at TIMESTAMP DEFAULT now() NOT NULL,

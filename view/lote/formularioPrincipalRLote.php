@@ -147,7 +147,7 @@
      
           
     <select  class="form-control-gonza2" id="<?php loteTableClass::getNameField(loteTableClass::ID, true)?>" name="<?php echo loteTableClass::getNameField(loteTableClass::UNIDAD_MEDIDA_ID, true);?>">
-       <option ><?php echo i18n::__('selectUnidadDis') ?></option>
+      <option value="null" ><?php echo i18n::__('selectUnidadDis') ?></option>
        <?php foreach($objLUMedida as $C):?>
        <option  <?php echo (isset($objLote[0]->$idUnidadMedidaId) === true and $objLote[0]->$idUnidadMedidaId == $C->$idUnidadMedida) ? 'selected' : '' ?>  value="<?php echo $C->$idUnidadMedida?>"><?php echo $C->$desUnidadMedida?></option>
        <?php endforeach;?>

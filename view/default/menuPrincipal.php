@@ -64,11 +64,20 @@
             <ul class="dropdown-menu" role="menu">
               <li><a href="<?php echo routing::getInstance()->getUrlWeb('usuarioCredencial', 'index') ?>"><?php echo i18::__('usuarioCredencial') ?></a></li>
             <li><a href="<?php echo routing::getInstance()->getUrlWeb('credencial', 'index') ?>"><?php echo i18::__('credencial') ?></a></li>
-              <li><a href="<?php echo routing::getInstance()->getUrlWeb('cooperativa', 'index') ?>">cooperativa</a></li>
-              <li><a href="<?php echo routing::getInstance()->getUrlWeb('empresa', 'index') ?>">empresa</a></li>
-              <li><a href="<?php echo routing::getInstance()->getUrlWeb('labor', 'index') ?>">labor</a></li>
+              <li><a href="<?php echo routing::getInstance()->getUrlWeb('cooperativa', 'index') ?>"><?php echo i18::__('cooperativa') ?></a></li>
+              <li><a href="<?php echo routing::getInstance()->getUrlWeb('empresa', 'index') ?>"><?php echo i18::__('empresa') ?></a></li>
+              <li><a href="<?php echo routing::getInstance()->getUrlWeb('labor', 'index') ?>"><?php echo i18::__('labor') ?></a></li>
               <li class="divider"></li>
                <li><a href="<?php echo routing::getInstance()->getUrlWeb('enfermedad', 'index') ?>"><?php echo i18::__('enfermedad') ?></a></li>
+            </ul>
+          </li>
+          
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo i18::__('subir archivos') ?> <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="<?php echo routing::getInstance()->getUrlWeb('archivo', 'index') ?>"><?php echo i18::__('archivo de texto') ?></a></li>
+            <li><a href="<?php echo routing::getInstance()->getUrlWeb('imagen', 'index') ?>"><?php echo i18::__('imagen') ?></a></li>
+               <li><a href="<?php echo routing::getInstance()->getUrlWeb('video', 'index') ?>"><?php echo i18::__('video') ?></a></li>
             </ul>
           </li>
 

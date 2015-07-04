@@ -792,4 +792,23 @@ historial:
   report:
     security: true
     credentials:
-      - [admin, consultor]      
+      - [admin, consultor] 
+      
+archivo:
+  index:
+    security: true
+    credentials:
+      - [admin, Bahamon]
+      
+imagen:
+  index:
+    security: true
+    credentials:
+      - [admin, Bahamon]
+      
+video:
+  index:
+    security: true
+    credentials:
+      - [admin, Bahamon]      
+      

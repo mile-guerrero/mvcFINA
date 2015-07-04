@@ -2562,5 +2562,26 @@ historial_reporte:
     - model/enfermedadTableClass.php
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
-    - model/bitacoraTableClass.php    
+    - model/bitacoraTableClass.php   
+    
+#---------------------------------archivo-----------------------
+
+archivo_index:
+  url:    /archivo/index
+  param:  { module: archivo, action: index, format: html }
+   
+    
+#---------------------------------imagen-----------------------
+
+imagen_index:
+  url:    /imagen/index
+  param:  { module: imagen, action: index, format: html }
+    
+    
+#---------------------------------video-----------------------
+
+video_index:
+  url:    /video/index
+  param:  { module: video, action: index, format: html }
+     
         
