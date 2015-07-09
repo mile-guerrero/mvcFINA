@@ -1,0 +1,38 @@
+string jugador1 ;
+            string jugador2 ;
+            Console.WriteLine("ingrese el nombre del jugador 1");
+            jugador1 = Convert.ToString(Console.ReadLine());
+         
+            Console.WriteLine("ingrese el nombre del jugador 2");
+            jugador2 = Convert.ToString(Console.ReadLine());
+            
+            Char s;
+            Console.WriteLine("desea tirar el dado jugador : "+ jugador1 +" si(s)/ no(n)");
+            s = Convert.ToChar(Console.ReadLine());
+            do {
+                Random random = new Random();
+                int dado1;
+                int dado2;
+               
+                dado1 = random.Next(1, 7);
+                dado2 = random.Next(1, 7);
+                int dadoj1;
+                int dadoj2;
+
+                dadoj1 = dado1 + dado2;
+                dadoj2 = dado1 + dado2;
+                if(dadoj1 != 0){
+                    Console.WriteLine(" Lanzo Los Dados:{0}", dadoj1);
+                }
+                
+                if( dadoj1 != 0){
+                    Console.WriteLine("desea tirar el dado jugador : " + jugador2 + "si(s)/ no(n)");
+                    s = Convert.ToChar(Console.ReadLine());
+                   
+                    Console.WriteLine(" Lanzo Los Dados:{0}", dadoj2);
+                    Console.ReadLine();
+                }
+                
+                    
+            }
+            while (s != 'n');

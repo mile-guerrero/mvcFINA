@@ -21,21 +21,25 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       if (request::getInstance()->isMethod('POST')) {
 
        $file = request::getInstance()->getFile(usuarioTableClass::getNameField(usuarioTableClass::USUARIO, true));
-        
-        //llamar la funcion validateInsert()
-       // validator::validateInsert();
-
-//        echo "<pre>";
-//        print_r($file);
-//        echo "</pre>";
-        
-      $ext = substr($file['name'], -3,3);
-      $nameFile = md5($file['name'] . strtotime(date(config::getFormatTimestamp()))) . '.' . $ext;
-       move_uploaded_file($file['tmp_name'], config::getPathAbsolute() . 'web/uploadImagen/' . $nameFile);//para insertar en la carpeta
-       
+       $ext = substr($file['name'], -3,3);
+       $nameFile = md5($file['name'] . strtotime(date(config::getFormatTimestamp()))) . '.' . $ext;
+      // move_uploaded_file($file['tmp_name'], config::getPathAbsolute() . 'web/uploadImagen/' . $nameFile);//para insertar en la carpeta
+       $tamano_archivo = substr($file['size'], -6, 6);
       // unlink(config::getPathAbsolute() . 'web/uploadImagen/9b56b8f83c0a37908320d3445429edf8.jpg'); //aqui es para eliminar un archivo
+if ($ext == "jpg" || $ext == "gif" || $ext == "png") {
+            if (move_uploaded_file($file['tmp_name'], config::getPathAbsolute() . 'web/uploadImagen/' . $nameFile)&& ($tamano_archivo < 1000000)) {
+//            $nameFile = md5($file['name'] . strtotime(date(config::getFormatTimestamp()))) . '.' . $ext;
+            session::getInstance()->setSuccess('El archivo subio correctamente');
+          } else {
+            session::getInstance()->setError('Hubo un error al grabar el archivo');
+          }
 
-//        exit();
+          //echo '<img src="' . routing::getInstance()->getUrlImg('../uploadArchivo/' . $nameFile) . '"/>';
+//        $this->nameFile = md5($file['name'] . strtotime(date(config::getFormatTimestamp()))) . '.' . $ext;
+        }else {
+          session::getInstance()->setError('No es un tipo de archivo válido');
+        }
+
      
        //echo '<img src="' . routing::getInstance()->getUrlImg('../uploadArchivo/' . $nameFile) . '"/>';
        $this->nameFile = md5($file['name'] . strtotime(date(config::getFormatTimestamp()))) . '.' . $ext;

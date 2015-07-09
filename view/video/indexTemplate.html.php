@@ -1,13 +1,9 @@
 <?php mvc\view\viewClass::includePartial('default/menuPrincipal') ?>
-<?php
-
-use mvc\routing\routingClass as routing ?>
-<?php
-use mvc\i18n\i18nClass as i18n ?>
-<?php
-use mvc\view\viewClass as view ?>
-<?php
-use mvc\session\sessionClass as session ?>
+<?php use mvc\routing\routingClass as routing ?>
+<?php use mvc\i18n\i18nClass as i18n ?>
+<?php use mvc\view\viewClass as view?>
+<?php use mvc\session\sessionClass as session ?>
+<?php use mvc\request\requestClass as request ?>
 
 
 <div class="container container-fluid" id="cuerpo">
@@ -27,7 +23,7 @@ use mvc\session\sessionClass as session ?>
   <article id='derecha'>
     <form enctype="multipart/form-data"  class="form-horizontal"  class="form-horizontal" role="form"  method="post" action="<?php echo routing::getInstance()->getUrlWeb('video', ((isset($objUsuarios)) ? 'update' : 'index')) ?>">
   
- 
+ <?php view::includeHandlerMessage()?> 
   
   
   <div class="form-group">
@@ -49,6 +45,10 @@ use mvc\session\sessionClass as session ?>
   </article>
   
   </div>
- <img src="<?php echo routing::getInstance()->getUrlImg('../updateVideo/' . $nameFile); ?>" />
-<!--<?php echo '<img src="' . routing::getInstance()->getUrlImg('../updateVideo/' . $nameFile) . '"/>' ?>-->
+ <video controls>
+  <source src="somevideo.webm" type="video/webm">
+  <source src="somevideo.mp4" type="video/mp4">
+  I'm sorry; your browser doesn't support HTML5 video.
+  <!-- You can embed a Flash player here, to play your mp4 video in older browsers -->
+</video>
   </div>

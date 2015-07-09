@@ -38,13 +38,32 @@
     
   <input class="btn btn-lg btn-success btn-xs" type="submit" value="<?php echo i18n::__(((isset($objUsuarios)) ? 'update' : 'register')) ?>">
    <a class="btn btn-lg btn-default btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('archivo', 'index') ?>" ><?php echo i18n::__('atras') ?></a>
-
+   <a class="btn btn-lg btn-success btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('archivo', 'ver') ?>" ><?php echo i18n::__('ver') ?></a>
    
    
   </form>
   </article>
   
   </div>
- <img src="<?php echo routing::getInstance()->getUrlImg('../uploadArchivo/' . $nameFile); ?>" />
-<!--<?php echo '<img src="' . routing::getInstance()->getUrlImg('../uploadArchivo/' . $nameFile) . '"/>' ?>-->
+ 
+<!--<div>
+ <?php
+  if ($directorio = opendir("./uploadArchivo")){ //ruta actual
+while ($archivo = readdir($directorio)) //obtenemos un archivo y luego otro sucesivamente
+{
+    if ($archivo != '.' && $archivo != '..')//verificamos si es o no un directorio
+    {
+     echo "Archivo: <strong>  $archivo </strong><br />" ; 
+       }
+
+     }
+  
+    }
+  ?>
+</div>-->
+
+<!--<p>Cargando en un iframe<br />
+<a href="pdf/pdf.php?archivo=Sqlite" target="visor">ver pdf</a>
+</p>
+<iframe name="visor" width="600" height="400" src="about:blank"></iframe>-->
   </div>
