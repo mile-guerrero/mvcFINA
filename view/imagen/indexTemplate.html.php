@@ -38,13 +38,13 @@
     
   <input class="btn btn-lg btn-success btn-xs" type="submit" value="<?php echo i18n::__(((isset($objUsuarios)) ? 'update' : 'register')) ?>">
    <a class="btn btn-lg btn-default btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('imagen', 'index') ?>" ><?php echo i18n::__('atras') ?></a>
-
+<a class="btn btn-lg btn-warning btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('imagen', 'ver') ?>" ><?php echo i18n::__('ver') ?></a>
+   
    
    
   </form>
   </article>
   
   </div>
- <img src="<?php echo routing::getInstance()->getUrlImg('../uploadImagen/' . $nameFile); ?>" />
-<!--<?php echo '<img src="' . routing::getInstance()->getUrlImg('../uploadImagen/' . $nameFile) . '"/>' ?>-->
+ 
   </div>

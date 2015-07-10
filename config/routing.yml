@@ -2574,6 +2574,9 @@ archivo_ver:
   url:    /archivo/ver
   param:  { module: archivo, action: ver, format: html }  
    
+archivo_eliminar:
+  url:    /archivo/eliminar
+  param:  { module: archivo, action: eliminar, format: html }     
     
 #---------------------------------imagen-----------------------
 
@@ -2583,7 +2586,11 @@ imagen_index:
     
 imagen_ver:
   url:    /imagen/ver
-  param:  { module: imagen, action: ver, format: html }      
+  param:  { module: imagen, action: ver, format: html } 
+  
+imagen_eliminar:
+  url:    /imagen/eliminar
+  param:  { module: imagen, action: eliminar, format: html }  
 #---------------------------------video-----------------------
 
 video_index:
@@ -2593,6 +2600,10 @@ video_index:
   
 video_ver:
   url:    /video/ver
-  param:  { module: video, action: ver, format: html }    
+  param:  { module: video, action: ver, format: html } 
+  
+video_eliminar:
+  url:    /video/eliminar
+  param:  { module: video, action: eliminar, format: html }  
      
         

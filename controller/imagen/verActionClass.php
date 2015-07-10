@@ -18,7 +18,7 @@ class verActionClass extends controllerClass implements controllerActionInterfac
   public function execute() {
     try {
 
-      $this->defineView('ver', 'archivo', session::getInstance()->getFormatOutput());
+      $this->defineView('ver', 'imagen', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
       echo $exc->getMessage();
       echo '<br>';

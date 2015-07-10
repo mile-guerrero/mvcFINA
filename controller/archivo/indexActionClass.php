@@ -21,7 +21,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       if (request::getInstance()->isMethod('POST')) {
 
         $file = request::getInstance()->getFile(usuarioTableClass::getNameField(usuarioTableClass::USUARIO, true));
-//        print_r($file);
+        //print_r($file);
         $ext = substr($file['name'], -3);
        
         $tamano_archivo = substr($file['size'], -6, 6);

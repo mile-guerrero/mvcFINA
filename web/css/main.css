@@ -316,5 +316,10 @@ table > thead > tr, table > tfoot > tr {
   margin: 2px 30px 10px 0px;
     }
     
+#margenImagen{
+  width: 180px;
+  height: 150px;
+    }    
+    
     
 
