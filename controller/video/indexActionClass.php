@@ -20,26 +20,43 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       
       if (request::getInstance()->isMethod('POST')) {
 
-      $file = request::getInstance()->getFile(usuarioTableClass::getNameField(usuarioTableClass::USUARIO, true));
-      $ext = substr($file['name'], -3,3);
-      $nameFile = md5($file['name'] . strtotime(date(config::getFormatTimestamp()))) . '.' . $ext;
-     echo $tamano_archivo = substr($file['size'], -6, 6);
-     print_r ($file);
-       move_uploaded_file($file['tmp_name'], config::getPathAbsolute() . 'web/updateVideo/' . $nameFile);//para insertar en la carpeta
-      // unlink(config::getPathAbsolute() . 'web/updateVideo/9b56b8f83c0a37908320d3445429edf8.jpg'); //aqui es para eliminar un archivo
-//    if ($ext == "mp3") {
-//            if (move_uploaded_file($file['tmp_name'], config::getPathAbsolute() . 'web/updateVideo/' . $nameFile)&& ($tamano_archivo < 1000000)) {
-//
-//            session::getInstance()->setSuccess('El archivo subio correctamente');
-//          } else {
-//            session::getInstance()->setError('Hubo un error al grabar el archivo');
-//          }
-//
-//        }else {
-//          session::getInstance()->setError('No es un tipo de archivo válido');
-//        }
-//       
+        $file = request::getInstance()->getFile(videoTableClass::getNameField(videoTableClass::NOMBRE, true));   
+//        echo '<pre>';
+//        print_r($file);
+//        echo '</pre>';
+//        exit();   
+        $long = -3;
+        
+        
+        $ext = substr($file['name'], $long);
+       
+        $sizeKB = $file['size'] / 1024;
+       
+        $nameFile = md5($file['name'] . strtotime(date(config::getFormatTimestamp()))) . '.' . $ext;
+        
+  
+       if ($ext == "mp4") {
+            if (move_uploaded_file($file['tmp_name'], config::getPathAbsolute() . 'web/uploadVideo/' . $nameFile)&& ($sizeKB < 4096)) {
+            session::getInstance()->setSuccess('El archivo subio correctamente');
+             $extencion = substr($file['name'], $long);
+        $hash = $file['type'];
+      
+      $data = array(
+            videoTableClass::NOMBRE => $file['name'],
+            videoTableClass::EXTENCION => $ext,
+            videoTableClass::HASH => $nameFile
+        );
+        videoTableClass::insert($data);
+          } else {
+            session::getInstance()->setError('Hubo un error al grabar el archivo');
+          }
+
+        }else {
+          session::getInstance()->setError('No es un tipo de archivo válido');
+        }
+      
       }
+     
       
       $this->defineView('index', 'video', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {

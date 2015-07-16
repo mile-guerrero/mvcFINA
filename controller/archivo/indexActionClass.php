@@ -17,44 +17,52 @@ class indexActionClass extends controllerClass implements controllerActionInterf
 
   public function execute() {
     try {
-
+      
+      
+ 
+      
+      //--------------------------------------------
+     
       if (request::getInstance()->isMethod('POST')) {
 
-        $file = request::getInstance()->getFile(usuarioTableClass::getNameField(usuarioTableClass::USUARIO, true));
-        //print_r($file);
-        $ext = substr($file['name'], -3);
+        $file = request::getInstance()->getFile(archivoTableClass::getNameField(archivoTableClass::NOMBRE, true));   
+//        echo '<pre>';
+//        print_r($file);
+//        echo '</pre>';
+//        exit();   
+        $long = -3;
+        if ($file['type'] === 'application/msword') {
+          $long = -3;
+        } else if ($file['type'] === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
+          $long = -4;
+        }else if ($file['type'] === 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet') {
+          $long = -4;
+        }else{
+          $long = -3;
+        }
+        
+        $ext = substr($file['name'], $long);
        
-        $tamano_archivo = substr($file['size'], -6, 6);
+        $sizeKB = $file['size'] / 1024;
+       
         $nameFile = md5($file['name'] . strtotime(date(config::getFormatTimestamp()))) . '.' . $ext;
-        // move_uploaded_file($file['tmp_name'], config::getPathAbsolute() . 'web/uploadArchivo/' . $nameFile);//para insertar en la carpeta
-        // unlink(config::getPathAbsolute() . 'web/uploadArchivo/9b56b8f83c0a37908320d3445429edf8.jpg'); //aqui es para eliminar un archivo
-        if ($ext == "txt" || $ext == "pdf" || $ext == "zip" || $ext == "doc") {
-          if (move_uploaded_file($file['tmp_name'], config::getPathAbsolute() . 'web/uploadArchivo/' . $nameFile)&& ($tamano_archivo <= 1000000)) {
-//            $nameFile = md5($file['name'] . strtotime(date(config::getFormatTimestamp()))) . '.' . $ext;
+        
+       
+        
+        if ($ext == "txt" || $ext == "pdf" || $ext == "zip" || $ext == "doc" || $ext == "docx" || $ext == "xlsx") {
+          if (move_uploaded_file($file['tmp_name'], config::getPathAbsolute() . 'web/uploadArchivo/' . $nameFile)&& ($sizeKB < 2048)) {
             session::getInstance()->setSuccess('El archivo subio correctamente');
-          } else {
-            session::getInstance()->setError('Hubo un error al grabar el archivo');
-          }
+             $extencion = substr($file['name'], $long);
+        $hash = $file['type'];
+       
+      
 
-          //echo '<img src="' . routing::getInstance()->getUrlImg('../uploadArchivo/' . $nameFile) . '"/>';
-//        $this->nameFile = md5($file['name'] . strtotime(date(config::getFormatTimestamp()))) . '.' . $ext;
-        } else if ($ext == "ocx") {   //solo para word            
-          if (move_uploaded_file($file['tmp_name'], config::getPathAbsolute() . 'web/uploadArchivo/' . $nameFile)&& ($tamano_archivo < 1000000)) {
-            $newExt = 'docx';
-            $newNameFile = md5($file['name'] . strtotime(date(config::getFormatTimestamp()))) . '.' . $newExt;
-            $newname = config::getPathAbsolute() . 'web/uploadArchivo/' . $newNameFile;
-            rename(config::getPathAbsolute() . 'web/uploadArchivo/' . $nameFile, $newname); //solo para word
-            session::getInstance()->setSuccess('El archivo subio correctamente');
-          } else {
-            session::getInstance()->setError('Hubo un error al grabar el archivo');
-          }
-        } else if ($ext == "lsx") {   //solo para exel            
-          if (move_uploaded_file($file['tmp_name'], config::getPathAbsolute() . 'web/uploadArchivo/' . $nameFile)&& ($tamano_archivo < 1000000)) {
-            $newExt = 'xlsx';
-            $newNameFile = md5($file['name'] . strtotime(date(config::getFormatTimestamp()))) . '.' . $newExt;
-            $newname = config::getPathAbsolute() . 'web/uploadArchivo/' . $newNameFile;
-            rename(config::getPathAbsolute() . 'web/uploadArchivo/' . $nameFile, $newname); //solo para exel
-            session::getInstance()->setSuccess('El archivo subio correctamente');
+        $data = array(
+            archivoTableClass::NOMBRE => $file['name'],
+            archivoTableClass::EXTENCION => $ext,
+            archivoTableClass::HASH => $nameFile
+        );
+        archivoTableClass::insert($data);
           } else {
             session::getInstance()->setError('Hubo un error al grabar el archivo');
           }
@@ -62,24 +70,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
           session::getInstance()->setError('No es un tipo de archivo válido');
         }
       }//fin if principal -------------------------------------------------------
-//hacer una condicion de asimilar la extencion con una imagen 
-//      if($ext == 'pdf'){
-//      echo '<img src="' . routing::getInstance()->getUrlImg('../img/reporte.gif') . '"/>' ;         
-//      }
- 
-      
-   //---------------------------------------------------------------------------   
-//  if ($directorio = opendir("./uploadArchivo")){ //ruta actual
-//while ($archivo = readdir($directorio)) //obtenemos un archivo y luego otro sucesivamente
-//{
-//    if ($archivo != '.' && $archivo != '..')//verificamos si es o no un directorio
-//    {
-//     echo "Archivo: <strong>  $archivo </strong><br />" ; 
-//       }
-//
-//     }
-//  
-//    }
+
       
       //------------------------------------------------------------------------
       $this->defineView('index', 'archivo', session::getInstance()->getFormatOutput());

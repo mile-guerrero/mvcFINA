@@ -2569,41 +2569,125 @@ historial_reporte:
 archivo_index:
   url:    /archivo/index
   param:  { module: archivo, action: index, format: html }
+  load:
+    - model/base/archivoBaseTableClass.php
+    - model/archivoTableClass.php
   
 archivo_ver:
   url:    /archivo/ver
-  param:  { module: archivo, action: ver, format: html }  
+  param:  { module: archivo, action: ver, format: html }
+  load:
+    - model/base/archivoBaseTableClass.php
+    - model/archivoTableClass.php
+        
    
 archivo_eliminar:
   url:    /archivo/eliminar
-  param:  { module: archivo, action: eliminar, format: html }     
+  param:  { module: archivo, action: delete, format: json }  
+  load:
+    - model/base/archivoBaseTableClass.php
+    - model/archivoTableClass.php
+    
+    
     
 #---------------------------------imagen-----------------------
 
 imagen_index:
   url:    /imagen/index
   param:  { module: imagen, action: index, format: html }
+  load:
+    - model/base/imagenBaseTableClass.php
+    - model/imagenTableClass.php
+  
     
 imagen_ver:
   url:    /imagen/ver
   param:  { module: imagen, action: ver, format: html } 
+  load:
+    - model/base/imagenBaseTableClass.php
+    - model/imagenTableClass.php
   
 imagen_eliminar:
-  url:    /imagen/eliminar
-  param:  { module: imagen, action: eliminar, format: html }  
+  url:    /imagen/delete
+  param:  { module: imagen, action: delete, format: json }  
+  load:
+    - model/base/imagenBaseTableClass.php
+    - model/imagenTableClass.php
+    
+imagen_delete:
+  url:    /imagen/delete
+  param:  { module: imagen, action: deleteImagen, format: html }  
+  load:
+    - model/base/imagenBaseTableClass.php
+    - model/imagenTableClass.php    
 #---------------------------------video-----------------------
 
 video_index:
   url:    /video/index
   param:  { module: video, action: index, format: html }
+  load:
+    - model/base/videoBaseTableClass.php
+    - model/videoTableClass.php
   
   
 video_ver:
   url:    /video/ver
-  param:  { module: video, action: ver, format: html } 
+  param:  { module: video, action: ver, format: html }
+  load:
+    - model/base/videoBaseTableClass.php
+    - model/videoTableClass.php
   
 video_eliminar:
-  url:    /video/eliminar
-  param:  { module: video, action: eliminar, format: html }  
+  url:    /video/delete
+  param:  { module: video, action: delete, format: json } 
+  load:
+    - model/base/videoBaseTableClass.php
+    - model/videoTableClass.php
+    
+#--------------------------modulo-crear usuario --------------------------
+
+crearUsuario_insert:
+  url:    /crearUsuario/insertar
+  param:  { module: crearUsuario, action: insert, format: html }
+  load:
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php
+    
+    
+crearUsuario_create:
+  url:    /crearUsuario/crear
+  param:  { module: crearUsuario, action: create, format: html }
+  load:
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php
+    - libs/validator/crearUsuario/crearUsuarioValidatorClass.php
+#    - hooks/logHookClass.php
+#    - model/base/bitacoraBaseTableClass.php
+#    - model/bitacoraTableClass.php  
+
+#-------------------modulo -crear usuario credencial----------------------------  
+
+crearUsuarioCredencial_insert:
+  url:    /crearUsuarioCredencial/insertar
+  param:  { module: crearUsuarioCredencial, action: insert, format: html }
+  load:
+    - model/base/usuarioCredencialBaseTableClass.php
+    - model/usuarioCredencialTableClass.php
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+        
+crearUsuarioCredencial_create:
+  url:    /crearUsuarioCredencial/crear
+  param:  { module: crearUsuarioCredencial, action: create, format: html }
+  load:
+    - model/base/usuarioCredencialBaseTableClass.php
+    - model/usuarioCredencialTableClass.php
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+    
      
         

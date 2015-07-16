@@ -17,6 +17,17 @@ class verActionClass extends controllerClass implements controllerActionInterfac
 
   public function execute() {
     try {
+      
+      $where = null;
+      
+     $fields = array(
+          imagenTableClass::ID,
+          imagenTableClass::NOMBRE,
+          imagenTableClass::EXTENCION,
+          imagenTableClass::HASH
+      );
+           
+      $this->objImagen = imagenTableClass::getAll($fields, false, null, null, null, null, $where);
 
       $this->defineView('ver', 'imagen', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {

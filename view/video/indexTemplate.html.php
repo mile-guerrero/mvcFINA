@@ -29,26 +29,16 @@
   <div class="form-group">
       <label for="" class="col-sm-2"> <?php echo i18n::__('subir archivos') ?>:</label>     
       <div class="col-sm-10">
-        <input class="form-control"  value=""  type="file" name="<?php echo usuarioTableClass::getNameField(usuarioTableClass::USUARIO, true) ?>" required>
+        <input class="form-control"  value=""  type="file" name="<?php echo videoTableClass::getNameField(videoTableClass::NOMBRE, true) ?>" required>
      </div>
-  </div>  
-  
- 
-  
+  </div> 
     
-  <input class="btn btn-lg btn-success btn-xs" type="submit" value="<?php echo i18n::__(((isset($objUsuarios)) ? 'update' : 'register')) ?>">
+  <input class="btn btn-lg btn-success btn-xs" type="submit" value="<?php echo i18n::__(((isset($objVideo)) ? 'update' : 'register')) ?>">
    <a class="btn btn-lg btn-default btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('video', 'index') ?>" ><?php echo i18n::__('atras') ?></a>
-
-   
-   
+<a class="btn btn-lg btn-warning btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('video', 'ver') ?>" ><?php echo i18n::__('ver') ?></a>
   </form>
   </article>
   
   </div>
- <video controls>
-  <source src="somevideo.webm" type="video/webm">
-  <source src="somevideo.mp4" type="video/mp4">
-  I'm sorry; your browser doesn't support HTML5 video.
-  <!-- You can embed a Flash player here, to play your mp4 video in older browsers -->
-</video>
+ 
   </div>

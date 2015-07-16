@@ -13,7 +13,7 @@ use mvc\i18n\i18nClass as i18n;
  *
  * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
  */
-class eliminarActionClass extends controllerClass implements controllerActionInterface {
+class deleteActionClass extends controllerClass implements controllerActionInterface {
 
   public function execute() {
     try {
@@ -55,23 +55,46 @@ class eliminarActionClass extends controllerClass implements controllerActionInt
 //  
 //    }
   
-      if (request::getInstance()->hasPost('filter')) {
-        $filter = request::getInstance()->getPost('filter');
-        //Validar datos
+//      if (request::getInstance()->hasPost('filter')) {
+//        $filter = request::getInstance()->getPost('filter');
+//        //Validar datos
+//       
+//        if (request::getInstance()->isMethod('POST')) {
+//           $documento = $filter['documento'];
+//        if (isset($filter['documento']) and $filter['documento'] !== null and $filter['documento'] !== '') {
+//          unlink(config::getPathAbsolute() . 'web/uploadArchivo/' . $filter['documento']);
+//          session::getInstance()->setSuccess('El Archivo Fue Eliminado Exitosamente');
+//        }//cierre del filtro documento
+//      
+//      }
+//      
+//        } 
+      if (request::getInstance()->isMethod('POST')and request::getInstance()->isAjaxRequest()) {    
+
+        $id = request::getInstance()->getPost(videoTableClass::getNameField(videoTableClass::HASH, true));
+        
+        $ids = array(
+            videoTableClass::ID => $id
+        );
+       videoTableClass::delete($ids, false);
        
-        if (request::getInstance()->isMethod('POST')) {
-           $documento = $filter['documento'];
-        if (isset($filter['documento']) and $filter['documento'] !== null and $filter['documento'] !== '') {
-          unlink(config::getPathAbsolute() . 'web/uploadImagen/' . $filter['documento']);
-          session::getInstance()->setSuccess('El Archivo Fue Eliminado Exitosamente');
-        }//cierre del filtro documento
+        $this->arrayAjax = array(
+            'code'=> 200,
+            'msg'=> 'Eliminacion exitosa'
+            );
+        session::getInstance()->setSuccess('El campo Fue Eliminado Exitosamente');
+        
+          
+        $this->defineView('delete', 'imagen', session::getInstance()->getFormatOutput());
+        
       
-      }
-      
-        } 
+      }//cierre del if
+       else {
+        routing::getInstance()->redirect('imagen', 'ver');
+      }//cierre del else
 
       //------------------------------------------------------------------------
-      $this->defineView('ver', 'imagen', session::getInstance()->getFormatOutput());
+      $this->defineView('ver', 'archivo', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
       echo $exc->getMessage();
       echo '<br>';

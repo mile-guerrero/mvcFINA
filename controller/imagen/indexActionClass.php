@@ -20,29 +20,43 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       
       if (request::getInstance()->isMethod('POST')) {
 
-       $file = request::getInstance()->getFile(usuarioTableClass::getNameField(usuarioTableClass::USUARIO, true));
-       $ext = substr($file['name'], -3,3);
-       $nameFile = md5($file['name'] . strtotime(date(config::getFormatTimestamp()))) . '.' . $ext;
-      // move_uploaded_file($file['tmp_name'], config::getPathAbsolute() . 'web/uploadImagen/' . $nameFile);//para insertar en la carpeta
-       $tamano_archivo = substr($file['size'], -6, 6);
-      // unlink(config::getPathAbsolute() . 'web/uploadImagen/9b56b8f83c0a37908320d3445429edf8.jpg'); //aqui es para eliminar un archivo
-if ($ext == "jpg" || $ext == "gif" || $ext == "png") {
-            if (move_uploaded_file($file['tmp_name'], config::getPathAbsolute() . 'web/uploadImagen/' . $nameFile)&& ($tamano_archivo < 1000000)) {
-//            $nameFile = md5($file['name'] . strtotime(date(config::getFormatTimestamp()))) . '.' . $ext;
+        $file = request::getInstance()->getFile(imagenTableClass::getNameField(imagenTableClass::NOMBRE, true));   
+//        echo '<pre>';
+//        print_r($file);
+//        echo '</pre>';
+//        exit();   
+        $long = -3;
+        
+        
+        $ext = substr($file['name'], $long);
+       
+        $sizeKB = $file['size'] / 1024;
+       
+        $nameFile = md5($file['name'] . strtotime(date(config::getFormatTimestamp()))) . '.' . $ext;
+        
+        
+       if ($ext == "jpg" || $ext == "gif" || $ext == "png") {
+            if (move_uploaded_file($file['tmp_name'], config::getPathAbsolute() . 'web/uploadImagen/' . $nameFile)&& ($sizeKB < 2048)) {
             session::getInstance()->setSuccess('El archivo subio correctamente');
+            $extencion = substr($file['name'], $long);
+        $hash = $file['type'];
+       
+      
+
+        $data = array(
+            imagenTableClass::NOMBRE => $file['name'],
+            imagenTableClass::EXTENCION => $ext,
+            imagenTableClass::HASH => $nameFile
+        );
+        imagenTableClass::insert($data);
           } else {
             session::getInstance()->setError('Hubo un error al grabar el archivo');
           }
 
-          //echo '<img src="' . routing::getInstance()->getUrlImg('../uploadArchivo/' . $nameFile) . '"/>';
-//        $this->nameFile = md5($file['name'] . strtotime(date(config::getFormatTimestamp()))) . '.' . $ext;
         }else {
           session::getInstance()->setError('No es un tipo de archivo válido');
         }
-
-     
-       //echo '<img src="' . routing::getInstance()->getUrlImg('../uploadArchivo/' . $nameFile) . '"/>';
-       $this->nameFile = md5($file['name'] . strtotime(date(config::getFormatTimestamp()))) . '.' . $ext;
+      
       }
       
       $this->defineView('index', 'imagen', session::getInstance()->getFormatOutput());

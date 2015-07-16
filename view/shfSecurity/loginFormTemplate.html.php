@@ -8,6 +8,7 @@ use mvc\view\viewClass as view ?>
 use mvc\session\sessionClass as session ?>
 <?php
 use mvc\i18n\i18nClass as i18n ?>
+<?php use mvc\i18n\i18nClass as i18 ?>
 
 
 <header>
@@ -23,12 +24,17 @@ use mvc\i18n\i18nClass as i18n ?>
       </div>
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        
+        
+        
         <ul class="nav navbar-nav">
           <form id="formulario1" class="form-horizontal" role="form" action="<?php echo routing::getInstance()->getUrlWeb('shfSecurity', 'login') ?>" method="POST">
 
             <div class="form-group"> 
               <div class="col-sm-10">
-                <label class="form-signin-heading"><?php echo i18n::__('identificacion') ?></label> 
+                <a class="form-signin-heading" id="crear" href="<?php echo routing::getInstance()->getUrlWeb('crearUsuario', 'insert') ?>"><?php echo   i18::__('crearUsuario')?></a>
+                
+                <label  class="form-signin-heading"><?php echo i18n::__('identificacion') ?></label> 
                 <label for="inputUser" class="sr-only">Email address</label>
                 <input class="form-control-gonza1" type="text" id="inputUser" name="inputUser" class="form-control" placeholder="<?php echo i18n::__('user') ?>" required autofocus>
                 <label for="inputPassword" class="sr-only">Password</label>
@@ -45,6 +51,9 @@ use mvc\i18n\i18nClass as i18n ?>
 
           </form> 
         </ul>
+        
+        
+        
       </div>
     </div>
     <div class="responcive" id="Logeo">  

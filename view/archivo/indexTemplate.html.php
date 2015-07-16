@@ -21,7 +21,7 @@
  
 <div class="container container-fluid" id="cuerpo">
   <article id='derecha'>
-    <form enctype="multipart/form-data"  class="form-horizontal"  class="form-horizontal" role="form"  method="post" action="<?php echo routing::getInstance()->getUrlWeb('archivo', ((isset($objUsuarios)) ? 'update' : 'index')) ?>">
+    <form enctype="multipart/form-data"  class="form-horizontal"  class="form-horizontal" role="form"  method="post" action="<?php echo routing::getInstance()->getUrlWeb('archivo', ((isset($objArchivo)) ? 'update' : 'index')) ?>">
   
  
   
@@ -29,41 +29,14 @@
   <div class="form-group">
       <label for="" class="col-sm-2"> <?php echo i18n::__('subir archivos') ?>:</label>     
       <div class="col-sm-10">
-        <input class="form-control"  value=""  type="file" name="<?php echo usuarioTableClass::getNameField(usuarioTableClass::USUARIO, true) ?>" required>
+        <input class="form-control"  value=""  type="file" name="<?php echo archivoTableClass::getNameField(archivoTableClass::NOMBRE, true) ?>" required>
      </div>
   </div>  
-  
- 
-  
-    
   <input class="btn btn-lg btn-success btn-xs" type="submit" value="<?php echo i18n::__(((isset($objUsuarios)) ? 'update' : 'register')) ?>">
    <a class="btn btn-lg btn-default btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('archivo', 'index') ?>" ><?php echo i18n::__('atras') ?></a>
    <a class="btn btn-lg btn-warning btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('archivo', 'ver') ?>" ><?php echo i18n::__('ver') ?></a>
    
-   
   </form>
   </article>
-  
   </div>
- 
-<!--<div>
- <?php
-  if ($directorio = opendir("./uploadArchivo")){ //ruta actual
-while ($archivo = readdir($directorio)) //obtenemos un archivo y luego otro sucesivamente
-{
-    if ($archivo != '.' && $archivo != '..')//verificamos si es o no un directorio
-    {
-     echo "Archivo: <strong>  $archivo </strong><br />" ; 
-       }
-
-     }
-  
-    }
-  ?>
-</div>-->
-
-<!--<p>Cargando en un iframe<br />
-<a href="pdf/pdf.php?archivo=Sqlite" target="visor">ver pdf</a>
-</p>
-<iframe name="visor" width="600" height="400" src="about:blank"></iframe>-->
   </div>

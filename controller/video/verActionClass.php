@@ -17,8 +17,18 @@ class verActionClass extends controllerClass implements controllerActionInterfac
 
   public function execute() {
     try {
+      $where = null;
+      
+     $fields = array(
+          videoTableClass::ID,
+          videoTableClass::NOMBRE,
+          videoTableClass::EXTENCION,
+          videoTableClass::HASH
+      );
+           
+      $this->objVideo = videoTableClass::getAll($fields, false, null, null, null, null, $where);
 
-      $this->defineView('ver', 'archivo', session::getInstance()->getFormatOutput());
+      $this->defineView('ver', 'video', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
       echo $exc->getMessage();
       echo '<br>';

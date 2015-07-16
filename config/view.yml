@@ -142,7 +142,23 @@ enfermedad:
 historial: 
   index:
     javascript:
-      - confirmar.js    
+      - confirmar.js 
+  
+#-------------------modulo - archivo-------------------------
+archivo: 
+  ver:
+    javascript:
+      - confirmar.js  
+      
+imagen: 
+  ver:
+    javascript:
+      - confirmar.js 
+      
+video: 
+  ver:
+    javascript:
+      - confirmar.js       
       
       
        

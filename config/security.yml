@@ -15,7 +15,8 @@ principal:
   index:
     security: true
     credentials:
-      - [admin, Bahamon]    
+      - [admin]  
+      - [consultor]
 #-------------------modulo - default----------------------------    
 default:
   index:
@@ -132,485 +133,586 @@ ordenServicio:
     security: true
     credentials:
       - [admin, Bahamon]
+      - [consultor]
   insert:
     security: true
     credentials:
       - [admin, bahamon]
+      - [consultor]
   create:
     security: true
     credentials:
       - [admin, bahamon]
+      - [consultor]
   edit: 
     security: true
     credentials:
       - [admin, bahamon]
+      - [consultor]
   update:
     security: true
     credentials:
       - [admin, bahamon]
+      - [consultor]
   ver:
     security: true
     credentials:
       - [admin, consultor]
+      - [consultor]
+      
   report:
     security: true
     credentials:
-      - [admin, consultor]
+      - [admin]
+      
+  
 
 #-------------------modulo - maquina--------------------------
 maquina:
   indexMaquina:
     security: true
     credentials:
-      - [admin, Bahamon]
+      - [admin]
+      - [consultor]
   insertMaquina:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   createMaquina:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   editMaquina: 
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   updateMaquina:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   deleteMaquina:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   deleteSelectMaquina:  
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   verMaquina:
     security: true
     credentials:
-      - [admin, consultor]
+      - [admin]
+      - [consultor]
   reportMaquina:
     security: true
     credentials:
-      - [admin, consultor]
+      - [admin]
+      - [consultor]
   indexTipoUsoMaquina:
     security: true
     credentials:
-      - [admin, Bahamon]
+      - [admin]
+      - [consultor]
   insertTipoUsoMaquina:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   createTipoUsoMaquina:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   verTipoUsoMaquina:
     security: true
     credentials:
-      - [admin, consultor]
+      - [admin]
+      - [consultor]
   reportTipoUsoMaquina:
     security: true  
     credentials:
-      - [admin, consultor]
+      - [admin]
+      - [consultor]
   indexProveedor:
     security: true
     credentials:
-      - [admin, Bahamon]
+      - [admin]
+      - [consultor]
   insertProveedor:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   createProveedor:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   editProveedor: 
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   updateProveedor:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   deleteProveedor:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   deleteSelectProveedor:  
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   verProveedor:
     security: true
     credentials:
-      - [admin, consultor]
+      - [admin]
+      - [consultor]
   reportProveedor:
     security: true  
     credentials:
-      - [admin, consultor]
-
-#-------------------modulo - origen maquina-------------------
-  
-
-#-------------------modulo - tipo uso maquina----------------
-  
+      - [admin]
+      - [consultor]
 
 #-------------------modulo - cliente-------------------------
 cliente:
   indexCliente:
     security: true
     credentials:
-      - [admin, Bahamon]
+      - [admin]
+      - [consultor]
   insertCliente:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   createCliente:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   editCliente: 
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   updateCliente:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   deleteCliente:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   deleteSelectCliente:  
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   verCliente:
     security: true
     credentials:
-      - [admin, consultor]
+      - [admin]
+      - [consultor]
   reportCliente:
     security: true
     credentials:
-      - [admin, consultor]
+      - [admin]
+      - [consultor]
 
 #-------------------modulo - lote----------------------------
 lote:
   indexLote:
     security: true
     credentials:
-      - [admin, Bahamon]
+      - [admin]
+      - [consultor]
   insertLote:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   createLote:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   editLote: 
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   updateLote:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   editLoteMas: 
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   updateLoteMas:
     security: true
     credentials:
-      - [admin, bahamon]    
+      - [admin]
+      - [consultor]   
   deleteLote:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   deleteSelectLote:  
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   verLote:
     security: true
     credentials:
-      - [admin, consultor]
+      - [admin]
+      - [consultor]
   reportLote:
     security: true
     credentials:
-      - [admin, consultor]
-
-#-------------------modulo - tipoProductoInsumo--------------
-
-  
+      - [admin]
+      - [consultor]
 
 #-------------------modulo - productoInsumo------------------
 productoInsumo:
   indexProductoInsumo:
     security: true
     credentials:
-      - [admin, Bahamon]
+      - [admin]
+      - [consultor]
   insertProductoInsumo:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   createProductoInsumo:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   editProductoInsumo: 
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   updateProductoInsumo:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   deleteProductoInsumo:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   deleteSelectProductoInsumo:  
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   verProductoInsumo:
     security: true
     credentials:
-      - [admin, consultor]
+      - [admin]
+      - [consultor]
   reportProductoInsumo:
     security: true
     credentials:
-      - [admin, consultor]
+      - [admin]
+      - [consultor]
   indexTipoProductoInsumo:
     security: true
     credentials:
-      - [admin, Bahamon]
+      - [admin]
+      - [consultor]
   insertTipoProductoInsumo:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   createTipoProductoInsumo:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   editTipoProductoInsumo: 
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   updateTipoProductoInsumo:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   deleteTipoProductoInsumo:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   deleteSelectTipoProductoInsumo:  
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   verTipoProductoInsumo:
     security: true
     credentials:
-      - [admin, consultor]
+      - [admin]
+      - [consultor]
   reportTipoProductoInsumo:
     security: true
     credentials:
-      - [admin, consultor]
-#-------------------modulo - tipoId--------------------------
-
+      - [admin]
+      - [consultor]
 
 #-------------------modulo - solicitud insumo-----------------
 solicitudInsumo:
   index:
     security: true
     credentials:
-      - [admin, Bahamon]
+      - [admin]
+      - [consultor]
   insert:
     security: true
     credentials:
-      - [admin, bahamon]
+     - [admin]
+     - [consultor]
   create:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   edit: 
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   update:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   ver:
     security: true
     credentials:
-      - [admin, consultor]
+      - [admin]
+      - [consultor]
   report:
     security: true
     credentials:
-      - [admin, consultor]
+      - [admin]
+      - [consultor]
 
 #-----------------------Pedido-------------------    
 pedido:
   index:
     security: true
     credentials:
-      - [admin, Bahamon]
+      - [admin]
+      - [consultor]
   insert:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   create:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   edit: 
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   update:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   delete:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   deleteSelect:  
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   ver:
     security: true
     credentials:
-      - [admin, consultor]
+      - [admin]
+      - [consultor]
   report:
     security: true 
     credentials:
-      - [admin, consultor]  
+      - [admin]
+      - [consultor]  
 
 #-----------------------trabajador-------------------    
 trabajador:
   index:
     security: true
     credentials:
-      - [admin, Bahamon]
+      - [admin]
+      - [consultor]
   insert:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   create:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   edit: 
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   update:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   delete:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   deleteSelect:  
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   ver:
     security: true
     credentials:
-      - [admin, consultor]
+      - [admin]
+      - [consultor]
   report:
     security: true 
     credentials:
-      - [admin, consultor]
+      - [admin]
+      - [consultor]
       
 #-----------------------mano de obra-------------------    
 manoObra:
   index:
     security: true
     credentials:
-      - [admin, Bahamon]
+      - [admin]
+      - [consultor]
   insert:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   create:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   edit: 
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   update:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   delete:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   deleteSelect:  
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   ver:
     security: true
     credentials:
-      - [admin, consultor]
+      - [admin]
+      - [consultor]
   report:
     security: true 
     credentials:
-      - [admin, consultor]  
+      - [admin]
+      - [consultor] 
       
 #-----------------------pago del trabajador-------------------    
 pagoTrabajador:
   index:
     security: true
     credentials:
-      - [admin, Bahamon]
+      - [admin]
+      - [consultor]
   insert:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   create:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   edit: 
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   update:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   delete:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   deleteSelect:  
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   ver:
     security: true
     credentials:
-      - [admin, consultor]
+      - [admin]
+      - [consultor]
   report:
     security: true 
     credentials:
-      - [admin, consultor]      
+      - [admin]
+      - [consultor]      
       
 #-----------------------cooperativa-------------------
   
@@ -618,39 +720,48 @@ cooperativa:
   index:
     security: true
     credentials:
-      - [admin, Bahamon]
+      - [admin]
+      - [consultor]
   insert:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   create:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   edit: 
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   update:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   delete:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   deleteSelect:  
     security: true
     credentials:
       - [admin]
+      - [consultor]
   ver:
     security: true
     credentials:
-      - [admin, consultor]
+      - [admin]
+      - [consultor]
   report:
     security: true  
     credentials:
-      - [admin, consultor]
+      - [admin]
+      - [consultor]
       
 #-----------------------empresa-------------------
   
@@ -658,39 +769,48 @@ empresa:
   index:
     security: true
     credentials:
-      - [admin, Bahamon]
+      - [admin]
+      - [consultor]
   insert:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   create:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   edit: 
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   update:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   delete:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   deleteSelect:  
     security: true
     credentials:
       - [admin]
+      - [consultor]
   ver:
     security: true
     credentials:
-      - [admin, consultor]
+      - [admin]
+      - [consultor]
   report:
     security: true  
     credentials:
-      - [admin, consultor]
+      - [admin]
+      - [consultor]
       
 #-----------------------labor-------------------
   
@@ -698,117 +818,155 @@ labor:
   index:
     security: true
     credentials:
-      - [admin, Bahamon]
+      - [admin]
+      - [consultor]
   insert:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   create:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   edit: 
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   update:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   ver:
     security: true
     credentials:
-      - [admin, consultor]
+      - [admin]
+      - [consultor]
   report:
     security: true  
     credentials:
-      - [admin, consultor]      
+      - [admin]
+      - [consultor]    
       
 #-------------------modulo - enfermedad----------------------------  
 enfermedad:
   index:
     security: true
     credentials:
-      - [admin, Bahamon]
+      - [admin]
+      - [consultor]
   insert:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   create:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   edit: 
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   update:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   delete:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   deleteSelect:  
     security: true
     credentials:
       - [admin]
+      - [consultor]
   ver:
     security: true
     credentials:
-      - [admin, consultor]
+      - [admin]
+      - [consultor]
   report:
     security: true  
     credentials:
-      - [admin, consultor]  
+      - [admin]
+      - [consultor] 
       
 #-------------------modulo - historial----------------------------
 historial:
   index:
     security: true
     credentials:
-      - [admin, Bahamon]
+      - [admin]
+      - [consultor]
   insert:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   create:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   edit: 
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   update:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   ver:
     security: true
     credentials:
-      - [admin, consultor]
+      - [admin]
+      - [consultor]
   report:
     security: true
     credentials:
-      - [admin, consultor] 
+      - [admin]
+      - [consultor]
       
 archivo:
   index:
     security: true
     credentials:
-      - [admin, Bahamon]
+      - [admin]
+      - [consultor]
+  
+  delete:
+    security: true
+    credentials:
+      - [admin]
+      - [consultor]
+      
+  ver:
+    security: true
+    credentials:
+      - [admin]
+      - [consultor]  
       
 imagen:
   index:
     security: true
     credentials:
-      - [admin, Bahamon]
+      - [admin]
+      - [consultor]
       
 video:
   index:
     security: true
     credentials:
-      - [admin, Bahamon]      
+      - [admin]
+      - [consultor]    
       
