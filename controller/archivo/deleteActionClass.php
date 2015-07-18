@@ -17,31 +17,48 @@ class deleteActionClass extends controllerClass implements controllerActionInter
 
   public function execute() {
     try {
-      
-      
-      
-      
-      
-      
-  
-//      if (request::getInstance()->hasPost('filter')) {
-//        $filter = request::getInstance()->getPost('filter');
-//        //Validar datos
-//       
-//        if (request::getInstance()->isMethod('POST')) {
-//           $documento = $filter['documento'];
-//        if (isset($filter['documento']) and $filter['documento'] !== null and $filter['documento'] !== '') {
-//          unlink(config::getPathAbsolute() . 'web/uploadArchivo/' . $filter['documento']);
-//          session::getInstance()->setSuccess('El Archivo Fue Eliminado Exitosamente');
-//        }//cierre del filtro documento
-//      
-//      }
-//      
-//        } 
 
-      //------------------------------------------------------------------------
-   
        
+      
+      
+  if (request::getInstance()->isMethod('POST')and request::getInstance()->isAjaxRequest()) {    
+
+        $id = request::getInstance()->getPost(archivoTableClass::getNameField(archivoTableClass::ID, true));
+        
+        $fields = array(
+          archivoTableClass::ID,
+          archivoTableClass::HASH,
+      );
+        $where = array(
+            archivoTableClass::ID => $id
+        );
+       $objEliminarArchivo = archivoTableClass::getAll($fields, false, null, null, null, null, $where);
+       
+       unlink(config::getPathAbsolute() . 'web/uploadArchivo/' . $objEliminarArchivo[0]->hash);
+        
+        $ids = array(
+            archivoTableClass::ID => $id
+        );
+       archivoTableClass::delete($ids, false);
+       
+        $this->arrayAjax = array(
+            'code'=> 200,
+            'msg'=> 'Eliminacion exitosa'
+            );
+        session::getInstance()->setSuccess('El campo Fue Eliminado Exitosamente');
+        
+          
+        $this->defineView('delete', 'archivo', session::getInstance()->getFormatOutput());
+        
+      
+      }//cierre del if
+       else {
+        routing::getInstance()->redirect('archivo', 'ver');
+      }//cierre del else
+
+       
+        
+      
     } catch (PDOException $exc) {
       echo $exc->getMessage();
       echo '<br>';

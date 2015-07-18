@@ -5,29 +5,39 @@ dictionary:
     introduccion:         El Sistema cuenta con la funcionabilidad de transferir y procesar datos e informes de manera controlada tomando como referencia los procesos y producción del sector agropecuario, teniendo la gran capacidad de guardar información siendo esta oculta y manejada por los administradores para su control y cambio de registros e inventarios, para mayor seguridad los empleados solo tendrán el campo de consultoría y reportes de tareas para completar la funcionabilidad del sistema de información
     mas:                  Mas
     descargar:            Descargar archivo
+    #-------Usuario-----------
+    user:                 Usuario
+    usu_id:               usuarioId
     crearUsuario:         Crear usuario
+    pass:                 Contraseña
+    confirmarPass:        Confirmar Contraseña
+    editar usuario:       Editar Usuario
+    nuevo usuario:        Nuevo Usuario
+    #-------?-----------
     archivo de texto:     Archivo de texto
     imagen:               Imagen
     video:                Video
     historial:            Historial
-    subir archivos:       Subir archivos
     nuevo historial:      Nuevo historial
-    selectInsumo:         Seleccione el insumo
+    #-------Subir archivos-----------
+    subir archivos:       Subir archivos
+    #-------Enfermedad-----------
     selectEnfermedad:     Seleccione la enfermedad
-    editar historial:     Editar historial
     enfermedad:           Enfermedad
     nueva enfermedad:     Nueva enfermedad
     tratamiento:          Tratamiento
     editar enfermedad:    Editar enfermedad
+    editar historial:     Editar historial
     produccion:           Produccion
     fCredencial:          Buscar pro credencial
+    #-------Factura venta-----------
     factura:              Factura venta
-    selectCliente:        Seleccionar cliente
     fecha:                Fecha
     nuevaFactura:         Nueva factura venta
     detalleFactura:       Detalle factura venta
     nuevoDetalleFactura:  Nuevo detalle de factura venta
     editDetalleFactura:   Editar detalle de factura venta
+    #-------Factura compra-----------
     facturaCompra:        Factura compra
     nuevaFacturaCompra:   Nueva factura compra
     detalleFacturaCompra: Detalle factura compra
@@ -35,60 +45,67 @@ dictionary:
     editDetalleFacCompra: Editar detalle de factura compra
     valorPorUnidad:       Valor por unidad
     total:                Total
+    detalle:              Detalle
+    #-------Labor-----------
     labor:                labor
-    selectMaquina:        Selecione la maquina
     editar labor:         editar labor
     nueva labor:          nueva labor
-    editar cooperativa:   Editar cooperativa
-    editar empresa:       Editar empresa
-    cooperativa:          Cooperativa
-    selectCooperativa:    Seleccione la cooperativa
     selectLabor:          Seleccione la labor
+    #-------Cooperativa-----------
+    cooperativa:          Cooperativa
+    editar cooperativa:   Editar cooperativa
+    selectCooperativa:    Seleccione la cooperativa 
     nueva cooperativa:    Nueva cooperativa
+    #-------Empresa-----------
+    empresa:              Empresa
+    editar empresa:       Editar empresa
     nueva empresa:        nueva empresa
+    #-------Buscar-----------
     FCiudad:              buscar por ciudad
     FUnidadMedida:        buscar por unidad de peso
     FTipoInsumo:          buscar por tipo insumo
     fUsuario:             buscar por usuario
-    filtroCiudad:         Ciudad
     fechaFsiembra:        Fecha inicio siembra
     selectUnidadDis:      Seleccione el tipo de distacia
     fecha siembra:        Fecha de siembra
     numero:               Cantida de plantas a sembrar
     presupuesto:          Presupuesto
-    user:                 Usuario
-    usu_id:               usuarioId
     informe:              Informes
-    pass:                 Contraseña
-    confirmarPass:        Confirmar Contraseña
-    editar usuario:       Editar Usuario
+    #-------Proveedor-----------
     editar proveedor:     Editar Proveedor
-    nuevo usuario:        Nuevo Usuario
-    register:             Registrar
+    nuevo proveedor:      Nuevo Proveedor
+    pro:                  ProveedorId 
+    nomProveedor:         Proveedor
     nom:                  Nombre
     apell:                Apellido
     dir:                  Direccion
     tel:                  Telefono
     cedu:                 Cedula
-    cre_id:               CredencialId
-    usuarioCredencial:    Usuario Credencial
     bus:                  Buscar
     update:               Actualizar 
+    #-------Producto-----------
     product:              Producto
     producto:             Codigo Producto Insumo
     editar tipo producto: Editar Tipo Insumo
     tipoProducto:         Tipo Producto
     cantidad:             Cantidad
 #   maquina:              codigoMaquina
+    #-------Maquina-----------
     editar maquina:       Editar Maquina
     nuevo maquina:        Nueva Maquina
     maquina:              Maquina
+    selectMaquina:        Seleccione la maquina
     nuevo tipo:           Nuevo Tipo Uso Maquina
+    origenM:              Origen Maquina
+    nuevo origen:         Nuevo Origen De Maquina
+    tipo uso:             Tipo Uso Maquina
+    #-------Trabajador-----------
     trabajador:           Trabajador
     selectTrabajador:     Seleccione el Trabajador
     nuevoTrabajador:      Nuevo trabajador
     editarTrabajador:     Editar Trabajador
     nombreTrabajador:     Nombre Trabajador
+    #-------Pago trabajador-----------
     pagoTrabajador:       Pago del Trabajador
     fechaPagoIni:         Fecha de Pago Inicial
     fechaPagoFin:         Fecha de Pago Final
@@ -97,78 +114,82 @@ dictionary:
     horasPerdidas:        Horas Perdidas
     totalPagar:           Total Pagar
     nuevoPago:            Nuevo Pago al Trabajador
-    detallePago:          Detalle del Pago Trabajador
-    detalle:              Detalle
+    editarPago:           Editar Pago al Trabajador
     fecha_M:              Fecha 
     tipo:                 TipoUsoId
     num id:               Documento De Identidad
     idTipo:               CodigoTipoId
+    #-------Ciudad-----------
     ciudad:               Ciudad
     idCiudad:             Cod Ciudad
-    tamano:               Tamaño
-    ubicacion:            Ubicacion
+    filtroCiudad:         Ciudad
     iva:                  Iva
     eliminar en masa:     Eliminar Seleccion
     nuevo:                Nuevo
+    #-------Cliente-----------
     cliente:              Cliente
     editar cliente:       Editar Cliente
     editar pedido:        Editar Pedido
     nuevo cliente:        Nuevo Cliente
-    nuevo proveedor:      Nuevo Proveedor
+    selectCliente:        Seleccionar cliente
     acciones:             Acciones
     de:                   de
     ver:                  Ver
     modificar:            Modificar
+    modificarPerfil:      Modificar perfil
     eliminar:             Eliminar
     datos:                Datos
+    #-------Credencial-----------
     credencial:           Credencial
     editar credencial:    Editar Credencial
     nueva credencial:     Nueva Credencial
     estado:               Estado
+    cre_id:               CredencialId
+    #-------Lote-----------
     editar lote:          Editar Lote
     lote:                 Lote
     nuevo lote:           Nuevo Lote
+    unidad:               Unidad medida
+    tamano:               Tamaño
+    ubicacion:            Ubicacion
+    #-------Orden de servicio-----------
     editar orden:         Editar Orden De Servicio
     orden:                Orden De Servicio
     nuevo orden:          Nueva Orden De Servicio
     fechaMantenimiento:   Fecha Mantenimiento
-    origenM:              Origen Maquina
-    nuevo origen:         Nuevo Origen De Maquina
-    tipo uso:             Tipo Uso Maquina
-    nuevo tipo:           Nuevo Tipo Uso Maquina
-    nuevo tipo insumo:    Nuevo Tipo Insumo
     nuevo tipoId:         Nuevo Tipo de Identidad
     tipo id:              Tipo Identidad
-    tipo insumo:          Tipo Insumo
+    #-------Usuario credencial-----------
     editar usu cre:       Editar Usuario Credencial
     nuevo usu cre:        Nuevo Usuario Credencial
     usu cre:              Usuario credencial
+    usuarioCredencial:    Usuario Credencial
+    #-------Insumo-----------
     nuevo insumo:         Nuevo Insumo
     editar insumo:        Editar Insumo
     insumo:               Insumo
+    nuevo tipo insumo:    Nuevo Tipo Insumo
+    tipo insumo:          Tipo Insumo
+    selectInsumo:         Seleccione el insumo
     cerrar:               cerrar
+    #-------Filtros-----------
     filtros:              Filtros
     eFiltros:             Eliminar Filtros
     filtrar:              Filtrar
-    confirmar eliminar:   Confirmar Eliminar
     fecha crear:          Fecha Creacion
     fecha fin:            Fecha FInal
     extReg:               El Registro fue Exitoso
     des:                  Descripcion
-    usu_id:               UsuarioId
     update:               Actualizar 
     email:                Email
     valor:                Valor salario
     fecha_M:              Fecha del Mantenimiento
     origen:               Origen
-    pro:                  ProveedorId 
-    nomProveedor:         Proveedor
-    empresa:              Empresa
+    #-------Mano obra-----------
     nuevaMano:            Nueva Mano de Obra
     editarMano:           Edit Mano de Obra
     manoObra:             Mano de Obra
-    cooperativa:          Cooperativa
-    labor:                Labor
+    #-------Seleccione-----------
     selectEmpresa:        Seleccione la Empresa
     selectProveedor:      Seleccione el Proveedor
     selectProducto:       Seleccione el Producto
@@ -181,10 +202,12 @@ dictionary:
     selectUsuario:        Seleccione el Usuario
     selectCredencial:     Seleccione la Credencial
     selectTipoId:         Seleccione el Tipo de Identificacion
+    #-------Solicitud insumo-----------
     solicitudInsumo:      Solicitud Insumo
     idTipo:               CodigoTipoId
-    unidad:               Unidad medida
     atras:                Pagina anterior
+    #-------Eliminar-----------
+    confirmar eliminar:   Confirmar Eliminar
     configEliminar:       Confirmar Eliminacion
     configEliMas:         Confirmar Casillas Seleccionadas 
     exiEliMas:            Las Casillas Seleccionadas Fueron Eliminadas Exitosamente
@@ -209,6 +232,7 @@ dictionary:
     documento:            N° Documento
     identificacion:       Identificacion
     entrar:               Entrar
+    register:             Registrar
   errors:
     00001:                El nombre excede la longitud permitida (:longitud)
     00002:                El apellido excede la longitud permitida (:longitud)

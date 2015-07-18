@@ -1,12 +1,27 @@
 
+
+html, body, address, blockquote, div, dl, form, h1, h2, h3, h4, h5, h6, ol, p, pre, table, ul,
+dd, dt, li, tbody, td, tfoot, th, thead, tr, button, del, ins, map, object,
+a, abbr, acronym, b, bdo, big, br, cite, code, dfn, em, i, img, kbd, q, samp, small, span,
+strong, sub, sup, tt, var, legend, fieldset {
+    margin: 0;
+    padding: 0;
+}
 body {
+/*  position: relative;*/
+
   margin: 0 0 0 0;
   padding: 0;
   background: #c1e2b3;
   font-family: Calibri,Arial, Helvetica, sans-serif;
   font-size: 16px;
   color: #333;
+  background: center;
+  width: 100%;
+  background-image: url('../img/jeje.png');
 }
+
+
 #color1{
   background-color: #333;
   color: #fff;
@@ -170,30 +185,48 @@ body {
 
 }
 #cuerpo{
-  width: 900px;
+  width: 100%;
 }
 
-#encabezado{
+
+
+  #cuerpo2{
+    background: center;
+    width: 58.2%;
+  }
   
+ #cuerpo3{
+       
+  }
+
+
+
+#encabezado{
   width:900px; 
   height: 300px;
- 
 }
 
 #contenido{
   margin: 50px 0px 0px 0px;
   width:100%;
 }
-#derecha{
-  /*background: #FFE4C4;*/
+/*#derecha{
+ 
   width: 800px;
-  padding: 15px 20px 15px 30px ;
-  float: right;
-  margin: 0px -50px 0px 0px;
+  padding: 70px 20px 15px 30px ;
+  margin: -50px 0px 0px 270px;
   -moz-border-radius: 0px;
   -webkit-border-radius: 0px;
   border-radius: 0px;
-}
+}*/
+
+/*.j1 > div {
+  border: #000000 solid 1px;
+}*/
+
+
+
+
 .yo{
   margin: 0px 0px 0px -600px; 
 }
@@ -214,9 +247,7 @@ table > thead > tr:first-child {
 #cuadrito{
   width: 40px;
 }
-#acciones{
-  width: 250px;
-}
+
 
 table > thead > tr, table > tfoot > tr {
   text-shadow: 0 1px 0 #fff;
@@ -234,6 +265,7 @@ table > thead > tr, table > tfoot > tr {
   margin-top: 15px;
   margin-bottom: 0px;
 }
+
 
 
 .form-control-gonza1 {
@@ -254,6 +286,8 @@ table > thead > tr, table > tfoot > tr {
   -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
+
+
 
 .form-control-gonza2 {
   margin: 0px 0px 0px 16px;
@@ -336,17 +370,22 @@ table > thead > tr, table > tfoot > tr {
   height: 34px;
   margin: 0px 0px 10px 130px;
   padding:  5px 0px 0px 10px;
-    }
-    
+}
+
 #close{
   width: 15px; 
   margin: 2px 30px 10px 0px;
-    }
-    
+}
+
 #margenImagen{
   width: 180px;
   height: 150px;
-    }    
-    
-    
+}  
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+  color: rgba(242, 249, 10, 0.67);
+  background-color: #99C26D;
+}    
+
+
 

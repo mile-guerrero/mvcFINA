@@ -4,10 +4,11 @@
 <?php use mvc\view\viewClass as view ?>
 <?php $nombre = clienteTableClass::NOMBRE ?>
 <div class="container container-fluid" id="cuerpo">
-  <article id='derecha'>
+  <div class="center-block" id="cuerpo2">
     <h2 class="form-signin-heading">
       <?php echo i18n::__('editar cliente') ?> <?php echo $objCliente[0]->$nombre ?> 
     </h2>
-  </article>
+    <br>
+  </div>
 <?php view::includePartial('cliente/formularioPrincipalCliente', array('objCliente' => $objCliente, 'nombre' => $nombre,'objCTI' => $objCTI,'objCC' => $objCC)) ?>
 </div>

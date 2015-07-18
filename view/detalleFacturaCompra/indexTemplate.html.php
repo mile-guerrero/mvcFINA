@@ -15,6 +15,7 @@
 <?php $nomProveedor = proveedorTableClass::NOMBREP ?>
  
 <div class="container container-fluid" id="cuerpo">
+  <div class="center-block" id="cuerpo2">
   <header id="">
 
   </header>
@@ -98,6 +99,7 @@
       </select> <?php echo i18n::__('de') ?> <?php echo $cntPages ?>
     </div>
   </article>
+    </div>
 </div>
 
 

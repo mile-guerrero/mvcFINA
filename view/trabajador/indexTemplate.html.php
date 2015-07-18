@@ -18,6 +18,7 @@ use mvc\session\sessionClass as session ?>
 <?php $idCiudad = ciudadTableClass::ID ?>
 <?php $nomCiu = ciudadTableClass::NOMBRE_CIUDAD ?>
 <div class="container container-fluid" id="cuerpo">
+  <div class="center-block" id="cuerpo2">
   <header id="">
 
   </header>
@@ -271,8 +272,9 @@ use mvc\session\sessionClass as session ?>
     <form id="frmDelete" action="<?php echo routing::getInstance()->getUrlWeb('trabajador', 'delete') ?>" method="POST">
       <input type="hidden" id="idDelete" name="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::ID, true) ?>">
     </form>
-    </section>
+   
   </article>
+    </div>
 </div>
 <div class="modal fade" id="myModalDeleteMasivo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">

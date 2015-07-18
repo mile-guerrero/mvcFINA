@@ -16,16 +16,9 @@
 <?php $idci = clienteTableClass::ID_CIUDAD ?>
 
 <div class="container container-fluid" id="cuerpo">
-  <header id="">
-   
-  </header>
-  <nav id="barramenu">
-    
-  </nav>
-  <section id="">
-    
-  </section>
-    <article id='derecha'>
+   <div class="center-block" id="cuerpo2">
+  
+<!--    <article id='derecha'>-->
        <h1><?php echo i18n::__('cliente') ?></h1>
       <ul>
      <?php if (session::getInstance()->hasCredential('admin')):?>
@@ -189,7 +182,7 @@
       <form class="form-signin" id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('cliente', 'deleteSelectCliente') ?>" method="POST">        
         <?php view::includeHandlerMessage()?>       
           <br>
-        <table id="tabla" class="table table-bordered table-responsive">
+        <table id="tabla" class="table table-bordered table-responsive ">
           <tr>
           <thead>
           <th id="cuadrito">
@@ -198,9 +191,7 @@
           <th>
             <?php echo i18n::__('nom') ?>
           </th>
-          <th>
-            <?php echo i18n::__('apell') ?>
-          </th>
+         
           <th>
             <?php echo i18n::__('documento') ?>
           </th>
@@ -216,11 +207,9 @@
                   <input type="checkbox" name="chk[]" value="<?php echo $key->$id ?>">
                 </th>
                 <td>
-                  <?php echo $key->$nom ?>
+                  <?php echo $key->$nom . ' ' .$key->$apellido ?> 
                 </td>
-                <td>
-                  <?php echo $key->$apellido ?>
-                </td>
+                
                 <td>
                   <?php echo $key->$documento ?>
                 </td>
@@ -265,10 +254,11 @@
         <input type="hidden" id="idDelete" name="<?php echo clienteTableClass::getNameField(clienteTableClass::ID, true) ?>">
       </form>
 
-    </article>
+<!--    </article>-->
   
-
 </div>
+</div>
+
 
 
 <div class="modal fade" id="myModalDeleteMasivo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

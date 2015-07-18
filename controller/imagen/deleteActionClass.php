@@ -23,7 +23,18 @@ class deleteActionClass extends controllerClass implements controllerActionInter
       
   if (request::getInstance()->isMethod('POST')and request::getInstance()->isAjaxRequest()) {    
 
-        $id = request::getInstance()->getPost(imagenTableClass::getNameField(imagenTableClass::HASH, true));
+        $id = request::getInstance()->getPost(imagenTableClass::getNameField(imagenTableClass::ID, true));
+        
+        $fields = array(
+          imagenTableClass::ID,
+          imagenTableClass::HASH,
+      );
+        $where = array(
+            imagenTableClass::ID => $id
+        );
+       $objEliminarImagen = imagenTableClass::getAll($fields, false, null, null, null, null, $where);
+       
+       unlink(config::getPathAbsolute() . 'web/uploadImagen/' . $objEliminarImagen[0]->hash);
         
         $ids = array(
             imagenTableClass::ID => $id

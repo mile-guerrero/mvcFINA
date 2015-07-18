@@ -64,7 +64,7 @@
                <th>
               <a class="btn btn-lg btn-success btn-xs" href="<?php echo mvc\config\configClass::getUrlBase() . 'uploadImagen/' . $key->$hash ?>"><?php echo i18n::__('descargar') ?></a> 
               <a data-toggle="modal" data-target="#myModalDelete<?php echo $key->$id ?>" class="btn btn-danger btn-xs"> <?php echo i18n::__('eliminar') ?></a>
-               <input type="hidden"   id="idDelete" name="<?php echo imagenTableClass::getNameField(imagenTableClass::HASH, true) ?>">
+               <input type="hidden"   id="idDelete" name="<?php echo imagenTableClass::getNameField(imagenTableClass::ID, true) ?>">
  
                </th>
              
@@ -81,7 +81,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default btn-xs" data-dismiss="modal"><?php echo i18n::__('cerrar') ?></button>
-        <button type="button" class="btn btn-danger btn-xs" onclick="eliminar(<?php echo $key->$id ?>,'<?php echo imagenTableClass::getNameField(imagenTableClass::HASH, true) ?>','<?php echo routing::getInstance()->getUrlWeb('imagen', 'delete') ?>')"><?php echo i18n::__('eliminar') ?></button>
+        <button type="button" class="btn btn-danger btn-xs" onclick="eliminar(<?php echo $key->$id ?>,'<?php echo imagenTableClass::getNameField(imagenTableClass::ID, true) ?>','<?php echo routing::getInstance()->getUrlWeb('imagen', 'delete') ?>')"><?php echo i18n::__('eliminar') ?></button>
       </div>
     </div>
   </div>

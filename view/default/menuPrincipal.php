@@ -5,6 +5,7 @@
 <?php use mvc\request\requestClass as request ?>
 <?php use mvc\i18n\i18nClass as i18 ?>
 
+
 <header>
 
 <!--    <nav class="navbar navbar-default alert-success">-->
@@ -197,7 +198,7 @@
 <div id="separasdor"> <br></div>
 <div id="separasdor2"> <br></div>
 
-<section id="contenido">
+<section  navbar-header id="contenido">
 
     <!--  <div class="btn-group-vertical" role="group" aria-label="...">
         <button type="button" class="btn btn-default">1</button>
@@ -215,9 +216,7 @@
           </ul>
         </div>
       </div>-->
-    <article id=''>
-
-    </article>
+   
 </section>
 
 

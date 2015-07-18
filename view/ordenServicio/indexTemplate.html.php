@@ -10,6 +10,7 @@
 <?php $idTra = trabajadorTableClass::ID ?>
 <?php $nomTrabajador = trabajadorTableClass::NOMBRET ?>
 <div class="container container-fluid" id="cuerpo">
+  <div class="center-block" id="cuerpo2">
   <header id="">
 
   </header>
@@ -152,5 +153,5 @@
   </article>
 </div>
 
-
+</div>
 

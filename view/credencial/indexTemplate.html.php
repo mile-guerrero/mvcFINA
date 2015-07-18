@@ -7,6 +7,7 @@
 <?php $nom = credencialTableClass::NOMBRE ?>
 <?php $id = credencialTableClass::ID ?>
 <div class="container container-fluid" id="cuerpo">
+  <div class="center-block" id="cuerpo2">
   <header id="">
    
   </header>
@@ -187,7 +188,7 @@
       </form>
 
     </article>
-
+</div>
 </div>
 
 <div class="modal fade" id="myModalDeleteMasivo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

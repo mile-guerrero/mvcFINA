@@ -11,6 +11,7 @@
 <?php $id = enfermedadTableClass::ID ?>
 
 <div class="container container-fluid" id="cuerpo">
+  <div class="center-block" id="cuerpo2">
   <header id="">
    
   </header>
@@ -241,7 +242,7 @@
 
     </article>
   
-
+</div>
 </div>
 
 

@@ -17,61 +17,24 @@ class deleteActionClass extends controllerClass implements controllerActionInter
 
   public function execute() {
     try {
-//      $directorio = opendir("./uploadArchivo");
-//      $archivo = readdir($directorio);
-//      $ext = substr('381ee3afe6d38f12221ab01e551fd7b6.pdf', -3);
-//      print_r($ext);
-//     
-//     if($ext == 'pdf'){
-//          echo '<img src="' . routing::getInstance()->getUrlImg('../img/reporte.gif') . '"/>' ;         
-//      }
-     
 
-//        $file = request::getInstance()->getFile(usuarioTableClass::getNameField(usuarioTableClass::USUARIO, true));
-//        $ext = substr($file['name'], -3);
-//        
-        
-//        $tamano_archivo = substr($file['size'], -6, 6);
-//        $nameFile = md5($file['name'] . strtotime(date(config::getFormatTimestamp()))) . '.' . $ext;
-          
-        // force_download(config::getPathAbsolute() . 'web/uploadArchivo/f31818b872312795be63bfb08a9d3101.pdf'); 
+       
       
-//      if ($directorio = opendir("./uploadArchivo")){ //ruta actual
-//while ($archivo = readdir($directorio)) //obtenemos un archivo y luego otro sucesivamente
-//{
-//    if ($archivo != '.' && $archivo != '..')//verificamos si es o no un directorio
-//    {
-//      
-////    echo '<br>';
-////       print_r($dirint);
-////       echo '</br>';
-//     // unlink(config::getPathAbsolute() . 'web/uploadArchivo/' . $dirint); //aqui es para eliminar un archivo
-//     //echo "Archivo: <strong>  $archivo </strong><br />" ; 
-//    
-//       }
-//   
-//        
-//     }
-//  
-//    }
-  
-//      if (request::getInstance()->hasPost('filter')) {
-//        $filter = request::getInstance()->getPost('filter');
-//        //Validar datos
-//       
-//        if (request::getInstance()->isMethod('POST')) {
-//           $documento = $filter['documento'];
-//        if (isset($filter['documento']) and $filter['documento'] !== null and $filter['documento'] !== '') {
-//          unlink(config::getPathAbsolute() . 'web/uploadArchivo/' . $filter['documento']);
-//          session::getInstance()->setSuccess('El Archivo Fue Eliminado Exitosamente');
-//        }//cierre del filtro documento
-//      
-//      }
-//      
-//        } 
-      if (request::getInstance()->isMethod('POST')and request::getInstance()->isAjaxRequest()) {    
+      
+  if (request::getInstance()->isMethod('POST')and request::getInstance()->isAjaxRequest()) {    
 
-        $id = request::getInstance()->getPost(videoTableClass::getNameField(videoTableClass::HASH, true));
+        $id = request::getInstance()->getPost(videoTableClass::getNameField(videoTableClass::ID, true));
+        
+        $fields = array(
+          videoTableClass::ID,
+          videoTableClass::HASH,
+      );
+        $where = array(
+            videoTableClass::ID => $id
+        );
+       $objEliminarVideo = videoTableClass::getAll($fields, false, null, null, null, null, $where);
+       
+       unlink(config::getPathAbsolute() . 'web/uploadVideo/' . $objEliminarVideo[0]->hash);
         
         $ids = array(
             videoTableClass::ID => $id
@@ -85,16 +48,17 @@ class deleteActionClass extends controllerClass implements controllerActionInter
         session::getInstance()->setSuccess('El campo Fue Eliminado Exitosamente');
         
           
-        $this->defineView('delete', 'imagen', session::getInstance()->getFormatOutput());
+        $this->defineView('delete', 'video', session::getInstance()->getFormatOutput());
         
       
       }//cierre del if
        else {
-        routing::getInstance()->redirect('imagen', 'ver');
+        routing::getInstance()->redirect('video', 'ver');
       }//cierre del else
 
-      //------------------------------------------------------------------------
-      $this->defineView('ver', 'archivo', session::getInstance()->getFormatOutput());
+       
+        
+      
     } catch (PDOException $exc) {
       echo $exc->getMessage();
       echo '<br>';

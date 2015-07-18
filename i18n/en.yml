@@ -2,182 +2,256 @@
 culture:                  English
 dictionary:
   default:
+    introduccion:         El Sistema cuenta con la funcionabilidad de transferir y procesar datos e informes de manera controlada tomando como referencia los procesos y producción del sector agropecuario, teniendo la gran capacidad de guardar información siendo esta oculta y manejada por los administradores para su control y cambio de registros e inventarios, para mayor seguridad los empleados solo tendrán el campo de consultoría y reportes de tareas para completar la funcionabilidad del sistema de información
+    mas:                  More
+    descargar:            Download file
+    #-------Usuario-----------
     user:                 User
     usu_id:               User Id
-    informe:              Report
+    crearUsuario:         Create User
     pass:                 Password
-    confirmarPass:        Confirmar Password
-    editar usuario:       Editar User
+    confirmarPass:        Confirm Password
+    editar usuario:       Edit User
     nuevo usuario:        New User
+    #-------?-----------
+    archivo de texto:     Text file
+    imagen:               Image
+    video:                Video
+    historial:            Record
+    nuevo historial:      Rew record
+    #-------Subir archivos-----------
+    subir archivos:       Upload files
+    #-------Enfermedad-----------
+    selectEnfermedad:     Select the disease
+    enfermedad:           Disease
+    nueva enfermedad:     New disease
+    tratamiento:          Treatment
+    editar enfermedad:    Edit disease
+    editar historial:     Edit history
+    produccion:           Production
+    fCredencial:          Search pro credentials
+    #-------Factura venta-----------
+    factura:              Bill sale
+    fecha:                Date
+    nuevaFactura:         New bill sale
+    detalleFactura:       Invoice detail sale
+    nuevoDetalleFactura:  New details of bill sale
+    editDetalleFactura:   Edit detail of bill sale
+    #-------Factura compra-----------
+    facturaCompra:        Purchase invoice
+    nuevaFacturaCompra:   New Invoice purchase
+    detalleFacturaCompra: Purchase invoice detail
+    nuevoDetallFacCompra: New purchase invoice detail
+    editDetalleFacCompra: Edit purchase invoice detail
+    valorPorUnidad:       Value per unit
+    total:                Total
+    detalle:              Detail
+    #-------Labor-----------
+    labor:                Work
+    editar labor:         Edit work
+    nueva labor:          New work
+    selectLabor:          Select the work
+    #-------Cooperativa-----------
+    cooperativa:          Cooperative
+    editar cooperativa:   Edit cooperative
+    selectCooperativa:    Select the cooperative 
+    nueva cooperativa:    New cooperative
+    #-------Empresa-----------
+    empresa:              Company
+    editar empresa:       Edit company
+    nueva empresa:        New company
+    #-------Buscar-----------
+    FCiudad:              Search city
+    FUnidadMedida:        Search per unit weight
+    FTipoInsumo:          Search by type input
+    fUsuario:             User search
+    fechaFsiembra:        Start planting date
+    selectUnidadDis:      Select the type of distance
+    fecha siembra:        Planting date
+    numero:               Number of plants to plant
+    presupuesto:          Budget
+    informe:              Information
+    #-------Proveedor-----------
+    editar proveedor:     Edit provider
+    nuevo proveedor:      New provider
+    pro:                  Provider Id 
+    nomProveedor:         Provider
     nom:                  Name
-    apell:                Last Name
+    apell:                Surname
     dir:                  Street Address
     tel:                  Phone
-    cedu:                 Writ
-    des:                  Description
-    cre_id:               credential Id
-    usuarioCredencial:    User Credential
-    bus:                  search For
+    cedu:                 Charter
+    bus:                  Search
     update:               Update 
-    orden:                Code Order Service
+    #-------Producto-----------
     product:              Product
     producto:             Product Code Input
     editar tipo producto: Edit Input Type
-    tipoProdcuto:         Type Product
-    cantidad:             quantity
-    valor:                value
-#    maquina:              codigo machine
+    tipoProducto:         Product type
+    cantidad:             Quantity
+#   maquina:              codigoMaquina
+    #-------Maquina-----------
     editar maquina:       Edit Machine
     nuevo maquina:        New Machine
     maquina:              Machine
-    origenM:              Source Machine
-    nuevo origen:         New Source Machine
-    trabajador:           worker
-    selectTrabajador:     Select the Worker
-    nuevoTrabajador:      New worker
+    selectMaquina:        Select the machine
+    nuevo tipo:           New Type Machine Use
+    origenM:              source Machine
+    nuevo origen:         New Source Of Machine
+    tipo uso:             Type Use Machine
+    #-------Trabajador-----------
+    trabajador:           Worker
+    selectTrabajador:     Select the worker
+    nuevoTrabajador:      Nuevo worker
     editarTrabajador:     Edit worker
-    nombreTrabajador:     Name Worker
-    pagoTrabajador:       Pago del Trabajador
-    fechaPagoIni:         Fecha de Pago Inicial
-    fechaPagoFin:         Fecha de Pago Final
-    salario:              Salario
-    horasExtras:          Horas Extras
-    horasPerdidas:        Horas Perdidas
-    totalPagar:           Total Pagar
-    nuevoPago:            Nuevo Pago al Trabajador
-    detallePago:          Detalle del Pago Trabajador
-    detalle:              Detalle
-    fecha_M:              Date
+    nombreTrabajador:     New worker
+    #-------Pago trabajador-----------
+    pagoTrabajador:       Worker Pay
+    fechaPagoIni:         Initial Payment Date
+    fechaPagoFin:         Final Payment Date
+    salario:              Salary
+    horasExtras:          Value extra hours
+    horasPerdidas:        Lost Hours
+    totalPagar:           Total Pay
+    nuevoPago:            New Pay Workers
+    editarPago:           Edit Pay Workers
+    fecha_M:              date 
     tipo:                 Type Use Id
-    origen:               Origin Id 
-    num id:               Identity Document
-    idTipo:               codigo Type Id
-    ciudad:               Ciudad
-    idCiudad:             cod City
-    tamano:               size
-    ubicacion:            location
+    num id:               Identity Card
+    idTipo:               Code Type Id
+    #-------Ciudad-----------
+    ciudad:               City
+    idCiudad:             Cod City
+    filtroCiudad:         City
     iva:                  Iva
-    unidad:               Measurement Unit
-    atras:                Go To Previous Paguina
-    eliminar en masa:     Remove Calendar Boxes
+    eliminar en masa:     Remove Selection
     nuevo:                New
+    #-------Cliente-----------
     cliente:              Customer
-    editar pedido:        Edit Pedido
     editar cliente:       Edit Customer
+    editar pedido:        Edit Order
     nuevo cliente:        New Customer
-    nuevo proveedor:      New Provider
+    selectCliente:        Select customer
     acciones:             Actions
-    de:                   Of
-    ver:                  See
+    de:                   From
+    ver:                  Watch
     modificar:            Modify
-    eliminar:             Delete
+    modificarPerfil:      change profile
+    eliminar:             Remove
     datos:                Data
+    #-------Credencial-----------
     credencial:           Credential
-    editar credencial:    Editar Credential
+    editar credencial:    Edit Credential
     nueva credencial:     New Credential
     estado:               State
-    editar lote:          Editar Batch
-    lote:                 Batch
-    nuevo lote:           New Batch
-    editar orden:         Edit Order Service
-    orden:                Order Service
-    nuevo orden:          New Order Service
-    fechaMantenimiento:   Date Maintenance
-    tipo uso:             Type Use Machine
-    nuevo tipo:           New Type Use Machine
-    nuevo tipo insumo:    New Input Type
-    tipo insumo:          Input Type
-    editar usu cre:       Editar User Credential
-    nuevo usu cre:        New User Credential
-    usu cre:              User Credential
-    nuevo insumo:         New Input
-    nuevo tipoId:         New Type Identified
-    editar insumo:        Editar Input
-    insumo:               Input
-    cerrar:               Shut Down
-    filtros:              Filters
-    eFiltros:             Delete Filters
-    filtrar:              Filter
-    tipo id:              Type Identided
-    confirmar eliminar:   confirm Delete
-    fecha crear:          Creation Date
-    fecha fin:            Final Date
-    register:             Register
-    extReg:               The Register was Successful
-    cedu:                 charter
-    usu_id:               User Id
     cre_id:               Credential Id
-    bus:                  look For
-    update:               update 
-    email:                Email
-    cantidad:             Quantity
-    valor:                Value
-    fecha_M:              Maintenance Date
-    origen:               Origin
-    pro:                  Provider Id 
-    nomProveedor:         Provider
-    empresa:              Business
-    nuevaMano:            New Mano de Obra
-    editarMano:           Edit Mano de Obra
-    manoObra:             Mano de Obra
-    cooperativa:          Cooperativa
-    labor:                Labor
-    selectEmpresa:        Select the Business
-    selectProveedor:      Select Provider
-    selectProducto:       Seleccione el Producto
-    selectLote:           Seleccione el Lote
-    selectCooperativa:    Seleccione la Cooperativa
-    selectLabor:          Seleccione la Labor
-    selectMaquina:        Select the Machine
-    seleccione insumo:    Seleccione el insumo
-    selectTPI:            Seleccione el tipo de insumo
-    selectCiudad:         Select the City
-    selectOrigen:         Select the Origin
-    selectTipoUso:        Select the Type of Uso
-    selectUnidad:         Select the Unidad of Medida
-    selectUsuario:        Select the User
-    selectCredencial:     Select the Credential
-    selectTipoId:         Select the Type of Identity
-    solicitudInsumo:      Solicitud Input
-    idTipo:               Code Type Id
-    idCiudad:             Code City
+    #-------Lote-----------
+    editar lote:          Edit batch
+    lote:                 Batch
+    nuevo lote:           New batch
+    unidad:               Unit of Measure
     tamano:               Size
     ubicacion:            Location
-    iva:                  Iva
-    unidad:               Unit Of Measure
-    atras:                Previous Page
-    configEliminar:       Confirm Removal
-    configEliMas:         Check Casillas Selected
-    exiEliMas:            The Selected Casillas Were Successfully Removed
-    eliminarMas:          Do you want to delete the Selected Casillas?
-    eliminarReg:          Do you want to delete the registry?
-    removeSelection:      Remove Selection
+    #-------Orden de servicio-----------
+    editar orden:         Edit Service Order
+    orden:                Service Order
+    nuevo orden:          New Service Order
+    fechaMantenimiento:   Date Maintenance
+    nuevo tipoId:         New Type Identity
+    tipo id:              Type Identity
+    #-------Usuario credencial-----------
+    editar usu cre:       Edit user Credential
+    nuevo usu cre:        New user Credential
+    usu cre:              User Credential
+    usuarioCredencial:    User Credential
+    #-------Insumo-----------
+    nuevo insumo:         New input
+    editar insumo:        Edit input
+    insumo:               Input
+    nuevo tipo insumo:    New Type input
+    tipo insumo:          Type input
+    selectInsumo:         Select the input
+    cerrar:               Close
+    #-------Filtros-----------
+    filtros:              Filters
+    eFiltros:             Remove Filters
+    filtrar:              Filter
+    fecha crear:          Creation date
+    fecha fin:            Final date
+    extReg:               The registration was successful
+    des:                  Description
+    update:               Update 
+    email:                Email
+    valor:                Salary value
+    fecha_M:              Maintenance Date
+    origen:               Source
+    #-------Mano obra-----------
+    nuevaMano:            New Workforce
+    editarMano:           Edit Workforce
+    manoObra:             Workforce
+    #-------Seleccione-----------
+    selectEmpresa:        Select Company
+    selectProveedor:      Select Provider
+    selectProducto:       Select Product
+    selectLote:           Select the Lot
+    seleccione insumo:    Select the input
+    selectTPI:            Select the type of input
+    selectCiudad:         Select City
+    selectTipoUso:        Select the type of machine use
+    selectUnidad:         Select the Unit of Measure
+    selectUsuario:        Select User
+    selectCredencial:     Select Credential
+    selectTipoId:         Select the Type Identification
+    #-------Solicitud insumo-----------
+    solicitudInsumo:      Request Input
+    idTipo:               Code Type Id
+    atras:                Previous page
+    #-------Eliminar-----------
+    confirmar eliminar:   Confirm Delete
+    configEliminar:       Confirm Delete
+    configEliMas:         Check Casillas Selected 
+    exiEliMas:            The selected cells were removed Successfully
+    eliminarMas:          Do you want to remove the selected Casillas? 
+    eliminarReg:          Do you want to delete the record?
     cancel:               Cancel
-    Desea  eliminar este campo: Do you want to delete the record 
-    ?:                    ?
-    #--------------------------------------------
-    de:                   of
-    paginas:              Page
-    nomProveedor:         Provider
     personas:             People
     otros:                Others
-    cerrarSesion:         Sign off
+    cerrarSesion:         Close Session
     idioma:               Language
     crearCuenta:          Create Account
-    recordar:             Remember
+    recordar:             Remember me
+    #-----------------------------------
+    paginas:              Pages
+    of:                   From
+    nuevoPedido:          New Order
+    pedido:               Order
+    Desea  eliminar este campo: Do you want to delete the record 
+    ?:                    ?
+    Eliminacion exitosa:  Successful elimination
     documentos:           Documents
-    documento:            Cedula
-    identificacion:       Identifieds
-    entrar:               Entrar
+    documento:            Document No.
+    identificacion:       Identification
+    entrar:               Enter
+    register:             Register
   errors:
-    00001:                The name exceeds the allowable length (:length)
-    00002:                The Last name exceeds the allowable length (:length)
-    00003:                User data and contrseña are invalid.
-    00004:                The description exceeds the allowable length (:length)
-    00005:                The location exceeds the allowable length (:length)
-    00006:                The size field exceeds the allowable length (:length)
-    00007:                The user name exceeds the allowable length (:length)
-    00008:                The password exceeds the allowable length (:length)
+    00001:                El nombre excede la longitud permitida (:longitud)
+    00002:                El apellido excede la longitud permitida (:longitud)
+    00003:                Los datos de usuario y contrseña son inválidos.
+    00004:                La descripcion  excede la longitud permitida (:longitud)
+    00005:                La ubicacion excede la longitud permitida (:longitud)
+    00006:                El campo tamaño  excede la longitud permitida (:longitud)
+    00007:                El nombre de usuario excede la longitud permitida (:longitud)
+    00008:                La contraseña  excede la longitud permitida (:longitud)
     00009:                No se puede dejar el campo vacio (:campo vacio)
-    00010:                No se permiten letras, Solo numeros (:numeros)
-    00011:                El email debe ser a123@hotmail.com (:correo)
+    00010:                No se permiten letras, Solo numeros 
+    00011:                El email debe ser example@hotmail.com (:correo)
+    00012:                No se permiten numeros, Solo letras 
+    00013:                No se permiten numeros, Solo letras (:apellido)
+    00014:                El iva  excede la longitud permitida (:longitud)
+    00015:                El origen de la maquina excede la longitud permitida (:longitud)
+    00016:                El numero de telefono es incorrecto
+    00017:                El email es incorrecto 
+    00018:                Las password no coinciden 
+    00019:                El telefono excede la longitud permitida
+    00020:                Ya existe el correo (:email)
+    00021:                El documento excede la longitud permitida (:longitud)

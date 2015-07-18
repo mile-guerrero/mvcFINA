@@ -7,6 +7,7 @@
 
 
 <div class="container container-fluid" id="cuerpo">
+  <div class="center-block" id="cuerpo2">
   <header id="">
 
   </header>
@@ -38,5 +39,6 @@
    
   </form>
   </article>
+  </div>
   </div>
   </div>

@@ -11,17 +11,8 @@
 <?php $hash = videoTableClass::HASH ?>
 
 <div class="container container-fluid" id="cuerpo">
-  <header id="">
-
-  </header>
-  <nav id=""> 
-
-  </nav>
-  <section id=""></section>
-  <article id='derecha'>
-
-    <h3></h3>       
-  </article>
+  
+ 
  
 <div class="container container-fluid" id="cuerpo">
   <article id='derecha'>
@@ -61,7 +52,7 @@
                <th>
               <a class="btn btn-lg btn-success btn-xs" href="<?php echo mvc\config\configClass::getUrlBase() . 'uploadVideo/' . $key->$hash ?>"><?php echo i18n::__('descargar') ?></a> 
               <a data-toggle="modal" data-target="#myModalDelete<?php echo $key->$id ?>" class="btn btn-danger btn-xs"> <?php echo i18n::__('eliminar') ?></a>
-               <input type="hidden"   id="idDelete" name="<?php echo videoTableClass::getNameField(videoTableClass::HASH, true) ?>">
+               <input type="hidden"   id="idDelete" name="<?php echo videoTableClass::getNameField(videoTableClass::ID, true) ?>">
  
                </th>
              
@@ -78,7 +69,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default btn-xs" data-dismiss="modal"><?php echo i18n::__('cerrar') ?></button>
-        <button type="button" class="btn btn-danger btn-xs" onclick="eliminar(<?php echo $key->$id ?>,'<?php echo videoTableClass::getNameField(videoTableClass::HASH, true) ?>','<?php echo routing::getInstance()->getUrlWeb('video', 'delete') ?>')"><?php echo i18n::__('eliminar') ?></button>
+        <button type="button" class="btn btn-danger btn-xs" onclick="eliminar(<?php echo $key->$id ?>,'<?php echo videoTableClass::getNameField(videoTableClass::ID, true) ?>','<?php echo routing::getInstance()->getUrlWeb('video', 'delete') ?>')"><?php echo i18n::__('eliminar') ?></button>
       </div>
     </div>
   </div>
