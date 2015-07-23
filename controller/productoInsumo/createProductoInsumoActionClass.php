@@ -27,33 +27,61 @@ class createProductoInsumoActionClass extends controllerClass implements control
         $unidad = request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::UNIDAD_MEDIDA_ID, true));
         $tipo = request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID, true));
 
+
+        $file = request::getInstance()->getFile(productoInsumoTableClass::getNameField(productoInsumoTableClass::NOMBRE_IMAGEN, true));
         
         validator::validateInsert();
-//        $this->validate($descripcion, $iva);
 
-        $data = array(
-             productoInsumoTableClass::DESCRIPCION => $descripcion,
-             productoInsumoTableClass::IVA => $iva,
-            productoInsumoTableClass::CANTIDAD => $cantidad,
-             productoInsumoTableClass::UNIDAD_MEDIDA_ID => $unidad,
-             productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID => $tipo,
-             '__sequence' => 'producto_insumo_id_seq'
-        );
-         $id = productoInsumoTableClass::insert($data);
-         session::getInstance()->setSuccess('El Registro Fue Exitoso ');
-          $observacion ='se ha insertando un nuevo producto insumo';
-        log::register('Insertar', productoInsumoTableClass::getNameTable(),$observacion,$id);
-        routing::getInstance()->redirect('productoInsumo', 'indexProductoInsumo');
-      } else {
-        routing::getInstance()->redirect('productoInsumo', 'indexProductoInsumo');
+        $long = -3;
+        $ext = substr($file['name'], $long);
+        if ($ext == 'JPG' or $ext =='jpg') {
+              $ext = 'jpg';
+             }
+        $sizeKB = $file['size'] / 1024;
+        $hashImagen = md5($file['name'] . strtotime(date(config::getFormatTimestamp()))) . '.' . $ext;
+
+
+        if ($ext == "jpg" || $ext == "JPG" || $ext == "gif" || $ext == "png") {
+          if (move_uploaded_file($file['tmp_name'], config::getPathAbsolute() . 'web/imgInsumo/' . $hashImagen) && ($sizeKB < 2048)) {
+            
+            //$extencion = substr($file['name'], $long);
+            $hash = $file['type'];
+
+            $data = array(
+                productoInsumoTableClass::DESCRIPCION => $descripcion,
+                productoInsumoTableClass::NOMBRE_IMAGEN => $file['name'],
+                productoInsumoTableClass::EXTENCION_IMAGEN => $ext,
+                productoInsumoTableClass::HASH_IMAGEN => $hashImagen,
+                productoInsumoTableClass::IVA => $iva,
+                productoInsumoTableClass::CANTIDAD => $cantidad,
+                productoInsumoTableClass::UNIDAD_MEDIDA_ID => $unidad,
+                productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID => $tipo,
+                '__sequence' => 'producto_insumo_id_seq'
+            );
+            $id = productoInsumoTableClass::insert($data);
+            session::getInstance()->setSuccess('El Registro Fue Exitoso ');
+            $observacion = 'se ha insertando un nuevo producto insumo';
+            log::register('Insertar', productoInsumoTableClass::getNameTable(), $observacion, $id);
+            routing::getInstance()->redirect('productoInsumo', 'indexProductoInsumo');
+          } else {
+//           validator::validateInsert();
+//              session::getInstance()->setError('El archivo sobre pasa el peso minimo requerido', 'inputImagen');
+//        routing::getInstance()->forward('productoInsumo', 'insertProductoInsumo');
+       
+//            session::getInstance()->setError('Hubo un error al grabar el archivo');
+          }
+        } else {
+//          session::getInstance()->setError('No es un tipo de archivo válido');
+        }
       }
+
     } catch (PDOException $exc) {
       echo $exc->getMessage();
       echo '<br>';
       echo $exc->getTraceAsString();
     }
   }
-  
+
 //public function validate($descripcion, $iva) {
 //
 //    $flag = false;
@@ -91,5 +119,4 @@ class createProductoInsumoActionClass extends controllerClass implements control
 //      routing::getInstance()->forward('productoInsumo', 'insertProductoInsumo');
 //    }
 //  }
-
 }

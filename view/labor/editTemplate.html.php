@@ -7,11 +7,10 @@
 <?php $id = laborTableClass::ID?>
 <?php $valor = laborTableClass::VALOR ?>
 <div class="container container-fluid" id="cuerpo">
-  <article id='derecha'>
-    <h2 class="form-signin-heading">
-      <?php echo i18n::__('editar labor') ?> <?php echo $objLabor[0]->$descripcion ?> 
-    </h2>
-  </article>
+  <div class="center-block" id="cuerpo2">
+<h2 class="form-signin-heading"><?php echo i18n::__('modificar') ?> </h2>
+<br><br>
+  </div>
 <?php view::includePartial('labor/formularioPrincipal',array ('objLabor' => $objLabor))?>
 
 </div>

@@ -6,13 +6,19 @@
 
 <?php $idUsuario = usuarioTableClass::ID ?>
 <?php $password = usuarioTableClass::PASSWORD ?>
+
 <div class="container container-fluid" id="cuerpo">
-  <article id='derecha'>
+  <div class="center-block" id="cuerpo5">
+  <div class="center-block" id="cuerpo2">
+    
 <form   class="form-horizontal" role="form" class="form-horizontal" role="form"  method="post" action="<?php echo routing::getInstance()->getUrlWeb('default', ((isset($objUsuarios)) ? 'update' : 'create')) ?>">
   <?php if(isset($objUsuarios)==true): ?>
   <input  name="<?php echo usuarioTableClass::getNameField(usuarioTableClass::ID,true) ?>" value="<?php echo $objUsuarios[0]->$idUsuario ?>" type="hidden">
   <?php endif ?>
   
+  <br><br><br><br>
+ 
+  <br>
   <?php if(session::getInstance()->hasError('inputUsuario')): ?>
   <div class="alert alert-danger alert-dismissible" role="alert" id="error">
     <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -60,29 +66,8 @@
   <input class="btn btn-lg btn-success btn-xs" type="submit" value="<?php echo i18n::__(((isset($objUsuarios)) ? 'update' : 'register')) ?>">
    <a class="btn btn-lg btn-default btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('default', 'index') ?>" ><?php echo i18n::__('atras') ?></a>
 
-  </form>
-  </article>
+  <br><br><br><br><br><br><br>
+    </form>
   </div>
-
-
-
-
-
-<!--<div class="form-group <?php echo (session::getInstance()->hasFlash(empleadoTableClass::getNameField(empleadoTableClass::CORREO, true)) === true) ? 'has-error has-feedback' : '' ?>">
-            <label for="<?php echo empleadoTableClass::getNameField(empleadoTableClass::CORREO, true) . '_1' ?>" class="col-lg-2 control-label"><?php echo i18n::__('mail') ?>:</label>
-            <div class="col-lg-10">
-                <input id="<?php echo empleadoTableClass::getNameField(empleadoTableClass::CORREO, true) . '_1' ?>" type="text" class="form-control" value="<?php echo ((isset($objEmpleado) == true) ? $objEmpleado[0]->$correo : '') ?>" name="<?php echo empleadoTableClass::getNameField(empleadoTableClass::CORREO, true) . '_1' ?>" placeholder="<?php echo i18n::__('Enter your Mail') ?>">
-                <?php if (session::getInstance()->hasFlash(empleadoTableClass::getNameField(empleadoTableClass::CORREO, true)) === true): ?>
-                    <span class="glyphicon glyphicon-remove form-control-feedback"></span>
-                <?php endif ?>
-            </div>
-        </div>
-        <div class="form-group <?php echo (session::getInstance()->hasFlash(empleadoTableClass::getNameField(empleadoTableClass::CORREO, true)) === true) ? 'has-error has-feedback' : '' ?>">
-            <label for="<?php echo empleadoTableClass::getNameField(empleadoTableClass::CORREO, true) . '_2' ?>" class="col-lg-2 control-label"><?php echo i18n::__('Verify Mail') ?>:</label>
-            <div class="col-lg-10">
-                <input id="<?php echo empleadoTableClass::getNameField(empleadoTableClass::CORREO, true) . '_2' ?>" type="text" class="form-control" value="<?php echo ((isset($objEmpleado) == true) ? $objEmpleado[0]->$correo : '') ?>" name="<?php echo empleadoTableClass::getNameField(empleadoTableClass::CORREO, true) . '_2' ?>" placeholder="<?php echo i18n::__('Verify Mail') ?>">
-                <?php if (session::getInstance()->hasFlash(empleadoTableClass::getNameField(empleadoTableClass::CORREO, true)) === true): ?>
-                    <span class="glyphicon glyphicon-remove form-control-feedback"></span>
-                <?php endif ?>
-            </div>
-        </div>-->
+</div>
+</div>

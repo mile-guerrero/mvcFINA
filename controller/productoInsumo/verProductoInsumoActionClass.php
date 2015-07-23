@@ -20,6 +20,9 @@ class verProductoInsumoActionClass extends controllerClass implements controller
       $fields = array(
           productoInsumoTableClass::ID,
           productoInsumoTableClass::DESCRIPCION,
+          productoInsumoTableClass::NOMBRE_IMAGEN,
+          productoInsumoTableClass::EXTENCION_IMAGEN,
+          productoInsumoTableClass::HASH_IMAGEN,
           productoInsumoTableClass::IVA,
           productoInsumoTableClass::CANTIDAD,
           productoInsumoTableClass::UNIDAD_MEDIDA_ID,
@@ -32,8 +35,8 @@ class verProductoInsumoActionClass extends controllerClass implements controller
             productoInsumoTableClass::ID => request::getInstance()->getRequest(productoInsumoTableClass::ID)
         );
       $this->objPI = productoInsumoTableClass::getAll($fields, true, null, null, null, null, $where);
-
-      
+ 
+     
       $this->defineView('verProductoInsumo', 'productoInsumo', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
       echo $exc->getMessage();

@@ -44,14 +44,17 @@
             <tr>
               <th>  
               <?php
- 
-   if($key->$extencion == 'gif'){//para poner icono a word
+              if($key->$extencion == 'JPG'){//para poner icono 
            echo '<img id="margenImagen" src="' . routing::getInstance()->getUrlImg('../uploadImagen/' . $key->$hash) . '"/>' ;          
       }
-   if($key->$extencion == 'png'){//para poner icono a word
+ 
+   if($key->$extencion == 'gif'){//para poner icono 
+           echo '<img id="margenImagen" src="' . routing::getInstance()->getUrlImg('../uploadImagen/' . $key->$hash) . '"/>' ;          
+      }
+   if($key->$extencion == 'png'){//para poner icono 
           echo '<img id="margenImagen" src="' . routing::getInstance()->getUrlImg('../uploadImagen/' . $key->$hash) . '"/>' ;          
       }
-   if($key->$extencion == 'jpg'){//para poner icono a word
+   if($key->$extencion == 'jpg'){//para poner icono 
           echo '<img id="margenImagen" src="' . routing::getInstance()->getUrlImg('../uploadImagen/' . $key->$hash) . '"/>' ;         
       }?>
               </th> 

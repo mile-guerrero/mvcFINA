@@ -4,9 +4,14 @@
 <?php use mvc\view\viewClass as view ?> 
 <?php $ubicacion = loteTableClass::UBICACION ?>
 <div class="container container-fluid" id="cuerpo">
-  <article id='derecha'>
+  
+  <div class="center-block" id="cuerpo2">
+    
     <h2 class="form-signin-heading">
 <?php echo i18n::__('editar lote') ?> </h2>
-  </article>
+    <br>
+    <br>
+  </div>
+ 
   <?php view::includePartial('lote/formularioPrincipalRLote',array('objLote'=>$objLote,'objLUD'=>$objLUD,'objLUMedida'=>$objLUMedida,'objLPI'=>$objLPI,'objLC'=>$objLC)) ?>
 </div>

@@ -11,6 +11,7 @@
 <?php $id = enfermedadTableClass::ID ?>
 
 <div class="container container-fluid" id="cuerpo">
+  <div class="center-block" id="cuerpo4">
   <div class="center-block" id="cuerpo2">
   <header id="">
    
@@ -244,7 +245,7 @@
   
 </div>
 </div>
-
+</div>
 
 <div class="modal fade" id="myModalDeleteMasivo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">

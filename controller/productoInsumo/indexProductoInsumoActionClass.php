@@ -48,6 +48,9 @@ class indexProductoInsumoActionClass extends controllerClass implements controll
       $fields = array(
           productoInsumoTableClass::ID,
           productoInsumoTableClass::DESCRIPCION,
+          productoInsumoTableClass::NOMBRE_IMAGEN,
+          productoInsumoTableClass::EXTENCION_IMAGEN,
+          productoInsumoTableClass::HASH_IMAGEN,
           productoInsumoTableClass::IVA,
           productoInsumoTableClass::CANTIDAD,
           productoInsumoTableClass::UNIDAD_MEDIDA_ID,

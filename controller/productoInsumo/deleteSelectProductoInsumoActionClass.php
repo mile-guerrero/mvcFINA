@@ -20,11 +20,13 @@ class deleteSelectProductoInsumoActionClass extends controllerClass implements c
     try {
       if (request::getInstance()->isMethod('POST')) {
         $idsToDelete = request::getInstance()->getPost('chk');
+        
+       
         foreach ($idsToDelete as $id){
           $ids = array(
               productoInsumoTableClass::ID => $id
         );
-        
+       
         productoInsumoTableClass::delete($ids, true);
       }
        session::getInstance()->setSuccess('Las Casillas Seleccionadas Fueron Eliminadas Exitosamente');

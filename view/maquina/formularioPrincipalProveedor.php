@@ -13,13 +13,19 @@
 <?php $email = proveedorTableClass::EMAIL ?>
 <?php $idCiudad = ciudadTableClass::ID?>
 <?php $nomCiu = ciudadTableClass::NOMBRE_CIUDAD?>
+
 <div class="container container-fluid" id="cuerpo">
-  <article id="derecha">
+  <div class="center-block" id="cuerpo5">
+  <div class="center-block" id="cuerpo2">
+    
   <form class="form-horizontal" role="form" method="post" action="<?php echo routing::getInstance()->getUrlWeb('maquina', ((isset($objProveedor)) ? 'updateProveedor' : 'createProveedor')) ?>">
 <?php if (isset($objProveedor) == true): ?>
     <input  name="<?php echo proveedorTableClass::getNameField(proveedorTableClass::ID, true) ?>" value="<?php echo $objProveedor[0]->$idProveedor ?>" type="hidden">
 <?php endif ?>
-  
+    
+    <br><br><br><br>
+ 
+  <br>
     <?php if(session::getInstance()->hasError('inputDocumento')): ?>
     <div class="alert alert-danger alert-dismissible" role="alert" id="error">
     <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -78,22 +84,24 @@
     </div>
     <?php endif ?> 
 
-    <div class="form-group">
-      <label for="<?php echo proveedorTableClass::getNameField(proveedorTableClass::DIRECCION, true) ?>" class="col-sm-2"> <?php echo i18n::__('dir') ?>: </label>     
-      <div class="col-sm-10">             
-        <input class="form-control-gonza1" value="<?php echo (session::getInstance()->hasFlash('inputDireccion') or request::getInstance()->hasPost(proveedorTableClass::getNameField(proveedorTableClass::DIRECCION, true))) ? request::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::DIRECCION, true)) : ((isset($objProveedor[0])) ? $objProveedor[0]->$direccion : '') ?>" type="text" name="<?php echo proveedorTableClass::getNameField(proveedorTableClass::DIRECCION, true) ?>" placeholder="<?php echo i18n::__('dir') ?>"required>
-     
-        
-      
-        
-           <select class="form-control-gonza2" id="<?php echo proveedorTableClass::getNameField(proveedorTableClass::ID, true)?>" name="<?php echo proveedorTableClass::getNameField(proveedorTableClass::ID_CIUDAD, true) ?>">
+    
+    <div class="row j1" >
+<label for="<?php echo proveedorTableClass::getNameField(proveedorTableClass::DIRECCION, true) ?>" class="col-sm-2"> <?php echo i18n::__('dir') ?>: </label>     
+        <div class="col-lg-5">
+          <input class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputDireccion') or request::getInstance()->hasPost(proveedorTableClass::getNameField(proveedorTableClass::DIRECCION, true))) ? request::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::DIRECCION, true)) : ((isset($objProveedor[0])) ? $objProveedor[0]->$direccion : '') ?>" type="text" name="<?php echo proveedorTableClass::getNameField(proveedorTableClass::DIRECCION, true) ?>" placeholder="<?php echo i18n::__('dir') ?>"required>
+     </div>
+        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+          <select class="form-control" id="<?php echo proveedorTableClass::getNameField(proveedorTableClass::ID, true)?>" name="<?php echo proveedorTableClass::getNameField(proveedorTableClass::ID_CIUDAD, true) ?>">
             <option value="<?php echo (session::getInstance()->hasFlash('selectCiudad') or request::getInstance()->hasPost(proveedorTableClass::getNameField(proveedorTableClass::ID_CIUDAD, true))) ? request::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::ID_CIUDAD, true)) : ((isset($objProveedor[0])) ? '' : '') ?>" ><?php echo i18n::__('selectCiudad') ?></option>
 <?php foreach ($objCiudad as $ciudad): ?>
             <option <?php echo (request::getInstance()->hasPost(proveedorTableClass::getNameField(proveedorTableClass::ID_CIUDAD, true)) === true and request::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::ID_CIUDAD, true)) == $ciudad->$idCiudad) ? 'selected' : (isset($objProveedor[0]->$ciudadId) === true and $objProveedor[0]->$ciudadId == $ciudad->$idCiudad) ? 'selected' : '' ?> value="<?php echo $ciudad->$idCiudad ?>"><?php echo $ciudad->$nomCiu ?></option>
 <?php endforeach; ?>
           </select>
+        </div>
       </div>
-    </div>
+<br>  
+    
+   
     
 <?php if(session::getInstance()->hasError('inputTelefono')): ?>
    <div class="alert alert-danger alert-dismissible" role="alert" id="error">
@@ -130,6 +138,8 @@
     <input class="btn btn-lg btn-success btn-xs" type="submit" value="<?php echo i18n::__(((isset($objProveedor)) ? 'update' : 'register')) ?>">
     <a class="btn btn-lg btn-default btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('maquina', 'indexProveedor') ?>" ><?php echo i18n::__('atras') ?> </a>
 
-  </form> 
-  </article>
+<br><br><br>
+    </form>
+  </div>
+</div>
 </div>

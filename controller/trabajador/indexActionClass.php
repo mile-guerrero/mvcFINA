@@ -75,10 +75,10 @@ class indexActionClass extends controllerClass implements controllerActionInterf
         $page = $page * 3;
       }
 
-      $this->cntPages = trabajadorTableClass::getTotalPages(3);
+      $this->cntPages = trabajadorTableClass::getTotalPages(config::getRowGrid());
 
 
-      $this->objTrabajador = trabajadorTableClass::getAll($fields, true, $orderBy, 'ASC', 3, $page, $where);
+      $this->objTrabajador = trabajadorTableClass::getAll($fields, true, $orderBy, 'ASC',config::getRowGrid(), $page, $where);
       $fields = array(     
       ciudadTableClass::ID, 
       ciudadTableClass::NOMBRE_CIUDAD

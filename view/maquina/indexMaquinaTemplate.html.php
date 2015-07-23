@@ -13,6 +13,7 @@
 <?php $idpro= proveedorTableClass::ID ?>
 <?php $despro= proveedorTableClass::NOMBREP ?>
 <div class="container container-fluid" id="cuerpo">
+   <div class="center-block" id="cuerpo4">
   <div class="center-block" id="cuerpo2">
   <header id="">
     
@@ -289,7 +290,7 @@
     </article>
  </div>
 </div>
-
+</div>
 
 <div class="modal fade" id="myModalDeleteMasivo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">

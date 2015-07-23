@@ -8,11 +8,17 @@
 <?php $valor = laborTableClass::VALOR ?>
 
 <div class="container container-fluid" id="cuerpo">
-  <article id='derecha'>
+  <div class="center-block" id="cuerpo5">
+  <div class="center-block" id="cuerpo2">
+    
 <form class="form-horizontal" role="form" method="post" action="<?php echo routing::getInstance()->getUrlWeb('labor', ((isset($objLabor)) ? 'update' : 'create')) ?>">
   <?php if(isset($objLabor)==true): ?>
   <input  name="<?php echo laborTableClass::getNameField(laborTableClass::ID,true) ?>" value="<?php echo $objLabor[0]->$idlabor ?>" type="hidden">
   <?php endif ?>
+  
+  <br><br><br><br>
+ 
+  <br>
   
   <?php if(session::getInstance()->hasError('inputDescripcion')): ?>
     <div class="alert alert-danger alert-dismissible" role="alert" id="error">
@@ -50,6 +56,8 @@
   <input class="btn btn-lg btn-success btn-xs" type="submit" value="<?php echo i18n::__(((isset($objLabor)) ? 'update' : 'register')) ?>">
    <a class="btn btn-lg btn-default btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('labor', 'index') ?>" ><?php echo i18n::__('atras') ?></a>
 
-  </form>
-  </article>
+  <br><br><br><br><br><br><br><br>
+    </form>
   </div>
+</div>
+</div>

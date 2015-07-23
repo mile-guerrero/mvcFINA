@@ -23,7 +23,8 @@ use mvc\request\requestClass as request ?>
 <?php $idCiudaddes = ciudadTableClass::ID ?>
 <?php $idTipoId = tipoIdTableClass::ID ?>
 
-<div class="container container-fluid " id="cuerpo">
+<div class="container container-fluid" id="cuerpo">
+  <div class="center-block" id="cuerpo5">
   <div class="center-block" id="cuerpo2">
 
     <!--<article id='derecha'>-->
@@ -40,7 +41,9 @@ use mvc\request\requestClass as request ?>
       <?php endif ?>
 
       <!--        &nbsp;-->
-      
+      <br><br><br><br>
+ 
+  <br>
 
           <?php if (session::getInstance()->hasError('inputDocumento')): ?>
             <div class=" alert alert-danger alert-dismissible" role="alert" id="error">
@@ -133,18 +136,19 @@ use mvc\request\requestClass as request ?>
       
       <div class="row j1" >
         
-          <label for="<?php echo clienteTableClass::getNameField(clienteTableClass::DOCUMENTO, true) ?>" class="col-sm-2"> <?php echo i18n::__('documento') ?>:</label>     
+          <label for="<?php echo clienteTableClass::getNameField(clienteTableClass::DIRECCION, true) ?>" class="col-sm-2"> <?php echo i18n::__('dir') ?>: </label>     
         
         <div class="col-lg-5">
-          <input class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputDocumento') or request::getInstance()->hasPost(clienteTableClass::getNameField(clienteTableClass::DOCUMENTO, true))) ? request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::DOCUMENTO, true)) : ((isset($objCliente[0])) ? $objCliente[0]->$documento : '') ?>" type="text" name="<?php echo clienteTableClass::getNameField(clienteTableClass::DOCUMENTO, true) ?>" placeholder="<?php echo i18n::__('documento') ?>"required>
-        </div>
+          <input class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputDireccion') or request::getInstance()->hasPost(clienteTableClass::getNameField(clienteTableClass::DIRECCION, true))) ? request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::DIRECCION, true)) : ((isset($objCliente[0])) ? $objCliente[0]->$direccion : '') ?>" type="text" name="<?php echo clienteTableClass::getNameField(clienteTableClass::DIRECCION, true) ?>" placeholder="<?php echo i18n::__('dir') ?>"required>
+       </div>
         <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-          <select class="form-control" id="<?php clienteTableClass::getNameField(clienteTableClass::ID, TRUE) ?>" name="<?php echo clienteTableClass::getNameField(clienteTableClass::ID_TIPO_ID, TRUE); ?>" >
-            <option value="<?php echo (session::getInstance()->hasFlash('selectTipoId') or request::getInstance()->hasPost(clienteTableClass::getNameField(clienteTableClass::ID_TIPO_ID, true))) ? request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::ID_TIPO_ID, true)) : ((isset($objCliente[0])) ? '' : '') ?>"><?php echo i18n::__('selectTipoId') ?></option>
-            <?php foreach ($objCTI as $IT): ?>
-              <option <?php echo (request::getInstance()->hasPost(clienteTableClass::getNameField(clienteTableClass::ID_TIPO_ID, true)) === true and request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::ID_TIPO_ID, true)) == $IT->$idTipoId) ? 'selected' : (isset($objCliente[0]->$idTipo) === true and $objCliente[0]->$idTipo == $IT->$idTipoId) ? 'selected' : '' ?> value="<?php echo $IT->$idTipoId ?>"><?php echo $IT->$descripciontipo ?></option>
-            <?php endforeach; ?>
-          </select>
+          <select class="form-control" id="<?php clienteTableClass::getNameField(clienteTableClass::ID, true) ?>" name="<?php echo clienteTableClass::getNameField(clienteTableClass::ID_CIUDAD, true); ?>">
+           <option value="<?php echo (session::getInstance()->hasFlash('selectCiudad') or request::getInstance()->hasPost(clienteTableClass::getNameField(clienteTableClass::ID_CIUDAD, true))) ? request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::ID_CIUDAD, true)) : ((isset($objCliente[0])) ? '' : '') ?>"><?php echo i18n::__('selectCiudad')?></option>
+<?php foreach ($objCC as $C): ?>
+              <option <?php echo (request::getInstance()->hasPost(clienteTableClass::getNameField(clienteTableClass::ID_CIUDAD, true)) === true and request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::ID_CIUDAD, true)) == $C->$idCiudaddes) ? 'selected' : (isset($objCliente[0]->$idCiudad) === true and $objCliente[0]->$idCiudad == $C->$idCiudaddes) ? 'selected' : '' ?> value="<?php echo $C->$idCiudaddes ?>"><?php echo $C->$descripcionciudad ?></option>
+<?php endforeach; ?>
+              
+          </select><br>
         </div>
       </div>
       
@@ -172,10 +176,10 @@ use mvc\request\requestClass as request ?>
 
       <input class="btn btn-lg btn-primary btn-xs" type="submit" value="<?php echo i18n::__(((isset($objCliente)) ? 'update' : 'register')) ?>">
       <a class="btn btn-lg btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('cliente', 'indexCliente') ?>" ><?php echo i18n::__('atras') ?> </a>
-
+<br><br><br>
     </form> 
     <!--  </article>-->
   </div>
-
+  </div>
 </div>
  

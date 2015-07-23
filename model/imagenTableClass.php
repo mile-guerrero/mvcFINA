@@ -41,7 +41,7 @@ public static function deleteImagen($id){
 public static function getNameImagen($id){
     try {
      
-      $extencion='jpg';
+     $extencion="jpg";
       $sql =  'SELECT ' . imagenTableClass::EXTENCION .'  As extencion   ' . ' , '. imagenTableClass::NOMBRE .  ' As nombre  '
              . '  FROM ' . imagenTableClass::getNameTable() . '  '
              . '  WHERE '  .imagenTableClass::ID . ' = :id' . ' ' . 'AND' . ' ' .imagenTableClass::EXTENCION . ' = :extencion';

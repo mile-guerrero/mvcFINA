@@ -4,10 +4,11 @@
 <?php use mvc\view\viewClass as view ?> 
 <?php $usuario = usuarioTableClass::USUARIO ?>
 <div class="container container-fluid" id="cuerpo">
-  <article id='derecha'>
+   <div class="center-block" id="cuerpo2">
 <h2 class="form-signin-heading">
- <?php echo i18n::__('editar usuario') ?>  <?php echo $objUsuarios[0]->$usuario ?>
+ <?php echo i18n::__('modificar') ?> 
 </h2>
-  </article>
+     <br><br>
+   </div>
 <?php view::includePartial('default/formularioPrincipal', array('objUsuarios' => $objUsuarios, 'usuario' => $usuario)) ?>
 </div>

@@ -3,9 +3,10 @@
 <?php use mvc\i18n\i18nClass as i18n ?>
 <?php use mvc\view\viewClass as view?>
 <div class="container container-fluid" id="cuerpo">
-  <article id="derecha">
-    <h1> <?php echo i18n::__('nuevo proveedor') ?> <?php echo $mensaje?></h1>
-  </article>
+  <div class="center-block" id="cuerpo2">
+     <h2> <?php echo i18n::__('nuevo') ?></h2>
+ <br>
+    <br>
+</div>
 <?php view::includePartial('maquina/formularioPrincipalProveedor', array('objCiudad' => $objCiudad))?>
-<?php view::includePartial('maquina/formularioPrincipalProveedor', array('mensaje' => $mensaje))?>
 </div>

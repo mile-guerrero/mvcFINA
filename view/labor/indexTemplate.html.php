@@ -12,6 +12,7 @@ use mvc\session\sessionClass as session ?>
 
 
 <div class="container container-fluid" id="cuerpo">
+   <div class="center-block" id="cuerpo4">
   <div class="center-block" id="cuerpo2">
   <header id="">
 
@@ -172,5 +173,5 @@ use mvc\session\sessionClass as session ?>
   </article>
 
 </div>
-
+   </div>
 </div>

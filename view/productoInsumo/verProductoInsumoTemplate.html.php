@@ -8,6 +8,8 @@
 <?php $id = productoInsumoTableClass::ID ?>
 <?php $updated = productoInsumoTableClass::UPDATED_AT ?>
 <?php $created = productoInsumoTableClass::CREATED_AT ?>
+<?php $hash = productoInsumoTableClass::HASH_IMAGEN ?>
+<?php $extencion = productoInsumoTableClass::EXTENCION_IMAGEN ?>
 <div class="container container-fluid" id="cuerpo">
   <header id="">
    
@@ -29,12 +31,17 @@
     </thead>
     </tr>
 	<tbody>
+     
               <?php foreach ($objPI as $key): ?>
-                <tr>
-                  <th><?php echo i18n::__('des') ?></th>      
-                  <td><?php echo $key->$des ?></td>
+                <tr>    
+                  <th><?php echo $key->$des ?></th>
+                 <td>
+                   <?php
+              if($key->$extencion == 'jpg'){//para poner icono 
+           echo '<img id="margenImagen" src="' . routing::getInstance()->getUrlImg('../imgInsumo/' . $key->$hash) . '"/>' ;          
+                   }
+                   ?></td>
                   </tr>
-                  <tr>
                    <tr>
                   <th><?php echo i18n::__('iva') ?></th>      
                   <td><?php echo $key->$iva ?></td>
@@ -45,12 +52,11 @@
                    <th><?php echo i18n::__('unidad') ?></th>                   
                    <td><?php echo unidadMedidaTableClass::getNameUnidadMedida($key->$unidad) ?></td>
                        </tr>
-                    <?php endforeach; ?>
-                       <?php foreach ($objPI as $key): ?>
+                  
                        <tr>
                        <th><?php echo i18n::__('tipoProducto') ?></th> 
                        <td><?php echo tipoProductoInsumoTableClass::getNameTipoProductoInsumo($key->$tipo) ?></td>
-                            
+                        </tr>    
                                               
                 <?php endforeach; ?>
            </tbody>

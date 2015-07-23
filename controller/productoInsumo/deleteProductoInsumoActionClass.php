@@ -21,6 +21,16 @@ class deleteProductoInsumoActionClass extends controllerClass implements control
       if (request::getInstance()->isMethod('POST') and request::getInstance()->isAjaxRequest()) {
 
         $id = request::getInstance()->getPost(productoInsumoTableClass::getNameField( productoInsumoTableClass::ID, true));
+       $fields = array(
+          productoInsumoTableClass::ID,
+          productoInsumoTableClass::HASH_IMAGEN,
+      );
+        $where = array(
+            productoInsumoTableClass::ID => $id
+        );
+       $objEliminarImagen = productoInsumoTableClass::getAll($fields, false, null, null, null, null, $where);
+       
+       unlink(config::getPathAbsolute() . 'web/imgInsumo/' . $objEliminarImagen[0]->hashimagen);
        
         $ids = array(
              productoInsumoTableClass::ID => $id

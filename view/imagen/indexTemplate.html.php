@@ -7,6 +7,7 @@
 
 
 <div class="container container-fluid" id="cuerpo">
+  <div class="center-block" id="cuerpo4">
   <div class="center-block" id="cuerpo2">
   <header id="">
 
@@ -20,8 +21,12 @@
     <h3></h3>       
   </article>
  
-<div class="container container-fluid" id="cuerpo">
   <article id='derecha'>
+    
+    <br>
+    <br>
+    <br>
+    <br>
     <form enctype="multipart/form-data"  class="form-horizontal"  class="form-horizontal" role="form"  method="post" action="<?php echo routing::getInstance()->getUrlWeb('imagen', ((isset($objUsuarios)) ? 'update' : 'index')) ?>">
   
  <?php view::includeHandlerMessage()?> 
@@ -44,8 +49,16 @@
    
    
   </form>
+    <br>
+    <br>
+    <br>
+    <br><br>
+    <br>
+    <br>
+    <br>
+    <br>
   </article>
-  
+  </div>
   </div>
  </div>
   </div>

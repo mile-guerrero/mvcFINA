@@ -13,13 +13,17 @@
 <?php $descripcionciudad = ciudadTableClass::NOMBRE_CIUDAD ?>
 
 <div class="container container-fluid" id="cuerpo">
-  <article id='derecha'>
+  <div class="center-block" id="cuerpo5">
+  <div class="center-block" id="cuerpo2">
+    
 <form class="form-horizontal" role="form" method="post" action="<?php echo routing::getInstance()->getUrlWeb('cooperativa', ((isset($objCooperativa)) ? 'update' : 'create')) ?>">
   <?php if(isset($objCooperativa)==true): ?>
   <input  name="<?php echo cooperativaTableClass::getNameField(cooperativaTableClass::ID,true) ?>" value="<?php echo $objCooperativa[0]->$idCooperativa ?>" type="hidden">
   <?php endif ?>
  
-  
+   <br><br><br><br>
+ 
+  <br>
   <?php if(session::getInstance()->hasError('inputNombre')): ?>
     <div class="alert alert-danger alert-dismissible" role="alert" id="error">
     <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -67,22 +71,23 @@
     </div>
     <?php endif ?>
   
-  <div class="form-group">
-      <label for="<?php echo cooperativatableClass::getNameField(cooperativaTableClass::DIRECCION, true) ?>" class="col-sm-2"> <?php echo i18n::__('dir') ?>:</label>     
-      <div class="col-sm-10"> 
-        <input class="form-control-gonza1"  value="<?php echo (session::getInstance()->hasFlash('inputDireccion') or request::getInstance()->hasPost(cooperativaTableClass::getNameField(cooperativaTableClass::DIRECCION, true))) ? request::getInstance()->getPost(cooperativaTableClass::getNameField(cooperativaTableClass::DIRECCION, true)) : ((isset($objCooperativa[0])) ? $objCooperativa[0]->$direccion : '') ?>"  type="text" name="<?php echo cooperativaTableClass::getNameField(cooperativaTableClass::DIRECCION, true) ?>" placeholder="<?php echo i18n::__('dir') ?>" required>
-      
   
-  
- 
-     	  <select class="form-control-gonza2" id="<?php echo cooperativaTableClass::getNameField(cooperativaTableClass::ID, true)?>" name="<?php echo cooperativaTableClass::getNameField(cooperativaTableClass::ID_CIUDAD, true) ?>">
+  <div class="row j1" >
+ <label for="<?php echo cooperativatableClass::getNameField(cooperativaTableClass::DIRECCION, true) ?>" class="col-sm-2"> <?php echo i18n::__('dir') ?>:</label>     
+      <div class="col-lg-5">
+          <input class="form-control"  value="<?php echo (session::getInstance()->hasFlash('inputDireccion') or request::getInstance()->hasPost(cooperativaTableClass::getNameField(cooperativaTableClass::DIRECCION, true))) ? request::getInstance()->getPost(cooperativaTableClass::getNameField(cooperativaTableClass::DIRECCION, true)) : ((isset($objCooperativa[0])) ? $objCooperativa[0]->$direccion : '') ?>"  type="text" name="<?php echo cooperativaTableClass::getNameField(cooperativaTableClass::DIRECCION, true) ?>" placeholder="<?php echo i18n::__('dir') ?>" required>
+      </div>
+        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+          <select class="form-control" id="<?php echo cooperativaTableClass::getNameField(cooperativaTableClass::ID, true)?>" name="<?php echo cooperativaTableClass::getNameField(cooperativaTableClass::ID_CIUDAD, true) ?>">
             <option value="<?php echo (session::getInstance()->hasFlash('selectCiudad')  or request::getInstance()->hasPost(cooperativaTableClass::getNameField(cooperativaTableClass::ID_CIUDAD, true))) ? request::getInstance()->getPost(cooperativaTableClass::getNameField(cooperativaTableClass::ID_CIUDAD, true)) : ((isset($objCooperativa[0])) ? '' : '') ?>"  ><?php echo i18n::__('selectCiudad') ?></option>
 <?php foreach ($objCC as $C): ?>
               <option <?php echo (request::getInstance()->hasPost(cooperativaTableClass::getNameField(cooperativaTableClass::ID_CIUDAD, true)) === true and request::getInstance()->getPost(cooperativaTableClass::getNameField(cooperativaTableClass::ID_CIUDAD, true)) == $C->$idCiudaddes) ? 'selected' : (isset($objCooperativa[0]->$idCiudad) === true and $objCooperativa[0]->$idCiudad == $C->$idCiudaddes) ? 'selected' : '' ?>  value="<?php echo $C->$idCiudaddes ?>"><?php echo $C->$descripcionciudad ?></option>
 <?php endforeach; ?>
           </select>
-        </div> 
+        </div>
       </div>
+<br> 
+ 
   
   
   <?php if(session::getInstance()->hasError('inputTelefono')): ?>
@@ -103,6 +108,8 @@
   <input class="btn btn-lg btn-success btn-xs" type="submit" value="<?php echo i18n::__(((isset($objCooperativa)) ? 'update' : 'register')) ?>">
    <a class="btn btn-lg btn-default btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('cooperativa', 'index') ?>" ><?php echo i18n::__('atras') ?></a>
 
-  </form>
-  </article>
+<br><br><br>
+    </form>
   </div>
+</div>
+</div>

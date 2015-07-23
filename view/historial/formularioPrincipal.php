@@ -10,13 +10,17 @@
 <?php $enfermedad = historialTableClass::ENFERMEDAD_ID ?>
 <?php $enfermedads = enfermedadTableClass::ID ?>
 <?php $desEnfermedad = enfermedadTableClass::NOMBRE ?>
+
+
 <div class="container container-fluid" id="cuerpo">
-  <article id='derecha'>
+  <div class="center-block" id="cuerpo5">
+    <div class="center-block" id="cuerpo2">
+      <article id='derecha'>
 <form  class="form-horizontal" role="form" method="post" action="<?php echo routing::getInstance()->getUrlWeb('historial', ((isset($objHistorial)) ? 'update' : 'create')) ?>">
   <?php if(isset($objHistorial)== true): ?>
   <input  name="<?php echo historialTableClass::getNameField(historialTableClass::ID, true) ?>" value="<?php echo $objHistorial[0]->$idHistorial ?>" type="hidden">
   <?php endif ?>
-  
+  <br><br><br><br><br>
   
   <?php if(session::getInstance()->hasError('inputInsumo')): ?>
   <div class="alert alert-danger alert-dismissible" role="alert" id="error">
@@ -62,7 +66,9 @@
   
   <input class="btn btn-lg btn-success btn-xs" type="submit" value="<?php echo i18n::__(((isset($objHistorial)) ? 'update' : 'register')) ?>">
 <a class="btn btn-lg btn-default btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('historial', 'index') ?>" ><?php echo i18n::__('atras') ?> </a>
-
+<br><br><br><br><br><br><br><br>
 </form>
   </article>
+</div>
+</div>
 </div>

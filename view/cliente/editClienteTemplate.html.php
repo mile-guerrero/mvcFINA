@@ -6,9 +6,9 @@
 <div class="container container-fluid" id="cuerpo">
   <div class="center-block" id="cuerpo2">
     <h2 class="form-signin-heading">
-      <?php echo i18n::__('editar cliente') ?> <?php echo $objCliente[0]->$nombre ?> 
+      <?php echo i18n::__('modificar') ?> 
     </h2>
-    <br>
+   <br><br>
   </div>
 <?php view::includePartial('cliente/formularioPrincipalCliente', array('objCliente' => $objCliente, 'nombre' => $nombre,'objCTI' => $objCTI,'objCC' => $objCC)) ?>
 </div>

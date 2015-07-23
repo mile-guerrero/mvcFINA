@@ -13,6 +13,9 @@ namespace mvc\validator {
    */
   class productoInsumoValidatorClass extends validatorClass {
     public static function validateInsert() {
+       
+      
+      
       $flag = false;
       
 //      $soloNumeros = "/^[[:digit:]]+$/";
@@ -31,6 +34,22 @@ namespace mvc\validator {
         $flag = true;
         session::getInstance()->setFlash('inputDescripcion', true);
         session::getInstance()->setError('La descripcion digitada es mayor en cantidad de caracteres a lo permitido', 'inputDescripcion');
+      }//-------------------------------campo cantidad-----------------------------
+          //----campo nulo----
+      if (self::notBlank(request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::CANTIDAD, true)))) {
+        $flag = true;
+        session::getInstance()->setFlash('inputCantidad', true);
+        session::getInstance()->setError('La cantidad del insumo es requerido', 'inputCantidad');
+        } //----sobre pasar los caracteres----
+        else if(strlen(request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::CANTIDAD, true))) > \productoInsumoTableClass::CANTIDAD_LENGTH) {
+        $flag = true;
+        session::getInstance()->setFlash('inputCantidad', true);
+        session::getInstance()->setError('La cantidad digitada es mayor en cantidad de caracteres a lo permitido', 'inputCantidad');
+      }  //----valida que sea numerico----      
+        else if (!is_numeric(request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::CANTIDAD, true)))) {
+        $flag = true;
+        session::getInstance()->setFlash('inputCantidad', true);
+        session::getInstance()->setError('La cantidad no permite letras, solo numeros', 'inputCantidad');
       } //-------------------------------campo iva-----------------------------
           //----campo nulo----
       if (self::notBlank(request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::IVA, true)))) {
@@ -60,12 +79,15 @@ namespace mvc\validator {
         session::getInstance()->setFlash('selectTipo', true);
         session::getInstance()->setError('El tipo insumo del insumo es requerido', 'selectTipo');
         }
+        
+        
       
       //-------------------------------condiccion de bandera true-----------------------------
       if ($flag === true) {
         //request::getInstance()->setMethod('GET');
         routing::getInstance()->forward('productoInsumo', 'insertProductoInsumo');
       }
+      
     }
   
   

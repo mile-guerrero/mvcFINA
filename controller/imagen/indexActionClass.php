@@ -35,7 +35,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
         $nameFile = md5($file['name'] . strtotime(date(config::getFormatTimestamp()))) . '.' . $ext;
         
         
-       if ($ext == "jpg" || $ext == "gif" || $ext == "png") {
+       if ($ext == "jpg" || $ext == "JPG" || $ext == "gif" || $ext == "png") {
             if (move_uploaded_file($file['tmp_name'], config::getPathAbsolute() . 'web/uploadImagen/' . $nameFile)&& ($sizeKB < 2048)) {
             session::getInstance()->setSuccess('El archivo subio correctamente');
             $extencion = substr($file['name'], $long);

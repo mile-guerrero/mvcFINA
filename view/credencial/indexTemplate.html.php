@@ -7,6 +7,7 @@
 <?php $nom = credencialTableClass::NOMBRE ?>
 <?php $id = credencialTableClass::ID ?>
 <div class="container container-fluid" id="cuerpo">
+  <div class="center-block" id="cuerpo4">
   <div class="center-block" id="cuerpo2">
   <header id="">
    
@@ -183,6 +184,8 @@
           <?php endfor;?>
         </select> <?php echo i18n::__('de') ?> <?php echo $cntPages ?>
       </div>
+<br>
+  <br><br><br>
       <form id="frmDelete" action="<?php echo routing::getInstance()->getUrlWeb('credencial', 'delete') ?>" method="POST">
         <input type="hidden" id="idDelete" name="<?php echo credencialTableClass::getNameField(credencialTableClass::ID, true) ?>">
       </form>
@@ -190,7 +193,8 @@
     </article>
 </div>
 </div>
-
+  
+</div>
 <div class="modal fade" id="myModalDeleteMasivo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">

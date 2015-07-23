@@ -18,6 +18,7 @@ use mvc\session\sessionClass as session ?>
 <?php $idCiudad = ciudadTableClass::ID ?>
 <?php $nomCiu = ciudadTableClass::NOMBRE_CIUDAD ?>
 <div class="container container-fluid" id="cuerpo">
+   <div class="center-block" id="cuerpo4">
   <div class="center-block" id="cuerpo2">
   <header id="">
 
@@ -276,6 +277,8 @@ use mvc\session\sessionClass as session ?>
   </article>
     </div>
 </div>
+</div>
+  
 <div class="modal fade" id="myModalDeleteMasivo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">

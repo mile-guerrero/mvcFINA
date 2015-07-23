@@ -293,6 +293,9 @@ CREATE TABLE producto_insumo
 (
 	id BIGINT DEFAULT nextval('public.producto_insumo_id_seq'::regclass) NOT NULL,
 	descripcion VARCHAR(400) NOT NULL,
+	nombreImagen VARCHAR(400)  NULL,
+	extencionImagen VARCHAR(5)  NULL,
+	hashImagen VARCHAR(37)  NULL,
 	iva BigInt NOT NULL,
 	cantidad BigInt NULL,
 	unidad_medida_id BIGINT NOT NULL,

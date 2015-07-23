@@ -72,10 +72,10 @@ class indexProveedorActionClass extends controllerClass implements controllerAct
         $page = $page * 3;
       }
 
-      $this->cntPages = proveedorTableClass::getTotalPages(3);
+      $this->cntPages = proveedorTableClass::getTotalPages(config::getRowGrid());
       
       
-      $this->objProveedor = proveedorTableClass::getAll($fields, true, $orderBy, 'ASC', 3, $page, $where);
+      $this->objProveedor = proveedorTableClass::getAll($fields, true, $orderBy, 'ASC', config::getRowGrid(), $page, $where);
       
       $fields = array(     
       ciudadTableClass::ID, 

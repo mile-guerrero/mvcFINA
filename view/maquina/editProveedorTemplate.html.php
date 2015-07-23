@@ -5,10 +5,12 @@
 <?php $nombre = proveedorTableClass::NOMBREP ?>
 
 <div class="container container-fluid" id="cuerpo">
-  <article id="derecha">
+ <div class="center-block" id="cuerpo2">
     <h2 class="form-signin-heading">
-      <?php echo i18n::__('editar proveedor') ?> <?php echo $objProveedor[0]->$nombre ?> 
+      <?php echo i18n::__('modificar') ?> <?php echo $objProveedor[0]->$nombre ?> 
     </h2>
-  </article>
+  <br>
+    <br>
+</div>
 <?php view::includePartial('maquina/formularioPrincipalProveedor', array('objProveedor' => $objProveedor, 'nombre' => $nombre, 'objCiudad' => $objCiudad)) ?>
 </div>

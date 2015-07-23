@@ -11,6 +11,9 @@ class productoInsumoBaseTableClass extends tableBaseClass {
 
  private $id;
  private $descripcion;
+ private $nombreImagen;
+ private $extencionImagen;
+ private $hashImagen;
  private $iva;
  private $cantidad;
  private $unidadMedidaId;
@@ -26,12 +29,21 @@ class productoInsumoBaseTableClass extends tableBaseClass {
   const DELETED_AT = 'deleted_at';
   const DESCRIPCION = 'descripcion';
   const DESCRIPCION_LENGTH = 80;
+  const NOMBRE_IMAGEN = 'nombreimagen';
+  const NOMBRE_IMAGEN_LENGTH = 400;
+  const EXTENCION_IMAGEN = 'extencionimagen';
+  const EXTENCION_IMAGEN_LENGTH = 5;
+  const HASH_IMAGEN = 'hashimagen';
+  const HASH_IMAGEN_LENGTH = 37;
   const IVA = 'iva';
   const IVA_LENGTH = 10;
   const CANTIDAD = 'cantidad';
   const CANTIDAD_LENGTH = 20;
   const UNIDAD_MEDIDA_ID = 'unidad_medida_id';
   const TIPO_PRODUCTO_INSUMO_ID = 'tipo_producto_insumo_id';
+  
+
+    
   public function get_id() {
     return $this->id;
   }
@@ -40,10 +52,22 @@ class productoInsumoBaseTableClass extends tableBaseClass {
     return $this->descripcion;
   }
 
+  public function get_nombreImagen() {
+    return $this->nombreImagen;
+  }
+
+  public function get_extencionImagen() {
+    return $this->extencionImagen;
+  }
+
+  public function get_hashImagen() {
+    return $this->hashImagen;
+  }
+
   public function get_iva() {
     return $this->iva;
   }
-  
+
   public function get_cantidad() {
     return $this->cantidad;
   }
@@ -76,6 +100,18 @@ class productoInsumoBaseTableClass extends tableBaseClass {
     $this->descripcion = $descripcion;
   }
 
+  public function set_nombreImagen($nombreImagen) {
+    $this->nombreImagen = $nombreImagen;
+  }
+
+  public function set_extencionImagen($extencionImagen) {
+    $this->extencionImagen = $extencionImagen;
+  }
+
+  public function set_hashImagen($hashImagen) {
+    $this->hashImagen = $hashImagen;
+  }
+
   public function set_iva($iva) {
     $this->iva = $iva;
   }
@@ -83,7 +119,7 @@ class productoInsumoBaseTableClass extends tableBaseClass {
   public function set_cantidad($cantidad) {
     $this->cantidad = $cantidad;
   }
-  
+
   public function set_unidadMedidaId($unidadMedidaId) {
     $this->unidadMedidaId = $unidadMedidaId;
   }
@@ -104,9 +140,7 @@ class productoInsumoBaseTableClass extends tableBaseClass {
     $this->deletedAt = $deletedAt;
   }
 
-    
-
-    /**
+      /**
    * Obtiene el nombre de la tabla
    * @return string
    */

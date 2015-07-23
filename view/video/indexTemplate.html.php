@@ -7,6 +7,7 @@
 
 
 <div class="container container-fluid" id="cuerpo">
+  <div class="center-block" id="cuerpo4">
   <div class="center-block" id="cuerpo2">
   <header id="">
 
@@ -20,8 +21,11 @@
     <h3></h3>       
   </article>
  
-<div class="container container-fluid" id="cuerpo">
   <article id='derecha'>
+    <br>
+    <br>
+    <br>
+    <br>
     <form enctype="multipart/form-data"  class="form-horizontal"  class="form-horizontal" role="form"  method="post" action="<?php echo routing::getInstance()->getUrlWeb('video', ((isset($objUsuarios)) ? 'update' : 'index')) ?>">
   
  <?php view::includeHandlerMessage()?> 
@@ -38,6 +42,14 @@
    <a class="btn btn-lg btn-default btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('video', 'index') ?>" ><?php echo i18n::__('atras') ?></a>
 <a class="btn btn-lg btn-warning btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('video', 'ver') ?>" ><?php echo i18n::__('ver') ?></a>
   </form>
+     <br>
+    <br>
+    <br>
+    <br><br>
+    <br>
+    <br>
+    <br>
+    <br>
   </article>
   
   </div>
