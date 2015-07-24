@@ -162,6 +162,7 @@
     
     <form class="form-signin" id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('cooperativa', 'deleteSelect') ?>" method="POST">        
 <?php view::includeHandlerMessage() ?>
+      <br>
       <table class="table table-bordered table-responsive">
         <tr>
         <thead>
@@ -244,6 +245,7 @@
 
   </article>
 </div>
+    <br><br><br><br><br><br><br><br>
 </div>
 </div>
 <div class="modal fade" id="myModalDeleteMasivo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

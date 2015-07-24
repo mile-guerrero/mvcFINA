@@ -20,6 +20,9 @@ body {
   position: relative;
 }
 
+h1, h2, div, a, p{
+color:#005a1e; 
+}
 
 #color1{
   background-color: #333;
@@ -79,7 +82,11 @@ body {
   background-image: url('../img/portada3.png');
 
 }
+
+
 #imgProducto{
+  border-color: #005a1e;
+  border-width:3px ;
   height: 140px;
   width: 140px;
   margin: 15px 0;
@@ -89,10 +96,12 @@ body {
 }
 
 #imgProducto:hover {
-  height: 170px;
-  width: 170px;
+  height: 150px;
+  width: 150px;
 }
 #imgCafetal{
+  border-color: #005a1e;
+  border-width:3px ;
   height: 140px;
   width: 140px;
   margin: 15px 0;
@@ -102,10 +111,12 @@ body {
 }
 
 #imgCafetal:hover {
-  height: 170px;
-  width: 170px;
+  height: 150px;
+  width: 150px;
 }
 #imgPersonal{
+  border-color: #005a1e;
+  border-width:3px ;
   height: 140px;
   width: 140px;
   margin: 15px 0;
@@ -115,9 +126,10 @@ body {
 }
 
 #imgPersonal:hover {
-  height: 170px;
-  width: 170px;
+  height: 150px;
+  width: 150px;
 }
+
 #imgPortada3{
   background: center;
   width: 100%;
@@ -203,7 +215,7 @@ body {
    //padding-top: 50px;
   // background-color: #f0eccf;
    background-color: #efebce;
-      width: 70%; 
+      width: 70%;
   }
   
   #cuerpo5{
@@ -213,8 +225,20 @@ body {
    background-color: #efebce;
       width: 70%; 
   }
-
-
+#cuerpo6{
+   margin-top:   -100px;
+   //padding-top: 50px;
+  // background-color: #f0eccf;
+   background-color: #efebce;
+      width: 70%; 
+  }
+#cuerpo7{
+   margin-top:   -50px;
+   //padding-top: 50px;
+  // background-color: #f0eccf;
+   background-color: #efebce;
+      width: 70%; 
+  }
 
 #encabezado{
   width:900px; 

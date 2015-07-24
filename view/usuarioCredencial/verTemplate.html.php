@@ -5,7 +5,10 @@
 <?php $usua = usuarioCredencialTableClass::USUARIO_ID ?>
 <?php $cred = usuarioCredencialTableClass::CREDENCIAL_ID ?>
 <?php $created_at = usuarioCredencialTableClass::CREATED_AT ?>
+
 <div class="container container-fluid" id="cuerpo">
+  <div class="center-block" id="cuerpo6">
+  <div class="center-block" id="cuerpo2">
   <header id="">
    
     </header>
@@ -15,9 +18,9 @@
       
        </section>
     <article id='derecha'>
-       
+       <br><br>
     <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('usuarioCredencial', 'index') ?>" > <?php echo i18n::__('atras') ?></a>
-
+<br><br>
       <table class="table table-bordered table-responsive">
           <tr>
             <thead>
@@ -51,3 +54,7 @@
 	  </article>
    
 </div>
+     <br><br><br><br><br><br>
+</div>
+  
+ </div>

@@ -12,7 +12,10 @@ use mvc\i18n\i18nClass as i18n ?>
 <?php $des_origen = maquinaTableClass::ORIGEN_MAQUINA ?>
 <?php $descripcion_uso = maquinaTableClass::TIPO_USO_ID ?>
 <?php $nombre_pro = maquinaTableClass::PROVEEDOR_ID ?>
+
 <div class="container container-fluid" id="cuerpo">
+  <div class="center-block" id="cuerpo6">
+  <div class="center-block" id="cuerpo2">
   <header id="">
      </header>
   <nav id="">
@@ -21,6 +24,7 @@ use mvc\i18n\i18nClass as i18n ?>
     
   </section>
     <article id='derecha'>
+      <br><br>
       <a class="btn btn-danger btn-xs " href="<?php echo routing::getInstance()->getUrlWeb('maquina', 'indexMaquina') ?>" > <?php echo i18n::__('atras') ?></a>
       <br><br>
       <table class="table table-bordered table-responsive">
@@ -71,3 +75,7 @@ use mvc\i18n\i18nClass as i18n ?>
     </article>
 
 </div>
+    <br><br>
+</div>
+  
+ </div>

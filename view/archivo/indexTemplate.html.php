@@ -27,6 +27,7 @@
     <br>
     <br>
     <br>
+    <br>
     <form enctype="multipart/form-data"  class="form-horizontal"  class="form-horizontal" role="form"  method="post" action="<?php echo routing::getInstance()->getUrlWeb('archivo', ((isset($objArchivo)) ? 'update' : 'index')) ?>">
   
  

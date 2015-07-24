@@ -11,7 +11,10 @@
 <?php $updated_at = proveedorTableClass::UPDATED_AT ?>
 <?php $created_at = proveedorTableClass::CREATED_AT ?>
 <?php $nombre_ciudad = proveedorTableClass::ID_CIUDAD ?>
+
 <div class="container container-fluid" id="cuerpo">
+  <div class="center-block" id="cuerpo6">
+  <div class="center-block" id="cuerpo2">
   <header id="">
 
    
@@ -22,6 +25,7 @@
     
   </section>
     <article id='derecha'>
+      <br><br>
       <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('maquina', 'indexProveedor') ?>" > <?php echo i18n::__('atras') ?></a>
       <br>
       <br>
@@ -84,3 +88,7 @@
     </article>
  
 </div>
+    <br><br>
+</div>
+  
+ </div>

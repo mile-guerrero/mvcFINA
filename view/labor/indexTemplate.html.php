@@ -131,6 +131,7 @@ use mvc\session\sessionClass as session ?>
 
 
     <?php view::includeHandlerMessage() ?>
+    <br>
     <table class="table table-bordered table-responsive">
       <tr>
       <thead>
@@ -173,5 +174,6 @@ use mvc\session\sessionClass as session ?>
   </article>
 
 </div>
+     <br><br><br><br><br><br><br><br>
    </div>
 </div>

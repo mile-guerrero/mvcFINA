@@ -11,7 +11,10 @@
 <?php $created_at = clienteTableClass::CREATED_AT ?>
 <?php $descripcion = clienteTableClass::ID_TIPO_ID ?>
 <?php $nombre_ciudad = clienteTableClass::ID_CIUDAD ?>
+
 <div class="container container-fluid" id="cuerpo">
+  <div class="center-block" id="cuerpo6">
+  <div class="center-block" id="cuerpo2">
   <header id="">
 
    
@@ -21,6 +24,7 @@
   <section id="contenido">
   </section>
     <article id='derecha'>
+      <br><br>
       <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('cliente', 'indexCliente') ?>" > <?php echo i18n::__('atras') ?></a>
       <br>
       <br>
@@ -86,3 +90,7 @@
     </article>
  
 </div>
+    <br><br>
+</div>
+  
+ </div>

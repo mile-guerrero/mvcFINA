@@ -276,6 +276,7 @@ use mvc\session\sessionClass as session ?>
    
   </article>
     </div>
+     <br><br><br><br><br><br><br><br>
 </div>
 </div>
   

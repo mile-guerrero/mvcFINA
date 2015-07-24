@@ -38,10 +38,10 @@ text-align: right;
 }
 
 #imgLogo{
-margin: 0px 0px 0px 300px;
+/*margin: 0px 0px 0px 300px;*/
 padding:  27px;
-background: center;
- width:390px; 
+//background: center;
+ width:370px; 
  padding-top:47px;
   background-image: url('../img/logoColmenar.png');
   

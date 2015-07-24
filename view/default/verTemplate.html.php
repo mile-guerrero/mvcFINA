@@ -6,7 +6,10 @@
  <?php $created_at = usuarioTableClass::CREATED_AT ?>
  <?php $updated_at = usuarioTableClass::UPDATED_AT ?>
   <?php $id = usuarioTableClass::ID ?>
+
 <div class="container container-fluid" id="cuerpo">
+  <div class="center-block" id="cuerpo6">
+  <div class="center-block" id="cuerpo2">
   <header id="">
     
     </header>
@@ -17,9 +20,9 @@
       
        </section>
     <article id='derecha'>
-      
+      <br><br>
        <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('default', 'index') ?>" ><?php echo i18n::__('atras') ?></a>   
-   
+   <br><br>
       <table class="table table-bordered table-responsive">
           <tr>
             <thead>
@@ -54,4 +57,7 @@
       </article>
    
 </div>
-	  
+	  <br><br><br><br>
+</div>
+  
+ </div>

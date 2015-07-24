@@ -22,7 +22,7 @@
   </article>
  
   <article id='derecha'>
-    
+    <br>
     <br>
     <br>
     <br>

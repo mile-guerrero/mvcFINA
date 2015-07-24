@@ -156,6 +156,7 @@
 
      
                 <?php view::includeHandlerMessage()?>
+<br>
       <table class="table table-bordered table-responsive">
 
         <thead>
@@ -203,6 +204,7 @@
       </div>
     </article>
   </div>
+     <br><br><br><br><br><br><br><br>
 </div>
 </div>
 

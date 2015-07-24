@@ -61,9 +61,14 @@ use mvc\i18n\i18nClass as i18n ?>
 
 
 <div id="separasdor"> <br></div>
-    <div class="responcive" id="Logeo">  
-        <img class="img-responsive"  id="imgLogo"  alt=" ">        
+
+
+    <div class="container-fluid" id="Logeo">        
+<!--      <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">&nbsp;</div>-->
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><img class="img-responsive"  id="imgLogo"  alt=" "></div>
     </div>
+
+
 <div id="separasdor1"> <br></div>
 <div id="separasdor2"> <br></div>
 

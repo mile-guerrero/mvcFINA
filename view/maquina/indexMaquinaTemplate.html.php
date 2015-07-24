@@ -289,7 +289,8 @@
 
     </article>
  </div>
-</div>
+     <br><br><br><br><br><br><br><br>
+</div>  
 </div>
 
 <div class="modal fade" id="myModalDeleteMasivo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

@@ -7,6 +7,8 @@
 <?php $updated_at = tipoProductoInsumoTableClass::UPDATED_AT ?>
 
 <div class="container container-fluid" id="cuerpo">
+  <div class="center-block" id="cuerpo6">
+  <div class="center-block" id="cuerpo2">
   <header id="">
    
     </header>
@@ -15,6 +17,7 @@
     <section id="contenido">
     </section>
     <article id='derecha'>
+      <br><br>
        <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'indexTipoProductoInsumo') ?>" > <?php echo i18n::__('atras') ?></a>
        <br>
        <br>
@@ -39,3 +42,7 @@
 	  </article>
    
 </div>
+    <br><br><br><br><br><br><br><br><br>
+</div>
+  
+ </div> 

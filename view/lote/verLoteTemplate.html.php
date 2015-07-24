@@ -8,10 +8,15 @@
 <?php $fechaS = loteTableClass::FECHA_INICIO_SIEMBRA ?>
 <?php $numeroP = loteTableClass::NUMERO_PLANTULAS ?>
 <?php $presu = loteTableClass::PRESUPUESTO ?>
+<?php $produccion = loteTableClass::PRODUCCION ?>
 <?php $nombre_ciudad = loteTableClass::ID_CIUDAD ?>
 <?php $nombreInsumo = loteTableClass::PRODUCTO_INSUMO_ID ?>
  <?php $desUnidadMedida = loteTableClass::UNIDAD_MEDIDA_ID ?>
+
 <div class="container container-fluid" id="cuerpo">
+  <div class="center-block" id="cuerpo6">
+  <div class="center-block" id="cuerpo2">
+  
   <header id="">
 
    
@@ -21,7 +26,7 @@
   <section id="contenido">
   </section>
     <article id='derecha'>
-       
+       <br><br>
       <a class="btn btn-success btn-xs " href="<?php echo routing::getInstance()->getUrlWeb('lote', 'indexLote') ?>" > <?php echo i18n::__('atras') ?></a>
       <br><br>
       <table class="table table-bordered table-responsive">
@@ -67,7 +72,7 @@
             </tr>
             <tr>
               <th><?php echo i18n::__('produccion') ?></th>      
-              <td><?php echo $key->$presu .' '. unidadMedidaTableClass::getNameUnidadMedida($key->$desUnidadMedida) ?></td>
+              <td><?php echo $key->$produccion .' '. unidadMedidaTableClass::getNameUnidadMedida($key->$desUnidadMedida) ?></td>
             </tr>
             
          
@@ -78,3 +83,7 @@
     </article>
 
 </div>
+    <br><br>
+</div>
+  
+ </div> 

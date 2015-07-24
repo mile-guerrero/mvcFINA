@@ -64,14 +64,13 @@ class createProductoInsumoActionClass extends controllerClass implements control
             log::register('Insertar', productoInsumoTableClass::getNameTable(), $observacion, $id);
             routing::getInstance()->redirect('productoInsumo', 'indexProductoInsumo');
           } else {
-//           validator::validateInsert();
-//              session::getInstance()->setError('El archivo sobre pasa el peso minimo requerido', 'inputImagen');
-//        routing::getInstance()->forward('productoInsumo', 'insertProductoInsumo');
-       
-//            session::getInstance()->setError('Hubo un error al grabar el archivo');
+          //  validator::validateEdit();
+              session::getInstance()->setError('El archivo sobre pasa el peso minimo requerido', 'inputImagen');
+              routing::getInstance()->forward('productoInsumo', 'insertProductoInsumo');
           }
         } else {
-//          session::getInstance()->setError('No es un tipo de archivo válido');
+          session::getInstance()->setError('No es un tipo de archivo válido', 'inputImagen');
+          routing::getInstance()->forward('productoInsumo', 'insertProductoInsumo');
         }
       }
 

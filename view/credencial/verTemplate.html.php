@@ -8,7 +8,10 @@ use mvc\i18n\i18nClass as i18n ?>
 <?php $created_at = credencialTableClass::CREATED_AT ?>
 <?php $updated_at = credencialTableClass::UPDATED_AT ?>
 <?php $id = credencialTableClass::ID ?>
+
 <div class="container container-fluid" id="cuerpo">
+  <div class="center-block" id="cuerpo6">
+  <div class="center-block" id="cuerpo2">
   <header id="">
    
   </header>
@@ -17,8 +20,9 @@ use mvc\i18n\i18nClass as i18n ?>
   <section id="contenido">
   </section>
     <article id='derecha'>
+      <br><br>
        <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('credencial', 'index') ?>" > <?php echo i18n::__('atras') ?></a>
-
+<br><br>
       <table class="table table-bordered table-responsive">
         <tr>
         <thead>
@@ -47,4 +51,8 @@ use mvc\i18n\i18nClass as i18n ?>
     </article>
   
 </div>
+ <br><br><br><br><br><br>
+</div>
+  
+ </div>
 
