@@ -11,7 +11,7 @@ use mvc\i18n\i18nClass as i18n ?>
 <?php use mvc\i18n\i18nClass as i18 ?>
 
 
-<header>
+
   <nav class="navbar navbar-default " id="color1">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -51,27 +51,24 @@ use mvc\i18n\i18nClass as i18n ?>
 
           </form> 
         </ul>
-        
-        
-        
       </div>
     </div>
-    <div class="responcive" id="Logeo">  
-  
-        <img class="img-responsive"  id="imgLogo"  alt=" ">
-        
-    </div>
+    
+    
   </nav>
 
-</header>
-
-<nav >
-
-</nav>
 
 
 
-<header id="contenido" class="container container-fluid responcive">
+<div id="separasdor"> <br></div>
+    <div class="responcive" id="Logeo">  
+        <img class="img-responsive"  id="imgLogo"  alt=" ">        
+    </div>
+<div id="separasdor1"> <br></div>
+<div id="separasdor2"> <br></div>
+
+
+<header id="encabezado">
   <div id="carousel-example-generic" class="carousel slide responcive" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">

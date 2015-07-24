@@ -3,11 +3,6 @@
 margin:0px;
 padding:0px;
 }
-
-body {
-  font-family: Calibri,Arial,Helvetica,sans-serif;
-}
-
 body {
   margin: 0 0 0 0;
   padding: 0;  
@@ -21,8 +16,9 @@ body {
 #contenido{
   width:auto;  
   float: right;
-  margin: -20px 200px 0px 0px;
+  margin: 0px 200px 0px 0px;
 }
+
 
 .alert {
   margin-top: 15px;
@@ -31,7 +27,7 @@ body {
 
 
 #color1{
-background-color: #333;
+background-color: #005a1e;//color barra formulario
 color: #fff;
 z-index: 12;
 box-shadow: 0px 0px 15px -5px #000;
@@ -39,6 +35,47 @@ text-align: right;
 }
 #formulario1{
   margin-left: 500px;
+}
+
+#imgLogo{
+margin: 0px 0px 0px 300px;
+padding:  27px;
+background: center;
+ width:390px; 
+ padding-top:47px;
+  background-image: url('../img/logoColmenar.png');
+  
+}
+#separasdor{
+  background-color: #eeec18;
+  margin-top: -15px ; 
+  height: 4px;
+  width: 100%;
+  box-shadow: 0px 3px 15px 5px #001c06;
+}
+#separasdor1{
+  background-color: #eeec18; 
+  height: 4px;
+  width: 100%;
+  box-shadow: 0px 3px 15px 5px #001c06;
+}
+#separasdor2{
+  background-color: #005a1e;
+  height: 10px;
+  width: 100%;
+}
+
+#Logeo {  
+  margin: 0px 0px 0px 0px;
+  width: 100%;
+  padding-top: 5px;
+  height: 105px;
+  background-image: url('../img/fondoLogo.png');
+  //background-color: #c1e2b3;//color de donde va situado el logo
+}
+
+#encabezado{
+  width:100%; 
 }
 
 #crear{
@@ -86,34 +123,6 @@ text-align: right;
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 
-#encabezado{  
-  width: 1024px;
-  height: 40px;
-  top: 0px;
-  left: 0px;
-  background-color: #dff0d8;
-  color: #fff;  
-  z-index: 12;
-  box-shadow: 0px 0px 15px -5px #000;
-  text-align: right;
-}
-
-
-#Logeo {  
-  margin: 5px 0px 0px 0px;
-  width: 100%;
-  top: 30px;
-  padding-top: 5px;
-  height: 124px;
-  left: 0px;
- // background-image: url('../img/fondologo.png');
-  background-color: #c1e2b3;//color de donde va situado el logo
-  box-shadow: 0px 1px 4px #111;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
 .col-sm-10 {
 width: 100%;
 }
@@ -121,47 +130,34 @@ width: 100%;
 
 
 #imgPortadalogin4{
-  width:900px; 
-  height: 400px;
+  width:1368px; 
+  height: 489px;
   background-image: url('../img/principal3.png');
 }
 #imgPortada{
-  width:900px; 
-  height: 400px;
+  width:1368px; 
+  height: 489px;
   background-image: url('../img/principal2.png');
 }
 #imgPortada2{
-  width:900px; 
-  height: 400px;
+  width:1368px; 
+  height: 489px;
   background-image: url('../img/principal1.png');
 
 }
 #imgPortada3{
-  width:900px; 
-  height: 400px;
+  width:1368px; 
+  height: 489px;
   background-image: url('../img/principal4.png');
 }
 #imgPortada4{
-  width:900px; 
-  height: 400px;
+  width:1368px; 
+  height: 489px;
   background-image: url('../img/principal5.png');
 }
-/*#imgLogo{
-  margin: 0px 0px 0px 300px;
-  width:385px; 
-  height: 90px;
-  background-image: url('../img/logo.png');
-}*/
 
-#imgLogo{
-margin: 10px 0px 0px 300px;
-padding:  20px;
-background: center;
- width:385px; 
- padding-top:47px;
-  background-image: url('../img/logo.png');
-  
-}
+
+
 
 .goncho1 { 
   margin: 8px 0px 0px 0px;
