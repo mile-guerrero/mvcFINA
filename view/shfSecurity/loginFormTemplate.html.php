@@ -31,13 +31,13 @@ use mvc\i18n\i18nClass as i18n ?>
           <form id="formulario1" class="form-horizontal" role="form" action="<?php echo routing::getInstance()->getUrlWeb('shfSecurity', 'login') ?>" method="POST">
 
             <div class="form-group"> 
-              <div class="col-sm-10">
+              <div class="col-sm-10" id="letra">
                 <a class="form-signin-heading" id="crear" href="<?php echo routing::getInstance()->getUrlWeb('crearUsuario', 'insert') ?>"><?php echo   i18::__('crearUsuario')?></a>
                 
                 <label  class="form-signin-heading"><?php echo i18n::__('identificacion') ?></label> 
                 <label for="inputUser" class="sr-only">Email address</label>
                 <input class="form-control-gonza1" type="text" id="inputUser" name="inputUser" class="form-control" placeholder="<?php echo i18n::__('user') ?>" required autofocus>
-                <label for="inputPassword" class="sr-only">Password</label>
+<!--                <label for="inputPassword" class="sr-only">Password</label>-->
                 <input class="form-control-gonza2" type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="<?php echo i18n::__('pass') ?>" required>
                 <input class="goncho1" type="checkbox" value="true" name="chkRememberMe"> <?php echo i18n::__('recordar') ?>
                 <input  class="goncho2" type="submit" <?php echo i18n::__('entrar') ?> >

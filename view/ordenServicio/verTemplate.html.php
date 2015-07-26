@@ -12,16 +12,21 @@
 <?php $idMaquina = ordenServicioTableClass::MAQUINA_ID ?>
 
 <div class="container container-fluid" id="cuerpo">
+  <div class="center-block" id="cuerpo6">
+  <div class="center-block" id="cuerpo2">
   <header id="">
-
   </header>
+
   <nav id="">
   </nav>
   <section id="contenido">
-    <article id='derecha'>
+
+  </section>
+
+  <article id='derecha'>  
+    <br><br>
         <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('ordenServicio', 'index') ?>" > <?php echo i18n::__('atras') ?></a>
-        <br>
-        <br>
+        <br><br>
       <table class="table table-bordered table-responsive">
         <tr>
         <thead>
@@ -72,5 +77,8 @@
       </table>
 
     </article>
-  </section>
 </div>
+    <br><br>
+</div>
+  
+ </div>

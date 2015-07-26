@@ -9,17 +9,21 @@
 <?php $updated_at = pedidoTableClass::UPDATED_AT ?>
 <?php $id = pedidoTableClass::ID ?>
 <div class="container container-fluid" id="cuerpo">
+  <div class="center-block" id="cuerpo6">
+  <div class="center-block" id="cuerpo2">
   <header id="">
-   
   </header>
+
   <nav id="">
   </nav>
   <section id="contenido">
+
   </section>
-    <article id='derecha'>
+
+  <article id='derecha'>  
+    <br><br>
        <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('pedido', 'index') ?>" > <?php echo i18n::__('atras') ?></a>
-       <br>
-       <br>
+       <br><br>
       <table class="table table-bordered table-responsive">
         <tr>
         <thead>
@@ -60,6 +64,10 @@
         </tbody>
       </table>
     </article>
-  
+  </div>
+    <br><br><br><br>
 </div>
+  
+ </div>
+
 

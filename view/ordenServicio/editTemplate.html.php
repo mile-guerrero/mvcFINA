@@ -4,8 +4,12 @@
 <?php use mvc\view\viewClass as view ?> 
 <?php $trabajador = ordenServicioTableClass::TRABAJADOR_ID ?>
 <div class="container container-fluid" id="cuerpo">
-  <article id="derecha">
-    <h2 class="form-signin-heading"> <?php echo i18n::__('editar orden') ?> </h2>
-     </article>
+  <div class="center-block" id="cuerpo2">
+    
+    <h2 class="form-signin-heading">
+<?php echo i18n::__('modificar') ?> </h2>
+    <br>
+    <br>
+  </div>
 <?php view::includePartial('ordenServicio/formularioPrincipal',array('objOS'=> $objOS, 'trabajador_id'=>$trabajador, 'objOST'=>$objOST, 'objOSPI'=>$objOSPI, 'objOSM'=>$objOSM)) ?>
 </div>

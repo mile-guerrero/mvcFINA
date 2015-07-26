@@ -4,11 +4,13 @@
 <?php use mvc\view\viewClass as view ?> 
 <?php $idPagoT = pagoTrabajadorTableClass::ID?>
 <div class="container container-fluid" id="cuerpo">
-    <article id="derecha">
+    <div class="center-block" id="cuerpo2">
+    
     <h2 class="form-signin-heading">
-    <?php echo i18n::__('editar credencial') ?> 
-  </h2>
-    </article>
+<?php echo i18n::__('modificar') ?> </h2>
+    <br>
+    <br>
+  </div>
    <?php view::includePartial('pagoTrabajador/formularioPrincipal', array('objPagoT' => $objPagoT, 'idPagoT' => $idPagoT, 'objEmpresa' => $objEmpresa, 'objT' => $objT)) ?>
 </div>
   

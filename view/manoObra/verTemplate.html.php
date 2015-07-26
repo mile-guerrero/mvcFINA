@@ -11,13 +11,19 @@
 <?php $idMaquina = manoObraTableClass::MAQUINA_ID ?>
 
 <div class="container container-fluid" id="cuerpo">
+  <div class="center-block" id="cuerpo6">
+  <div class="center-block" id="cuerpo2">
   <header id="">
-
   </header>
+
   <nav id="">
   </nav>
   <section id="contenido">
-    <article id='derecha'>
+
+  </section>
+
+  <article id='derecha'>  
+    <br><br>
         <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('manoObra', 'index') ?>" > <?php echo i18n::__('atras') ?></a>
         <br>
         <br>
@@ -66,6 +72,8 @@
         </tbody>
       </table>
 
-    </article>
-  </section>
+  </div>
+    <br><br>
 </div>
+  
+ </div>

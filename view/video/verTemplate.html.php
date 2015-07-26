@@ -39,7 +39,11 @@
           // echo '<img id="margenImagen" src="' . routing::getInstance()->getUrlImg('../uploadVideo/' . $key->$hash) . '"/>' ;          
    //echo '<embed src="'. '../uploadVideo/' . $key->$hash .'" width="100" height="150" autostart="true" loop="true" />';
        
-     echo '<video src="'. $key->$hash .'" type="video/mp4" width="320" height="240" />';    
+     //echo '<video src="'. $key->$hash .'" type="video/mp4" width="320" height="240" />';
+     echo '<video id="Video2" preload="auto" controls width="320" height="240">
+           <source src="'. \mvc\config\configClass::getUrlBase() . 'uploadVideo/' . $key->$hash .'" type="video/mp4" />
+           HTML5 Video not supported
+       </video>';
    }
    ?>
               </th> 

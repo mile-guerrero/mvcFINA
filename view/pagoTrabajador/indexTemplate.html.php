@@ -14,7 +14,9 @@
 <?php $idEmp = empresaTableClass::ID ?>
 <?php $nomEmpresa = empresaTableClass::NOMBRE ?>
 <?php $id = pagoTrabajadorTableClass::ID ?>
+
 <div class="container container-fluid" id="cuerpo">
+  <div class="center-block" id="cuerpo4">
   <div class="center-block" id="cuerpo2">
   <header id="">
 
@@ -157,5 +159,6 @@
     </div>
   </article>
 </div>
-
+    <br><br><br><br><br><br><br><br>
+  </div>
 </div>

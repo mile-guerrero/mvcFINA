@@ -17,6 +17,7 @@
 <?php $desLote = solicitudInsumoTableClass::LOTE_ID ?>
 
 <div class="container container-fluid" id="cuerpo">
+  <div class="center-block" id="cuerpo4">
   <div class="center-block" id="cuerpo2">
   <header id="">
    
@@ -190,7 +191,8 @@
 
     </article>
   </div>
-
+    <br><br><br><br><br><br><br><br>
+  </div>
 </div>
 
 

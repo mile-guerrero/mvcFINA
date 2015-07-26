@@ -35,10 +35,10 @@ class editActionClass extends controllerClass implements controllerActionInterfa
         $this->objManoObra = manoObraTableClass::getAll($fields, true, null, null, null, null, $where);
         $fields = array(
            cooperativaTableClass::ID,
-           cooperativaTableClass::DESCRIPCION
+           cooperativaTableClass::NOMBRE
       );
       $orderBy = array(
-      cooperativaTableClass::DESCRIPCION   
+      cooperativaTableClass::NOMBRE   
       );      
       $this->objCooperativa = cooperativaTableClass::getAll($fields, true, $orderBy, 'ASC');
     
