@@ -137,7 +137,13 @@ enfermedad:
   index:
     javascript:
       - confirmar.js      
+   
       
+#-------------------modulo - pagotrabajador-------------------------
+pagoTrabajador: 
+  index:
+    javascript:
+      - confirmar.js       
 #-------------------modulo - historial-------------------------
 historial: 
   index:

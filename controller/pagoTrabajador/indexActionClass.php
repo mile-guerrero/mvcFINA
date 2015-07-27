@@ -54,12 +54,12 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       if (request::getInstance()->hasGet('page')) {
         $this->page = request::getInstance()->getGet('page');
         $page = request::getInstance()->getGet('page') - 1;
-        $page = $page * 3;
-      }
+        $page = $page * config::getRowGrid();
+      }//cierre del if del paguinado
 
-      $this->cntPages = pagoTrabajadorTableClass::getTotalPages(3);
+      $this->cntPages = pagoTrabajadorTableClass::getTotalPages(config::getRowGrid());
       
-      $this->objPT = pagoTrabajadorTableClass::getAll($fields, false, $orderBy, 'ASC', 3, $page, $where);
+      $this->objPT = pagoTrabajadorTableClass::getAll($fields, false, $orderBy, 'ASC',  config::getRowGrid(), $page, $where);
        $fields = array(
             empresaTableClass::ID,
             empresaTableClass::NOMBRE

@@ -151,12 +151,12 @@
       </table>
     </form> 
     <div class="text-right">
-      <?php echo i18n::__('paginas') ?> <select id="slqPaginador" onchange="paginador(this, '<?php echo routing::getInstance()->getUrlWeb('pagoTrabajador', 'index') ?>')">
-<?php for ($x = 1; $x <= $cntPages; $x++): ?>
-          <option <?php echo (isset($page) and $page == $x) ? 'selected' : '' ?> value="<?php echo $x ?>"><?php echo $x ?></option>
-<?php endfor; ?>
-      </select> <?php echo i18n::__('de') ?> <?php echo $cntPages ?>
-    </div>
+        <?php echo i18n::__('paginas') ?> <select id="slqPaginador" onchange="paginador(this, '<?php echo routing::getInstance()->getUrlWeb('pagoTrabajador', 'index')?>')">
+         <?php for($x = 1; $x <= $cntPages; $x++):?>
+           <option <?php echo (isset($page) and $page == $x) ? 'selected': '' ?> value="<?php echo $x ?>"><?php echo $x ?></option>
+          <?php endfor;?>
+        </select> <?php echo i18n::__('de') ?> <?php echo $cntPages ?>
+      </div>
   </article>
 </div>
     <br><br><br><br><br><br><br><br>
