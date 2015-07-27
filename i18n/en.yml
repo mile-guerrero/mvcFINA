@@ -111,7 +111,7 @@ dictionary:
     fechaPagoFin:         Final Payment Date
     salario:              Salary
     horasExtras:          Value extra hours
-    horasPerdidas:        Lost Hours
+    horasPerdidas:        Discounted value for debt
     totalPagar:           Total Pay
     nuevoPago:            New Pay Workers
     editarPago:           Edit Pay Workers

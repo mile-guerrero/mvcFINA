@@ -111,7 +111,7 @@ dictionary:
     fechaPagoFin:         Fecha de Pago Final
     salario:              Salario
     horasExtras:          Valor horas Extras
-    horasPerdidas:        Horas Perdidas
+    horasPerdidas:        Valor a descontar por deudas
     totalPagar:           Total Pagar
     nuevoPago:            Nuevo Pago al Trabajador
     editarPago:           Editar Pago al Trabajador
