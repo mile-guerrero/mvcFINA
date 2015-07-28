@@ -9,7 +9,6 @@
 <?php $unidad = productoInsumoTableClass::UNIDAD_MEDIDA_ID ?>
 <?php $unidades = unidadMedidaTableClass::ID ?>
 <?php $des_unidades = unidadMedidaTableClass::DESCRIPCION ?>
-<?php $iva = productoInsumoTableClass::IVA ?>
 <?php $idPI = productoInsumoTableClass::ID ?>
 <?php $descripcion = productoInsumoTableClass::DESCRIPCION ?>
 <?php $cantidad = productoInsumoTableClass::CANTIDAD ?>
@@ -74,19 +73,7 @@
 </div>
    
   
-  <?php if(session::getInstance()->hasError('inputIva')): ?>
-    <div class="alert alert-danger alert-dismissible" role="alert" id="error">
-    <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputIva') ?>
-    </div>
-    <?php endif ?>
   
-   <div class="form-group">
-      <label for="<?php echo productoInsumoTableClass::getNameField(productoInsumoTableClass::IVA, true) ?>" class="col-sm-2">    <?php echo i18n::__('iva') ?>: </label>     
-      <div class="col-sm-10">
-        <input class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputIva') or request::getInstance()->hasPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::IVA, true))) ? request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::IVA, true)) : ((isset($objPI[0])) ? $objPI[0]->$iva : '') ?>" type="text" name="<?php echo productoInsumoTableClass::getNameField(productoInsumoTableClass::IVA, true) ?>" placeholder="<?php echo i18n::__('iva') ?>" required>
-   </div>
-</div>
   
   
   <?php if(session::getInstance()->hasError('selectUnidad')): ?>

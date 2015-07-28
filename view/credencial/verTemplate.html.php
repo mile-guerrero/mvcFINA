@@ -21,9 +21,10 @@ use mvc\i18n\i18nClass as i18n ?>
   </section>
     <article id='derecha'>
       <br><br>
-       <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('credencial', 'index') ?>" > <?php echo i18n::__('atras') ?></a>
+       <a class="btn btn-success btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('credencial', 'index') ?>" > <?php echo i18n::__('atras') ?></a>
 <br><br>
-      <table class="table table-bordered table-responsive">
+      <div class="rwd">
+      <table class="table table-bordered table-responsive rwd_auto">
         <tr>
         <thead>
         <th colspan="2"><?php echo i18n::__('datos') ?></th>
@@ -32,22 +33,23 @@ use mvc\i18n\i18nClass as i18n ?>
         <tbody>
 <?php foreach ($objCredencial as $key): ?>
             <tr>
-              <th><?php echo i18n::__('nom') ?></th>      
+              <td><?php echo i18n::__('nom') ?></td>      
               <td><?php echo $key->$nom ?></td>
             </tr>
             
             <tr> 
-              <th>fecha creacion</th>                   
-              <th><?php echo $key->$created_at ?></th>
+              <td>fecha creacion</td>                   
+              <td><?php echo $key->$created_at ?></td>
             </tr>
             <tr>
-              <th>fecha modificacion</th> 
-              <th><?php echo $key->$updated_at ?></th>
+              <td>fecha modificacion</td> 
+              <td><?php echo $key->$updated_at ?></td>
             </tr>
 
 <?php endforeach; ?>
         </tbody>
       </table>
+      </div>
     </article>
   
 </div>

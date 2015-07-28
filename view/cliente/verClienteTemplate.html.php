@@ -25,11 +25,12 @@
   </section>
     <article id='derecha'>
       <br><br>
-      <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('cliente', 'indexCliente') ?>" > <?php echo i18n::__('atras') ?></a>
+      <a class="btn btn-success btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('cliente', 'indexCliente') ?>" > <?php echo i18n::__('atras') ?></a>
       <br>
       <br>
       
-      <table class="table table-bordered table-responsive">
+      <div class="rwd">
+      <table class="table table-bordered table-responsive rwd_auto">
         <tr>
         <thead>
         <th colspan="2"> <?php echo i18n::__('datos') ?></th>
@@ -38,55 +39,31 @@
         <tbody>
 <?php foreach ($objCliente as $key): ?>
             <tr>
-              <th><?php echo i18n::__('nom') ?></th>      
+              <td><?php echo i18n::__('nom') ?></td>      
               <td><?php echo $key->$nom ?></td>
             </tr>
             <tr>
-          <th><?php echo i18n::__('apell') ?></th>      
+          <td><?php echo i18n::__('apell') ?></td>      
           <td><?php echo $key->$apellido ?></td>
           </tr>
            <tr>
-          <th><?php echo i18n::__('documento') ?></th>      
-          <td><?php echo $key->$documento ?></td>
+          <td><?php echo i18n::__('documento') ?></td>      
+          <td><?php echo $key->$documento. ' ' .tipoIdTableClass::getNameTipoId($key->$descripcion) ?></td>
           </tr>
           <tr>
-          <th><?php echo i18n::__('dir') ?></th>      
-          <td><?php echo $key->$direccion ?></td>
+          <td><?php echo i18n::__('dir') ?></td>      
+          <td><?php echo $key->$direccion . ' ' . ciudadTableClass::getNameCiudad($key->$nombre_ciudad)?></td>
           </tr>
           <tr>
-          <th><?php echo i18n::__('tel') ?></th>      
+          <td><?php echo i18n::__('tel') ?></td>      
           <td><?php echo $key->$telefono ?></td>
           </tr>
-<!--          <tr>
-            <th>fecha modificacion</th> 
-            <th><?php echo $key->$updated_at ?></th>
-          </tr> 
-          <tr>
-            <th>fecha creacion</th>                   
-            <th><?php echo $key->$created_at ?></th>
-          </tr>-->
 
         <?php endforeach; ?>
-
-<?php foreach ($objCliente as $tipoId): ?>          
-          <tr>
-            <th><?php echo i18n::__('tipo id') ?></th>                   
-            <td><?php echo tipoIdTableClass::getNameTipoId($tipoId->$descripcion) ?></td>
-          </tr>
-        <?php endforeach; ?>
-
-
-<?php foreach ($objCliente as $ciudad): ?>
-          <tr>
-          <th><?php echo i18n::__('ciudad') ?></th>      
-          <td><?php echo ciudadTableClass::getNameCiudad($ciudad->$nombre_ciudad) ?></td>
-          </tr>
-<?php endforeach; ?>
-
 
         </tbody>
       </table>
-
+      </div>
     </article>
  
 </div>

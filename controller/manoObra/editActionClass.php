@@ -22,6 +22,7 @@ class editActionClass extends controllerClass implements controllerActionInterfa
           manoObraTableClass::ID,
           manoObraTableClass::CANTIDAD_HORA,
           manoObraTableClass::VALOR_HORA,
+            manoObraTableClass::TOTAL,
           manoObraTableClass::COOPERATIVA_ID,
           manoObraTableClass::LABOR_ID,
           manoObraTableClass::MAQUINA_ID,

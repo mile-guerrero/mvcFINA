@@ -50,24 +50,24 @@ namespace mvc\validator {
         $flag = true;
         session::getInstance()->setFlash('inputCantidad', true);
         session::getInstance()->setError('La cantidad no permite letras, solo numeros', 'inputCantidad');
-      } //-------------------------------campo iva-----------------------------
-          //----campo nulo----
-      if (self::notBlank(request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::IVA, true)))) {
-        $flag = true;
-        session::getInstance()->setFlash('inputIva', true);
-        session::getInstance()->setError('El iva del insumo es requerido', 'inputIva');
-        } //----sobre pasar los caracteres----
-        else if(strlen(request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::IVA, true))) > \productoInsumoTableClass::IVA_LENGTH) {
-        $flag = true;
-        session::getInstance()->setFlash('inputIva', true);
-        session::getInstance()->setError('El iva digitado es mayor en cantidad de caracteres a lo permitido', 'inputIva');
-      }  //----valida que sea numerico----      
-        else if (!is_numeric(request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::IVA, true)))) {
-        $flag = true;
-        session::getInstance()->setFlash('inputIva', true);
-        session::getInstance()->setError('El iva no permite letras, solo numeros', 'inputIva');
-      }//-------------------------------campo unidad medida-----------------------------
-          //----campo nulo----
+//      } //-------------------------------campo iva-----------------------------
+//          //----campo nulo----
+//      if (self::notBlank(request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::IVA, true)))) {
+//        $flag = true;
+//        session::getInstance()->setFlash('inputIva', true);
+//        session::getInstance()->setError('El iva del insumo es requerido', 'inputIva');
+//        } //----sobre pasar los caracteres----
+//        else if(strlen(request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::IVA, true))) > \productoInsumoTableClass::IVA_LENGTH) {
+//        $flag = true;
+//        session::getInstance()->setFlash('inputIva', true);
+//        session::getInstance()->setError('El iva digitado es mayor en cantidad de caracteres a lo permitido', 'inputIva');
+//      }  //----valida que sea numerico----      
+//        else if (!is_numeric(request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::IVA, true)))) {
+//        $flag = true;
+//        session::getInstance()->setFlash('inputIva', true);
+//        session::getInstance()->setError('El iva no permite letras, solo numeros', 'inputIva');
+//      }//-------------------------------campo unidad medida-----------------------------
+        } //----campo nulo----
       if (self::notBlank(request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::UNIDAD_MEDIDA_ID, true)))) {
         $flag = true;
         session::getInstance()->setFlash('selectUnidad', true);
@@ -136,21 +136,21 @@ namespace mvc\validator {
 //        
 //        } //-------------------------------campo iva-----------------------------
           //----campo nulo----
-      if (self::notBlank(request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::IVA, true)))) {
-        $flag = true;
-        session::getInstance()->setFlash('inputIva', true);
-        session::getInstance()->setError('El iva del insumo es requerido', 'inputIva');
-        } //----sobre pasar los caracteres----
-        else if(strlen(request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::IVA, true))) > \productoInsumoTableClass::IVA_LENGTH) {
-        $flag = true;
-        session::getInstance()->setFlash('inputIva', true);
-        session::getInstance()->setError('El iva digitado es mayor en cantidad de caracteres a lo permitido', 'inputIva');
-      }  //----valida que sea numerico----      
-        else if (!is_numeric(request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::IVA, true)))) {
-        $flag = true;
-        session::getInstance()->setFlash('inputIva', true);
-        session::getInstance()->setError('El iva no permite letras, solo numeros', 'inputIva');
-      }//-------------------------------campo unidad medida-----------------------------
+//      if (self::notBlank(request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::IVA, true)))) {
+//        $flag = true;
+//        session::getInstance()->setFlash('inputIva', true);
+//        session::getInstance()->setError('El iva del insumo es requerido', 'inputIva');
+//        } //----sobre pasar los caracteres----
+//        else if(strlen(request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::IVA, true))) > \productoInsumoTableClass::IVA_LENGTH) {
+//        $flag = true;
+//        session::getInstance()->setFlash('inputIva', true);
+//        session::getInstance()->setError('El iva digitado es mayor en cantidad de caracteres a lo permitido', 'inputIva');
+//      }  //----valida que sea numerico----      
+//        else if (!is_numeric(request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::IVA, true)))) {
+//        $flag = true;
+//        session::getInstance()->setFlash('inputIva', true);
+//        session::getInstance()->setError('El iva no permite letras, solo numeros', 'inputIva');
+//      }//-------------------------------campo unidad medida-----------------------------
           //----campo nulo----
       if (self::notBlank(request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::UNIDAD_MEDIDA_ID, true)))) {
         $flag = true;

@@ -25,8 +25,16 @@ class verActionClass extends controllerClass implements controllerActionInterfac
           videoTableClass::EXTENCION,
           videoTableClass::HASH
       );
+     
+       $page = 0;
+      if (request::getInstance()->hasGet('page')) {
+        $this->page = request::getInstance()->getGet('page');
+        $page = request::getInstance()->getGet('page') - 1;
+        $page = $page * 2;
+      }//cierre del if del paguinado
+      $this->cntPages = videoTableClass::getTotalPages(2);
            
-      $this->objVideo = videoTableClass::getAll($fields, false, null, null, null, null, $where);
+      $this->objVideo = videoTableClass::getAll($fields, false, null, null, 2, $page, $where);
 
       $this->defineView('ver', 'video', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {

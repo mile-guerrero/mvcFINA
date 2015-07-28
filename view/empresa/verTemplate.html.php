@@ -20,10 +20,11 @@
   </section>
     <article id='derecha'>
       <br><br>
-      <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('empresa', 'index') ?>" > <?php echo i18n::__('atras') ?></a>
+      <a class="btn btn-success btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('empresa', 'index') ?>" > <?php echo i18n::__('atras') ?></a>
       <br><br>
       
-      <table class="table table-bordered table-responsive">
+     <div class="rwd">
+      <table class="table table-bordered table-responsive rwd_auto">
         <tr>
         <thead>
         <th colspan="2"> <?php echo i18n::__('datos') ?></th>
@@ -32,19 +33,19 @@
         <tbody>
 <?php foreach ($objEmpresa as $key): ?>
             <tr>
-              <th><?php echo i18n::__('nom') ?></th>      
+              <td><?php echo i18n::__('nom') ?></td>      
               <td><?php echo $key->$nombre ?></td>
             </tr>
             <tr>
-          <th><?php echo i18n::__('dir') ?></th>      
+          <td><?php echo i18n::__('dir') ?></td>      
           <td><?php echo $key->$direccion ?></td>
           </tr>
           <tr>
-          <th><?php echo i18n::__('tel') ?></th>      
+          <td><?php echo i18n::__('tel') ?></td>      
           <td><?php echo $key->$telefono ?></td>
           </tr>
           <tr>
-            <th><?php echo i18n::__('email') ?></th>      
+            <td><?php echo i18n::__('email') ?></td>      
           <td><?php echo $key->$email ?></td>
           </tr>
           <tr>
@@ -56,7 +57,7 @@
 
         </tbody>
       </table>
-
+     </div>
     </article>
  
 </div>

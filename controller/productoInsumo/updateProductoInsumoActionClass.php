@@ -23,7 +23,7 @@ class updateProductoInsumoActionClass extends controllerClass implements control
       if (request::getInstance()->isMethod('POST')) {
         $id = request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::ID, true));
         $descripcion = request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::DESCRIPCION, true));
-        $iva = request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::IVA, true));
+       // $iva = request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::IVA, true));
         $cantidad = request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::CANTIDAD, true));
         $unidad = request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::UNIDAD_MEDIDA_ID, true));
         $tipo = request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID, true));
@@ -54,7 +54,6 @@ class updateProductoInsumoActionClass extends controllerClass implements control
             productoInsumoTableClass::NOMBRE_IMAGEN => $file['name'],
             productoInsumoTableClass::EXTENCION_IMAGEN => $ext,
             productoInsumoTableClass::HASH_IMAGEN => $hashImagen,
-            productoInsumoTableClass::IVA => $iva,
             productoInsumoTableClass::CANTIDAD => $cantidad,
             productoInsumoTableClass::UNIDAD_MEDIDA_ID => $unidad,
             productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID => $tipo

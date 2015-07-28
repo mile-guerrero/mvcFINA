@@ -19,9 +19,10 @@
        </section>
     <article id='derecha'>
        <br><br>
-    <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('usuarioCredencial', 'index') ?>" > <?php echo i18n::__('atras') ?></a>
+    <a class="btn btn-success btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('usuarioCredencial', 'index') ?>" > <?php echo i18n::__('atras') ?></a>
 <br><br>
-      <table class="table table-bordered table-responsive">
+      <div class="rwd">
+      <table class="table table-bordered table-responsive rwd_auto">
           <tr>
             <thead>
             <th colspan="2"> <?php echo i18n::__('datos') ?></th>
@@ -30,27 +31,24 @@
 	<tbody>
       <?php foreach ($objUC as $key): ?>
                   <tr> 
-                   <th><?php echo i18n::__('fecha crear') ?></th>                   
-                   <th><?php echo $key->$created_at ?></th>
+                   <td><?php echo i18n::__('fecha crear') ?></td>                   
+                   <td><?php echo $key->$created_at ?></td>
                   </tr>
-                  <?php endforeach; ?>
-              <?php foreach ($objUC as $ko): ?>
-                <tr>
-                  <th><?php echo i18n::__('user') ?></th>      
-                  <td><?php echo usuarioTableClass::getNameUsuario($ko->$usua)?></td>
-                  </tr>
-                  <?php endforeach; ?>
-                  
-                  <?php foreach ($objUC as $key): ?>
                   <tr>
-                  <th><?php echo i18n::__('credencial') ?></th>      
+                  <td><?php echo i18n::__('user') ?></td>      
+                  <td><?php echo usuarioTableClass::getNameUsuario($key->$usua)?></td>
+                  </tr>
+                   <tr>
+                  <td><?php echo i18n::__('credencial') ?></td>      
                   <td><?php echo credencialTableClass::getNameCredencial($key->$cred) ?></td>
-                  </tr>                           
-                <?php endforeach; ?>
-                  
+                  </tr>
+                  <?php endforeach; ?>
+          
+                 
                   
            </tbody>
 	    </table>
+      </div>
 	  </article>
    
 </div>

@@ -28,6 +28,9 @@ namespace mvc\validator {
         session::getInstance()->setFlash('inputCantidad', true);
         session::getInstance()->setError('La catidad digitado sobre pasa los caracteres permitidos', 'inputCantidad');
       }
+      
+      
+      
         if (self::notBlank(request::getInstance()->getPost(\manoObraTableClass::getNameField(\manoObraTableClass::VALOR_HORA, true)))) {
         $flag = true;
         session::getInstance()->setFlash('inputValor', true);

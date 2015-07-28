@@ -163,7 +163,8 @@
     <form class="form-signin" id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('cooperativa', 'deleteSelect') ?>" method="POST">        
 <?php view::includeHandlerMessage() ?>
       <br>
-      <table class="table table-bordered table-responsive">
+     <div class="rwd">
+      <table class="table table-bordered table-responsive rwd_auto">
         <tr>
         <thead>
         <th id="cuadrito">
@@ -181,19 +182,19 @@
 <?php foreach ($objCooperativa as $key): ?>
             <tr>
 
-              <th>
+              <td>
                 <input type="checkbox" name="chk[]" value="<?php echo $key->$id ?>">
-              </th>
+              </td>
               <td>
   <?php echo $key->$nombre ?> 
               </td>     
-              <th>               
+              <td>               
                 <a class="btn btn-warning btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('cooperativa', 'ver', array(cooperativaTableClass::ID => $key->$id)) ?>" > <?php echo i18n::__('ver') ?></a> 
             <?php if (session::getInstance()->hasCredential('admin')): ?>
                 <a class="btn btn-primary btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('cooperativa', 'edit', array(cooperativaTableClass::ID => $key->$id)) ?>"> <?php echo i18n::__('modificar') ?> </a>
                 <a data-toggle="modal" data-target="#myModalDelete<?php echo $key->$id ?>" class="btn btn-danger btn-xs"><?php echo i18n::__('eliminar') ?></a>
   <?php endif ?>
-              </th>                                                       
+              </td>                                                       
             </tr>
 
  <div class="modal fade" id="myModalDelete<?php echo $key->$id ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -216,6 +217,7 @@
 <?php endforeach; ?>
         </tbody>
       </table>
+       </div>
     </form> 
 
     <div class="text-right">

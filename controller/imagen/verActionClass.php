@@ -26,8 +26,15 @@ class verActionClass extends controllerClass implements controllerActionInterfac
           imagenTableClass::EXTENCION,
           imagenTableClass::HASH
       );
-           
-      $this->objImagen = imagenTableClass::getAll($fields, false, null, null, null, null, $where);
+     
+           $page = 0;
+      if (request::getInstance()->hasGet('page')) {
+        $this->page = request::getInstance()->getGet('page');
+        $page = request::getInstance()->getGet('page') - 1;
+        $page = $page * 3;
+      }//cierre del if del paguinado
+      $this->cntPages = imagenTableClass::getTotalPages(3);
+      $this->objImagen = imagenTableClass::getAll($fields, false, null, null, 3, $page, $where);
 
       $this->defineView('ver', 'imagen', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {

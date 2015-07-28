@@ -18,39 +18,7 @@ class verActionClass extends controllerClass implements controllerActionInterfac
   public function execute() {
     try {
       
-//      if ($directorio = opendir("./uploadArchivo")){ //ruta actual
-//while ($archivo = readdir($directorio)) //obtenemos un archivo y luego otro sucesivamente
-//{
-//  $ext = substr($archivo, -3);//para poner icono
-//  if($ext == 'pdf'){//para poner icono a pdf
-//         echo '<img src="' . routing::getInstance()->getUrlImg('../img/reporte.gif') . '"/>' ;         
-//      }
-//   if($ext == 'zip'){//para poner icono a zip
-//          echo '<img src="' . routing::getInstance()->getUrlImg('../img/iconZip.png') . '"/>' ;         
-//      }
-//   if($ext == 'txt'){//para poner icono a zip
-//         echo '<img src="' . routing::getInstance()->getUrlImg('../img/iconTxt.png') . '"/>' ;         
-//      }
-//      $extOfice = substr($archivo, -4);
-//   if($extOfice == 'docx'){//para poner icono a word
-//          echo '<img src="' . routing::getInstance()->getUrlImg('../img/iconWord.png') . '"/>' ;         
-//      }
-//   if($extOfice == 'xlsx'){//para poner icono a word
-//          echo '<img src="' . routing::getInstance()->getUrlImg('../img/iconExel.png') . '"/>' ;         
-//      }
-//    
-//    if ($archivo != '.' && $archivo != '..')//verificamos si es o no un directorio
-//
-//    {
-//      $this->archivo = $archivo;
-//      echo $archivo;
-////     echo "Archivo: <strong>  $archivo </strong><br />" ; 
-////     echo '<form class="form-horizontal" id="filterForm" role="form" method="POST" action="'. routing::getInstance()->getUrlWeb('archivo', 'eliminar'). '">' ;
-////     echo '<input type="hidden" class="form-control" id="filterDocumento" name="filter[documento]"  value="' . htmlspecialchars($archivo) . '" />'."\n";
-////     echo  '<input class="btn btn-danger btn-xs" type="submit" value="'. i18n::__(((isset($objArchivo)) ? 'update' : 'eliminar')) .'">';
-////     echo '<br><br>';
-////     echo '</form>';
-//  }}}
+
  $where = null;
       
      $fields = array(
@@ -59,8 +27,17 @@ class verActionClass extends controllerClass implements controllerActionInterfac
           archivoTableClass::EXTENCION,
           archivoTableClass::HASH
       );
+     
+     
+     $page = 0;
+      if (request::getInstance()->hasGet('page')) {
+        $this->page = request::getInstance()->getGet('page');
+        $page = request::getInstance()->getGet('page') - 1;
+        $page = $page * config::getRowGrid();
+      }//cierre del if del paguinado
+      $this->cntPages = archivoTableClass::getTotalPages(config::getRowGrid());
            
-      $this->objArchivo = archivoTableClass::getAll($fields, false, null, null, null, null, $where);
+      $this->objArchivo = archivoTableClass::getAll($fields, false, null, null,  config::getRowGrid(), $page, $where);
       
   
       $this->defineView('ver', 'archivo', session::getInstance()->getFormatOutput());

@@ -137,7 +137,8 @@
     <form class="form-signin" id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('manoObra', 'deleteSelect') ?>" method="POST">        
 <?php view::includeHandlerMessage() ?> 
         <br>
-      <table id="tabla" class="table table-bordered table-responsive">
+     <div class="rwd">
+      <table class="table table-bordered table-responsive rwd_auto">
         <thead>
           <tr>
           <th id="cuadrito">
@@ -157,20 +158,20 @@
         <tbody>
             <?php foreach ($objManoObra as $key): ?>
             <tr>
-                <th>
+                <td>
                   <input type="checkbox" name="chk[]" value="<?php echo $key->$id ?>">
-                </th>
+                </td>
                 <td>
                 <?php echo cooperativaTableClass::getNameCooperativa($key->$idCooperativa) ?>
                  </td>
                  <td>
                 <?php echo maquinaTableClass::getNameMaquina($key->$idMaquina) ?>
                  </td>
-              <th>
+              <td>
                   <a class="btn btn-warning btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('manoObra', 'ver', array(manoObraTableClass::ID => $key->$id)) ?>" ><?php echo i18n::__('ver') ?></a>
                   <a class="btn btn-primary btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('manoObra', 'edit', array(manoObraTableClass::ID => $key->$id)) ?>"><?php echo i18n::__('modificar') ?></a>
                   <a data-toggle="modal" data-target="#myModalDelete<?php echo $key->$id ?>" class="btn btn-danger btn-xs"> <?php echo i18n::__('eliminar') ?></a>
-              </th>
+              </td>
             </tr>
             <div class="modal fade" id="myModalDelete<?php echo $key->$id ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -192,6 +193,7 @@
 <?php endforeach; ?>
         </tbody>
       </table>
+       </div>
     </form> 
     <div class="text-right">
       <?php echo i18n::__('paginas') ?> <select id="slqPaginador" onchange="paginador(this, '<?php echo routing::getInstance()->getUrlWeb('manoObra', 'index') ?>')">

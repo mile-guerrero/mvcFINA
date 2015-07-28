@@ -22,9 +22,10 @@
   </section>
     <article id='derecha'>
       <br><br>
-      <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('solicitudInsumo', 'index') ?>" > <?php echo i18n::__('atras') ?></a>
+      <a class="btn btn-success btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('solicitudInsumo', 'index') ?>" > <?php echo i18n::__('atras') ?></a>
       <br><br>
-      <table class="table table-bordered table-responsive">
+      <div class="rwd">
+      <table class="table table-bordered table-responsive rwd_auto">
         <tr>
         <thead>
         <th colspan="2"><?php echo i18n::__('datos') ?></th>
@@ -33,41 +34,30 @@
         <tbody>
 <?php foreach ($objS as $key): ?>
             <tr>
-              <th>Fecha Hora</th>      
+              <td>Fecha Hora</td>      
               <td><?php echo $key->$fecha ?></td>
             </tr>
             <tr>
-              <th><?php echo i18n::__('cantidad') ?></th> 
+              <td><?php echo i18n::__('cantidad') ?></td> 
               <td><?php echo $key->$cantidad ?></td>
             </tr>
-<?php endforeach; ?>
-          
-          <?php foreach ($objS as $trabajador): ?>
-          <tr>
-          <th><?php echo i18n::__('trabajador') ?></th>      
-          <td><?php echo trabajadorTableClass::getNameTrabajador($trabajador->$idTrabajador) ?></td>
+            <tr>
+          <td><?php echo i18n::__('trabajador') ?></td>      
+          <td><?php echo trabajadorTableClass::getNameTrabajador($key->$idTrabajador) ?></td>
           </tr>
-          
-<?php endforeach; ?>
-          
-          <?php foreach ($objS as $producto): ?>
-          <tr>
-          <th><?php echo i18n::__('product') ?></th>      
-          <td><?php echo productoInsumoTableClass::getNameProductoInsumo($producto->$idProducto) ?></td>
+           <tr>
+          <td><?php echo i18n::__('product') ?></td>      
+          <td><?php echo productoInsumoTableClass::getNameProductoInsumo($key->$idProducto) ?></td>
           </tr>
-          
-<?php endforeach; ?>
-          
-          <?php foreach ($objS as $lote): ?>
-          <tr>
-          <th><?php echo i18n::__('lote') ?></th>      
-          <td><?php echo loteTableClass::getNameLote($lote->$idLote) ?></td>
+           <tr>
+          <td><?php echo i18n::__('lote') ?></td>      
+          <td><?php echo loteTableClass::getNameLote($key->$idLote) ?></td>
           </tr>
-          
 <?php endforeach; ?>
+         
         </tbody>
       </table>
-
+</div>
     </article>
   </div>
     <br><br><br><br>

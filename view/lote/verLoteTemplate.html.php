@@ -29,49 +29,50 @@
        <br><br>
       <a class="btn btn-success btn-xs " href="<?php echo routing::getInstance()->getUrlWeb('lote', 'indexLote') ?>" > <?php echo i18n::__('atras') ?></a>
       <br><br>
-      <table class="table table-bordered table-responsive">
+      <div class="rwd">
+      <table class="table table-bordered table-responsive rwd_auto">
         <tr>
         <thead>
-        <td colspan="2"><?php echo i18n::__('datos') ?></td>
+        <th colspan="2"><?php echo i18n::__('datos') ?></th>
         </thead>
         </tr>
         <tbody>
 <?php foreach ($objLote as $key): ?>
             <tr>
-              <th><?php echo i18n::__('ubicacion') ?></th>      
+              <td><?php echo i18n::__('ubicacion') ?></td>      
               <td><?php echo $key->$ubicacion ?></td>
             </tr>
             <tr>
-              <th><?php echo i18n::__('ciudad') ?></th>      
+              <td><?php echo i18n::__('ciudad') ?></td>      
               <td><?php echo ciudadTableClass::getNameCiudad($key->$nombre_ciudad) ?></td>
             </tr>
             <tr>
-              <th><?php echo i18n::__('tamano') ?></th>      
+              <td><?php echo i18n::__('tamano') ?></td>      
               <td><?php echo $key->$tamano ?></td>
             </tr>
             <tr>
-              <th><?php echo i18n::__('des') ?></th>      
+              <td><?php echo i18n::__('des') ?></td>      
               <td><?php echo $key->$descripcion ?></td>
             </tr>
             
             <tr>
-              <th><?php echo i18n::__('fecha siembra') ?></th>      
+              <td><?php echo i18n::__('fecha siembra') ?></td>      
               <td><?php echo $key->$fechaS ?></td>
             </tr>
             <tr>
-              <th><?php echo i18n::__('insumo') ?></th>      
+              <td><?php echo i18n::__('insumo') ?></td>      
               <td><?php echo productoInsumoTableClass::getNameProductoInsumo($key->$nombreInsumo) ?></td>
             </tr>
             <tr>
-              <th><?php echo i18n::__('numero') ?></th>      
+              <td><?php echo i18n::__('numero') ?></td>      
               <td><?php echo $key->$numeroP ?></td>
             </tr>
             <tr>
-              <th><?php echo i18n::__('presupuesto') ?></th>      
+              <td><?php echo i18n::__('presupuesto') ?></td>      
               <td><?php echo $key->$presu ?></td>
             </tr>
             <tr>
-              <th><?php echo i18n::__('produccion') ?></th>      
+              <td><?php echo i18n::__('produccion') ?></td>      
               <td><?php echo $key->$produccion .' '. unidadMedidaTableClass::getNameUnidadMedida($key->$desUnidadMedida) ?></td>
             </tr>
             
@@ -80,6 +81,7 @@
       
         </tbody>
       </table>
+      </div>
     </article>
 
 </div>

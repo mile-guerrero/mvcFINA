@@ -4,6 +4,7 @@
 <?php $id = historialTableClass::ID ?>
 <?php $insumo = historialTableClass::PRODUCTO_INSUMO_ID ?>
 <?php $enfermedad = historialTableClass::ENFERMEDAD_ID ?>
+<?php $tratamiento = historialTableClass:: ENFERMEDAD_ID ?>
 <?php $desEnfermedad = enfermedadTableClass::DESCRIPCION ?>
 <?php $createdAt = historialTableClass::CREATED_AT ?>
 <div class="container container-fluid" id="cuerpo">
@@ -19,9 +20,10 @@
        </section>
     <article id='derecha'>
        <br><br>
-    <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('historial', 'index') ?>" > <?php echo i18n::__('atras') ?></a>
+    <a class="btn btn-success btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('historial', 'index') ?>" > <?php echo i18n::__('atras') ?></a>
     <br><br>
-      <table class="table table-bordered table-responsive">
+      <div class="rwd">
+      <table class="table table-bordered table-responsive rwd_auto">
           <tr>
             <thead>
             <th colspan="2"> <?php echo i18n::__('datos') ?></th>
@@ -30,35 +32,36 @@
 	<tbody>
       <?php foreach ($objHistorial as $key): ?>
                   <tr> 
-                   <th><?php echo i18n::__('fecha crear') ?></th>                   
-                   <th><?php echo $key->$createdAt ?></th>
+                   <td><?php echo i18n::__('fecha crear') ?></td>                   
+                   <td><?php echo $key->$createdAt ?></td>
                   </tr>
                  
                 <tr>
-                  <th><?php echo i18n::__('insumo') ?></th>      
+                  <td><?php echo i18n::__('insumo') ?></td>      
                   <td><?php echo productoInsumoTableClass::getNameProductoInsumo($key->$insumo)?></td>
                   </tr>
                   
                   <tr>
-                  <th><?php echo i18n::__('enfermedad') ?></th>      
+                  <td><?php echo i18n::__('enfermedad') ?></td>      
                   <td><?php echo enfermedadTableClass::getNameEnfermedad($key->$enfermedad) ?></td>
                   </tr>                           
                 
                                   
                   <tr>
-                  <th><?php echo i18n::__('des') ?></th>      
+                  <td><?php echo i18n::__('des') ?></td>      
                   <td><?php echo enfermedadTableClass::getNameDes($key->$enfermedad) ?></td>
                   </tr>  
                   
                   <tr>
-                  <th><?php echo i18n::__('des') ?></th>      
-                  <td><?php echo enfermedadTableClass::getNameTratamiento($key->$enfermedad) ?></td>
+                  <td><?php echo i18n::__('tratamiento') ?></td>      
+                  <td><?php echo enfermedadTableClass::getNameTratamiento($key->$tratamiento) ?></td>
                   </tr>  
                 <?php endforeach; ?>
                   
                   
            </tbody>
 	    </table>
+      </div>
 	  </article>
    
 </div>

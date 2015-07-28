@@ -1,21 +1,29 @@
 <?php use mvc\routing\routingClass as routing ?>
-<?php use mvc\i18n\i18nClass as i18n ?>
+
 <?php use mvc\view\viewClass as view ?>
 <?php use mvc\session\sessionClass as session ?>
 <?php use mvc\request\requestClass as request ?>
 
+<?php use mvc\config\configClass as config ?>
+<?php use mvc\i18n\i18nClass as i18n ?>
+
 <?php $idUsuario = usuarioTableClass::ID ?>
 <?php $password = usuarioTableClass::PASSWORD ?>
+
 <div class="container container-fluid" id="cuerpo">
+  <div class="center-block" id="cuerpo5">
+  <div class="center-block" id="cuerpo2">
   
   
-  <article id='derecha'>
+<!--  <article id='derecha'>-->
 <form   class="form-horizontal" role="form" class="form-horizontal" role="form"  method="post" action="<?php echo routing::getInstance()->getUrlWeb('crearUsuario', ((isset($objUsuarios)) ? 'update' : 'create')) ?>">
   <?php if(isset($objUsuarios)==true): ?>
   <input  name="<?php echo usuarioTableClass::getNameField(usuarioTableClass::ID,true) ?>" value="<?php echo $objUsuarios[0]->$idUsuario ?>" type="hidden">
   <?php endif ?>
   
-  
+  <br><br><br><br>
+ 
+  <br>
  
   <?php if(session::getInstance()->hasError('inputUsuario')): ?>
   <div class="alert alert-danger alert-dismissible" role="alert" id="error">
@@ -64,11 +72,9 @@
   <input class="btn btn-lg btn-success btn-xs" type="submit" value="<?php echo i18n::__(((isset($objUsuarios)) ? 'update' : 'register')) ?>">
    <a class="btn btn-lg btn-default btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('shfSecurity', 'login') ?>" ><?php echo i18n::__('atras') ?></a>
 
-  </form>
-  </article>
+  <br><br><br><br><br><br>
+    </form> 
+    <!--  </article>-->
   </div>
-
-
-
-
-
+  </div>
+</div>

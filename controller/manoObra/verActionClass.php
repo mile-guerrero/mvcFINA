@@ -21,6 +21,7 @@ class verActionClass extends controllerClass implements controllerActionInterfac
           manoObraTableClass::ID,
           manoObraTableClass::CANTIDAD_HORA,
           manoObraTableClass::VALOR_HORA,
+          manoObraTableClass::TOTAL,
           manoObraTableClass::COOPERATIVA_ID,
           manoObraTableClass::MAQUINA_ID,
           manoObraTableClass::LABOR_ID,

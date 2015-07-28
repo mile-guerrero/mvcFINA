@@ -197,7 +197,8 @@ use mvc\session\sessionClass as session ?>
     <form class="form-signin" id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('trabajador', 'deleteSelect') ?>" method="POST">        
 <?php view::includeHandlerMessage() ?>
       <br>
-      <table class="table table-bordered table-responsive">
+      <div class="rwd">
+      <table class="table table-bordered table-responsive rwd_auto">
         <tr>
         <thead>
         <th id="cuadrito">
@@ -262,6 +263,7 @@ use mvc\session\sessionClass as session ?>
       <?php endforeach; ?>
         </tbody>
       </table>
+        </div>
     </form> 
     <div class="text-right">
 <?php echo i18n::__('paginas') ?> <select id="slqPaginador" onchange="paginador(this, '<?php echo routing::getInstance()->getUrlWeb('trabajador', 'index') ?>')">

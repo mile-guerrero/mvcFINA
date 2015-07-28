@@ -124,7 +124,8 @@
     <form class="form-signin">        
 <?php view::includeHandlerMessage() ?> 
         <br>
-      <table id="tabla" class="table table-bordered table-responsive">
+      <div class="rwd">
+      <table class="table table-bordered table-responsive rwd_auto">
         <thead>
           <tr>
             <th>
@@ -141,14 +142,15 @@
                 <td>
                   <?php echo empresaTableClass::getNameEmpresa($key->$idEmpresa) ?>
                  </td>
-              <th>
+              <td>
                 <a class="btn btn-warning btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('pagoTrabajador', 'ver', array(pagoTrabajadorTableClass::ID => $key->$id)) ?>" ><?php echo i18n::__('ver') ?></a>
                 <a class="btn btn-primary btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('pagoTrabajador', 'edit', array(pagoTrabajadorTableClass::ID => $key->$id)) ?>"><?php echo i18n::__('modificar') ?></a>
-              </th>
+              </td>
             </tr>
 <?php endforeach; ?>
         </tbody>
       </table>
+        </div>
     </form> 
     <div class="text-right">
         <?php echo i18n::__('paginas') ?> <select id="slqPaginador" onchange="paginador(this, '<?php echo routing::getInstance()->getUrlWeb('pagoTrabajador', 'index')?>')">

@@ -14,7 +14,6 @@ class productoInsumoBaseTableClass extends tableBaseClass {
  private $nombreImagen;
  private $extencionImagen;
  private $hashImagen;
- private $iva;
  private $cantidad;
  private $unidadMedidaId;
  private $tipoProductoInsumoId;
@@ -35,8 +34,6 @@ class productoInsumoBaseTableClass extends tableBaseClass {
   const EXTENCION_IMAGEN_LENGTH = 5;
   const HASH_IMAGEN = 'hashimagen';
   const HASH_IMAGEN_LENGTH = 37;
-  const IVA = 'iva';
-  const IVA_LENGTH = 10;
   const CANTIDAD = 'cantidad';
   const CANTIDAD_LENGTH = 20;
   const UNIDAD_MEDIDA_ID = 'unidad_medida_id';
@@ -62,10 +59,6 @@ class productoInsumoBaseTableClass extends tableBaseClass {
 
   public function get_hashImagen() {
     return $this->hashImagen;
-  }
-
-  public function get_iva() {
-    return $this->iva;
   }
 
   public function get_cantidad() {
@@ -110,10 +103,6 @@ class productoInsumoBaseTableClass extends tableBaseClass {
 
   public function set_hashImagen($hashImagen) {
     $this->hashImagen = $hashImagen;
-  }
-
-  public function set_iva($iva) {
-    $this->iva = $iva;
   }
 
   public function set_cantidad($cantidad) {

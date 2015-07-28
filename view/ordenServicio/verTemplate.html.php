@@ -25,9 +25,10 @@
 
   <article id='derecha'>  
     <br><br>
-        <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('ordenServicio', 'index') ?>" > <?php echo i18n::__('atras') ?></a>
+        <a class="btn btn-success btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('ordenServicio', 'index') ?>" > <?php echo i18n::__('atras') ?></a>
         <br><br>
-      <table class="table table-bordered table-responsive">
+      <div class="rwd">
+      <table class="table table-bordered table-responsive rwd_auto">
         <tr>
         <thead>
         <th colspan="2"><?php echo i18n::__('datos') ?></th>
@@ -36,46 +37,36 @@
         <tbody>
 <?php foreach ($objOS as $key): ?>
             <tr>
-              <th>Fecha Mantenimiento</th>      
+              <td>Fecha Mantenimiento</td>      
               <td><?php echo $key->$fecha_mantenimiento ?></td>
             </tr>
             <tr>
-              <th>cantidad</th>      
+          <td><?php echo i18n::__('trabajador') ?></td>      
+          <td><?php echo trabajadorTableClass::getNameTrabajador($key->$idTrabajador) ?></td>
+          </tr>
+            
+            <tr>
+              <td><?php echo i18n::__('insumo') ?></td>      
+              <td><?php echo productoInsumoTableClass::getNameProductoInsumo($key->$idProducto) ?></td>
+            </tr>
+            <tr>
+              <td><?php echo i18n::__('maquina') ?></td>      
+              <td><?php echo maquinaTableClass::getNameMaquina($key->$idMaquina) ?></td>
+            </tr>
+            <tr>
+              <td><?php echo i18n::__('cantidad') ?></td>      
               <td><?php echo $key->$cantidad ?></td>
             </tr>
             <tr>
-              <th> valor</th>      
+              <td> <?php echo i18n::__('valor') ?></td>      
               <td><?php echo $key->$valor ?></td>
             </tr>
             
 <?php endforeach; ?>
-             <?php foreach ($objOS as $trabajador): ?>
-          <tr>
-          <th>Trabajador</th>      
-          <td><?php echo trabajadorTableClass::getNameTrabajador($trabajador->$idTrabajador) ?></td>
-          </tr>
-<?php endforeach; ?>
-            
-             <?php foreach ($objOS as $producto): ?>
-            <tr>
-              <th>Insumo</th>      
-              <td><?php echo productoInsumoTableClass::getNameProductoInsumo($producto->$idProducto) ?></td>
-            </tr>
-            
-<?php endforeach; ?>
-            
-   
-             <?php foreach ($objOS as $maquina): ?>
-            <tr>
-              <th>Maquina</th>      
-              <td><?php echo maquinaTableClass::getNameMaquina($maquina->$idMaquina) ?></td>
-            </tr>
-            
-<?php endforeach; ?>
-            
+                        
         </tbody>
       </table>
-
+</div>
     </article>
 </div>
     <br><br>

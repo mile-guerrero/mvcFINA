@@ -18,10 +18,11 @@
   </section>
     <article id='derecha'>
       <br><br>
-      <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('labor', 'index') ?>" > <?php echo i18n::__('atras') ?></a>
+      <a class="btn btn-success btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('labor', 'index') ?>" > <?php echo i18n::__('atras') ?></a>
       <br><br>
       
-      <table class="table table-bordered table-responsive">
+    <div class="rwd">
+      <table class="table table-bordered table-responsive rwd_auto">
         <tr>
         <thead>
         <th colspan="2"> <?php echo i18n::__('datos') ?></th>
@@ -30,11 +31,11 @@
         <tbody>
 <?php foreach ($objLabor as $key): ?>
             <tr>
-              <th><?php echo i18n::__('des') ?></th>      
+              <td><?php echo i18n::__('des') ?></td>      
               <td><?php echo $key->$descripcion ?></td>
             </tr>
             <tr>
-          <th><?php echo i18n::__('valor') ?></th>      
+          <td><?php echo i18n::__('valor') ?></td>      
           <td><?php echo $key->$valor ?></td>
           </tr>
           <tr>
@@ -47,7 +48,7 @@
 
         </tbody>
       </table>
-
+    </div>
     </article>
  
 </div>

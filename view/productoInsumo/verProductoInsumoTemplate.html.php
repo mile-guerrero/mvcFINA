@@ -3,9 +3,9 @@
 <?php use mvc\i18n\i18nClass as i18n ?>
 <?php $tipo = ProductoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID ?>
 <?php $unidad = productoInsumoTableClass::UNIDAD_MEDIDA_ID ?>
-<?php $iva = productoInsumoTableClass::IVA ?>
 <?php $des = productoInsumoTableClass::DESCRIPCION ?>
 <?php $id = productoInsumoTableClass::ID ?>
+<?php $cantidad = productoInsumoTableClass::CANTIDAD ?>
 <?php $updated = productoInsumoTableClass::UPDATED_AT ?>
 <?php $created = productoInsumoTableClass::CREATED_AT ?>
 <?php $hash = productoInsumoTableClass::HASH_IMAGEN ?>
@@ -25,11 +25,12 @@
     </section>
     <article id='derecha'>
       <br><br>
-       <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'indexProductoInsumo') ?>" > <?php echo i18n::__('atras') ?></a>
+       <a class="btn btn-success btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'indexProductoInsumo') ?>" > <?php echo i18n::__('atras') ?></a>
        <br>
        <br>
        
-      <table class="table table-bordered table-responsive">
+     <div class="rwd">
+      <table class="table table-bordered table-responsive rwd_auto">
           <tr>
             <thead>
             <th colspan="2"> <?php echo i18n::__('datos') ?></th>
@@ -39,7 +40,7 @@
      
               <?php foreach ($objPI as $key): ?>
                 <tr>    
-                  <th><?php echo $key->$des ?></th>
+                  <td><?php echo $key->$des ?></td>
                  <td>
                    <?php
               if($key->$extencion == 'jpg'){//para poner icono 
@@ -47,26 +48,20 @@
                    }
                    ?></td>
                   </tr>
-                   <tr>
-                  <th><?php echo i18n::__('iva') ?></th>      
-                  <td><?php echo $key->$iva ?></td>
-                  </tr>
-                  <?php endforeach; ?>
-                  <?php foreach ($objPI as $key): ?>
-                  <tr> 
-                   <th><?php echo i18n::__('unidad') ?></th>                   
-                   <td><?php echo unidadMedidaTableClass::getNameUnidadMedida($key->$unidad) ?></td>
+                   <tr> 
+                   <td><?php echo i18n::__('unidad') ?></td>                   
+                   <td><?php echo $key->$cantidad. ' ' . unidadMedidaTableClass::getNameUnidadMedida($key->$unidad) ?></td>
                        </tr>
                   
                        <tr>
-                       <th><?php echo i18n::__('tipoProducto') ?></th> 
+                       <td><?php echo i18n::__('tipoProducto') ?></td> 
                        <td><?php echo tipoProductoInsumoTableClass::getNameTipoProductoInsumo($key->$tipo) ?></td>
-                        </tr>    
-                                              
-                <?php endforeach; ?>
+                        </tr> 
+                  <?php endforeach; ?>
+                 
            </tbody>
 	    </table>
-
+</div>
 	  </article>
     
 </div>

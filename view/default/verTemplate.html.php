@@ -21,9 +21,10 @@
        </section>
     <article id='derecha'>
       <br><br>
-       <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('default', 'index') ?>" ><?php echo i18n::__('atras') ?></a>   
+       <a class="btn btn-success btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('default', 'index') ?>" ><?php echo i18n::__('atras') ?></a>   
    <br><br>
-      <table class="table table-bordered table-responsive">
+      <div class="rwd">
+      <table class="table table-bordered table-responsive rwd_auto">
           <tr>
             <thead>
             
@@ -36,24 +37,25 @@
 	<tbody>
               <?php foreach ($objUsuarios as $key): ?>
                 <tr>
-                  <th><?php echo i18n::__('user') ?></th>      
+                  <td><?php echo i18n::__('user') ?></td>      
                   <td><?php echo $key->$usu ?></td>
                   </tr>
                   <tr>
-                   <th>fecha creacion</th>                   
-                   <th><?php echo $key->$created_at ?></th>
+                   <td>fecha creacion</td>                   
+                   <td><?php echo $key->$created_at ?></td>
                        </tr>
                        <tr>
-                       <th>fecha modificacion</th> 
-                       <th><?php echo $key->$updated_at ?></th>
+                       <td>fecha modificacion</td> 
+                       <td><?php echo $key->$updated_at ?></td>
                        </tr>
                        <tr>  
-                       <th><?php echo i18n::__('estado') ?></th>
+                       <td><?php echo i18n::__('estado') ?></td>
                        <td><?php echo $key->$actived ?></td>
                        </tr>                         
                 <?php endforeach; ?>
            </tbody>
 	    </table>
+      </div>
       </article>
    
 </div>

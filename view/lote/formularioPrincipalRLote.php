@@ -158,7 +158,7 @@
         </div>
         <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
            <select  class="form-control" id="<?php loteTableClass::getNameField(loteTableClass::ID, true)?>" name="<?php echo loteTableClass::getNameField(loteTableClass::UNIDAD_MEDIDA_ID, true);?>">
-      <option value="null" ><?php echo i18n::__('selectUnidadDis') ?></option>
+      <option value="null" ><?php echo i18n::__('selectUnidadPeso') ?></option>
        <?php foreach($objLUMedida as $C):?>
        <option  <?php echo (isset($objLote[0]->$idUnidadMedidaId) === true and $objLote[0]->$idUnidadMedidaId == $C->$idUnidadMedida) ? 'selected' : '' ?>  value="<?php echo $C->$idUnidadMedida?>"><?php echo $C->$desUnidadMedida?></option>
        <?php endforeach;?>
@@ -170,7 +170,7 @@
     <br>
 <input class="btn btn-lg btn-success btn-xs" type="submit" value="<?php echo i18n::__(((isset($objLote)) ? 'update' : 'register')) ?>">
 <a class="btn btn-lg btn-default btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('lote', 'indexLote') ?>" ><?php echo i18n::__('atras') ?> </a>
-
+<br><br>
 </form>
   </div>
 </div>

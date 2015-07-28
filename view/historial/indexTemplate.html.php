@@ -157,7 +157,8 @@
      
                 <?php view::includeHandlerMessage()?>
 <br>
-      <table class="table table-bordered table-responsive">
+     <div class="rwd">
+      <table class="table table-bordered table-responsive rwd_auto">
 
         <thead>
           <tr>
@@ -185,16 +186,16 @@
               <td>
                 <?php echo enfermedadTableClass::getNameEnfermedad($key->$enfermedadId) ?>
               </td>
-              <th>
+              <td>
                 <a class="btn btn-warning btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('historial', 'ver', array(historialTableClass::ID => $key->$id)) ?>" ><?php echo i18n::__('ver') ?></a>
                <?php if(session::getInstance()->hasCredential('admin')):?>
                 <a class="btn btn-primary btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('historial', 'edit', array(historialTableClass::ID => $key->$id)) ?>"><?php echo i18n::__('modificar') ?> </a>
              <?php endif?>
-              </th>                                        
+              </td>                                        
             <?php endforeach; ?>
         </tbody>
       </table>
-
+</div>
       <div class="text-right">
         <?php echo i18n::__('paginas') ?> <select id="slqPaginador" onchange="paginador(this, '<?php echo routing::getInstance()->getUrlWeb('historial', 'index')?>')">
          <?php for($x = 1; $x <= $cntPages; $x++):?>

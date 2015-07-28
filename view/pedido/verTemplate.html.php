@@ -22,9 +22,10 @@
 
   <article id='derecha'>  
     <br><br>
-       <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('pedido', 'index') ?>" > <?php echo i18n::__('atras') ?></a>
+       <a class="btn btn-success btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('pedido', 'index') ?>" > <?php echo i18n::__('atras') ?></a>
        <br><br>
-      <table class="table table-bordered table-responsive">
+      <div class="rwd">
+      <table class="table table-bordered table-responsive rwd_auto">
         <tr>
         <thead>
         <th colspan="2"><?php echo i18n::__('datos') ?></th>
@@ -32,37 +33,29 @@
         </tr>
         <tbody>
 <?php foreach ($objPedido as $key): ?>
+          
+          <tr>
+         <td><?php echo i18n::__('empresa') ?></td>      
+          <td><?php echo empresaTableClass::getNameEmpresa($key->$idEmpresa) ?></td>
+          </tr>
+          <tr>
+          <td><?php echo i18n::__('product') ?></td>      
+          <td><?php echo productoInsumoTableClass::getNameProductoInsumo($key->$idProducto) ?></td>
+          </tr>
             <tr> 
-              <th><?php echo i18n::__('cantidad') ?></th>                   
+              <td><?php echo i18n::__('cantidad') ?></td>                   
               <td><?php echo $key->$cantidad ?></td>
             </tr>
+            <tr>
+          <td><?php echo i18n::__('proveedor') ?></td>   
+          <td><?php echo proveedorTableClass::getNameProveedor($key->$idProveedor) ?></td>
+          </tr>
 
 <?php endforeach; ?>
-            
-<?php foreach ($objPedido as $empresa): ?>
-          <tr>
-          <th>Empresa</th>      
-          <td><?php echo empresaTableClass::getNameEmpresa($empresa->$idEmpresa) ?></td>
-          </tr>
-          
-<?php endforeach; ?>
-          
-          <?php foreach ($objPedido as $producto): ?>
-          <tr>
-          <th><?php echo i18n::__('product') ?></th>      
-          <td><?php echo productoInsumoTableClass::getNameProductoInsumo($producto->$idProducto) ?></td>
-          </tr>
-          
-<?php endforeach; ?>
-          
-          <?php foreach ($objPedido as $proveedor): ?>
-          <tr>
-          <th>Proveedor</th>      
-          <td><?php echo proveedorTableClass::getNameProveedor($proveedor->$idProveedor) ?></td>
-          </tr>
-<?php endforeach; ?>
+
         </tbody>
       </table>
+        </div>
     </article>
   </div>
     <br><br><br><br>

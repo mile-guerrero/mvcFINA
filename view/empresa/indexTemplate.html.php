@@ -123,7 +123,8 @@
   <form class="form-signin" id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('empresa', 'deleteSelect') ?>" method="POST">        
 <?php view::includeHandlerMessage() ?>
     <br>
-      <table id="tabla" class="table table-bordered table-responsive">
+      <div class="rwd">
+      <table class="table table-bordered table-responsive rwd_auto">
         <tr>
         <thead>
         <th id="cuadrito">
@@ -141,19 +142,19 @@
 <?php foreach ($objEmpresa as $key): ?>
             <tr>
 
-              <th>
+              <td>
                 <input type="checkbox" name="chk[]" value="<?php echo $key->$id ?>">
-              </th>
+              </td>
               <td>
   <?php echo $key->$nomb ?> 
               </td>     
-              <th>               
+              <td>               
                 <a class="btn btn-warning btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('empresa', 'ver', array(empresaTableClass::ID => $key->$id)) ?>" > <?php echo i18n::__('ver') ?></a> 
             <?php if (session::getInstance()->hasCredential('admin')): ?>
                   <a class="btn btn-primary btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('empresa', 'edit', array(empresaTableClass::ID => $key->$id)) ?>"> <?php echo i18n::__('modificar') ?> </a>
                   <a data-toggle="modal" data-target="#myModalDelete<?php echo $key->$id ?>"  class="btn btn-danger btn-xs"> <?php echo i18n::__('eliminar') ?></a>
   <?php endif ?>
-              </th>                                                       
+              </td>                                                       
             </tr>
 <?php endforeach; ?>
         <div class="modal fade" id="myModalDelete<?php echo $key->$id ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -176,6 +177,7 @@
 
         </tbody>
       </table>
+        </div>
     </form> 
 
     <div class="text-right">

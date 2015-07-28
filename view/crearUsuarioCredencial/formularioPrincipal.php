@@ -12,14 +12,21 @@
 <?php $credencials = credencialTableClass::ID ?>
 <?php $des_credencials = credencialTableClass::NOMBRE ?>
 <div class="container container-fluid" id="cuerpo">
-  <article id='derecha'>
+  <div class="center-block" id="cuerpo5">
+  <div class="center-block" id="cuerpo2">
+  
+  
+<!--  <article id='derecha'>-->
 <form  class="form-horizontal" role="form" method="post" action="<?php echo routing::getInstance()->getUrlWeb('crearUsuarioCredencial', ((isset($objUC)) ? 'update' : 'create')) ?>">
   <?php if(isset($objUC)== true): ?>
   <input  name="<?php echo usuarioCredencialTableClass::getNameField(usuarioCredencialTableClass::ID, true) ?>" value="<?php echo $objUC[0]->$iddUC ?>" type="hidden">
   <?php endif ?>
   
   
-  
+   <br><br><br><br>
+ 
+  <br>
+ 
   <div class="form-group">
     <label for="<?php echo usuarioCredencialTableClass::getNameField(usuarioCredencialTableClass::USUARIO_ID, true) ?>" class="col-sm-2"><?php echo i18n::__('usu_id') ?>: </label>
       <div class="col-sm-10"> 
@@ -49,6 +56,9 @@
   <input class="btn btn-lg btn-success btn-xs" type="submit" value="<?php echo i18n::__(((isset($objUC)) ? 'update' : 'register')) ?>">
 <a class="btn btn-lg btn-default btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('crearUsuario', 'insert') ?>" ><?php echo i18n::__('atras') ?> </a>
 
-</form>
-  </article>
+<br><br><br><br><br><br><br><br><br>
+    </form> 
+    <!--  </article>-->
+  </div>
+  </div>
 </div>

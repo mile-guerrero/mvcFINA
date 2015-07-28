@@ -28,9 +28,10 @@
 
   <article id='derecha'>  
     <br><br>
-    <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('trabajador', 'index') ?>" > <?php echo i18n::__('atras') ?></a>
+    <a class="btn btn-success btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('trabajador', 'index') ?>" > <?php echo i18n::__('atras') ?></a>
     <br><br>
-    <table class="table table-bordered table-responsive">
+    <div class="rwd">
+      <table class="table table-bordered table-responsive rwd_auto">
       <tr>
       <thead>
       <th colspan="2"> <?php echo i18n::__('datos') ?></th>
@@ -39,58 +40,39 @@
       <tbody>
         <?php foreach ($objTrabajador as $key): ?>
           <tr>
-            <th><?php echo i18n::__('documento') ?></th>      
-            <td><?php echo $key->$documento ?></td>
+            <td><?php echo i18n::__('documento') ?></td>      
+            <td><?php echo $key->$documento . ' ' .  tipoIdTableClass::getNameTipoId($key->$descripcion) ?></td>
           </tr> 
           <tr>
-            <th><?php echo i18n::__('nom') ?></th>      
+            <td><?php echo i18n::__('nom') ?></td>      
             <td><?php echo $key->$nom ?></td>
           </tr>
           <tr>
-            <th><?php echo i18n::__('apell') ?></th>      
+            <td><?php echo i18n::__('apell') ?></td>      
             <td><?php echo $key->$apellido ?></td>
           </tr>
           <tr>
-            <th><?php echo i18n::__('dir') ?></th>      
-            <td><?php echo $key->$direccion ?></td>
+            <td><?php echo i18n::__('dir') ?></td>      
+            <td><?php echo $key->$direccion . ' ' .  ciudadTableClass::getNameCiudad($key>$nombreCiudad) ?></td>
           </tr>
           <tr>
-            <th><?php echo i18n::__('tel') ?></th>      
+            <td><?php echo i18n::__('tel') ?></td>      
             <td><?php echo $key->$telefono ?></td>
           </tr>
           <tr>
-            <th><?php echo i18n::__('email') ?></th>      
+            <td><?php echo i18n::__('email') ?></td>      
             <td><?php echo $key->$email ?></td>
           </tr>
-
-        <?php endforeach; ?>
-
-        <?php foreach ($objTrabajador as $tipoId): ?>          
           <tr>
-            <th>Tipo Identidad</th>                   
-            <td><?php echo tipoIdTableClass::getNameTipoId($tipoId->$descripcion) ?></td>
+            <td><?php echo i18n::__('credencial') ?></td>      
+            <td><?php echo credencialTableClass::getNameCredencial($key->$nombreCredencial) ?></td>
           </tr>
+
         <?php endforeach; ?>
-
-
-        <?php foreach ($objTrabajador as $ciudad): ?>
-          <tr>
-            <th>Ciudad</th>      
-            <td><?php echo ciudadTableClass::getNameCiudad($ciudad->$nombreCiudad) ?></td>
-          </tr>
-        <?php endforeach; ?>
-
-        <?php foreach ($objTrabajador as $credencial): ?>
-          <tr>
-            <th>Credencial</th>      
-            <td><?php echo credencialTableClass::getNameCredencial($credencial->$nombreCredencial) ?></td>
-          </tr>
-        <?php endforeach; ?>
-
 
       </tbody>
     </table>
-
+</div>
   </article>
 </div>
     <br><br>

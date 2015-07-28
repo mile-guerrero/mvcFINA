@@ -72,6 +72,7 @@ dictionary:
     presupuesto:          Budget
     informe:              Information
     #-------Proveedor-----------
+    proveedor:            Provider
     editar proveedor:     Edit provider
     nuevo proveedor:      New provider
     pro:                  Provider Id 
@@ -221,6 +222,9 @@ dictionary:
     crearCuenta:          Create Account
     recordar:             Remember me
     #-----------------------------------
+    selectUnidadPeso:     Select weight unit
+    valor hora:           Value hour
+    cantidad hora:        Number hours
     paginas:              Pages
     of:                   From
     nuevoPedido:          New Order

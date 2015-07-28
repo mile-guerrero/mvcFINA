@@ -18,11 +18,12 @@
     </section>
     <article id='derecha'>
       <br><br>
-       <a class="btn btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'indexTipoProductoInsumo') ?>" > <?php echo i18n::__('atras') ?></a>
+       <a class="btn btn-success btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'indexTipoProductoInsumo') ?>" > <?php echo i18n::__('atras') ?></a>
        <br>
        <br>
       
-      <table class="table table-bordered table-responsive">
+      <div class="rwd">
+      <table class="table table-bordered table-responsive rwd_auto">
           <tr>
             <thead>
             <th colspan="2"><?php echo i18n::__('datos') ?></th>
@@ -31,14 +32,14 @@
 	<tbody>
               <?php foreach ($objTPI as $key): ?>
                 <tr>
-                  <th><?php echo i18n::__('des') ?></th>      
+                  <td><?php echo i18n::__('des') ?></td>      
                   <td><?php echo $key->$des ?></td>
                   </tr>
                                                 
                 <?php endforeach; ?>
            </tbody>
 	    </table>
-
+      </div>
 	  </article>
    
 </div>

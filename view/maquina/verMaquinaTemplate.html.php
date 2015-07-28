@@ -6,7 +6,7 @@ use mvc\routing\routingClass as routing ?>
 use mvc\i18n\i18nClass as i18n ?>
 <?php $id = maquinaTableClass::ID ?>
 <?php $nombre = maquinaTableClass::NOMBRE ?>
-<?php $descripcion = maquinaTableClass::DESCRIPCION?>
+<?php $descripcion = maquinaTableClass::DESCRIPCION ?>
 <?php $created_at = maquinaTableClass::CREATED_AT ?>
 <?php $updated_at = maquinaTableClass::UPDATED_AT ?>
 <?php $des_origen = maquinaTableClass::ORIGEN_MAQUINA ?>
@@ -15,67 +15,58 @@ use mvc\i18n\i18nClass as i18n ?>
 
 <div class="container container-fluid" id="cuerpo">
   <div class="center-block" id="cuerpo6">
-  <div class="center-block" id="cuerpo2">
-  <header id="">
-     </header>
-  <nav id="">
-  </nav>
-  <section id="contenido">
-    
-  </section>
-    <article id='derecha'>
-      <br><br>
-      <a class="btn btn-danger btn-xs " href="<?php echo routing::getInstance()->getUrlWeb('maquina', 'indexMaquina') ?>" > <?php echo i18n::__('atras') ?></a>
-      <br><br>
-      <table class="table table-bordered table-responsive">
-        <tr>
-        <thead>
-        <td colspan="2"> <?php echo i18n::__('datos') ?></td>
-        </thead>
-        </tr>
-        <tbody>
-<?php foreach ($objMaquina as $key): ?>
+    <div class="center-block" id="cuerpo2">
+      <header id="">
+      </header>
+      <nav id="">
+      </nav>
+      <section id="contenido">
+
+      </section>
+      <article id='derecha'>
+        <br><br>
+        <a class="btn btn-success btn-xs " href="<?php echo routing::getInstance()->getUrlWeb('maquina', 'indexMaquina') ?>" > <?php echo i18n::__('atras') ?></a>
+        <br><br>
+        <div class="rwd">
+          <table class="table table-bordered table-responsive rwd_auto">
             <tr>
-              <th><?php echo i18n::__('nom') ?></th>      
-              <td><?php echo $key->$nombre ?></td>
+            <thead>
+            <th colspan="2"> <?php echo i18n::__('datos') ?></th>
+            </thead>
             </tr>
+            <tbody>
+              <?php foreach ($objMaquina as $key): ?>
+                <tr>
+                  <td><?php echo i18n::__('nom') ?></td>      
+                  <td><?php echo $key->$nombre ?></td>
+                </tr>
 
-            <tr>
-              <th><?php echo i18n::__('des') ?></th>      
-              <td><?php echo $key->$descripcion ?></td>
-            </tr>
-            
-            <tr>
-              <th><?php echo i18n::__('origenM') ?></th>      
-              <td><?php echo $key-> $des_origen?></td>
-            </tr>
-          
+                <tr>
+                  <td><?php echo i18n::__('des') ?></td>      
+                  <td><?php echo $key->$descripcion ?></td>
+                </tr>
 
-<?php endforeach; ?>
-          
-          <?php foreach ($objMaquina as $TUM): ?>          
-          <tr>
-            <th><?php echo i18n::__('tipo uso') ?></th>                   
-            <td><?php echo tipoUsoMaquinaTableClass::getNameTipoUsoMaquina($TUM->$descripcion_uso) ?></td>
-          </tr>
-        <?php endforeach; ?>
+                <tr>
+                  <td><?php echo i18n::__('origenM') ?></td>      
+                  <td><?php echo $key->$des_origen ?></td>
+                </tr>
+                <tr>
+                  <td><?php echo i18n::__('tipo uso') ?></td>                   
+                  <td><?php echo tipoUsoMaquinaTableClass::getNameTipoUsoMaquina($key->$descripcion_uso) ?></td>
+                </tr>
+                <tr>
+                  <td><?php echo i18n::__('nomProveedor') ?></td>      
+                  <td><?php echo proveedorTableClass::getNameProveedor($key->$nombre_pro) ?></td>
+                </tr>
+              <?php endforeach; ?>
 
+            </tbody>
+          </table>
+        </div>
+      </article>
 
-          
-          
-          <?php foreach ($objMaquina as $P): ?>
-          <tr>
-          <th><?php echo i18n::__('nomProveedor') ?></th>      
-          <td><?php echo proveedorTableClass::getNameProveedor($P->$nombre_pro) ?></td>
-          </tr>
-<?php endforeach; ?>
-        </tbody>
-      </table>
-
-    </article>
-
-</div>
+    </div>
     <br><br>
+  </div>
+
 </div>
-  
- </div>

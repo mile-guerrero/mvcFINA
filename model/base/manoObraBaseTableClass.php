@@ -12,6 +12,7 @@ class manoObraBaseTableClass extends tableBaseClass {
  private $id;
  private $cantidadHora;
  private $valorHora;
+ private $total;
  private $cooperativaId;
  private $maquinaId;
  private $laborId;
@@ -25,6 +26,8 @@ class manoObraBaseTableClass extends tableBaseClass {
   const CANTIDAD_HORA_LENGTH = 10;
   const VALOR_HORA = 'valor_hora';
   const VALOR_HORA_LENGTH = 15;
+  const TOTAL = 'total_pagar';
+  const TOTAL_LENGTH = 15;
   const COOPERATIVA_ID = 'cooperativa_id';
   const MAQUINA_ID = 'maquina_id';
   const LABOR_ID = 'labor_id';
@@ -32,8 +35,15 @@ class manoObraBaseTableClass extends tableBaseClass {
   const UPDATED_AT = 'updated_at';
   const DELETED_AT = 'deleted_at';
   
- 
-  public function get_id() {
+  public function get_total() {
+    return $this->total;
+  }
+
+  public function set_total($total) {
+    $this->total = $total;
+  }
+
+    public function get_id() {
     return $this->id;
   }
 

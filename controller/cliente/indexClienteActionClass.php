@@ -106,6 +106,8 @@ class indexClienteActionClass extends controllerClass implements controllerActio
       }//cierre del if del paguinado
       $this->cntPages = clienteTableClass::getTotalPages(config::getRowGrid());
       $this->objCliente = clienteTableClass::getAll($fields, true, $orderBy, 'ASC', config::getRowGrid(), $page,$where);
+      
+      
       $fields = array(     
       ciudadTableClass::ID, 
       ciudadTableClass::NOMBRE_CIUDAD

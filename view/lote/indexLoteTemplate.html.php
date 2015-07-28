@@ -215,7 +215,8 @@ use mvc\session\sessionClass as session ?>
     <form class="form-signin" id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('lote', 'deleteSelectLote') ?>" method="POST">        
 <?php view::includeHandlerMessage() ?>
       <br>
-      <table class="table table-bordered table-responsive">
+      <div class="rwd">
+      <table class="table table-bordered table-responsive rwd_auto">
         <tr>
         <thead>
         <th id="cuadrito">
@@ -233,22 +234,23 @@ use mvc\session\sessionClass as session ?>
 <?php foreach ($objLote as $key): ?>
             <tr>
 
-              <th>
+              <td>
                 <input type="checkbox" name="chk[]" value="<?php echo $key->$id ?>">
-              </th>
+              </td>
               <td>
   <?php echo $key->$ubi ?>
               </td>     
-              <th>               
+              <td>               
                 <a class="btn btn-warning btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('lote', 'verLote', array(loteTableClass::ID => $key->$id)) ?>" > <?php echo i18n::__('ver') ?></a> 
                 <?php if (session::getInstance()->hasCredential('admin')): ?>
                   <a class="btn btn-primary btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('lote', 'editLote', array(loteTableClass::ID => $key->$id)) ?>"> <?php echo i18n::__('modificar') ?> </a>
                   <a data-toggle="modal" data-target="#myModalDelete<?php echo $key->$id ?>"  class="btn btn-danger btn-xs"> <?php echo i18n::__('eliminar') ?></a>
                   <a class="btn btn-primary btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('lote', 'editLoteMas', array(loteTableClass::ID => $key->$id)) ?>"> <?php echo i18n::__('mas') ?> </a>
-
-  <?php endif ?>
-              </th>                                                       
+              
+                <?php endif ?>
+              </td>                                                       
             </tr>
+            
           <div class="modal fade" id="myModalDelete<?php echo $key->$id ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
@@ -269,6 +271,7 @@ use mvc\session\sessionClass as session ?>
       <?php endforeach; ?>
         </tbody>
       </table>
+     </div>
     </form> 
 
     <div class="text-right">

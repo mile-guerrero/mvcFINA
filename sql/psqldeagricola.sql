@@ -296,7 +296,6 @@ CREATE TABLE producto_insumo
 	nombreImagen VARCHAR(400)  NULL,
 	extencionImagen VARCHAR(5)  NULL,
 	hashImagen VARCHAR(37)  NULL,
-	iva BigInt NOT NULL,
 	cantidad BigInt NULL,
 	unidad_medida_id BIGINT NOT NULL,
 	tipo_producto_insumo_id BIGINT NOT NULL,		
@@ -436,6 +435,7 @@ CREATE TABLE mano_obra
 	id BIGINT DEFAULT nextval('public.mano_obra_id_seq'::regclass) NOT NULL,
 	cantidad_hora BigInt NOT NULL,
 	valor_hora BigInt NOT NULL,
+	total_pagar BigInt NOT NULL,
 	cooperativa_id BIGINT NOT NULL,	
     maquina_id BIGINT NOT NULL,
     labor_id BIGINT NOT NULL,	
@@ -839,78 +839,78 @@ INSERT INTO "tipo_producto_insumo" (descripcion) VALUES ('fertilizantes');
 COMMIT;
 
 BEGIN;
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('yuca', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('kumquat', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('mandarina arrayana', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('mandarina oneco', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('tangelo minneola', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('tangelo orlando', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('naranja ombligona', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('naranja valencia', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('araza', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('caimo', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('atemoya', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('arbol del pan', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('pomarrosa', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('pitaya amarilla', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('pitaya roja', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('chontaduro', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('mango tommy atkins', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('manga poma', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('mango hilacha', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('manga chancleta', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('mango kent', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('guanabana', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('guama', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('limon pajarito', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('lima acida tahiti', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('limon arrugado', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('platano harton', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('corozo', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('guayaba pera', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('guayaba manzana', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('guayaba indian pink', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('grosella', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('acerola', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('jaka', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('uvo', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('cacao', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('uva isabella', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('uva red globe', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('uva italia', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('guayaba coronilla', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('granada', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('zapote', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('platano dominico harton', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('platano cachaco', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('banano gros michel', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('bananito', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('banana', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('maracuya', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('papayo', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('litchi', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('macadamia', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('mangostino', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('durazno', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('nispero japones', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('nispero', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('aguacate hass', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('aguacate trapp', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('aguacate criollo', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('carambolo', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('cafe castillo', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('mamey', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('ciruela', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('madroño', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('mandarina satsuma', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('banano enano', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('papaya comun', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('limon mandarina', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('guayaba peruana', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('icaco', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('choclo dulce', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('choclo', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('mamoncillo', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('habichuela', 12, 1, 1, 1);
-INSERT INTO "producto_insumo" (descripcion, iva, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('coco', 12, 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('yuca', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('kumquat', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('mandarina arrayana', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('mandarina oneco', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('tangelo minneola', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('tangelo orlando', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('naranja ombligona', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('naranja valencia', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('araza', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('caimo', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('atemoya', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('arbol del pan', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('pomarrosa', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('pitaya amarilla', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('pitaya roja', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('chontaduro', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('mango tommy atkins', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('manga poma', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('mango hilacha', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('manga chancleta', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('mango kent', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('guanabana', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('guama', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('limon pajarito', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('lima acida tahiti', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('limon arrugado', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('platano harton', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('corozo', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('guayaba pera', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('guayaba manzana', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('guayaba indian pink', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('grosella', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('acerola', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('jaka', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('uvo', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('cacao', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('uva isabella', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('uva red globe', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('uva italia', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('guayaba coronilla', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('granada', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('zapote', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('platano dominico harton', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('platano cachaco', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('banano gros michel', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('bananito', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('banana', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('maracuya', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('papayo', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('litchi', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('macadamia', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('mangostino', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('durazno', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('nispero japones', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('nispero', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('aguacate hass', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('aguacate trapp', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('aguacate criollo', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('carambolo', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('cafe castillo', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('mamey', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('ciruela', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('madroño', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('mandarina satsuma', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('banano enano', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('papaya comun', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('limon mandarina', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('guayaba peruana', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('icaco', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('choclo dulce', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('choclo', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('mamoncillo', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('habichuela', 1, 1, 1);
+INSERT INTO "producto_insumo" (descripcion, cantidad, unidad_medida_id, tipo_producto_insumo_id) VALUES ('coco', 1, 1, 1);
 COMMIT;

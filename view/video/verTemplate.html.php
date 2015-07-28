@@ -11,19 +11,26 @@
 <?php $hash = videoTableClass::HASH ?>
 
 <div class="container container-fluid" id="cuerpo">
-  
- 
- 
-<div class="container container-fluid" id="cuerpo">
-  <article id='derecha'>
+  <div class="center-block" id="cuerpo6">
+  <div class="center-block" id="cuerpo2">
+  <header id="">
+
+   
+  </header>
+  <nav id="">
+  </nav>
+  <section id="contenido">
+  </section>
+ <br><br>
     <?php view::includeHandlerMessage()?>
-    <a class="btn btn-lg btn-default btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('video', 'index') ?>" ><?php echo i18n::__('atras') ?></a>
+    <a class="btn btn-lg btn-success btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('video', 'index') ?>" ><?php echo i18n::__('atras') ?></a>
     
     <br><br>
 
    <form id="frmDelete" action="<?php echo routing::getInstance()->getUrlWeb('video', 'delete') ?>" method="POST">
   
-    <table class="table table-bordered table-responsive">
+   <div class="rwd">
+      <table class="table table-bordered table-responsive rwd_auto">
         
         <thead>
         <th colspan="3"> <?php echo i18n::__('datos') ?></th>
@@ -32,7 +39,7 @@
         <tbody>
     <?php foreach ($objVideo as $key): ?>
             <tr>
-              <th>  
+              <td>  
               <?php
  
    if($key->$extencion == 'mp4'){//para poner icono a word
@@ -46,19 +53,19 @@
        </video>';
    }
    ?>
-              </th> 
-              <th>
+              </td> 
+              <td>
                 <?php    
               echo videoTableClass::getNameVideo($key->$id);
               
                 ?>
-               </th>              
-               <th>
+               </td>              
+               <td>
               <a class="btn btn-lg btn-success btn-xs" href="<?php echo mvc\config\configClass::getUrlBase() . 'uploadVideo/' . $key->$hash ?>"><?php echo i18n::__('descargar') ?></a> 
               <a data-toggle="modal" data-target="#myModalDelete<?php echo $key->$id ?>" class="btn btn-danger btn-xs"> <?php echo i18n::__('eliminar') ?></a>
                <input type="hidden"   id="idDelete" name="<?php echo videoTableClass::getNameField(videoTableClass::ID, true) ?>">
  
-               </th>
+               </td>
              
             </tr>
             <div class="modal fade" id="myModalDelete<?php echo $key->$id ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -83,9 +90,19 @@
           </tbody>
           
       </table>
+   </div>
   </form>
     
-  </article>
-   </div>
+  <div class="text-right">
+        <?php echo i18n::__('paginas') ?> <select id="slqPaginador" onchange="paginador(this, '<?php echo routing::getInstance()->getUrlWeb('video', 'ver')?>')">
+         <?php for($x = 1; $x <= $cntPages; $x++):?>
+           <option <?php echo (isset($page) and $page == $x) ? 'selected': '' ?> value="<?php echo $x ?>"><?php echo $x ?></option>
+          <?php endfor;?>
+        </select> <?php echo i18n::__('de') ?> <?php echo $cntPages ?>
+      </div>
   
-  </div>
+</div>
+   <br><br> <br><br> <br><br> <br>
+</div>
+  
+ </div>
