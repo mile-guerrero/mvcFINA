@@ -144,19 +144,15 @@ color:#005a1e;
 }
 
 #imgespanol{
-  background: center;
-  margin-left: 50px;
-  width:  60px;
-  padding-top: 30px;
-  background-image: url('../img/espanol.gif');
+  width: 60px;
+  height: 45px;
+  background-image: url('../img/colombia.png');
 
 }
 #imgingles{
-  background: center;
-  margin-left: 50px;
-  width:  60px;
-  padding-top: 30px;
-  background-image: url('../img/ingles.gif');
+  width: 60px;
+  height: 45px;
+  background-image: url('../img/usa.png');
 
 }
 #imgmasivo{

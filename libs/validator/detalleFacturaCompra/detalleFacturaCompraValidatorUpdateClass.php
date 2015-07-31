@@ -11,66 +11,66 @@ namespace mvc\validator {
    *
    * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
    */
-  class detalleFacturaVentaValidatorUpdateClass extends validatorClass {
+  class detalleFacturaCompraValidatorUpdateClass extends validatorClass {
     public static function validateUpdate() {
       $flag = false;
       
-      if (self::notBlank(request::getInstance()->getPost(\detalleFacturaVentaTableClass::getNameField(\detalleFacturaVentaTableClass::DESCRIPCION, true)))) {
+      if (self::notBlank(request::getInstance()->getPost(\detalleFacturaCompraTableClass::getNameField(\detalleFacturaCompraTableClass::DESCRIPCION, true)))) {
         $flag = true;
         session::getInstance()->setFlash('inputDescripcion', true);
         session::getInstance()->setError('La descripcion es requerida', 'inputDescripcion');
-      } else if (is_numeric(request::getInstance()->getPost(\detalleFacturaVentaTableClass::getNameField(\detalleFacturaVentaTableClass::DESCRIPCION, true)))) {
+      } else if (is_numeric(request::getInstance()->getPost(\detalleFacturaCompraTableClass::getNameField(\detalleFacturaCompraTableClass::DESCRIPCION, true)))) {
         $flag = true;
         session::getInstance()->setFlash('inputDescripcion', true);
         session::getInstance()->setError('La descripcion no puede ser numeros', 'inputDescripcion');
-//      } else if(strlen(request::getInstance()->getPost(\detalleFacturaVentaTableClass::getNameField(\detalleFacturaVentaTableClass::DESCRIPCION, true))) > \detalleFacturaVentaTableClass::CANTIDAD_HORA_LENGTH) {
+//      } else if(strlen(request::getInstance()->getPost(\detalleFacturaCompraTableClass::getNameField(\detalleFacturaCompraTableClass::DESCRIPCION, true))) > \detalleFacturaCompraTableClass::CANTIDAD_HORA_LENGTH) {
 //        $flag = true;
 //        session::getInstance()->setFlash('inputCantidad', true);
 //        session::getInstance()->setError('La catidad digitado sobre pasa los caracteres permitidos', 'inputCantidad');
       }
-        if (self::notBlank(request::getInstance()->getPost(\detalleFacturaVentaTableClass::getNameField(\detalleFacturaVentaTableClass::CANTIDAD, true)))) {
+        if (self::notBlank(request::getInstance()->getPost(\detalleFacturaCompraTableClass::getNameField(\detalleFacturaCompraTableClass::CANTIDAD, true)))) {
         $flag = true;
         session::getInstance()->setFlash('inputCantidad', true);
         session::getInstance()->setError('La cantidad es requerida', 'inputCantidad');
-      } else if (!is_numeric(request::getInstance()->getPost(\detalleFacturaVentaTableClass::getNameField(\detalleFacturaVentaTableClass::CANTIDAD, true)))) {
+      } else if (!is_numeric(request::getInstance()->getPost(\detalleFacturaCompraTableClass::getNameField(\detalleFacturaCompraTableClass::CANTIDAD, true)))) {
         $flag = true;
         session::getInstance()->setFlash('inputCantidad', true);
         session::getInstance()->setError('La cantidad no puede ser letras', 'inputCantidad');
-//      } else if(strlen(request::getInstance()->getPost(\detalleFacturaVentaTableClass::getNameField(\detalleFacturaVentaTableClass::VALOR_HORA, true))) > \detalleFacturaVentaTableClass::VALOR_HORA_LENGTH) {
+//      } else if(strlen(request::getInstance()->getPost(\detalleFacturaCompraTableClass::getNameField(\detalleFacturaCompraTableClass::VALOR_HORA, true))) > \detalleFacturaCompraTableClass::VALOR_HORA_LENGTH) {
 //        $flag = true;
 //        session::getInstance()->setFlash('inputValor', true);
 //        session::getInstance()->setError('La catidad digitado sobre pasa los caracteres permitidos', 'inputValor');
       }
-        if (self::notBlank(request::getInstance()->getPost(\detalleFacturaVentaTableClass::getNameField(\detalleFacturaVentaTableClass::VALOR_UNIDAD, true)))) {
+        if (self::notBlank(request::getInstance()->getPost(\detalleFacturaCompraTableClass::getNameField(\detalleFacturaCompraTableClass::VALOR_UNIDAD, true)))) {
         $flag = true;
         session::getInstance()->setFlash('inputValor', true);
         session::getInstance()->setError('El valor por cantidad es requerido', 'inputValor');
-      } else if (!is_numeric(request::getInstance()->getPost(\detalleFacturaVentaTableClass::getNameField(\detalleFacturaVentaTableClass::VALOR_UNIDAD, true)))) {
+      } else if (!is_numeric(request::getInstance()->getPost(\detalleFacturaCompraTableClass::getNameField(\detalleFacturaCompraTableClass::VALOR_UNIDAD, true)))) {
         $flag = true;
         session::getInstance()->setFlash('inputValor', true);
         session::getInstance()->setError('El valor por cantidad no puede ser letras', 'inputValor');
       }
-        if (self::notBlank(request::getInstance()->getPost(\detalleFacturaVentaTableClass::getNameField(\detalleFacturaVentaTableClass::VALOR_TOTAL, true)))) {
+        if (self::notBlank(request::getInstance()->getPost(\detalleFacturaCompraTableClass::getNameField(\detalleFacturaCompraTableClass::VALOR_TOTAL, true)))) {
         $flag = true;
         session::getInstance()->setFlash('inputTotal', true);
         session::getInstance()->setError('El total es requerido', 'inputTotal');
-      } else if (!is_numeric(request::getInstance()->getPost(\detalleFacturaVentaTableClass::getNameField(\detalleFacturaVentaTableClass::VALOR_TOTAL, true)))) {
+      } else if (!is_numeric(request::getInstance()->getPost(\detalleFacturaCompraTableClass::getNameField(\detalleFacturaCompraTableClass::VALOR_TOTAL, true)))) {
         $flag = true;
         session::getInstance()->setFlash('inputTotal', true);
         session::getInstance()->setError('El total no puede ser letras', 'inputTotal');  
        
-        //-------------------------------campo Cliente-----------------------------
+        //-------------------------------campo Proveedor-----------------------------
           //----campo nulo----
-      } if (self::notBlank(request::getInstance()->getPost(\detalleFacturaVentaTableClass::getNameField(\detalleFacturaVentaTableClass::CLIENTE_ID, true)))) {
+      } if (self::notBlank(request::getInstance()->getPost(\detalleFacturaCompraTableClass::getNameField(\detalleFacturaCompraTableClass::PROVEEDOR_ID, true)))) {
         $flag = true;
-        session::getInstance()->setFlash('selectCliente', true);
-        session::getInstance()->setError('El cliente es requerido', 'selectCliente');
+        session::getInstance()->setFlash('selectProveedor', true);
+        session::getInstance()->setError('El proveedor es requerido', 'selectProveedor');
       
-//      } else if(strlen(request::getInstance()->getPost('inputCantidad')) > \detalleFacturaVentaTableClass::CANTIDAD_HORA_LENGTH) {
+//      } else if(strlen(request::getInstance()->getPost('inputCantidad')) > \detalleFacturaCompraTableClass::CANTIDAD_HORA_LENGTH) {
 //        $flag = true;
 //        session::getInstance()->setFlash('inputCantidad', true);
 //        session::getInstance()->setError('El usuario digitado es mayor en cantidad de caracteres a lo permitido', 'inputCantidad');
-//      } else if(self::isUnique(\usuarioTableClass::ID, true, array(\detalleFacturaVentaTableClass::CANTIDAD_HORA_LENGTH => request::getInstance()->getPost('inputCantidad')), \usuarioTableClass::getNameTable())) {
+//      } else if(self::isUnique(\usuarioTableClass::ID, true, array(\detalleFacturaCompraTableClass::CANTIDAD_HORA_LENGTH => request::getInstance()->getPost('inputCantidad')), \usuarioTableClass::getNameTable())) {
 //        $flag = true;
 //        session::getInstance()->setFlash('inputCantidad', true);
 //        session::getInstance()->setError('El usuario digitado ya existe', 'inputCantidad');
@@ -102,8 +102,8 @@ namespace mvc\validator {
       
       if ($flag === true) {
         request::getInstance()->setMethod('GET');
-        request::getInstance()->addParamGet(array(\detalleFacturaVentaTableClass::ID => request::getInstance()->getPost(\detalleFacturaVentaTableClass::getNameField(\detalleFacturaVentaTableClass::ID, true))));
-        routing::getInstance()->forward('detalleFacturaVenta', 'edit');
+        request::getInstance()->addParamGet(array(\detalleFacturaCompraTableClass::ID => request::getInstance()->getPost(\detalleFacturaCompraTableClass::getNameField(\detalleFacturaCompraTableClass::ID, true))));
+        routing::getInstance()->forward('detalleFacturaCompra', 'edit');
       }
     }
   }

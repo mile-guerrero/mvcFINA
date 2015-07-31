@@ -29,10 +29,10 @@
 
     <h1><?php echo i18n::__('detallePago') ?></h1> 
     <ul>      
-        <a class="btn btn-success btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('detalleFacturaVenta', 'insert', array(detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::FACTURA_ID, true) => request::getInstance()->getGet(detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::FACTURA_ID, true)))) ?>"><?php echo i18n::__('nuevo') ?></a> 
+      <a class="btn btn-success btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('detalleFacturaVenta', 'insert', array(detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::FACTURA_ID, true) => request::getInstance()->getGet(detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::FACTURA_ID, true)))) ?>"><?php echo i18n::__('nuevo') ?></a> 
       <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModalFiltres"><?php echo i18n::__('filtros') ?></button>  
       <a href="<?php echo routing::getInstance()->getUrlWeb('detalleFacturaVenta', 'index') ?>" class="btn btn-default btn-xs" ><?php echo i18n::__('eFiltros') ?></a>
-     <a class="btn btn-warning btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('factura', 'index')?>" ><?php echo i18n::__('atras') ?></a>
+      <a class="btn btn-warning btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('factura', 'index')?>" ><?php echo i18n::__('atras') ?></a>
     </ul> 
 
 

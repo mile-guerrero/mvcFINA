@@ -2204,6 +2204,8 @@ detalleFacturaVenta_index:
     - model/facturaVentaTableClass.php
     - model/base/clienteBaseTableClass.php
     - model/clienteTableClass.php
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
     
     
 detalleFacturaVenta_insert:
@@ -2216,6 +2218,8 @@ detalleFacturaVenta_insert:
     - model/facturaVentaTableClass.php
     - model/base/clienteBaseTableClass.php
     - model/clienteTableClass.php
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
     
 detalleFacturaVenta_create:
   url:    /detalleFacturaVenta/crear
@@ -2227,6 +2231,8 @@ detalleFacturaVenta_create:
     - model/facturaVentaTableClass.php
     - model/base/clienteBaseTableClass.php
     - model/clienteTableClass.php
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
     - libs/validator/detalleFacturaVenta/detalleFacturaVentaValidatorClass.php
     
 detalleFacturaVenta_edit:
@@ -2239,6 +2245,8 @@ detalleFacturaVenta_edit:
     - model/facturaVentaTableClass.php
     - model/base/clienteBaseTableClass.php
     - model/clienteTableClass.php
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
     
 detalleFacturaVenta_update:
   url:    /detalleFacturaVenta/actualizar
@@ -2250,6 +2258,9 @@ detalleFacturaVenta_update:
     - model/facturaVentaTableClass.php
     - model/base/clienteBaseTableClass.php
     - model/clienteTableClass.php
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    - libs/validator/detalleFacturaVenta/detalleFacturaVentaValidatorUpdateClass.php
     
 detalleFacturaVenta_ver:
   url:    /detalleFacturaVenta/ver
@@ -2261,7 +2272,25 @@ detalleFacturaVenta_ver:
     - model/facturaVentaTableClass.php
     - model/base/clienteBaseTableClass.php
     - model/clienteTableClass.php
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
     
+detalleFacturaVenta_reporte:
+  url:    /detalleFacturaVenta/reporte
+  param:  { module: detalleFacturaVenta, action: report, format: pdf } 
+  load:
+    - libs/fpdf/fpdf.php  
+    - model/base/detalleFacturaVentaBaseTableClass.php
+    - model/detalleFacturaVentaTableClass.php
+    - model/base/facturaVentaBaseTableClass.php
+    - model/facturaVentaTableClass.php
+    - model/base/clienteBaseTableClass.php
+    - model/clienteTableClass.php
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php    
     
 #----------------------Documento Factura Compra--------------------------------
 
@@ -2354,6 +2383,7 @@ detalleFacturaCompra_create:
     - model/facturaCompraTableClass.php
     - model/base/proveedorBaseTableClass.php
     - model/proveedorTableClass.php
+    - libs/validator/detalleFacturaCompra/detalleFacturaCompraValidatorClass.php
     
 detalleFacturaCompra_edit:
   url:    /detalleFacturaCompra/editar
@@ -2376,6 +2406,7 @@ detalleFacturaCompra_update:
     - model/facturaCompraTableClass.php
     - model/base/proveedorBaseTableClass.php
     - model/proveedorTableClass.php
+    - libs/validator/detalleFacturaCompra/detalleFacturaCompraValidatorUpdateClass.php
     
 detalleFacturaCompra_ver:
   url:    /detalleFacturaCompra/ver
@@ -2388,6 +2419,21 @@ detalleFacturaCompra_ver:
     - model/base/proveedorBaseTableClass.php
     - model/proveedorTableClass.php
     
+detalleFacturaCompra_reporte:
+  url:    /detalleFacturaCompra/reporte
+  param:  { module: detalleFacturaCompra, action: report, format: pdf } 
+  load:
+    - libs/fpdf/fpdf.php  
+    - model/base/detalleFacturaCompraBaseTableClass.php
+    - model/detalleFacturaCompraTableClass.php
+    - model/base/facturaCompraBaseTableClass.php
+    - model/facturaCompraTableClass.php
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php 
+        
 #---------------------------------enfermedad-----------------------
 
 enfermedad_index:

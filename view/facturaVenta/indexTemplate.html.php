@@ -5,18 +5,20 @@
 
 <?php $fecha = facturaVentaTableClass::FECHA ?>
 <?php $id = facturaVentaTableClass::ID ?>
+
 <div class="container container-fluid" id="cuerpo">
+  <div class="center-block" id="cuerpo4">
   <div class="center-block" id="cuerpo2">
   <header id="">
-
+   
   </header>
-  <nav id="">
-
+  <nav id="barramenu">
+    
   </nav>
   <section id="">
-
+    
   </section>
-  <article id='derecha'>
+    <article id='derecha'>
 
     <h1><?php echo i18n::__('factura') ?></h1> 
     <ul>      
@@ -67,7 +69,8 @@
     <form class="form-signin">        
 <?php view::includeHandlerMessage() ?>  
         <br>
-      <table class="table table-bordered table-responsive">
+    <div class="rwd">
+      <table class="table table-bordered table-responsive rwd_auto">
         <thead>
           <tr>
             <th>
@@ -84,13 +87,14 @@
                <td>
                   <?php echo $key->$fecha ?>
                 </td>
-              <th>
+              <td>
                 <a class="btn btn-success btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('detalleFacturaVenta', 'ver', array(facturaVentaTableClass::ID => $key->$id)) ?> "><?php echo i18n::__('detalle')?></a>
-              </th>
+              </td>
             </tr>
 <?php endforeach; ?>
         </tbody>
       </table>
+      </div>
     </form> 
     <div class="text-right">
       <?php echo i18n::__('paginas') ?> <select id="slqPaginador" onchange="paginador(this, '<?php echo routing::getInstance()->getUrlWeb('facturaVenta', 'index') ?>')">
@@ -101,6 +105,6 @@
     </div>
   </article>
 </div>
-
+    <br><br><br><br><br><br><br><br>
 </div>
-
+</div>

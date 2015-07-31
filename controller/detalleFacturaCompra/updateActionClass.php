@@ -8,6 +8,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+use mvc\validator\detalleFacturaCompraValidatorUpdateClass as validator;
 
 /**
  * Description of ejemploClass
@@ -27,6 +28,8 @@ class updateActionClass extends controllerClass implements controllerActionInter
        $facturaCompra = request::getInstance()->getPost(detalleFacturaCompraTableClass::getNameField(detalleFacturaCompraTableClass::FACTURA_COMPRA_ID, true));
        $idProveedor = request::getInstance()->getPost(detalleFacturaCompraTableClass::getNameField(detalleFacturaCompraTableClass::PROVEEDOR_ID, true));
 
+       validator::validateUpdate();
+       
         $ids = array(
             detalleFacturaCompraTableClass::ID => $idDetalle
         );

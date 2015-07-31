@@ -65,6 +65,7 @@
     </div>
   </div>
           
+         
           
      <div class="form-group">
     <label for="filterDocumento" class="col-sm-2 control-label"><?php echo i18n::__('documento') ?></label>

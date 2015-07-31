@@ -969,4 +969,160 @@ video:
     credentials:
       - [admin]
       - [consultor]    
+
+#-----------------------Factura venta-------------------
+  
+facturaVenta:
+  index:
+    security: true
+    credentials:
+      - [admin]
+      - [consultor]
+  insert:
+    security: true
+    credentials:
+      - [admin]
+      - [consultor]
+  create:
+    security: true
+    credentials:
+      - [admin]
+      - [consultor]
+  edit: 
+    security: true
+    credentials:
+      - [admin]
+      - [consultor]
+  update:
+    security: true
+    credentials:
+      - [admin]
+      - [consultor]
+  ver:
+    security: true
+    credentials:
+      - [admin]
+      - [consultor]
+  report:
+    security: true  
+    credentials:
+      - [admin]
+      - [consultor]
       
+#-----------------------Factura detalleVenta-------------------
+  
+detalleFacturaVenta:
+  index:
+    security: true
+    credentials:
+      - [admin]
+      - [consultor]
+  insert:
+    security: true
+    credentials:
+      - [admin]
+      - [consultor]
+  create:
+    security: true
+    credentials:
+      - [admin]
+      - [consultor]
+  edit: 
+    security: true
+    credentials:
+      - [admin]
+      - [consultor]
+  update:
+    security: true
+    credentials:
+      - [admin]
+      - [consultor]
+  ver:
+    security: true
+    credentials:
+      - [admin]
+      - [consultor]
+  report:
+    security: true  
+    credentials:
+      - [admin]
+      - [consultor]    
+      
+#-----------------------Factura compra-------------------
+  
+facturaCompra:
+  index:
+    security: true
+    credentials:
+      - [admin]
+      - [consultor]
+  insert:
+    security: true
+    credentials:
+      - [admin]
+      - [consultor]
+  create:
+    security: true
+    credentials:
+      - [admin]
+      - [consultor]
+  edit: 
+    security: true
+    credentials:
+      - [admin]
+      - [consultor]
+  update:
+    security: true
+    credentials:
+      - [admin]
+      - [consultor]
+  ver:
+    security: true
+    credentials:
+      - [admin]
+      - [consultor]
+  report:
+    security: true  
+    credentials:
+      - [admin]
+      - [consultor]
+      
+#-----------------------Factura detalleCompra-------------------
+  
+detalleFacturaCompra:
+  index:
+    security: true
+    credentials:
+      - [admin]
+      - [consultor]
+  insert:
+    security: true
+    credentials:
+      - [admin]
+      - [consultor]
+  create:
+    security: true
+    credentials:
+      - [admin]
+      - [consultor]
+  edit: 
+    security: true
+    credentials:
+      - [admin]
+      - [consultor]
+  update:
+    security: true
+    credentials:
+      - [admin]
+      - [consultor]
+  ver:
+    security: true
+    credentials:
+      - [admin]
+      - [consultor]
+  report:
+    security: true  
+    credentials:
+      - [admin]
+      - [consultor]      
+            

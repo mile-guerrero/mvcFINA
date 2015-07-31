@@ -8,7 +8,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
-use mvc\validator\DetalleFacturaVentaValidatorUpdateClass as validator;
+use mvc\validator\detalleFacturaVentaValidatorUpdateClass as validator;
 
 /**
  * Description of ejemploClass
@@ -27,7 +27,9 @@ class updateActionClass extends controllerClass implements controllerActionInter
        $valor_total = request::getInstance()->getPost(detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::VALOR_TOTAL, true));
        $factura = request::getInstance()->getPost(detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::FACTURA_ID, true));
        $idCliente = request::getInstance()->getPost(detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::CLIENTE_ID, true));
-
+       $idTrabajador = request::getInstance()->getPost(detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::TRABAJADOR_ID, true));
+       
+       validator::validateUpdate();
        
         $ids = array(
             detalleFacturaVentaTableClass::ID => $idDetalle
@@ -39,7 +41,8 @@ class updateActionClass extends controllerClass implements controllerActionInter
           detalleFacturaVentaTableClass::VALOR_UNIDAD => $valor_unidad,
           detalleFacturaVentaTableClass::VALOR_TOTAL => $valor_total,
           detalleFacturaVentaTableClass::FACTURA_ID => $factura,
-          detalleFacturaVentaTableClass::CLIENTE_ID => $idCliente
+          detalleFacturaVentaTableClass::CLIENTE_ID => $idCliente,
+          detalleFacturaVentaTableClass::TRABAJADOR_ID => $idTrabajador
             
         );
         detalleFacturaVentaTableClass::update($ids, $data);
@@ -47,9 +50,8 @@ class updateActionClass extends controllerClass implements controllerActionInter
         routing::getInstance()->redirect('facturaVenta', 'index');
       }
     } catch (PDOException $exc) {
-      echo $exc->getMessage();
-      echo '<br>';
-      echo $exc->getTraceAsString();
+      routing::getInstance()->redirect('facturaVenta', 'edit');
+      session::getInstance()->setFlash('exc', $exc);
     }
   }
 

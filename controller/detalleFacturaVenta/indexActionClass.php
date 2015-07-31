@@ -42,6 +42,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
           detalleFacturaVentaTableClass::VALOR_UNIDAD,
           detalleFacturaVentaTableClass::VALOR_TOTAL,
           detalleFacturaVentaTableClass::CLIENTE_ID,
+          detalleFacturaVentaTableClass::TRABAJADOR_ID,
           detalleFacturaVentaTableClass::FACTURA_ID,
           detalleFacturaVentaTableClass::CREATED_AT,
           detalleFacturaVentaTableClass::UPDATED_AT
@@ -80,6 +81,16 @@ class indexActionClass extends controllerClass implements controllerActionInterf
         
         $this->objFactura = facturaVentaTableClass::getAll($fields, false, $orderBy, 'ASC');
 
+         $fields = array(
+            trabajadorTableClass::ID,
+            trabajadorTableClass::NOMBRET
+      );
+      $orderBy = array(
+          trabajadorTableClass::NOMBRET
+      );
+      $this->objTrabajador = trabajadorTableClass::getAll($fields, true, $orderBy, 'ASC');
+      
+        
       $fields = array(
           clienteTableClass::ID,
           clienteTableClass::NOMBRE

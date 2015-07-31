@@ -22,6 +22,26 @@ class clienteTableClass extends clienteBaseTableClass {
     }  catch (PDOException $exc){
        throw  $exc;
   }}
+  
+  
+   public static function getNameCliente($id){
+    try {
+      $sql = 'SELECT ' . clienteTableClass::NOMBRE .  ' As nombre  '
+             . '  FROM ' . clienteTableClass::getNameTable() . '  '
+             . '  WHERE ' . clienteTableClass::ID . ' = :id';
+      $params = array(
+          ':id' => $id
+      );
+      $answer = model::getInstance()->prepare($sql);
+      $answer->execute($params);
+      $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+      return $answer[0]->nombre;
+      
+    } catch (Exception $exc) {
+      throw $exc;
+    }
+    
+  }
 
   public static function getCliente($id){
     try {

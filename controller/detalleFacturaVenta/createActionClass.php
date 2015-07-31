@@ -26,7 +26,8 @@ class createActionClass extends controllerClass implements controllerActionInter
        $valor_total = request::getInstance()->getPost(detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::VALOR_TOTAL, true));
        $factura = request::getInstance()->getPost(detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::FACTURA_ID, true));
        $idCliente = request::getInstance()->getPost(detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::CLIENTE_ID, true));
-
+       $idTrabajador = request::getInstance()->getPost(detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::TRABAJADOR_ID, true));
+               
        validator::validateInsert();
 //        if (strlen($usuario) > usuarioTableClass::USUARIO_LENGTH) {
 //          throw new PDOException(i18n::__(00001, null, 'errors', array(':longitud' => usuarioTableClass::USUARIO_LENGTH)), 00001);
@@ -38,7 +39,8 @@ class createActionClass extends controllerClass implements controllerActionInter
           detalleFacturaVentaTableClass::VALOR_UNIDAD => $valor_unidad,
           detalleFacturaVentaTableClass::VALOR_TOTAL => $valor_total,
           detalleFacturaVentaTableClass::FACTURA_ID => $factura,
-          detalleFacturaVentaTableClass::CLIENTE_ID => $idCliente
+          detalleFacturaVentaTableClass::CLIENTE_ID => $idCliente,
+          detalleFacturaVentaTableClass::TRABAJADOR_ID => $idTrabajador
             
         );
         detalleFacturaVentaTableClass::insert($data);

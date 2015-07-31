@@ -122,13 +122,14 @@ caja["<?php echo manoObraTableClass::getNameField(manoObraTableClass::TOTAL, tru
     <?php endif ?>
   
    <div class="row j1" >
-<label for="<?php echo manoObraTableClass::getNameField(manoObraTableClass::CANTIDAD_HORA, true) ?>" class="col-sm-2"> <?php echo i18n::__('cantidad') ?>:</label>     
+<label for="<?php echo manoObraTableClass::getNameField(manoObraTableClass::VALOR_HORA, true) ?>" class="col-sm-2"> <?php echo i18n::__('valor hora') ?>:</label>     
            <div class="col-lg-5">
-        <input  class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputCantidad')) ? request::getInstance()->getPost(manoObraTableClass::getNameField(manoObraTableClass::CANTIDAD_HORA, true)) : ((isset($objManoObra[0])) ? $objManoObra[0]->$cantidad : '') ?>" type="text" name="<?php echo manoObraTableClass::getNameField(manoObraTableClass::CANTIDAD_HORA, true) ?>" placeholder="<?php echo i18n::__('cantidad hora') ?>" onKeyUp="fncTotal()" required>
-      </div>
-        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-           <input  class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputValor') or request::getInstance()->hasPost(manoObraTableClass::getNameField(manoObraTableClass::VALOR_HORA, true))) ? request::getInstance()->getPost(manoObraTableClass::getNameField(manoObraTableClass::VALOR_HORA, true)) : ((isset($objManoObra[0])) ? $objManoObra[0]->$valor : '') ?>" type="text" name="<?php echo manoObraTableClass::getNameField(manoObraTableClass::VALOR_HORA, true) ?>" placeholder="<?php echo i18n::__('valor hora') ?>" onKeyUp="fncTotal()" required>
+       <input  class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputValor') or request::getInstance()->hasPost(manoObraTableClass::getNameField(manoObraTableClass::VALOR_HORA, true))) ? request::getInstance()->getPost(manoObraTableClass::getNameField(manoObraTableClass::VALOR_HORA, true)) : ((isset($objManoObra[0])) ? $objManoObra[0]->$valor : '') ?>" type="text" name="<?php echo manoObraTableClass::getNameField(manoObraTableClass::VALOR_HORA, true) ?>" placeholder="<?php echo i18n::__('valor hora') ?>" onKeyUp="fncTotal()" required>
     
+            </div>
+        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+           <input  class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputCantidad')) ? request::getInstance()->getPost(manoObraTableClass::getNameField(manoObraTableClass::CANTIDAD_HORA, true)) : ((isset($objManoObra[0])) ? $objManoObra[0]->$cantidad : '') ?>" type="text" name="<?php echo manoObraTableClass::getNameField(manoObraTableClass::CANTIDAD_HORA, true) ?>" placeholder="<?php echo i18n::__('cantidad hora') ?>" onKeyUp="fncTotal()" required>
+      
         </div>
       </div>
 <br>

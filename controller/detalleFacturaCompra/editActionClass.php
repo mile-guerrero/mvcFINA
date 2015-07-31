@@ -18,7 +18,7 @@ class editActionClass extends controllerClass implements controllerActionInterfa
   public function execute() {
     try {
    
-      if (request::getInstance()->hasRequest(detalleFacturaCompraTableClass::ID)) {
+      if (request::getInstance()->hasGet(detalleFacturaCompraTableClass::ID)) {
         
         $fields = array(
             
@@ -33,7 +33,7 @@ class editActionClass extends controllerClass implements controllerActionInterfa
           detalleFacturaCompraTableClass::UPDATED_AT
         );
         $where = array(
-            detalleFacturaCompraTableClass::ID => request::getInstance()->getRequest(detalleFacturaCompraTableClass::ID)
+            detalleFacturaCompraTableClass::ID => request::getInstance()->getGet(detalleFacturaCompraTableClass::ID)
         );
         $this->objDetalleFactura = detalleFacturaCompraTableClass::getAll($fields, false, null, null, null, null, $where);
         
@@ -53,11 +53,12 @@ class editActionClass extends controllerClass implements controllerActionInterfa
       $orderBy = array(
           proveedorTableClass::NOMBREP
       );
-      $this->objProveedor = proveedorTableClass::getAll($fields, true, $orderBy, 'ASC');
+        $this->objProveedor = proveedorTableClass::getAll($fields, true, $orderBy, 'ASC');
         $this->defineView('edit', 'detalleFacturaCompra', session::getInstance()->getFormatOutput());
-     
+        $idFactura = facturaCompraTableClass::ID;
+        
       }else{
-        routing::getInstance()->redirect('detalleFacturaCompra', 'index');
+        routing::getInstance()->redirect('detalleFacturaCompra', 'edit', array(facturaCompraTableClass::ID => $idFactura));
       }
 
     } catch (PDOException $exc) {

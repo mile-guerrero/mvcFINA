@@ -18,7 +18,7 @@ class editActionClass extends controllerClass implements controllerActionInterfa
   public function execute() {
     try {
    
-      if (request::getInstance()->hasRequest(detalleFacturaVentaTableClass::ID)) {
+      if (request::getInstance()->hasGet(detalleFacturaVentaTableClass::ID)) {
         
         $fields = array(
             
@@ -28,14 +28,25 @@ class editActionClass extends controllerClass implements controllerActionInterfa
           detalleFacturaVentaTableClass::VALOR_UNIDAD,
           detalleFacturaVentaTableClass::VALOR_TOTAL,
           detalleFacturaVentaTableClass::CLIENTE_ID,
+          detalleFacturaVentaTableClass::TRABAJADOR_ID,
           detalleFacturaVentaTableClass::FACTURA_ID,
           detalleFacturaVentaTableClass::CREATED_AT,
           detalleFacturaVentaTableClass::UPDATED_AT
         );
         $where = array(
-            detalleFacturaVentaTableClass::ID => request::getInstance()->getRequest(detalleFacturaVentaTableClass::ID)
+            detalleFacturaVentaTableClass::ID => request::getInstance()->getGet(detalleFacturaVentaTableClass::ID)
         );
         $this->objDetalleFactura = detalleFacturaVentaTableClass::getAll($fields, false, null, null, null, null, $where);
+        
+         $fields = array(
+            trabajadorTableClass::ID,
+            trabajadorTableClass::NOMBRET
+      );
+      $orderBy = array(
+          trabajadorTableClass::NOMBRET
+      );
+      $this->objTrabajador = trabajadorTableClass::getAll($fields, true, $orderBy, 'ASC');
+      
         
          $fields = array(
            facturaVentaTableClass::ID,
@@ -53,11 +64,12 @@ class editActionClass extends controllerClass implements controllerActionInterfa
       $orderBy = array(
           clienteTableClass::NOMBRE
       );
-      $this->objCliente = clienteTableClass::getAll($fields, true, $orderBy, 'ASC');
+        $this->objCliente = clienteTableClass::getAll($fields, true, $orderBy, 'ASC');
         $this->defineView('edit', 'detalleFacturaVenta', session::getInstance()->getFormatOutput());
+        $idFactura = facturaVentaTableClass::ID;
      
       }else{
-        routing::getInstance()->redirect('detalleFacturaVenta', 'index');
+        routing::getInstance()->redirect('detalleFacturaVenta', 'edit', array(facturaVentaTableClass::ID => $idFactura));
       }
 
     } catch (PDOException $exc) {

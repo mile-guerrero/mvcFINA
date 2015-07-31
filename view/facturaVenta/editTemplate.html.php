@@ -4,10 +4,10 @@
 <?php use mvc\view\viewClass as view ?> 
 <?php $idFactura = facturaVentaTableClass::ID?>
 <div class="container container-fluid" id="cuerpo">
-    <article id="derecha">
-  <h2 class="form-signin-heading">
-  </h2>
-        </article>
+   <div class="center-block" id="cuerpo2">
+<h2 class="form-signin-heading"><?php echo i18n::__('modificar') ?> </h2>
+<br><br>
+  </div>
    <?php view::includePartial('facturaVenta/formularioPrincipal', array('objFactura' => $objFactura, 'idFactura' => $idFactura)) ?>
 </div>
   

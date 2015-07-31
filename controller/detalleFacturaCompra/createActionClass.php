@@ -7,6 +7,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+use mvc\validator\detalleFacturaCompraValidatorClass as validator;
 
 /**
  * Description of ejemploClass
@@ -30,6 +31,8 @@ class createActionClass extends controllerClass implements controllerActionInter
 //          throw new PDOException(i18n::__(00001, null, 'errors', array(':longitud' => usuarioTableClass::USUARIO_LENGTH)), 00001);
 //        }
 
+       validator::validateInsert();
+       
         $data = array(
           detalleFacturaCompraTableClass::DESCRIPCION => $descripcion,
           detalleFacturaCompraTableClass::CANTIDAD => $cantidad,
@@ -46,9 +49,8 @@ class createActionClass extends controllerClass implements controllerActionInter
         routing::getInstance()->redirect('facturaCompra', 'index');
       }
     } catch (PDOException $exc) {
-      echo $exc->getMessage();
-      echo '<br>';
-      echo $exc->getTraceAsString();
+      routing::getInstance()->redirect('detalleFacturaCompra', 'insert');
+      session::getInstance()->setFlash('exc', $exc);
     }
   }
 

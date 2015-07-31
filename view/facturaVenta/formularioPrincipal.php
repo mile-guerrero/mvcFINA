@@ -5,11 +5,14 @@
 <?php $updated_at = facturaVentaTableClass::UPDATED_AT ?>
 
 <div class="container container-fluid" id="cuerpo">
-  <article id='derecha'>
+  <div class="center-block" id="cuerpo5">
+  <div class="center-block" id="cuerpo2">
   <form  class="form-horizontal" role="form" method="post" action="<?php echo routing::getInstance()->getUrlWeb('facturaVenta', ((isset($objFactura)) ? 'update' : 'create')) ?>">
     <?php if (isset($objFactura) == true): ?>
     <input  name="<?php echo facturaVentaTableClass::getNameField(facturaVentaTableClass::ID, true) ?>" value="<?php echo $objFactura[0]->$idFactura ?>" type="hidden">
     <?php endif ?>
+    
+    <br><br><br><br><br>
     
      <div class="form-group">
        <label for="<?php echo facturaVentaTableClass::getNameField(facturaVentaTableClass::FECHA, true) ?>" class="col-sm-2"><?php echo i18n::__('fechaPagoIni') ?>:</label>     
@@ -20,9 +23,11 @@
 
           
 
-    <input   class="btn btn-lg btn-primary btn-xs" type="submit" value="<?php echo i18n::__(((isset($objFactura)) ? 'update' : 'register')) ?>">
-    <a class="btn btn-lg btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('facturaVenta', 'index') ?>" ><?php echo i18n::__('atras') ?> </a>
+    <input   class="btn btn-lg btn-success btn-xs" type="submit" value="<?php echo i18n::__(((isset($objFactura)) ? 'update' : 'register')) ?>">
+    <a class="btn btn-lg btn-default btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('facturaVenta', 'index') ?>" ><?php echo i18n::__('atras') ?> </a>
 
-  </form>
-  </article>
-</div>  
+  <br><br><br><br><br><br>   <br><br><br><br>
+    </form>
+  </div>
+</div>
+</div>

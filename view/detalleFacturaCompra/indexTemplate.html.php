@@ -27,6 +27,7 @@
   </section>
   <article id='derecha'>
 
+
     <h1><?php echo i18n::__('detallePago') ?></h1> 
     <ul>      
         <a class="btn btn-success btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('detalleFacturaCompra', 'insert', array(detalleFacturaCompraTableClass::getNameField(detalleFacturaCompraTableClass::FACTURA_COMPRA_ID, true) => request::getInstance()->getGet(detalleFacturaCompraTableClass::getNameField(detalleFacturaCompraTableClass::FACTURA_COMPRA_ID, true)))) ?>"><?php echo i18n::__('nuevo') ?></a> 
@@ -100,7 +101,7 @@
     </div>
   </article>
     </div>
-</div>
+  </div>
 
 
 

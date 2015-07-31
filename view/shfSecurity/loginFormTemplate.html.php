@@ -11,7 +11,7 @@ use mvc\i18n\i18nClass as i18n ?>
 <?php use mvc\i18n\i18nClass as i18 ?>
 
 
-
+<div class="responcive barraCorrediza">
   <nav class="navbar navbar-default " id="color1">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -133,6 +133,6 @@ use mvc\i18n\i18nClass as i18n ?>
    
   </div>
 </header>
-
+     </div>
 
 

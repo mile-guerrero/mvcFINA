@@ -45,9 +45,9 @@ class insertActionClass extends controllerClass implements controllerActionInter
     
             $this->mensaje ="";
             $this->defineView('insert', 'detalleFacturaCompra', session::getInstance()->getFormatOutput());
-        
+            $idFactura = facturaCompraTableClass::ID;
             } else {
-                routing::getInstance()->redirect('facturaCompra', 'index');
+                routing::getInstance()->redirect('detalleFacturaCompra', 'insert', array(facturaCompraTableClass::ID => $idFactura));
             }
             
         } catch (PDOException $exc) {

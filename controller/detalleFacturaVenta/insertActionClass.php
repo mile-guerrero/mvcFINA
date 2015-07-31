@@ -8,6 +8,7 @@ use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 
+
 /**
  * Description of ejemploClass
  *
@@ -28,6 +29,15 @@ class insertActionClass extends controllerClass implements controllerActionInter
       $this->objCliente = clienteTableClass::getAll($fields, true, $orderBy, 'ASC');
       
       $fields = array(
+            trabajadorTableClass::ID,
+            trabajadorTableClass::NOMBRET
+      );
+      $orderBy = array(
+          trabajadorTableClass::NOMBRET
+      );
+      $this->objTrabajador = trabajadorTableClass::getAll($fields, true, $orderBy, 'ASC');
+      
+      $fields = array(
           facturaVentaTableClass::ID,
           facturaVentaTableClass::FECHA
         );
@@ -45,9 +55,9 @@ class insertActionClass extends controllerClass implements controllerActionInter
     
             $this->mensaje ="";
             $this->defineView('insert', 'detalleFacturaVenta', session::getInstance()->getFormatOutput());
-        
+            $idFactura = facturaVentaTableClass::ID;
             } else {
-                routing::getInstance()->redirect('facturaVenta', 'index');
+                routing::getInstance()->redirect('detalleFacturaVenta', 'insert', array(facturaVentaTableClass::ID => $idFactura));
             }
             
         } catch (PDOException $exc) {
