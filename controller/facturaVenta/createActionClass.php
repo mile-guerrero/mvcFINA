@@ -20,13 +20,15 @@ class createActionClass extends controllerClass implements controllerActionInter
       if (request::getInstance()->isMethod('POST')) {
 
         $fecha = request::getInstance()->getPost(facturaVentaTableClass::getNameField(facturaVentaTableClass::FECHA, true));
+        $idCliente = request::getInstance()->getPost(facturaVentaTableClass::getNameField(facturaVentaTableClass::CLIENTE_ID, true));
+        $idTrabajador = request::getInstance()->getPost(facturaVentaTableClass::getNameField(facturaVentaTableClass::TRABAJADOR_ID, true));
+  
 
-//        if (strlen($usuario) > usuarioTableClass::USUARIO_LENGTH) {
-//          throw new PDOException(i18n::__(00001, null, 'errors', array(':longitud' => usuarioTableClass::USUARIO_LENGTH)), 00001);
-//        }
 
         $data = array(
-            facturaVentaTableClass::FECHA => $fecha
+            facturaVentaTableClass::FECHA => $fecha,
+            facturaVentaTableClass::CLIENTE_ID => $idCliente,
+            facturaVentaTableClass::TRABAJADOR_ID => $idTrabajador
             
         );
         facturaVentaTableClass::insert($data);

@@ -17,6 +17,16 @@ class insertActionClass extends controllerClass implements controllerActionInter
 
     public function execute() {
         try {
+          
+            $fields = array(
+              proveedorTableClass::ID,
+              proveedorTableClass::NOMBREP
+      );
+      $orderBy = array(
+          proveedorTableClass::NOMBREP
+      );
+      $this->objProveedor = proveedorTableClass::getAll($fields, true, $orderBy, 'ASC');
+      
 //           $fields = array(
 //            empresaTableClass::ID,
 //            empresaTableClass::NOMBRE

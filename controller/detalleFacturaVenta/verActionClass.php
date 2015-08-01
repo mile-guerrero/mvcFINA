@@ -35,20 +35,6 @@ class verActionClass extends controllerClass implements controllerActionInterfac
         }
       }
         
-        $idFactura = request::getInstance()->getRequest(facturaVentaTableClass::ID, true);
-        $fieldsFactura = array(
-          facturaVentaTableClass::ID,
-          facturaVentaTableClass::FECHA
-          
-      );
-
-      $whereFactura = array(
-          facturaVentaTableClass::ID => request::getInstance()->getRequest(facturaVentaTableClass::ID)
-              
-        );
-      
-       $this->objFactura = facturaVentaTableClass::getAll($fieldsFactura, false, null, null, null, null, $whereFactura);
-      
       $idDetalle = request::getInstance()->getRequest(detalleFacturaVentaTableClass::ID, true);
       $fields = array(
           detalleFacturaVentaTableClass::ID,
@@ -56,8 +42,6 @@ class verActionClass extends controllerClass implements controllerActionInterfac
           detalleFacturaVentaTableClass::CANTIDAD,
           detalleFacturaVentaTableClass::VALOR_UNIDAD,
           detalleFacturaVentaTableClass::VALOR_TOTAL,
-          detalleFacturaVentaTableClass::CLIENTE_ID,
-          detalleFacturaVentaTableClass::TRABAJADOR_ID,
           detalleFacturaVentaTableClass::FACTURA_ID,
           detalleFacturaVentaTableClass::CREATED_AT,
           detalleFacturaVentaTableClass::UPDATED_AT
@@ -66,11 +50,42 @@ class verActionClass extends controllerClass implements controllerActionInterfac
       $where = array(
           detalleFacturaVentaTableClass::FACTURA_ID =>$idDetalle 
       );
-      $this->objDetalleFactura = detalleFacturaVentaTableClass::getAll($fields, false, null, null, null, null, $where);
+       $page = 0;
+      if (request::getInstance()->hasGet('page')) {
+        $this->page = request::getInstance()->getGet('page');
+        $page = request::getInstance()->getGet('page') - 1;
+        $page = $page * config::getRowGrid();
+      }//cierre del if del paguinado
+      $this->cntPages = detalleFacturaVentaTableClass::getTotalPages(config::getRowGrid());
+      
+      
+      $this->objDetalleFactura = detalleFacturaVentaTableClass::getAll($fields, false, null, null, config::getRowGrid(), $page, $where);
       
       
       
      
+        $idFactura = request::getInstance()->getRequest(facturaVentaTableClass::ID, true);
+        $fieldsFactura = array(
+          facturaVentaTableClass::ID,
+          facturaVentaTableClass::FECHA,
+            facturaVentaTableClass::CLIENTE_ID,
+          
+      );
+
+      $whereFactura = array(
+          facturaVentaTableClass::ID => request::getInstance()->getRequest(facturaVentaTableClass::ID)
+              
+        );
+      $page = 0;
+      if (request::getInstance()->hasGet('page')) {
+        $this->page = request::getInstance()->getGet('page');
+        $page = request::getInstance()->getGet('page') - 1;
+        $page = $page * config::getRowGrid();
+      }//cierre del if del paguinado
+      $this->cntPages = facturaVentaTableClass::getTotalPages(config::getRowGrid());
+      
+       $this->objFactura = facturaVentaTableClass::getAll($fieldsFactura, false, null, null, config::getRowGrid(), $page, $whereFactura);
+      
       
       $this->defineView('ver', 'detalleFacturaVenta', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {

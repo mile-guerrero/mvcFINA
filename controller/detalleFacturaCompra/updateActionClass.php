@@ -26,8 +26,7 @@ class updateActionClass extends controllerClass implements controllerActionInter
        $valorUnidad = request::getInstance()->getPost(detalleFacturaCompraTableClass::getNameField(detalleFacturaCompraTableClass::VALOR_UNIDAD, true));
        $valorTotal = request::getInstance()->getPost(detalleFacturaCompraTableClass::getNameField(detalleFacturaCompraTableClass::VALOR_TOTAL, true));
        $facturaCompra = request::getInstance()->getPost(detalleFacturaCompraTableClass::getNameField(detalleFacturaCompraTableClass::FACTURA_COMPRA_ID, true));
-       $idProveedor = request::getInstance()->getPost(detalleFacturaCompraTableClass::getNameField(detalleFacturaCompraTableClass::PROVEEDOR_ID, true));
-
+      
        validator::validateUpdate();
        
         $ids = array(
@@ -39,8 +38,7 @@ class updateActionClass extends controllerClass implements controllerActionInter
           detalleFacturaCompraTableClass::CANTIDAD => $cantidad,
           detalleFacturaCompraTableClass::VALOR_UNIDAD => $valorUnidad,
           detalleFacturaCompraTableClass::VALOR_TOTAL => $valorTotal,
-          detalleFacturaCompraTableClass::FACTURA_COMPRA_ID => $facturaCompra,
-          detalleFacturaCompraTableClass::PROVEEDOR_ID => $idProveedor
+          detalleFacturaCompraTableClass::FACTURA_COMPRA_ID => $facturaCompra
             
         );
         detalleFacturaCompraTableClass::update($ids, $data);

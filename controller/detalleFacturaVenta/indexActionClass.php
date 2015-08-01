@@ -41,8 +41,6 @@ class indexActionClass extends controllerClass implements controllerActionInterf
           detalleFacturaVentaTableClass::CANTIDAD,
           detalleFacturaVentaTableClass::VALOR_UNIDAD,
           detalleFacturaVentaTableClass::VALOR_TOTAL,
-          detalleFacturaVentaTableClass::CLIENTE_ID,
-          detalleFacturaVentaTableClass::TRABAJADOR_ID,
           detalleFacturaVentaTableClass::FACTURA_ID,
           detalleFacturaVentaTableClass::CREATED_AT,
           detalleFacturaVentaTableClass::UPDATED_AT
@@ -50,22 +48,9 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       $orderBy = array(
           detalleFacturaVentaTableClass::ID
       );
-      $page = 0;
-      if (request::getInstance()->hasGet('page')) {
-        $this->page = request::getInstance()->getGet('page');
-        $page = request::getInstance()->getGet('page') - 1;
-        $page = $page * 3;
-      }
-
-      $this->cntPages = detalleFacturaVentaTableClass::getTotalPages(3);
-      
-      if(request::getInstance()->hasGet(detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::FACTURA_ID, true))){
-        
-        $pagoTrabajadorTd = request::getInstance()->getGet(detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::FACTURA_ID, true));
-      }
-      
-
-      $this->objDetalleFactura = detalleFacturaVentaTableClass::getAll($fields, false, $orderBy, 'ASC', 3, $page, $where);
+     
+ 
+      $this->objDetalleFactura = detalleFacturaVentaTableClass::getAll($fields, false, $orderBy, 'ASC', null, null, $where);
       
        $fields = array(
            facturaVentaTableClass::ID,
@@ -81,24 +66,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
         
         $this->objFactura = facturaVentaTableClass::getAll($fields, false, $orderBy, 'ASC');
 
-         $fields = array(
-            trabajadorTableClass::ID,
-            trabajadorTableClass::NOMBRET
-      );
-      $orderBy = array(
-          trabajadorTableClass::NOMBRET
-      );
-      $this->objTrabajador = trabajadorTableClass::getAll($fields, true, $orderBy, 'ASC');
-      
         
-      $fields = array(
-          clienteTableClass::ID,
-          clienteTableClass::NOMBRE
-      );
-      $orderBy = array(
-          clienteTableClass::NOMBRE
-      );
-      $this->objCliente = clienteTableClass::getAll($fields, true, $orderBy, 'ASC');
       $this->defineView('index', 'detalleFacturaVenta', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
       echo $exc->getMessage();

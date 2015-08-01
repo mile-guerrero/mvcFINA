@@ -2,7 +2,7 @@
 <?php use mvc\routing\routingClass as routing ?>
 <?php use mvc\i18n\i18nClass as i18n ?>
 <?php use mvc\view\viewClass as view ?>
-
+<?php $idCliente = facturaVentaTableClass::CLIENTE_ID?>
 <?php $fecha = facturaVentaTableClass::FECHA ?>
 <?php $id = facturaVentaTableClass::ID ?>
 
@@ -76,6 +76,7 @@
             <th>
               Fecha
             </th>
+            <th><?php echo i18n::__('cliente') ?></th>
             <th>
           <?php echo i18n::__('acciones') ?>
             </th> 
@@ -87,6 +88,11 @@
                <td>
                   <?php echo $key->$fecha ?>
                 </td>
+                
+               
+             
+            <td><?php echo clienteTableClass::getNameCliente($key->$idCliente) ?></td>
+             
               <td>
                 <a class="btn btn-success btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('detalleFacturaVenta', 'ver', array(facturaVentaTableClass::ID => $key->$id)) ?> "><?php echo i18n::__('detalle')?></a>
               </td>
@@ -96,13 +102,13 @@
       </table>
       </div>
     </form> 
-    <div class="text-right">
-      <?php echo i18n::__('paginas') ?> <select id="slqPaginador" onchange="paginador(this, '<?php echo routing::getInstance()->getUrlWeb('facturaVenta', 'index') ?>')">
-<?php for ($x = 1; $x <= $cntPages; $x++): ?>
-          <option <?php echo (isset($page) and $page == $x) ? 'selected' : '' ?> value="<?php echo $x ?>"><?php echo $x ?></option>
-<?php endfor; ?>
-      </select> <?php echo i18n::__('de') ?> <?php echo $cntPages ?>
-    </div>
+   <div class="text-right">
+        <?php echo i18n::__('paginas') ?> <select id="slqPaginador" onchange="paginador(this, '<?php echo routing::getInstance()->getUrlWeb('facturaVenta', 'index')?>')">
+         <?php for($x = 1; $x <= $cntPages; $x++):?>
+           <option <?php echo (isset($page) and $page == $x) ? 'selected': '' ?> value="<?php echo $x ?>"><?php echo $x ?></option>
+          <?php endfor;?>
+        </select> <?php echo i18n::__('de') ?> <?php echo $cntPages ?>
+      </div>
   </article>
 </div>
     <br><br><br><br><br><br><br><br>

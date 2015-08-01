@@ -21,12 +21,14 @@ class updateActionClass extends controllerClass implements controllerActionInter
       if (request::getInstance()->isMethod('POST')) {
         $id = request::getInstance()->getPost(facturaCompraTableClass::getNameField(facturaCompraTableClass::ID, true));
         $fecha = request::getInstance()->getPost(facturaCompraTableClass::getNameField(facturaCompraTableClass::FECHA, true));
+        $proveedor = request::getInstance()->getPost(facturaCompraTableClass::getNameField(facturaCompraTableClass::PROVEEDOR_ID, true));
 
         $ids = array(
             facturaCompraTableClass::ID => $id
         );
         $data = array(
-            facturaCompraTableClass::FECHA => $fecha
+            facturaCompraTableClass::FECHA => $fecha,
+            facturaCompraTableClass::PROVEEDOR_ID => $proveedor
             
             
         );

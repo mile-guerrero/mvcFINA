@@ -515,6 +515,8 @@ CREATE TABLE factura_venta
 (
 	id BIGINT DEFAULT nextval('public.factura_venta_id_seq'::regclass) NOT NULL,
 	fecha TIMESTAMP DEFAULT now() NOT NULL,
+	trabajador_id BigInt NOT NULL,
+	id_cliente BigInt NOT NULL,
 	created_at TIMESTAMP DEFAULT now() NOT NULL,
 	updated_at TIMESTAMP DEFAULT now() NOT NULL
 );
@@ -526,6 +528,7 @@ CREATE TABLE factura_compra
 (
 	id BIGINT DEFAULT nextval('public.factura_compra_id_seq'::regclass) NOT NULL,
 	fecha TIMESTAMP DEFAULT now() NOT NULL,
+	id_proveedor BigInt NOT NULL,
 	created_at TIMESTAMP DEFAULT now() NOT NULL
 );
 
@@ -535,11 +538,10 @@ ALTER TABLE factura_compra ADD CONSTRAINT pkfactura_compra
 CREATE TABLE detalle_factura_compra
 (
 	id BIGINT DEFAULT nextval('public.detalle_factura_compra_id_seq'::regclass) NOT NULL,
-	descripcion VARCHAR(80) NOT NULL,
+	producto_insumo_id BigInt NOT NULL,
 	cantidad BigInt NOT NULL,	
 	valor_unidad BigInt NOT NULL,
-	valor_total BigInt NOT NULL,
-	id_proveedor BigInt NOT NULL,
+	valor_total BigInt NOT NULL,	
 	factura_compra_id BigInt NOT NULL,
 	created_at TIMESTAMP DEFAULT now() NOT NULL,
 	updated_at TIMESTAMP DEFAULT now() NOT NULL
@@ -551,12 +553,10 @@ ALTER TABLE detalle_factura_compra ADD CONSTRAINT pkdetalle_factura_compra
 CREATE TABLE detalle_factura_venta
 (
 	id BIGINT DEFAULT nextval('public.detalle_factura_venta_id_seq'::regclass) NOT NULL,
-	descripcion VARCHAR(80) NOT NULL,
+	producto_insumo_id BigInt NOT NULL,
 	cantidad BigInt NOT NULL,	
 	valor_unidad BigInt NOT NULL,
 	valor_total BigInt NOT NULL,
-	trabajador_id BigInt NOT NULL,
-	id_cliente BigInt NOT NULL,
 	factura_venta_id BigInt NOT NULL,
 	created_at TIMESTAMP DEFAULT now() NOT NULL,
 	updated_at TIMESTAMP DEFAULT now() NOT NULL,
@@ -750,25 +750,33 @@ ALTER TABLE pago_trabajador ADD CONSTRAINT fk_pago_trabajador_trabajador
 	FOREIGN KEY (trabajador_id) REFERENCES trabajador(id)
 	ON UPDATE RESTRICT ON DELETE RESTRICT;	
 	
-ALTER TABLE detalle_factura_compra ADD CONSTRAINT fk_factura_compra_proveedor
+ALTER TABLE factura_compra ADD CONSTRAINT fk_factura_compra_proveedor
 	FOREIGN KEY (id_proveedor) REFERENCES proveedor (id)
 	ON UPDATE RESTRICT ON DELETE RESTRICT;	
 	
-ALTER TABLE detalle_factura_compra ADD CONSTRAINT fk_factura_compra_factura_compra
+ALTER TABLE detalle_factura_compra ADD CONSTRAINT fk_detalle_factura_compra_factura_compra
 	FOREIGN KEY (factura_compra_id) REFERENCES factura_compra (id)
 	ON UPDATE RESTRICT ON DELETE RESTRICT;	
 	
-ALTER TABLE detalle_factura_venta ADD CONSTRAINT fk_factura_venta_factura_venta
+ALTER TABLE detalle_factura_compra ADD CONSTRAINT fk_detalle_factura_compra_producto_insumo
+	FOREIGN KEY (producto_insumo_id) REFERENCES producto_insumo (id)
+	ON UPDATE RESTRICT ON DELETE RESTRICT;
+	
+ALTER TABLE detalle_factura_venta ADD CONSTRAINT fk_detalle_factura_venta_factura_venta
 	FOREIGN KEY (factura_venta_id) REFERENCES factura_venta (id)
 	ON UPDATE RESTRICT ON DELETE RESTRICT;	
 	
-ALTER TABLE detalle_factura_venta ADD CONSTRAINT fk_factura_venta_trabajador
+ALTER TABLE factura_venta ADD CONSTRAINT fk_factura_venta_trabajador
 	FOREIGN KEY (trabajador_id) REFERENCES trabajador (id)
 	ON UPDATE RESTRICT ON DELETE RESTRICT;		
 	
-ALTER TABLE detalle_factura_venta ADD CONSTRAINT fk_factura_venta_cliente
+ALTER TABLE factura_venta ADD CONSTRAINT fk_factura_venta_cliente
 	FOREIGN KEY (id_cliente) REFERENCES cliente (id)
-	ON UPDATE RESTRICT ON DELETE RESTRICT;		
+	ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+ALTER TABLE detalle_factura_venta ADD CONSTRAINT fk_detalle_factura_venta_producto_insumo
+	FOREIGN KEY (producto_insumo_id) REFERENCES producto_insumo (id)
+	ON UPDATE RESTRICT ON DELETE RESTRICT;	
 
 ALTER TABLE historial ADD CONSTRAINT fk_historial_producto_insumo
 	FOREIGN KEY (producto_insumo_id) REFERENCES producto_insumo (id)

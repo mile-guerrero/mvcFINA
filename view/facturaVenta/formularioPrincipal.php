@@ -1,8 +1,21 @@
 <?php use mvc\routing\routingClass as routing ?>
 <?php use mvc\i18n\i18nClass as i18n ?>
+<?php use mvc\request\requestClass as request ?>
+<?php use mvc\session\sessionClass as session ?>
+
+
+
 <?php $fecha = facturaVentaTableClass::FECHA ?>
 <?php $created_at = facturaVentaTableClass::CREATED_AT ?>
 <?php $updated_at = facturaVentaTableClass::UPDATED_AT ?>
+
+<?php $cliente = facturaVentaTableClass::CLIENTE_ID ?>
+<?php $idCliente = clienteTableClass::ID ?>
+<?php $nomCliente = clienteTableClass::NOMBRE ?>
+
+<?php $trabajador = facturaVentaTableClass::TRABAJADOR_ID ?>
+<?php $idTrabajador = trabajadorTableClass::ID ?>
+<?php $nomTrabajador = trabajadorTableClass::NOMBRET ?>
 
 <div class="container container-fluid" id="cuerpo">
   <div class="center-block" id="cuerpo5">
@@ -20,6 +33,49 @@
    <input  class="form-control" value="<?php echo ((isset($objFactura)== true) ? $objFactura[0]->$fecha : '') ?>" type="datetime-local" name="<?php echo facturaVentaTableClass::getNameField(facturaVentaTableClass::FECHA, true) ?>">
       </div>
   </div>
+    
+    
+    <?php if(session::getInstance()->hasError('selectTrabajador')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('selectTrabajador') ?>
+    </div>
+    <?php endif ?>
+      
+     
+      
+      <div class="form-group">
+      <label for="<?php echo facturaVentaTableClass::getNameField(facturaVentaTableClass::TRABAJADOR_ID, true) ?>" class="col-sm-2">  <?php echo i18n::__('trabajador') ?>:   </label>
+      <div class="col-sm-10"> 
+    <select class="form-control" id="<?php facturaVentaTableClass::getNameField(facturaVentaTableClass::TRABAJADOR_ID, true)?>" name="<?php echo facturaVentaTableClass::getNameField(facturaVentaTableClass::TRABAJADOR_ID, true);?>">
+        <option value="<?php echo (session::getInstance()->hasFlash('selectTrabajador') or request::getInstance()->hasPost(facturaVentaTableClass::getNameField(facturaVentaTableClass::TRABAJADOR_ID, true))) ? request::getInstance()->getPost(facturaVentaTableClass::getNameField(facturaVentaTableClass::TRABAJADOR_ID, true)) : ((isset($objFactura[0])) ? '' : '') ?>"><?php echo i18n::__('selectTrabajador') ?></option>
+       <?php foreach($objTrabajador as $key):?>
+      <option <?php echo (request::getInstance()->hasPost(facturaVentaTableClass::getNameField(facturaVentaTableClass::TRABAJADOR_ID, true)) === true and request::getInstance()->getPost(facturaVentaTableClass::getNameField(facturaVentaTableClass::TRABAJADOR_ID, true)) == $key->$idTrabajador) ? 'selected' : (isset($objFactura[0]->$trabajador) === true and $objFactura[0]->$trabajador == $key->$idTrabajador) ? 'selected' : '' ?> value="<?php echo $key->$idTrabajador ?>"><?php echo $key->$nomTrabajador ?></option>
+       <?php endforeach;?>
+   </select> 
+      </div> 
+    </div>
+       
+      <?php if(session::getInstance()->hasError('selectCliente')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('selectCliente') ?>
+    </div>
+    <?php endif ?>
+      
+     
+      
+      <div class="form-group">
+      <label for="<?php echo facturaVentaTableClass::getNameField(facturaVentaTableClass::CLIENTE_ID, true) ?>" class="col-sm-2">  <?php echo i18n::__('cliente') ?>:   </label>
+      <div class="col-sm-10"> 
+    <select class="form-control" id="<?php facturaVentaTableClass::getNameField(facturaVentaTableClass::CLIENTE_ID, true)?>" name="<?php echo facturaVentaTableClass::getNameField(facturaVentaTableClass::CLIENTE_ID, true);?>">
+        <option value="<?php echo (session::getInstance()->hasFlash('selectCliente') or request::getInstance()->hasPost(facturaVentaTableClass::getNameField(facturaVentaTableClass::CLIENTE_ID, true))) ? request::getInstance()->getPost(facturaVentaTableClass::getNameField(facturaVentaTableClass::CLIENTE_ID, true)) : ((isset($objFactura[0])) ? '' : '') ?>"><?php echo i18n::__('selectCliente') ?></option>
+       <?php foreach($objCliente as $clien):?>
+       <option <?php echo (isset($objFactura[0]->$cliente) === true and $objFactura[0]->$cliente == $clien->$idCliente) ? 'selected' : '' ?> value="<?php echo $clien->$idCliente?>"><?php echo $clien->$nomCliente?></option>
+       <?php endforeach;?>
+   </select> 
+      </div> 
+    </div>
 
           
 

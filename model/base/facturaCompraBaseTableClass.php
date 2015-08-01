@@ -10,16 +10,26 @@ use mvc\model\table\tableBaseClass;
 class facturaCompraBaseTableClass extends tableBaseClass {
 
  private $id;
- private $fecha;
+ private $fecha; 
+ private $proveedorId;
  private $createdAt;
  
  
 
 
   const ID = 'id';
-  const FECHA = 'fecha';
+  const FECHA = 'fecha';  
+  const PROVEEDOR_ID = 'id_proveedor';
   const CREATED_AT = 'created_at';
   
+  
+  public function getProveedorId() {
+      return $this->proveedorId;
+  }
+  
+  public function setProveedorId($proveedorId) {
+      $this->proveedorId = $proveedorId;
+  }
   
   public function getId() {
       return $this->id;

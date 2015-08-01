@@ -27,8 +27,6 @@ class editActionClass extends controllerClass implements controllerActionInterfa
           detalleFacturaVentaTableClass::CANTIDAD,
           detalleFacturaVentaTableClass::VALOR_UNIDAD,
           detalleFacturaVentaTableClass::VALOR_TOTAL,
-          detalleFacturaVentaTableClass::CLIENTE_ID,
-          detalleFacturaVentaTableClass::TRABAJADOR_ID,
           detalleFacturaVentaTableClass::FACTURA_ID,
           detalleFacturaVentaTableClass::CREATED_AT,
           detalleFacturaVentaTableClass::UPDATED_AT
@@ -38,14 +36,15 @@ class editActionClass extends controllerClass implements controllerActionInterfa
         );
         $this->objDetalleFactura = detalleFacturaVentaTableClass::getAll($fields, false, null, null, null, null, $where);
         
-         $fields = array(
-            trabajadorTableClass::ID,
-            trabajadorTableClass::NOMBRET
+        $fields = array(
+            productoInsumoTableClass::ID,
+            productoInsumoTableClass::DESCRIPCION
       );
       $orderBy = array(
-          trabajadorTableClass::NOMBRET
+          productoInsumoTableClass::DESCRIPCION
       );
-      $this->objTrabajador = trabajadorTableClass::getAll($fields, true, $orderBy, 'ASC');
+      $this->objProducto = productoInsumoTableClass::getAll($fields, true, $orderBy, 'ASC');
+      
       
         
          $fields = array(
@@ -57,14 +56,7 @@ class editActionClass extends controllerClass implements controllerActionInterfa
         );
         $this->objFactura = facturaVentaTableClass::getAll($fields, false, $orderBy, 'ASC');
         
-        $fields = array(
-          clienteTableClass::ID,
-          clienteTableClass::NOMBRE
-      );
-      $orderBy = array(
-          clienteTableClass::NOMBRE
-      );
-        $this->objCliente = clienteTableClass::getAll($fields, true, $orderBy, 'ASC');
+        
         $this->defineView('edit', 'detalleFacturaVenta', session::getInstance()->getFormatOutput());
         $idFactura = facturaVentaTableClass::ID;
      

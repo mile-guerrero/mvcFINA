@@ -164,6 +164,29 @@ imagen:
 video: 
   ver:
     javascript:
+      - confirmar.js   
+#-------------------modulo - factura compra-------------------------
+facturaCompra: 
+  index:
+    javascript:
+      - confirmar.js    
+      
+#-------------------modulo - factura venta-------------------------
+facturaVenta: 
+  index:
+    javascript:
+      - confirmar.js    
+      
+#-------------------modulo -detalle factura compra-------------------------
+detalleFacturaCompra: 
+  index:
+    javascript:
+      - confirmar.js    
+      
+#-------------------modulo - detalle factura venta-------------------------
+detalleFacturaVenta: 
+  index:
+    javascript:
       - confirmar.js       
       
       

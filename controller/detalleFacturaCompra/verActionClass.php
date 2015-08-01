@@ -38,14 +38,15 @@ class verActionClass extends controllerClass implements controllerActionInterfac
         $idFactura = request::getInstance()->getRequest(facturaCompraTableClass::ID, true);
         $fieldsFactura = array(
           facturaCompraTableClass::ID,
-          facturaCompraTableClass::FECHA
-          
+          facturaCompraTableClass::FECHA,
+          facturaCompraTableClass::PROVEEDOR_ID
       );
 
       $whereFactura = array(
           facturaCompraTableClass::ID => request::getInstance()->getRequest(facturaCompraTableClass::ID)
               
         );
+     
       
        $this->objFactura = facturaCompraTableClass::getAll($fieldsFactura, false, null, null, null, null, $whereFactura);
       
@@ -56,7 +57,6 @@ class verActionClass extends controllerClass implements controllerActionInterfac
           detalleFacturaCompraTableClass::CANTIDAD,
           detalleFacturaCompraTableClass::VALOR_UNIDAD,
           detalleFacturaCompraTableClass::VALOR_TOTAL,
-          detalleFacturaCompraTableClass::PROVEEDOR_ID,
           detalleFacturaCompraTableClass::FACTURA_COMPRA_ID,
           detalleFacturaCompraTableClass::CREATED_AT,
           detalleFacturaCompraTableClass::UPDATED_AT
@@ -65,7 +65,14 @@ class verActionClass extends controllerClass implements controllerActionInterfac
       $where = array(
           detalleFacturaCompraTableClass::FACTURA_COMPRA_ID =>$idDetalle 
       );
-      $this->objDetalleFactura = detalleFacturaCompraTableClass::getAll($fields, false, null, null, null, null, $where);
+       $page = 0;
+      if (request::getInstance()->hasGet('page')) {
+        $this->page = request::getInstance()->getGet('page');
+        $page = request::getInstance()->getGet('page') - 1;
+        $page = $page * config::getRowGrid();
+      }//cierre del if del paguinado
+      $this->cntPages = detalleFacturaCompraTableClass::getTotalPages(config::getRowGrid());
+      $this->objDetalleFactura = detalleFacturaCompraTableClass::getAll($fields, false, null, null, config::getRowGrid(), $page, $where);
       
       
       

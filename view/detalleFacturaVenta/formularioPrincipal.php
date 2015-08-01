@@ -3,7 +3,6 @@
 <?php use mvc\request\requestClass as request ?>
 <?php use mvc\session\sessionClass as session ?>
 <?php $idDetalle = detalleFacturaVentaTableClass::ID ?>
-<?php $descripcion = detalleFacturaVentaTableClass::DESCRIPCION ?>
 <?php $cantidad = detalleFacturaVentaTableClass::CANTIDAD ?>
 <?php $valor_unidad = detalleFacturaVentaTableClass::VALOR_UNIDAD ?>
 <?php $valor_total = detalleFacturaVentaTableClass::VALOR_TOTAL ?>
@@ -11,19 +10,30 @@
 <?php $fecha = facturaVentaTableClass::FECHA ?>
 <?php $factura = detalleFacturaVentaTableClass::FACTURA_ID ?>
 
-<?php $cliente = detalleFacturaVentaTableClass::CLIENTE_ID ?>
-<?php $idCliente = clienteTableClass::ID ?>
-<?php $nomCliente = clienteTableClass::NOMBRE ?>
+<?php $insumo = detalleFacturaVentaTableClass::DESCRIPCION ?>
+<?php $idInsumo = productoInsumoTableClass::ID ?>
+<?php $nomInsumo = productoInsumoTableClass::DESCRIPCION ?>
 
-<?php $trabajador = detalleFacturaVentaTableClass::TRABAJADOR_ID ?>
-<?php $idTrabajador = trabajadorTableClass::ID ?>
-<?php $nomTrabajador = trabajadorTableClass::NOMBRET ?>
+
 
 <div class="container container-fluid" id="cuerpo">
   <div class="center-block" id="cuerpo5">
   <div class="center-block" id="cuerpo2">
     
-  <form class="form-horizontal" role="form" method="post" action="<?php echo routing::getInstance()->getUrlWeb('detalleFacturaVenta', ((isset($objDetalleFactura)) ? 'update' : 'create')) ?>">
+    <script>
+function fncTotal(){
+caja=document.forms["sumar"].elements;
+var <?php echo detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::CANTIDAD, true) ?> = Number(caja["<?php echo detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::CANTIDAD, true) ?>"].value);
+var <?php echo detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::VALOR_UNIDAD, true) ?> = Number(caja["<?php echo detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::VALOR_UNIDAD, true) ?>"].value);
+
+<?php echo detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::VALOR_TOTAL, true) ?> = (<?php echo detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::CANTIDAD, true) ?>)*(<?php echo detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::VALOR_UNIDAD, true) ?>);
+if(!isNaN(<?php echo detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::VALOR_TOTAL, true) ?>)){
+caja["<?php echo detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::VALOR_TOTAL, true) ?>"].value=(<?php echo detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::CANTIDAD, true) ?>)*(<?php echo detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::VALOR_UNIDAD, true) ?>);
+}
+}
+</script>    
+    
+  <form name="sumar" class="form-horizontal" role="form" method="post" action="<?php echo routing::getInstance()->getUrlWeb('detalleFacturaVenta', ((isset($objDetalleFactura)) ? 'update' : 'create')) ?>">
 <?php if (isset($objDetalleFactura) == true): ?>
       <input  name="<?php echo detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::ID, true) ?>" value="<?php echo $objDetalleFactura[0]->$idDetalle ?>" type="hidden">
 <?php endif ?>
@@ -31,47 +41,7 @@
       
        <br><br><br><br><br>
        
-        <?php if(session::getInstance()->hasError('selectTrabajador')): ?>
-    <div class="alert alert-danger alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('selectTrabajador') ?>
-    </div>
-    <?php endif ?>
-      
-     
-      
-      <div class="form-group">
-      <label for="<?php echo detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::TRABAJADOR_ID, true) ?>" class="col-sm-2">  <?php echo i18n::__('trabajador') ?>:   </label>
-      <div class="col-sm-10"> 
-    <select class="form-control" id="<?php detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::TRABAJADOR_ID, true)?>" name="<?php echo detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::TRABAJADOR_ID, true);?>">
-        <option value="<?php echo (session::getInstance()->hasFlash('selectTrabajador') or request::getInstance()->hasPost(detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::TRABAJADOR_ID, true))) ? request::getInstance()->getPost(detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::TRABAJADOR_ID, true)) : ((isset($objDetalleFactura[0])) ? '' : '') ?>"><?php echo i18n::__('selectTrabajador') ?></option>
-       <?php foreach($objTrabajador as $key):?>
-      <option <?php echo (request::getInstance()->hasPost(detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::TRABAJADOR_ID, true)) === true and request::getInstance()->getPost(detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::TRABAJADOR_ID, true)) == $key->$idTrabajador) ? 'selected' : (isset($objDetalleFactura[0]->$trabajador) === true and $objDetalleFactura[0]->$trabajador == $key->$idTrabajador) ? 'selected' : '' ?> value="<?php echo $key->$idTrabajador ?>"><?php echo $key->$nomTrabajador ?></option>
-       <?php endforeach;?>
-   </select> 
-      </div> 
-    </div>
-       
-      <?php if(session::getInstance()->hasError('selectCliente')): ?>
-    <div class="alert alert-danger alert-dismissible" role="alert">
-      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('selectCliente') ?>
-    </div>
-    <?php endif ?>
-      
-     
-      
-      <div class="form-group">
-      <label for="<?php echo detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::CLIENTE_ID, true) ?>" class="col-sm-2">  <?php echo i18n::__('cliente') ?>:   </label>
-      <div class="col-sm-10"> 
-    <select class="form-control" id="<?php detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::CLIENTE_ID, true)?>" name="<?php echo detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::CLIENTE_ID, true);?>">
-        <option value="<?php echo (session::getInstance()->hasFlash('selectCliente') or request::getInstance()->hasPost(detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::CLIENTE_ID, true))) ? request::getInstance()->getPost(detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::CLIENTE_ID, true)) : ((isset($objDetalleFactura[0])) ? '' : '') ?>"><?php echo i18n::__('selectCliente') ?></option>
-       <?php foreach($objCliente as $clien):?>
-       <option <?php echo (isset($objDetalleFactura[0]->$cliente) === true and $objDetalleFactura[0]->$cliente == $clien->$idCliente) ? 'selected' : '' ?> value="<?php echo $clien->$idCliente?>"><?php echo $clien->$nomCliente?></option>
-       <?php endforeach;?>
-   </select> 
-      </div> 
-    </div>
+        
       
       <?php if(session::getInstance()->hasError('inputDescripcion')): ?>
     <div class="alert alert-danger alert-dismissible" role="alert">
@@ -80,12 +50,19 @@
     </div>
     <?php endif ?>
       
-    <div class="form-group">
-      <label for="<?php echo detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::DESCRIPCION, true) ?>" class="col-sm-2"> <?php echo i18n::__('des') ?>:</label>     
-      <div class="col-sm-10">
-          <input class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputDescripcion') or request::getInstance()->hasPost(detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::DESCRIPCION, true))) ? request::getInstance()->getPost(detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::DESCRIPCION, true)) : ((isset($objDetalleFactura[0])) ? $objDetalleFactura[0]->$descripcion : '') ?>" type="text" name="<?php echo detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::DESCRIPCION, true) ?>" placeholder="<?php echo i18n::__('des') ?>">
-      </div>
-    </div>  
+        
+       
+       <div class="form-group">
+      <label for="<?php echo detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::DESCRIPCION, true) ?>" class="col-sm-2">  <?php echo i18n::__('des') ?>:   </label>
+      <div class="col-sm-10"> 
+    <select class="form-control" id="<?php detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::DESCRIPCION, true)?>" name="<?php echo detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::DESCRIPCION, true);?>" required>
+        <option value="<?php echo (session::getInstance()->hasFlash('inputDescripcion') or request::getInstance()->hasPost(detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::DESCRIPCION, true))) ? request::getInstance()->getPost(detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::DESCRIPCION, true)) : ((isset($objDetalleFactura[0])) ? '' : '') ?>"><?php echo i18n::__('selectInsumo') ?></option>
+       <?php foreach($objProducto as $key):?>
+      <option <?php echo (request::getInstance()->hasPost(detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::DESCRIPCION, true)) === true and request::getInstance()->getPost(detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::DESCRIPCION, true)) == $key->$idInsumo) ? 'selected' : (isset($objDetalleFactura[0]->$insumo) === true and $objDetalleFactura[0]->$insumo == $key->$idInsumo) ? 'selected' : '' ?> value="<?php echo $key->$idInsumo ?>"><?php echo $key->$nomInsumo ?></option>
+       <?php endforeach;?>
+   </select> 
+      </div> 
+    </div>
       
       <?php if(session::getInstance()->hasError('inputCantidad')): ?>
     <div class="alert alert-danger alert-dismissible" role="alert">
@@ -97,7 +74,7 @@
     <div class="form-group">
       <label for="<?php echo detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::CANTIDAD, true) ?>" class="col-sm-2"> <?php echo i18n::__('cantidad') ?>:</label>     
       <div class="col-sm-10">            
-          <input class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputCantidad') or request::getInstance()->hasPost(detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::CANTIDAD, true))) ? request::getInstance()->getPost(detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::CANTIDAD, true)) : ((isset($objDetalleFactura[0])) ? $objDetalleFactura[0]->$cantidad : '') ?>" type="text" name="<?php echo detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::CANTIDAD, true) ?>" placeholder="<?php echo i18n::__('cantidad') ?>">
+          <input class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputCantidad') or request::getInstance()->hasPost(detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::CANTIDAD, true))) ? request::getInstance()->getPost(detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::CANTIDAD, true)) : ((isset($objDetalleFactura[0])) ? $objDetalleFactura[0]->$cantidad : '') ?>" type="text" name="<?php echo detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::CANTIDAD, true) ?>" placeholder="<?php echo i18n::__('cantidad') ?>" onKeyUp="fncTotal()" required>
       </div>
     </div> 
       
@@ -111,7 +88,7 @@
     <div class="form-group">
       <label for="<?php echo detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::VALOR_UNIDAD, true) ?>" class="col-sm-2"> <?php echo i18n::__('valorPorUnidad') ?>: </label>     
       <div class="col-sm-10">             
-          <input class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputValor') or request::getInstance()->hasPost(detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::VALOR_UNIDAD, true))) ? request::getInstance()->getPost(detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::VALOR_UNIDAD, true)) : ((isset($objDetalleFactura[0])) ? $objDetalleFactura[0]->$valor_unidad : '') ?>" type="text" name="<?php echo detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::VALOR_UNIDAD, true) ?>" placeholder="<?php echo i18n::__('valorPorUnidad') ?>">
+          <input class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputValor') or request::getInstance()->hasPost(detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::VALOR_UNIDAD, true))) ? request::getInstance()->getPost(detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::VALOR_UNIDAD, true)) : ((isset($objDetalleFactura[0])) ? $objDetalleFactura[0]->$valor_unidad : '') ?>" type="text" name="<?php echo detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::VALOR_UNIDAD, true) ?>" placeholder="<?php echo i18n::__('valorPorUnidad') ?>" onKeyUp="fncTotal()" required>
       </div>
     </div>
       
@@ -125,19 +102,17 @@
     <div class="form-group">
       <label for="<?php echo detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::VALOR_TOTAL, true) ?>" class="col-sm-2"> <?php echo i18n::__('total') ?>:  </label>     
       <div class="col-sm-10">              
-          <input class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputTotal') or request::getInstance()->hasPost(detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::VALOR_TOTAL, true))) ? request::getInstance()->getPost(detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::VALOR_TOTAL, true)) : ((isset($objDetalleFactura[0])) ? $objDetalleFactura[0]->$valor_total : '') ?>" type="text" name="<?php echo detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::VALOR_TOTAL, true) ?>" placeholder="<?php echo i18n::__('total') ?>">
+        <input class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputTotal') or request::getInstance()->hasPost(detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::VALOR_TOTAL, true))) ? request::getInstance()->getPost(detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::VALOR_TOTAL, true)) : ((isset($objDetalleFactura[0])) ? $objDetalleFactura[0]->$valor_total : '') ?>" type="text" name="<?php echo detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::VALOR_TOTAL, true) ?>" placeholder="<?php echo i18n::__('total') ?>" required>
       </div>
     </div>
 
    <?php $idFacturar = request::getInstance()->getGet('id') ?>
     <div class="form-group">
-            <label class="col-sm-2" >Factura:</label>
+<!--            <label class="col-sm-2" >Factura:</label>-->
             <div class="col-sm-10">
-                <select class="form-control" id="<?php echo detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::ID, TRUE) ?>" name="<?php echo detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::FACTURA_ID, TRUE) ?>">
+                <select class="form-control hidden" id="<?php echo detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::ID, TRUE) ?>" name="<?php echo detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::FACTURA_ID, TRUE) ?>">
                     <?php foreach ($objFactura as $fact): ?>
-                        <option <?php echo ($idFacturar == $fact->$idFactura) ? 'selected' : '' ?> value="<?php echo $fact->$idFactura ?>">
-                            <?php echo $fact->$idFactura ?>
-                        </option>
+                        <option <?php echo ($idFacturar == $fact->$idFactura) ? 'selected' : '' ?> value="<?php echo $fact->$idFactura ?>"> <?php echo $fact->$idFactura ?></option>
                     <?php endforeach ?>
                 </select>
             </div>

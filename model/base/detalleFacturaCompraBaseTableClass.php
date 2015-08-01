@@ -14,7 +14,6 @@ class detalleFacturaCompraBaseTableClass extends tableBaseClass {
  private $cantidad;
  private $valorUnidad;
  private $valorTotal;
- private $proveedorId;
  private $facturaCompraId;
  private $createdAt;
  private $updatedAt;
@@ -23,11 +22,10 @@ class detalleFacturaCompraBaseTableClass extends tableBaseClass {
 
 
   const ID = 'id';
-  const DESCRIPCION = 'descripcion';
+  const DESCRIPCION = 'producto_insumo_id';
   const CANTIDAD = 'cantidad';
   const VALOR_UNIDAD = 'valor_unidad';
   const VALOR_TOTAL = 'valor_total';
-  const PROVEEDOR_ID = 'id_proveedor';
   const FACTURA_COMPRA_ID = 'factura_compra_id';
   const CREATED_AT = 'created_at';
   const UPDATED_AT = 'updated_at';
@@ -53,10 +51,7 @@ class detalleFacturaCompraBaseTableClass extends tableBaseClass {
       return $this->valorTotal;
   }
 
-  public function getProveedorId() {
-      return $this->proveedorId;
-  }
-
+  
   public function getFacturaCompraId() {
       return $this->facturaCompraId;
   }
@@ -89,9 +84,7 @@ class detalleFacturaCompraBaseTableClass extends tableBaseClass {
       $this->valorTotal = $valorTotal;
   }
 
-  public function setProveedorId($proveedorId) {
-      $this->proveedorId = $proveedorId;
-  }
+  
 
   public function setFacturaCompraId($facturaCompraId) {
       $this->facturaCompraId = $facturaCompraId;

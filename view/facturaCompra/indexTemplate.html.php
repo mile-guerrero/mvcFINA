@@ -5,6 +5,7 @@
 
 <?php $fecha = facturaCompraTableClass::FECHA ?>
 <?php $id = facturaCompraTableClass::ID ?>
+<?php $idProveedor = facturaCompraTableClass::PROVEEDOR_ID ?>
 
 <div class="container container-fluid" id="cuerpo">
   <div class="center-block" id="cuerpo4">
@@ -77,6 +78,9 @@
               Fecha
             </th>
             <th>
+          <?php echo i18n::__('proveedor') ?>
+            </th>
+            <th>
           <?php echo i18n::__('acciones') ?>
             </th> 
           </tr>
@@ -86,6 +90,9 @@
             <tr>
                <td>
                   <?php echo $key->$fecha ?>
+                </td>
+                <td>
+                  <?php echo proveedorTableClass::getNameProveedor($key->$idProveedor) ?>
                 </td>
               <td>
                 <a class="btn btn-success btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('detalleFacturaCompra', 'ver', array(facturaCompraTableClass::ID => $key->$id)) ?> "><?php echo i18n::__('detalle')?></a>
@@ -97,12 +104,12 @@
         </div>
     </form> 
     <div class="text-right">
-      <?php echo i18n::__('paginas') ?> <select id="slqPaginador" onchange="paginador(this, '<?php echo routing::getInstance()->getUrlWeb('facturaCompra', 'index') ?>')">
-<?php for ($x = 1; $x <= $cntPages; $x++): ?>
-          <option <?php echo (isset($page) and $page == $x) ? 'selected' : '' ?> value="<?php echo $x ?>"><?php echo $x ?></option>
-<?php endfor; ?>
-      </select> <?php echo i18n::__('de') ?> <?php echo $cntPages ?>
-    </div>
+        <?php echo i18n::__('paginas') ?> <select id="slqPaginador" onchange="paginador(this, '<?php echo routing::getInstance()->getUrlWeb('facturaCompra', 'index')?>')">
+         <?php for($x = 1; $x <= $cntPages; $x++):?>
+           <option <?php echo (isset($page) and $page == $x) ? 'selected': '' ?> value="<?php echo $x ?>"><?php echo $x ?></option>
+          <?php endfor;?>
+        </select> <?php echo i18n::__('de') ?> <?php echo $cntPages ?>
+      </div>
   </article>
   
 </div>

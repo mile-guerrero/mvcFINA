@@ -6,6 +6,7 @@
 <?php $updated_at = facturaVentaTableClass::UPDATED_AT ?>
 <?php $id = facturaVentaTableClass::ID ?>
 
+<?php $idCliente = clienteTableClass::ID?>
 <div class="container container-fluid" id="cuerpo">
   <div class="center-block" id="cuerpo6">
   <div class="center-block" id="cuerpo2">
@@ -32,7 +33,12 @@
             <tr>
               <th>fecha</th> 
               <td><?php echo $key->$fecha ?></td>
-            </tr>
+             </tr>
+             
+            <tr>
+             <th><?php echo i18n::__('cliente') ?></th>
+            <td><?php echo clienteTableClass::getNameCliente($factura->$idCliente) ?></td>
+             </tr>
             <tr> 
               <th>fecha creacion</th>                   
               <td><?php echo $key->$created_at ?></td>

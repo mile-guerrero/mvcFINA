@@ -2146,6 +2146,10 @@ facturaVenta_index:
     - model/facturaVentaTableClass.php
     - model/base/detalleFacturaVentaBaseTableClass.php
     - model/detalleFacturaVentaTableClass.php
+    - model/base/clienteBaseTableClass.php
+    - model/clienteTableClass.php
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
     
 facturaVenta_insert:
   url:    /facturaVenta/insertar
@@ -2155,6 +2159,10 @@ facturaVenta_insert:
     - model/facturaVentaTableClass.php
     - model/base/detalleFacturaVentaBaseTableClass.php
     - model/detalleFacturaVentaTableClass.php
+    - model/base/clienteBaseTableClass.php
+    - model/clienteTableClass.php
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
     
 facturaVenta_create:
   url:    /facturaVenta/crear
@@ -2164,6 +2172,10 @@ facturaVenta_create:
     - model/facturaVentaTableClass.php
     - model/base/detalleFacturaVentaBaseTableClass.php
     - model/detalleFacturaVentaTableClass.php
+    - model/base/clienteBaseTableClass.php
+    - model/clienteTableClass.php
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
 
 facturaVenta_edit:
   url:    /facturaVenta/editar
@@ -2173,6 +2185,10 @@ facturaVenta_edit:
     - model/facturaVentaTableClass.php
     - model/base/detalleFacturaVentaBaseTableClass.php
     - model/detalleFacturaVentaTableClass.php
+    - model/base/clienteBaseTableClass.php
+    - model/clienteTableClass.php
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
     
 facturaVenta_update:
   url:    /facturaVenta/actualizar
@@ -2182,6 +2198,10 @@ facturaVenta_update:
     - model/facturaVentaTableClass.php
     - model/base/detalleFacturaVentaBaseTableClass.php
     - model/detalleFacturaVentaTableClass.php
+    - model/base/clienteBaseTableClass.php
+    - model/clienteTableClass.php
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
     
 facturaVenta_ver:
   url:    /facturaVenta/ver
@@ -2191,6 +2211,10 @@ facturaVenta_ver:
     - model/facturaVentaTableClass.php
     - model/base/detalleFacturaVentaBaseTableClass.php
     - model/detalleFacturaVentaTableClass.php
+    - model/base/clienteBaseTableClass.php
+    - model/clienteTableClass.php
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
     
 #---------------------------------Detalle Factura Venta-----------------------
 
@@ -2206,6 +2230,9 @@ detalleFacturaVenta_index:
     - model/clienteTableClass.php
     - model/base/trabajadorBaseTableClass.php
     - model/trabajadorTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    
     
     
 detalleFacturaVenta_insert:
@@ -2220,6 +2247,9 @@ detalleFacturaVenta_insert:
     - model/clienteTableClass.php
     - model/base/trabajadorBaseTableClass.php
     - model/trabajadorTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    
     
 detalleFacturaVenta_create:
   url:    /detalleFacturaVenta/crear
@@ -2228,11 +2258,13 @@ detalleFacturaVenta_create:
     - model/base/detalleFacturaVentaBaseTableClass.php
     - model/detalleFacturaVentaTableClass.php
     - model/base/facturaVentaBaseTableClass.php
-    - model/facturaVentaTableClass.php
+    - model/facturaVentaTableClass.php    
     - model/base/clienteBaseTableClass.php
     - model/clienteTableClass.php
     - model/base/trabajadorBaseTableClass.php
     - model/trabajadorTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
     - libs/validator/detalleFacturaVenta/detalleFacturaVentaValidatorClass.php
     
 detalleFacturaVenta_edit:
@@ -2247,6 +2279,9 @@ detalleFacturaVenta_edit:
     - model/clienteTableClass.php
     - model/base/trabajadorBaseTableClass.php
     - model/trabajadorTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    
     
 detalleFacturaVenta_update:
   url:    /detalleFacturaVenta/actualizar
@@ -2255,11 +2290,13 @@ detalleFacturaVenta_update:
     - model/base/detalleFacturaVentaBaseTableClass.php
     - model/detalleFacturaVentaTableClass.php
     - model/base/facturaVentaBaseTableClass.php
-    - model/facturaVentaTableClass.php
+    - model/facturaVentaTableClass.php    
     - model/base/clienteBaseTableClass.php
     - model/clienteTableClass.php
     - model/base/trabajadorBaseTableClass.php
     - model/trabajadorTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
     - libs/validator/detalleFacturaVenta/detalleFacturaVentaValidatorUpdateClass.php
     
 detalleFacturaVenta_ver:
@@ -2274,6 +2311,9 @@ detalleFacturaVenta_ver:
     - model/clienteTableClass.php
     - model/base/trabajadorBaseTableClass.php
     - model/trabajadorTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    
     
 detalleFacturaVenta_reporte:
   url:    /detalleFacturaVenta/reporte
@@ -2283,14 +2323,16 @@ detalleFacturaVenta_reporte:
     - model/base/detalleFacturaVentaBaseTableClass.php
     - model/detalleFacturaVentaTableClass.php
     - model/base/facturaVentaBaseTableClass.php
-    - model/facturaVentaTableClass.php
+    - model/facturaVentaTableClass.php    
     - model/base/clienteBaseTableClass.php
     - model/clienteTableClass.php
     - model/base/trabajadorBaseTableClass.php
     - model/trabajadorTableClass.php
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
-    - model/bitacoraTableClass.php    
+    - model/bitacoraTableClass.php   
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
     
 #----------------------Documento Factura Compra--------------------------------
 
@@ -2302,6 +2344,8 @@ facturaCompra_index:
     - model/facturaCompraTableClass.php
     - model/base/detalleFacturaCompraBaseTableClass.php
     - model/detalleFacturaCompraTableClass.php
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
     
 facturaCompra_insert:
   url:    /facturaCompra/insertar
@@ -2311,6 +2355,8 @@ facturaCompra_insert:
     - model/facturaCompraTableClass.php
     - model/base/detalleFacturaCompraBaseTableClass.php
     - model/detalleFacturaCompraTableClass.php
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
     
 facturaCompra_create:
   url:    /facturaCompra/crear
@@ -2320,6 +2366,8 @@ facturaCompra_create:
     - model/facturaCompraTableClass.php
     - model/base/detalleFacturaCompraBaseTableClass.php
     - model/detalleFacturaCompraTableClass.php
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
 
 facturaCompra_edit:
   url:    /facturaCompra/editar
@@ -2329,6 +2377,8 @@ facturaCompra_edit:
     - model/facturaCompraTableClass.php
     - model/base/detalleFacturaCompraBaseTableClass.php
     - model/detalleFacturaCompraTableClass.php
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
     
 facturaCompra_update:
   url:    /facturaCompra/actualizar
@@ -2338,6 +2388,8 @@ facturaCompra_update:
     - model/facturaCompraTableClass.php
     - model/base/detalleFacturaCompraBaseTableClass.php
     - model/detalleFacturaCompraTableClass.php
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
     
 facturaCompra_ver:
   url:    /facturaCompra/ver
@@ -2347,6 +2399,8 @@ facturaCompra_ver:
     - model/facturaCompraTableClass.php
     - model/base/detalleFacturaCompraBaseTableClass.php
     - model/detalleFacturaCompraTableClass.php
+    - model/base/proveedorBaseTableClass.php
+    - model/proveedorTableClass.php
     
 #---------------------------------Detalle Factura Compra-----------------------
 
@@ -2360,6 +2414,8 @@ detalleFacturaCompra_index:
     - model/facturaCompraTableClass.php
     - model/base/proveedorBaseTableClass.php
     - model/proveedorTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
     
     
 detalleFacturaCompra_insert:
@@ -2372,6 +2428,8 @@ detalleFacturaCompra_insert:
     - model/facturaCompraTableClass.php
     - model/base/proveedorBaseTableClass.php
     - model/proveedorTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
     
 detalleFacturaCompra_create:
   url:    /detalleFacturaCompra/crear
@@ -2383,6 +2441,8 @@ detalleFacturaCompra_create:
     - model/facturaCompraTableClass.php
     - model/base/proveedorBaseTableClass.php
     - model/proveedorTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
     - libs/validator/detalleFacturaCompra/detalleFacturaCompraValidatorClass.php
     
 detalleFacturaCompra_edit:
@@ -2395,6 +2455,8 @@ detalleFacturaCompra_edit:
     - model/facturaCompraTableClass.php
     - model/base/proveedorBaseTableClass.php
     - model/proveedorTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
     
 detalleFacturaCompra_update:
   url:    /detalleFacturaCompra/actualizar
@@ -2406,6 +2468,8 @@ detalleFacturaCompra_update:
     - model/facturaCompraTableClass.php
     - model/base/proveedorBaseTableClass.php
     - model/proveedorTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
     - libs/validator/detalleFacturaCompra/detalleFacturaCompraValidatorUpdateClass.php
     
 detalleFacturaCompra_ver:
@@ -2418,6 +2482,8 @@ detalleFacturaCompra_ver:
     - model/facturaCompraTableClass.php
     - model/base/proveedorBaseTableClass.php
     - model/proveedorTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
     
 detalleFacturaCompra_reporte:
   url:    /detalleFacturaCompra/reporte
@@ -2430,6 +2496,8 @@ detalleFacturaCompra_reporte:
     - model/facturaCompraTableClass.php
     - model/base/proveedorBaseTableClass.php
     - model/proveedorTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php 

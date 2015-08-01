@@ -17,14 +17,23 @@ class insertActionClass extends controllerClass implements controllerActionInter
 
     public function execute() {
         try {
-//           $fields = array(
-//            empresaTableClass::ID,
-//            empresaTableClass::NOMBRE
-//        );
-//        $orderBy = array(
-//            empresaTableClass::NOMBRE
-//        );
-//        $this->objEmpresa = empresaTableClass::getAll($fields, false, $orderBy, 'ASC');
+$fields = array(
+            clienteTableClass::ID,
+            clienteTableClass::NOMBRE
+      );
+      $orderBy = array(
+          clienteTableClass::NOMBRE
+      );
+      $this->objCliente = clienteTableClass::getAll($fields, true, $orderBy, 'ASC');
+      
+      $fields = array(
+            trabajadorTableClass::ID,
+            trabajadorTableClass::NOMBRET
+      );
+      $orderBy = array(
+          trabajadorTableClass::NOMBRET
+      );
+      $this->objTrabajador = trabajadorTableClass::getAll($fields, true, $orderBy, 'ASC');
             $this->mensaje ="";
             $this->defineView('insert', 'facturaVenta', session::getInstance()->getFormatOutput());
         } catch (PDOException $exc) {

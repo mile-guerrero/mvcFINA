@@ -18,15 +18,7 @@ class insertActionClass extends controllerClass implements controllerActionInter
     public function execute() {
         try {
          if (request::getInstance()->hasRequest(facturaCompraTableClass::ID)) {
-          $fields = array(
-              proveedorTableClass::ID,
-              proveedorTableClass::NOMBREP
-      );
-      $orderBy = array(
-          proveedorTableClass::NOMBREP
-      );
-      $this->objProveedor = proveedorTableClass::getAll($fields, true, $orderBy, 'ASC');
-      
+        
       $fields = array(
           facturaCompraTableClass::ID,
           facturaCompraTableClass::FECHA
@@ -42,7 +34,14 @@ class insertActionClass extends controllerClass implements controllerActionInter
          
         $this->objFactura = facturaCompraTableClass::getAll($fields, false, $orderBy, 'ASC', null, $where);
         
-    
+    $fields = array(
+            productoInsumoTableClass::ID,
+            productoInsumoTableClass::DESCRIPCION
+      );
+      $orderBy = array(
+          productoInsumoTableClass::DESCRIPCION
+      );
+      $this->objProducto = productoInsumoTableClass::getAll($fields, true, $orderBy, 'ASC');
             $this->mensaje ="";
             $this->defineView('insert', 'detalleFacturaCompra', session::getInstance()->getFormatOutput());
             $idFactura = facturaCompraTableClass::ID;

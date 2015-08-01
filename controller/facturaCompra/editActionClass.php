@@ -21,7 +21,8 @@ class editActionClass extends controllerClass implements controllerActionInterfa
       if (request::getInstance()->hasRequest(facturaCompraTableClass::ID)) {
         $fields = array(
             facturaCompraTableClass::ID,
-            facturaCompraTableClass::FECHA
+            facturaCompraTableClass::FECHA,            
+            facturaCompraTableClass::PROVEEDOR_ID,
             
         );
         $where = array(
@@ -29,14 +30,15 @@ class editActionClass extends controllerClass implements controllerActionInterfa
         );
         $this->objFactura = facturaCompraTableClass::getAll($fields, false, null, null, null, null, $where);
         
-//        $fields = array(
-//            empresaTableClass::ID,
-//            empresaTableClass::NOMBRE
-//        );
-//        $orderBy = array(
-//            empresaTableClass::NOMBRE
-//        );
-//        $this->objEmpresa = empresaTableClass::getAll($fields, false, $orderBy, 'ASC');
+$fields = array(
+              proveedorTableClass::ID,
+              proveedorTableClass::NOMBREP
+      );
+      $orderBy = array(
+          proveedorTableClass::NOMBREP
+      );
+        $this->objProveedor = proveedorTableClass::getAll($fields, true, $orderBy, 'ASC');
+
         $this->defineView('edit', 'facturaCompra', session::getInstance()->getFormatOutput());
      
       }else{

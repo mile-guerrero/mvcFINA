@@ -36,7 +36,8 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       
       $fields = array(
           facturaCompraTableClass::ID,
-          facturaCompraTableClass::FECHA,
+          facturaCompraTableClass::FECHA,          
+          facturaCompraTableClass::PROVEEDOR_ID,
           facturaCompraTableClass::CREATED_AT,
      
       );
@@ -47,12 +48,11 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       if (request::getInstance()->hasGet('page')) {
         $this->page = request::getInstance()->getGet('page');
         $page = request::getInstance()->getGet('page') - 1;
-        $page = $page * 3;
-      }
-
-      $this->cntPages = facturaCompraTableClass::getTotalPages(3);
+        $page = $page * config::getRowGrid();
+      }//cierre del if del paguinado
+      $this->cntPages = facturaCompraTableClass::getTotalPages(config::getRowGrid());
       
-      $this->objFactura = facturaCompraTableClass::getAll($fields, false, $orderBy, 'ASC', 3, $page, $where);
+      $this->objFactura = facturaCompraTableClass::getAll($fields, false, $orderBy, 'ASC', config::getRowGrid(), $page, $where);
 //       $fields = array(
 //            empresaTableClass::ID,
 //            empresaTableClass::NOMBRE
@@ -61,6 +61,15 @@ class indexActionClass extends controllerClass implements controllerActionInterf
 //            empresaTableClass::NOMBRE
 //        );
 //        $this->objEmpresa = empresaTableClass::getAll($fields, false, $orderBy, 'ASC');
+      
+       $fields = array(
+              proveedorTableClass::ID,
+              proveedorTableClass::NOMBREP
+      );
+      $orderBy = array(
+          proveedorTableClass::NOMBREP
+      );
+      $this->objProveedor = proveedorTableClass::getAll($fields, true, $orderBy, 'ASC');
       $this->defineView('index', 'facturaCompra', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
       echo $exc->getMessage();

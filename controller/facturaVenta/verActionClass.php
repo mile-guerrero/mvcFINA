@@ -20,6 +20,8 @@ class verActionClass extends controllerClass implements controllerActionInterfac
       $fields = array(
           facturaVentaTableClass::ID,
           facturaVentaTableClass::FECHA,
+          facturaVentaTableClass::CLIENTE_ID,
+          facturaVentaTableClass::TRABAJADOR_ID,
           facturaVentaTableClass::CREATED_AT,
           facturaVentaTableClass::UPDATED_AT
       );

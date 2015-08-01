@@ -1,7 +1,13 @@
 <?php use mvc\routing\routingClass as routing ?>
 <?php use mvc\i18n\i18nClass as i18n ?>
+<?php use mvc\request\requestClass as request ?>
+<?php use mvc\session\sessionClass as session ?>
 <?php $fecha = facturaCompraTableClass::FECHA ?>
 <?php $created_at = facturaCompraTableClass::CREATED_AT ?>
+
+<?php $proveedor = facturaCompraTableClass::PROVEEDOR_ID ?>
+<?php $idProveedor = proveedorTableClass::ID ?>
+<?php $nomProveedor = proveedorTableClass::NOMBREP ?>
 
 <div class="container container-fluid" id="cuerpo">
   <div class="center-block" id="cuerpo5">
@@ -13,6 +19,28 @@
     <?php endif ?>
     
     <br><br><br><br><br>
+    
+    <?php if(session::getInstance()->hasError('selectProveedor')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('selectProveedor') ?>
+    </div>
+    <?php endif ?>
+      
+     
+      
+      <div class="form-group">
+      <label for="<?php echo facturaCompraTableClass::getNameField(facturaCompraTableClass::PROVEEDOR_ID, true) ?>" class="col-sm-2">  <?php echo i18n::__('proveedor') ?>:   </label>
+      <div class="col-sm-10"> 
+    <select class="form-control" id="<?php facturaCompraTableClass::getNameField(facturaCompraTableClass::PROVEEDOR_ID, true)?>" name="<?php echo facturaCompraTableClass::getNameField(facturaCompraTableClass::PROVEEDOR_ID, true);?>">
+        <option value="<?php echo (session::getInstance()->hasFlash('selectProveedor') or request::getInstance()->hasPost(facturaCompraTableClass::getNameField(facturaCompraTableClass::PROVEEDOR_ID, true))) ? request::getInstance()->getPost(facturaCompraTableClass::getNameField(facturaCompraTableClass::TRABAJADOR_ID, true)) : ((isset($objFactura[0])) ? '' : '') ?>"><?php echo i18n::__('selectProveedor') ?></option>
+       <?php foreach($objProveedor as $key):?>
+      <option <?php echo (request::getInstance()->hasPost(facturaCompraTableClass::getNameField(facturaCompraTableClass::PROVEEDOR_ID, true)) === true and request::getInstance()->getPost(facturaCompraTableClass::getNameField(facturaCompraTableClass::PROVEEDOR_ID, true)) == $key->$idProveedor) ? 'selected' : (isset($objFactura[0]->$proveedor) === true and $objFactura[0]->$proveedor == $key->$idProveedor) ? 'selected' : '' ?> value="<?php echo $key->$idProveedor ?>"><?php echo $key->$nomProveedor ?></option>
+       <?php endforeach;?>
+   </select> 
+      </div> 
+    </div>
+    
     
      <div class="form-group">
        <label for="<?php echo facturaCompraTableClass::getNameField(facturaCompraTableClass::FECHA, true) ?>" class="col-sm-2"><?php echo i18n::__('fecha') ?>:</label>     

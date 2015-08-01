@@ -16,30 +16,20 @@ class detalleFacturaVentaBaseTableClass extends tableBaseClass {
  private $valorTotal;
  private $createdAt;
  private $updatedAt;
- private $clienteId;
- private $trabajadorId;
  private $facturaId;
  
 
 
   const ID = 'id';
-  const DESCRIPCION = 'descripcion';
+  const DESCRIPCION = 'producto_insumo_id';
   const CANTIDAD = 'cantidad';
   const VALOR_UNIDAD = 'valor_unidad';
-  const VALOR_TOTAL = 'valor_total';
-  const CLIENTE_ID = 'id_cliente';
-  const TRABAJADOR_ID = 'trabajador_id';
+  const VALOR_TOTAL = 'valor_total';  
   const FACTURA_ID = 'factura_venta_id';
   const CREATED_AT = 'created_at';
   const UPDATED_AT = 'updated_at';
   
-  public function get_trabajadorId() {
-    return $this->trabajadorId;
-  }
-
-  public function set_trabajadorId($trabajadorId) {
-    $this->trabajadorId = $trabajadorId;
-  }
+  
 
     public function getId() {
       return $this->id;
@@ -69,9 +59,7 @@ class detalleFacturaVentaBaseTableClass extends tableBaseClass {
       return $this->updatedAt;
   }
 
-  public function getClienteId() {
-      return $this->clienteId;
-  }
+  
 
   public function getFacturaId() {
       return $this->facturaId;
@@ -105,9 +93,7 @@ class detalleFacturaVentaBaseTableClass extends tableBaseClass {
       $this->updatedAt = $updatedAt;
   }
 
-  public function setClienteId($clienteId) {
-      $this->clienteId = $clienteId;
-  }
+ 
 
   public function setFacturaId($facturaId) {
       $this->facturaId = $facturaId;
