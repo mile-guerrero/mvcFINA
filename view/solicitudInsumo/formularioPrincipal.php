@@ -29,11 +29,17 @@
   <?php endif ?>
   
 <br><br><br><br><br>  
-  
+  <?php  date_default_timezone_set('America/Bogota'); ?> 
+<?php if (session::getInstance()->hasError('selectFechaIni')): ?>
+          <div class="alert alert-danger alert-dismissible" role="alert" id="error">
+            <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('selectFechaIni') ?>
+          </div>
+        <?php endif ?>
   <div class="form-group">
-      <label for="<?php echo solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::FECHA_HORA, true) ?>" class="col-sm-2"><?php echo i18n::__('fecha_M') ?>:</label>     
+      <label for="<?php echo solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::FECHA_HORA, true) ?>" class="col-sm-2"><?php echo i18n::__('fecha') ?>:</label>     
       <div class="col-sm-10">
-   <input  class="form-control" value="<?php echo ((isset($objS)== true) ? date('Y-m-d\Th:m:i',strtotime($objS[0]->$fecha)) : '') ?>" type="datetime-local" name="<?php echo solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::FECHA_HORA, true) ?>">
+   <input  class="form-control" value="<?php echo (session::getInstance()->hasFlash('selectFechaIni') or request::getInstance()->hasPost(solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::FECHA_HORA, true))) ? request::getInstance()->getPost(solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::FECHA_HORA, true)) : ((isset($objS) == true) ? date('Y-m-d\TH:i:s', strtotime($objS[0]->$fecha)) : date('Y-m-d\TH:i:s')) ?>" type="datetime-local" name="<?php echo solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::FECHA_HORA, true) ?>"required readonly>
       </div>
   </div>
   

@@ -31,6 +31,9 @@ class verActionClass extends controllerClass implements controllerActionInterfac
       $fields = array(
           usuarioTableClass::ID,
           usuarioTableClass::USUARIO,
+          usuarioTableClass::NOMBRE_IMAGEN,
+          usuarioTableClass::EXTENCION_IMAGEN,
+          usuarioTableClass::HASH_IMAGEN,
           usuarioTableClass::CREATED_AT,
           usuarioTableClass::UPDATED_AT,
           usuarioTableClass::ACTIVED

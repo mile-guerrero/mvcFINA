@@ -10,7 +10,7 @@ use mvc\session\sessionClass as session ?>
 <?php
 use mvc\request\requestClass as request ?>
 
-<?php $idEmp = pagoTrabajadorTableClass::EMPRESA_ID ?>
+<?php $empresa = pagoTrabajadorTableClass::EMPRESA_ID ?>
 <?php $idEmpresa = empresaTableClass::ID ?>
 <?php $nomEmpresa = empresaTableClass::NOMBRE ?>
 <?php $idTra = trabajadorTableClass::ID ?>
@@ -63,14 +63,14 @@ caja["<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass
           <div class="col-sm-10">
             <select class="form-control" id="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::EMPRESA_ID, true) ?>" name="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::EMPRESA_ID, true) ?>"  required>
               <option value="<?php echo (session::getInstance()->hasFlash('selectEmpresa') or request::getInstance()->hasPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::EMPRESA_ID, true))) ? request::getInstance()->getPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::EMPRESA_ID, true)) : ((isset($objPagoT[0])) ? '' : '') ?>"  ><?php echo i18n::__('selectEmpresa') ?></option>
-              <?php foreach ($objEmpresa as $empresa): ?>
-                <option <?php echo (isset($objPagoT[0]->$idEmp) === true and $objPagoT[0]->$idEmp == $empresa->$idEmpresa) ? 'selected' : '' ?> value="<?php echo $empresa->$idEmpresa ?>"><?php echo $empresa->$nomEmpresa ?></option>
+              <?php foreach ($objEmpresa as $key): ?>
+                <option  <?php echo (request::getInstance()->hasPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::EMPRESA_ID, true)) === true and request::getInstance()->getPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::EMPRESA_ID, true)) == $key->$idEmpresa) ? 'selected' : (isset($objPagoT[0]->$empresa) === true and $objPagoT[0]->$empresa == $key->$idEmpresa) ? 'selected' : '' ?>  value="<?php echo $key->$idEmpresa ?>"><?php echo $key->$nomEmpresa ?></option>
               <?php endforeach; ?>
             </select>
           </div>
         </div>
 
-
+           <?php  date_default_timezone_set('America/Bogota'); ?>  
         <?php if (session::getInstance()->hasError('selectFechaIni')): ?>
           <div class="alert alert-danger alert-dismissible" role="alert" id="error">
             <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -89,10 +89,10 @@ caja["<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass
           <label for="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::FECHA_INICIAL, true) ?>" class="col-sm-2"><?php echo i18n::__('fechaPagoIni') ?>:</label>     
 
           <div class="col-lg-5">
-            <input  class="form-control" value="<?php echo (session::getInstance()->hasFlash('selectFechaIni') or request::getInstance()->hasPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::FECHA_INICIAL, true))) ? request::getInstance()->getPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::FECHA_INICIAL, true)) : ((isset($objPagoT) == true) ? date('Y-m-d\Th:m:i', strtotime($objPagoT[0]->$fechaIni)) : '') ?>" type="datetime-local" name="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::FECHA_INICIAL, true) ?>" required>
+            <input  class="form-control" value="<?php echo (session::getInstance()->hasFlash('selectFechaIni') or request::getInstance()->hasPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::FECHA_INICIAL, true))) ? request::getInstance()->getPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::FECHA_INICIAL, true)) : ((isset($objPagoT) == true) ? date('Y-m-d\TH:i:s', strtotime($objPagoT[0]->$fechaIni)) : date('Y-m-d\TH:i:s')) ?>" type="datetime-local" name="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::FECHA_INICIAL, true) ?>" required readonly>
           </div>
           <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-            <input  class="form-control" value="<?php echo (session::getInstance()->hasFlash('fechaPagoFin') or request::getInstance()->hasPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::FECHA_FINAL, true))) ? request::getInstance()->getPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::FECHA_FINAL, true)) : ((isset($objPagoT) == true) ? date('Y-m-d\Th:m:i', strtotime($objPagoT[0]->$fechaFin)) : '') ?>" type="datetime-local" name="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::FECHA_FINAL, true) ?>" required>
+            <input  class="form-control" value="<?php echo (session::getInstance()->hasFlash('fechaPagoFin') or request::getInstance()->hasPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::FECHA_FINAL, true))) ? request::getInstance()->getPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::FECHA_FINAL, true)) : ((isset($objPagoT) == true) ? date('Y-m-d\TH:i:s', strtotime($objPagoT[0]->$fechaFin)) : date('Y-m-d\TH:i:s')) ?>" type="datetime-local" name="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::FECHA_FINAL, true) ?>" required>
 
           </div>
         </div>
@@ -113,8 +113,8 @@ caja["<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass
           <div class="col-sm-10">
             <select class="form-control" id="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::TRABAJADOR_ID, true) ?>" name="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::TRABAJADOR_ID, true) ?>" required >
               <option value="<?php echo (session::getInstance()->hasFlash('selectTrabajador') or request::getInstance()->hasPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::TRABAJADOR_ID, true))) ? request::getInstance()->getPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::TRABAJADOR_ID, true)) : ((isset($objPagoT[0])) ? '' : '') ?>" ><?php echo i18n::__('selectTrabajador') ?></option>
-              <?php foreach ($objT as $trabajador): ?>
-                <option <?php echo (isset($objPagoT[0]->$idTrabajador) === true and $objPagoT[0]->$idTrabajador == $trabajador->$idTra) ? 'selected' : '' ?> value="<?php echo $trabajador->$idTra ?>"><?php echo $trabajador->$nomTrabajador ?></option>
+              <?php foreach ($objT as $key): ?>
+                <option <?php echo (request::getInstance()->hasPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::EMPRESA_ID, true)) === true and request::getInstance()->getPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::EMPRESA_ID, true)) == $key->$idTra) ? 'selected' : (isset($objPagoT[0]->$idTrabajador) === true and $objPagoT[0]->$idTrabajador == $key->$idTra) ? 'selected' : '' ?> value="<?php echo $key->$idTra ?>"><?php echo $key->$nomTrabajador ?></option>
               <?php endforeach; ?>
             </select>
           </div>
@@ -188,7 +188,7 @@ caja["<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass
         <div class="form-group">
           <label for="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::TOTAL_PAGAR, true) ?>" class="col-sm-2"><?php echo i18n::__('totalPagar') ?>:</label>     
           <div class="col-sm-10">
-            <input  class="form-control" value="<?php echo  (session::getInstance()->hasFlash('inputTotal') or request::getInstance()->hasPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::TOTAL_PAGAR, true))) ? request::getInstance()->getPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::TOTAL_PAGAR, true)) : ((isset($objPagoT[0])) ? $objPagoT[0]->$total : '') ?>" type="text" name="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::TOTAL_PAGAR, true) ?>" placeholder="<?php echo i18n::__('total') ?>" required>
+            <input  class="form-control" value="<?php echo  (session::getInstance()->hasFlash('inputTotal') or request::getInstance()->hasPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::TOTAL_PAGAR, true))) ? request::getInstance()->getPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::TOTAL_PAGAR, true)) : ((isset($objPagoT[0])) ? $objPagoT[0]->$total : '') ?>" type="text" name="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::TOTAL_PAGAR, true) ?>" placeholder="<?php echo i18n::__('total') ?>" required readonly>
           </div>
         </div>
 

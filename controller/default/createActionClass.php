@@ -33,24 +33,46 @@ class createActionClass extends controllerClass implements controllerActionInter
         $password = request::getInstance()->getPost(usuarioTableClass::getNameField(usuarioTableClass::PASSWORD, true). '_1');
         $password2 = request::getInstance()->getPost(usuarioTableClass::getNameField(usuarioTableClass::PASSWORD, true). '_2');
           
+       $file = request::getInstance()->getFile(usuarioTableClass::getNameField(usuarioTableClass::NOMBRE_IMAGEN, true));
+         
         validator::validateInsert();
 //        $this->validate($usuario,$password,$password2);
-        
+        $long = -3;
+        $ext = substr($file['name'], $long);
+        if ($ext == 'JPG' or $ext =='jpg') {
+              $ext = 'jpg';
+             }
+        $sizeKB = $file['size'] / 1024;
+        $hashImagen = md5($file['name'] . strtotime(date(config::getFormatTimestamp()))) . '.' . $ext;
+
+
+        if ($ext == "jpg" || $ext == "JPG" || $ext == "gif" || $ext == "png") {
+          if (move_uploaded_file($file['tmp_name'], config::getPathAbsolute() . 'web/imgUsuario/' . $hashImagen) && ($sizeKB < 2048)) {
+            
+            //$extencion = substr($file['name'], $long);
+            $hash = $file['type'];
         $data = array(
             usuarioTableClass::USUARIO => $usuario,
-            usuarioTableClass::PASSWORD => md5($password),
-            '__sequence' => 'usuario_id_seq'
+            usuarioTableClass::NOMBRE_IMAGEN => $file['name'],
+            usuarioTableClass::EXTENCION_IMAGEN => $ext,
+            usuarioTableClass::HASH_IMAGEN => $hashImagen,
+            usuarioTableClass::PASSWORD => md5($password)
         );
-       $id = usuarioTableClass::insert($data);        
-        session::getInstance()->setSuccess('El registro fue Exitoso');
-        $observacion ='se ha insertando un nuevo usuario';
-        log::register('Insertar', usuarioTableClass::getNameTable(),$observacion,$id);
+       usuarioTableClass::insert($data);
+       session::getInstance()->setSuccess('El Registro Fue Exitoso ');
         routing::getInstance()->redirect('default', 'index');
-      } //cierre del POST 
-       else {
-        routing::getInstance()->redirect('default', 'index');
-      }//cierre del else
-    }//cierre del try
+      } else {
+          //  validator::validateEdit();
+              session::getInstance()->setError('El archivo sobre pasa el peso minimo requerido', 'inputImagen');
+              routing::getInstance()->forward('default', 'insert');
+          }
+        } else {
+          session::getInstance()->setError('No es un tipo de archivo válido', 'inputImagen');
+          routing::getInstance()->forward('default', 'insert');
+    }
+    
+        }
+      }
       catch (PDOException $exc) {
       echo $exc->getMessage();
       echo '<br>';

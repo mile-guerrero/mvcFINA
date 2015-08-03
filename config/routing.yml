@@ -126,7 +126,8 @@ default_ver:
   param:  { module: default, action: ver, format: html }
   load:
     - model/base/usuarioBaseTableClass.php
-    - model/usuarioTableClass.php  
+    - model/usuarioTableClass.php 
+    
     
 default_reporte:
   url:    /usuario/reporte
@@ -1056,6 +1057,7 @@ productoInsumo_index:
     - model/unidadMedidaTableClass.php
     - model/base/tipoProductoInsumoBaseTableClass.php
     - model/tipoProductoInsumoTableClass.php
+    - libs/validator/productoInsumo/productoInsumoValidatorClass.php
     
 productoInsumo_insert:
   url:    /productoInsumo/insertar

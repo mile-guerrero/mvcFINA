@@ -40,7 +40,7 @@
                         </tr>
                         <tr> 
                             <td><?php echo $factura->$idFactura ?></td>                 
-                            <td><?php echo $factura->$fecha ?></td>
+                            <td><?php echo  $factura->$fecha ?></td>
                             <td><?php echo proveedorTableClass::getNameProveedor($factura->$idProveedor) ?></td>
                         </tr>
                     </tbody>

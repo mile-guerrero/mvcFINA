@@ -26,11 +26,6 @@ namespace mvc\validator {
         $flag = true;
         session::getInstance()->setFlash('inputNombre', true);
         session::getInstance()->setError('El nombre de la cooperativa es requerido', 'inputNombre');
-      } //----solo permitir letras----
-        else if (!preg_match($soloLetras, (request::getInstance()->getPost(\cooperativaTableClass::getNameField(\cooperativaTableClass::NOMBRE, true))))){
-        $flag = true;
-        session::getInstance()->setFlash('inputNombre', true);
-        session::getInstance()->setError('El nombre no permite numeros, solo letras', 'inputNombre');
       } //----sobre pasar los caracteres----
         else if(strlen(request::getInstance()->getPost(\cooperativaTableClass::getNameField(\cooperativaTableClass::NOMBRE, true))) > \cooperativaTableClass::NOMBRE_LENGTH) {
         $flag = true;
@@ -44,12 +39,7 @@ namespace mvc\validator {
         $flag = true;
         session::getInstance()->setFlash('inputDescripcion', true);
         session::getInstance()->setError('La descripcion es requerido', 'inputDescripcion');
-      } //----solo permitir letras----
-        else if (!preg_match($soloLetras, (request::getInstance()->getPost(\cooperativaTableClass::getNameField(\cooperativaTableClass::DESCRIPCION, true))))){
-        $flag = true;
-        session::getInstance()->setFlash('inputDescripcion', true);
-        session::getInstance()->setError('La descripcion no permite numeros, solo letras', 'inputDescripcion');
-      } //----sobre pasar los caracteres----
+      }  //----sobre pasar los caracteres----
         else if(strlen(request::getInstance()->getPost(\cooperativaTableClass::getNameField(\cooperativaTableClass::DESCRIPCION, true))) > \cooperativaTableClass::DESCRIPCION_LENGTH) {
         $flag = true;
         session::getInstance()->setFlash('inputDescripcion', true);
@@ -119,12 +109,7 @@ namespace mvc\validator {
         $flag = true;
         session::getInstance()->setFlash('inputNombre', true);
         session::getInstance()->setError('El nombre de la cooperativa es requerido', 'inputNombre');
-      } //----solo permitir letras----
-        else if (!preg_match($soloLetras, (request::getInstance()->getPost(\cooperativaTableClass::getNameField(\cooperativaTableClass::NOMBRE, true))))){
-        $flag = true;
-        session::getInstance()->setFlash('inputNombre', true);
-        session::getInstance()->setError('El documento no permite numeros, solo letras', 'inputNombre');
-      } //----sobre pasar los caracteres----
+      }  //----sobre pasar los caracteres----
         else if(strlen(request::getInstance()->getPost(\cooperativaTableClass::getNameField(\cooperativaTableClass::NOMBRE, true))) > \cooperativaTableClass::NOMBRE_LENGTH) {
         $flag = true;
         session::getInstance()->setFlash('inputNombre', true);
@@ -137,12 +122,7 @@ namespace mvc\validator {
         $flag = true;
         session::getInstance()->setFlash('inputDescripcion', true);
         session::getInstance()->setError('El nombre de la descripcion es requerido', 'inputDescripcion');
-      } //----solo permitir letras----
-        else if (!preg_match($soloLetras, (request::getInstance()->getPost(\cooperativaTableClass::getNameField(\cooperativaTableClass::DESCRIPCION, true))))){
-        $flag = true;
-        session::getInstance()->setFlash('inputDescripcion', true);
-        session::getInstance()->setError('El documento no permite numeros, solo letras', 'inputDescripcion');
-      } //----sobre pasar los caracteres----
+      }  //----sobre pasar los caracteres----
         else if(strlen(request::getInstance()->getPost(\cooperativaTableClass::getNameField(\cooperativaTableClass::DESCRIPCION, true))) > \cooperativaTableClass::DESCRIPCION_LENGTH) {
         $flag = true;
         session::getInstance()->setFlash('inputDescripcion', true);

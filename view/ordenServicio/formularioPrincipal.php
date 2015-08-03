@@ -30,11 +30,17 @@
    <br><br><br><br>
     
   
-  
+   <?php  date_default_timezone_set('America/Bogota'); ?>  
+        <?php if (session::getInstance()->hasError('selectFechaIni')): ?>
+          <div class="alert alert-danger alert-dismissible" role="alert" id="error">
+            <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('selectFechaIni') ?>
+          </div>
+        <?php endif ?>
   <div class="form-group">
-      <label for="<?php echo ordenServiciotableClass::getNameField(ordenServicioTableClass::FECHA_MANTENIMIENTO, true) ?>" class="col-sm-2"> <?php echo i18n::__('fecha_M') ?>:</label>     
+      <label for="<?php echo ordenServiciotableClass::getNameField(ordenServicioTableClass::FECHA_MANTENIMIENTO, true) ?>" class="col-sm-2"> <?php echo i18n::__('fecha') ?>:</label>     
       <div class="col-sm-10">
-   <input  class="form-control" value="<?php echo ((isset($objOS)== true) ? date('Y-m-d\Th:m:i',strtotime($objOS[0]->$fecha)) : '') ?>" type="datetime-local" name="<?php echo ordenServicioTableClass::getNameField(ordenServicioTableClass::FECHA_MANTENIMIENTO, true) ?>">
+   <input  class="form-control" value="<?php echo (session::getInstance()->hasFlash('selectFechaIni') or request::getInstance()->hasPost(ordenServicioTableClass::getNameField(ordenServicioTableClass::FECHA_MANTENIMIENTO, true))) ? request::getInstance()->getPost(ordenServicioTableClass::getNameField(ordenServicioTableClass::FECHA_MANTENIMIENTO, true)) : ((isset($objOS) == true) ? date('Y-m-d\TH:i:s', strtotime($objOS[0]->$fecha)) : date('Y-m-d\TH:i:s')) ?>" type="datetime-local" name="<?php echo ordenServicioTableClass::getNameField(ordenServicioTableClass::FECHA_MANTENIMIENTO, true) ?>"required readonly>
       </div>
   </div>
   
@@ -126,7 +132,7 @@
   <input  class="btn btn-lg btn-success btn-xs" type="submit" value="<?php echo i18n::__(((isset($objOS)) ? 'update' : 'register')) ?>">
 <a class="btn btn-lg btn-default btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('ordenServicio', 'index') ?>" ><?php echo i18n::__('atras') ?> </a>
 
- <br><br><br>
+ <br><br><br><br><br>
     </form>
   </div>
 </div>

@@ -25,7 +25,7 @@ class maquinaBaseTableClass extends tableBaseClass {
   const NOMBRE = 'nombre';
   const NOMBRE_LENGTH = 80;
   const DESCRIPCION = 'descripcion';
-  const DESCRIPCION_LENGTH = 80;
+  const DESCRIPCION_LENGTH = 400;
   const TIPO_USO_ID = 'id_tipo_uso';
   const ORIGEN_MAQUINA = 'origen_maquina';
   const ORIGEN_MAQUINA_LENGTH = 80;

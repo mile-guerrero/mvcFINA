@@ -11,7 +11,7 @@ class credencialBaseTableClass extends tableBaseClass {
 
   const ID = 'id';
   const NOMBRE = 'nombre';
-  const NOMBRE_LENGTH = 20;
+  const NOMBRE_LENGTH = 80;
   const CREATED_AT = 'created_at';
   const UPDATED_AT = 'updated_at';
   const DELETED_AT = 'deleted_at';

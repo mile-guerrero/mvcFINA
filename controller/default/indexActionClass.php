@@ -49,6 +49,9 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       $fields = array(
           usuarioTableClass::ID,
           usuarioTableClass::USUARIO,
+          usuarioTableClass::NOMBRE_IMAGEN,
+          usuarioTableClass::HASH_IMAGEN,
+          usuarioTableClass::EXTENCION_IMAGEN,
           usuarioTableClass::PASSWORD,
           usuarioTableClass::CREATED_AT,
           usuarioTableClass::ACTIVED

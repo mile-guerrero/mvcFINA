@@ -67,11 +67,11 @@ class updateProductoInsumoActionClass extends controllerClass implements control
           } else {
           //  validator::validateEdit();
               session::getInstance()->setError('El archivo sobre pasa el peso minimo requerido', 'inputImagen');
-              routing::getInstance()->forward('productoInsumo', 'insertProductoInsumo');
+              routing::getInstance()->forward('productoInsumo', 'editProductoInsumo');
           }
         } else {
           session::getInstance()->setError('No es un tipo de archivo válido', 'inputImagen');
-          routing::getInstance()->forward('productoInsumo', 'insertProductoInsumo');
+          routing::getInstance()->forward('productoInsumo', 'editProductoInsumo');
         }
         
       }

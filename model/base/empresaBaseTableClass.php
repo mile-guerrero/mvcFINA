@@ -20,9 +20,9 @@ class empresaBaseTableClass extends tableBaseClass {
 
   const ID = 'id';
   const NOMBRE = 'nombre';
-  const NOMBRE_LENGTH = 60;
+  const NOMBRE_LENGTH = 80;
   const DIRECCION = 'direccion';
-  const DIRECCION_LENGTH = 15;
+  const DIRECCION_LENGTH = 400;
   const TELEFONO = 'telefono';
   const TELEFONO_LENGTH = 12;
   const EMAIL = 'email';

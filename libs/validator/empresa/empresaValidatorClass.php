@@ -25,11 +25,6 @@ namespace mvc\validator {
         $flag = true;
         session::getInstance()->setFlash('inputNombre', true);
         session::getInstance()->setError('El nombre de la empresa es requerido', 'inputNombre');
-      } //----solo permitir letras----
-        else if (!preg_match($soloLetras, (request::getInstance()->getPost(\empresaTableClass::getNameField(\empresaTableClass::NOMBRE, true))))){
-        $flag = true;
-        session::getInstance()->setFlash('inputNombre', true);
-        session::getInstance()->setError('El nombre no permite numeros, solo letras', 'inputNombre');
       } //----sobre pasar los caracteres----
         else if(strlen(request::getInstance()->getPost(\empresaTableClass::getNameField(\empresaTableClass::NOMBRE, true))) > \empresaTableClass::NOMBRE_LENGTH) {
         $flag = true;
@@ -108,12 +103,7 @@ namespace mvc\validator {
         $flag = true;
         session::getInstance()->setFlash('inputNombre', true);
         session::getInstance()->setError('El nombre de la empresa es requerido', 'inputNombre');
-      } //----solo permitir letras----
-        else if (!preg_match($soloLetras, (request::getInstance()->getPost(\empresaTableClass::getNameField(\empresaTableClass::NOMBRE, true))))){
-        $flag = true;
-        session::getInstance()->setFlash('inputNombre', true);
-        session::getInstance()->setError('El nombre no permite numeros, solo letras', 'inputNombre');
-      } //----sobre pasar los caracteres----
+      }  //----sobre pasar los caracteres----
         else if(strlen(request::getInstance()->getPost(\empresaTableClass::getNameField(\empresaTableClass::NOMBRE, true))) > \empresaTableClass::NOMBRE_LENGTH) {
         $flag = true;
         session::getInstance()->setFlash('inputNombre', true);

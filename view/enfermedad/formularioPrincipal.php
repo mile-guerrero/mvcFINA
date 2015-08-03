@@ -70,8 +70,8 @@
 
 
 
-      <input class="btn btn-lg btn-primary btn-xs" type="submit" value="<?php echo i18n::__(((isset($objEnfermedad)) ? 'update' : 'register')) ?>">
-      <a class="btn btn-lg btn-danger btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('enfermedad', 'index') ?>" ><?php echo i18n::__('atras') ?> </a>
+      <input class="btn btn-lg btn-success btn-xs" type="submit" value="<?php echo i18n::__(((isset($objEnfermedad)) ? 'update' : 'register')) ?>">
+      <a class="btn btn-lg btn-default btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('enfermedad', 'index') ?>" ><?php echo i18n::__('atras') ?> </a>
 
       <br><br><br>   <br><br><br><br>
     </form>

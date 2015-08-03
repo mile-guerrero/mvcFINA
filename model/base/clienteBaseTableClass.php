@@ -29,7 +29,7 @@ class clienteBaseTableClass extends tableBaseClass {
   const DOCUMENTO = 'documento';
   const DOCUMENTO_LENGTH = 15;
   const DIRECCION = 'direccion';
-  const DIRECCION_LENGTH = 80;
+  const DIRECCION_LENGTH = 400;
   const TELEFONO = 'telefono';
   const TELEFONO_LENGTH = 10;
   const ID_TIPO_ID = 'id_tipo_id';

@@ -33,7 +33,15 @@ class updateActionClass extends controllerClass implements controllerActionInter
         $total = request::getInstance()->getPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::TOTAL_PAGAR, true));
 
         validator::validateUpdate();
-        
+        if($fecha_fin < $fecha_ini){
+                session::getInstance()->setFlash('selectFechaIni', true);
+                session::getInstance()->setError('La fecha final no puede ser menor a la actual', 'selectFechaIni');
+                routing::getInstance()->forward('pagoTrabajador', 'insert');
+            }elseif($fecha_fin == $fecha_ini){
+                session::getInstance()->setFlash('selectFechaIni', true);
+                session::getInstance()->setError('La fecha final es igual a la actual', 'selectFechaIni');
+                routing::getInstance()->forward('pagoTrabajador', 'insert');
+            }
         $ids = array(
             pagoTrabajadorTableClass::ID => $id
         );

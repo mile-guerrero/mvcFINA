@@ -158,6 +158,9 @@ CREATE TABLE usuario
 	password VARCHAR(32) NOT NULL,
 	actived BOOL DEFAULT 't' NOT NULL,
 	last_login_at TIMESTAMP NULL,
+	nombreImagen VARCHAR(400)  NULL,
+	extencionImagen VARCHAR(5)  NULL,
+	hashImagen VARCHAR(37)  NULL,
 	created_at TIMESTAMP DEFAULT now() NOT NULL,
 	updated_at TIMESTAMP DEFAULT now() NOT NULL,
 	deleted_at TIMESTAMP NULL

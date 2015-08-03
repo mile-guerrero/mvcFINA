@@ -27,7 +27,7 @@ class loteBaseTableClass extends tableBaseClass {
 
   const ID = 'id';
   const UBICACION = 'ubicacion';
-  const UBICACION_LENGTH = 60;
+  const UBICACION_LENGTH = 400;
   const TAMANO = 'tamano';
   const TAMANO_LENGTH = 30;
   const PRODUCCION = 'produccion';
@@ -35,7 +35,7 @@ class loteBaseTableClass extends tableBaseClass {
   const UNIDAD_DISTANCIA_ID = 'unidad_distancia_id';  
   const UNIDAD_MEDIDA_ID = 'unidad_medida_id'; 
   const DESCRIPCION = 'descripcion';
-  const DESCRIPCION_LENGTH = 80;
+  const DESCRIPCION_LENGTH = 400;
   const FECHA_INICIO_SIEMBRA = 'fecha_inicio_siembra';
   const NUMERO_PLANTULAS = 'numero_plantulas';
   const NUMERO_PLANTULAS_LENGTH = 30;

@@ -137,7 +137,7 @@ caja["<?php echo manoObraTableClass::getNameField(manoObraTableClass::TOTAL, tru
 <div class="form-group">
           <label for="<?php echo manoObraTableClass::getNameField(manoObraTableClass::TOTAL, true) ?>" class="col-sm-2"><?php echo i18n::__('totalPagar') ?>:</label>     
           <div class="col-sm-10">
-            <input  class="form-control" value="<?php echo  (session::getInstance()->hasFlash('inputTotal') or request::getInstance()->hasPost(manoObraTableClass::getNameField(manoObraTableClass::TOTAL, true))) ? request::getInstance()->getPost(manoObraTableClass::getNameField(manoObraTableClass::TOTAL, true)) : ((isset($objManoObra[0])) ? $objManoObra[0]->$total : '') ?>" type="text" name="<?php echo manoObraTableClass::getNameField(manoObraTableClass::TOTAL, true) ?>" placeholder="<?php echo i18n::__('total') ?>" required>
+            <input  class="form-control" value="<?php echo  (session::getInstance()->hasFlash('inputTotal') or request::getInstance()->hasPost(manoObraTableClass::getNameField(manoObraTableClass::TOTAL, true))) ? request::getInstance()->getPost(manoObraTableClass::getNameField(manoObraTableClass::TOTAL, true)) : ((isset($objManoObra[0])) ? $objManoObra[0]->$total : '') ?>" type="text" name="<?php echo manoObraTableClass::getNameField(manoObraTableClass::TOTAL, true) ?>" placeholder="<?php echo i18n::__('total') ?>" required readonly>
           </div>
         </div>
  

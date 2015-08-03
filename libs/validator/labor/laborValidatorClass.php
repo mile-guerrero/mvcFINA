@@ -27,12 +27,7 @@ namespace mvc\validator {
         $flag = true;
         session::getInstance()->setFlash('inputDescripcion', true);
         session::getInstance()->setError('La descripcion es requerido', 'inputDescripcion');
-      } //----solo permitir letras----
-        else if (!preg_match($soloLetras, (request::getInstance()->getPost(\laborTableClass::getNameField(\laborTableClass::DESCRIPCION, true))))){
-        $flag = true;
-        session::getInstance()->setFlash('inputDescripcion', true);
-        session::getInstance()->setError('El documento no permite numeros, solo letras', 'inputDescripcion');
-      } //----sobre pasar los caracteres----
+      }  //----sobre pasar los caracteres----
         else if(strlen(request::getInstance()->getPost(\laborTableClass::getNameField(\laborTableClass::DESCRIPCION, true))) > \laborTableClass::DESCRIPCION_LENGTH) {
         $flag = true;
         session::getInstance()->setFlash('inputDescripcion', true);
@@ -80,11 +75,6 @@ namespace mvc\validator {
         $flag = true;
         session::getInstance()->setFlash('inputDescripcion', true);
         session::getInstance()->setError('La descripcion es requerido', 'inputDescripcion');
-      } //----solo permitir letras----
-        else if (!preg_match($soloLetras, (request::getInstance()->getPost(\laborTableClass::getNameField(\laborTableClass::DESCRIPCION, true))))){
-        $flag = true;
-        session::getInstance()->setFlash('inputDescripcion', true);
-        session::getInstance()->setError('El documento no permite numeros, solo letras', 'inputDescripcion');
       } //----sobre pasar los caracteres----
         else if(strlen(request::getInstance()->getPost(\laborTableClass::getNameField(\laborTableClass::DESCRIPCION, true))) > \laborTableClass::DESCRIPCION_LENGTH) {
         $flag = true;

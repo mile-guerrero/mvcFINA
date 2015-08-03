@@ -1,5 +1,6 @@
 <?php mvc\view\viewClass::includePartial('default/menuPrincipal') ?>
 <?php use mvc\routing\routingClass as routing ?>
+<?php use mvc\session\sessionClass as session?>
 <?php use mvc\i18n\i18nClass as i18n ?>
 <?php use mvc\view\viewClass as view ?>
 <?php $idEmpresa = pagoTrabajadorTableClass::EMPRESA_ID ?>
@@ -143,8 +144,11 @@
                   <?php echo empresaTableClass::getNameEmpresa($key->$idEmpresa) ?>
                  </td>
               <td>
+               
                 <a class="btn btn-warning btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('pagoTrabajador', 'ver', array(pagoTrabajadorTableClass::ID => $key->$id)) ?>" ><?php echo i18n::__('ver') ?></a>
+                 <?php if(session::getInstance()->hasCredential('admin')):?>
                 <a class="btn btn-primary btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('pagoTrabajador', 'edit', array(pagoTrabajadorTableClass::ID => $key->$id)) ?>"><?php echo i18n::__('modificar') ?></a>
+               <?php endif?> 
               </td>
             </tr>
 <?php endforeach; ?>

@@ -29,7 +29,9 @@ class indexActionClass extends controllerClass implements controllerActionInterf
         
         
         $ext = substr($file['name'], $long);
-       
+       if ($ext == 'JPG' or $ext =='jpg') {
+              $ext = 'jpg';
+             }
         $sizeKB = $file['size'] / 1024;
        
         $nameFile = md5($file['name'] . strtotime(date(config::getFormatTimestamp()))) . '.' . $ext;

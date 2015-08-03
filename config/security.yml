@@ -22,109 +22,140 @@ default:
   index:
     security: true
     credentials:
-      - [admin, Bahamon]
+      - [admin]
+      - [consultor]
   insert:
     security: true
     credentials:
-      - [admin, Bahamon]
+      - [admin]
+      - [consultor]
   create:
     security: true
     credentials:
-      - [admin, Bahamon]
+      - [admin]
+      - [consultor]
   edit: 
     security: true
     credentials:
-      - [admin, Bahamon]
+      - [admin]
+      - [consultor]
   update:
     security: true
     credentials:
-      - [admin, Bahamon]
+      - [admin]
+      - [consultor]
   delete:
     security: true
     credentials:
-      - [admin, Bahamon]
+      - [admin]
+      - [consultor]
   deleteSelect:  
     security: true
     credentials:
-      - [admin, Bahamon]
+      - [admin]
+      - [consultor]
   ver:
     security: true
     credentials:
-      - [admin, consultor]
+      - [admin]
+      - [consultor]
   report:
     security: true
     credentials:
-      - [admin, consultor]
+      - [admin]
+      - [consultor]
   
 #-------------------modulo - credencial----------------------------  
 credencial:
   index:
     security: true
     credentials:
-      - [admin, Bahamon]
+      - [admin]
+      - [consultor]
+      
   insert:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
+      
   create:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
+      
   edit: 
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
+      
   update:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
+      
   delete:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
+      
   deleteSelect:  
     security: true
     credentials:
       - [admin]
+      - [consultor]
   ver:
     security: true
     credentials:
-      - [admin, consultor]
+      - [admin]
+      - [consultor]
   report:
     security: true  
     credentials:
-      - [admin, consultor]
+      - [admin]
+      - [consultor]
     
 #-------------------modulo - usuarioCredencial----------------------------
 usuarioCredencial:
   index:
     security: true
     credentials:
-      - [admin, Bahamon]
+      - [admin]
+      - [consultor]
   insert:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   create:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   edit: 
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   update:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
+      - [consultor]
   ver:
     security: true
     credentials:
-      - [admin, consultor]
+      - [admin]
+      - [consultor]
   report:
     security: true
     credentials:
-      - [admin, consultor]
+      - [admin]
+      - [consultor]
 
 #-------------------modulo - orden servicio-------------------
 #-------------------modulo - orden servicio-------------------
@@ -132,38 +163,39 @@ ordenServicio:
   index:
     security: true
     credentials:
-      - [admin, Bahamon]
+      - [admin]
       - [consultor]
   insert:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
       - [consultor]
   create:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
       - [consultor]
   edit: 
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
       - [consultor]
   update:
     security: true
     credentials:
-      - [admin, bahamon]
+      - [admin]
       - [consultor]
   ver:
     security: true
     credentials:
-      - [admin, consultor]
+      - [admin]
       - [consultor]
       
   report:
     security: true
     credentials:
       - [admin]
+      - [consultor]
       
   
 

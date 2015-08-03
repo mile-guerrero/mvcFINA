@@ -6,6 +6,8 @@
  <?php $created_at = usuarioTableClass::CREATED_AT ?>
  <?php $updated_at = usuarioTableClass::UPDATED_AT ?>
   <?php $id = usuarioTableClass::ID ?>
+<?php $hash = usuarioTableClass::HASH_IMAGEN ?>
+<?php $extencion = usuarioTableClass::EXTENCION_IMAGEN ?>
 
 <div class="container container-fluid" id="cuerpo">
   <div class="center-block" id="cuerpo6">
@@ -36,9 +38,16 @@
     
 	<tbody>
               <?php foreach ($objUsuarios as $key): ?>
-                <tr>
-                  <td><?php echo i18n::__('user') ?></td>      
-                  <td><?php echo $key->$usu ?></td>
+      <tr>
+               <td><?php echo $key->$usu ?></td>
+    
+                   <td>
+                   <?php
+              if($key->$extencion == 'jpg'){//para poner icono 
+           echo '<img id="margenImagen" src="' . routing::getInstance()->getUrlImg('../imgUsuario/' . $key->$hash) . '"/>' ;          
+                   }
+                   ?>    
+                  </td>
                   </tr>
                   <tr>
                    <td>fecha creacion</td>                   

@@ -32,7 +32,26 @@ class createActionClass extends controllerClass implements controllerActionInter
         $total = request::getInstance()->getPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::TOTAL_PAGAR, true));
 
         validator::validateInsert();
-
+     
+         if($fecha_fin < $fecha_ini){
+                session::getInstance()->setFlash('selectFechaIni', true);
+                session::getInstance()->setError('La fecha final no puede ser menor a la actual', 'selectFechaIni');
+                routing::getInstance()->forward('pagoTrabajador', 'insert');
+            }elseif($fecha_fin == $fecha_ini){
+                session::getInstance()->setFlash('selectFechaIni', true);
+                session::getInstance()->setError('La fecha final es igual a la actual', 'selectFechaIni');
+                routing::getInstance()->forward('pagoTrabajador', 'insert');
+            }
+//          date_default_timezone_set('America/Bogota');     
+//          echo  date('d-m-Y h:i:s a') . "\n" . '<br>';
+        
+//         if($fecha_fin < $fecha_ini){
+//            echo  'la fecha final no puede ser menor ala actual' .  '<br>';  
+//         } 
+//         if($fecha_fin == $fecha_ini){
+//          echo  'la fecha final es igual ala actual' .  '<br>';
+//         }         
+        
         $data = array(
           pagoTrabajadorTableClass::FECHA_INICIAL => $fecha_ini,
           pagoTrabajadorTableClass::FECHA_FINAL => $fecha_fin,

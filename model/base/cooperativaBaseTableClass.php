@@ -21,11 +21,11 @@ class cooperativaBaseTableClass extends tableBaseClass {
 
   const ID = 'id';
   const NOMBRE = 'nombre';
-  const NOMBRE_LENGTH = 80;
+  const NOMBRE_LENGTH = 400;
   const DESCRIPCION = 'descripcion';
-  const DESCRIPCION_LENGTH = 80;
+  const DESCRIPCION_LENGTH = 400;
   const DIRECCION = 'direccion';
-  const DIRECCION_LENGTH = 80;
+  const DIRECCION_LENGTH = 400;
   const TELEFONO = 'telefono';
   const TELEFONO_LENGTH = 15;
   const ID_CIUDAD = 'id_ciudad';

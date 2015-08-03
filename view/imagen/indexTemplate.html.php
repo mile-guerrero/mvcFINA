@@ -43,7 +43,7 @@
   
     
   <input class="btn btn-lg btn-success btn-xs" type="submit" value="<?php echo i18n::__(((isset($objImagen)) ? 'update' : 'register')) ?>">
-   <a class="btn btn-lg btn-default btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('imagen', 'index') ?>" ><?php echo i18n::__('atras') ?></a>
+   
 <a class="btn btn-lg btn-warning btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('imagen', 'ver') ?>" ><?php echo i18n::__('ver') ?></a>
    
    

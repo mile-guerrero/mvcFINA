@@ -27,8 +27,10 @@
       <?php endif?>
       <a type="button" class="btn  btn-xs" data-toggle="modal" data-target="#myModalFiltres"><img class="img-responsive"  id="imgfiltros" src="" alt=" "><?php echo i18n::__('filtros') ?></a> 
       <a href="<?php echo routing::getInstance()->getUrlWeb('default', 'index') ?>" class="btn  btn-xs" ><img class="img-responsive"  id="imgelifiltro" src="" alt=" "><?php echo i18n::__('eFiltros') ?></a> 
+       <?php if(session::getInstance()->hasCredential('admin')):?>
       <a type="button" class="btn  btn-xs" data-toggle="modal" data-target="#myModalReport" ><img class="img-responsive"  id="imgreporte" src="" alt=" "><?php echo i18n::__('informe') ?></a>          
-    </ul> 
+    <?php endif?>
+       </ul> 
       
       
        <!-- filtros -->

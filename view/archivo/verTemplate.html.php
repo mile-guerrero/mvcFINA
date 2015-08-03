@@ -61,9 +61,10 @@
               <td><?php echo $key->$nom ?></td>
                
               <td><a class="btn btn-lg btn-success btn-xs" href="<?php echo mvc\config\configClass::getUrlBase() . 'uploadArchivo/' . $key->$hash ?>"><?php echo i18n::__('descargar') ?></a> 
-       <a data-toggle="modal" data-target="#myModalDelete<?php echo $key->$id ?>" class="btn btn-danger btn-xs"> <?php echo i18n::__('eliminar') ?></a>
+      <?php if (session::getInstance()->hasCredential('admin')):?>
+                <a data-toggle="modal" data-target="#myModalDelete<?php echo $key->$id ?>" class="btn btn-danger btn-xs"> <?php echo i18n::__('eliminar') ?></a>
                <input type="hidden"   id="idDelete" name="<?php echo archivoTableClass::getNameField(archivoTableClass::ID, true) ?>">
- 
+       <?php endif?>
                </td>
              
             </tr>

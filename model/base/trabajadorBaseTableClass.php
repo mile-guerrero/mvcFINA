@@ -31,7 +31,7 @@ class trabajadorBaseTableClass extends tableBaseClass {
   const DOCUMENTO = 'documento';
   const DOCUMENTO_LENGTH = 15;
   const DIRECCION = 'direccion';
-  const DIRECCION_LENGTH = 30;
+  const DIRECCION_LENGTH = 350;
   const TELEFONO = 'telefono';
   const TELEFONO_LENGTH = 10;
   const EMAIL = 'email';

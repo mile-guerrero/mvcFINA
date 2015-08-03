@@ -6,7 +6,7 @@
 
 <?php use mvc\config\configClass as config ?>
 <?php use mvc\i18n\i18nClass as i18n ?>
-
+<?php $nombre = usuarioTableClass::NOMBRE_IMAGEN ?>
 <?php $idUsuario = usuarioTableClass::ID ?>
 <?php $password = usuarioTableClass::PASSWORD ?>
 
@@ -16,7 +16,7 @@
   
   
 <!--  <article id='derecha'>-->
-<form   class="form-horizontal" role="form" class="form-horizontal" role="form"  method="post" action="<?php echo routing::getInstance()->getUrlWeb('crearUsuario', ((isset($objUsuarios)) ? 'update' : 'create')) ?>">
+<form enctype="multipart/form-data"  class="form-horizontal" role="form" class="form-horizontal" role="form"  method="post" action="<?php echo routing::getInstance()->getUrlWeb('crearUsuario', ((isset($objUsuarios)) ? 'update' : 'create')) ?>">
   <?php if(isset($objUsuarios)==true): ?>
   <input  name="<?php echo usuarioTableClass::getNameField(usuarioTableClass::ID,true) ?>" value="<?php echo $objUsuarios[0]->$idUsuario ?>" type="hidden">
   <?php endif ?>
@@ -24,6 +24,20 @@
   <br><br><br><br>
  
   <br>
+  
+  <?php if(session::getInstance()->hasError('inputImagen')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert" id="error">
+    <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputImagen') ?>
+    </div>
+    <?php endif ?>
+   
+   <div class="form-group">
+      <label for="" class="col-sm-2"> <?php echo i18n::__('subir archivos') ?>:</label>     
+      <div class="col-sm-10">
+               <input class="form-control"  value="<?php echo (session::getInstance()->hasFlash('inputImagen') or request::getInstance()->hasPost(usuarioTableClass::getNameField(usuarioTableClass::NOMBRE_IMAGEN, true))) ? request::getInstance()->getPost(usuarioTableClass::getNameField(usuarioTableClass::NOMBRE_IMAGEN, true)) : ((isset($objUsuarios[0])) ? $objUsuarios[0]->$nombre : '') ?>"  type="file" name="<?php echo usuarioTableClass::getNameField(usuarioTableClass::NOMBRE_IMAGEN, true) ?>" required>
+     </div>
+  </div>
  
   <?php if(session::getInstance()->hasError('inputUsuario')): ?>
   <div class="alert alert-danger alert-dismissible" role="alert" id="error">

@@ -2,6 +2,7 @@
 <?php use mvc\routing\routingClass as routing ?>
 <?php use mvc\i18n\i18nClass as i18n ?>
 <?php use mvc\view\viewClass as view ?>
+<?php use mvc\session\sessionClass as session?>
 <?php $id = ordenServicioTableClass::ID ?>
 <?php $fecha = ordenServicioTableClass::FECHA_MANTENIMIENTO ?>
 <?php $cantidad = ordenServicioTableClass::CANTIDAD ?>
@@ -24,8 +25,10 @@
   <article id='derecha'>
 
     <h1><?php echo i18n::__('orden') ?></h1> 
-    <ul>      
+    <ul> 
+      <?php if(session::getInstance()->hasCredential('admin')):?>
       <a class="btn btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('ordenServicio', 'insert') ?>"><img class="img-responsive"  id="imgnuevo" src="" alt=" "><?php echo i18n::__('nuevo') ?></a> 
+      <?php endif?> 
       <a type="button" class="btn btn-xs" data-toggle="modal" data-target="#myModalFiltres"><img class="img-responsive"  id="imgfiltros" src="" alt=" "><?php echo i18n::__('filtros') ?></a>  
       <a href="<?php echo routing::getInstance()->getUrlWeb('ordenServicio', 'index') ?>" class="btn btn-xs" ><img class="img-responsive"  id="imgelifiltro" src="" alt=" "><?php echo i18n::__('eFiltros') ?></a>             
       <a type="button" class="btn  btn-xs" data-toggle="modal" data-target="#myModalReport" ><img class="img-responsive"  id="imgreporte" src="" alt=" "><?php echo i18n::__('informe') ?></a>
@@ -138,7 +141,9 @@
                  </td>
               <td>
                   <a class="btn btn-warning btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('ordenServicio', 'ver', array(ordenServicioTableClass::ID => $key->$id)) ?>" ><?php echo i18n::__('ver') ?></a>
+                  <?php if(session::getInstance()->hasCredential('admin')):?>
                   <a class="btn btn-primary btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('ordenServicio', 'edit', array(ordenServicioTableClass::ID => $key->$id)) ?>"><?php echo i18n::__('modificar') ?></a>
+                  <?php endif?> 
               </td>
             </tr>
 <?php endforeach; ?>

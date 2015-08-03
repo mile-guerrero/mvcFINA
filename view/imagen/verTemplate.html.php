@@ -63,9 +63,10 @@
                </td>              
                <td>
               <a class="btn btn-lg btn-success btn-xs" href="<?php echo mvc\config\configClass::getUrlBase() . 'uploadImagen/' . $key->$hash ?>"><?php echo i18n::__('descargar') ?></a> 
+              <?php if (session::getInstance()->hasCredential('admin')):?>
               <a data-toggle="modal" data-target="#myModalDelete<?php echo $key->$id ?>" class="btn btn-danger btn-xs"> <?php echo i18n::__('eliminar') ?></a>
                <input type="hidden"   id="idDelete" name="<?php echo imagenTableClass::getNameField(imagenTableClass::ID, true) ?>">
- 
+ <?php endif?>
                </td>
              
             </tr>
@@ -101,7 +102,7 @@
         </select> <?php echo i18n::__('de') ?> <?php echo $cntPages ?>
       </div>
   </div>
-    <br><br> <br><br> <br><br> <br><br>
+    <br><br> <br><br> <br><br> <br><br><br><br>
 </div>
   
  </div>

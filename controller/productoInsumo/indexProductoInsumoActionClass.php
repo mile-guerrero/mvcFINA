@@ -6,6 +6,7 @@ use mvc\config\configClass as config;
 use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
+use mvc\validator\productoInsumoValidatorClass as validator;
 use mvc\i18n\i18nClass as i18n;
 
 /**
@@ -21,14 +22,34 @@ class indexProductoInsumoActionClass extends controllerClass implements controll
       if(request::getInstance()->hasPost('filter')){
       $filter = request::getInstance()->getPost('filter');
       //validar
+      $flag = false;
+      if (request::getInstance()->hasPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::DESCRIPCION, true)) and empty(mvc\request\requestClass::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::DESCRIPCION, true))) === false) {
+   
+        if (request::getInstance()->isMethod('POST')) { 
+        $descripcion = request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::DESCRIPCION, true));
+        validator::validateFiltro();
+        $this->flag = true;
+       //if (strlen( $descripcion) > productoInsumoTableClass::DESCRIPCION_LENGTH)  {
+         //session::getInstance()->setError('La descripcion excede la cantidad maxima de caracteres');
+//          session::getInstance()->setFlash('inputDescripcion', true);
+//          session::getInstance()->setError('La descripcion digitada es mayor en cantidad de caracteres a lo permitido', 'inputDescripcion');
+//          routing::getInstance()->redirect('productoInsumo', 'indexProductoInsumo');
+//           $this->flag = true;
+//        } else{ 
+//          $this->flag = false;
+//          }  
+        
+        
+        if(isset($descripcion) and $descripcion !== null and $descripcion !== ""){
+        $where[] = '(' . productoInsumoTableClass::getNameField(productoInsumoTableClass::DESCRIPCION) . ' LIKE ' . '\'' . $descripcion . '%\'  '
+              . 'OR ' . productoInsumoTableClass::getNameField(productoInsumoTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $descripcion . '%\' '
+              . 'OR ' . productoInsumoTableClass::getNameField(productoInsumoTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $descripcion.'\') ';       
+              }   
+      }
       
-      
+        }
       //fin validaciones
-      if(isset($filter['descripcion']) and $filter['descripcion'] !== null and $filter['descripcion'] !== ""){
-        $where[] = '(' . productoInsumoTableClass::getNameField(productoInsumoTableClass::DESCRIPCION) . ' LIKE ' . '\'' . $filter['descripcion'] . '%\'  '
-              . 'OR ' . productoInsumoTableClass::getNameField(productoInsumoTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $filter['descripcion'] . '%\' '
-              . 'OR ' . productoInsumoTableClass::getNameField(productoInsumoTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $filter['descripcion'].'\') ';       
-              }              
+                
      
       if((isset($filter['fechaIni']) and $filter['fechaIni'] !== null and $filter['fechaIni'] !== "") and (isset($filter['fechaFin']) and $filter['fechaFin'] !== null and $filter['fechaFin'] !== "" )){
         $where[productoInsumoTableClass::CREATED_AT] = array(

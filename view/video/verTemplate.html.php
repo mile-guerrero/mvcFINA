@@ -46,7 +46,7 @@
           // echo '<img id="margenImagen" src="' . routing::getInstance()->getUrlImg('../uploadVideo/' . $key->$hash) . '"/>' ;          
    //echo '<embed src="'. '../uploadVideo/' . $key->$hash .'" width="100" height="150" autostart="true" loop="true" />';
        
-     //echo '<video src="'. $key->$hash .'" type="video/mp4" width="320" height="240" />';
+     
      echo '<video id="" preload="auto" controls width="320" height="240">
            <source src="'. \mvc\config\configClass::getUrlBase() . 'uploadVideo/' . $key->$hash .'" type="video/mp4" />
            HTML5 Video not supported
@@ -62,9 +62,10 @@
                </td>              
                <td>
               <a class="btn btn-lg btn-success btn-xs" href="<?php echo mvc\config\configClass::getUrlBase() . 'uploadVideo/' . $key->$hash ?>"><?php echo i18n::__('descargar') ?></a> 
+               <?php if (session::getInstance()->hasCredential('admin')):?>
               <a data-toggle="modal" data-target="#myModalDelete<?php echo $key->$id ?>" class="btn btn-danger btn-xs"> <?php echo i18n::__('eliminar') ?></a>
                <input type="hidden"   id="idDelete" name="<?php echo videoTableClass::getNameField(videoTableClass::ID, true) ?>">
- 
+ <?php endif?>
                </td>
              
             </tr>
@@ -102,7 +103,7 @@
       </div>
   
 </div>
-   <br><br> <br><br> <br><br> <br>
+   <br><br> <br><br> <br><br> <br><br><br>
 </div>
   
  </div>

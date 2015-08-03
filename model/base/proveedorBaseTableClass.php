@@ -23,13 +23,13 @@ class proveedorBaseTableClass extends tableBaseClass {
 
   const ID = 'id';
   const NOMBREP = 'nombrep';
-  const NOMBREP_LENGTH = 60;
+  const NOMBREP_LENGTH = 80;
   const APELLIDO = 'apellido';
-  const APELLIDO_LENGTH = 60;
+  const APELLIDO_LENGTH = 80;
   const DOCUMENTO = 'documento';
   const DOCUMENTO_LENGTH = 15;
   const DIRECCION = 'direccion';
-  const DIRECCION_LENGTH = 15;
+  const DIRECCION_LENGTH = 350;
   const TELEFONO = 'telefono';
   const TELEFONO_LENGTH = 10;
   const EMAIL = 'email';

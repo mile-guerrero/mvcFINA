@@ -27,7 +27,7 @@ class productoInsumoBaseTableClass extends tableBaseClass {
   const UPDATED_AT = 'updated_at';
   const DELETED_AT = 'deleted_at';
   const DESCRIPCION = 'descripcion';
-  const DESCRIPCION_LENGTH = 80;
+  const DESCRIPCION_LENGTH = 400;
   const NOMBRE_IMAGEN = 'nombreimagen';
   const NOMBRE_IMAGEN_LENGTH = 400;
   const EXTENCION_IMAGEN = 'extencionimagen';

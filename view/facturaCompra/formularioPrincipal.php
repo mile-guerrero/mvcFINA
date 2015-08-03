@@ -20,6 +20,21 @@
     
     <br><br><br><br><br>
     
+     <?php  date_default_timezone_set('America/Bogota'); ?>  
+        <?php if (session::getInstance()->hasError('selectFechaIni')): ?>
+          <div class="alert alert-danger alert-dismissible" role="alert" id="error">
+            <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('selectFechaIni') ?>
+          </div>
+        <?php endif ?>
+    
+     <div class="form-group">
+       <label for="<?php echo facturaCompraTableClass::getNameField(facturaCompraTableClass::FECHA, true) ?>" class="col-sm-2"><?php echo i18n::__('fecha') ?>:</label>     
+      <div class="col-sm-10">
+   <input  class="form-control" value="<?php echo (session::getInstance()->hasFlash('fechaPagoFin') or request::getInstance()->hasPost(facturaCompraTableClass::getNameField(facturaCompraTableClass::FECHA, true))) ? request::getInstance()->getPost(facturaCompraTableClass::getNameField(facturaCompraTableClass::FECHA, true)) : ((isset($objFactura) == true) ? date('Y-m-d\TH:i:s', strtotime($objFactura[0]->$fecha)) : date('Y-m-d\TH:i:s')) ?>" type="datetime-local" name="<?php echo facturaCompraTableClass::getNameField(facturaCompraTableClass::FECHA, true) ?>"required readonly>
+      </div>
+  </div>
+    
     <?php if(session::getInstance()->hasError('selectProveedor')): ?>
     <div class="alert alert-danger alert-dismissible" role="alert">
       <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -32,7 +47,7 @@
       <div class="form-group">
       <label for="<?php echo facturaCompraTableClass::getNameField(facturaCompraTableClass::PROVEEDOR_ID, true) ?>" class="col-sm-2">  <?php echo i18n::__('proveedor') ?>:   </label>
       <div class="col-sm-10"> 
-    <select class="form-control" id="<?php facturaCompraTableClass::getNameField(facturaCompraTableClass::PROVEEDOR_ID, true)?>" name="<?php echo facturaCompraTableClass::getNameField(facturaCompraTableClass::PROVEEDOR_ID, true);?>">
+    <select class="form-control" id="<?php facturaCompraTableClass::getNameField(facturaCompraTableClass::PROVEEDOR_ID, true)?>" name="<?php echo facturaCompraTableClass::getNameField(facturaCompraTableClass::PROVEEDOR_ID, true);?>"required>
         <option value="<?php echo (session::getInstance()->hasFlash('selectProveedor') or request::getInstance()->hasPost(facturaCompraTableClass::getNameField(facturaCompraTableClass::PROVEEDOR_ID, true))) ? request::getInstance()->getPost(facturaCompraTableClass::getNameField(facturaCompraTableClass::TRABAJADOR_ID, true)) : ((isset($objFactura[0])) ? '' : '') ?>"><?php echo i18n::__('selectProveedor') ?></option>
        <?php foreach($objProveedor as $key):?>
       <option <?php echo (request::getInstance()->hasPost(facturaCompraTableClass::getNameField(facturaCompraTableClass::PROVEEDOR_ID, true)) === true and request::getInstance()->getPost(facturaCompraTableClass::getNameField(facturaCompraTableClass::PROVEEDOR_ID, true)) == $key->$idProveedor) ? 'selected' : (isset($objFactura[0]->$proveedor) === true and $objFactura[0]->$proveedor == $key->$idProveedor) ? 'selected' : '' ?> value="<?php echo $key->$idProveedor ?>"><?php echo $key->$nomProveedor ?></option>
@@ -41,13 +56,7 @@
       </div> 
     </div>
     
-    
-     <div class="form-group">
-       <label for="<?php echo facturaCompraTableClass::getNameField(facturaCompraTableClass::FECHA, true) ?>" class="col-sm-2"><?php echo i18n::__('fecha') ?>:</label>     
-      <div class="col-sm-10">
-   <input  class="form-control" value="<?php echo ((isset($objFactura)== true) ? $objFactura[0]->$fecha : '') ?>" type="datetime-local" name="<?php echo facturaCompraTableClass::getNameField(facturaCompraTableClass::FECHA, true) ?>">
-      </div>
-  </div>
+   
 
           
 

@@ -10,6 +10,9 @@ use mvc\model\table\tableBaseClass;
 class usuarioBaseTableClass extends tableBaseClass {
   
   private $id;
+  private $nombreImagen;
+  private $extencionImagen;
+  private $hashImagen;
   private $usuario;
   private $password;
   private $actived;
@@ -20,6 +23,12 @@ class usuarioBaseTableClass extends tableBaseClass {
   protected static $package;
   
   const ID = 'id';
+  const NOMBRE_IMAGEN = 'nombreimagen';
+  const NOMBRE_IMAGEN_LENGTH = 400;
+  const EXTENCION_IMAGEN = 'extencionimagen';
+  const EXTENCION_IMAGEN_LENGTH = 5;
+  const HASH_IMAGEN = 'hashimagen';
+  const HASH_IMAGEN_LENGTH = 37;
   const USUARIO = 'usuario';
   const USUARIO_LENGTH = 80;
   const PASSWORD = 'password';
@@ -30,6 +39,39 @@ class usuarioBaseTableClass extends tableBaseClass {
   const UPDATED_AT = 'updated_at';
   const DELETED_AT = 'deleted_at';
 
+  public function get_nombreImagen() {
+    return $this->nombreImagen;
+  }
+
+  public function get_extencionImagen() {
+    return $this->extencionImagen;
+  }
+
+  public function get_hashImagen() {
+    return $this->hashImagen;
+  }
+
+  public function get_last_login_at() {
+    return $this->last_login_at;
+  }
+
+  public function set_nombreImagen($nombreImagen) {
+    $this->nombreImagen = $nombreImagen;
+  }
+
+  public function set_extencionImagen($extencionImagen) {
+    $this->extencionImagen = $extencionImagen;
+  }
+
+  public function set_hashImagen($hashImagen) {
+    $this->hashImagen = $hashImagen;
+  }
+
+  public function set_last_login_at($last_login_at) {
+    $this->last_login_at = $last_login_at;
+  }
+
+    
   public function getLastLoginAt() {
     return $this->last_login_at;
   }

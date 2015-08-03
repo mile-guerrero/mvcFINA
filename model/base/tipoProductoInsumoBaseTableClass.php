@@ -18,7 +18,7 @@ class tipoProductoInsumoBaseTableClass extends tableBaseClass {
   
   const ID = 'id';
   const DESCRIPCION = 'descripcion';
-  const DESCRIPCION_LENGTH = 80;
+  const DESCRIPCION_LENGTH = 400;
   const CREATED_AT = 'created_at';
   const UPDATED_AT = 'updated_at';
   const DELETED_AT = 'deleted_at';
