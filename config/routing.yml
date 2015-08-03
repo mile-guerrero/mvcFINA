@@ -2566,11 +2566,11 @@ enfermedad_deleteSelect:
   url:    /enfermedad/eliminarSeleccion
   param:  { module: enfermedad, action: deleteSelect, format: json }
   load:
-      - model/base/enfermedadBaseTableClass.php
-      - model/enfermedadTableClass.php
-      - hooks/logHookClass.php
-      - model/base/bitacoraBaseTableClass.php
-      - model/bitacoraTableClass.php  
+    - model/base/enfermedadBaseTableClass.php
+    - model/enfermedadTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php  
     
 enfermedad_ver:
   url:    /enfermedad/ver

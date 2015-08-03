@@ -18,6 +18,7 @@ class indexProductoInsumoActionClass extends controllerClass implements controll
 
   public function execute() {
     try {
+      
       $where = null;
       if(request::getInstance()->hasPost('filter')){
       $filter = request::getInstance()->getPost('filter');
@@ -29,15 +30,7 @@ class indexProductoInsumoActionClass extends controllerClass implements controll
         $descripcion = request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::DESCRIPCION, true));
         validator::validateFiltro();
         $this->flag = true;
-       //if (strlen( $descripcion) > productoInsumoTableClass::DESCRIPCION_LENGTH)  {
-         //session::getInstance()->setError('La descripcion excede la cantidad maxima de caracteres');
-//          session::getInstance()->setFlash('inputDescripcion', true);
-//          session::getInstance()->setError('La descripcion digitada es mayor en cantidad de caracteres a lo permitido', 'inputDescripcion');
-//          routing::getInstance()->redirect('productoInsumo', 'indexProductoInsumo');
-//           $this->flag = true;
-//        } else{ 
-//          $this->flag = false;
-//          }  
+       
         
         
         if(isset($descripcion) and $descripcion !== null and $descripcion !== ""){
@@ -108,9 +101,7 @@ class indexProductoInsumoActionClass extends controllerClass implements controll
       tipoProductoInsumoTableClass::DESCRIPCION    
       ); 
       $this->objPITPI = tipoProductoInsumoTableClass::getAll($fields, true, $orderBy, 'ASC');
-     
-      
-      
+
       $this->defineView('indexProductoInsumo', 'productoInsumo', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
       echo $exc->getMessage();
