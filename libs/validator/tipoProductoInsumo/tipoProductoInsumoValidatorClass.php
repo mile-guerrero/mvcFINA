@@ -68,5 +68,13 @@ namespace mvc\validator {
       
       }
     }
+     public static function validateFiltro() {
+    //-------------------------------campo descripcion-----------------------------
+//       
+      if(strlen(request::getInstance()->getPost(\tipoProductoInsumoTableClass::getNameField(\tipoProductoInsumoTableClass::DESCRIPCION, true))) > \tipoProductoInsumoTableClass::DESCRIPCION_LENGTH) {
+        session::getInstance()->setError('La descripcion digitada es mayor en cantidad de caracteres a lo permitido', 'inputDescripcion');
+      } 
+       
+    }
   }
 }

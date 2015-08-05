@@ -67,7 +67,12 @@ use mvc\session\sessionClass as session ?>
               </div>
               
               
-              
+              <?php if(session::getInstance()->hasError('inputFecha')): ?>
+                    <div class="alert alert-danger alert-dismissible" role="alert" id="error">
+                      <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputFecha') ?>
+                    </div>
+                  <?php endif ?>
               
               <div class="form-group">
                 <label for="filterFechaIni" class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
@@ -82,36 +87,45 @@ use mvc\session\sessionClass as session ?>
               </div>
               
               
-              
+               <?php if(session::getInstance()->hasError('inputUbicacion')): ?>
+                    <div class="alert alert-danger alert-dismissible" role="alert" id="error">
+                      <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputUbicacion') ?>
+                    </div>
+                  <?php endif ?>
               <div class="form-group">
                 <label for="filterUbicacion" class="col-sm-2 control-label"><?php echo i18n::__('ubicacion') ?></label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="filterUbicacion" name="filter[ubicacion]" placeholder="buscar por ubicacion">
+                  <input type="text" class="form-control" id="filterUbicacion" name="<?php echo loteTableClass::getNameField(loteTableClass::UBICACION, true) ?>" placeholder="buscar por ubicacion">
                 </div>
               </div>
 
-              
+              <?php if(session::getInstance()->hasError('inputTamano')): ?>
+                    <div class="alert alert-danger alert-dismissible" role="alert" id="error">
+                      <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputTamano') ?>
+                    </div>
+                  <?php endif ?>
                <div class="form-group">
                 <label for="filterTamanoIni" class="col-sm-2 control-label"><?php echo i18n::__('tamano') ?></label>
                 <div class="col-sm-10">
                   <input type="text" class="form-control-filtro1" id="filterTamanoIni" name="filter[tamanoIni]" placeholder="buscar por tamaño">
                
-              
-<!--                <label for="filterTamanoFin" class="col-sm-2 control-label"><?php echo i18n::__('tamano') ?></label>-->
-               
                   <input type="text" class="form-control-filtro2" id="filterTamanoFin" name="filter[tamanoFin]" placeholder="buscar por tamaño">
                 </div>
               </div>
               
-              
+              <?php if(session::getInstance()->hasError('inputSiembra')): ?>
+                    <div class="alert alert-danger alert-dismissible" role="alert" id="error">
+                      <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputSiembra') ?>
+                    </div>
+                  <?php endif ?>
               <div class="form-group">
                 <label for="filterFechaIniSiembra" class="col-sm-2 control-label"><?php echo i18n::__('fechaFsiembra') ?></label>
                 <div class="col-sm-10">
                   <input type="date" class="form-control-filtro1" id="filterFechaIniSiembra" name="filter[fechaSI]" >
                 
-         
-<!--                <label for="filterFechaFinSiembra" class="col-sm-2 control-label"><?php echo i18n::__('fecha fin') ?></label>-->
-               
                   <input type="date" class="form-control-filtro2" id="filterFechaFinSiembra" name="filter[fechaSF]" >
                 </div>
               </div>

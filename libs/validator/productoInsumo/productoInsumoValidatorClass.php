@@ -173,18 +173,12 @@ namespace mvc\validator {
     }
 
     public static function validateFiltro() {
-      // $flag = false;
-     
-      //-------------------------------campo descripcion-----------------------------
+    //-------------------------------campo descripcion-----------------------------
+//       
       if (strlen(request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::DESCRIPCION, true))) > \productoInsumoTableClass::DESCRIPCION_LENGTH) {
-        // $flag = true;
-        //session::getInstance()->setAttribute('inputDescripcion', true);
-        session::getInstance()->setError('La descripcion digitada es mayor en cantidad de caracteres a lo permitido', 'inputDescripcion');
-      }
-      //-------------------------------condiccion de bandera true-----------------------------
-      //if ($flag === true) {
-        //routing::getInstance()->redirect('productoInsumo', 'indexProductoInsumo');
-      //}
+         session::getInstance()->setError('La descripcion digitada es mayor en cantidad de caracteres a lo permitido', 'inputDescripcion');
+     }
+       
     }
 
   }

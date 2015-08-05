@@ -63,6 +63,7 @@ default_index:
   load:
     - model/base/usuarioBaseTableClass.php
     - model/usuarioTableClass.php
+    - libs/validator/default/defaultValidatorClass.php
     
 default_insert:
   url:    /usuario/insertar
@@ -147,6 +148,7 @@ credencial_index:
   load:
     - model/base/credencialBaseTableClass.php
     - model/credencialTableClass.php
+    - libs/validator/credencial/credencialValidatorClass.php
     
 credencial_menuPrincipal:
   url:    /credencial/menuPrincipal
@@ -168,6 +170,7 @@ credencial_create:
   load:
     - model/base/credencialBaseTableClass.php
     - model/credencialTableClass.php
+    - libs/validator/credencial/credencialValidatorClass.php
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
@@ -185,6 +188,7 @@ credencial_update:
   load:
     - model/base/credencialBaseTableClass.php
     - model/credencialTableClass.php 
+    - libs/validator/credencial/credencialValidatorClass.php
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
@@ -238,6 +242,7 @@ usuarioCredencial_index:
     - model/usuarioTableClass.php
     - model/base/credencialBaseTableClass.php
     - model/credencialTableClass.php
+    - libs/validator/usuarioCredencial/usuarioCredencialValidatorClass.php
 
 usuarioCredencial_insert:
   url:    /usuarioCredencial/insertar
@@ -256,6 +261,7 @@ usuarioCredencial_create:
   load:
     - model/base/usuarioCredencialBaseTableClass.php
     - model/usuarioCredencialTableClass.php
+    - libs/validator/usuarioCredencial/usuarioCredencialValidatorClass.php
     - model/base/usuarioBaseTableClass.php
     - model/usuarioTableClass.php
     - model/base/credencialBaseTableClass.php
@@ -285,6 +291,7 @@ usuarioCredencial_update:
     - model/usuarioTableClass.php
     - model/base/credencialBaseTableClass.php
     - model/credencialTableClass.php
+    - libs/validator/usuarioCredencial/usuarioCredencialValidatorClass.php
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
@@ -328,6 +335,7 @@ ordenServicio_index:
     - model/productoInsumoTableClass.php
     - model/base/maquinaBaseTableClass.php
     - model/maquinaTableClass.php
+    - libs/validator/ordenServicio/ordenServicioValidatorClass.php
     
 ordenServicio_insert:
   url:    /ordenServicio/insertar
@@ -430,6 +438,7 @@ maquina_index:
     - model/tipoUsoMaquinaTableClass.php
     - model/base/proveedorBaseTableClass.php
     - model/proveedorTableClass.php
+    - libs/validator/maquina/maquinaValidatorClass.php
     
 maquina_menuPrincipal:
   url:    /maquina/menuPrincipal
@@ -598,6 +607,7 @@ proveedor_index:
     - model/proveedorTableClass.php
     - model/base/ciudadBaseTableClass.php
     - model/ciudadTableClass.php
+    - libs/validator/proveedor/proveedorValidatorClass.php
     
 proveedor_insert:
   url:    /proveedor/insertar
@@ -840,6 +850,7 @@ lote_index:
     - model/unidadDistanciaTableClass.php
     - model/base/unidadMedidaBaseTableClass.php
     - model/unidadMedidaTableClass.php
+    - libs/validator/lote/loteValidatorClass.php
     
 lote_menuPrincipal:
   url:    /lote/menuPrincipal
@@ -1174,6 +1185,7 @@ tipoProductoInsumo_index:
   load:
     - model/base/tipoProductoInsumoBaseTableClass.php
     - model/tipoProductoInsumoTableClass.php
+    - libs/validator/tipoProductoInsumo/tipoProductoInsumoValidatorClass.php
     
 tipoProductoInsumo_insert:
   url:    /tipoProductoInsumo/insertar
@@ -1265,6 +1277,7 @@ solicitudInsumo_index:
     - model/productoInsumoTableClass.php
     - model/base/loteBaseTableClass.php
     - model/loteTableClass.php
+    - libs/validator/solicitudInsumo/solicitudInsumoValidatorClass.php
     
 solicitudInsumo_insert:
   url:    /solicitudInsumo/insertar
@@ -1404,6 +1417,7 @@ trabajador_index:
     - model/ciudadTableClass.php
     - model/base/credencialBaseTableClass.php
     - model/credencialTableClass.php
+    - libs/validator/trabajador/trabajadorValidatorClass.php
     
 trabajador_insert:
   url:    /trabajador/insertar
@@ -1536,6 +1550,7 @@ pagoTrabajador_index:
     - model/empresaTableClass.php
     - model/base/trabajadorBaseTableClass.php
     - model/trabajadorTableClass.php
+    - libs/validator/pagoTrabajador/pagoTrabajadorValidatorClass.php
     
 pagoTrabajador_insert:
   url:    /pagoTrabajador/insertar
@@ -1628,6 +1643,7 @@ pedido_index:
     - model/proveedorTableClass.php
     - model/base/productoInsumoBaseTableClass.php
     - model/productoInsumoTableClass.php
+    - libs/validator/pedido/pedidoValidatorClass.php
     
     
 pedido_insert:
@@ -1765,6 +1781,7 @@ manoObra_index:
     - model/laborTableClass.php
     - model/base/maquinaBaseTableClass.php
     - model/maquinaTableClass.php
+    - libs/validator/manoObra/manoObraValidatorClass.php
     
     
 manoObra_insert:
@@ -1901,6 +1918,7 @@ cooperativa_index:
     - model/cooperativaTableClass.php
     - model/base/ciudadBaseTableClass.php
     - model/ciudadTableClass.php
+    - libs/validator/cooperativa/cooperativaValidatorClass.php
 
 cooperativa_insert:
   url:    /cooperativa/insertar
@@ -1999,6 +2017,7 @@ empresa_index:
   load:
     - model/base/empresaBaseTableClass.php
     - model/empresaTableClass.php
+    - libs/validator/empresa/empresaValidatorClass.php
     
 empresa_insert:
   url:    /empresa/insertar
@@ -2083,6 +2102,7 @@ labor_index:
   load:
     - model/base/laborBaseTableClass.php
     - model/laborTableClass.php
+    - libs/validator/labor/laborValidatorClass.php
 
 labor_insert:
   url:    /labor/insertar
@@ -2234,6 +2254,7 @@ detalleFacturaVenta_index:
     - model/trabajadorTableClass.php
     - model/base/productoInsumoBaseTableClass.php
     - model/productoInsumoTableClass.php
+    - libs/validator/detalleFacturaVenta/detalleFacturaVentaValidatorClass.php
     
     
     
@@ -2315,6 +2336,7 @@ detalleFacturaVenta_ver:
     - model/trabajadorTableClass.php
     - model/base/productoInsumoBaseTableClass.php
     - model/productoInsumoTableClass.php
+    - libs/validator/detalleFacturaVenta/detalleFacturaVentaValidatorClass.php
     
     
 detalleFacturaVenta_reporte:
@@ -2418,6 +2440,7 @@ detalleFacturaCompra_index:
     - model/proveedorTableClass.php
     - model/base/productoInsumoBaseTableClass.php
     - model/productoInsumoTableClass.php
+    - libs/validator/detalleFacturaCompra/detalleFacturaCompraValidatorClass.php
     
     
 detalleFacturaCompra_insert:
@@ -2486,6 +2509,7 @@ detalleFacturaCompra_ver:
     - model/proveedorTableClass.php
     - model/base/productoInsumoBaseTableClass.php
     - model/productoInsumoTableClass.php
+    - libs/validator/detalleFacturaCompra/detalleFacturaCompraValidatorClass.php
     
 detalleFacturaCompra_reporte:
   url:    /detalleFacturaCompra/reporte
@@ -2512,7 +2536,7 @@ enfermedad_index:
   load:
     - model/base/enfermedadBaseTableClass.php
     - model/enfermedadTableClass.php
-    
+    - libs/validator/enfermedad/enfermedadValidatorClass.php
     
 enfermedad_insert:
   url:    /enfermedad/insertar
@@ -2602,7 +2626,7 @@ historial_index:
     - model/productoInsumoTableClass.php
     - model/base/enfermedadBaseTableClass.php
     - model/enfermedadTableClass.php
-    
+    - libs/validator/historial/historialValidatorClass.php
     
 historial_insert:
   url:    /historial/insertar

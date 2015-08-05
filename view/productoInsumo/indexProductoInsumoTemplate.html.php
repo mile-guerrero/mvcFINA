@@ -1,9 +1,15 @@
 <?php mvc\view\viewClass::includePartial('default/menuPrincipal') ?>
-<?php use mvc\routing\routingClass as routing ?>
-<?php use mvc\i18n\i18nClass as i18n ?>
-<?php use mvc\view\viewClass as view ?>
-<?php use mvc\session\sessionClass as session ?>
-<?php use mvc\request\requestClass as request ?>
+<?php
+
+use mvc\routing\routingClass as routing ?>
+<?php
+use mvc\i18n\i18nClass as i18n ?>
+<?php
+use mvc\view\viewClass as view ?>
+<?php
+use mvc\session\sessionClass as session ?>
+<?php
+use mvc\request\requestClass as request ?>
 
 
 <?php $des = tipoProductoInsumoTableClass::DESCRIPCION ?>
@@ -49,6 +55,13 @@
               <div class="modal-body">
                 <form class="form-horizontal" id="filterForm" role="form" action="<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'indexProductoInsumo') ?>" method="POST">
 
+
+                  <?php if (session::getInstance()->hasError('inputFecha')): ?>
+                    <div class="alert alert-danger alert-dismissible" role="alert" id="error">
+                      <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputFecha') ?>
+                    </div>
+                  <?php endif ?>
                   <div class="form-group">
                     <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
                     <div class="col-sm-10">
@@ -64,26 +77,34 @@
                     <label for="filterUnidadMedida" class="col-sm-2 control-label"><?php echo i18n::__('unidad') ?></label>
                     <div class="col-sm-10">
                       <select class="form-control" id="filterUnidadMedida" name="filter[unidadMedida]">
-                        <option value=""><?php echo i18n::__('selectTipoUso') ?></option>
+                        <option value=""><?php echo i18n::__('selectUnidad') ?></option>
                         <?php foreach ($objPIUM as $unidadMedida): ?>
                           <option value="<?php echo $unidadMedida->$idUnidadM ?>"><?php echo $unidadMedida->$unidadM ?></option>
                         <?php endforeach; ?>
                       </select>
                     </div>
                   </div>
-                  <?php $flag = false; ?>
-                  <?php if ($flag === true): ?>        
-                    <script>
 
-                    </script>
-                  <?php endif; ?>
 
-                  <?php if(session::getInstance()->hasError('inputDescripcion')): ?>
+
+
+                  <?php if (session::getInstance()->hasError('inputDescripcion')): ?>
                     <div class="alert alert-danger alert-dismissible" role="alert" id="error">
                       <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                       <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputDescripcion') ?>
                     </div>
                   <?php endif ?>
+                  <?php $ok = false; ?>
+<!--                  (request::getInstance()->hasPost('filter')=== true)-->
+       
+                  <?php if ($ok = false): ?>        
+                    <script>
+                      $('#myModalFilters').modal({
+                        backdrop: 'static', //dejar avierta la ventana modal
+                        keyboard: false//true para quitarla con escape 
+                      })
+                    </script>
+                  <?php endif; ?>
 
                   <div class="form-group">
                     <label for="filterDescripcion" class="col-sm-2 control-label"><?php echo i18n::__('des') ?></label>
@@ -105,9 +126,6 @@
             </div>
           </div>
         </div>  
-
-
-
 
         <!---Informes--->
         <div class="modal fade" id="myModalReport" tabindex="-1" role="modal" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -199,10 +217,10 @@
                     </td>
                     <td>
                       <a class="btn btn-warning btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'verProductoInsumo', array(productoInsumoTableClass::ID => $key->$id)) ?>" ><?php echo i18n::__('ver') ?></a>
-                       <?php if(session::getInstance()->hasCredential('admin')):?>
-                      <a class="btn btn-primary btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'editProductoInsumo', array(productoInsumoTableClass::ID => $key->$id)) ?>"><?php echo i18n::__('modificar') ?></a>
-                      <a data-toggle="modal" data-target="#myModalDelete<?php echo $key->$id ?>" class="btn btn-danger btn-xs"><?php echo i18n::__('eliminar') ?></a>
-                     <?php endif?>  
+                      <?php if (session::getInstance()->hasCredential('admin')): ?>
+                        <a class="btn btn-primary btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'editProductoInsumo', array(productoInsumoTableClass::ID => $key->$id)) ?>"><?php echo i18n::__('modificar') ?></a>
+                        <a data-toggle="modal" data-target="#myModalDelete<?php echo $key->$id ?>" class="btn btn-danger btn-xs"><?php echo i18n::__('eliminar') ?></a>
+                      <?php endif ?>  
                     </td>
                   </tr>
                 <div class="modal fade" id="myModalDelete<?php echo $key->$id ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

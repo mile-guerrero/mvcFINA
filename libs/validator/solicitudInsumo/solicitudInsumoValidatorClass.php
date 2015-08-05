@@ -95,5 +95,7 @@ namespace mvc\validator {
         routing::getInstance()->forward('solicitudInsumo', 'insert');
       }
     }
+    
+   
   }
 }

@@ -6,6 +6,7 @@ use mvc\config\configClass as config;
 use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
+use mvc\validator\laborValidatorClass as validator;
 use mvc\i18n\i18nClass as i18n;
 
 /**

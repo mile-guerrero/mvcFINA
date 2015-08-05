@@ -56,11 +56,16 @@
               
               
               
-              
+              <?php if (session::getInstance()->hasError('inputUsuario')): ?>
+                    <div class="alert alert-danger alert-dismissible" role="alert" id="error">
+                      <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputUsuario') ?>
+                    </div>
+                  <?php endif ?>
               <div class="form-group">
                 <label for="filterUsuario" class="col-sm-2 control-label"><?php echo i18n::__('user') ?></label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="filterUsuario" name="filter[usuario]" placeholder="Nombre">
+                  <input type="text" class="form-control" id="filterUsuario" name="<?php echo usuarioTableClass::getNameField(usuarioTableClass::USUARIO, true) ?>" placeholder="Nombre">
                 </div>
               </div>
 

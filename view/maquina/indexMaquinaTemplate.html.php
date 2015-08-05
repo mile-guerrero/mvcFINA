@@ -61,26 +61,43 @@
                 </div>
               </div>
               
+              
+              <?php if (session::getInstance()->hasError('inputNombre')): ?>
+                    <div class="alert alert-danger alert-dismissible" role="alert" id="error">
+                      <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputNombre') ?>
+                    </div>
+                  <?php endif ?>
               <div class="form-group">
                 <label for="filterNombre" class="col-sm-2 control-label"><?php echo i18n::__('nom') ?></label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="filterNombre" name="filter[nombre]" placeholder="<?php echo i18n::__('nom') ?>">
+                  <input type="text" class="form-control" id="filterNombre" name="<?php echo maquinaTableClass::getNameField(maquinaTableClass::NOMBRE, true) ?>" placeholder="<?php echo i18n::__('nom') ?>">
                 </div>
               </div>
-
+              <?php if (session::getInstance()->hasError('inputDescripcion')): ?>
+                    <div class="alert alert-danger alert-dismissible" role="alert" id="error">
+                      <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputDescripcion') ?>
+                    </div>
+                  <?php endif ?>
               <div class="form-group">
                 <label for="filterDescripcion" class="col-sm-2 control-label"><?php echo i18n::__('des') ?></label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="filterDescripcion" name="filter[descripcion]" placeholder="<?php echo i18n::__('des') ?>">
+                  <input type="text" class="form-control" id="filterDescripcion" name="<?php echo maquinaTableClass::getNameField(maquinaTableClass::DESCRIPCION, true) ?>" placeholder="<?php echo i18n::__('des') ?>">
                 </div>
               </div>
               
               
-              
+              <?php if (session::getInstance()->hasError('inputOrigen')): ?>
+                    <div class="alert alert-danger alert-dismissible" role="alert" id="error">
+                      <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputOrigen') ?>
+                    </div>
+                  <?php endif ?>
               <div class="form-group">
                 <label for="filterOrigen" class="col-sm-2 control-label"><?php echo i18n::__('origenM') ?></label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="filterOrigen" name="filter[origen]" placeholder="<?php echo i18n::__('origenM') ?>">
+                  <input type="text" class="form-control" id="filterOrigen" name="<?php echo maquinaTableClass::getNameField(maquinaTableClass::ORIGEN_MAQUINA, true) ?>" placeholder="<?php echo i18n::__('origenM') ?>">
                 </div>
               </div>
               

@@ -7,7 +7,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
-
+use mvc\validator\defaultValidatorClass as validator;
 /**
  * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon 
  * @date: fecha de inicio del desarrollo.
@@ -32,11 +32,20 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       if(request::getInstance()->hasPost('filter')){
       $filter = request::getInstance()->getPost('filter');
       //validar
-      if(isset($filter['usuario']) and $filter['usuario'] !== null and $filter['usuario'] !== ""){
-        $where[] = '(' . usuarioTableClass::getNameField(usuarioTableClass::USUARIO) . ' LIKE ' . '\'' . $filter['usuario'] . '%\'  '
-              . 'OR ' . usuarioTableClass::getNameField(usuarioTableClass::USUARIO) . ' LIKE ' . '\'%' . $filter['usuario'] . '%\' '
-              . 'OR ' . usuarioTableClass::getNameField(usuarioTableClass::USUARIO) . ' LIKE ' . '\'%' . $filter['usuario'].'\') ';       
+      
+      if (request::getInstance()->hasPost(usuarioTableClass::getNameField(usuarioTableClass::USUARIO, true)) and empty(mvc\request\requestClass::getInstance()->getPost(usuarioTableClass::getNameField(usuarioTableClass::USUARIO, true))) === false) {
+
+          if (request::getInstance()->isMethod('POST')) {
+            $usuario = request::getInstance()->getPost(usuarioTableClass::getNameField(usuarioTableClass::USUARIO, true));
+            validator::validateFiltro();
+            if(isset($usuario) and $usuario !== null and $usuario !== ""){
+        $where[] = '(' . usuarioTableClass::getNameField(usuarioTableClass::USUARIO) . ' LIKE ' . '\'' . $usuario . '%\'  '
+              . 'OR ' . usuarioTableClass::getNameField(usuarioTableClass::USUARIO) . ' LIKE ' . '\'%' . $usuario . '%\' '
+              . 'OR ' . usuarioTableClass::getNameField(usuarioTableClass::USUARIO) . ' LIKE ' . '\'%' . $usuario .'\') ';       
               }//cierre del filtro usuario
+          }//cierre del filtro ubicacion   
+        }
+      
       
       
        if((isset($filter['fechaIni']) and $filter['fechaIni'] !== null and $filter['fechaIni'] !== "") and (isset($filter['fechaFin']) and $filter['fechaFin'] !== null and $filter['fechaFin'] !== "" )){

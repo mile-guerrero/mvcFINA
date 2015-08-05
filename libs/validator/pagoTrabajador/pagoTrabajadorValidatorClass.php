@@ -104,6 +104,7 @@ namespace mvc\validator {
                 routing::getInstance()->forward('pagoTrabajador', 'insert');
             }
         }
+        
 
     }
 

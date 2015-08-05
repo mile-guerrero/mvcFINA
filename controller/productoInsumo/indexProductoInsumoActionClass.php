@@ -18,46 +18,46 @@ class indexProductoInsumoActionClass extends controllerClass implements controll
 
   public function execute() {
     try {
-      
+
       $where = null;
-      if(request::getInstance()->hasPost('filter')){
-      $filter = request::getInstance()->getPost('filter');
-      //validar
-      $flag = false;
-      if (request::getInstance()->hasPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::DESCRIPCION, true)) and empty(mvc\request\requestClass::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::DESCRIPCION, true))) === false) {
-   
-        if (request::getInstance()->isMethod('POST')) { 
-        $descripcion = request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::DESCRIPCION, true));
-        validator::validateFiltro();
-        $this->flag = true;
+      if (request::getInstance()->hasPost('filter')) {
+        $filter = request::getInstance()->getPost('filter');
+        //validar
        
+        if (request::getInstance()->hasPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::DESCRIPCION, true)) and empty(mvc\request\requestClass::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::DESCRIPCION, true))) === false) {
+
+          if (request::getInstance()->isMethod('POST')) {
+            $descripcion = request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::DESCRIPCION, true));
         
-        
-        if(isset($descripcion) and $descripcion !== null and $descripcion !== ""){
-        $where[] = '(' . productoInsumoTableClass::getNameField(productoInsumoTableClass::DESCRIPCION) . ' LIKE ' . '\'' . $descripcion . '%\'  '
-              . 'OR ' . productoInsumoTableClass::getNameField(productoInsumoTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $descripcion . '%\' '
-              . 'OR ' . productoInsumoTableClass::getNameField(productoInsumoTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $descripcion.'\') ';       
-              }   
-      }
-      
+           
+         
+            validator::validateFiltro();
+
+            if (isset($descripcion) and $descripcion !== null and $descripcion !== "") {
+              $where[] = '(' . productoInsumoTableClass::getNameField(productoInsumoTableClass::DESCRIPCION) . ' LIKE ' . '\'' . $descripcion . '%\'  '
+                      . 'OR ' . productoInsumoTableClass::getNameField(productoInsumoTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $descripcion . '%\' '
+                      . 'OR ' . productoInsumoTableClass::getNameField(productoInsumoTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $descripcion . '\') ';
+            }
+            
+          }
         }
-      //fin validaciones
-                
-     
-      if((isset($filter['fechaIni']) and $filter['fechaIni'] !== null and $filter['fechaIni'] !== "") and (isset($filter['fechaFin']) and $filter['fechaFin'] !== null and $filter['fechaFin'] !== "" )){
-        $where[productoInsumoTableClass::CREATED_AT] = array(
-           date(config::getFormatTimestamp(), strtotime($filter['fechaIni'].' 00:00:00')),
-           date(config::getFormatTimestamp(), strtotime($filter['fechaFin'].' 23:59:59'))
-            );
-      }
-      
-      if(isset($filter['unidadMedida']) and $filter['unidadMedida'] !== null and $filter['unidadMedida'] !== ""){
-        $where[productoInsumoTableClass::UNIDAD_MEDIDA_ID] = $filter['unidadMedida'];
-      }
-      
-      if(isset($filter['tipoInsumo']) and $filter['tipoInsumo'] !== null and $filter['tipoInsumo'] !== ""){
-        $where[productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID] = $filter['tipoInsumo'];
-      }
+        //fin validaciones
+
+
+        if ((isset($filter['fechaIni']) and $filter['fechaIni'] !== null and $filter['fechaIni'] !== "") and ( isset($filter['fechaFin']) and $filter['fechaFin'] !== null and $filter['fechaFin'] !== "" )) {
+          $where[productoInsumoTableClass::CREATED_AT] = array(
+              date(config::getFormatTimestamp(), strtotime($filter['fechaIni'] . ' 00:00:00')),
+              date(config::getFormatTimestamp(), strtotime($filter['fechaFin'] . ' 23:59:59'))
+          );
+        }
+
+        if (isset($filter['unidadMedida']) and $filter['unidadMedida'] !== null and $filter['unidadMedida'] !== "") {
+          $where[productoInsumoTableClass::UNIDAD_MEDIDA_ID] = $filter['unidadMedida'];
+        }
+
+        if (isset($filter['tipoInsumo']) and $filter['tipoInsumo'] !== null and $filter['tipoInsumo'] !== "") {
+          $where[productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID] = $filter['tipoInsumo'];
+        }
       }
       $fields = array(
           productoInsumoTableClass::ID,
@@ -72,7 +72,7 @@ class indexProductoInsumoActionClass extends controllerClass implements controll
           productoInsumoTableClass::UPDATED_AT
       );
       $orderBy = array(
-         productoInsumoTableClass::ID
+          productoInsumoTableClass::ID
       );
       $page = 0;
       if (request::getInstance()->hasGet('page')) {
@@ -81,25 +81,25 @@ class indexProductoInsumoActionClass extends controllerClass implements controll
         $page = $page * config::getRowGrid();
       }
       $this->cntPages = productoInsumoTableClass::getTotalPages(config::getRowGrid());
-      
-      $this->objPI = productoInsumoTableClass::getAll($fields, true, $orderBy, 'ASC',config::getRowGrid(), $page,$where);
-    
-      $fields = array(     
-      unidadMedidaTableClass::ID, 
-      unidadMedidaTableClass::DESCRIPCION
+
+      $this->objPI = productoInsumoTableClass::getAll($fields, true, $orderBy, 'ASC', config::getRowGrid(), $page, $where);
+
+      $fields = array(
+          unidadMedidaTableClass::ID,
+          unidadMedidaTableClass::DESCRIPCION
       );
       $orderBy = array(
-      unidadMedidaTableClass::DESCRIPCION    
-      ); 
+          unidadMedidaTableClass::DESCRIPCION
+      );
       $this->objPIUM = unidadMedidaTableClass::getAll($fields, false, $orderBy, 'ASC');
-      
-      $fields = array(     
-      tipoProductoInsumoTableClass::ID, 
-      tipoProductoInsumoTableClass::DESCRIPCION
+
+      $fields = array(
+          tipoProductoInsumoTableClass::ID,
+          tipoProductoInsumoTableClass::DESCRIPCION
       );
       $orderBy = array(
-      tipoProductoInsumoTableClass::DESCRIPCION    
-      ); 
+          tipoProductoInsumoTableClass::DESCRIPCION
+      );
       $this->objPITPI = tipoProductoInsumoTableClass::getAll($fields, true, $orderBy, 'ASC');
 
       $this->defineView('indexProductoInsumo', 'productoInsumo', session::getInstance()->getFormatOutput());
@@ -108,6 +108,6 @@ class indexProductoInsumoActionClass extends controllerClass implements controll
       echo '<br>';
       echo $exc->getTraceAsString();
     }
-}
+  }
 
 }

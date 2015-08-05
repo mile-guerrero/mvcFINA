@@ -30,7 +30,7 @@ namespace mvc\validator {
         else if(strlen(request::getInstance()->getPost(\usuarioTableClass::getNameField(\usuarioTableClass::USUARIO, true))) > \usuarioTableClass::USUARIO_LENGTH) {
         $flag = true;
         session::getInstance()->setFlash('inputUsuario', true);
-        session::getInstance()->setError('El email digitado es mayor en cantidad de caracteres a lo permitido', 'inputUsuario');
+        session::getInstance()->setError('El usuario digitado es mayor en cantidad de caracteres a lo permitido', 'inputUsuario');
       }  //----solo email----
         else if (!preg_match($emailcorrecto, (request::getInstance()->getPost(\usuarioTableClass::getNameField(\usuarioTableClass::USUARIO, true))))){
         $flag = true;
@@ -130,6 +130,18 @@ namespace mvc\validator {
         request::getInstance()->addParamGet(array(\usuarioTableClass::ID => request::getInstance()->getPost(\usuarioTableClass::getNameField(\usuarioTableClass::ID, true))));
         routing::getInstance()->forward('default', 'edit');
       }
+    }
+     public static function validateFiltro() {
+    //-------------------------------campo descripcion-----------------------------
+     $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
+      
+       
+     if(strlen(request::getInstance()->getPost(\usuarioTableClass::getNameField(\usuarioTableClass::USUARIO, true))) > \usuarioTableClass::USUARIO_LENGTH) {
+       session::getInstance()->setError('El usuario digitado es mayor en cantidad de caracteres a lo permitido', 'inputUsuario');
+      } else if (!preg_match($emailcorrecto, (request::getInstance()->getPost(\usuarioTableClass::getNameField(\usuarioTableClass::USUARIO, true))))){
+        session::getInstance()->setError('Por favor digite un corre válido ', 'inputUsuario');
+      }
+       
     }
   }
 }

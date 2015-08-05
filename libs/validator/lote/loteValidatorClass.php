@@ -195,5 +195,19 @@ namespace mvc\validator {
       
       }
     }
+     public static function validateFiltro() {
+    //-------------------------------campo descripcion-----------------------------
+//       
+      if(strlen(request::getInstance()->getPost(\loteTableClass::getNameField(\loteTableClass::UBICACION, true))) > \loteTableClass::UBICACION_LENGTH) {
+       session::getInstance()->setError('La ubicacion digitada es mayor en cantidad de caracteres a lo permitido', 'inputUbicacion');
+      }       
+    }
+    
+//    if(strlen(request::getInstance()->getPost(\loteTableClass::getNameField(\loteTableClass::TAMANO, true))) > \loteTableClass::TAMANO_LENGTH) {
+//        session::getInstance()->setError('El tamaño digitado es mayor en cantidad de caracteres a lo permitido', 'inputTamano');
+//      }  //----valida que sea numerico----      
+//        else if (!is_numeric(request::getInstance()->getPost(\loteTableClass::getNameField(\loteTableClass::TAMANO, true)))) {
+//       session::getInstance()->setError('El tamaño no permite letras, solo numeros', 'inputTamano');
+//      }
   }
 }

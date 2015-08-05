@@ -286,6 +286,33 @@ namespace mvc\validator {
         routing::getInstance()->forward('maquina', 'editProveedor');
       }
     }
+     public static function validateFiltro() {
+    //-------------------------------campo descripcion-----------------------------
+//       
+      if (!is_numeric(request::getInstance()->getPost(\proveedorTableClass::getNameField(\proveedorTableClass::DOCUMENTO, true)))) {
+        session::getInstance()->setError('El documento no permite letras, solo numeros', 'inputDocumento');
+      } //----sobre pasar los caracteres----
+        else if(strlen(request::getInstance()->getPost(\proveedorTableClass::getNameField(\proveedorTableClass::DOCUMENTO, true))) > \proveedorTableClass::DOCUMENTO_LENGTH) {
+        session::getInstance()->setError('El documento digitado es mayor en cantidad de caracteres a lo permitido', 'inputDocumento');
+      } //----datos duplicados----
+             
+      //-------------------------------campo nombre-----------------------------
+          if (!preg_match($soloLetras, (request::getInstance()->getPost(\proveedorTableClass::getNameField(\proveedorTableClass::NOMBREP, true))))){
+          session::getInstance()->setError('El nombre no permite numeros, solo letras', 'inputNombre');
+      } //----sobre pasar los caracteres----
+        else if(strlen(request::getInstance()->getPost(\proveedorTableClass::getNameField(\proveedorTableClass::NOMBREP, true))) > \proveedorTableClass::NOMBREP_LENGTH) {
+        session::getInstance()->setError('El nombre digitado es mayor en cantidad de caracteres a lo permitido', 'inputNombre');
+      }
+
+   //-------------------------------campo apellido-----------------------------
+        if (!preg_match($soloLetras, (request::getInstance()->getPost(\proveedorTableClass::getNameField(\proveedorTableClass::APELLIDO, true))))){
+        session::getInstance()->setError('El apellido no permite numeros, solo letras', 'inputApellido');
+      } //----sobre pasar los caracteres----
+        else if(strlen(request::getInstance()->getPost(\proveedorTableClass::getNameField(\proveedorTableClass::APELLIDO, true))) > \proveedorTableClass::APELLIDO_LENGTH) {
+        session::getInstance()->setError('El apellido digitado es mayor en cantidad de caracteres a lo permitido', 'inputApellido');
+      }   
+       
+    }
   }
   
 }

@@ -151,5 +151,14 @@ namespace mvc\validator {
         routing::getInstance()->forward('manoObra', 'insert');
       }
     }
+     public static function validateFiltro() {
+    //-------------------------------campo descripcion-----------------------------
+//       
+//      if (strlen(request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::DESCRIPCION, true))) > \productoInsumoTableClass::DESCRIPCION_LENGTH) {
+//         session::getInstance()->setError('La descripcion digitada es mayor en cantidad de caracteres a lo permitido', 'inputDescripcion');
+//              
+//      }
+       
+    }
   }
 }

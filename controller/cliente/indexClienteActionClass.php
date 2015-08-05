@@ -7,7 +7,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
-//use mvc\validator\clienteValidatorClass as validator;
+use mvc\validator\clienteValidatorClass as validator;
 
 /**
 * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon 
@@ -45,31 +45,50 @@ class indexClienteActionClass extends controllerClass implements controllerActio
         $filter = request::getInstance()->getPost('filter');
         //Validar datos
        
-        if (request::getInstance()->isMethod('POST')) {
-           $documento = $filter['documento'];
-        if (strlen($documento) > clienteTableClass::DOCUMENTO_LENGTH) {
-      session::getInstance()->setError(i18n::__(00021, null, 'errors', array(':longitud' => clienteTableClass::DOCUMENTO_LENGTH)), 00021);
-     //routing::getInstance()->forward('cliente', 'indexCliente');
-      }
-      
-      }
-        
-        if (isset($filter['nombre']) and $filter['nombre'] !== null and $filter['nombre'] !== '') {
-          $where[] ='(' .  clienteTableClass::getNameField(clienteTableClass::NOMBRE) . ' LIKE ' . '\'' . $filter['nombre'] . '%\'  '
-              . 'OR ' . clienteTableClass::getNameField(clienteTableClass::NOMBRE) . ' LIKE ' . '\'%' . $filter['nombre'] . '%\' '
-              . 'OR ' . clienteTableClass::getNameField(clienteTableClass::NOMBRE) . ' LIKE ' . '\'%' . $filter['nombre'].'\') ';       
-              }//cierre del filtro nombre
-              
-        if (isset($filter['apellido']) and $filter['apellido'] !== null and $filter['apellido'] !== '') {
-         $where[] = '(' . clienteTableClass::getNameField(clienteTableClass::APELLIDO) . ' LIKE ' . '\'' . $filter['apellido'] . '%\'  '
-              . 'OR ' . clienteTableClass::getNameField(clienteTableClass::APELLIDO) . ' LIKE ' . '\'%' . $filter['apellido'] . '%\' '
-              . 'OR ' . clienteTableClass::getNameField(clienteTableClass::APELLIDO) . ' LIKE ' . '\'%' . $filter['apellido'].'\') ';       
-              }//cierre del filtro apellio    
-                
-        if (isset($filter['documento']) and $filter['documento'] !== null and $filter['documento'] !== '') {
-          $where[clienteTableClass::DOCUMENTO] = $filter['documento'];
+      if (request::getInstance()->hasPost(clienteTableClass::getNameField(clienteTableClass::DOCUMENTO, true)) and empty(mvc\request\requestClass::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::DOCUMENTO, true))) === false) {
+
+          if (request::getInstance()->isMethod('POST')) {
+            $documento = request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::DOCUMENTO, true));
+            validator::validateFiltro();
+            
+             if (isset($documento) and $documento !== null and $documento !== '') {
+          $where[clienteTableClass::DOCUMENTO] = $documento;
         }//cierre del filtro documento
         
+          }//cierre del filtro ubicacion   
+        }
+        
+        if (request::getInstance()->hasPost(clienteTableClass::getNameField(clienteTableClass::NOMBRE, true)) and empty(mvc\request\requestClass::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::NOMBRE, true))) === false) {
+
+          if (request::getInstance()->isMethod('POST')) {
+            $nombre = request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::NOMBRE, true));
+            validator::validateFiltroNombre();
+             if (isset($nombre) and $nombre !== null and $nombre !== '') {
+          $where[] ='(' .  clienteTableClass::getNameField(clienteTableClass::NOMBRE) . ' LIKE ' . '\'' . $nombre . '%\'  '
+              . 'OR ' . clienteTableClass::getNameField(clienteTableClass::NOMBRE) . ' LIKE ' . '\'%' . $nombre . '%\' '
+              . 'OR ' . clienteTableClass::getNameField(clienteTableClass::NOMBRE) . ' LIKE ' . '\'%' .  $nombre .'\') ';       
+              }//cierre del filtro nombre
+        
+          }//cierre del filtro ubicacion   
+        }
+        
+        if (request::getInstance()->hasPost(clienteTableClass::getNameField(clienteTableClass::APELLIDO, true)) and empty(mvc\request\requestClass::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::APELLIDO, true))) === false) {
+
+          if (request::getInstance()->isMethod('POST')) {
+            $apellido = request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::APELLIDO, true));
+            validator::validateFiltroApellido();
+             if (isset($apellido) and $apellido !== null and $apellido !== '') {
+         $where[] = '(' . clienteTableClass::getNameField(clienteTableClass::APELLIDO) . ' LIKE ' . '\'' . $apellido . '%\'  '
+              . 'OR ' . clienteTableClass::getNameField(clienteTableClass::APELLIDO) . ' LIKE ' . '\'%' . $apellido . '%\' '
+              . 'OR ' . clienteTableClass::getNameField(clienteTableClass::APELLIDO) . ' LIKE ' . '\'%' . $apellido .'\') ';       
+              }//cierre del filtro apellio   
+        
+          }//cierre del filtro ubicacion   
+        }
+              
+         
+                
+       
         if (isset($filter['ciudad']) and $filter['ciudad'] !== null and $filter['ciudad'] !== '') {
           $where[clienteTableClass::ID_CIUDAD] = $filter['ciudad'];
         }//cierre del filtro ciudad
@@ -121,13 +140,7 @@ class indexClienteActionClass extends controllerClass implements controllerActio
     } //cierre del try
     
      catch (PDOException $exc) {
-        $soloNumeros = "/^[[:digit:]]+$/";
-       if (!preg_match($soloNumeros, $documento))  {
-      session::getInstance()->setError(i18n::__(00010, null, 'errors', array(':no permite letras' => clienteTableClass::DOCUMENTO_LENGTH)), 00010);
-      routing::getInstance()->redirect('cliente', 'indexCliente');
-
-      //$this->defineView('indexCliente', 'cliente', session::getInstance()->getFormatOutput());
-      }
+        routing::getInstance()->redirect('cliente', 'indexCliente');
 //      echo $exc->getMessage();
 //      echo '<br>';
 //      echo $exc->getTraceAsString();

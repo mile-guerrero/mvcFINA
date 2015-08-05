@@ -107,5 +107,12 @@ namespace mvc\validator {
       
       }
     }
+     public static function validateFiltro() {
+    //-------------------------------campo descripcion-----------------------------
+//       
+     if(strlen(request::getInstance()->getPost(\laborTableClass::getNameField(\laborTableClass::DESCRIPCION, true))) > \laborTableClass::DESCRIPCION_LENGTH) {
+       session::getInstance()->setError('la descripcion digitada es mayor en cantidad de caracteres a lo permitido', 'inputDescripcion');
+      }
+    }
   }  
 }

@@ -57,5 +57,11 @@ namespace mvc\validator {
         routing::getInstance()->forward('detalleFacturaCompra', 'insert');
       }
     }
+     public static function validateFiltro() {
+    //-------------------------------campo descripcion-----------------------------
+//       
+     
+       
+    }
   }
 }

@@ -7,6 +7,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+use mvc\validator\trabajadorValidatorClass as validator;
 
 /**
  * Description of ejemploClass
@@ -23,30 +24,51 @@ class indexActionClass extends controllerClass implements controllerActionInterf
         $filter = request::getInstance()->getPost('filter');
         //Validar datos
 
-        if (isset($filter['nombre']) and $filter['nombre'] !== null and $filter['nombre'] !== '') {
-         $where[] = '(' . trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRET) . ' LIKE ' . '\'' . $filter['nombre'] . '%\'  '
-              . 'OR ' . trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRET) . ' LIKE ' . '\'%' . $filter['nombre'] . '%\' '
-              . 'OR ' . trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRET) . ' LIKE ' . '\'%' . $filter['nombre'].'\') ';       
-              }
-              
-              if (isset($filter['apellido']) and $filter['apellido'] !== null and $filter['apellido'] !== '') {
-         $where[] = '(' . trabajadorTableClass::getNameField(trabajadorTableClass::APELLIDO) . ' LIKE ' . '\'' . $filter['apellido'] . '%\'  '
-              . 'OR ' . trabajadorTableClass::getNameField(trabajadorTableClass::APELLIDO) . ' LIKE ' . '\'%' . $filter['apellido'] . '%\' '
-              . 'OR ' . trabajadorTableClass::getNameField(trabajadorTableClass::APELLIDO) . ' LIKE ' . '\'%' . $filter['apellido'].'\') ';       
-              }
-        
-        if (isset($filter['documento']) and $filter['documento'] !== null and $filter['documento'] !== '') {
-          $where[trabajadorTableClass::DOCUMENTO] = $filter['documento'];
+        if (request::getInstance()->hasPost(trabajadorTableClass::getNameField(trabajadorTableClass::DOCUMENTO, true)) and empty(mvc\request\requestClass::getInstance()->getPost(trabajadorTableClass::getNameField(trabajadorTableClass::DOCUMENTO, true))) === false) {
+
+          if (request::getInstance()->isMethod('POST')) {
+            $documento = request::getInstance()->getPost(trabajadorTableClass::getNameField(trabajadorTableClass::DOCUMENTO, true));
+            validator::validateFiltro();
+            if (isset($documento) and $documento !== null and $documento !== '') {
+              $where[trabajadorTableClass::DOCUMENTO] = $documento;
+            }//cierre del filtro usuario
+          }//cierre del filtro ubicacion   
         }
         
+        if (request::getInstance()->hasPost(trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRET, true)) and empty(mvc\request\requestClass::getInstance()->getPost(trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRET, true))) === false) {
+
+          if (request::getInstance()->isMethod('POST')) {
+            $nombre = request::getInstance()->getPost(trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRET, true));
+            validator::validateFiltroNombre();
+            if (isset($nombre) and $nombre !== null and $nombre !== '') {
+          $where[] = '(' . trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRET) . ' LIKE ' . '\'' . $nombre . '%\'  '
+                  . 'OR ' . trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRET) . ' LIKE ' . '\'%' . $nombre . '%\' '
+                  . 'OR ' . trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRET) . ' LIKE ' . '\'%' . $nombre . '\') ';
+        }//cierre del filtro usuario
+          }//cierre del filtro ubicacion   
+        }
+        
+        if (request::getInstance()->hasPost(trabajadorTableClass::getNameField(trabajadorTableClass::APELLIDO, true)) and empty(mvc\request\requestClass::getInstance()->getPost(trabajadorTableClass::getNameField(trabajadorTableClass::APELLIDO, true))) === false) {
+
+          if (request::getInstance()->isMethod('POST')) {
+            $apellido = request::getInstance()->getPost(trabajadorTableClass::getNameField(trabajadorTableClass::APELLIDO, true));
+            validator::validateFiltroApellido();
+            if (isset($apellido) and $apellido !== null and $apellido !== '') {
+          $where[] = '(' . trabajadorTableClass::getNameField(trabajadorTableClass::APELLIDO) . ' LIKE ' . '\'' . $apellido . '%\'  '
+                  . 'OR ' . trabajadorTableClass::getNameField(trabajadorTableClass::APELLIDO) . ' LIKE ' . '\'%' . $apellido . '%\' '
+                  . 'OR ' . trabajadorTableClass::getNameField(trabajadorTableClass::APELLIDO) . ' LIKE ' . '\'%' . $apellido . '\') ';
+        }
+          }//cierre del filtro ubicacion   
+        }
+
         if (isset($filter['ciudad']) and $filter['ciudad'] !== null and $filter['ciudad'] !== '') {
           $where[trabajadorTableClass::ID_CIUDAD] = $filter['ciudad'];
         }
-        
-        if (isset($filter['fecha1']) and $filter['fecha1'] !== null and $filter['fecha1'] !== '' and (isset($filter['fecha2']) and $filter['fecha2'] !== null and $filter['fecha2'] !== '')) {
+
+        if (isset($filter['fecha1']) and $filter['fecha1'] !== null and $filter['fecha1'] !== '' and ( isset($filter['fecha2']) and $filter['fecha2'] !== null and $filter['fecha2'] !== '')) {
           $where[trabajadorTableClass::CREATED_AT] = array(
-          date(config::getFormatTimestamp(), strtotime($filter['fecha1'] . ' 00:00:00')),
-          date(config::getFormatTimestamp(), strtotime($filter['fecha2'] . ' 23:59:59'))
+              date(config::getFormatTimestamp(), strtotime($filter['fecha1'] . ' 00:00:00')),
+              date(config::getFormatTimestamp(), strtotime($filter['fecha2'] . ' 23:59:59'))
           );
         }
       }
@@ -78,21 +100,22 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       $this->cntPages = trabajadorTableClass::getTotalPages(config::getRowGrid());
 
 
-      $this->objTrabajador = trabajadorTableClass::getAll($fields, true, $orderBy, 'ASC',config::getRowGrid(), $page, $where);
-      $fields = array(     
-      ciudadTableClass::ID, 
-      ciudadTableClass::NOMBRE_CIUDAD
+      $this->objTrabajador = trabajadorTableClass::getAll($fields, true, $orderBy, 'ASC', config::getRowGrid(), $page, $where);
+      $fields = array(
+          ciudadTableClass::ID,
+          ciudadTableClass::NOMBRE_CIUDAD
       );
       $orderBy = array(
-      ciudadTableClass::NOMBRE_CIUDAD    
-      ); 
+          ciudadTableClass::NOMBRE_CIUDAD
+      );
       $this->objCC = ciudadTableClass::getAll($fields, false, $orderBy, 'ASC');
-//      $this->objUsuarios = usuarioTableClass::getAll($fields, true);
+//      $this->objUsuarios = trabajadorTableClass::getAll($fields, true);
       $this->defineView('index', 'trabajador', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
-      echo $exc->getMessage();
-      echo '<br>';
-      echo $exc->getTraceAsString();
+       routing::getInstance()->redirect('trabajador', 'index');
+//      echo $exc->getMessage();
+//      echo '<br>';
+//      echo $exc->getTraceAsString();
     }
   }
 

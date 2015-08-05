@@ -320,6 +320,45 @@ namespace mvc\validator {
         routing::getInstance()->forward('trabajador', 'edit');
       }
     }
+     public static function validateFiltro() {
+         $soloLetras = "/^[a-z]+$/i";
+      $soloTelefono = "/^(\d{3,3}\-\d{3,3}\-\d{4,4})|^(\+\d\-\d{3,3}\-\d{4,4})/";
+      $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
+      
+      if (!is_numeric(request::getInstance()->getPost(\trabajadorTableClass::getNameField(\trabajadorTableClass::DOCUMENTO, true)))) {
+           session::getInstance()->setError('El documento no permite letras, solo numeros', 'inputDocumento');
+      } //----sobre pasar los caracteres----
+        else if(strlen(request::getInstance()->getPost(\trabajadorTableClass::getNameField(\trabajadorTableClass::DOCUMENTO, true))) > \trabajadorTableClass::DOCUMENTO_LENGTH) {
+        session::getInstance()->setError('El documento digitado es mayor en cantidad de caracteres a lo permitido', 'inputDocumento');
+      }
+     }
+    
+    public static function validateFiltroNombre() {
+       $soloLetras = "/^[a-z]+$/i";
+      $soloTelefono = "/^(\d{3,3}\-\d{3,3}\-\d{4,4})|^(\+\d\-\d{3,3}\-\d{4,4})/";
+      $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
+      
+      if (!preg_match($soloLetras, (request::getInstance()->getPost(\trabajadorTableClass::getNameField(\trabajadorTableClass::NOMBRET, true))))){
+        session::getInstance()->setError('El nombre no permite numeros, solo letras', 'inputNombre');
+      } //----sobre pasar los caracteres----
+        else if(strlen(request::getInstance()->getPost(\trabajadorTableClass::getNameField(\trabajadorTableClass::NOMBRET, true))) > \trabajadorTableClass::NOMBRET_LENGTH) {
+        session::getInstance()->setError('El nombre digitado es mayor en cantidad de caracteres a lo permitido', 'inputNombre');
+      }  
+    }
+    
+    public static function validateFiltroApellido() {
+  $soloLetras = "/^[a-z]+$/i";
+      $soloTelefono = "/^(\d{3,3}\-\d{3,3}\-\d{4,4})|^(\+\d\-\d{3,3}\-\d{4,4})/";
+      $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
+      
+      if (!preg_match($soloLetras, (request::getInstance()->getPost(\trabajadorTableClass::getNameField(\trabajadorTableClass::APELLIDO, true))))){
+        session::getInstance()->setError('El apellido no permite numeros, solo letras', 'inputApellido');
+      } //----sobre pasar los caracteres----
+        else if(strlen(request::getInstance()->getPost(\trabajadorTableClass::getNameField(\trabajadorTableClass::APELLIDO, true))) > \trabajadorTableClass::APELLIDO_LENGTH) {
+   session::getInstance()->setError('El apellido digitado es mayor en cantidad de caracteres a lo permitido', 'inputApellido');
+      }   
+       
+    }
   }
   
 }
