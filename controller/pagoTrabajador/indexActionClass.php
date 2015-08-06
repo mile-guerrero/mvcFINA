@@ -31,7 +31,11 @@ class indexActionClass extends controllerClass implements controllerActionInterf
           date(config::getFormatTimestamp(), strtotime($filter['fechaFin'] . ' 23:59:59'))
           );
         }
-      }
+//       session::getInstance()->setAttribute('pagoTrabajadorIndexFilters', $where);
+//       }else if(session::getInstance()->hasAttribute('pagoTrabajadorIndexFilters')){
+//        $where = session::getInstance()->getAttribute('pagoTrabajadorIndexFilters');
+//    
+        }
       
       $fields = array(
           pagoTrabajadorTableClass::ID,
@@ -50,14 +54,14 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       $orderBy = array(
           pagoTrabajadorTableClass::ID
       );
-      $page = 0;
+       $page = 0;
       if (request::getInstance()->hasGet('page')) {
         $this->page = request::getInstance()->getGet('page');
         $page = request::getInstance()->getGet('page') - 1;
         $page = $page * config::getRowGrid();
       }//cierre del if del paguinado
 
-      $this->cntPages = pagoTrabajadorTableClass::getTotalPages(config::getRowGrid());
+      $this->cntPages = pagoTrabajadorTableClass::getTotalPages(config::getRowGrid(), $where);
       
       $this->objPT = pagoTrabajadorTableClass::getAll($fields, false, $orderBy, 'ASC',  config::getRowGrid(), $page, $where);
        $fields = array(
@@ -79,9 +83,10 @@ class indexActionClass extends controllerClass implements controllerActionInterf
         $this->objT = trabajadorTableClass::getAll($fields, true, $orderBy, 'ASC');
       $this->defineView('index', 'pagoTrabajador', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
-      echo $exc->getMessage();
-      echo '<br>';
-      echo $exc->getTraceAsString();
+      routing::getInstance()->redirect('pagoTrabajador', 'index');
+//      echo $exc->getMessage();
+//      echo '<br>';
+//      echo $exc->getTraceAsString();
     }
 }
 

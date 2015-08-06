@@ -259,15 +259,30 @@ namespace mvc\validator {
       }
     }
        
-     public static function validateFiltro() { 
-        
-      if (!is_numeric(request::getInstance()->getPost(\clienteTableClass::getNameField(\clienteTableClass::DOCUMENTO, true)))) {
-       session::getInstance()->setError('El documento no permite letras, solo numeros', 'inputDocumento');
+//     public static function validateFiltro() { 
+//        
+//      if (!is_numeric(request::getInstance()->getPost(\clienteTableClass::getNameField(\clienteTableClass::DOCUMENTO, true)))) {
+//       session::getInstance()->setError('El documento no permite letras, solo numeros', 'inputDocumento');
+//      } else if(strlen(request::getInstance()->getPost(\clienteTableClass::getNameField(\clienteTableClass::DOCUMENTO, true))) > \clienteTableClass::DOCUMENTO_LENGTH) {
+//        session::getInstance()->setError('El documento digitado es mayor en cantidad de caracteres a lo permitido', 'inputDocumento');
+//      }  
+//       
+//    
+//    
+    
+   public static function validateFiltro() { 
+      $soloLetras = "/^[a-z]+$/i";
+      $soloTelefono = "/^(\d{3,3}\-\d{3,3}\-\d{4,4})|^(\+\d\-\d{3,3}\-\d{4,4})/";
+      $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
+     
+       if (!is_numeric(request::getInstance()->getPost(\clienteTableClass::getNameField(\clienteTableClass::DOCUMENTO, true)))) {
+         session::getInstance()->setError('El documento no permite letras, solo numeros', 'inputDocumento');
       } else if(strlen(request::getInstance()->getPost(\clienteTableClass::getNameField(\clienteTableClass::DOCUMENTO, true))) > \clienteTableClass::DOCUMENTO_LENGTH) {
         session::getInstance()->setError('El documento digitado es mayor en cantidad de caracteres a lo permitido', 'inputDocumento');
-      }  
+      } 
        
     }
+    
     
      public static function validateFiltroNombre() { 
       $soloLetras = "/^[a-z]+$/i";
@@ -276,6 +291,8 @@ namespace mvc\validator {
      
       if (!preg_match($soloLetras, (request::getInstance()->getPost(\clienteTableClass::getNameField(\clienteTableClass::NOMBRE, true))))){
         session::getInstance()->setError('El nombre no permite numeros, solo letras', 'inputNombre');
+      
+        
       }         else if(strlen(request::getInstance()->getPost(\clienteTableClass::getNameField(\clienteTableClass::NOMBRE, true))) > \clienteTableClass::NOMBRE_LENGTH) {
         session::getInstance()->setError('El nombre digitado es mayor en cantidad de caracteres a lo permitido', 'inputNombre');
       }  

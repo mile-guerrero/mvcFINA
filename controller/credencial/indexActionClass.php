@@ -43,7 +43,11 @@ class indexActionClass extends controllerClass implements controllerActionInterf
            date(config::getFormatTimestamp(), strtotime($filter['fechaFin'].' 23:59:59'))
             );
       }//cierre del filtro fecha1 y fecha2       
-      }//cierre del POST del FILTRO 
+//     session::getInstance()->setAttribute('credencialIndexFilters', $where);
+//       }else if(session::getInstance()->hasAttribute('credencialIndexFilters')){
+//        $where = session::getInstance()->getAttribute('credencialIndexFilters');
+//    
+        }
       $fields = array(
           credencialTableClass::ID,
           credencialTableClass::NOMBRE,
@@ -59,15 +63,16 @@ class indexActionClass extends controllerClass implements controllerActionInterf
         $page = request::getInstance()->getGet('page') - 1;
         $page = $page * config::getRowGrid();
       }//cierre de paginado
-      $this->cntPages = credencialTableClass::getTotalPages(config::getRowGrid());
+      $this->cntPages = credencialTableClass::getTotalPages(config::getRowGrid(), $where);
       
       $this->objCredencial = credencialTableClass::getAll($fields, true, $orderBy, 'ASC',config::getRowGrid(), $page,$where);
       $this->defineView('index', 'credencial', session::getInstance()->getFormatOutput());
     }//cierre del try 
       catch (PDOException $exc) {
-      echo $exc->getMessage();
-      echo '<br>';
-      echo $exc->getTraceAsString();
+          routing::getInstance()->redirect('credencial', 'index');
+//      echo $exc->getMessage();
+//      echo '<br>';
+//      echo $exc->getTraceAsString();
     }//cierre del catch
   }//cierre de la funcion execute
 

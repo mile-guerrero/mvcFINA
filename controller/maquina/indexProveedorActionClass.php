@@ -23,22 +23,45 @@ class indexProveedorActionClass extends controllerClass implements controllerAct
       if (request::getInstance()->hasPost('filter')) {
         $filter = request::getInstance()->getPost('filter');
         //Validar datos
+if (request::getInstance()->hasPost(proveedorTableClass::getNameField(proveedorTableClass::DOCUMENTO, true)) and empty(mvc\request\requestClass::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::DOCUMENTO, true))) === false) {
 
-        if (isset($filter['nombre']) and $filter['nombre'] !== null and $filter['nombre'] !== '') {
-         $where[] = '(' . proveedorTableClass::getNameField(proveedorTableClass::NOMBREP) . ' LIKE ' . '\'' . $filter['nombre'] . '%\'  '
-              . 'OR ' . proveedorTableClass::getNameField(proveedorTableClass::NOMBREP) . ' LIKE ' . '\'%' . $filter['nombre'] . '%\' '
-              . 'OR ' . proveedorTableClass::getNameField(proveedorTableClass::NOMBREP) . ' LIKE ' . '\'%' . $filter['nombre'].'\') ';       
-              }
-        
-        if (isset($filter['apellido']) and $filter['apellido'] !== null and $filter['apellido'] !== '') {
-         $where[] ='(' .  proveedorTableClass::getNameField(proveedorTableClass::APELLIDO) . ' LIKE ' . '\'' . $filter['apellido'] . '%\'  '
-              . 'OR ' . proveedorTableClass::getNameField(proveedorTableClass::APELLIDO) . ' LIKE ' . '\'%' . $filter['apellido'] . '%\' '
-              . 'OR ' . proveedorTableClass::getNameField(proveedorTableClass::APELLIDO) . ' LIKE ' . '\'%' . $filter['apellido'].'\') ';       
-              }
-        
-        if (isset($filter['documento']) and $filter['documento'] !== null and $filter['documento'] !== '') {
-          $where[proveedorTableClass::DOCUMENTO] = $filter['documento'];
+          if (request::getInstance()->isMethod('POST')) {
+            $documento = request::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::DOCUMENTO, true));
+            validator::validateFiltro();
+
+            if (isset($documento) and $documento !== null and $documento !== '') {
+              $where[proveedorTableClass::DOCUMENTO] = $documento;
+            }//cierre del filtro documento
+          }//cierre del filtro ubicacion   
         }
+        
+        if (request::getInstance()->hasPost(proveedorTableClass::getNameField(proveedorTableClass::NOMBREP, true)) and empty(mvc\request\requestClass::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::NOMBREP, true))) === false) {
+
+          if (request::getInstance()->isMethod('POST')) {
+            $nombre = request::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::NOMBREP, true));
+            validator::validateFiltroNombre();
+            if (isset($nombre) and $nombre !== null and $nombre !== '') {
+              $where[] = '(' . proveedorTableClass::getNameField(proveedorTableClass::NOMBREP) . ' LIKE ' . '\'' . $nombre . '%\'  '
+                      . 'OR ' . proveedorTableClass::getNameField(proveedorTableClass::NOMBREP) . ' LIKE ' . '\'%' . $nombre . '%\' '
+                      . 'OR ' . proveedorTableClass::getNameField(proveedorTableClass::NOMBREP) . ' LIKE ' . '\'%' . $nombre . '\') ';
+            }//cierre del filtro nombre
+          }//cierre del filtro ubicacion   
+        }
+
+        if (request::getInstance()->hasPost(proveedorTableClass::getNameField(proveedorTableClass::APELLIDO, true)) and empty(mvc\request\requestClass::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::APELLIDO, true))) === false) {
+
+          if (request::getInstance()->isMethod('POST')) {
+            $apellido = request::getInstance()->getPost(proveedorTableClass::getNameField(proveedorTableClass::APELLIDO, true));
+            validator::validateFiltroApellido();
+            if (isset($apellido) and $apellido !== null and $apellido !== '') {
+              $where[] = '(' . proveedorTableClass::getNameField(proveedorTableClass::APELLIDO) . ' LIKE ' . '\'' . $apellido . '%\'  '
+                      . 'OR ' . proveedorTableClass::getNameField(proveedorTableClass::APELLIDO) . ' LIKE ' . '\'%' . $apellido . '%\' '
+                      . 'OR ' . proveedorTableClass::getNameField(proveedorTableClass::APELLIDO) . ' LIKE ' . '\'%' . $apellido . '\') ';
+            }//cierre del filtro apellio   
+          }//cierre del filtro ubicacion   
+        }
+
+        
         
         if (isset($filter['ciudad']) and $filter['ciudad'] !== null and $filter['ciudad'] !== '') {
           $where[proveedorTableClass::ID_CIUDAD] = $filter['ciudad'];
@@ -49,8 +72,12 @@ class indexProveedorActionClass extends controllerClass implements controllerAct
           date(config::getFormatTimestamp(), strtotime($filter['fecha2'] . ' 23:59:59'))
           );
         }
-      }
-      
+//      session::getInstance()->setAttribute('proveedorIndexFilters', $where);
+//       }else if(session::getInstance()->hasAttribute('proveedorIndexFilters')){
+//        $where = session::getInstance()->getAttribute('proveedorIndexFilters');
+//     
+//        
+       }
       $fields = array(
           proveedorTableClass::ID,
           proveedorTableClass::NOMBREP,
@@ -70,11 +97,10 @@ class indexProveedorActionClass extends controllerClass implements controllerAct
       if (request::getInstance()->hasGet('page')) {
         $this->page = request::getInstance()->getGet('page');
         $page = request::getInstance()->getGet('page') - 1;
-        $page = $page * 3;
+        $page = $page * config::getRowGrid();
       }
 
-      $this->cntPages = proveedorTableClass::getTotalPages(config::getRowGrid());
-      
+      $this->cntPages = proveedorTableClass::getTotalPages(config::getRowGrid(), $where);
       
       $this->objProveedor = proveedorTableClass::getAll($fields, true, $orderBy, 'ASC', config::getRowGrid(), $page, $where);
       
@@ -88,9 +114,10 @@ class indexProveedorActionClass extends controllerClass implements controllerAct
       $this->objCC = ciudadTableClass::getAll($fields, false, $orderBy, 'ASC');
       $this->defineView('indexProveedor', 'maquina', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
-      echo $exc->getMessage();
-      echo '<br>';
-      echo $exc->getTraceAsString();
+       routing::getInstance()->redirect('maquina', 'indexProveedor');
+//      echo $exc->getMessage();
+//      echo '<br>';
+//      echo $exc->getTraceAsString();
     }
 
 

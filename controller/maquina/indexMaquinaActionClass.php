@@ -81,8 +81,13 @@ class indexMaquinaActionClass extends controllerClass implements controllerActio
       if (isset($filter['proveedor']) and $filter['proveedor'] !== null and $filter['proveedor'] !== "") {
         $where[maquinaTableClass::PROVEEDOR_ID] = $filter['proveedor'];
       }
-
-      }
+//
+//       session::getInstance()->setAttribute('maquinaIndexFilters', $where);
+//       }else if(session::getInstance()->hasAttribute('maquinaIndexFilters')){
+//        $where = session::getInstance()->getAttribute('maquinaIndexFilters');
+//     
+        
+       }
       $fields = array(
           maquinaTableClass::ID,
           maquinaTableClass::NOMBRE,
@@ -96,14 +101,14 @@ class indexMaquinaActionClass extends controllerClass implements controllerActio
       $orderBy = array(
           maquinaTableClass::ID
       );
-      $page = 0;
+        $page = 0;
       if (request::getInstance()->hasGet('page')) {
         $this->page = request::getInstance()->getGet('page');
         $page = request::getInstance()->getGet('page') - 1;
         $page = $page * config::getRowGrid();
       }
-      $this->cntPages = maquinaTableClass::getTotalPages(config::getRowGrid());
-
+      $this->cntPages = maquinaTableClass::getTotalPages(config::getRowGrid(), $where);
+      
       $this->objMaquina = maquinaTableClass::getAll($fields, true, $orderBy, 'ASC', config::getRowGrid(), $page, $where);
 
       $fields = array(
@@ -127,9 +132,10 @@ class indexMaquinaActionClass extends controllerClass implements controllerActio
 
       $this->defineView('indexMaquina', 'maquina', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
-      echo $exc->getMessage();
-      echo '<br>';
-      echo $exc->getTraceAsString();
+       routing::getInstance()->redirect('maquina', 'indexMaquina');
+//      echo $exc->getMessage();
+//      echo '<br>';
+//      echo $exc->getTraceAsString();
     }
   }
 

@@ -31,7 +31,7 @@
         <a href="javascript:eliminarMasivo()" class="btn  btn-xs" id="btnDeleteMasivo"><img class="img-responsive"  id="imgmasivo" src="" alt=" "><?php echo i18n::__('eliminar en masa') ?></a> 
 <?php endif ?>
       <a type="button" class="btn  btn-xs" data-toggle="modal" data-target="#myModalFilters"><img class="img-responsive"  id="imgfiltros" src="" alt=" "><?php echo i18n::__('filtros') ?></a>  
-      <a href="<?php echo routing::getInstance()->getUrlWeb('empresa', 'index') ?>" class="btn  btn-xs" ><img class="img-responsive"  id="imgelifiltro" src="" alt=" "><?php echo i18n::__('eFiltros') ?></a> 
+      <a href="<?php echo routing::getInstance()->getUrlWeb('empresa', 'deleteFilters') ?>" class="btn  btn-xs" ><img class="img-responsive"  id="imgelifiltro" src="" alt=" "><?php echo i18n::__('eFiltros') ?></a> 
       <a type="button" class="btn btn-xs" data-toggle="modal" data-target="#myModalReport" ><img class="img-responsive"  id="imgreporte" src="" alt=" "><?php echo i18n::__('informe') ?></a>           
     </ul> 
 
@@ -49,22 +49,36 @@
               <div class="form-group">
               <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
                <div class="col-sm-10">
-               <input type="date" class="form-control-filtro1" id="reportFechaIni" name="report[fechaIni]">
-                <input type="date" class="form-control-filtro2" id="reportFechaFin" name="report[fechaFin]">
+               <input type="date" class="form-control-filtro1" id="reportFechaIni" name="filter[fechaIni]">
+                <input type="date" class="form-control-filtro2" id="reportFechaFin" name="filter[fechaFin]">
                 </div>
               </div>
+              
+              <?php if (session::getInstance()->hasError('inputNombre')): ?>
+                  <div class="alert alert-danger alert-dismissible" role="alert" id="error">
+                    <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputNombre') ?>
+                  </div>
+                <?php endif ?>
     
               <div class="form-group">
                 <label for="filterNombre" class="col-sm-2 control-label"><?php echo i18n::__('nom') ?></label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="filterNombre" name="filter[nombre]" placeholder="Nombre">
+                  <input type="text" class="form-control" id="filterNombre" name="<?php echo empresaTableClass::getNameField(empresaTableClass::NOMBRE, true) ?>" placeholder="Nombre">
                 </div>
               </div>
 
+              <?php if (session::getInstance()->hasError('inputDireccion')): ?>
+                  <div class="alert alert-danger alert-dismissible" role="alert" id="error">
+                    <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputDireccion') ?>
+                  </div>
+                <?php endif ?>
+              
               <div class="form-group">
                 <label for="filterDireccion" class="col-sm-2 control-label"><?php echo i18n::__('dir') ?></label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="filterDireccion" name="filter[direccion]" placeholder="Direccion">
+                  <input type="text" class="form-control" id="filterDireccion" name="<?php echo empresaTableClass::getNameField(empresaTableClass::DIRECCION, true) ?>" placeholder="Direccion">
                 </div>
               </div>
 

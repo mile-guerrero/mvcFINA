@@ -32,8 +32,13 @@ class indexActionClass extends controllerClass implements controllerActionInterf
            date(config::getFormatTimestamp(), strtotime($filter['fechaIni'].' 00:00:00')),
            date(config::getFormatTimestamp(), strtotime($filter['fechaFin'].' 23:59:59'))
             );
-      } 
       }
+//      session::getInstance()->setAttribute('usuarioCredencialIndexFilters', $where);
+//       }else if(session::getInstance()->hasAttribute('usuarioCredencialIndexFilters')){
+//        $where = session::getInstance()->getAttribute('usuarioCredencialIndexFilters');
+//     
+        
+       }
       
       $fields = array(
           usuarioCredencialTableClass::ID,
@@ -50,7 +55,8 @@ class indexActionClass extends controllerClass implements controllerActionInterf
         $page = request::getInstance()->getGet('page') - 1;
         $page = $page * config::getRowGrid();
       }
-      $this->cntPages = usuarioCredencialTableClass::getTotalPages(config::getRowGrid());
+      $this->cntPages = usuarioCredencialTableClass::getTotalPages(config::getRowGrid(), $where);
+      
       
       $this->objUC = usuarioCredencialTableClass::getAll($fields, false, $orderBy, 'ASC',config::getRowGrid(), $page,$where);
      
@@ -75,9 +81,10 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       
       $this->defineView('index', 'usuarioCredencial', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
-      echo $exc->getMessage();
-      echo '<br>';
-      echo $exc->getTraceAsString();
+       routing::getInstance()->redirect('usuarioCredencial', 'index');
+//      echo $exc->getMessage();
+//      echo '<br>';
+//      echo $exc->getTraceAsString();
     }
 }
 

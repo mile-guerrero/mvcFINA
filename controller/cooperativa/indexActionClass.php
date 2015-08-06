@@ -36,19 +36,36 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       if (request::getInstance()->hasPost('filter')) {
         $filter = request::getInstance()->getPost('filter');
         //Validar datos
+        
+        if (request::getInstance()->hasPost(cooperativaTableClass::getNameField(cooperativaTableClass::NOMBRE, true)) and empty(mvc\request\requestClass::getInstance()->getPost(cooperativaTableClass::getNameField(cooperativaTableClass::NOMBRE, true))) === false) {
 
-        if (isset($filter['nombre']) and $filter['nombre'] !== null and $filter['nombre'] !== '') {
-          $where[] ='(' .  cooperativaTableClass::getNameField(cooperativaTableClass::NOMBRE) . ' LIKE ' . '\'' . $filter['nombre'] . '%\'  '
-              . 'OR ' . cooperativaTableClass::getNameField(cooperativaTableClass::NOMBRE) . ' LIKE ' . '\'%' . $filter['nombre'] . '%\' '
-              . 'OR ' . cooperativaTableClass::getNameField(cooperativaTableClass::NOMBRE) . ' LIKE ' . '\'%' . $filter['nombre'].'\') ';       
-              }//cierre del filtro nombre
-        if (isset($filter['descripcion']) and $filter['descripcion'] !== null and $filter['descripcion'] !== '') {
-          $where[] ='(' .  cooperativaTableClass::getNameField(cooperativaTableClass::DESCRIPCION) . ' LIKE ' . '\'' . $filter['nombre'] . '%\'  '
-              . 'OR ' . cooperativaTableClass::getNameField(cooperativaTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $filter['nombre'] . '%\' '
-              . 'OR ' . cooperativaTableClass::getNameField(cooperativaTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $filter['nombre'].'\') ';       
-              }//cierre del filtro 
-              
-        if (isset($filter['ciudad']) and $filter['ciudad'] !== null and $filter['ciudad'] !== '') {
+          if (request::getInstance()->isMethod('POST')) {
+            $nombre = request::getInstance()->getPost(cooperativaTableClass::getNameField(cooperativaTableClass::NOMBRE, true));
+            validator::validateFiltroNombre();
+            if (isset($nombre) and $nombre !== null and $nombre !== '') {
+              $where[] = '(' . cooperativaTableClass::getNameField(cooperativaTableClass::NOMBRE) . ' LIKE ' . '\'' . $nombre . '%\'  '
+                      . 'OR ' . cooperativaTableClass::getNameField(cooperativaTableClass::NOMBRE) . ' LIKE ' . '\'%' . $nombre . '%\' '
+                      . 'OR ' . cooperativaTableClass::getNameField(cooperativaTableClass::NOMBRE) . ' LIKE ' . '\'%' . $nombre . '\') ';
+            }//cierre del filtro nombre
+          }//cierre del filtro ubicacion   
+        }
+        
+        if (request::getInstance()->hasPost(cooperativaTableClass::getNameField(cooperativaTableClass::DESCRIPCION, true)) and empty(mvc\request\requestClass::getInstance()->getPost(cooperativaTableClass::getNameField(cooperativaTableClass::DESCRIPCION, true))) === false) {
+
+          if (request::getInstance()->isMethod('POST')) {
+            $descripcion = request::getInstance()->getPost(cooperativaTableClass::getNameField(cooperativaTableClass::DESCRIPCION, true));
+            validator::validateFiltroDescripcion();
+            if (isset($descripcion) and $descripcion !== null and $descripcion !== '') {
+              $where[] = '(' . cooperativaTableClass::getNameField(cooperativaTableClass::DESCRIPCION) . ' LIKE ' . '\'' . $descripcion . '%\'  '
+                      . 'OR ' . cooperativaTableClass::getNameField(cooperativaTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $descripcion . '%\' '
+                      . 'OR ' . cooperativaTableClass::getNameField(cooperativaTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $descripcion . '\') ';
+            }//cierre del filtro nombre
+          }//cierre del filtro ubicacion   
+        }
+        
+        
+
+       if (isset($filter['ciudad']) and $filter['ciudad'] !== null and $filter['ciudad'] !== '') {
           $where[cooperativaTableClass::ID_CIUDAD] = $filter['ciudad'];
         }
         if (isset($filter['fechaIni']) and $filter['fechaIni'] !== null and $filter['fechaIni'] !== '' and (isset($filter['fechaFin']) and $filter['fechaFin'] !== null and $filter['fechaFin'] !== '')) {
@@ -57,7 +74,11 @@ class indexActionClass extends controllerClass implements controllerActionInterf
           date(config::getFormatTimestamp(), strtotime($filter['fechaFin'] . ' 23:59:59'))
           );
         }
-      }
+//       session::getInstance()->setAttribute('cooperativaIndexFilters', $where);
+//       }else if(session::getInstance()->hasAttribute('cooperativaIndexFilters')){
+//        $where = session::getInstance()->getAttribute('cooperativaIndexFilters');
+//    
+        }
        
           
       $fields = array(
@@ -78,7 +99,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
         $page = request::getInstance()->getGet('page') - 1;
         $page = $page * config::getRowGrid();
       }
-      $this->cntPages = cooperativaTableClass::getTotalPages(config::getRowGrid());
+      $this->cntPages = cooperativaTableClass::getTotalPages(config::getRowGrid(), $where);
       $this->objCooperativa = cooperativaTableClass::getAll($fields, true, $orderBy, 'ASC', config::getRowGrid(), $page,$where);
       
       
@@ -94,9 +115,10 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       
       $this->defineView('index', 'cooperativa', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
-      echo $exc->getMessage();
-      echo '<br>';
-      echo $exc->getTraceAsString();
+      routing::getInstance()->redirect('cooperativa', 'index');
+//      echo $exc->getMessage();
+//      echo '<br>';
+//      echo $exc->getTraceAsString();
     }
 }
 

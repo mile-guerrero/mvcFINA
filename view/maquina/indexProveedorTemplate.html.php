@@ -31,7 +31,7 @@
       <a href="javascript:eliminarMasivo()" class="btn  btn-xs" id="btnDeleteMasivo"><img class="img-responsive"  id="imgmasivo" src="" alt=" "><?php echo i18n::__('eliminar en masa') ?></a> 
       <?php endif?>
       <a type="button" class="btn  btn-xs" data-toggle="modal" data-target="#myModalFilters"><img class="img-responsive"  id="imgfiltros" src="" alt=" "><?php echo i18n::__('filtros') ?></a>  
-      <a href="<?php echo routing::getInstance()->getUrlWeb('maquina', 'indexProveedor') ?>" class="btn btn-xs" ><img class="img-responsive"  id="imgelifiltro" src="" alt=" "><?php echo i18n::__('eFiltros') ?></a> 
+      <a href="<?php echo routing::getInstance()->getUrlWeb('maquina', 'deleteFiltersProveedor') ?>" class="btn btn-xs" ><img class="img-responsive"  id="imgelifiltro" src="" alt=" "><?php echo i18n::__('eFiltros') ?></a> 
       <a type="button" class="btn  btn-xs" data-toggle="modal" data-target="#myModalReport" ><img class="img-responsive"  id="imgreporte" src="" alt=" "><?php echo i18n::__('informe') ?></a>           
    </ul> 
 
@@ -70,26 +70,43 @@
   </div>
           
           
+          <?php if (session::getInstance()->hasError('inputDocumento')): ?>
+                  <div class="alert alert-danger alert-dismissible" role="alert" id="error">
+                    <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputDocumento') ?>
+                  </div>
+                <?php endif ?>
+          
           <div class="form-group">
     <label for="filterDocumento" class="col-sm-2 control-label"><?php echo i18n::__('documento') ?></label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="filterDocumento" name="filter[documento]" placeholder="buscar por documento">
+      <input type="text" class="form-control" id="filterDocumento" name="<?php echo proveedorTableClass::getNameField(proveedorTableClass::DOCUMENTO, true) ?>" placeholder="buscar por documento">
     </div>
   </div>
           
-        
+        <?php if (session::getInstance()->hasError('inputNombre')): ?>
+                  <div class="alert alert-danger alert-dismissible" role="alert" id="error">
+                    <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputNombre') ?>
+                  </div>
+                <?php endif ?>
           <div class="form-group">
     <label for="filterNombre" class="col-sm-2 control-label"><?php echo i18n::__('nom') ?></label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="filterNombre" name="filter[nombre]" placeholder="buscar por nombre">
+      <input type="text" class="form-control" id="filterNombre" name="<?php echo proveedorTableClass::getNameField(proveedorTableClass::NOMBREP, true) ?>" placeholder="buscar por nombre">
     </div>
   </div>
           
-          
+          <?php if (session::getInstance()->hasError('inputApellido')): ?>
+                  <div class="alert alert-danger alert-dismissible" role="alert" id="error">
+                    <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputApellido') ?>
+                  </div>
+                <?php endif ?>
           <div class="form-group">
     <label for="filterApellido" class="col-sm-2 control-label"><?php echo i18n::__('apell') ?></label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="filterApellido" name="filter[apellido]" placeholder="buscar por apellido">
+      <input type="text" class="form-control" id="filterApellido" name="<?php echo proveedorTableClass::getNameField(proveedorTableClass::APELLIDO, true) ?>" placeholder="buscar por apellido">
     </div>
   </div>
           

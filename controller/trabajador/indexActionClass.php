@@ -71,7 +71,12 @@ class indexActionClass extends controllerClass implements controllerActionInterf
               date(config::getFormatTimestamp(), strtotime($filter['fecha2'] . ' 23:59:59'))
           );
         }
-      }
+//      session::getInstance()->setAttribute('trabajadorIndexFilters', $where);
+//       }else if(session::getInstance()->hasAttribute('trabajadorIndexFilters')){
+//        $where = session::getInstance()->getAttribute('trabajadorIndexFilters');
+//     
+        
+       }
 
       $fields = array(
           trabajadorTableClass::ID,
@@ -90,15 +95,14 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       $orderBy = array(
           trabajadorTableClass::NOMBRET
       );
-      $page = 0;
+        $page = 0;
       if (request::getInstance()->hasGet('page')) {
         $this->page = request::getInstance()->getGet('page');
         $page = request::getInstance()->getGet('page') - 1;
-        $page = $page * 3;
+        $page = $page * config::getRowGrid();
       }
 
-      $this->cntPages = trabajadorTableClass::getTotalPages(config::getRowGrid());
-
+      $this->cntPages = trabajadorTableClass::getTotalPages(config::getRowGrid(), $where);
 
       $this->objTrabajador = trabajadorTableClass::getAll($fields, true, $orderBy, 'ASC', config::getRowGrid(), $page, $where);
       $fields = array(

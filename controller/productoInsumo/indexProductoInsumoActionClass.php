@@ -58,7 +58,10 @@ class indexProductoInsumoActionClass extends controllerClass implements controll
         if (isset($filter['tipoInsumo']) and $filter['tipoInsumo'] !== null and $filter['tipoInsumo'] !== "") {
           $where[productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID] = $filter['tipoInsumo'];
         }
-      }
+//      session::getInstance()->setAttribute('productoInsumoIndexFilters', $where);
+//       }else if(session::getInstance()->hasAttribute('productoInsumoIndexFilters')){
+//        $where = session::getInstance()->getAttribute('productoInsumoIndexFilters');
+     }
       $fields = array(
           productoInsumoTableClass::ID,
           productoInsumoTableClass::DESCRIPCION,
@@ -74,13 +77,13 @@ class indexProductoInsumoActionClass extends controllerClass implements controll
       $orderBy = array(
           productoInsumoTableClass::ID
       );
-      $page = 0;
+       $page = 0;
       if (request::getInstance()->hasGet('page')) {
         $this->page = request::getInstance()->getGet('page');
         $page = request::getInstance()->getGet('page') - 1;
         $page = $page * config::getRowGrid();
       }
-      $this->cntPages = productoInsumoTableClass::getTotalPages(config::getRowGrid());
+      $this->cntPages = productoInsumoTableClass::getTotalPages(config::getRowGrid(), $where);
 
       $this->objPI = productoInsumoTableClass::getAll($fields, true, $orderBy, 'ASC', config::getRowGrid(), $page, $where);
 
@@ -104,9 +107,10 @@ class indexProductoInsumoActionClass extends controllerClass implements controll
 
       $this->defineView('indexProductoInsumo', 'productoInsumo', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
-      echo $exc->getMessage();
-      echo '<br>';
-      echo $exc->getTraceAsString();
+        routing::getInstance()->redirect('productoInsumo', 'indexProductoInsumo');
+//      echo $exc->getMessage();
+//      echo '<br>';
+//      echo $exc->getTraceAsString();
     }
   }
 

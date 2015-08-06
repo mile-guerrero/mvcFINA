@@ -238,7 +238,6 @@ namespace mvc\model\table {
         }
         
         
-    
       
 //      print_r($sql);
 //          exit();

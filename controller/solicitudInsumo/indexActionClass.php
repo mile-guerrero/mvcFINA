@@ -31,7 +31,12 @@ class indexActionClass extends controllerClass implements controllerActionInterf
           date(config::getFormatTimestamp(), strtotime($filter['fechaFin'] . ' 23:59:59'))
           );
         }
-      }
+//      session::getInstance()->setAttribute('solicitudInsumoIndexFilters', $where);
+//       }else if(session::getInstance()->hasAttribute('solicitudInsumoIndexFilters')){
+//        $where = session::getInstance()->getAttribute('solicitudInsumoIndexFilters');
+//     
+        
+       }
       
       $fields = array(
           solicitudInsumoTableClass::ID,
@@ -49,14 +54,12 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       );
       
       $page = 0;
-      $page = 0;
       if (request::getInstance()->hasGet('page')) {
         $this->page = request::getInstance()->getGet('page');
         $page = request::getInstance()->getGet('page') - 1;
         $page = $page * config::getRowGrid();
       }
-      $this->cntPages = solicitudInsumoTableClass::getTotalPages(config::getRowGrid());
-      
+      $this->cntPages = solicitudInsumoTableClass::getTotalPages(config::getRowGrid(), $where);
       $this->objS = solicitudInsumoTableClass::getAll($fields, true, $orderBy, 'ASC', config::getRowGrid(), $page, $where);
       
        $fields = array(
@@ -88,9 +91,10 @@ class indexActionClass extends controllerClass implements controllerActionInterf
     
       $this->defineView('index', 'solicitudInsumo', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
-      echo $exc->getMessage();
-      echo '<br>';
-      echo $exc->getTraceAsString();
+      routing::getInstance()->redirect('solicitudInsumo', 'index');
+//      echo $exc->getMessage();
+//      echo '<br>';
+//      echo $exc->getTraceAsString();
     }
 }
 

@@ -23,13 +23,26 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       if (request::getInstance()->hasPost('filter')) {
         $filter = request::getInstance()->getPost('filter');
         //Validar datos
+if (request::getInstance()->hasPost('filter')) {
+        $filter = request::getInstance()->getPost('filter');
+        //Validar datos
 
-        if (isset($filter['descripcion']) and $filter['descripcion'] !== null and $filter['descripcion'] !== '') {
-          $where[] ='(' .  laborTableClass::getNameField(laborTableClass::DESCRIPCION) . ' LIKE ' . '\'' . $filter['descripcion'] . '%\'  '
-              . 'OR ' . laborTableClass::getNameField(laborTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $filter['descripcion'] . '%\' '
-              . 'OR ' . laborTableClass::getNameField(laborTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $filter['descripcion'].'\') ';       
+        if (request::getInstance()->hasPost(laborTableClass::getNameField(laborTableClass::DESCRIPCION, true)) and empty(mvc\request\requestClass::getInstance()->getPost(laborTableClass::getNameField(laborTableClass::DESCRIPCION, true))) === false) {
+
+          if (request::getInstance()->isMethod('POST')) {
+            $descripcion = request::getInstance()->getPost(laborTableClass::getNameField(laborTableClass::DESCRIPCION, true));
+            validator::validateFiltro();
+
+            if (isset($descripcion) and $descripcion !== null and $descripcion !== '') {
+          $where[] ='(' .  laborTableClass::getNameField(laborTableClass::DESCRIPCION) . ' LIKE ' . '\'' . $descripcion . '%\'  '
+              . 'OR ' . laborTableClass::getNameField(laborTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $descripcion . '%\' '
+              . 'OR ' . laborTableClass::getNameField(laborTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $descripcion .'\') ';       
               }//cierre del filtro nombre
        
+            }//cierre del filtro documento
+          }//cierre del filtro ubicacion   
+        }
+        
         if (isset($filter['valor1']) and $filter['valor1'] !== null and $filter['valor1'] !== '' and (isset($filter['valor2']) and $filter['valor2'] !== null and $filter['valor2'] !== '')) {
           $where[laborTableClass::VALOR] = array(
          $filter['valor1'],
@@ -43,7 +56,12 @@ class indexActionClass extends controllerClass implements controllerActionInterf
           date(config::getFormatTimestamp(), strtotime($filter['fechaFin'] . ' 23:59:59'))
           );
         }
-      }
+//      session::getInstance()->setAttribute('laborIndexFilters', $where);
+//       }else if(session::getInstance()->hasAttribute('laborIndexFilters')){
+//        $where = session::getInstance()->getAttribute('laborIndexFilters');
+//     
+        
+       }
        
           
       $fields = array(
@@ -60,15 +78,16 @@ class indexActionClass extends controllerClass implements controllerActionInterf
         $page = request::getInstance()->getGet('page') - 1;
         $page = $page * config::getRowGrid();
       }
-      $this->cntPages = laborTableClass::getTotalPages(config::getRowGrid());
+      $this->cntPages = laborTableClass::getTotalPages(config::getRowGrid(), $where);
       $this->objLabor = laborTableClass::getAll($fields, false, $orderBy, 'ASC', config::getRowGrid(), $page,$where);
      
     
       $this->defineView('index', 'labor', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
-      echo $exc->getMessage();
-      echo '<br>';
-      echo $exc->getTraceAsString();
+        routing::getInstance()->redirect('labor', 'index');
+//      echo $exc->getMessage();
+//      echo '<br>';
+//      echo $exc->getTraceAsString();
     }
 }
 

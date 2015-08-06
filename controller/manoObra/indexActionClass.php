@@ -53,7 +53,11 @@ class indexActionClass extends controllerClass implements controllerActionInterf
           date(config::getFormatTimestamp(), strtotime($filter['fecha2'] . ' 23:59:59'))
           );
         }
-      }
+//      session::getInstance()->setAttribute('manoObraIndexFilters', $where);
+//       }else if(session::getInstance()->hasAttribute('manoObraIndexFilters')){
+//        $where = session::getInstance()->getAttribute('manoObraIndexFilters');
+//    
+        }
       
 //      validator::validateFilters();
       $fields = array(
@@ -77,8 +81,8 @@ class indexActionClass extends controllerClass implements controllerActionInterf
         $page = request::getInstance()->getGet('page') - 1;
         $page = $page * config::getRowGrid();
       }
-      $this->cntPages = manoObraTableClass::getTotalPages(config::getRowGrid());
-      $this->objManoObra = manoObraTableClass::getAll($fields, true, $orderBy, 'ASC', config::getRowGrid(), $page, $where);
+      $this->cntPages = manoObraTableClass::getTotalPages(config::getRowGrid(), $where);
+       $this->objManoObra = manoObraTableClass::getAll($fields, true, $orderBy, 'ASC', config::getRowGrid(), $page, $where);
       $fields = array(
            cooperativaTableClass::ID,
            cooperativaTableClass::NOMBRE
@@ -90,9 +94,10 @@ class indexActionClass extends controllerClass implements controllerActionInterf
        
       $this->defineView('index', 'manoObra', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
-      echo $exc->getMessage();
-      echo '<br>';
-      echo $exc->getTraceAsString();
+       routing::getInstance()->redirect('manoObra', 'index');
+//      echo $exc->getMessage();
+//      echo '<br>';
+//      echo $exc->getTraceAsString();
     }
 }
 

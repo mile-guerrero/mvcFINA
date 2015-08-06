@@ -218,18 +218,20 @@ namespace mvc\validator {
       }
     }
      public static function validateFiltro() {
-    //-------------------------------campo descripcion-----------------------------
-//       
+       $soloLetras = "/^[a-z]+$/i";
       if (!preg_match($soloLetras, (request::getInstance()->getPost(\enfermedadTableClass::getNameField(\enfermedadTableClass::NOMBRE, true))))){
         session::getInstance()->setError('El nombre no permite numeros, solo letras', 'inputNombre');
       } //----sobre pasar los caracteres----
         else if(strlen(request::getInstance()->getPost(\enfermedadTableClass::getNameField(\enfermedadTableClass::NOMBRE, true))) > \enfermedadTableClass::NOMBRE_LENGTH) {
         session::getInstance()->setError('El nombre digitado es mayor en cantidad de caracteres a lo permitido', 'inputNombre');
       }
+    }
+    
+     public static function validateFiltroDescripcion() {
+   
       if(strlen(request::getInstance()->getPost(\enfermedadTableClass::getNameField(\enfermedadTableClass::DESCRIPCION, true))) > \enfermedadTableClass::DESCRIPCION_LENGTH) {
         session::getInstance()->setError('La descripcion digitada es mayor en cantidad de caracteres a lo permitido', 'inputDescripcion');
-      }
-       
+      }       
     }
   }  
 }

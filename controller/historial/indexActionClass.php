@@ -33,7 +33,11 @@ class indexActionClass extends controllerClass implements controllerActionInterf
            date(config::getFormatTimestamp(), strtotime($filter['fechaFin'].' 23:59:59'))
             );
       } 
-      }
+//      session::getInstance()->setAttribute('historialIndexFilters', $where);
+//       }else if(session::getInstance()->hasAttribute('historialIndexFilters')){
+//        $where = session::getInstance()->getAttribute('historialIndexFilters');
+//    
+        }
       
       $fields = array(
           historialTableClass::ID,
@@ -50,7 +54,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
         $page = request::getInstance()->getGet('page') - 1;
         $page = $page * config::getRowGrid();
       }
-      $this->cntPages = historialTableClass::getTotalPages(config::getRowGrid());
+      $this->cntPages = historialTableClass::getTotalPages(config::getRowGrid(), $where);
       
       $this->objHistorial = historialTableClass::getAll($fields, false, $orderBy, 'ASC',config::getRowGrid(), $page,$where);
      
@@ -75,9 +79,10 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       
       $this->defineView('index', 'historial', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
-      echo $exc->getMessage();
-      echo '<br>';
-      echo $exc->getTraceAsString();
+       routing::getInstance()->redirect('historial', 'index');
+//      echo $exc->getMessage();
+//      echo '<br>';
+//      echo $exc->getTraceAsString();
     }
 }
 

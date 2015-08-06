@@ -54,7 +54,11 @@ class indexActionClass extends controllerClass implements controllerActionInterf
            date(config::getFormatTimestamp(), strtotime($filter['fechaFin'].' 23:59:59'))
             );
       }//cierre del filtro fechaIni y fechaFin      
-      }//cierre del POST del reporte
+//    session::getInstance()->setAttribute('defaultIndexFilters', $where);
+//       }else if(session::getInstance()->hasAttribute('defaultIndexFilters')){
+//        $where = session::getInstance()->getAttribute('defaultIndexFilters');
+//    
+        }
       $fields = array(
           usuarioTableClass::ID,
           usuarioTableClass::USUARIO,
@@ -74,16 +78,17 @@ class indexActionClass extends controllerClass implements controllerActionInterf
         $page = request::getInstance()->getGet('page') - 1;
         $page = $page * config::getRowGrid();
       }//cierre de paginado
-      $this->cntPages = usuarioTableClass::getTotalPages(config::getRowGrid());
+      $this->cntPages = usuarioTableClass::getTotalPages(config::getRowGrid(), $where);
       
       $this->objUsuarios = usuarioTableClass::getAll($fields, true, $orderBy, 'ASC',config::getRowGrid(), $page,$where);
 //      $this->objUsuarios = usuarioTableClass::getAll($fields, true);
       $this->defineView('index', 'default', session::getInstance()->getFormatOutput());
     } //cierre del try
      catch (PDOException $exc) {
-      echo $exc->getMessage();
-      echo '<br>';
-      echo $exc->getTraceAsString();
+         routing::getInstance()->redirect('default', 'index');
+//      echo $exc->getMessage();
+//      echo '<br>';
+//      echo $exc->getTraceAsString();
      }//cierre del catch
 }//cierre de la funcion execute
 

@@ -80,7 +80,11 @@ class indexLoteActionClass extends controllerClass implements controllerActionIn
         if (isset($filter['ciudad']) and $filter['ciudad'] !== null and $filter['ciudad'] !== "") {
           $where[loteTableClass::ID_CIUDAD] = $filter['ciudad'];
         }//cierre del filtro ciudad
-      }//cierre del POST filter 
+//      session::getInstance()->setAttribute('loteIndexFilters', $where);
+//       }else if(session::getInstance()->hasAttribute('loteIndexFilters')){
+//        $where = session::getInstance()->getAttribute('loteIndexFilters');
+//   
+        }
 
       $fields = array(
           loteTableClass::ID,
@@ -105,8 +109,8 @@ class indexLoteActionClass extends controllerClass implements controllerActionIn
         $page = request::getInstance()->getGet('page') - 1;
         $page = $page * config::getRowGrid();
       }
-      $this->cntPages = loteTableClass::getTotalPages(config::getRowGrid());
-
+      $this->cntPages = loteTableClass::getTotalPages(config::getRowGrid(), $where);
+      
       $this->objLote = loteTableClass::getAll($fields, true, $orderBy, 'ASC', config::getRowGrid(), $page, $where);
 
       $fields = array(
@@ -142,9 +146,10 @@ class indexLoteActionClass extends controllerClass implements controllerActionIn
       $this->defineView('indexLote', 'lote', session::getInstance()->getFormatOutput());
     }//cierre del try
     catch (PDOException $exc) {
-      echo $exc->getMessage();
-      echo '<br>';
-      echo $exc->getTraceAsString();
+       routing::getInstance()->redirect('lote', 'indexLote');
+//      echo $exc->getMessage();
+//      echo '<br>';
+//      echo $exc->getTraceAsString();
     }//cierre del catch
   }
 

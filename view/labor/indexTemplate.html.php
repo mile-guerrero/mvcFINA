@@ -31,7 +31,7 @@ use mvc\session\sessionClass as session ?>
 
       <?php endif ?>
       <a type="button" class="btn  btn-xs" data-toggle="modal" data-target="#myModalFilters"><img class="img-responsive"  id="imgfiltros" src="" alt=" "><?php echo i18n::__('filtros') ?></a>  
-      <a href="<?php echo routing::getInstance()->getUrlWeb('labor', 'index') ?>" class="btn  btn-xs" ><img class="img-responsive"  id="imgelifiltro" src="" alt=" "><?php echo i18n::__('eFiltros') ?></a> 
+      <a href="<?php echo routing::getInstance()->getUrlWeb('labor', 'deleteFilters') ?>" class="btn  btn-xs" ><img class="img-responsive"  id="imgelifiltro" src="" alt=" "><?php echo i18n::__('eFiltros') ?></a> 
       <a type="button" class="btn btn-xs" data-toggle="modal" data-target="#myModalReport" ><img class="img-responsive"  id="imgreporte" src="" alt=" "><?php echo i18n::__('informe') ?></a>           
     </ul> 
 
@@ -56,10 +56,17 @@ use mvc\session\sessionClass as session ?>
     </div>
   </div>
               
+              <?php if (session::getInstance()->hasError('inputDescripcion')): ?>
+                  <div class="alert alert-danger alert-dismissible" role="alert" id="error">
+                    <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputDescripcion') ?>
+                  </div>
+                <?php endif ?>
+              
               <div class="form-group">
                 <label for="filterDescripcion" class="col-sm-2 control-label"><?php echo i18n::__('des') ?></label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="filterDescripcion" name="filter[descripcion]" placeholder="Descripcion">
+                  <input type="text" class="form-control" id="filterDescripcion" name="<?php echo laborTableClass::getNameField(laborTableClass::DESCRIPCION, true) ?>" placeholder="Descripcion">
                 </div>
               </div>
 

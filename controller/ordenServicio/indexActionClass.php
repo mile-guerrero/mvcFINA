@@ -34,7 +34,11 @@ class indexActionClass extends controllerClass implements controllerActionInterf
           date(config::getFormatTimestamp(), strtotime($filter['fecha2'] . ' 23:59:59'))
           );
         }
-      }
+//      session::getInstance()->setAttribute('ordenServicioIndexFilters', $where);
+//       }else if(session::getInstance()->hasAttribute('ordenServicioIndexFilters')){
+//        $where = session::getInstance()->getAttribute('ordenServicioIndexFilters');
+//    
+        }
       $fields = array(
           ordenServicioTableClass::ID,
           ordenServicioTableClass::FECHA_MANTENIMIENTO,
@@ -49,13 +53,13 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       $orderBy = array(
          ordenServicioTableClass::ID
       );
-      $page = 0;
+       $page = 0;
       if (request::getInstance()->hasGet('page')) {
         $this->page = request::getInstance()->getGet('page');
         $page = request::getInstance()->getGet('page') - 1;
         $page = $page * config::getRowGrid();
       }
-      $this->cntPages = ordenServicioTableClass::getTotalPages(config::getRowGrid());
+      $this->cntPages = ordenServicioTableClass::getTotalPages(config::getRowGrid(), $where);
       $this->objOS = ordenServicioTableClass::getAll($fields, false, $orderBy, 'ASC', config::getRowGrid(), $page, $where);
       $fields = array(
       trabajadorTableClass::ID,
@@ -68,9 +72,10 @@ class indexActionClass extends controllerClass implements controllerActionInterf
        
       $this->defineView('index', 'ordenServicio', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
-      echo $exc->getMessage();
-      echo '<br>';
-      echo $exc->getTraceAsString();
+      routing::getInstance()->redirect('ordenServicio', 'index');
+//      echo $exc->getMessage();
+//      echo '<br>';
+//      echo $exc->getTraceAsString();
     }
 }
 

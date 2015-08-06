@@ -33,7 +33,7 @@ use mvc\request\requestClass as request ?>
           <a href="javascript:eliminarMasivo()" class="btn  btn btn-xs" id="btnDeleteMasivo"><img class="img-responsive"  id="imgmasivo" src="" alt=" "><?php echo i18n::__('eliminar en masa') ?></a> 
         <?php endif ?>
         <a type="button" class="btn  btn btn-xs" data-toggle="modal" data-target="#myModalFilters"><img class="img-responsive"  id="imgfiltros" src="" alt=" "><?php echo i18n::__('filtros') ?></a>
-        <a href="<?php echo routing::getInstance()->getUrlWeb('cliente', 'indexCliente') ?>" class="btn  btn-xs" ><img class="img-responsive"  id="imgelifiltro" src="" alt=" "><?php echo i18n::__('eFiltros') ?></a>
+        <a href="<?php echo routing::getInstance()->getUrlWeb('cliente', 'deleteFiltersCliente') ?>" class="btn  btn-xs" ><img class="img-responsive"  id="imgelifiltro" src="" alt=" "><?php echo i18n::__('eFiltros') ?></a>
         <a type="button" class="btn  btn-xs" data-toggle="modal" data-target="#myModalReport" ><img class="img-responsive"  id="imgreporte" src="" alt=" "><?php echo i18n::__('informe') ?></a>          
       </ul>
 
@@ -83,7 +83,7 @@ use mvc\request\requestClass as request ?>
                   <div class="col-sm-10">
                     <input type="text" class="form-control" id="filterDocumento" name="<?php echo clienteTableClass::getNameField(clienteTableClass::DOCUMENTO, true) ?>" placeholder="buscar por el documento">
                   </div>
-                </div>      
+                </div>     
 
                 <?php if (session::getInstance()->hasError('inputNombre')): ?>
                   <div class="alert alert-danger alert-dismissible" role="alert" id="error">

@@ -33,7 +33,11 @@ class indexActionClass extends controllerClass implements controllerActionInterf
            date(config::getFormatTimestamp(), strtotime($filter['fechaFin'].' 23:59:59'))
             );
       }     
-      }
+//       session::getInstance()->setAttribute('pedidoIndexFilters', $where);
+//       }else if(session::getInstance()->hasAttribute('pedidoIndexFilters')){
+//        $where = session::getInstance()->getAttribute('pedidoIndexFilters');
+//    
+        }
       $fields = array(
           pedidoTableClass::ID,
           pedidoTableClass::EMPRESA_ID,
@@ -46,13 +50,13 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       $orderBy = array(
          pedidoTableClass::ID
       );
-      $page = 0;
+     $page = 0;
       if (request::getInstance()->hasGet('page')) {
         $this->page = request::getInstance()->getGet('page');
         $page = request::getInstance()->getGet('page') - 1;
         $page = $page * config::getRowGrid();
       }
-      $this->cntPages = pedidoTableClass::getTotalPages(config::getRowGrid());
+      $this->cntPages = pedidoTableClass::getTotalPages(config::getRowGrid(), $where);
       
       $this->objPedido = pedidoTableClass::getAll($fields, true, $orderBy, 'ASC',config::getRowGrid(), $page, $where);
       
@@ -77,9 +81,10 @@ class indexActionClass extends controllerClass implements controllerActionInterf
         
       $this->defineView('index', 'pedido', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
-      echo $exc->getMessage();
-      echo '<br>';
-      echo $exc->getTraceAsString();
+       routing::getInstance()->redirect('pedido', 'index');
+//      echo $exc->getMessage();
+//      echo '<br>';
+//      echo $exc->getTraceAsString();
     }
 }
 

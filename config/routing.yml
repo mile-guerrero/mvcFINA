@@ -140,7 +140,12 @@ default_reporte:
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
-  
+
+default_deleteFilters:
+  url:    /default/borrarFiltros
+  param:  { module: default, action: deleteFilters, format: html }
+  load: 
+    
  #-------------------modulo - credencial----------------------------   
 credencial_index:
   url:    /credencial/index
@@ -231,6 +236,10 @@ credencial_reporte:
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
 
+credencial_deleteFilters:
+  url:    /credencial/borrarFiltros
+  param:  { module: credencial, action: deleteFilters, format: html }
+  load:
  #-------------------modulo - usuario credencial----------------------------  
 usuarioCredencial_index:
   url:    /usuarioCredencial/index
@@ -322,6 +331,10 @@ usuarioCredencial_reporte:
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
 
+usuarioCredencial_deleteFilters:
+  url:    /usuarioCredencial/borrarFiltros
+  param:  { module: usuarioCredencial, action: deleteFilters, format: html }
+  load:
 #-------------------modulo - orden servicio----------------------------
 ordenServicio_index:
   url:    /ordenServicio/index
@@ -426,7 +439,11 @@ ordenServicio_reporte:
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
-    
+ 
+ordenServicio_deleteFilters:
+  url:    /ordenServicio/borrarFiltros
+  param:  { module: ordenServicio, action: deleteFilters, format: html }
+  load:    
 #-------------------modulo - maquina----------------------------   
 maquina_index:
   url:    /maquina/index
@@ -556,6 +573,11 @@ maquina_reporte:
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
+
+maquina_deleteFilters:
+  url:    /maquina/borrarFiltros
+  param:  { module: maquina, action: deleteFiltersMaquina, format: html }
+  load:    
     
 tipoUsoMaquina_index:
   url:    /tipoUsoMaquina/index
@@ -699,6 +721,10 @@ proveedor_reporte:
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
 
+proveedor_deleteFilters:
+  url:    /proveedor/borrarFiltros
+  param:  { module: maquina, action: deleteFiltersProveedor, format: html }
+  load:
 #--------------------------------Proveedor-----------------------------------
     
 #-------------------modulo - origen maquina----------------------------
@@ -717,6 +743,7 @@ cliente_index:
     - model/base/ciudadBaseTableClass.php
     - model/ciudadTableClass.php
     - libs/validator/cliente/clienteValidatorClass.php
+    
     
 cliente_menuPrincipal:
   url:    /cliente/menuPrincipal
@@ -834,7 +861,11 @@ cliente_reporte:
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
- 
+
+cliente_deleteFilters:
+  url:    /cliente/borrarFiltros
+  param:  { module: cliente, action: deleteFiltersCliente, format: html }
+  load: 
 #-------------------modulo - lote----------------------------   
 lote_index:
   url:    /lote/index
@@ -1055,6 +1086,10 @@ lote_reporte:
     - model/base/unidadMedidaBaseTableClass.php
     - model/unidadMedidaTableClass.php
 
+lote_deleteFilters:
+  url:    /lote/borrarFiltros
+  param:  { module: lote, action: deleteFiltersLote, format: html }
+  load:
 #--------------------------modulo-tipoProductoInsumo--------------------------
  
 #--------------------------modulo-productoInsumo --------------------------
@@ -1178,6 +1213,10 @@ productoInsumo_reporte:
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
     
+productoInsumo_deleteFilters:
+  url:    /productoInsumo/borrarFiltros
+  param:  { module: productoInsumo, action: deleteFiltersProductoInsumo, format: html }
+  load:
     
 tipoProductoInsumo_index:
   url:    /tipoProductoInsumo/index
@@ -1260,7 +1299,11 @@ tipoProductoInsumo_reporte:
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
-    
+ 
+tipoProductoInsumo_deleteFilters:
+  url:    /tipoProductoInsumo/borrarFiltros
+  param:  { module: productoInsumo, action: deleteFiltersTipoProductoInsumo, format: html }
+  load:    
 #--------------------------modulo-tipoId --------------------------    
 
 
@@ -1400,7 +1443,11 @@ solicitudInsumo_reporte:
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
-    
+
+solicitudInsumo_deleteFilters:
+  url:    /solicitudInsumo/borrarFiltros
+  param:  { module: solicitudInsumo, action: deleteFilters, format: html }
+  load:    
 #-------------------modulo - detalle solicitud insumo----------------------------
 
 #----------------------Trabajador-------------------------------- 
@@ -1538,7 +1585,11 @@ trabajador_reporte:
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
-    
+
+trabajador_deleteFilters:
+  url:    /trabajador/borrarFiltros
+  param:  { module: trabajador, action: deleteFilters, format: html }
+  load:    
 #----------------------DocumentoPagoTrabajador--------------------------------    
 pagoTrabajador_index:
   url:    /pagoTrabajador/index
@@ -1629,7 +1680,11 @@ pagoTrabajador_reporte:
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
-    
+   
+pagoTrabajador_deleteFilters:
+  url:    /pagoTrabajador/borrarFiltros
+  param:  { module: pagoTrabajador, action: deleteFilters, format: html }
+  load:    
 #----------------------Pedido--------------------------------    
 pedido_index:
   url:    /pedido/index
@@ -1768,6 +1823,10 @@ pedido_reporte:
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
     
+pedido_deleteFilters:
+  url:    /pedido/borrarFiltros
+  param:  { module: pedido, action: deleteFilters, format: html }
+  load:    
 #----------------------Mano de Obra--------------------------------    
 manoObra_index:
   url:    /manoObra/index
@@ -1906,7 +1965,10 @@ manoObra_reporte:
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
 
-    
+manoObra_deleteFilters:
+  url:    /manoObra/borrarFiltros
+  param:  { module: manoObra, action: deleteFilters, format: html }
+  load:    
 #---------------------------------Detalle Pago Trabajador--------
 
 #--------------------------modulo-cooperativa--------------------------
@@ -2010,6 +2072,10 @@ cooperativa_reporte:
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
     
+cooperativa_deleteFilters:
+  url:    /cooperativa/borrarFiltros
+  param:  { module: cooperativa, action: deleteFilters, format: html }
+  load:    
     #--------------------------modulo-empresa--------------------------
 empresa_index:
   url:    /empresa/index
@@ -2071,9 +2137,7 @@ empresa_delete:
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
-      
-
-   
+         
 empresa_deleteSelect:
   url:    /empresa/eliminarSeleccion
   param:  { module: empresa, action: deleteSelect, format: json }
@@ -2095,7 +2159,11 @@ empresa_reporte:
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
     
-    #--------------------------modulo-labor--------------------------
+empresa_deleteFilters:
+  url:    /empresa/borrarFiltros
+  param:  { module: empresa, action: deleteFilters, format: html }
+  load:    
+#--------------------------modulo-labor--------------------------
 labor_index:
   url:    /labor/index
   param:  { module: labor, action: index, format: html }
@@ -2158,6 +2226,10 @@ labor_reporte:
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
 
+labor_deleteFilters:
+  url:    /labor/borrarFiltros
+  param:  { module: labor, action: deleteFilters, format: html }
+  load:
 #----------------------Documento Factura Venta--------------------------------
 
 facturaVenta_index:
@@ -2237,7 +2309,11 @@ facturaVenta_ver:
     - model/clienteTableClass.php
     - model/base/trabajadorBaseTableClass.php
     - model/trabajadorTableClass.php
-    
+   
+facturaVenta_deleteFilters:
+  url:    /facturaVenta/borrarFiltros
+  param:  { module: facturaVenta, action: deleteFilters, format: html }
+  load:    
 #---------------------------------Detalle Factura Venta-----------------------
 
 detalleFacturaVenta_index:
@@ -2425,7 +2501,11 @@ facturaCompra_ver:
     - model/detalleFacturaCompraTableClass.php
     - model/base/proveedorBaseTableClass.php
     - model/proveedorTableClass.php
-    
+
+facturaCompra_deleteFilters:
+  url:    /facturaCompra/borrarFiltros
+  param:  { module: facturaCompra, action: deleteFilters, format: html }
+  load:    
 #---------------------------------Detalle Factura Compra-----------------------
 
 detalleFacturaCompra_index:
@@ -2528,6 +2608,7 @@ detalleFacturaCompra_reporte:
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php 
         
+        
 #---------------------------------enfermedad-----------------------
 
 enfermedad_index:
@@ -2613,7 +2694,11 @@ enfermedad_reporte:
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php    
-    
+ 
+enfermedad_deleteFilters:
+  url:    /enfermedad/borrarFiltros
+  param:  { module: enfermedad, action: deleteFilters, format: html }
+  load:    
 #---------------------------------historial-----------------------
 
 historial_index:
@@ -2705,7 +2790,11 @@ historial_reporte:
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php   
-    
+
+historial_deleteFilters:
+  url:    /historial/borrarFiltros
+  param:  { module: historial, action: deleteFilters, format: html }
+  load:    
 #---------------------------------archivo-----------------------
 
 archivo_index:

@@ -32,8 +32,12 @@ class indexActionClass extends controllerClass implements controllerActionInterf
           date(config::getFormatTimestamp(), strtotime($filter['fechaFin'] . ' 23:59:59'))
           );
         }
-      }
-      
+//      session::getInstance()->setAttribute('facturaVentaIndexFilters', $where);
+//       }else if(session::getInstance()->hasAttribute('facturaVentaIndexFilters')){
+//        $where = session::getInstance()->getAttribute('facturaVentaIndexFilters');
+//     
+//        
+       }
       $fields = array(
           facturaVentaTableClass::ID,
           facturaVentaTableClass::FECHA,
@@ -51,7 +55,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
         $page = request::getInstance()->getGet('page') - 1;
         $page = $page * config::getRowGrid();
       }//cierre del if del paguinado
-      $this->cntPages = facturaVentaTableClass::getTotalPages(config::getRowGrid());
+      $this->cntPages = facturaVentaTableClass::getTotalPages(config::getRowGrid(), $where);
       $this->objFactura = facturaVentaTableClass::getAll($fields, false, $orderBy, 'ASC', config::getRowGrid(), $page, $where);
 //       $fields = array(
 //            empresaTableClass::ID,
@@ -83,9 +87,10 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       $this->objCliente = clienteTableClass::getAll($fields, true, $orderBy, 'ASC');
       $this->defineView('index', 'facturaVenta', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
-      echo $exc->getMessage();
-      echo '<br>';
-      echo $exc->getTraceAsString();
+       routing::getInstance()->redirect('facturaVenta', 'index');
+//      echo $exc->getMessage();
+//      echo '<br>';
+//      echo $exc->getTraceAsString();
     }
 }
 

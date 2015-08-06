@@ -45,7 +45,10 @@ class indexTipoProductoInsumoActionClass extends controllerClass implements cont
            date(config::getFormatTimestamp(), strtotime($filter['fechaFin'].' 23:59:59'))
             );
       }     
-  }
+//  session::getInstance()->setAttribute('tipoProductoInsumoIndexFilters', $where);
+//       }else if(session::getInstance()->hasAttribute('tipoProductoInsumoIndexFilters')){
+//        $where = session::getInstance()->getAttribute('tipoProductoInsumoIndexFilters');
+     }
       $fields = array(
           tipoProductoInsumoTableClass::ID,
           tipoProductoInsumoTableClass::DESCRIPCION,
@@ -60,15 +63,15 @@ class indexTipoProductoInsumoActionClass extends controllerClass implements cont
         $page = request::getInstance()->getGet('page') - 1;
         $page = $page * config::getRowGrid();
       }
-      $this->cntPages = tipoProductoInsumoTableClass::getTotalPages(config::getRowGrid());
-      
+      $this->cntPages = tipoProductoInsumoTableClass::getTotalPages(config::getRowGrid(), $where);
       $this->objTPI = tipoProductoInsumoTableClass::getAll($fields, true, $orderBy, 'ASC',config::getRowGrid(), $page,$where);
 //      $this->objUsuarios = usuarioTableClass::getAll($fields, true);
       $this->defineView('indexTipoProductoInsumo', 'productoInsumo', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
-      echo $exc->getMessage();
-      echo '<br>';
-      echo $exc->getTraceAsString();
+       routing::getInstance()->redirect('productoInsumo', 'indexTipoProductoInsumo');
+//      echo $exc->getMessage();
+//      echo '<br>';
+//      echo $exc->getTraceAsString();
     }
 }
 

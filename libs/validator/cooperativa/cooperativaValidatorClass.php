@@ -43,7 +43,7 @@ namespace mvc\validator {
         else if(strlen(request::getInstance()->getPost(\cooperativaTableClass::getNameField(\cooperativaTableClass::DESCRIPCION, true))) > \cooperativaTableClass::DESCRIPCION_LENGTH) {
         $flag = true;
         session::getInstance()->setFlash('inputDescripcion', true);
-        session::getInstance()->setError('El nombre digitado es mayor en cantidad de caracteres a lo permitido', 'inputDescripcion');
+        session::getInstance()->setError('La descripcion digitado es mayor en cantidad de caracteres a lo permitido', 'inputDescripcion');
       }   
       
       
@@ -126,7 +126,7 @@ namespace mvc\validator {
         else if(strlen(request::getInstance()->getPost(\cooperativaTableClass::getNameField(\cooperativaTableClass::DESCRIPCION, true))) > \cooperativaTableClass::DESCRIPCION_LENGTH) {
         $flag = true;
         session::getInstance()->setFlash('inputDescripcion', true);
-        session::getInstance()->setError('El nombre digitado es mayor en cantidad de caracteres a lo permitido', 'inputDescripcion');
+        session::getInstance()->setError('La descripcion digitado es mayor en cantidad de caracteres a lo permitido', 'inputDescripcion');
       }   
       
       
@@ -177,14 +177,16 @@ namespace mvc\validator {
       
       }
     }
-     public static function validateFiltro() {
+     public static function validateFiltroNombre() {
     if(strlen(request::getInstance()->getPost(\cooperativaTableClass::getNameField(\cooperativaTableClass::NOMBRE, true))) > \cooperativaTableClass::NOMBRE_LENGTH) {
        session::getInstance()->setError('El nombre digitado es mayor en cantidad de caracteres a lo permitido', 'inputNombre');
       }
-
-   //-------------------------------campo descripcion-----------------------------
-        if(strlen(request::getInstance()->getPost(\cooperativaTableClass::getNameField(\cooperativaTableClass::DESCRIPCION, true))) > \cooperativaTableClass::DESCRIPCION_LENGTH) {
-       session::getInstance()->setError('El nombre digitado es mayor en cantidad de caracteres a lo permitido', 'inputDescripcion');
+      
+    }
+    
+    public static function validateFiltroDescripcion() {
+   if(strlen(request::getInstance()->getPost(\cooperativaTableClass::getNameField(\cooperativaTableClass::DESCRIPCION, true))) > \cooperativaTableClass::DESCRIPCION_LENGTH) {
+       session::getInstance()->setError('La descripcion digitado es mayor en cantidad de caracteres a lo permitido', 'inputDescripcion');
       }   
        
     }
