@@ -25,12 +25,27 @@ class indexActionClass extends controllerClass implements controllerActionInterf
         if(isset($filter['lote']) and $filter['lote'] !== null and $filter['lote'] !== ""){
         $where[solicitudInsumoTableClass::LOTE_ID] = $filter['lote'];
         }
-        if (isset($filter['fechaIni']) and $filter['fechaIni'] !== null and $filter['fechaIni'] !== '' and (isset($filter['fechaFin']) and $filter['fechaFin'] !== null and $filter['fechaFin'] !== '')) {
-          $where[solicitudInsumoTableClass::FECHA_INICIAL] = array(
-          date(config::getFormatTimestamp(), strtotime($filter['fechaIni'] . ' 00:00:00')),
-          date(config::getFormatTimestamp(), strtotime($filter['fechaFin'] . ' 23:59:59'))
+        if (request::getInstance()->isMethod('POST')) {
+//            echo 'dsasda';
+//            exit();
+            $fechaInicial = request::getInstance()->getPost(solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::CREATED_AT, true). '_1');
+            
+            $fechaFin = request::getInstance()->getPost(solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::CREATED_AT, true). '_2');
+            
+            if($fechaFin < $fechaInicial){
+               session::getInstance()->setError('La fecha final no puede ser menor a la actual', 'inputFecha');
+            }elseif($fechaFin == $fechaInicial){
+                session::getInstance()->setError('La fecha final es igual a la inicial', 'inputFecha');
+            }
+            
+        if ((isset($fechaInicial) and $fechaInicial !== null and $fechaInicial !== "") and ( isset($fechaFin) and $fechaFin !== null and $fechaFin !== "" )) {
+          $where[solicitudInsumoTableClass::CREATED_AT] = array(
+              date(config::getFormatTimestamp(), strtotime($fechaInicial . ' 00:00:00')),
+              date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59'))
           );
         }
+            
+          }
 //      session::getInstance()->setAttribute('solicitudInsumoIndexFilters', $where);
 //       }else if(session::getInstance()->hasAttribute('solicitudInsumoIndexFilters')){
 //        $where = session::getInstance()->getAttribute('solicitudInsumoIndexFilters');

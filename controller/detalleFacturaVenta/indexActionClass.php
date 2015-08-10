@@ -11,14 +11,14 @@ use mvc\i18n\i18nClass as i18n;
 /**
  * Description of ejemploClass
  *
- * @author 
+ * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
  */
 class indexActionClass extends controllerClass implements controllerActionInterface {
 
   public function execute() {
     try {
-
-      $where = null;
+        
+        $where = null;
       //$where[detalleFacturaVentaTableClass::FACTURA_ID] = request::getInstance()->getGet(detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::FACTURA_ID, true));
       if (request::getInstance()->hasPost('filter')) {
         $filter = request::getInstance()->getPost('filter');
@@ -33,8 +33,29 @@ class indexActionClass extends controllerClass implements controllerActionInterf
               date(config::getFormatTimestamp(), strtotime($filter['fechaFin'] . ' 23:59:59'))
           );
         }
-      }
+      session::getInstance()->setAttribute('detalleFacturaVentaIndexFilters', $where);
+       } else if(session::getInstance()->hasAttribute('detalleFacturaVentaIndexFilters')){
+        $where = session::getInstance()->getAttribute('detalleFacturaVentaIndexFilters');
+      session::getInstance()->setAttribute('facturaVentaIndexFilters', $where);
+       }else if(session::getInstance()->hasAttribute('facturaVentaIndexFilters')){
+        $where = session::getInstance()->getAttribute('facturaVentaIndexFilters');
+     }
+        
+        $idFactura = request::getInstance()->getRequest(facturaVentaTableClass::ID, true);
+        $fieldsFactura = array(
+          facturaVentaTableClass::ID,
+          facturaVentaTableClass::FECHA,
+          facturaVentaTableClass::CLIENTE_ID
+      );
 
+      $whereFactura = array(
+          facturaVentaTableClass::ID => request::getInstance()->getRequest(facturaVentaTableClass::ID)
+              
+        );
+      
+      $this->objFactura = facturaVentaTableClass::getAll($fieldsFactura, false, null, null, null, null, $whereFactura);
+      
+      $idDetalle = request::getInstance()->getRequest(detalleFacturaVentaTableClass::ID, true);
       $fields = array(
           detalleFacturaVentaTableClass::ID,
           detalleFacturaVentaTableClass::DESCRIPCION,
@@ -45,28 +66,22 @@ class indexActionClass extends controllerClass implements controllerActionInterf
           detalleFacturaVentaTableClass::CREATED_AT,
           detalleFacturaVentaTableClass::UPDATED_AT
       );
-      $orderBy = array(
-          detalleFacturaVentaTableClass::ID
-      );
-     
- 
-      $this->objDetalleFactura = detalleFacturaVentaTableClass::getAll($fields, false, $orderBy, 'ASC', null, null, $where);
-      
-       $fields = array(
-           facturaVentaTableClass::ID,
-           facturaVentaTableClass::FECHA
-        );
-        $orderBy = array(
-            facturaVentaTableClass::FECHA
-        );
-        
-//        $where = array(
-//        facturaTableClass::ID => request::getInstance()->getRequest(facturaTableClass::ID)
-//      );
-        
-        $this->objFactura = facturaVentaTableClass::getAll($fields, false, $orderBy, 'ASC');
 
-        
+      $where = array(
+          detalleFacturaVentaTableClass::FACTURA_ID =>$idDetalle 
+      );
+       $page = 0;
+      if (request::getInstance()->hasGet('page')) {
+        $this->page = request::getInstance()->getGet('page');
+        $page = request::getInstance()->getGet('page') - 1;
+        $page = $page * config::getRowGrid();
+      }//cierre del if del paguinado
+      $this->cntPages = detalleFacturaVentaTableClass::getTotalPages(config::getRowGrid(), $where);
+      $this->objDetalleFactura = detalleFacturaVentaTableClass::getAll($fields, false, null, null, config::getRowGrid(), $page, $where);
+//      $this->detalleFacturaId = request::getInstance()->getGet(detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::FACTURA_COMPRA_ID, true));
+      
+      
+      
       $this->defineView('index', 'detalleFacturaVenta', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
       echo $exc->getMessage();

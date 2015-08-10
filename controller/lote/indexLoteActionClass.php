@@ -62,12 +62,27 @@ class indexLoteActionClass extends controllerClass implements controllerActionIn
           );
         }//cierre del filtro tamanoIni y tamanoFin       
 
-        if ((isset($filter['fechaIni']) and $filter['fechaIni'] !== null and $filter['fechaIni'] !== "") and ( isset($filter['fechaFin']) and $filter['fechaFin'] !== null and $filter['fechaFin'] !== "" )) {
+        if (request::getInstance()->isMethod('POST')) {
+//            echo 'dsasda';
+//            exit();
+            $fechaInicial = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::CREATED_AT, true). '_1');
+            
+            $fechaFin = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::CREATED_AT, true). '_2');
+            
+            if($fechaFin < $fechaInicial){
+               session::getInstance()->setError('La fecha final no puede ser menor a la actual', 'inputFecha');
+            }elseif($fechaFin == $fechaInicial){
+                session::getInstance()->setError('La fecha final es igual a la inicial', 'inputFecha');
+            }
+            
+        if ((isset($fechaInicial) and $fechaInicial !== null and $fechaInicial !== "") and ( isset($fechaFin) and $fechaFin !== null and $fechaFin !== "" )) {
           $where[loteTableClass::CREATED_AT] = array(
-              date(config::getFormatTimestamp(), strtotime($filter['fechaIni'] . ' 00:00:00')),
-              date(config::getFormatTimestamp(), strtotime($filter['fechaFin'] . ' 23:59:59'))
+              date(config::getFormatTimestamp(), strtotime($fechaInicial . ' 00:00:00')),
+              date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59'))
           );
-        } //cierre del filtro fechaIni y fechaFin
+        }
+            
+          }
 
         if ((isset($filter['fechaSI']) and $filter['fechaSI'] !== null and $filter['fechaSI'] !== "") and ( isset($filter['fechaSF']) and $filter['fechaSF'] !== null and $filter['fechaSF'] !== "" )) {
           $where[loteTableClass::FECHA_INICIO_SIEMBRA] = array(

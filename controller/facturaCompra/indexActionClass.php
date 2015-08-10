@@ -32,11 +32,11 @@ class indexActionClass extends controllerClass implements controllerActionInterf
           date(config::getFormatTimestamp(), strtotime($filter['fechaFin'] . ' 23:59:59'))
           );
         }
-//       session::getInstance()->setAttribute('facturaVentaIndexFilters', $where);
+//      session::getInstance()->setAttribute('facturaVentaIndexFilters', $where);
 //       }else if(session::getInstance()->hasAttribute('facturaVentaIndexFilters')){
 //        $where = session::getInstance()->getAttribute('facturaVentaIndexFilters');
-//    
-        }
+     }
+      
       $fields = array(
           facturaCompraTableClass::ID,
           facturaCompraTableClass::FECHA,          
@@ -75,10 +75,9 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       $this->objProveedor = proveedorTableClass::getAll($fields, true, $orderBy, 'ASC');
       $this->defineView('index', 'facturaCompra', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
-      routing::getInstance()->redirect('facturaCompra', 'index');
-//      echo $exc->getMessage();
-//      echo '<br>';
-//      echo $exc->getTraceAsString();
+      echo $exc->getMessage();
+      echo '<br>';
+      echo $exc->getTraceAsString();
     }
 }
 

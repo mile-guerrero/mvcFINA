@@ -48,9 +48,9 @@
         <form class="form-horizontal" id="reportForm" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('pedido', 'report')?>">
 
            <div class="form-group">
-                <label for="filterEmpresa" class="col-sm-2 control-label"><?php echo i18n::__('empresa') ?></label>
+                <label for="reportEmpresa" class="col-sm-2 control-label"><?php echo i18n::__('empresa') ?></label>
                 <div class="col-sm-10">
-                  <select class="form-control" id="filterEmpresa" name="filter[empresa]">
+                  <select class="form-control" id="reportEmpresa" name="report[empresa]">
                     <option value=""><?php echo i18n::__('selectEmpresa') ?></option>
 <?php foreach ($objEmpresa as $empresa): ?>
                       <option value="<?php echo $empresa->$idEmp ?>"><?php echo $empresa->$nomEmpresa ?></option>
@@ -58,6 +58,19 @@
                   </select>
                 </div>
               </div>
+            
+            <div class="form-group">
+    <label for="reportProveedor" class="col-sm-2 control-label"><?php echo i18n::__('nomProveedor') ?></label>
+    <div class="col-sm-10">
+      <select class="form-control" id="reportProveedor" name="report[proveedor]">
+          <option value=""><?php echo i18n::__('selectProveedor') ?></option>
+<?php foreach ($objProveedor as $proveedor): ?>
+            <option value="<?php echo $proveedor->$idPro ?>"><?php echo $proveedor->$nomProveedor ?></option>
+<?php endforeach; ?>
+          </select>
+    </div>
+  </div>
+            
   <div class="form-group">
     <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
     <div class="col-sm-10">
@@ -67,7 +80,7 @@
     </div>
   </div>
 </form>
-        </form>
+        
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default btn btn-xs" data-dismiss="modal">  <?php echo i18n::__('cerrar') ?></button>
@@ -87,7 +100,24 @@
           </div>
           <div class="modal-body">
             <form class="form-horizontal" id="filterForm" role="form" action="<?php echo routing::getInstance()->getUrlWeb('pedido', 'index') ?>" method="POST">
-               <div class="form-group">
+               
+               <?php if (session::getInstance()->hasError('inputFecha')): ?>
+                    <div class="alert alert-danger alert-dismissible" role="alert" id="error">
+                      <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputFecha') ?>
+                    </div>
+                  <?php endif ?>
+          
+          <div class="form-group">
+                  <label class="col-sm-2 control-label" for="<?php echo pedidoTableClass::getNameField(pedidoTableClass::CREATED_AT, true) . '_1' ?>" ><?php echo i18n::__('fecha crear') ?></label>
+                  <div class="col-sm-10">
+                    <input type="date" class="form-control-filtro1" id="<?php echo pedidoTableClass::getNameField(pedidoTableClass::CREATED_AT, true).'_1' ?>" name="<?php echo pedidoTableClass::getNameField(pedidoTableClass::CREATED_AT, true).'_1' ?>">
+
+                    <input type="date" class="form-control-filtro2" id="<?php echo pedidoTableClass::getNameField(pedidoTableClass::CREATED_AT, true).'_2' ?>" name="<?php echo pedidoTableClass::getNameField(pedidoTableClass::CREATED_AT, true).'_2' ?>">
+                  </div>
+                </div>
+              
+              <div class="form-group">
     <label for="filterEmpresa" class="col-sm-2 control-label"><?php echo i18n::__('empresa') ?></label>
     <div class="col-sm-10">
       <select class="form-control" id="filterEmpresa" name="filter[empresa]">
@@ -109,15 +139,8 @@
           </select>
     </div>
   </div>
-
-              <div class="form-group">
-                <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
-                <div class="col-sm-10">
-                  <input type="date" class="form-control-filtro1" id="filterFechaIni" name="filter[fechaIni]" >
-                
-                  <input type="date" class="form-control-filtro2" id="filterFechaFin" name="filter[fechaFin]" >
-                </div>
-              </div>
+              
+              
 
             </form>
 

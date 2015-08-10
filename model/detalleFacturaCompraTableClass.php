@@ -10,7 +10,7 @@ use mvc\config\configClass as config;
  */
 class detalleFacturaCompraTableClass extends detalleFacturaCompraBaseTableClass {
 
- public static function getTotalPages($lines, $where) {
+  public static function getTotalPages($lines, $where) {
     try {
       $sql = 'SELECT count(' . detalleFacturaCompraTableClass::ID . ') AS cantidad ' .
               ' FROM ' . detalleFacturaCompraTableClass::getNameTable();

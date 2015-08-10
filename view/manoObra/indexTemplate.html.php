@@ -52,12 +52,8 @@
         
       <div class="modal-body">
         <form class="form-horizontal" id="reportForm" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('manoObra', 'report')?>">
-<!--<div class="form-group">
-    <label for="reportCantidad" class="col-sm-2 control-label"><?php echo i18n::__('cantidad') ?></label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="reportCantidad" name="report[cantidad]" placeholder="<?php echo i18n::__('cantidad') ?>">
-    </div>
-  </div>-->
+
+          
            <div class="form-group">
                 <label for="reportCooperativa" class="col-sm-2 control-label"><?php echo i18n::__('cooperativa') ?></label>
                 <div class="col-sm-10">
@@ -99,12 +95,21 @@
           <div class="modal-body">
             <form class="form-horizontal" id="filterForm" role="form" action="<?php echo routing::getInstance()->getUrlWeb('manoObra', 'index') ?>" method="POST">
                 
-<!--<div class="form-group">
-    <label for="filterCantidad" class="col-sm-2 control-label"><?php echo i18n::__('cantidad') ?></label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="filterCantidad" name="filter[cantidad]" placeholder="<?php echo i18n::__('cantidad') ?>">
-    </div>
-  </div>-->
+<?php if (session::getInstance()->hasError('inputFecha')): ?>
+                    <div class="alert alert-danger alert-dismissible" role="alert" id="error">
+                      <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputFecha') ?>
+                    </div>
+                  <?php endif ?>
+          
+          <div class="form-group">
+                  <label class="col-sm-2 control-label" for="<?php echo manoObraTableClass::getNameField(manoObraTableClass::CREATED_AT, true) . '_1' ?>" ><?php echo i18n::__('fecha crear') ?></label>
+                  <div class="col-sm-10">
+                    <input type="date" class="form-control-filtro1" id="<?php echo manoObraTableClass::getNameField(manoObraTableClass::CREATED_AT, true).'_1' ?>" name="<?php echo manoObraTableClass::getNameField(manoObraTableClass::CREATED_AT, true).'_1' ?>">
+
+                    <input type="date" class="form-control-filtro2" id="<?php echo manoObraTableClass::getNameField(manoObraTableClass::CREATED_AT, true).'_2' ?>" name="<?php echo manoObraTableClass::getNameField(manoObraTableClass::CREATED_AT, true).'_2' ?>">
+                  </div>
+                </div>
                 <div class="form-group">
                 <label for="filtersCooperativa" class="col-sm-2 control-label"><?php echo i18n::__('cooperativa') ?></label>
                 <div class="col-sm-10">
@@ -117,14 +122,7 @@
                 </div>
               </div>
 
-              <div class="form-group">
-                <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
-                <div class="col-sm-10">
-                  <input type="date" class="form-control-filtro1" id="filterFechaIni" name="filter[fechaIni]" >
-                
-                  <input type="date" class="form-control-filtro2" id="filterFechaFin" name="filter[fechaFin]" >
-                </div>
-              </div>
+ 
 
             </form>
 

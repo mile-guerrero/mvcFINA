@@ -41,15 +41,35 @@ class indexProductoInsumoActionClass extends controllerClass implements controll
             
           }
         }
+        
+       // if (request::getInstance()->hasPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::CREATED_AT, true)) and empty(mvc\request\requestClass::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::CREATED_AT, true))) === false) {
+          
+          if (request::getInstance()->isMethod('POST')) {
+//            echo 'dsasda';
+//            exit();
+            $fechaInicial = request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::CREATED_AT, true). '_1');
+            
+            $fechaFin = request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::CREATED_AT, true). '_2');
+            
+            if($fechaFin < $fechaInicial){
+               session::getInstance()->setError('La fecha final no puede ser menor a la actual', 'inputFecha');
+            }elseif($fechaFin == $fechaInicial){
+                session::getInstance()->setError('La fecha final es igual a la inicial', 'inputFecha');
+            }
+            
+        if ((isset($fechaInicial) and $fechaInicial !== null and $fechaInicial !== "") and ( isset($fechaFin) and $fechaFin !== null and $fechaFin !== "" )) {
+          $where[productoInsumoTableClass::CREATED_AT] = array(
+              date(config::getFormatTimestamp(), strtotime($fechaInicial . ' 00:00:00')),
+              date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59'))
+          );
+        }
+            
+          }
+        //}
+        
         //fin validaciones
 
 
-        if ((isset($filter['fechaIni']) and $filter['fechaIni'] !== null and $filter['fechaIni'] !== "") and ( isset($filter['fechaFin']) and $filter['fechaFin'] !== null and $filter['fechaFin'] !== "" )) {
-          $where[productoInsumoTableClass::CREATED_AT] = array(
-              date(config::getFormatTimestamp(), strtotime($filter['fechaIni'] . ' 00:00:00')),
-              date(config::getFormatTimestamp(), strtotime($filter['fechaFin'] . ' 23:59:59'))
-          );
-        }
 
         if (isset($filter['unidadMedida']) and $filter['unidadMedida'] !== null and $filter['unidadMedida'] !== "") {
           $where[productoInsumoTableClass::UNIDAD_MEDIDA_ID] = $filter['unidadMedida'];

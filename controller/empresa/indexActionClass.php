@@ -50,13 +50,27 @@ class indexActionClass extends controllerClass implements controllerActionInterf
          }
 
 
-
-        if (isset($filter['fechaIni']) and $filter['fechaIni'] !== null and $filter['fechaIni'] !== '' and ( isset($filter['fechaFin']) and $filter['fechaFin'] !== null and $filter['fechaFin'] !== '')) {
+if (request::getInstance()->isMethod('POST')) {
+//            echo 'dsasda';
+//            exit();
+            $fechaInicial = request::getInstance()->getPost(empresaTableClass::getNameField(empresaTableClass::CREATED_AT, true). '_1');
+            
+            $fechaFin = request::getInstance()->getPost(empresaTableClass::getNameField(empresaTableClass::CREATED_AT, true). '_2');
+            
+            if($fechaFin < $fechaInicial){
+               session::getInstance()->setError('La fecha final no puede ser menor a la actual', 'inputFecha');
+            }elseif($fechaFin == $fechaInicial){
+                session::getInstance()->setError('La fecha final es igual a la inicial', 'inputFecha');
+            }
+            
+        if ((isset($fechaInicial) and $fechaInicial !== null and $fechaInicial !== "") and ( isset($fechaFin) and $fechaFin !== null and $fechaFin !== "" )) {
           $where[empresaTableClass::CREATED_AT] = array(
-              date(config::getFormatTimestamp(), strtotime($filter['fechaIni'] . ' 00:00:00')),
-              date(config::getFormatTimestamp(), strtotime($filter['fechaFin'] . ' 23:59:59'))
+              date(config::getFormatTimestamp(), strtotime($fechaInicial . ' 00:00:00')),
+              date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59'))
           );
         }
+            
+          }
 //       session::getInstance()->setAttribute('empresaIndexFilters', $where);
 //       }else if(session::getInstance()->hasAttribute('empresaIndexFilters')){
 //        $where = session::getInstance()->getAttribute('empresaIndexFilters');

@@ -27,12 +27,27 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       if(isset($filter['enfermedad']) and $filter['enfermedad'] !== null and $filter['enfermedad'] !== ""){
         $where[historialTableClass::ENFERMEDAD_ID] = $filter['enfermedad'];
       }
-      if((isset($filter['fechaIni']) and $filter['fechaIni'] !== null and $filter['fechaIni'] !== "") and (isset($filter['fechaFin']) and $filter['fechaFin'] !== null and $filter['fechaFin'] !== "" )){
-        $where[historialTableClass::CREATED_AT] = array(
-           date(config::getFormatTimestamp(), strtotime($filter['fechaIni'].' 00:00:00')),
-           date(config::getFormatTimestamp(), strtotime($filter['fechaFin'].' 23:59:59'))
-            );
-      } 
+     if (request::getInstance()->isMethod('POST')) {
+//            echo 'dsasda';
+//            exit();
+            $fechaInicial = request::getInstance()->getPost(historialTableClass::getNameField(historialTableClass::CREATED_AT, true). '_1');
+            
+            $fechaFin = request::getInstance()->getPost(historialTableClass::getNameField(historialTableClass::CREATED_AT, true). '_2');
+            
+            if($fechaFin < $fechaInicial){
+               session::getInstance()->setError('La fecha final no puede ser menor a la actual', 'inputFecha');
+            }elseif($fechaFin == $fechaInicial){
+                session::getInstance()->setError('La fecha final es igual a la inicial', 'inputFecha');
+            }
+            
+        if ((isset($fechaInicial) and $fechaInicial !== null and $fechaInicial !== "") and ( isset($fechaFin) and $fechaFin !== null and $fechaFin !== "" )) {
+          $where[historialTableClass::CREATED_AT] = array(
+              date(config::getFormatTimestamp(), strtotime($fechaInicial . ' 00:00:00')),
+              date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59'))
+          );
+        }
+            
+          } 
 //      session::getInstance()->setAttribute('historialIndexFilters', $where);
 //       }else if(session::getInstance()->hasAttribute('historialIndexFilters')){
 //        $where = session::getInstance()->getAttribute('historialIndexFilters');

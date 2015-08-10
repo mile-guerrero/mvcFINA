@@ -68,7 +68,8 @@ class reportActionClass extends controllerClass implements controllerActionInter
          $idFactura = request::getInstance()->getRequest(facturaVentaTableClass::ID, true);
         $fieldsFactura = array(
           facturaVentaTableClass::ID,
-          facturaVentaTableClass::FECHA
+          facturaVentaTableClass::FECHA,
+          facturaVentaTableClass::CLIENTE_ID
           
       );
 
@@ -87,8 +88,6 @@ class reportActionClass extends controllerClass implements controllerActionInter
           detalleFacturaVentaTableClass::CANTIDAD,
           detalleFacturaVentaTableClass::VALOR_UNIDAD,
           detalleFacturaVentaTableClass::VALOR_TOTAL,
-          detalleFacturaVentaTableClass::CLIENTE_ID,
-          detalleFacturaVentaTableClass::TRABAJADOR_ID,
           detalleFacturaVentaTableClass::FACTURA_ID,
           detalleFacturaVentaTableClass::CREATED_AT,
           detalleFacturaVentaTableClass::UPDATED_AT

@@ -22,15 +22,34 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       if (request::getInstance()->hasPost('filter')) {
         $filter = request::getInstance()->getPost('filter');
         //Validar datos
+        
+        if (request::getInstance()->hasPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::FECHA_INICIAL, true)) and empty(mvc\request\requestClass::getInstance()->getPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::FECHA_INICIAL, true))) === false) {
+
+          if (request::getInstance()->isMethod('POST')) {
+            $fechaInicio = request::getInstance()->getPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::FECHA_INICIAL, true));
+            $fechaFin = request::getInstance()->getPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::FECHA_FINAL, true));
+           // validator::validateFiltro();
+            
+             if($fechaFin < $fechaInicio){
+                session::getInstance()->setError('La fecha final no puede ser menor a la actual', 'inputFecha');
+                
+            }elseif($fechaFin == $fechaInicio){
+                session::getInstance()->setError('La fecha final es igual a la inicial', 'inputFecha');
+            }
+
+         if (isset($fechaInicio) and $fechaInicio !== null and $fechaInicio !== '' and (isset($fechaFin) and $fechaFin !== null and $fechaFin !== '')) {
+          $where[pagoTrabajadorTableClass::FECHA_INICIAL] = array(
+          date(config::getFormatTimestamp(), strtotime($fechaInicio . ' 00:00:00')),
+          date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59'))
+          );
+        }
+          }//cierre del filtro ubicacion   
+        }
+        
         if(isset($filter['empresa']) and $filter['empresa'] !== null and $filter['empresa'] !== ""){
         $where[pagoTrabajadorTableClass::EMPRESA_ID] = $filter['empresa'];
         }
-        if (isset($filter['fechaIni']) and $filter['fechaIni'] !== null and $filter['fechaIni'] !== '' and (isset($filter['fechaFin']) and $filter['fechaFin'] !== null and $filter['fechaFin'] !== '')) {
-          $where[pagoTrabajadorTableClass::FECHA_INICIAL] = array(
-          date(config::getFormatTimestamp(), strtotime($filter['fechaIni'] . ' 00:00:00')),
-          date(config::getFormatTimestamp(), strtotime($filter['fechaFin'] . ' 23:59:59'))
-          );
-        }
+        
 //       session::getInstance()->setAttribute('pagoTrabajadorIndexFilters', $where);
 //       }else if(session::getInstance()->hasAttribute('pagoTrabajadorIndexFilters')){
 //        $where = session::getInstance()->getAttribute('pagoTrabajadorIndexFilters');

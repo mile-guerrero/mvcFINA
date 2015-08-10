@@ -33,7 +33,13 @@ class verActionClass extends controllerClass implements controllerActionInterfac
               date(config::getFormatTimestamp(), strtotime($filter['fechaFin'] . ' 23:59:59'))
           );
         }
-      }
+      session::getInstance()->setAttribute('detalleFacturaCompraIndexFilters', $where);
+       } else if(session::getInstance()->hasAttribute('detalleFacturaCompraIndexFilters')){
+        $where = session::getInstance()->getAttribute('detalleFacturaCompraIndexFilters');
+      session::getInstance()->setAttribute('facturaCompraIndexFilters', $where);
+       }else if(session::getInstance()->hasAttribute('facturaCompraIndexFilters')){
+        $where = session::getInstance()->getAttribute('facturaCompraIndexFilters');
+     }
         
         $idFactura = request::getInstance()->getRequest(facturaCompraTableClass::ID, true);
         $fieldsFactura = array(
@@ -46,9 +52,19 @@ class verActionClass extends controllerClass implements controllerActionInterfac
           facturaCompraTableClass::ID => request::getInstance()->getRequest(facturaCompraTableClass::ID)
               
         );
+      
+      $page = 0;
+      if (request::getInstance()->hasGet('page')) {
+        $this->page = request::getInstance()->getGet('page');
+        $page = request::getInstance()->getGet('page') - 1;
+        $page = $page * config::getRowGrid();
+      }//cierre del if del paguinado
+      $this->cntPages = facturaCompraTableClass::getTotalPages(config::getRowGrid(), $where);
+      
+      
      
       
-       $this->objFactura = facturaCompraTableClass::getAll($fieldsFactura, false, null, null, null, null, $whereFactura);
+       $this->objFactura = facturaCompraTableClass::getAll($fieldsFactura, false, null, null, config::getRowGrid(), $page, $whereFactura);
       
       $idDetalle = request::getInstance()->getRequest(detalleFacturaCompraTableClass::ID, true);
       $fields = array(
@@ -71,12 +87,11 @@ class verActionClass extends controllerClass implements controllerActionInterfac
         $page = request::getInstance()->getGet('page') - 1;
         $page = $page * config::getRowGrid();
       }//cierre del if del paguinado
-      $this->cntPages = detalleFacturaCompraTableClass::getTotalPages(config::getRowGrid());
+      $this->cntPages = detalleFacturaCompraTableClass::getTotalPages(config::getRowGrid(), $where);
       $this->objDetalleFactura = detalleFacturaCompraTableClass::getAll($fields, false, null, null, config::getRowGrid(), $page, $where);
+//      $this->detalleFacturaId = request::getInstance()->getGet(detalleFacturaCompraTableClass::getNameField(detalleFacturaCompraTableClass::FACTURA_COMPRA_ID, true));
       
       
-      
-     
       
       $this->defineView('ver', 'detalleFacturaCompra', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {

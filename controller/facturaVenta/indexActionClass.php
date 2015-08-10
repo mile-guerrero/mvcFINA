@@ -32,12 +32,11 @@ class indexActionClass extends controllerClass implements controllerActionInterf
           date(config::getFormatTimestamp(), strtotime($filter['fechaFin'] . ' 23:59:59'))
           );
         }
-//      session::getInstance()->setAttribute('facturaVentaIndexFilters', $where);
-//       }else if(session::getInstance()->hasAttribute('facturaVentaIndexFilters')){
-//        $where = session::getInstance()->getAttribute('facturaVentaIndexFilters');
-//     
-//        
-       }
+      session::getInstance()->setAttribute('facturaVentaIndexFilters', $where);
+       }else if(session::getInstance()->hasAttribute('facturaVentaIndexFilters')){
+        $where = session::getInstance()->getAttribute('facturaVentaIndexFilters');
+     }
+      
       $fields = array(
           facturaVentaTableClass::ID,
           facturaVentaTableClass::FECHA,
@@ -87,10 +86,9 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       $this->objCliente = clienteTableClass::getAll($fields, true, $orderBy, 'ASC');
       $this->defineView('index', 'facturaVenta', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
-       routing::getInstance()->redirect('facturaVenta', 'index');
-//      echo $exc->getMessage();
-//      echo '<br>';
-//      echo $exc->getTraceAsString();
+      echo $exc->getMessage();
+      echo '<br>';
+      echo $exc->getTraceAsString();
     }
 }
 

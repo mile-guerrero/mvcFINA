@@ -13,32 +13,70 @@
     <link rel="stylesheet" href="css/main.css">
   </head>
   <body>
-    <div class="container container-fluid" id="cuerpo">
+   <nav class="navbar navbar-default" id="colordelmenu">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">                 
+              
+                <li class="dropdown">
+                  <h1></h1><span class="caret"></span></a>
+                    
+                </li>
+                </ul>
+
+
+            </div>
+        </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+
+    </nav>
+    <div id="separasdor"> <br></div>
+    <div id="separasdor"> <br></div>
+<div id="separasdor2"> <br></div>
+    <section  navbar-header id="contenido">
+
+   
+</section>
+
+<div class="container container-fluid" id="cuerpo">
+  <div class="center-block" id="cuerpo2">
+    
+      <h2 class="form-signin-heading"><br>  </h2>
+      <br><br>
+   
+  </div>
+
+</div>
+<div class="container container-fluid" id="cuerpo">
+  <div class="center-block" id="cuerpo5">
+  <div class="center-block" id="cuerpo2">
+    
+    <br><br>
+    
     <?php if (isset($_GET['error']) and $_GET['error'] === true): ?>
       Ocurrio un error
     <?php endif ?>
-      
-      
-     
-      <br><br><br><br><br>
-      
-      <h1>CONFIGURACION DE BASE DE DATOS</h1>
+   
       <br>
       
     <form class="form-horizontal" role="form" action="index.php?step=3" method="POST">
-
+    <div class="form-group">
+        <div class="col-sm-12">
+          <label>CONFIGURACION DE BASE DE DATOS</label>
+        </div>
+        </div>
+      
       <div class="form-group">
         <div class="col-sm-10">
           <input class="form-control" value="<?php echo (isset($_POST['host'])) ? $_POST['host'] : '' ?>" type="text" name="host" placeholder="Inserte el host de la base de datos ejemplo localhost" required><br>
         </div>
         
-       
-        
         </div>
       
-               
-    
-
     <div class="form-group">
         <div class="col-sm-10">
       <select class="form-control" name="driver" required>
@@ -83,9 +121,11 @@
     <?php if (isset($_GET['error']) and $_GET['error'] === true): ?>
       <?php echo $_GET['error_message'] ?>
     <?php endif ?>
-      
-      
-     
-      </div>
+    
+     <br><br><br><br><br><br><br>
+ 
+  </div>
+  </div>
+</div>
   </body>
 </html>

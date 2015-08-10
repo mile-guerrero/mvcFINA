@@ -88,20 +88,34 @@ class indexClienteActionClass extends controllerClass implements controllerActio
           }//cierre del filtro ubicacion   
         }
 
-
+if (request::getInstance()->isMethod('POST')) {
+//            echo 'dsasda';
+//            exit();
+            $fechaInicial = request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::CREATED_AT, true). '_1');
+            
+            $fechaFin = request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::CREATED_AT, true). '_2');
+            
+            if($fechaFin < $fechaInicial){
+               session::getInstance()->setError('La fecha final no puede ser menor a la actual', 'inputFecha');
+            }elseif($fechaFin == $fechaInicial){
+                session::getInstance()->setError('La fecha final es igual a la inicial', 'inputFecha');
+            }
+            
+        if ((isset($fechaInicial) and $fechaInicial !== null and $fechaInicial !== "") and ( isset($fechaFin) and $fechaFin !== null and $fechaFin !== "" )) {
+          $where[clienteTableClass::CREATED_AT] = array(
+              date(config::getFormatTimestamp(), strtotime($fechaInicial . ' 00:00:00')),
+              date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59'))
+          );
+        }
+            
+          }
 
 
         if (isset($filter['ciudad']) and $filter['ciudad'] !== null and $filter['ciudad'] !== '') {
           $where[clienteTableClass::ID_CIUDAD] = $filter['ciudad'];
         }//cierre del filtro ciudad
 
-        if (isset($filter['fecha1']) and $filter['fecha1'] !== null and $filter['fecha1'] !== '' and ( isset($filter['fecha2']) and $filter['fecha2'] !== null and $filter['fecha2'] !== '')) {
-          $where[clienteTableClass::CREATED_AT] = array(
-              date(config::getFormatTimestamp(), strtotime($filter['fecha1'] . ' 00:00:00')),
-              date(config::getFormatTimestamp(), strtotime($filter['fecha2'] . ' 23:59:59'))
-          );
-        }//cierre del filtro fecha1 y fecha2
-        
+       
         
 //       session::getInstance()->setAttribute('clienteIndexFilters', $where);
 //       }else if(session::getInstance()->hasAttribute('clienteIndexFilters')){

@@ -22,24 +22,24 @@ class reportActionClass extends controllerClass implements controllerActionInter
         $report = request::getInstance()->getPost('report');
         //Validar datos
 
-        if (isset($filter['nombre']) and $filter['nombre'] !== null and $filter['nombre'] !== '') {
-          $where[] ='(' .  empresaTableClass::getNameField(empresaTableClass::NOMBRE) . ' LIKE ' . '\'' . $filter['nombre'] . '%\'  '
-              . 'OR ' . empresaTableClass::getNameField(empresaTableClass::NOMBRE) . ' LIKE ' . '\'%' . $filter['nombre'] . '%\' '
-              . 'OR ' . empresaTableClass::getNameField(empresaTableClass::NOMBRE) . ' LIKE ' . '\'%' . $filter['nombre'].'\') ';       
+        if (isset($report['nombre']) and $report['nombre'] !== null and $report['nombre'] !== '') {
+          $where[] ='(' .  empresaTableClass::getNameField(empresaTableClass::NOMBRE) . ' LIKE ' . '\'' . $report['nombre'] . '%\'  '
+              . 'OR ' . empresaTableClass::getNameField(empresaTableClass::NOMBRE) . ' LIKE ' . '\'%' . $report['nombre'] . '%\' '
+              . 'OR ' . empresaTableClass::getNameField(empresaTableClass::NOMBRE) . ' LIKE ' . '\'%' . $report['nombre'].'\') ';       
               }//cierre del filtro nombre
        
-         if (isset($filter['direccion']) and $filter['direccion'] !== null and $filter['direccion'] !== '') {
-          $where[] ='(' .  empresaTableClass::getNameField(empresaTableClass::DIRECCION) . ' LIKE ' . '\'' . $filter['direccion'] . '%\'  '
-              . 'OR ' . empresaTableClass::getNameField(empresaTableClass::DIRECCION) . ' LIKE ' . '\'%' . $filter['direccion'] . '%\' '
-              . 'OR ' . empresaTableClass::getNameField(empresaTableClass::DIRECCION) . ' LIKE ' . '\'%' . $filter['direccion'].'\') ';       
+         if (isset($report['direccion']) and $report['direccion'] !== null and $report['direccion'] !== '') {
+          $where[] ='(' .  empresaTableClass::getNameField(empresaTableClass::DIRECCION) . ' LIKE ' . '\'' . $report['direccion'] . '%\'  '
+              . 'OR ' . empresaTableClass::getNameField(empresaTableClass::DIRECCION) . ' LIKE ' . '\'%' . $report['direccion'] . '%\' '
+              . 'OR ' . empresaTableClass::getNameField(empresaTableClass::DIRECCION) . ' LIKE ' . '\'%' . $report['direccion'].'\') ';       
               }//cierre del filtro nombre
        
               
         
-        if (isset($filter['fechaIni']) and $filter['fechaIni'] !== null and $filter['fechaIni'] !== '' and (isset($filter['fechaFin']) and $filter['fechaFin'] !== null and $filter['fechaFin'] !== '')) {
+        if (isset($report['fechaIni']) and $report['fechaIni'] !== null and $report['fechaIni'] !== '' and (isset($report['fechaFin']) and $report['fechaFin'] !== null and $report['fechaFin'] !== '')) {
           $where[laborTableClass::CREATED_AT] = array(
-          date(config::getFormatTimestamp(), strtotime($filter['fechaIni'] . ' 00:00:00')),
-          date(config::getFormatTimestamp(), strtotime($filter['fechaFin'] . ' 23:59:59'))
+          date(config::getFormatTimestamp(), strtotime($report['fechaIni'] . ' 00:00:00')),
+          date(config::getFormatTimestamp(), strtotime($report['fechaFin'] . ' 23:59:59'))
           );
         }
       }

@@ -94,7 +94,7 @@
             <td><?php echo clienteTableClass::getNameCliente($key->$idCliente) ?></td>
              
               <td>
-                <a class="btn btn-success btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('detalleFacturaVenta', 'ver', array(facturaVentaTableClass::ID => $key->$id)) ?> "><?php echo i18n::__('detalle')?></a>
+                <a class="btn btn-success btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('detalleFacturaVenta', 'index', array(facturaVentaTableClass::ID => $key->$id)) ?> "><?php echo i18n::__('detalle')?></a>
               </td>
             </tr>
 <?php endforeach; ?>

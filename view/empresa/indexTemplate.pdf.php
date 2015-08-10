@@ -41,14 +41,16 @@ $pdf->Ln();
 $pdf->Ln();
 $pdf->Cell(190, 10, $mensaje, 1, 0, 'C');
 $pdf->Ln();
-$pdf->Cell(60, 10, "NOMBRE",1, 0, 'C');
-$pdf->Cell(60, 10, "DIRECCION",1, 0, 'C');
-$pdf->Cell(70, 10, "FECHA DE CREACCION",1, 0, 'C');
+$pdf->Cell(60, 10, "Nombre",1, 0, 'C');
+$pdf->Cell(50, 10, "Direccion",1, 0, 'C');
+$pdf->Cell(30, 10, "Telefono",1, 0, 'C');
+$pdf->Cell(50, 10, "Email",1, 0, 'C');
 $pdf->Ln();
 foreach ($objEmpresa as $valor) {
   $pdf->Cell(60, 8, utf8_decode($valor->$nombre),1);
-  $pdf->Cell(60, 8, utf8_decode($valor->$direccion),1);
-  $pdf->Cell(70, 8, utf8_decode($valor->$created_at),1);
+  $pdf->Cell(50, 8, utf8_decode($valor->$direccion),1);
+  $pdf->Cell(30, 8, utf8_decode($valor->$telefono),1);
+  $pdf->Cell(50, 8, utf8_decode($valor->$email),1);
   $pdf->Ln();
 }
 $pdf->Output();

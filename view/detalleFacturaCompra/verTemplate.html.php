@@ -139,9 +139,9 @@
                 </tbody>
             </table>
          <div class="text-right">
-        <?php echo i18n::__('paginas') ?> <select id="slqPaginador" onchange="paginador(this, '<?php echo routing::getInstance()->getUrlWeb('detalleFacturaCompra', 'index')?>')">
+        <?php echo i18n::__('paginas') ?> <select id="slqPaginador" onchange="paginador(this, '<?php echo routing::getInstance()->getUrlWeb('detalleFacturaCompra', 'ver', array(facturaCompraTableClass::ID => $idFactura))?>')">
          <?php for($x = 1; $x <= $cntPages; $x++):?>
-           <option <?php echo (isset($page) and $page == $x) ? 'selected': '' ?> value="<?php echo $x ?>"><?php echo $x ?></option>
+           <option <?php echo (isset($page) and $page == $x) ? 'selected' : '' ?> value="<?php echo $x ?>"><?php echo $x ?></option>
           <?php endfor;?>
         </select> <?php echo i18n::__('de') ?> <?php echo $cntPages ?>
       </div>

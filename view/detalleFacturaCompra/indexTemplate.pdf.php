@@ -2,13 +2,13 @@
 
 use mvc\routing\routingClass as routing;
   
-$proveedor = detalleFacturaCompraTableClass::PROVEEDOR_ID; 
-$descripcion = detalleFacturaCompraTableClass::DESCRIPCION; 
+$producto = detalleFacturaCompraTableClass::DESCRIPCION;  
 $cantidad = detalleFacturaCompraTableClass::CANTIDAD; 
 $valorUnidad = detalleFacturaCompraTableClass::VALOR_UNIDAD; 
 $valorTotal = detalleFacturaCompraTableClass::VALOR_TOTAL; 
 $id = detalleFacturaCompraTableClass::ID; 
 $idFactura = facturaCompraTableClass::ID; 
+$proveedor = facturaCompraTableClass::PROVEEDOR_ID; 
 $fecha = facturaCompraTableClass::FECHA;  
  
 class PDF extends FPDF {
@@ -43,27 +43,27 @@ $pdf->Ln();
 $pdf->Ln();
 $pdf->Cell(190, 10, $mensaje, 1, 0, 'C');
 $pdf->Ln();
-$pdf->Cell(95, 10, "Id",1, 0, 'C');
-$pdf->Cell(95, 10, "Fecha",1, 0, 'C');
+$pdf->Cell(55, 10, "# Factura",1, 0, 'C');
+$pdf->Cell(70, 10, "Proveedor",1, 0, 'C');
+$pdf->Cell(65, 10, "Fecha",1, 0, 'C');
 $pdf->Ln();
 foreach ($objFactura as $valor) {
-$pdf->Cell(95, 8, utf8_decode($valor->$idFactura),1);  
-$pdf->Cell(95, 8, utf8_decode($valor->$fecha),1);
+$pdf->Cell(55, 8, utf8_decode($valor->$idFactura),1);
+$pdf->Cell(70, 8, proveedorTableClass::getNameProveedor($valor->$proveedor),1);
+$pdf->Cell(65, 8, utf8_decode($valor->$fecha),1);
 }
 $pdf->Ln();
 $pdf->Ln();
 $pdf->Ln();
-$pdf->Cell(40, 10, "Proveedor",1, 0, 'C');
-$pdf->Cell(35, 10, "Descripcion",1, 0, 'C');
-$pdf->Cell(30, 10, "Cantidad",1, 0, 'C');
+$pdf->Cell(70, 10, "Descripcion",1, 0, 'C');
+$pdf->Cell(35, 10, "Cantidad",1, 0, 'C');
 $pdf->Cell(30, 10, "Valor por unidad",1, 0, 'C');
 $pdf->Cell(55, 10, "Valor total",1, 0, 'C');
 $pdf->Ln();
 
 foreach ($objDetalleFactura as $valor) {   
-  $pdf->Cell(40, 8, proveedorTableClass::getNameProveedor($valor->$proveedor),1);
-  $pdf->Cell(35, 8, utf8_decode($valor->$descripcion),1);  
-  $pdf->Cell(30, 8, utf8_decode($valor->$cantidad),1);
+  $pdf->Cell(70, 8, productoInsumoTableClass::getNameProductoInsumo($valor->$producto),1);
+  $pdf->Cell(35, 8, utf8_decode($valor->$cantidad),1);
   $pdf->Cell(30, 8, utf8_decode($valor->$valorUnidad),1);  
   $pdf->Cell(55, 8, utf8_decode($valor->$valorTotal),1);
   $pdf->Ln();  

@@ -11,14 +11,14 @@ use mvc\i18n\i18nClass as i18n;
 /**
  * Description of ejemploClass
  *
- * @author 
+ * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
  */
 class indexActionClass extends controllerClass implements controllerActionInterface {
 
   public function execute() {
     try {
-
-      $where = null;
+        
+        $where = null;
       //$where[detalleFacturaCompraTableClass::FACTURA_ID] = request::getInstance()->getGet(detalleFacturaCompraTableClass::getNameField(detalleFacturaCompraTableClass::FACTURA_ID, true));
       if (request::getInstance()->hasPost('filter')) {
         $filter = request::getInstance()->getPost('filter');
@@ -33,8 +33,29 @@ class indexActionClass extends controllerClass implements controllerActionInterf
               date(config::getFormatTimestamp(), strtotime($filter['fechaFin'] . ' 23:59:59'))
           );
         }
-      }
+      session::getInstance()->setAttribute('detalleFacturaCompraIndexFilters', $where);
+       } else if(session::getInstance()->hasAttribute('detalleFacturaCompraIndexFilters')){
+        $where = session::getInstance()->getAttribute('detalleFacturaCompraIndexFilters');
+      session::getInstance()->setAttribute('facturaCompraIndexFilters', $where);
+       }else if(session::getInstance()->hasAttribute('facturaCompraIndexFilters')){
+        $where = session::getInstance()->getAttribute('facturaCompraIndexFilters');
+     }
+        
+        $idFactura = request::getInstance()->getRequest(facturaCompraTableClass::ID, true);
+        $fieldsFactura = array(
+          facturaCompraTableClass::ID,
+          facturaCompraTableClass::FECHA,
+          facturaCompraTableClass::PROVEEDOR_ID
+      );
 
+      $whereFactura = array(
+          facturaCompraTableClass::ID => request::getInstance()->getRequest(facturaCompraTableClass::ID)
+              
+        );
+      
+      $this->objFactura = facturaCompraTableClass::getAll($fieldsFactura, false, null, null, null, null, $whereFactura);
+      
+      $idDetalle = request::getInstance()->getRequest(detalleFacturaCompraTableClass::ID, true);
       $fields = array(
           detalleFacturaCompraTableClass::ID,
           detalleFacturaCompraTableClass::DESCRIPCION,
@@ -45,25 +66,22 @@ class indexActionClass extends controllerClass implements controllerActionInterf
           detalleFacturaCompraTableClass::CREATED_AT,
           detalleFacturaCompraTableClass::UPDATED_AT
       );
-      
 
-      $this->objDetalleFactura = detalleFacturaCompraTableClass::getAll($fields, false, $orderBy, 'ASC', null, null, $where);
+      $where = array(
+          detalleFacturaCompraTableClass::FACTURA_COMPRA_ID =>$idDetalle 
+      );
+       $page = 0;
+      if (request::getInstance()->hasGet('page')) {
+        $this->page = request::getInstance()->getGet('page');
+        $page = request::getInstance()->getGet('page') - 1;
+        $page = $page * config::getRowGrid();
+      }//cierre del if del paguinado
+      $this->cntPages = detalleFacturaCompraTableClass::getTotalPages(config::getRowGrid(), $where);
+      $this->objDetalleFactura = detalleFacturaCompraTableClass::getAll($fields, false, null, null, config::getRowGrid(), $page, $where);
+//      $this->detalleFacturaId = request::getInstance()->getGet(detalleFacturaCompraTableClass::getNameField(detalleFacturaCompraTableClass::FACTURA_COMPRA_ID, true));
       
-       $fields = array(
-           facturaCompraTableClass::ID,
-           facturaCompraTableClass::FECHA
-        );
-        $orderBy = array(
-            facturaCompraTableClass::FECHA
-        );
-        
-//        $where = array(
-//        facturaTableClass::ID => request::getInstance()->getRequest(facturaTableClass::ID)
-//      );
-        
-        $this->objFactura = facturaCompraTableClass::getAll($fields, false, $orderBy, 'ASC');
-
-     
+      
+      
       $this->defineView('index', 'detalleFacturaCompra', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
       echo $exc->getMessage();

@@ -22,7 +22,7 @@ class deleteSelectActionClass extends controllerClass implements controllerActio
         $idsToDelete = request::getInstance()->getPost('chk');
         foreach ($idsToDelete as $id){
           $ids = array(
-            vTableClass::ID => $id
+            empresaTableClass::ID => $id
         );
         
         empresaTableClass::delete($ids, true);

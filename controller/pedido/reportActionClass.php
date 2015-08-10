@@ -25,6 +25,9 @@ class reportActionClass extends controllerClass implements controllerActionInter
         if(isset($report['empresa']) and $report['empresa'] !== null and $report['empresa'] !== ""){
         $where[pedidoTableClass::EMPRESA_ID] = $report['empresa'];
         }
+        if(isset($report['proveedor']) and $report['proveedor'] !== null and $report['proveedor'] !== ""){
+        $where[pedidoTableClass::ID_PROVEEDOR] = $report['proveedor'];
+        }
         if (isset($report['fecha1']) and $report['fecha1'] !== null and $report['fecha1'] !== '' and (isset($report['fecha2']) and $report['fecha2'] !== null and $report['fecha2'] !== '')) {
           $where[pedidoTableClass::CREATED_AT] = array(
           date(config::getFormatTimestamp(), strtotime($report['fecha1'] . ' 00:00:00')),

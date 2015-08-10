@@ -8,7 +8,7 @@ use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
 use mvc\validator\enfermedadValidatorClass as validator;
-//use mvc\validator\clienteValidatorClass as validator;
+
 
 /**
 * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon 
@@ -37,43 +37,18 @@ class indexActionClass extends controllerClass implements controllerActionInterf
         $filter = request::getInstance()->getPost('filter');
         //Validar datos
         
-        if (request::getInstance()->hasPost(enfermedadTableClass::getNameField(enfermedadTableClass::NOMBRE, true)) and empty(mvc\request\requestClass::getInstance()->getPost(enfermedadTableClass::getNameField(enfermedadTableClass::NOMBRE, true))) === false) {
-
-          if (request::getInstance()->isMethod('POST')) {
-            $nombre = request::getInstance()->getPost(enfermedadTableClass::getNameField(enfermedadTableClass::NOMBRE, true));
-            validator::validateFiltro();
-
-           if (isset($nombre) and $nombre !== null and $nombre !== '') {
-          $where[] ='(' .  enfermedadTableClass::getNameField(enfermedadTableClass::NOMBRE) . ' LIKE ' . '\'' . $nombre . '%\'  '
-              . 'OR ' . enfermedadTableClass::getNameField(enfermedadTableClass::NOMBRE) . ' LIKE ' . '\'%' . $nombre . '%\' '
-              . 'OR ' . enfermedadTableClass::getNameField(enfermedadTableClass::NOMBRE) . ' LIKE ' . '\'%' . $nombre .'\') ';       
+       if (isset($filter['nombre']) and $filter['nombre'] !== null and $filter['nombre'] !== '') {
+          $where[] ='(' .  enfermedadTableClass::getNameField(enfermedadTableClass::NOMBRE) . ' LIKE ' . '\'' . $filter['nombre'] . '%\'  '
+              . 'OR ' . enfermedadTableClass::getNameField(enfermedadTableClass::NOMBRE) . ' LIKE ' . '\'%' . $filter['nombre'] . '%\' '
+              . 'OR ' . enfermedadTableClass::getNameField(enfermedadTableClass::NOMBRE) . ' LIKE ' . '\'%' . $filter['nombre'].'\') ';       
+              }//cierre del filtro nombre
               
-            }//cierre del filtro documento
-          }//cierre del filtro ubicacion   
-        }
-        
-         if (request::getInstance()->hasPost(enfermedadTableClass::getNameField(enfermedadTableClass::DESCRIPCION, true)) and empty(mvc\request\requestClass::getInstance()->getPost(enfermedadTableClass::getNameField(enfermedadTableClass::DESCRIPCION, true))) === false) {
-
-          if (request::getInstance()->isMethod('POST')) {
-            $descripcion = request::getInstance()->getPost(enfermedadTableClass::getNameField(enfermedadTableClass::DESCRIPCION, true));
-            validator::validateFiltroDescripcion();
-
-          if (isset($descripcion) and $descripcion !== null and $descripcion !== '') {
-         $where[] = '(' . enfermedadTableClass::getNameField(enfermedadTableClass::DESCRIPCION) . ' LIKE ' . '\'' . $descripcion . '%\'  '
-              . 'OR ' . enfermedadTableClass::getNameField(enfermedadTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $descripcion . '%\' '
-              . 'OR ' . enfermedadTableClass::getNameField(enfermedadTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $descripcion .'\') ';       
-              }
-          }//cierre del filtro ubicacion   
-        }
+        if (isset($filter['descripcion']) and $filter['descripcion'] !== null and $filter['descripcion'] !== '') {
+         $where[] = '(' . enfermedadTableClass::getNameField(enfermedadTableClass::DESCRIPCION) . ' LIKE ' . '\'' . $filter['descripcion'] . '%\'  '
+              . 'OR ' . enfermedadTableClass::getNameField(enfermedadTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $filter['descripcion'] . '%\' '
+              . 'OR ' . enfermedadTableClass::getNameField(enfermedadTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $filter['descripcion'].'\') ';       
+              }//cierre del filtro descripcion 
        
-      
-        if (isset($filter['fecha1']) and $filter['fecha1'] !== null and $filter['fecha1'] !== '' and (isset($filter['fecha2']) and $filter['fecha2'] !== null and $filter['fecha2'] !== '')) {
-          $where[enfermedadTableClass::CREATED_AT] = array(
-          date(config::getFormatTimestamp(), strtotime($filter['fecha1'] . ' 00:00:00')),
-          date(config::getFormatTimestamp(), strtotime($filter['fecha2'] . ' 23:59:59'))
-          );
-        }//cierre del filtro fecha1 y fecha2
-          
 //     session::getInstance()->setAttribute('enfermedadIndexFilters', $where);
 //       }else if(session::getInstance()->hasAttribute('enfermedadIndexFilters')){
 //        $where = session::getInstance()->getAttribute('enfermedadIndexFilters');
@@ -83,6 +58,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
           enfermedadTableClass::ID,
           enfermedadTableClass::NOMBRE,
           enfermedadTableClass::DESCRIPCION,
+          enfermedadTableClass::CREATED_AT,
           enfermedadTableClass::TRATAMIENTO
       );
       $orderBy = array(

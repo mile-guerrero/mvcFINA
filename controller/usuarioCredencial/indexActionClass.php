@@ -27,12 +27,27 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       if(isset($filter['credencial']) and $filter['credencial'] !== null and $filter['credencial'] !== ""){
         $where[usuarioCredencialTableClass::CREDENCIAL_ID] = $filter['credencial'];
       }
-      if((isset($filter['fechaIni']) and $filter['fechaIni'] !== null and $filter['fechaIni'] !== "") and (isset($filter['fechaFin']) and $filter['fechaFin'] !== null and $filter['fechaFin'] !== "" )){
-        $where[usuarioCredencialTableClass::CREATED_AT] = array(
-           date(config::getFormatTimestamp(), strtotime($filter['fechaIni'].' 00:00:00')),
-           date(config::getFormatTimestamp(), strtotime($filter['fechaFin'].' 23:59:59'))
-            );
-      }
+     if (request::getInstance()->isMethod('POST')) {
+//            echo 'dsasda';
+//            exit();
+            $fechaInicial = request::getInstance()->getPost(usuarioCredencialTableClass::getNameField(usuarioCredencialTableClass::CREATED_AT, true). '_1');
+            
+            $fechaFin = request::getInstance()->getPost(usuarioCredencialTableClass::getNameField(usuarioCredencialTableClass::CREATED_AT, true). '_2');
+            
+            if($fechaFin < $fechaInicial){
+               session::getInstance()->setError('La fecha final no puede ser menor a la actual', 'inputFecha');
+            }elseif($fechaFin == $fechaInicial){
+                session::getInstance()->setError('La fecha final es igual a la inicial', 'inputFecha');
+            }
+            
+        if ((isset($fechaInicial) and $fechaInicial !== null and $fechaInicial !== "") and ( isset($fechaFin) and $fechaFin !== null and $fechaFin !== "" )) {
+          $where[usuarioCredencialTableClass::CREATED_AT] = array(
+              date(config::getFormatTimestamp(), strtotime($fechaInicial . ' 00:00:00')),
+              date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59'))
+          );
+        }
+            
+          }
 //      session::getInstance()->setAttribute('usuarioCredencialIndexFilters', $where);
 //       }else if(session::getInstance()->hasAttribute('usuarioCredencialIndexFilters')){
 //        $where = session::getInstance()->getAttribute('usuarioCredencialIndexFilters');

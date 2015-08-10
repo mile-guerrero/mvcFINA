@@ -32,7 +32,10 @@
 
     <h1><?php echo i18n::__('pagoTrabajador') ?></h1> 
     <ul>      
+      <?php if(session::getInstance()->hasCredential('admin')):?>
       <a class="btn btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('pagoTrabajador', 'insert') ?>"><img class="img-responsive"  id="imgnuevo" src="" alt=" "><?php echo i18n::__('nuevo') ?></a> 
+    <?php endif?> 
+      
       <a type="button" class="btn btn-xs" data-toggle="modal" data-target="#myModalFiltres"><img class="img-responsive"  id="imgfiltros" src="" alt=" "><?php echo i18n::__('filtros') ?></a>  
       <a href="<?php echo routing::getInstance()->getUrlWeb('pagoTrabajador', 'deleteFilters') ?>" class="btn btn-xs" ><img class="img-responsive"  id="imgelifiltro" src="" alt=" "><?php echo i18n::__('eFiltros') ?></a>             
       <a type="button" class="btn  btn-xs" data-toggle="modal" data-target="#myModalReport" ><img class="img-responsive"  id="imgreporte" src="" alt=" "><?php echo i18n::__('informe') ?></a>
@@ -60,7 +63,10 @@
                   </select>
                 </div>
               </div>
-  <div class="form-group">
+          
+          
+          
+ <div class="form-group">
     <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
     <div class="col-sm-10">
       <input type="date" class="form-control-filtro1" id="reportFecha1" name="report[fecha1]">
@@ -69,7 +75,7 @@
     </div>
   </div>
 </form>
-        </form>
+        
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default btn btn-xs" data-dismiss="modal">  <?php echo i18n::__('cerrar') ?></button>
@@ -101,12 +107,20 @@
                 </div>
               </div>
 
+              
+              <?php if (session::getInstance()->hasError('inputFecha')): ?>
+                  <div class="alert alert-danger alert-dismissible" role="alert" id="error">
+                    <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputFecha') ?>
+                  </div>
+                <?php endif ?>
+              
               <div class="form-group">
                 <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
                 <div class="col-sm-10">
-                  <input type="date" class="form-control-filtro1" id="filterFechaIni" name="filter[fechaIni]" >
+                  <input type="date" class="form-control-filtro1" id="filterFechaIni" name="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::FECHA_INICIAL, true) ?>" >
         
-                  <input type="date" class="form-control-filtro2" id="filterFechaFin" name="filter[fechaFin]" >
+                  <input type="date" class="form-control-filtro2" id="filterFechaFin" name="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::FECHA_FINAL, true) ?>" >
                 </div>
               </div>
 

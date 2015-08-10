@@ -44,15 +44,28 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       if (isset($filter['cooperativa']) and $filter['cooperativa'] !== null and $filter['cooperativa'] !== '') {
           $where[manoObraTableClass::COOPERATIVA_ID] = $filter['cooperativa'];
         }
-//        if (isset($filter['trabajador']) and $filter['trabajador'] !== null and $filter['trabajador'] !== '') {
-//          $where[manoObraTableClass::TRABAJADOR_ID] = $filter['trabajador'];
-//        }
-        if (isset($filter['fecha1']) and $filter['fecha1'] !== null and $filter['fecha1'] !== '' and (isset($filter['fecha2']) and $filter['fecha2'] !== null and $filter['fecha2'] !== '')) {
+
+        if (request::getInstance()->isMethod('POST')) {
+//            echo 'dsasda';
+//            exit();
+            $fechaInicial = request::getInstance()->getPost(manoObraTableClass::getNameField(manoObraTableClass::CREATED_AT, true). '_1');
+            
+            $fechaFin = request::getInstance()->getPost(manoObraTableClass::getNameField(manoObraTableClass::CREATED_AT, true). '_2');
+            
+            if($fechaFin < $fechaInicial){
+               session::getInstance()->setError('La fecha final no puede ser menor a la actual', 'inputFecha');
+            }elseif($fechaFin == $fechaInicial){
+                session::getInstance()->setError('La fecha final es igual a la inicial', 'inputFecha');
+            }
+            
+        if ((isset($fechaInicial) and $fechaInicial !== null and $fechaInicial !== "") and ( isset($fechaFin) and $fechaFin !== null and $fechaFin !== "" )) {
           $where[manoObraTableClass::CREATED_AT] = array(
-          date(config::getFormatTimestamp(), strtotime($filter['fecha1'] . ' 00:00:00')),
-          date(config::getFormatTimestamp(), strtotime($filter['fecha2'] . ' 23:59:59'))
+              date(config::getFormatTimestamp(), strtotime($fechaInicial . ' 00:00:00')),
+              date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59'))
           );
         }
+            
+          }
 //      session::getInstance()->setAttribute('manoObraIndexFilters', $where);
 //       }else if(session::getInstance()->hasAttribute('manoObraIndexFilters')){
 //        $where = session::getInstance()->getAttribute('manoObraIndexFilters');

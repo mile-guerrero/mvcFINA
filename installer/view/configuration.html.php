@@ -11,20 +11,62 @@
     <link rel="stylesheet" href="css/main.css">
   </head>
   <body>
-    <div class="container container-fluid" id="cuerpo">
+     <nav class="navbar navbar-default" id="colordelmenu">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">                 
+              
+                <li class="dropdown">
+                  <h1></h1><span class="caret"></span></a>
+                    
+                </li>
+                </ul>
+
+
+            </div>
+        </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+
+    </nav>
+    <div id="separasdor"> <br></div>
+    <div id="separasdor"> <br></div>
+<div id="separasdor2"> <br></div>
+    <section  navbar-header id="contenido">
+
+   
+</section>
+
+<div class="container container-fluid" id="cuerpo">
+  <div class="center-block" id="cuerpo2">
     
-   <br><br><br><br><br>
-      
-      <h1>CONFIGURACION DEL SISTEMA</h1>
+      <h2 class="form-signin-heading"><br>  </h2>
+      <br><br>
+   
+  </div>
+
+</div>
+<div class="container container-fluid" id="cuerpo">
+  <div class="center-block" id="cuerpo5">
+  <div class="center-block" id="cuerpo2">
+    
+    <br><br>
+    
       <br>
     <form   class="form-horizontal" role="form" action="index.php?step=4" method="POST">
+      <div class="form-group">
+        <div class="col-sm-12">
+      <label>CONFIGURACION DEL SISTEMA</label>
+       </div>
+        </div>
       
       <div class="form-group">
         <div class="col-sm-10">
       <input class="form-control"  value="<?php echo (isset($_POST['RowGrid'])) ? $_POST['RowGrid'] : '' ?>" type="text" name="RowGrid" placeholder="Numero de lineas por regilla"><br>
       </div>
-           
-    
       </div>
       
       
@@ -80,7 +122,10 @@
     </form>
       
       
-     
-    </div>
+      <br><br><br><br><br><br><br>
+ 
+  </div>
+  </div>
+</div>
   </body>
 </html>

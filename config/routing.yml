@@ -2664,8 +2664,6 @@ enfermedad_delete:
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
-      
-
    
 enfermedad_deleteSelect:
   url:    /enfermedad/eliminarSeleccion

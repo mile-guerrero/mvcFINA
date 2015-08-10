@@ -33,7 +33,13 @@ class verActionClass extends controllerClass implements controllerActionInterfac
               date(config::getFormatTimestamp(), strtotime($filter['fechaFin'] . ' 23:59:59'))
           );
         }
-      }
+      session::getInstance()->setAttribute('detalleFacturaVentaIndexFilters', $where);
+       }else if(session::getInstance()->hasAttribute('detalleFacturaVentaIndexFilters')){
+        $where = session::getInstance()->getAttribute('detalleFacturaVentaIndexFilters');
+      session::getInstance()->setAttribute('facturaVentaIndexFilters', $where);
+       }else if(session::getInstance()->hasAttribute('facturaVentaIndexFilters')){
+        $where = session::getInstance()->getAttribute('facturaVentaIndexFilters');
+       }
         
       $idDetalle = request::getInstance()->getRequest(detalleFacturaVentaTableClass::ID, true);
       $fields = array(
@@ -56,7 +62,7 @@ class verActionClass extends controllerClass implements controllerActionInterfac
         $page = request::getInstance()->getGet('page') - 1;
         $page = $page * config::getRowGrid();
       }//cierre del if del paguinado
-      $this->cntPages = detalleFacturaVentaTableClass::getTotalPages(config::getRowGrid());
+      $this->cntPages = detalleFacturaVentaTableClass::getTotalPages(config::getRowGrid(), $where);
       
       
       $this->objDetalleFactura = detalleFacturaVentaTableClass::getAll($fields, false, null, null, config::getRowGrid(), $page, $where);
@@ -82,7 +88,7 @@ class verActionClass extends controllerClass implements controllerActionInterfac
         $page = request::getInstance()->getGet('page') - 1;
         $page = $page * config::getRowGrid();
       }//cierre del if del paguinado
-      $this->cntPages = facturaVentaTableClass::getTotalPages(config::getRowGrid());
+      $this->cntPages = facturaVentaTableClass::getTotalPages(config::getRowGrid(), $where);
       
        $this->objFactura = facturaVentaTableClass::getAll($fieldsFactura, false, null, null, config::getRowGrid(), $page, $whereFactura);
       

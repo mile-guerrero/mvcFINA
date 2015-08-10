@@ -53,8 +53,14 @@
           </tr>
           <tr>
             <td><?php echo i18n::__('dir') ?></td>      
-            <td><?php echo $key->$direccion . ' ' .  ciudadTableClass::getNameCiudad($key>$nombreCiudad) ?></td>
+            <td><?php echo $key->$direccion ?></td>
           </tr>
+          <?php foreach ($objTrabajador as $ciudad): ?>
+          <tr>
+            <td><?php echo i18n::__('ciudad') ?></td>      
+            <td><?php echo ciudadTableClass::getNameCiudad($ciudad->$nombreCiudad) ?></td>
+          </tr>
+          <?php endforeach; ?>
           <tr>
             <td><?php echo i18n::__('tel') ?></td>      
             <td><?php echo $key->$telefono ?></td>

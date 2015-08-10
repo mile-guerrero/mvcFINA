@@ -56,15 +56,21 @@ use mvc\session\sessionClass as session ?>
           <div class="modal-body">
             <form class="form-horizontal" id="filterForm" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('trabajador', 'index') ?>">
 
+ <?php if (session::getInstance()->hasError('inputFecha')): ?>
+                    <div class="alert alert-danger alert-dismissible" role="alert" id="error">
+                      <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputFecha') ?>
+                    </div>
+                  <?php endif ?>
+          
+          <div class="form-group">
+                  <label class="col-sm-2 control-label" for="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::CREATED_AT, true) . '_1' ?>" ><?php echo i18n::__('fecha crear') ?></label>
+                  <div class="col-sm-10">
+                    <input type="date" class="form-control-filtro1" id="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::CREATED_AT, true).'_1' ?>" name="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::CREATED_AT, true).'_1' ?>">
 
-              <div class="form-group">
-                <label class="col-sm-2 control-label">Fecha Creacion</label>
-                <div class="col-sm-10">
-                  <input type="date" class="form-control-filtro1" id="filterFecha1" name="filter[fecha1]">
-                  
-                  <input type="date" class="form-control-filtro2" id="filterFecha2" name="filter[fecha2]">
+                    <input type="date" class="form-control-filtro2" id="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::CREATED_AT, true).'_2' ?>" name="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::CREATED_AT, true).'_2' ?>">
+                  </div>
                 </div>
-              </div>
               
               
               
@@ -141,7 +147,7 @@ use mvc\session\sessionClass as session ?>
 
 
 
-    <!---Informes--->
+   <!---Informes--->
     <div class="modal fade" id="myModalReport" tabindex="-1" role="modal" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -166,9 +172,9 @@ use mvc\session\sessionClass as session ?>
               
               
               <div class="form-group">
-                <label for="reprotCiudad" class="col-sm-2 control-label"><?php echo i18n::__('idCiudad') ?></label>
+                <label for="reportCiudad" class="col-sm-2 control-label"><?php echo i18n::__('idCiudad') ?></label>
                 <div class="col-sm-10">
-                  <select class="form-control" id="reprotCiudad" name="reprot[ciudad]">
+                  <select class="form-control" id="reportCiudad" name="report[ciudad]">
                     <option value=""><?php echo i18n::__('selectCiudad') ?></option>
 <?php foreach ($objCC as $ciudad): ?>
                       <option value="<?php echo $ciudad->$idCiudad ?>"><?php echo $ciudad->$nomCiu ?></option>
@@ -178,24 +184,24 @@ use mvc\session\sessionClass as session ?>
               </div>
               
              <div class="form-group">
-                <label for="reprotDocumento" class="col-sm-2 control-label"><?php echo i18n::__('documento') ?></label>
+                <label for="reportDocumento" class="col-sm-2 control-label"><?php echo i18n::__('documento') ?></label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="reprotDocumento" name="reprot[documento]" placeholder="buscar por numero de documento">
+                  <input type="text" class="form-control" id="reportDocumento" name="report[documento]" placeholder="buscar por numero de documento">
                 </div>
               </div>
               
               <div class="form-group">
-                <label for="reprotNombre" class="col-sm-2 control-label"><?php echo i18n::__('nom') ?></label>
+                <label for="reportNombre" class="col-sm-2 control-label"><?php echo i18n::__('nom') ?></label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="reprotNombre" name="reprot[nombre]" placeholder="buscar por nombre">
+                  <input type="text" class="form-control" id="reportNombre" name="report[nombre]" placeholder="buscar por nombre">
                 </div>
               </div>
               
               
               <div class="form-group">
-                <label for="reprotApellido" class="col-sm-2 control-label"><?php echo i18n::__('apell') ?></label>
+                <label for="reportApellido" class="col-sm-2 control-label"><?php echo i18n::__('apell') ?></label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="reprotApellido" name="reprot[apellido]" placeholder="buscar por apellido">
+                  <input type="text" class="form-control" id="reportApellido" name="report[apellido]" placeholder="buscar por apellido">
                 </div>
               </div> 
               

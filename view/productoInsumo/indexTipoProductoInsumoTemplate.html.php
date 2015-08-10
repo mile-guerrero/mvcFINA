@@ -1,8 +1,15 @@
 <?php mvc\view\viewClass::includePartial('default/menuPrincipal') ?>
-<?php use mvc\routing\routingClass as routing ?>
-<?php use mvc\i18n\i18nClass as i18n ?>
-<?php use mvc\view\viewClass as view?>
-<?php use mvc\session\sessionClass as session?>
+<?php
+
+use mvc\routing\routingClass as routing ?>
+<?php
+use mvc\i18n\i18nClass as i18n ?>
+<?php
+use mvc\view\viewClass as view ?>
+<?php
+use mvc\session\sessionClass as session ?>
+<?php
+use mvc\request\requestClass as request ?>
 
 <?php $des = tipoProductoInsumoTableClass::DESCRIPCION ?>
 <?php $id = tipoProductoInsumoTableClass::ID ?>
@@ -42,33 +49,22 @@
           <div class="modal-body">
             <form class="form-horizontal" id="filterForm" role="form" action="<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'indexTipoProductoInsumo') ?>" method="POST">
              
-              
-              <div class="form-group">
-                <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
-                <div class="col-sm-10">
-                  <input type="date" class="form-control-filtro1" id="filterFechaIni" name="filter[fechaIni]" >
-               
-<!--                <label  class="col-sm-2 control-label"><?php echo i18n::__('fecha fin') ?></label>-->
-               
-                  <input type="date" class="form-control-filtro2" id="filterFechaFin" name="filter[fechaFin]" >
-                </div>
-              </div>
-              
               <?php if (session::getInstance()->hasError('inputDescripcion')): ?>
                     <div class="alert alert-danger alert-dismissible" role="alert" id="error">
                       <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                       <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputDescripcion') ?>
                     </div>
                   <?php endif ?>
+              
               <div class="form-group">
                 <label for="filterDescripcion" class="col-sm-2 control-label"><?php echo i18n::__('des') ?></label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="filterDescripcion" name="<?php echo tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::DESCRIPCION, true) ?>" placeholder="descripcion">
+                  <input type="text" class="form-control" id="filterDescripcion" name="filter[descripcion]" placeholder="descripcion">
                 </div>
               </div>
-          
-
+              
              
+          
             </form>
 
           </div>
@@ -93,16 +89,7 @@
       <div class="modal-body">
         <form class="form-horizontal" id="reportForm" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'reportTipoProductoInsumo')?>">
           
-          <div class="form-group">
-                <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
-                <div class="col-sm-10">
-                  <input type="date" class="form-control-filtro1" id="reportFechaIni" name="report[fechaIni]" >
-               
-<!--                <label  class="col-sm-2 control-label"><?php echo i18n::__('fecha fin') ?></label>-->
-               
-                  <input type="date" class="form-control-filtro2" id="reportFechaFin" name="report[fechaFin]" >
-                </div>
-              </div>
+          
           
           <div class="form-group">
     <label for="reportDescripcion" class="col-sm-2 control-label"><?php echo i18n::__('nom') ?></label>
