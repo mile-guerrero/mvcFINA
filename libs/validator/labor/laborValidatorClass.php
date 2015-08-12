@@ -112,7 +112,8 @@ namespace mvc\validator {
 //       
      if(strlen(request::getInstance()->getPost(\laborTableClass::getNameField(\laborTableClass::DESCRIPCION, true))) > \laborTableClass::DESCRIPCION_LENGTH) {
        session::getInstance()->setError('la descripcion digitada es mayor en cantidad de caracteres a lo permitido', 'inputDescripcion');
-      }
+       session::getInstance()->setFlash('modalFilters', true);
+       }
     }
   }  
 }

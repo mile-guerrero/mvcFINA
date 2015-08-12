@@ -196,12 +196,24 @@ namespace mvc\validator {
       }
     }
      public static function validateFiltro() {
-    //-------------------------------campo descripcion-----------------------------
-//       
+        
       if(strlen(request::getInstance()->getPost(\loteTableClass::getNameField(\loteTableClass::UBICACION, true))) > \loteTableClass::UBICACION_LENGTH) {
        session::getInstance()->setError('La ubicacion digitada es mayor en cantidad de caracteres a lo permitido', 'inputUbicacion');
+      session::getInstance()->setFlash('modalFilters', true);
       }       
     }
+    
+//    public static function validateFiltroFecha($fechaInicial,$fechaFin) {
+//      
+//      if (strtotime($fechaFin) < strtotime($fechaInicial)){
+//        session::getInstance()->setError('La fecha final no puede ser menor a la actual', 'inputFecha');
+//          session::getInstance()->setFlash('modalFilters', true);
+//         // echo "<script> alert(' La fecha final no puede ser menor a la actual');</script>'";
+//      }       
+//    }
+    
+           
+
     
 //    if(strlen(request::getInstance()->getPost(\loteTableClass::getNameField(\loteTableClass::TAMANO, true))) > \loteTableClass::TAMANO_LENGTH) {
 //        session::getInstance()->setError('El tamaño digitado es mayor en cantidad de caracteres a lo permitido', 'inputTamano');

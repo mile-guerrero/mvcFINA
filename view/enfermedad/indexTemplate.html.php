@@ -48,6 +48,14 @@
       <div class="modal-body">
         <form class="form-horizontal" id="filterForm" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('enfermedad', 'index')?>">
        
+           <?php if (session::getInstance()->hasFlash('modalFilters') === true): ?>        
+                    <script>
+                      $('#myModalFilters').modal({
+                        backdrop: 'static', //dejar avierta la ventana modal
+                        keyboard: false//true para quitarla con escape 
+                      })
+                    </script>
+                  <?php endif; ?>
           <div class="form-group">
     <label for="filterNombre" class="col-sm-2 control-label"><?php echo i18n::__('nom') ?></label>
     <div class="col-sm-10">

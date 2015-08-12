@@ -171,6 +171,8 @@ namespace mvc\validator {
          
       if(strlen(request::getInstance()->getPost(\empresaTableClass::getNameField(\empresaTableClass::NOMBRE, true))) > \empresaTableClass::NOMBRE_LENGTH) {
         session::getInstance()->setError('El nombre digitado es mayor en cantidad de caracteres a lo permitido', 'inputNombre');
+      
+        session::getInstance()->setFlash('modalFilters', true);
       }
          
     }
@@ -179,6 +181,8 @@ namespace mvc\validator {
      
       if(strlen(request::getInstance()->getPost(\empresaTableClass::getNameField(\empresaTableClass::DIRECCION, true))) > \empresaTableClass::DIRECCION_LENGTH) {
         session::getInstance()->setError('La direccion digitada es mayor en cantidad de caracteres a lo permitido', 'inputDireccion');
+      
+        session::getInstance()->setFlash('modalFilters', true);
       }
        
     }

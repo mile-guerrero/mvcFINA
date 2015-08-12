@@ -53,7 +53,16 @@ use mvc\session\sessionClass as session ?>
           </div>
           <div class="modal-body">
             <form class="form-horizontal" id="filterForm" role="form" action="<?php echo routing::getInstance()->getUrlWeb('lote', 'indexLote') ?>" method="POST">
-              
+              <?php if (session::getInstance()->hasFlash('modalFilters') === true): ?>        
+                    <script>
+                      $('#myModalFilters').modal({
+                        backdrop: 'static', //dejar avierta la ventana modal
+                        keyboard: false//true para quitarla con escape 
+                      })
+                    </script>
+                  <?php endif; ?>
+               
+                    
                <?php if (session::getInstance()->hasError('inputFecha')): ?>
                     <div class="alert alert-danger alert-dismissible" role="alert" id="error">
                       <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -69,28 +78,17 @@ use mvc\session\sessionClass as session ?>
                     <input type="date" class="form-control-filtro2" id="<?php echo loteTableClass::getNameField(loteTableClass::CREATED_AT, true).'_2' ?>" name="<?php echo loteTableClass::getNameField(loteTableClass::CREATED_AT, true).'_2' ?>">
                   </div>
                 </div>
-              
-             <div class="form-group">
-                <label for="filterCiudad" class="col-sm-2 control-label"><?php echo i18n::__('filtroCiudad') ?></label>
-                <div class="col-sm-10">
-                  <select class="form-control" id="filterCiudad" name="filter[ciudad]">
-                    <option value=""><?php echo i18n::__('FCiudad') ?></option>
-<?php foreach ($objLC as $ciudad): ?>
-                      <option value="<?php echo $ciudad->$idCiudaddes ?>"><?php echo $ciudad->$descripcionciudad ?></option>
-<?php endforeach; ?>
-                  </select>
-                </div>
-              </div>
-              
-             
-              
+           
               
                <?php if(session::getInstance()->hasError('inputUbicacion')): ?>
                     <div class="alert alert-danger alert-dismissible" role="alert" id="error">
                       <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                       <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputUbicacion') ?>
-                    </div>
+                    </div>              
                   <?php endif ?>
+              
+             
+                    
               <div class="form-group">
                 <label for="filterUbicacion" class="col-sm-2 control-label"><?php echo i18n::__('ubicacion') ?></label>
                 <div class="col-sm-10">
@@ -112,22 +110,7 @@ use mvc\session\sessionClass as session ?>
                   <input type="text" class="form-control-filtro2" id="filterTamanoFin" name="filter[tamanoFin]" placeholder="buscar por tamaño">
                 </div>
               </div>
-              
-              <?php if(session::getInstance()->hasError('inputSiembra')): ?>
-                    <div class="alert alert-danger alert-dismissible" role="alert" id="error">
-                      <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputSiembra') ?>
-                    </div>
-                  <?php endif ?>
-              <div class="form-group">
-                <label for="filterFechaIniSiembra" class="col-sm-2 control-label"><?php echo i18n::__('fechaFsiembra') ?></label>
-                <div class="col-sm-10">
-                  <input type="date" class="form-control-filtro1" id="filterFechaIniSiembra" name="filter[fechaSI]" >
                 
-                  <input type="date" class="form-control-filtro2" id="filterFechaFinSiembra" name="filter[fechaSF]" >
-                </div>
-              </div>
-                        
             </form>
 
           </div>

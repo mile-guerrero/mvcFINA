@@ -39,7 +39,14 @@
           <div class="modal-body">
             <form class="form-horizontal" id="filterForm" role="form" action="<?php echo routing::getInstance()->getUrlWeb('facturaVenta', 'index') ?>" method="POST">
                 
-                
+               <?php if (session::getInstance()->hasFlash('modalFilters') === true): ?>        
+                    <script>
+                      $('#myModalFilters').modal({
+                        backdrop: 'static', //dejar avierta la ventana modal
+                        keyboard: false//true para quitarla con escape 
+                      })
+                    </script>
+                  <?php endif; ?>  
               <div class="form-group">
                 <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
                 <div class="col-sm-10">

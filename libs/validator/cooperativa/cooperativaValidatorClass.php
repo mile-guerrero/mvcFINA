@@ -180,14 +180,16 @@ namespace mvc\validator {
      public static function validateFiltroNombre() {
     if(strlen(request::getInstance()->getPost(\cooperativaTableClass::getNameField(\cooperativaTableClass::NOMBRE, true))) > \cooperativaTableClass::NOMBRE_LENGTH) {
        session::getInstance()->setError('El nombre digitado es mayor en cantidad de caracteres a lo permitido', 'inputNombre');
-      }
+       session::getInstance()->setFlash('modalFilters', true);
+       }
       
     }
     
     public static function validateFiltroDescripcion() {
    if(strlen(request::getInstance()->getPost(\cooperativaTableClass::getNameField(\cooperativaTableClass::DESCRIPCION, true))) > \cooperativaTableClass::DESCRIPCION_LENGTH) {
        session::getInstance()->setError('La descripcion digitado es mayor en cantidad de caracteres a lo permitido', 'inputDescripcion');
-      }   
+       session::getInstance()->setFlash('modalFilters', true);
+   }   
        
     }
   }  

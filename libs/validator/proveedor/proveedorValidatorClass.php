@@ -293,8 +293,12 @@ namespace mvc\validator {
          
       if (!is_numeric(request::getInstance()->getPost(\proveedorTableClass::getNameField(\proveedorTableClass::DOCUMENTO, true)))) {
         session::getInstance()->setError('El documento no permite letras, solo numeros', 'inputDocumento');
+      
+        session::getInstance()->setFlash('modalFilters', true);
       }   else if(strlen(request::getInstance()->getPost(\proveedorTableClass::getNameField(\proveedorTableClass::DOCUMENTO, true))) > \proveedorTableClass::DOCUMENTO_LENGTH) {
         session::getInstance()->setError('El documento digitado es mayor en cantidad de caracteres a lo permitido', 'inputDocumento');
+      
+        session::getInstance()->setFlash('modalFilters', true);
       } 
     }
     
@@ -305,10 +309,13 @@ namespace mvc\validator {
       
    if (!preg_match($soloLetras, (request::getInstance()->getPost(\proveedorTableClass::getNameField(\proveedorTableClass::NOMBREP, true))))){
           session::getInstance()->setError('El nombre no permite numeros, solo letras', 'inputNombre');
-      } //----sobre pasar los caracteres----
+     session::getInstance()->setFlash('modalFilters', true);
+          } //----sobre pasar los caracteres----
         else if(strlen(request::getInstance()->getPost(\proveedorTableClass::getNameField(\proveedorTableClass::NOMBREP, true))) > \proveedorTableClass::NOMBREP_LENGTH) {
         session::getInstance()->setError('El nombre digitado es mayor en cantidad de caracteres a lo permitido', 'inputNombre');
-      } 
+      
+        session::getInstance()->setFlash('modalFilters', true);
+        } 
     }
     
     public static function validateFiltroApellido() {
@@ -318,10 +325,13 @@ namespace mvc\validator {
       
       if (!preg_match($soloLetras, (request::getInstance()->getPost(\proveedorTableClass::getNameField(\proveedorTableClass::APELLIDO, true))))){
         session::getInstance()->setError('El apellido no permite numeros, solo letras', 'inputApellido');
-      } //----sobre pasar los caracteres----
+     session::getInstance()->setFlash('modalFilters', true);
+        } //----sobre pasar los caracteres----
         else if(strlen(request::getInstance()->getPost(\proveedorTableClass::getNameField(\proveedorTableClass::APELLIDO, true))) > \proveedorTableClass::APELLIDO_LENGTH) {
         session::getInstance()->setError('El apellido digitado es mayor en cantidad de caracteres a lo permitido', 'inputApellido');
-      } 
+      session::getInstance()->setFlash('modalFilters', true);
+        
+        } 
     }
   }
   

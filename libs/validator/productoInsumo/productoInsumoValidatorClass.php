@@ -173,12 +173,25 @@ namespace mvc\validator {
     }
 
     public static function validateFiltro() {
-    //-------------------------------campo descripcion-----------------------------
+      //-------------------------------campo descripcion-----------------------------
 //       
       if (strlen(request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::DESCRIPCION, true))) > \productoInsumoTableClass::DESCRIPCION_LENGTH) {
-         session::getInstance()->setError('La descripcion digitada es mayor en cantidad de caracteres a lo permitido', 'inputDescripcion');
-     }
-       
+        session::getInstance()->setError('La descripcion digitada es mayor en cantidad de caracteres a lo permitido', 'inputDescripcion');
+        session::getInstance()->setFlash('modalFilters', true);
+      }
+    }
+
+    public static function validateFiltroFecha() {
+
+      if ((request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::CREATED_AT, true) . '_1')) > (request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::CREATED_AT, true) . '_2'))) {
+        session::getInstance()->setError('La fecha final no puede ser menor a la actual', 'inputFecha');
+        session::getInstance()->setFlash('modalFilters', true);
+//                echo 'assasassaas' ;
+//               exit();
+      } else if ((request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::CREATED_AT, true) . '_1')) === (request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::CREATED_AT, true) . '_2'))) {
+        session::getInstance()->setError('La fecha final es igual a la inicial', 'inputFecha');
+        session::getInstance()->setFlash('modalFilters', true);
+      }
     }
 
   }

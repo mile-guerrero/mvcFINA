@@ -23,14 +23,14 @@ class indexProductoInsumoActionClass extends controllerClass implements controll
       if (request::getInstance()->hasPost('filter')) {
         $filter = request::getInstance()->getPost('filter');
         //validar
-       
+
         if (request::getInstance()->hasPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::DESCRIPCION, true)) and empty(mvc\request\requestClass::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::DESCRIPCION, true))) === false) {
 
           if (request::getInstance()->isMethod('POST')) {
             $descripcion = request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::DESCRIPCION, true));
-        
-           
-         
+
+
+
             validator::validateFiltro();
 
             if (isset($descripcion) and $descripcion !== null and $descripcion !== "") {
@@ -38,35 +38,28 @@ class indexProductoInsumoActionClass extends controllerClass implements controll
                       . 'OR ' . productoInsumoTableClass::getNameField(productoInsumoTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $descripcion . '%\' '
                       . 'OR ' . productoInsumoTableClass::getNameField(productoInsumoTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $descripcion . '\') ';
             }
-            
           }
         }
-        
-       // if (request::getInstance()->hasPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::CREATED_AT, true)) and empty(mvc\request\requestClass::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::CREATED_AT, true))) === false) {
-          
+
+        if ((request::getInstance()->hasPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::CREATED_AT, true) . '_1') and empty(mvc\request\requestClass::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::CREATED_AT, true) . '_1')) === false) and ( (request::getInstance()->hasPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::CREATED_AT, true) . '_2') and empty(mvc\request\requestClass::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::CREATED_AT, true) . '_2')) === false))) {
+
           if (request::getInstance()->isMethod('POST')) {
-//            echo 'dsasda';
-//            exit();
-            $fechaInicial = request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::CREATED_AT, true). '_1');
-            
-            $fechaFin = request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::CREATED_AT, true). '_2');
-            
-            if($fechaFin < $fechaInicial){
-               session::getInstance()->setError('La fecha final no puede ser menor a la actual', 'inputFecha');
-            }elseif($fechaFin == $fechaInicial){
-                session::getInstance()->setError('La fecha final es igual a la inicial', 'inputFecha');
+
+            $fechaInicial = request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::CREATED_AT, true) . '_1');
+
+            $fechaFin = request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::CREATED_AT, true) . '_2');
+            validator::validateFiltroFecha();
+
+
+            if ((isset($fechaInicial) and $fechaInicial !== null and $fechaInicial !== "") and ( isset($fechaFin) and $fechaFin !== null and $fechaFin !== "" )) {
+              $where[productoInsumoTableClass::CREATED_AT] = array(
+                  date(config::getFormatTimestamp(), strtotime($fechaInicial . ' 00:00:00')),
+                  date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59'))
+              );
             }
-            
-        if ((isset($fechaInicial) and $fechaInicial !== null and $fechaInicial !== "") and ( isset($fechaFin) and $fechaFin !== null and $fechaFin !== "" )) {
-          $where[productoInsumoTableClass::CREATED_AT] = array(
-              date(config::getFormatTimestamp(), strtotime($fechaInicial . ' 00:00:00')),
-              date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59'))
-          );
-        }
-            
           }
-        //}
-        
+        }
+
         //fin validaciones
 
 
@@ -81,7 +74,7 @@ class indexProductoInsumoActionClass extends controllerClass implements controll
 //      session::getInstance()->setAttribute('productoInsumoIndexFilters', $where);
 //       }else if(session::getInstance()->hasAttribute('productoInsumoIndexFilters')){
 //        $where = session::getInstance()->getAttribute('productoInsumoIndexFilters');
-     }
+      }
       $fields = array(
           productoInsumoTableClass::ID,
           productoInsumoTableClass::DESCRIPCION,
@@ -97,7 +90,7 @@ class indexProductoInsumoActionClass extends controllerClass implements controll
       $orderBy = array(
           productoInsumoTableClass::ID
       );
-       $page = 0;
+      $page = 0;
       if (request::getInstance()->hasGet('page')) {
         $this->page = request::getInstance()->getGet('page');
         $page = request::getInstance()->getGet('page') - 1;
@@ -127,7 +120,7 @@ class indexProductoInsumoActionClass extends controllerClass implements controll
 
       $this->defineView('indexProductoInsumo', 'productoInsumo', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
-        routing::getInstance()->redirect('productoInsumo', 'indexProductoInsumo');
+      routing::getInstance()->redirect('productoInsumo', 'indexProductoInsumo');
 //      echo $exc->getMessage();
 //      echo '<br>';
 //      echo $exc->getTraceAsString();
@@ -135,3 +128,11 @@ class indexProductoInsumoActionClass extends controllerClass implements controll
   }
 
 }
+
+//            if($fechaFin < $fechaInicial){
+//               session::getInstance()->setError('La fecha final no puede ser menor a la actual', 'inputFecha');
+//               session::getInstance()->setFlash('modalFilters', true);
+//             }elseif($fechaFin == $fechaInicial){
+//                session::getInstance()->setError('La fecha final es igual a la inicial', 'inputFecha');
+//                session::getInstance()->setFlash('modalFilters', true);
+//            }

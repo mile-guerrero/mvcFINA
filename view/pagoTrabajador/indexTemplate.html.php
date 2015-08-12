@@ -84,6 +84,7 @@
     </div>
   </div>
 </div>
+    
 
     <!-- Modal -->
     <div class="modal fade" id="myModalFiltres" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -95,6 +96,15 @@
           </div>
           <div class="modal-body">
             <form class="form-horizontal" id="filterForm" role="form" action="<?php echo routing::getInstance()->getUrlWeb('pagoTrabajador', 'index') ?>" method="POST">
+              
+               <?php if (session::getInstance()->hasFlash('modalFilters') === true): ?>        
+                    <script>
+                      $('#myModalFilters').modal({
+                        backdrop: 'static', //dejar avierta la ventana modal
+                        keyboard: false//true para quitarla con escape 
+                      })
+                    </script>
+                  <?php endif; ?>
               <div class="form-group">
                 <label for="filterEmpresa" class="col-sm-2 control-label"><?php echo i18n::__('empresa') ?></label>
                 <div class="col-sm-10">

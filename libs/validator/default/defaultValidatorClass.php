@@ -138,8 +138,10 @@ namespace mvc\validator {
        
      if(strlen(request::getInstance()->getPost(\usuarioTableClass::getNameField(\usuarioTableClass::USUARIO, true))) > \usuarioTableClass::USUARIO_LENGTH) {
        session::getInstance()->setError('El usuario digitado es mayor en cantidad de caracteres a lo permitido', 'inputUsuario');
-      } else if (!preg_match($emailcorrecto, (request::getInstance()->getPost(\usuarioTableClass::getNameField(\usuarioTableClass::USUARIO, true))))){
+       session::getInstance()->setFlash('modalFilters', true);
+     } else if (!preg_match($emailcorrecto, (request::getInstance()->getPost(\usuarioTableClass::getNameField(\usuarioTableClass::USUARIO, true))))){
         session::getInstance()->setError('Por favor digite un corre válido ', 'inputUsuario');
+        session::getInstance()->setFlash('modalFilters', true);
       }
        
     }
