@@ -2,10 +2,10 @@
   <?php  use mvc\routing\routingClass as routing ?>
 <?php use mvc\i18n\i18nClass as i18n ?>
 <?php $tipo = ProductoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID ?>
-<?php $unidad = productoInsumoTableClass::UNIDAD_MEDIDA_ID ?>
+<?php// $unidad = productoInsumoTableClass::UNIDAD_MEDIDA_ID ?>
 <?php $des = productoInsumoTableClass::DESCRIPCION ?>
 <?php $id = productoInsumoTableClass::ID ?>
-<?php $cantidad = productoInsumoTableClass::CANTIDAD ?>
+<?php// $cantidad = productoInsumoTableClass::CANTIDAD ?>
 <?php $updated = productoInsumoTableClass::UPDATED_AT ?>
 <?php $created = productoInsumoTableClass::CREATED_AT ?>
 <?php $hash = productoInsumoTableClass::HASH_IMAGEN ?>
@@ -47,12 +47,7 @@
            echo '<img id="margenImagen" src="' . routing::getInstance()->getUrlImg('../imgInsumo/' . $key->$hash) . '"/>' ;          
                    }
                    ?></td>
-                  </tr>
-                   <tr> 
-                   <td><?php echo i18n::__('unidad') ?></td>                   
-                   <td><?php echo $key->$cantidad. ' ' . unidadMedidaTableClass::getNameUnidadMedida($key->$unidad) ?></td>
-                       </tr>
-                  
+                  </tr>                   
                        <tr>
                        <td><?php echo i18n::__('tipoProducto') ?></td> 
                        <td><?php echo tipoProductoInsumoTableClass::getNameTipoProductoInsumo($key->$tipo) ?></td>
@@ -65,7 +60,7 @@
 	  </article>
     
 </div>
-    <br><br>
+    <br><br><br><br><br><br>
 </div>
   
  </div>

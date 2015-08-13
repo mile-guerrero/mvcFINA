@@ -23,9 +23,9 @@ class createProductoInsumoActionClass extends controllerClass implements control
 
         $descripcion = request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::DESCRIPCION, true));
        // $iva = request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::IVA, true));
-        $cantidad = request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::CANTIDAD, true));
-        $unidad = request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::UNIDAD_MEDIDA_ID, true));
-        $tipo = request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID, true));
+//        $cantidad = request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::CANTIDAD, true));
+//        $unidad = request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::UNIDAD_MEDIDA_ID, true));
+          $tipo = request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID, true));
 
 
         $file = request::getInstance()->getFile(productoInsumoTableClass::getNameField(productoInsumoTableClass::NOMBRE_IMAGEN, true));
@@ -52,8 +52,6 @@ class createProductoInsumoActionClass extends controllerClass implements control
                 productoInsumoTableClass::NOMBRE_IMAGEN => $file['name'],
                 productoInsumoTableClass::EXTENCION_IMAGEN => $ext,
                 productoInsumoTableClass::HASH_IMAGEN => $hashImagen,
-                productoInsumoTableClass::CANTIDAD => $cantidad,
-                productoInsumoTableClass::UNIDAD_MEDIDA_ID => $unidad,
                 productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID => $tipo,
                 '__sequence' => 'producto_insumo_id_seq'
             );

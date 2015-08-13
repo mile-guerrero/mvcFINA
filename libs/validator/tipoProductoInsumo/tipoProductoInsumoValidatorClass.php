@@ -69,14 +69,19 @@ namespace mvc\validator {
       }
     }
      public static function validateFiltro() {
-    //-------------------------------campo descripcion-----------------------------
-//       
       if(strlen(request::getInstance()->getPost(\tipoProductoInsumoTableClass::getNameField(\tipoProductoInsumoTableClass::DESCRIPCION, true))) > \tipoProductoInsumoTableClass::DESCRIPCION_LENGTH) {
         session::getInstance()->setError('La descripcion digitada es mayor en cantidad de caracteres a lo permitido', 'inputDescripcion');
-      
-        session::getInstance()->setFlash('modalFilters', true);
+      session::getInstance()->setFlash('modalFilters', true);
       } 
-       
+    }
+     public static function validateFiltroFecha($fechaInicial,$fechaFin) {
+      
+      if (strtotime($fechaFin) < strtotime($fechaInicial)){
+        session::getInstance()->setError('La fecha final no puede ser menor a la actual', 'inputFecha');
+          session::getInstance()->setFlash('modalFilters', true);
+         
+         // echo "<script> alert(' La fecha final no puede ser menor a la actual');</script>'";
+      }       
     }
   }
 }

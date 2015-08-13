@@ -6,12 +6,12 @@
 <?php $tipo = productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID ?>
 <?php $tipos = tipoProductoInsumoTableClass::ID ?>
 <?php $des_tipos = tipoProductoInsumoTableClass::DESCRIPCION ?>
-<?php $unidad = productoInsumoTableClass::UNIDAD_MEDIDA_ID ?>
-<?php $unidades = unidadMedidaTableClass::ID ?>
-<?php $des_unidades = unidadMedidaTableClass::DESCRIPCION ?>
+<?php// $unidad = productoInsumoTableClass::UNIDAD_MEDIDA_ID ?>
+<?php// $unidades = unidadMedidaTableClass::ID ?>
+<?php// $des_unidades = unidadMedidaTableClass::DESCRIPCION ?>
 <?php $idPI = productoInsumoTableClass::ID ?>
 <?php $descripcion = productoInsumoTableClass::DESCRIPCION ?>
-<?php $cantidad = productoInsumoTableClass::CANTIDAD ?>
+<?php// $cantidad = productoInsumoTableClass::CANTIDAD ?>
 <?php $nombre = productoInsumoTableClass::NOMBRE_IMAGEN ?>
 
 
@@ -58,43 +58,7 @@
      </div>
   </div>
    
-   <?php if(session::getInstance()->hasError('inputCantidad')): ?>
-    <div class="alert alert-danger alert-dismissible" role="alert" id="error">
-    <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputCantidad') ?>
-    </div>
-    <?php endif ?>
    
-   <div class="form-group">
-      <label for="<?php echo productoInsumoTableClass::getNameField(productoInsumoTableClass::CANTIDAD, true) ?>" class="col-sm-2">   <?php echo i18n::__('cantidad') ?>: </label>     
-      <div class="col-sm-10">
-        <input class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputCantidad') or request::getInstance()->hasPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::CANTIDAD, true))) ? request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::CANTIDAD, true)) : ((isset($objPI[0])) ? $objPI[0]->$cantidad : '') ?>" type="text" name="<?php echo productoInsumoTableClass::getNameField(productoInsumoTableClass::CANTIDAD, true) ?>" placeholder="<?php echo i18n::__('cantidad') ?>" required>
-  </div>
-</div>
-   
-  
-  
-  
-  
-  <?php if(session::getInstance()->hasError('selectUnidad')): ?>
-    <div class="alert alert-danger alert-dismissible" role="alert" id="error">
-    <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('selectUnidad') ?>
-    </div>
-    <?php endif ?>
-  
-  
- <div class="form-group">
-      <label for="<?php echo productoInsumoTableClass::getNameField(productoInsumoTableClass::UNIDAD_MEDIDA_ID, true) ?>" class="col-sm-2">   <?php echo i18n::__('unidad') ?>:  </label>
-      <div class="col-sm-10"> 
-        <select class="form-control" id="<?php productoInsumoTableClass::getNameField(productoInsumoTableClass::ID, true)?>" name="<?php echo productoInsumoTableClass::getNameField(productoInsumoTableClass::UNIDAD_MEDIDA_ID, true);?>">
-       <option value="<?php echo (session::getInstance()->hasFlash('selectUnidad') or request::getInstance()->hasPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::UNIDAD_MEDIDA_ID, true))) ? request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::UNIDAD_MEDIDA_ID, true)) : ((isset($objPI[0])) ? '' : '') ?>"  ><?php echo i18n::__('selectUnidad') ?></option>
-       <?php foreach($objPIUM as $UM):?>
-       <option <?php echo (request::getInstance()->hasPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::UNIDAD_MEDIDA_ID, true)) === true and request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::UNIDAD_MEDIDA_ID, true)) == $UM->$unidades) ? 'selected' : (isset($objPI[0]->$unidad) === true and $objPI[0]->$unidad == $UM->$unidades) ? 'selected' : '' ?> value="<?php echo $UM->$unidades?>"><?php echo $UM->$des_unidades?></option>
-       <?php endforeach;?>
-   </select>   
-      </div> 
-    </div> 
   
   
    <?php if(session::getInstance()->hasError('selectTipo')): ?>
@@ -119,7 +83,7 @@
  
   <input class="btn btn-lg btn-success btn-xs" type="submit" value="<?php echo i18n::__(((isset($objPI)) ? 'update' : 'register')) ?>">
 <a class="btn btn-lg btn-default btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'indexProductoInsumo') ?>" ><?php echo i18n::__('atras') ?> </a>
-<br><br><br>
+<br><br><br><br><br><br>
 </form>
    </article>
 </div>

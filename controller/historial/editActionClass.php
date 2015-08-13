@@ -21,7 +21,9 @@ class editActionClass extends controllerClass implements controllerActionInterfa
       if (request::getInstance()->hasGet(historialTableClass::ID)) {
         $fields = array(
             historialTableClass::ID,
-            historialTableClass::PRODUCTO_INSUMO_ID,          
+            historialTableClass::PRODUCTO_INSUMO_ID,
+            historialTableClass::PLAGA_ID, 
+            historialTableClass::LOTE_ID, 
             historialTableClass::ENFERMEDAD_ID
         );
         $where = array(
@@ -29,6 +31,26 @@ class editActionClass extends controllerClass implements controllerActionInterfa
         );
         $this->objHistorial = historialTableClass::getAll($fields,false, null, null, null, null, $where);
        
+        $fields = array(     
+      plagaTableClass::ID, 
+      plagaTableClass::NOMBRE,
+      plagaTableClass::DESCRIPCION,
+      plagaTableClass::TRATAMIENTO
+      );
+      $orderBy = array(
+      plagaTableClass::NOMBRE    
+      ); 
+      $this->objHistorialPlaga = plagaTableClass::getAll($fields, false, $orderBy, 'ASC');
+      
+      $fields = array(     
+      loteTableClass::ID, 
+      loteTableClass::UBICACION,
+      loteTableClass::FECHA_RIEGO
+      );
+      $orderBy = array(
+      loteTableClass::UBICACION    
+      ); 
+      $this->objHistorialLote = loteTableClass::getAll($fields, true, $orderBy, 'ASC');
         
         $fields = array(
       productoInsumoTableClass::ID,

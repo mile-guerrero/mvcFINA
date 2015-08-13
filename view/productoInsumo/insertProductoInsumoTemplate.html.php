@@ -9,6 +9,6 @@
     <br>
 </div>
 
-<?php view::includePartial('productoInsumo/formularioPrincipalProductoInsumo',array ('objPIUM' => $objPIUM,'objPITPI' => $objPITPI))?>
+<?php view::includePartial('productoInsumo/formularioPrincipalProductoInsumo',array ('objPITPI' => $objPITPI))?>
 
 </div>

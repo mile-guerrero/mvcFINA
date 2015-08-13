@@ -41,21 +41,17 @@ class indexProductoInsumoActionClass extends controllerClass implements controll
           }
         }
 
-        if ((request::getInstance()->hasPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::CREATED_AT, true) . '_1') and empty(mvc\request\requestClass::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::CREATED_AT, true) . '_1')) === false) and ( (request::getInstance()->hasPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::CREATED_AT, true) . '_2') and empty(mvc\request\requestClass::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::CREATED_AT, true) . '_2')) === false))) {
+         if ((request::getInstance()->hasPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::CREATED_AT, true) . '_1') and empty(mvc\request\requestClass::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::CREATED_AT, true) . '_1')) === false) and ( (request::getInstance()->hasPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::CREATED_AT, true) . '_2') and empty(mvc\request\requestClass::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::CREATED_AT, true) . '_2')) === false))) {
 
           if (request::getInstance()->isMethod('POST')) {
-
+           
             $fechaInicial = request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::CREATED_AT, true) . '_1');
-
             $fechaFin = request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::CREATED_AT, true) . '_2');
-            validator::validateFiltroFecha();
-
-
+     
+            validator::validateFiltroFecha($fechaInicial,$fechaFin);
+           
             if ((isset($fechaInicial) and $fechaInicial !== null and $fechaInicial !== "") and ( isset($fechaFin) and $fechaFin !== null and $fechaFin !== "" )) {
-              $where[productoInsumoTableClass::CREATED_AT] = array(
-                  date(config::getFormatTimestamp(), strtotime($fechaInicial . ' 00:00:00')),
-                  date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59'))
-              );
+              $where[] = '(' . productoInsumoTableClass::getNameField(productoInsumoTableClass::CREATED_AT) . ' BETWEEN ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaInicial . ' 00:00:00')) . "'" . ' AND ' . "'" .  date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59')) . "'" . ' ) ';             
             }
           }
         }
@@ -64,13 +60,7 @@ class indexProductoInsumoActionClass extends controllerClass implements controll
 
 
 
-        if (isset($filter['unidadMedida']) and $filter['unidadMedida'] !== null and $filter['unidadMedida'] !== "") {
-          $where[productoInsumoTableClass::UNIDAD_MEDIDA_ID] = $filter['unidadMedida'];
-        }
-
-        if (isset($filter['tipoInsumo']) and $filter['tipoInsumo'] !== null and $filter['tipoInsumo'] !== "") {
-          $where[productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID] = $filter['tipoInsumo'];
-        }
+        
 //      session::getInstance()->setAttribute('productoInsumoIndexFilters', $where);
 //       }else if(session::getInstance()->hasAttribute('productoInsumoIndexFilters')){
 //        $where = session::getInstance()->getAttribute('productoInsumoIndexFilters');
@@ -81,11 +71,8 @@ class indexProductoInsumoActionClass extends controllerClass implements controll
           productoInsumoTableClass::NOMBRE_IMAGEN,
           productoInsumoTableClass::EXTENCION_IMAGEN,
           productoInsumoTableClass::HASH_IMAGEN,
-          productoInsumoTableClass::CANTIDAD,
-          productoInsumoTableClass::UNIDAD_MEDIDA_ID,
           productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID,
-          productoInsumoTableClass::CREATED_AT,
-          productoInsumoTableClass::UPDATED_AT
+          productoInsumoTableClass::CREATED_AT
       );
       $orderBy = array(
           productoInsumoTableClass::ID
@@ -100,14 +87,14 @@ class indexProductoInsumoActionClass extends controllerClass implements controll
 
       $this->objPI = productoInsumoTableClass::getAll($fields, true, $orderBy, 'ASC', config::getRowGrid(), $page, $where);
 
-      $fields = array(
-          unidadMedidaTableClass::ID,
-          unidadMedidaTableClass::DESCRIPCION
-      );
-      $orderBy = array(
-          unidadMedidaTableClass::DESCRIPCION
-      );
-      $this->objPIUM = unidadMedidaTableClass::getAll($fields, false, $orderBy, 'ASC');
+//      $fields = array(
+//          unidadMedidaTableClass::ID,
+//          unidadMedidaTableClass::DESCRIPCION
+//      );
+//      $orderBy = array(
+//          unidadMedidaTableClass::DESCRIPCION
+//      );
+//      $this->objPIUM = unidadMedidaTableClass::getAll($fields, false, $orderBy, 'ASC');
 
       $fields = array(
           tipoProductoInsumoTableClass::ID,

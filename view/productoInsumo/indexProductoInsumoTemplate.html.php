@@ -16,8 +16,8 @@ use mvc\request\requestClass as request ?>
 <?php $id = tipoProductoInsumoTableClass::ID ?>
 <?php $idtipo = tipoProductoInsumoTableClass::ID ?>
 <?php $destipo = tipoProductoInsumoTableClass::DESCRIPCION ?>
-<?php $unidadM = unidadMedidaTableClass::DESCRIPCION ?>
-<?php $idUnidadM = unidadMedidaTableClass::ID ?>
+<?php// $unidadM = unidadMedidaTableClass::DESCRIPCION ?>
+<?php// $idUnidadM = unidadMedidaTableClass::ID ?>
 <div class="container container-fluid" id="cuerpo">
   <div class="center-block" id="cuerpo4">
     <div class="center-block" id="cuerpo2">
@@ -81,9 +81,9 @@ use mvc\request\requestClass as request ?>
                   </div>
 
                   <div class="form-group">
-                    <label for="filterUnidadMedida" class="col-sm-2 control-label"><?php echo i18n::__('unidad') ?></label>
+                    <label for="filterUnidadMedida" class="col-sm-2 control-label hidden"><?php echo i18n::__('unidad') ?></label>
                     <div class="col-sm-10">
-                      <select class="form-control" id="filterUnidadMedida" name="filter[unidadMedida]">
+                      <select class="form-control hidden" id="filterUnidadMedida" name="filter[unidadMedida]">
                         <option value=""><?php echo i18n::__('selectUnidad') ?></option>
                         <?php foreach ($objPIUM as $unidadMedida): ?>
                           <option value="<?php echo $unidadMedida->$idUnidadM ?>"><?php echo $unidadMedida->$unidadM ?></option>

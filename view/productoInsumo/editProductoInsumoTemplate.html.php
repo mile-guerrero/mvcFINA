@@ -10,5 +10,5 @@
      <br>
     <br>
    </div>
-<?php view::includePartial('productoInsumo/formularioPrincipalProductoInsumo',array('objPI'=>$objPI,'objPIUM' => $objPIUM,'objPITPI' => $objPITPI)) ?>
+<?php view::includePartial('productoInsumo/formularioPrincipalProductoInsumo',array('objPI'=>$objPI,'objPITPI' => $objPITPI)) ?>
   </div>

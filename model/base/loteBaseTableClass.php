@@ -16,6 +16,7 @@ class loteBaseTableClass extends tableBaseClass {
   private $unidadMedidaId;
   private $descripcion;
   private $fechaInicioSiembra;
+  private $fechaRiego;
   private $numeroPlantulas;
   private $presupuesto;
   private $produccion;
@@ -37,6 +38,7 @@ class loteBaseTableClass extends tableBaseClass {
   const DESCRIPCION = 'descripcion';
   const DESCRIPCION_LENGTH = 400;
   const FECHA_INICIO_SIEMBRA = 'fecha_inicio_siembra';
+  const FECHA_RIEGO = 'fecha_riego';
   const NUMERO_PLANTULAS = 'numero_plantulas';
   const NUMERO_PLANTULAS_LENGTH = 30;
   const PRESUPUESTO = 'presupuesto';
@@ -47,8 +49,15 @@ class loteBaseTableClass extends tableBaseClass {
   const UPDATED_AT = 'updated_at';
   const DELETED_AT = 'deleted_at';
 
- 
-  public function get_id() {
+  public function get_fechaRiego() {
+    return $this->fechaRiego;
+  }
+
+  public function set_fechaRiego($fechaRiego) {
+    $this->fechaRiego = $fechaRiego;
+  }
+
+    public function get_id() {
     return $this->id;
   }
 

@@ -21,6 +21,9 @@ dictionary:
     nuevo historial:      Nuevo historial
     #-------Subir archivos-----------
     subir archivos:       Subir archivos
+    #-------plaga-----------
+    selectPlaga:     Seleccione la plaga
+    plaga:           Plaga
     #-------Enfermedad-----------
     selectEnfermedad:     Seleccione la enfermedad
     enfermedad:           Enfermedad
@@ -153,6 +156,7 @@ dictionary:
     unidad:               Unidad medida
     tamano:               Tamaño
     ubicacion:            Ubicacion
+    fecha riego:          Fecha de riego
     #-------Orden de servicio-----------
     editar orden:         Editar Orden De Servicio
     orden:                Orden De Servicio

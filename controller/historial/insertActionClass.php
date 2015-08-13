@@ -34,7 +34,27 @@ class insertActionClass extends controllerClass implements controllerActionInter
       enfermedadTableClass::NOMBRE    
       ); 
       $this->objHistoriEnfermedad = enfermedadTableClass::getAll($fields, true, $orderBy, 'ASC');
-
+      
+      $fields = array(     
+      plagaTableClass::ID, 
+      plagaTableClass::NOMBRE,
+      plagaTableClass::DESCRIPCION,
+      plagaTableClass::TRATAMIENTO
+      );
+      $orderBy = array(
+      plagaTableClass::NOMBRE    
+      ); 
+      $this->objHistorialPlaga = plagaTableClass::getAll($fields, false, $orderBy, 'ASC');
+      
+      $fields = array(     
+      loteTableClass::ID, 
+      loteTableClass::UBICACION,
+      loteTableClass::FECHA_RIEGO
+      );
+      $orderBy = array(
+      loteTableClass::UBICACION    
+      ); 
+      $this->objHistorialLote = loteTableClass::getAll($fields, true, $orderBy, 'ASC');
       
       $this->defineView('insert', 'historial', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {

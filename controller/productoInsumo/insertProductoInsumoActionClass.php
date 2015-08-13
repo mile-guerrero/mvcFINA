@@ -17,14 +17,14 @@ class insertProductoInsumoActionClass extends controllerClass implements control
 
   public function execute() {
     try {      
-      $fields = array(
-      unidadMedidaTableClass::ID,
-      unidadMedidaTableClass::DESCRIPCION
-      );
-      $orderBy = array(
-      unidadMedidaTableClass::DESCRIPCION   
-      );      
-      $this->objPIUM = unidadMedidaTableClass::getAll($fields, false, $orderBy, 'ASC');
+//      $fields = array(
+//      unidadMedidaTableClass::ID,
+//      unidadMedidaTableClass::DESCRIPCION
+//      );
+//      $orderBy = array(
+//      unidadMedidaTableClass::DESCRIPCION   
+//      );      
+//      $this->objPIUM = unidadMedidaTableClass::getAll($fields, false, $orderBy, 'ASC');
       
       $fields = array(     
       tipoProductoInsumoTableClass::ID, 

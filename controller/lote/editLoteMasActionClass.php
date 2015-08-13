@@ -30,6 +30,7 @@ class editLoteMasActionClass extends controllerClass implements controllerAction
             loteTableClass::DESCRIPCION,
             loteTableClass::PRODUCCION,
             loteTableClass::FECHA_INICIO_SIEMBRA,
+            loteTableClass::FECHA_RIEGO,
             loteTableClass::NUMERO_PLANTULAS,
             loteTableClass::PRESUPUESTO,
             loteTableClass::PRODUCTO_INSUMO_ID,

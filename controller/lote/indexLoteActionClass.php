@@ -38,20 +38,20 @@ class indexLoteActionClass extends controllerClass implements controllerActionIn
       if (request::getInstance()->hasPost('filter')) {
         $filter = request::getInstance()->getPost('filter');
         //validar
-//        if ((request::getInstance()->hasPost(loteTableClass::getNameField(loteTableClass::CREATED_AT, true) . '_1') and empty(mvc\request\requestClass::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::CREATED_AT, true) . '_1')) === false) and ( (request::getInstance()->hasPost(loteTableClass::getNameField(loteTableClass::CREATED_AT, true) . '_2') and empty(mvc\request\requestClass::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::CREATED_AT, true) . '_2')) === false))) {
-//
-//          if (request::getInstance()->isMethod('POST')) {
-//           
-//            $fechaInicial = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::CREATED_AT, true) . '_1');
-//            $fechaFin = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::CREATED_AT, true) . '_2');
-//     
-//            validator::validateFiltroFecha($fechaInicial,$fechaFin);
-//           
-//            if ((isset($fechaInicial) and $fechaInicial !== null and $fechaInicial !== "") and ( isset($fechaFin) and $fechaFin !== null and $fechaFin !== "" )) {
-//              $where[] = '(' . loteTableClass::getNameField(loteTableClass::CREATED_AT) . ' BETWEEN ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaInicial . ' 00:00:00')) . "'" . ' AND ' . "'" .  date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59')) . "'" . ' ) ';             
-//            }
-//          }
-//        }
+        if ((request::getInstance()->hasPost(loteTableClass::getNameField(loteTableClass::CREATED_AT, true) . '_1') and empty(mvc\request\requestClass::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::CREATED_AT, true) . '_1')) === false) and ( (request::getInstance()->hasPost(loteTableClass::getNameField(loteTableClass::CREATED_AT, true) . '_2') and empty(mvc\request\requestClass::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::CREATED_AT, true) . '_2')) === false))) {
+
+          if (request::getInstance()->isMethod('POST')) {
+           
+            $fechaInicial = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::CREATED_AT, true) . '_1');
+            $fechaFin = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::CREATED_AT, true) . '_2');
+     
+            validator::validateFiltroFecha($fechaInicial,$fechaFin);
+           
+            if ((isset($fechaInicial) and $fechaInicial !== null and $fechaInicial !== "") and ( isset($fechaFin) and $fechaFin !== null and $fechaFin !== "" )) {
+              $where[] = '(' . loteTableClass::getNameField(loteTableClass::CREATED_AT) . ' BETWEEN ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaInicial . ' 00:00:00')) . "'" . ' AND ' . "'" .  date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59')) . "'" . ' ) ';             
+            }
+          }
+        }
 
         if (request::getInstance()->hasPost(loteTableClass::getNameField(loteTableClass::UBICACION, true)) and empty(mvc\request\requestClass::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::UBICACION, true))) === false) {
 
@@ -68,12 +68,7 @@ class indexLoteActionClass extends controllerClass implements controllerActionIn
             }
           }
         }
-
-
-//        if ((isset($filter['tamanoIni']) and $filter['tamanoIni'] !== null and $filter['tamanoIni'] !== "") and ( isset($filter['tamanoFin']) and $filter['tamanoFin'] !== null and $filter['tamanoFin'] !== "" )) {
-//          $where[] = '(' . loteTableClass::getNameField(loteTableClass::TAMANO) . ' BETWEEN ' . "'" . $filter['tamanoIni'] . "'" . ' AND ' . "'" .   $filter['tamanoFin'] . "'" . ' ) ';             
-//            
-//        }//cierre del filtro tamanoIni y tamanoFin       
+//cierre del filtro tamanoIni y tamanoFin       
 //      session::getInstance()->setAttribute('loteIndexFilters', $where);
 //       }else if(session::getInstance()->hasAttribute('loteIndexFilters')){
 //        $where = session::getInstance()->getAttribute('loteIndexFilters');

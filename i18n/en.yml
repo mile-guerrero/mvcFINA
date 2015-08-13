@@ -21,6 +21,9 @@ dictionary:
     nuevo historial:      Rew record
     #-------Subir archivos-----------
     subir archivos:       Upload files
+    #-------plaga-----------
+    selectPlaga:     Seleccione la plaga
+    plaga:           Plaga
     #-------Enfermedad-----------
     selectEnfermedad:     Select the disease
     enfermedad:           Disease
@@ -153,6 +156,7 @@ dictionary:
     unidad:               Unit of Measure
     tamano:               Size
     ubicacion:            Location
+    fecha riego:          Date of riego
     #-------Orden de servicio-----------
     editar orden:         Edit Service Order
     orden:                Service Order

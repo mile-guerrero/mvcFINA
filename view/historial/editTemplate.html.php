@@ -10,5 +10,5 @@
  <br>
     <br>
 </div>
-   <?php view::includePartial('historial/formularioPrincipal',array('objHistorial'=>$objHistorial,'objHistoriInsumo'=>$objHistoriInsumo,'objHistoriEnfermedad'=>$objHistoriEnfermedad)) ?>
+   <?php view::includePartial('historial/formularioPrincipal',array('objHistorial'=>$objHistorial,'objHistorialPlaga'=>$objHistorialPlaga,'objHistorialLote'=>$objHistorialLote,'objHistoriInsumo'=>$objHistoriInsumo,'objHistoriEnfermedad'=>$objHistoriEnfermedad)) ?>
 </div>

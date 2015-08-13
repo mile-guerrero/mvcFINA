@@ -7,9 +7,18 @@
 <?php $producto = historialTableClass::PRODUCTO_INSUMO_ID ?>
 <?php $productos = productoInsumoTableClass::ID ?>
 <?php $desProducto = productoInsumoTableClass::DESCRIPCION ?>
+
 <?php $enfermedad = historialTableClass::ENFERMEDAD_ID ?>
 <?php $enfermedads = enfermedadTableClass::ID ?>
 <?php $desEnfermedad = enfermedadTableClass::NOMBRE ?>
+
+<?php $plaga = historialTableClass::PLAGA_ID ?>
+<?php $plagaId = plagaTableClass::ID ?>
+<?php $desPlaga = plagaTableClass::NOMBRE ?>
+
+<?php $lote = historialTableClass::LOTE_ID ?>
+<?php $loteId = loteTableClass::ID ?>
+<?php $desLote = loteTableClass::UBICACION ?>
 
 
 <div class="container container-fluid" id="cuerpo">
@@ -21,6 +30,26 @@
   <input  name="<?php echo historialTableClass::getNameField(historialTableClass::ID, true) ?>" value="<?php echo $objHistorial[0]->$idHistorial ?>" type="hidden">
   <?php endif ?>
   <br><br><br><br><br>
+  
+   
+   <?php if(session::getInstance()->hasError('inputLote')): ?>
+  <div class="alert alert-danger alert-dismissible" role="alert" id="error">
+    <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputLote') ?>
+    </div>
+    <?php endif ?>
+  
+  <div class="form-group">
+      <label for="<?php echo historialTableClass::getNameField(historialTableClass::LOTE_ID, true) ?>" class="col-sm-2"><?php echo i18n::__('lote') ?>: </label>
+      <div class="col-sm-10"> 
+       <select class="form-control " id="<?php historialTableClass::getNameField(historialTableClass::ID, true) ?>" name="<?php echo historialTableClass::getNameField(historialTableClass::LOTE_ID, true); ?>">
+         <option value="<?php echo (session::getInstance()->hasFlash('inputLote')  or request::getInstance()->hasPost(historialTableClass::getNameField(historialTableClass::LOTE_ID, true))) ? request::getInstance()->getPost(historialTableClass::getNameField(historialTableClass::LOTE_ID, true)) : ((isset($objHistorial[0])) ? '' : '') ?>"><?php echo i18n::__('selectLote')?></option>
+         <?php foreach($objHistorialLote as $key):?>
+          <option <?php echo (request::getInstance()->hasPost(historialTableClass::getNameField(historialTableClass::LOTE_ID, true)) === true and request::getInstance()->getPost(historialTableClass::getNameField(historialTableClass::LOTE_ID, true)) == $key->$loteId) ? 'selected' : (isset($objHistorial[0]->$lote) === true and $objHistorial[0]->$lote == $key->$loteId) ? 'selected' : '' ?> value="<?php echo $key->$loteId ?>"><?php echo $key->$desLote ?></option>  
+       <?php endforeach;?>
+   </select>    
+      </div> 
+    </div>
   
   <?php if(session::getInstance()->hasError('inputInsumo')): ?>
   <div class="alert alert-danger alert-dismissible" role="alert" id="error">
@@ -43,6 +72,24 @@
       </div> 
     </div> 
    
+   <?php if(session::getInstance()->hasError('inputPlaga')): ?>
+  <div class="alert alert-danger alert-dismissible" role="alert" id="error">
+    <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputPlaga') ?>
+    </div>
+    <?php endif ?>
+  
+  <div class="form-group">
+      <label for="<?php echo historialTableClass::getNameField(historialTableClass::PLAGA_ID, true) ?>" class="col-sm-2"><?php echo i18n::__('plaga') ?>: </label>
+      <div class="col-sm-10"> 
+       <select class="form-control " id="<?php historialTableClass::getNameField(historialTableClass::ID, true) ?>" name="<?php echo historialTableClass::getNameField(historialTableClass::PLAGA_ID, true); ?>">
+         <option value="<?php echo (session::getInstance()->hasFlash('inputPlaga')  or request::getInstance()->hasPost(historialTableClass::getNameField(historialTableClass::PLAGA_ID, true))) ? request::getInstance()->getPost(historialTableClass::getNameField(historialTableClass::PLAGA_ID, true)) : ((isset($objHistorial[0])) ? '' : '') ?>"><?php echo i18n::__('selectPlaga')?></option>
+         <?php foreach($objHistorialPlaga as $key):?>
+          <option <?php echo (request::getInstance()->hasPost(historialTableClass::getNameField(historialTableClass::PLAGA_ID, true)) === true and request::getInstance()->getPost(historialTableClass::getNameField(historialTableClass::PLAGA_ID, true)) == $key->$plagaId) ? 'selected' : (isset($objHistorial[0]->$plaga) === true and $objHistorial[0]->$plaga == $key->$plagaId) ? 'selected' : '' ?> value="<?php echo $key->$plagaId ?>"><?php echo $key->$desPlaga ?></option>  
+       <?php endforeach;?>
+   </select>    
+      </div> 
+    </div>
   
    <?php if(session::getInstance()->hasError('inputEnfermedad')): ?>
   <div class="alert alert-danger alert-dismissible" role="alert" id="error">

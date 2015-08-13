@@ -19,8 +19,10 @@ class verActionClass extends controllerClass implements controllerActionInterfac
     try {
       $fields = array(
           historialTableClass::ID,
-            historialTableClass::PRODUCTO_INSUMO_ID,          
-            historialTableClass::ENFERMEDAD_ID,
+          historialTableClass::PRODUCTO_INSUMO_ID,          
+          historialTableClass::ENFERMEDAD_ID,
+          historialTableClass::PLAGA_ID,
+          historialTableClass::LOTE_ID,
           historialTableClass::CREATED_AT        
       );
      
@@ -40,12 +42,35 @@ class verActionClass extends controllerClass implements controllerActionInterfac
       
       $fields = array(     
       enfermedadTableClass::ID, 
-      enfermedadTableClass::NOMBRE
+      enfermedadTableClass::NOMBRE,
+      enfermedadTableClass::DESCRIPCION,
+      enfermedadTableClass::TRATAMIENTO
       );
       $orderBy = array(
       enfermedadTableClass::NOMBRE    
       ); 
       $this->objHistorialEnfermedad = enfermedadTableClass::getAll($fields, true, $orderBy, 'ASC');
+      
+      $fields = array(     
+      plagaTableClass::ID, 
+      plagaTableClass::NOMBRE,
+      plagaTableClass::DESCRIPCION,
+      plagaTableClass::TRATAMIENTO
+      );
+      $orderBy = array(
+      plagaTableClass::NOMBRE    
+      ); 
+      $this->objHistorialPlaga = plagaTableClass::getAll($fields, false, $orderBy, 'ASC');
+      
+      $fields = array(     
+      loteTableClass::ID, 
+      loteTableClass::UBICACION,
+      loteTableClass::FECHA_RIEGO
+      );
+      $orderBy = array(
+      loteTableClass::UBICACION    
+      ); 
+      $this->objHistorialLote = loteTableClass::getAll($fields, true, $orderBy, 'ASC');
 
   $this->defineView('ver', 'historial', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {

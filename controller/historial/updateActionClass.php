@@ -24,6 +24,8 @@ class updateActionClass extends controllerClass implements controllerActionInter
         $id = request::getInstance()->getPost(historialTableClass::getNameField(historialTableClass::ID, true));
         $insumo = request::getInstance()->getPost(historialTableClass::getNameField(historialTableClass::PRODUCTO_INSUMO_ID, true));
         $enfermedad = request::getInstance()->getPost(historialTableClass::getNameField(historialTableClass::ENFERMEDAD_ID, true));
+        $plaga = request::getInstance()->getPost(historialTableClass::getNameField(historialTableClass::PLAGA_ID, true));
+        $lote = request::getInstance()->getPost(historialTableClass::getNameField(historialTableClass::LOTE_ID, true));
 
         
         validator::validateEdit();
@@ -32,7 +34,9 @@ class updateActionClass extends controllerClass implements controllerActionInter
         );
         $data = array(
             historialTableClass::PRODUCTO_INSUMO_ID => $insumo,
-            historialTableClass::ENFERMEDAD_ID => $enfermedad
+            historialTableClass::ENFERMEDAD_ID => $enfermedad,
+            historialTableClass::PLAGA_ID => $plaga,
+            historialTableClass::LOTE_ID => $lote
         );
         historialTableClass::update($ids, $data);
          session::getInstance()->setSuccess('La actualizacion fue correcta');

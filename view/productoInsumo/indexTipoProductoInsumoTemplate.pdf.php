@@ -4,7 +4,8 @@ use mvc\routing\routingClass as routing;
   $des = tipoProductoInsumoTableClass::DESCRIPCION;
   $cre = tipoProductoInsumoTableClass::CREATED_AT;
   $upd = tipoProductoInsumoTableClass::UPDATED_AT;
-class PDF extends FPDF {
+ routing::getInstance()->redirect('productoInsumo', 'indexTipoProductoInsumo');
+  class PDF extends FPDF {
 
   function Header() {
     

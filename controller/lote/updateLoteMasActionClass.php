@@ -41,6 +41,7 @@ class updateLoteMasActionClass extends controllerClass implements controllerActi
         $produccion = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::PRODUCCION, true));
         $insumo = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::PRODUCTO_INSUMO_ID, true));
         $presupuesto = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::PRESUPUESTO, true));
+        $fechaRiego = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::FECHA_RIEGO, true));
         
         
 //        if (strlen($fechaSiembra) == null or $fechaSiembra =='') {
@@ -70,7 +71,7 @@ class updateLoteMasActionClass extends controllerClass implements controllerActi
         validator::validateEditMas();
 //        $this->validate($numero, $presupuesto);
         
-        loteTableClass::loteupdateMas($id,$fechaSiembra,$numero,$insumo,$presupuesto,$produccion, $unidadMedida);
+        loteTableClass::loteupdateMas($id,$fechaSiembra,$fechaRiego,$numero,$insumo,$presupuesto,$produccion, $unidadMedida);
         session::getInstance()->setSuccess('La actualizacion fue correcta');
         $observacion ='se ha modificado el lote mas';
         log::register('Modificar', loteTableClass::getNameTable(),$observacion,$id);

@@ -6,12 +6,14 @@
 <?php $descripcion = loteTableClass::DESCRIPCION ?>
 <?php $tamano = loteTableClass::TAMANO ?>
 <?php $fechaS = loteTableClass::FECHA_INICIO_SIEMBRA ?>
+<?php $fechaRiego = loteTableClass::FECHA_RIEGO ?>
 <?php $numeroP = loteTableClass::NUMERO_PLANTULAS ?>
 <?php $presu = loteTableClass::PRESUPUESTO ?>
 <?php $produccion = loteTableClass::PRODUCCION ?>
 <?php $nombre_ciudad = loteTableClass::ID_CIUDAD ?>
 <?php $nombreInsumo = loteTableClass::PRODUCTO_INSUMO_ID ?>
  <?php $desUnidadMedida = loteTableClass::UNIDAD_MEDIDA_ID ?>
+ <?php $desUnidadDis = loteTableClass::UNIDAD_DISTANCIA_ID ?>
 
 <div class="container container-fluid" id="cuerpo">
   <div class="center-block" id="cuerpo6">
@@ -46,9 +48,17 @@
               <td><?php echo i18n::__('ciudad') ?></td>      
               <td><?php echo ciudadTableClass::getNameCiudad($key->$nombre_ciudad) ?></td>
             </tr>
-            <tr>
+           
+             <tr>
               <td><?php echo i18n::__('tamano') ?></td>      
-              <td><?php echo $key->$tamano ?></td>
+              <td>
+             <?php if (($key->$desUnidadDis) === null){        
+               echo $key->$tamano .' '.'La unidad de distancia no fue seleccionada';
+             }else{
+                echo $key->$tamano .' '. unidadDistanciaTableClass::getNameUnidadDistancia($key->$desUnidadDis);
+             }
+               ?>   
+              </td>
             </tr>
             <tr>
               <td><?php echo i18n::__('des') ?></td>      
@@ -60,20 +70,39 @@
               <td><?php echo $key->$fechaS ?></td>
             </tr>
             <tr>
-              <td><?php echo i18n::__('insumo') ?></td>      
-              <td><?php echo productoInsumoTableClass::getNameProductoInsumo($key->$nombreInsumo) ?></td>
-            </tr>
-            <tr>
               <td><?php echo i18n::__('numero') ?></td>      
               <td><?php echo $key->$numeroP ?></td>
             </tr>
+            <tr>
+              <td><?php echo i18n::__('insumo') ?></td>      
+              <td>
+                <?php if (($key->$nombreInsumo) === null){        
+               echo 'El insumo  no fue seleccionado';
+             }else{
+                echo  productoInsumoTableClass::getNameProductoInsumo($key->$nombreInsumo);
+             }
+               ?>
+              </td>
+            </tr>
+            
             <tr>
               <td><?php echo i18n::__('presupuesto') ?></td>      
               <td><?php echo $key->$presu ?></td>
             </tr>
             <tr>
+              <td><?php echo i18n::__('fecha riego') ?></td>      
+              <td><?php echo $key->$fechaRiego ?></td>
+            </tr>
+            <tr>
               <td><?php echo i18n::__('produccion') ?></td>      
-              <td><?php echo $key->$produccion .' '. unidadMedidaTableClass::getNameUnidadMedida($key->$desUnidadMedida) ?></td>
+              <td>
+             <?php if (($key->$desUnidadMedida) === null){        
+               echo $key->$produccion .' '.'La unidad de peso no fue seleccionada';
+             }else{
+                echo $key->$produccion .' '. unidadMedidaTableClass::getNameUnidadMedida($key->$desUnidadMedida);
+             }
+               ?>   
+              </td>
             </tr>
             
          

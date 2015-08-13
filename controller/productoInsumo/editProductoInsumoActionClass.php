@@ -25,23 +25,21 @@ class editProductoInsumoActionClass extends controllerClass implements controlle
             productoInsumoTableClass::NOMBRE_IMAGEN,
             productoInsumoTableClass::EXTENCION_IMAGEN,
             productoInsumoTableClass::HASH_IMAGEN,
-            productoInsumoTableClass::CANTIDAD,
-            productoInsumoTableClass::UNIDAD_MEDIDA_ID,
             productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID
         );
         $where = array(
             productoInsumoTableClass::ID => request::getInstance()->getGet(productoInsumoTableClass::ID)
         );
         $this->objPI = productoInsumoTableClass::getAll($fields, true, null, null, null, null, $where);
-       $fields = array(
-      unidadMedidaTableClass::ID,
-      unidadMedidaTableClass::DESCRIPCION
-      );
-      $orderBy = array(
-      unidadMedidaTableClass::DESCRIPCION   
-      );      
-      $this->objPIUM = unidadMedidaTableClass::getAll($fields, false, $orderBy, 'ASC');
-      
+//       $fields = array(
+//      unidadMedidaTableClass::ID,
+//      unidadMedidaTableClass::DESCRIPCION
+//      );
+//      $orderBy = array(
+//      unidadMedidaTableClass::DESCRIPCION   
+//      );      
+//      $this->objPIUM = unidadMedidaTableClass::getAll($fields, false, $orderBy, 'ASC');
+//      
       $fields = array(     
       tipoProductoInsumoTableClass::ID, 
       tipoProductoInsumoTableClass::DESCRIPCION

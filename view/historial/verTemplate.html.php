@@ -4,8 +4,8 @@
 <?php $id = historialTableClass::ID ?>
 <?php $insumo = historialTableClass::PRODUCTO_INSUMO_ID ?>
 <?php $enfermedad = historialTableClass::ENFERMEDAD_ID ?>
-<?php $tratamiento = historialTableClass:: ENFERMEDAD_ID ?>
-<?php $desEnfermedad = enfermedadTableClass::DESCRIPCION ?>
+<?php $lote = historialTableClass:: LOTE_ID ?>
+<?php $plaga = historialTableClass:: PLAGA_ID ?>
 <?php $createdAt = historialTableClass::CREATED_AT ?>
 <div class="container container-fluid" id="cuerpo">
   <div class="center-block" id="cuerpo6">
@@ -31,9 +31,14 @@
     </tr>
 	<tbody>
       <?php foreach ($objHistorial as $key): ?>
-                  <tr> 
-                   <td><?php echo i18n::__('fecha crear') ?></td>                   
-                   <td><?php echo $key->$createdAt ?></td>
+                  <tr>
+                    <td><p><?php echo i18n::__('lote') ?></p></td>      
+                  <td><?php echo loteTableClass::getNameLote($key->$lote) ?></td>
+                  </tr>
+                  
+                  <tr>
+                    <td><p><?php echo i18n::__('fecha riego') ?></p></td>      
+                  <td><?php echo loteTableClass::getNameFechaRiego($key->$lote) ?></td>
                   </tr>
                  
                 <tr>
@@ -54,8 +59,24 @@
                   
                   <tr>
                   <td><?php echo i18n::__('tratamiento') ?></td>      
-                  <td><?php echo enfermedadTableClass::getNameTratamiento($key->$tratamiento) ?></td>
+                  <td><?php echo enfermedadTableClass::getNameTratamiento($key->$enfermedad) ?></td>
                   </tr>  
+                  
+                   <tr>
+                  <td><?php echo i18n::__('plaga') ?></td>      
+                  <td><?php echo plagaTableClass::getNamePlaga($key->$plaga) ?></td>
+                  </tr>                           
+                
+                                  
+                  <tr>
+                  <td><?php echo i18n::__('des') ?></td>      
+                  <td><?php echo plagaTableClass::getNameDes($key->$plaga) ?></td>
+                  </tr>  
+                  
+                  <tr>
+                  <td><?php echo i18n::__('tratamiento') ?></td>      
+                  <td><?php echo plagaTableClass::getNameTratamiento($key->$plaga) ?></td>
+                  </tr> 
                 <?php endforeach; ?>
                   
                   

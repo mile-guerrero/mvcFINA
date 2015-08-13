@@ -8,6 +8,7 @@
 <?php $tamano = loteTableClass::TAMANO ?>
 <?php $descripcion = loteTableClass::DESCRIPCION ?>
 <?php $fecha = loteTableClass::FECHA_INICIO_SIEMBRA ?>
+<?php $fechaRiego = loteTableClass::FECHA_RIEGO ?>
 <?php $numero = loteTableClass::NUMERO_PLANTULAS ?>
 <?php $presupuesto = loteTableClass::PRESUPUESTO ?>
 
@@ -56,28 +57,7 @@
         </div>
       </div>
   <br>
- <div class="row j1" >
-        <label for="<?php echo loteTableClass::getNameField(loteTableClass::TAMANO, true) ?>" class="col-sm-2"> <?php echo i18n::__('tamano') ?>:</label>     
-        <div class="col-lg-5">
-          <input  class=" form-control"  value="<?php echo (session::getInstance()->hasFlash('inputTamano') or request::getInstance()->hasPost(loteTableClass::getNameField(loteTableClass::TAMANO, true))) ? request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::TAMANO, true)) : ((isset($objLote[0])) ? $objLote[0]->$tamano : '') ?>" type="text" name="<?php echo loteTableClass::getNameField(loteTableClass::TAMANO, true) ?>" placeholder="<?php echo i18n::__('tamano') ?>" required readonly>
-
-        </div>
-        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-           <select  class="form-control" id="<?php loteTableClass::getNameField(loteTableClass::ID, true) ?>" name="<?php echo loteTableClass::getNameField(loteTableClass::UNIDAD_DISTANCIA_ID, true); ?>"readonly>
-            <option value="<?php echo (session::getInstance()->hasFlash('selectUnidad') or request::getInstance()->hasPost(loteTableClass::getNameField(loteTableClass::UNIDAD_DISTANCIA_ID, true))) ? request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::UNIDAD_DISTANCIA_ID, true)) : ((isset($objLote[0])) ? '' : '') ?>" ><?php echo i18n::__('selectUnidadDis') ?></option>
-<?php foreach ($objLUD as $C): ?>
-              <option <?php echo (request::getInstance()->hasPost(loteTableClass::getNameField(loteTableClass::UNIDAD_DISTANCIA_ID, true)) === true and request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::UNIDAD_DISTANCIA_ID, true)) == $C->$idUnidad) ? 'selected' : (isset($objLote[0]->$idUni) === true and $objLote[0]->$idUni == $C->$idUnidad) ? 'selected' : '' ?>  value="<?php echo $C->$idUnidad ?>"><?php echo $C->$desUnidad ?></option>
-      <?php endforeach; ?>
-          </select>
-        </div>
-      </div> 
-  <br>
- <div class="form-group">
-      <label for="<?php echo loteTableClass::getNameField(loteTableClass::DESCRIPCION, true) ?>" class="col-sm-2"> <?php echo i18n::__('des') ?>: </label>     
-      <div class="col-sm-10">
-        <input  class="form-control" value="<?php echo ((isset($objLote)==true) ? $objLote[0]->$descripcion : '') ?>" type="text" name="<?php echo loteTableClass::getNameField(loteTableClass::DESCRIPCION, true) ?>" placeholder="<?php echo i18n::__('des') ?>" required readonly>
-      </div>
- </div>
+ 
   
 <!--  desde aqui empieza los campos a utilizar-->
   
@@ -89,12 +69,12 @@
     </div>
     <?php endif ?>
   
-  
+<!--  readonly para bloquear campo-->
   
 <div class="form-group">
       <label for="<?php echo loteTableClass::getNameField(loteTableClass::FECHA_INICIO_SIEMBRA, true) ?>" class="col-sm-2"> <?php echo i18n::__('fecha siembra') ?>: </label>     
       <div class="col-sm-10">
-        <input  class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputFecha') or request::getInstance()->hasPost(loteTableClass::getNameField(loteTableClass::FECHA_INICIO_SIEMBRA, true))) ? request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::FECHA_INICIO_SIEMBRA, true)) : ((isset($objLote) == true) ? date('Y-m-d\TH:i:s') : date('Y-m-d\TH:i:s')) ?>" type="datetime-local" name="<?php echo loteTableClass::getNameField(loteTableClass::FECHA_INICIO_SIEMBRA, true) ?>" placeholder="<?php echo i18n::__('fecha siembra') ?>"required readonly>
+        <input  class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputFecha') or request::getInstance()->hasPost(loteTableClass::getNameField(loteTableClass::FECHA_INICIO_SIEMBRA, true))) ? request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::FECHA_INICIO_SIEMBRA, true)) : ((isset($objLote) == true) ? date('Y-m-d\TH:i:s') : date('Y-m-d\TH:i:s')) ?>" type="datetime-local" name="<?php echo loteTableClass::getNameField(loteTableClass::FECHA_INICIO_SIEMBRA, true) ?>" placeholder="<?php echo i18n::__('fecha siembra') ?>"required >
       </div>
  </div>  
 
@@ -139,6 +119,23 @@
           <input  class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputPresupuesto') or request::getInstance()->hasPost(loteTableClass::getNameField(loteTableClass::PRESUPUESTO, true))) ? request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::PRESUPUESTO, true)) : ((isset($objLote[0])) ? $objLote[0]->$presupuesto : '') ?>" type="text" name="<?php echo loteTableClass::getNameField(loteTableClass::PRESUPUESTO, true) ?>" placeholder="<?php echo i18n::__('presupuesto') ?>" >
       </div>
  </div>   
+
+<?php  date_default_timezone_set('America/Bogota'); ?>  
+<?php if(session::getInstance()->hasError('inputFechaRiego')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert" id="error">
+    <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+       <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputFechaRiego') ?>
+    </div>
+    <?php endif ?>
+  
+  
+  
+<div class="form-group">
+      <label for="<?php echo loteTableClass::getNameField(loteTableClass::FECHA_RIEGO, true) ?>" class="col-sm-2"> <?php echo i18n::__('fecha riego') ?>: </label>     
+      <div class="col-sm-10">
+        <input  class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputFechaRiego') or request::getInstance()->hasPost(loteTableClass::getNameField(loteTableClass::FECHA_RIEGO, true))) ? request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::FECHA_RIEGO, true)) : ((isset($objLote) == true) ? date('Y-m-d\TH:i:s') : date('Y-m-d\TH:i:s')) ?>" type="datetime-local" name="<?php echo loteTableClass::getNameField(loteTableClass::FECHA_RIEGO, true) ?>" placeholder="<?php echo i18n::__('fecha riego') ?>"required >
+      </div>
+ </div>  
 
 
 

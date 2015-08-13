@@ -38,22 +38,22 @@ namespace mvc\validator {
         session::getInstance()->setFlash('inputDescripcion', true);
         session::getInstance()->setError('La descripcion digitada es mayor en cantidad de caracteres a lo permitido', 'inputDescripcion');
       }//-------------------------------campo cantidad-----------------------------
-      //----campo nulo----
-      if (self::notBlank(request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::CANTIDAD, true)))) {
-        $flag = true;
-        session::getInstance()->setFlash('inputCantidad', true);
-        session::getInstance()->setError('La cantidad del insumo es requerido', 'inputCantidad');
-      } //----sobre pasar los caracteres----
-      else if (strlen(request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::CANTIDAD, true))) > \productoInsumoTableClass::CANTIDAD_LENGTH) {
-        $flag = true;
-        session::getInstance()->setFlash('inputCantidad', true);
-        session::getInstance()->setError('La cantidad digitada es mayor en cantidad de caracteres a lo permitido', 'inputCantidad');
-      }  //----valida que sea numerico----      
-      else if (!is_numeric(request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::CANTIDAD, true)))) {
-        $flag = true;
-        session::getInstance()->setFlash('inputCantidad', true);
-        session::getInstance()->setError('La cantidad no permite letras, solo numeros', 'inputCantidad');
-//      } //-------------------------------campo iva-----------------------------
+//      //----campo nulo----
+//      if (self::notBlank(request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::CANTIDAD, true)))) {
+//        $flag = true;
+//        session::getInstance()->setFlash('inputCantidad', true);
+//        session::getInstance()->setError('La cantidad del insumo es requerido', 'inputCantidad');
+//      } //----sobre pasar los caracteres----
+//      else if (strlen(request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::CANTIDAD, true))) > \productoInsumoTableClass::CANTIDAD_LENGTH) {
+//        $flag = true;
+//        session::getInstance()->setFlash('inputCantidad', true);
+//        session::getInstance()->setError('La cantidad digitada es mayor en cantidad de caracteres a lo permitido', 'inputCantidad');
+//      }  //----valida que sea numerico----      
+//      else if (!is_numeric(request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::CANTIDAD, true)))) {
+//        $flag = true;
+//        session::getInstance()->setFlash('inputCantidad', true);
+//        session::getInstance()->setError('La cantidad no permite letras, solo numeros', 'inputCantidad');
+////      } //-------------------------------campo iva-----------------------------
 //          //----campo nulo----
 //      if (self::notBlank(request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::IVA, true)))) {
 //        $flag = true;
@@ -70,12 +70,12 @@ namespace mvc\validator {
 //        session::getInstance()->setFlash('inputIva', true);
 //        session::getInstance()->setError('El iva no permite letras, solo numeros', 'inputIva');
 //      }//-------------------------------campo unidad medida-----------------------------
-      } //----campo nulo----
-      if (self::notBlank(request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::UNIDAD_MEDIDA_ID, true)))) {
-        $flag = true;
-        session::getInstance()->setFlash('selectUnidad', true);
-        session::getInstance()->setError('La unidad medida del insumo es requerido', 'selectUnidad');
-      }//-------------------------------campo tipo producto insumo-----------------------------
+     // } //----campo nulo----
+//      if (self::notBlank(request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::UNIDAD_MEDIDA_ID, true)))) {
+//        $flag = true;
+//        session::getInstance()->setFlash('selectUnidad', true);
+//        session::getInstance()->setError('La unidad medida del insumo es requerido', 'selectUnidad');
+//      }//-------------------------------campo tipo producto insumo-----------------------------
       //----campo nulo----
       if (self::notBlank(request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID, true)))) {
         $flag = true;
@@ -112,22 +112,22 @@ namespace mvc\validator {
         session::getInstance()->setFlash('inputDescripcion', true);
         session::getInstance()->setError('La descripcion digitada es mayor en cantidad de caracteres a lo permitido', 'inputDescripcion');
       }//-------------------------------campo cantidad-----------------------------
-      //----campo nulo----
-      if (self::notBlank(request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::CANTIDAD, true)))) {
-        $flag = true;
-        session::getInstance()->setFlash('inputCantidad', true);
-        session::getInstance()->setError('La cantidad del insumo es requerido', 'inputCantidad');
-      } //----sobre pasar los caracteres----
-      else if (strlen(request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::CANTIDAD, true))) > \productoInsumoTableClass::CANTIDAD_LENGTH) {
-        $flag = true;
-        session::getInstance()->setFlash('inputCantidad', true);
-        session::getInstance()->setError('La cantidad digitada es mayor en cantidad de caracteres a lo permitido', 'inputCantidad');
-      }  //----valida que sea numerico----      
-      else if (!is_numeric(request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::CANTIDAD, true)))) {
-        $flag = true;
-        session::getInstance()->setFlash('inputCantidad', true);
-        session::getInstance()->setError('La cantidad no permite letras, solo numeros', 'inputCantidad');
-      }//-------------------------------campo file-----------------------------
+//      //----campo nulo----
+//      if (self::notBlank(request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::CANTIDAD, true)))) {
+//        $flag = true;
+//        session::getInstance()->setFlash('inputCantidad', true);
+//        session::getInstance()->setError('La cantidad del insumo es requerido', 'inputCantidad');
+//      } //----sobre pasar los caracteres----
+//      else if (strlen(request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::CANTIDAD, true))) > \productoInsumoTableClass::CANTIDAD_LENGTH) {
+//        $flag = true;
+//        session::getInstance()->setFlash('inputCantidad', true);
+//        session::getInstance()->setError('La cantidad digitada es mayor en cantidad de caracteres a lo permitido', 'inputCantidad');
+//      }  //----valida que sea numerico----      
+//      else if (!is_numeric(request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::CANTIDAD, true)))) {
+//        $flag = true;
+//        session::getInstance()->setFlash('inputCantidad', true);
+//        session::getInstance()->setError('La cantidad no permite letras, solo numeros', 'inputCantidad');
+//      }//-------------------------------campo file-----------------------------
       //----campo nulo----
 //      if ((request::getInstance()->getFile(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::NOMBRE_IMAGEN, true)))) {
 //        $flag = true;
@@ -153,11 +153,11 @@ namespace mvc\validator {
 //        session::getInstance()->setError('El iva no permite letras, solo numeros', 'inputIva');
 //      }//-------------------------------campo unidad medida-----------------------------
       //----campo nulo----
-      if (self::notBlank(request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::UNIDAD_MEDIDA_ID, true)))) {
-        $flag = true;
-        session::getInstance()->setFlash('selectUnidad', true);
-        session::getInstance()->setError('La unidad medida del insumo es requerido', 'selectUnidad');
-      }//-------------------------------campo tipo producto insumo-----------------------------
+//      if (self::notBlank(request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::UNIDAD_MEDIDA_ID, true)))) {
+//        $flag = true;
+//        session::getInstance()->setFlash('selectUnidad', true);
+//        session::getInstance()->setError('La unidad medida del insumo es requerido', 'selectUnidad');
+//      }//-------------------------------campo tipo producto insumo-----------------------------
       //----campo nulo----
       if (self::notBlank(request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID, true)))) {
         $flag = true;
@@ -180,19 +180,16 @@ namespace mvc\validator {
         session::getInstance()->setFlash('modalFilters', true);
       }
     }
-
-    public static function validateFiltroFecha() {
-
-      if ((request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::CREATED_AT, true) . '_1')) > (request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::CREATED_AT, true) . '_2'))) {
+    
+     public static function validateFiltroFecha($fechaInicial,$fechaFin) {
+      
+      if (strtotime($fechaFin) < strtotime($fechaInicial)){
         session::getInstance()->setError('La fecha final no puede ser menor a la actual', 'inputFecha');
-        session::getInstance()->setFlash('modalFilters', true);
-//                echo 'assasassaas' ;
-//               exit();
-      } else if ((request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::CREATED_AT, true) . '_1')) === (request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::CREATED_AT, true) . '_2'))) {
-        session::getInstance()->setError('La fecha final es igual a la inicial', 'inputFecha');
-        session::getInstance()->setFlash('modalFilters', true);
-      }
+          session::getInstance()->setFlash('modalFilters', true);
+         // echo "<script> alert(' La fecha final no puede ser menor a la actual');</script>'";
+      }       
     }
+
 
   }
 

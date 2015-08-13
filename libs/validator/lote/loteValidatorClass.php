@@ -203,23 +203,14 @@ namespace mvc\validator {
       }       
     }
     
-//    public static function validateFiltroFecha($fechaInicial,$fechaFin) {
-//      
-//      if (strtotime($fechaFin) < strtotime($fechaInicial)){
-//        session::getInstance()->setError('La fecha final no puede ser menor a la actual', 'inputFecha');
-//          session::getInstance()->setFlash('modalFilters', true);
-//         // echo "<script> alert(' La fecha final no puede ser menor a la actual');</script>'";
-//      }       
-//    }
+    public static function validateFiltroFecha($fechaInicial,$fechaFin) {
+      
+      if (strtotime($fechaFin) < strtotime($fechaInicial)){
+        session::getInstance()->setError('La fecha final no puede ser menor a la actual', 'inputFecha');
+          session::getInstance()->setFlash('modalFilters', true);
+         // echo "<script> alert(' La fecha final no puede ser menor a la actual');</script>'";
+      }       
+    }
     
-           
-
-    
-//    if(strlen(request::getInstance()->getPost(\loteTableClass::getNameField(\loteTableClass::TAMANO, true))) > \loteTableClass::TAMANO_LENGTH) {
-//        session::getInstance()->setError('El tamaño digitado es mayor en cantidad de caracteres a lo permitido', 'inputTamano');
-//      }  //----valida que sea numerico----      
-//        else if (!is_numeric(request::getInstance()->getPost(\loteTableClass::getNameField(\loteTableClass::TAMANO, true)))) {
-//       session::getInstance()->setError('El tamaño no permite letras, solo numeros', 'inputTamano');
-//      }
   }
 }

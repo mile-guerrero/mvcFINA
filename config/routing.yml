@@ -1299,6 +1299,7 @@ tipoProductoInsumo_reporte:
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
+    - libs/validator/tipoProductoInsumo/tipoProductoInsumoValidatorClass.php
  
 tipoProductoInsumo_deleteFilters:
   url:    /tipoProductoInsumo/borrarFiltros
@@ -2709,6 +2710,10 @@ historial_index:
     - model/productoInsumoTableClass.php
     - model/base/enfermedadBaseTableClass.php
     - model/enfermedadTableClass.php
+    - model/base/plagaBaseTableClass.php
+    - model/plagaTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
     - libs/validator/historial/historialValidatorClass.php
     
 historial_insert:
@@ -2721,6 +2726,10 @@ historial_insert:
     - model/productoInsumoTableClass.php
     - model/base/enfermedadBaseTableClass.php
     - model/enfermedadTableClass.php
+    - model/base/plagaBaseTableClass.php
+    - model/plagaTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
     
 historial_create:
   url:    /historial/crear
@@ -2732,6 +2741,10 @@ historial_create:
     - model/productoInsumoTableClass.php
     - model/base/enfermedadBaseTableClass.php
     - model/enfermedadTableClass.php
+    - model/base/plagaBaseTableClass.php
+    - model/plagaTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
     - libs/validator/historial/historialValidatorClass.php
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
@@ -2747,6 +2760,10 @@ historial_edit:
     - model/productoInsumoTableClass.php
     - model/base/enfermedadBaseTableClass.php
     - model/enfermedadTableClass.php
+    - model/base/plagaBaseTableClass.php
+    - model/plagaTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
     
 historial_update:
   url:    /historial/actualizar
@@ -2758,6 +2775,10 @@ historial_update:
     - model/productoInsumoTableClass.php
     - model/base/enfermedadBaseTableClass.php
     - model/enfermedadTableClass.php
+    - model/base/plagaBaseTableClass.php
+    - model/plagaTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
     - libs/validator/historial/historialValidatorClass.php
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
@@ -2773,6 +2794,10 @@ historial_ver:
     - model/productoInsumoTableClass.php
     - model/base/enfermedadBaseTableClass.php
     - model/enfermedadTableClass.php
+    - model/base/plagaBaseTableClass.php
+    - model/plagaTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
     
 historial_reporte:
   url:    /historial/reporte
@@ -2785,6 +2810,10 @@ historial_reporte:
     - model/productoInsumoTableClass.php
     - model/base/enfermedadBaseTableClass.php
     - model/enfermedadTableClass.php
+    - model/base/plagaBaseTableClass.php
+    - model/plagaTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php   

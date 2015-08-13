@@ -12,17 +12,36 @@ class historialBaseTableClass extends tableBaseClass {
   private $id;
   private $productoInsumoId;
   private $enfermedadId;
+  private $plagaId;
+  private $loteId;
   private $createdAt;
   private $updatedAt;
   
   const ID = 'id';
   const PRODUCTO_INSUMO_ID = 'producto_insumo_id';
   const ENFERMEDAD_ID = 'enfermedad_id';
+  const PLAGA_ID = 'plaga_id';
+  const LOTE_ID = 'lote_id';
   const CREATED_AT = 'created_at';
   const UPDATED_AT = 'updated_at';
   
-  
-  public function get_id() {
+  public function get_plagaId() {
+    return $this->plagaId;
+  }
+
+  public function get_loteId() {
+    return $this->loteId;
+  }
+
+  public function set_plagaId($plagaId) {
+    $this->plagaId = $plagaId;
+  }
+
+  public function set_loteId($loteId) {
+    $this->loteId = $loteId;
+  }
+
+    public function get_id() {
     return $this->id;
   }
 

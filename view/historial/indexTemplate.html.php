@@ -4,7 +4,7 @@
 <?php use mvc\view\viewClass as view?>
 <?php use mvc\session\sessionClass as session?>
 <?php $id = historialTableClass::ID ?>
-<?php $enfermedadId = historialTableClass::ENFERMEDAD_ID ?>
+<?php $lote = historialTableClass::LOTE_ID ?>
 <?php $insumoId = productoInsumoTableClass::ID ?>
 <?php $productoIdsid = productoInsumoTableClass::DESCRIPCION ?>
 <?php $productoId = historialTableClass::PRODUCTO_INSUMO_ID ?>
@@ -178,10 +178,10 @@
         <thead>
           <tr>
             <th>
-              <?php echo i18n::__('insumo') ?>
+              <?php echo i18n::__('lote') ?>
             </th>
             <th>
-              <?php echo i18n::__('historial') ?>
+              <?php echo i18n::__('insumo') ?>
             </th>
             <th id="acciones">
               <?php echo i18n::__('acciones') ?>
@@ -194,13 +194,14 @@
           <?php foreach ($objHistorial as $key): ?>
             <tr>
 
+             
               <td>
-                <?php echo productoInsumoTableClass::getNameProductoInsumo($key->$productoId) ?>
+                <?php echo loteTableClass::getNameLote($key->$lote) ?>
+              </td>
+               <td>
+                <?php echo productoInsumoTableClass::getNameProductoInsumo($key->$productoId) ?>              
+              </td>
               
-              </td>
-              <td>
-                <?php echo enfermedadTableClass::getNameEnfermedad($key->$enfermedadId) ?>
-              </td>
               <td>
                 <a class="btn btn-warning btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('historial', 'ver', array(historialTableClass::ID => $key->$id)) ?>" ><?php echo i18n::__('ver') ?></a>
                <?php if(session::getInstance()->hasCredential('admin')):?>

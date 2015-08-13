@@ -19,7 +19,7 @@ class enfermedadBaseTableClass extends tableBaseClass {
 
   const ID = 'id';
   const NOMBRE = 'nombre';
-  const NOMBRE_LENGTH = 80;
+  const NOMBRE_LENGTH = 400;
   const DESCRIPCION = 'descripcion';
   const DESCRIPCION_LENGTH = 400;
   const TRATAMIENTO = 'tratamiento';

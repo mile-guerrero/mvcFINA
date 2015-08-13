@@ -26,6 +26,23 @@ class loteTableClass extends loteBaseTableClass {
       throw $exc;
     }
   }
+  
+   public static function getNameFechaRiego($id) {
+    try {
+      $sql = 'SELECT ' . loteTableClass::FECHA_RIEGO . ' As fecha_riego  '
+              . '  FROM ' . loteTableClass::getNameTable() . '  '
+              . '  WHERE ' . loteTableClass::ID . ' = :id';
+      $params = array(
+          ':id' => $id
+      );
+      $answer = model::getInstance()->prepare($sql);
+      $answer->execute($params);
+      $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+      return $answer[0]->fecha_riego;
+    } catch (Exception $exc) {
+      throw $exc;
+    }
+  }
 
    public static function getTotalPages($lines, $where) {
     try {
@@ -68,10 +85,10 @@ class loteTableClass extends loteBaseTableClass {
     }
   }
 
-  public static function loteupdateMas($id, $fechaSiembra, $numero, $insumo, $presupuesto, $produccion, $unidadMedida) {
+  public static function loteupdateMas($id, $fechaSiembra, $fechaRiego, $numero, $insumo, $presupuesto, $produccion, $unidadMedida) {
     try {
 
-      $sql = 'UPDATE ' . '  ' . loteTableClass::getNameTable() . ' SET ' . ' ' . loteTableClass::FECHA_INICIO_SIEMBRA . '=' . "'" . $fechaSiembra . "'" . ',' . loteTableClass::NUMERO_PLANTULAS . '=' . $numero . ',' . loteTableClass::PRODUCTO_INSUMO_ID . '=' . $insumo . ',' . loteTableClass::PRESUPUESTO . '=' . $presupuesto . ',' . loteTableClass::PRODUCCION . '=' . $produccion . ',' . loteTableClass::UNIDAD_MEDIDA_ID . '=' . $unidadMedida . '  '
+      $sql = 'UPDATE ' . '  ' . loteTableClass::getNameTable() . ' SET ' . ' ' . loteTableClass::FECHA_INICIO_SIEMBRA . '=' . "'" . $fechaSiembra . "'" . ',' . loteTableClass::FECHA_RIEGO . '=' . "'" . $fechaRiego . "'" . ',' . loteTableClass::NUMERO_PLANTULAS . '=' . $numero . ',' . loteTableClass::PRODUCTO_INSUMO_ID . '=' . $insumo . ',' . loteTableClass::PRESUPUESTO . '=' . $presupuesto . ',' . loteTableClass::PRODUCCION . '=' . $produccion . ',' . loteTableClass::UNIDAD_MEDIDA_ID . '=' . $unidadMedida . '  '
               . ' WHERE ' . loteTableClass::ID . '=' . $id . ' ';
 
 
