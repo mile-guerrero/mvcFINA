@@ -7,7 +7,7 @@ dictionary:
     descargar:            Descargar archivo
     #-------Usuario-----------
     user:                 Usuario
-    usu_id:               usuarioId
+    usu_id:               Usuario
     crearUsuario:         Crear usuario
     pass:                 Contraseña
     confirmarPass:        Confirmar Contraseña
@@ -22,8 +22,8 @@ dictionary:
     #-------Subir archivos-----------
     subir archivos:       Subir archivos
     #-------plaga-----------
-    selectPlaga:     Seleccione la plaga
-    plaga:           Plaga
+    selectPlaga:          Seleccione la plaga
+    plaga:                Plaga
     #-------Enfermedad-----------
     selectEnfermedad:     Seleccione la enfermedad
     enfermedad:           Enfermedad
@@ -31,8 +31,8 @@ dictionary:
     tratamiento:          Tratamiento
     editar enfermedad:    Editar enfermedad
     editar historial:     Editar historial
-    produccion:           Produccion
-    fCredencial:          Buscar pro credencial
+    produccion:           Producción
+    fCredencial:          Buscar por credencial
     #-------Factura venta-----------
     factura:              Factura venta
     fecha:                Fecha
@@ -50,9 +50,9 @@ dictionary:
     total:                Total
     detalle:              Detalle
     #-------Labor-----------
-    labor:                labor
-    editar labor:         editar labor
-    nueva labor:          nueva labor
+    labor:                Labor
+    editar labor:         Editar labor
+    nueva labor:          Nueva labor
     selectLabor:          Seleccione la labor
     #-------Cooperativa-----------
     cooperativa:          Cooperativa
@@ -62,29 +62,29 @@ dictionary:
     #-------Empresa-----------
     empresa:              Empresa
     editar empresa:       Editar empresa
-    nueva empresa:        nueva empresa
+    nueva empresa:        Nueva empresa
     #-------Buscar-----------
-    FCiudad:              buscar por ciudad
-    FUnidadMedida:        buscar por unidad de peso
-    FTipoInsumo:          buscar por tipo insumo
-    fUsuario:             buscar por usuario
+    FCiudad:              Buscar por ciudad
+    FUnidadMedida:        Buscar por unidad de peso
+    FTipoInsumo:          Buscar por tipo insumo
+    fUsuario:             Buscar por usuario
     fechaFsiembra:        Fecha inicio siembra
     selectUnidadDis:      Seleccione el tipo de distacia
     fecha siembra:        Fecha de siembra
-    numero:               Cantida de plantas a sembrar
+    numero:               Cantidad de plantas a sembrar
     presupuesto:          Presupuesto
     informe:              Informes
     #-------Proveedor-----------
     proveedor:            Proveedor
     editar proveedor:     Editar Proveedor
     nuevo proveedor:      Nuevo Proveedor
-    pro:                  ProveedorId 
+    pro:                  Proveedor
     nomProveedor:         Proveedor
     nom:                  Nombre
     apell:                Apellido
-    dir:                  Direccion
-    tel:                  Telefono
-    cedu:                 Cedula
+    dir:                  Dirección
+    tel:                  Teléfono
+    cedu:                 Cédula
     bus:                  Buscar
     update:               Actualizar 
     #-------Producto-----------
@@ -105,13 +105,13 @@ dictionary:
     tipo uso:             Tipo Uso Maquina
     #-------Trabajador-----------
     trabajador:           Trabajador
-    selectTrabajador:     Seleccione el Trabajador
+    selectTrabajador:     Seleccione el trabajador
     nuevoTrabajador:      Nuevo trabajador
     editarTrabajador:     Editar Trabajador
     nombreTrabajador:     Nombre Trabajador
     #-------Pago trabajador-----------
     pagoTrabajador:       Pago del Trabajador
-    fechaPagoIni:         Fecha de Pago Inicial
+    fechaPagoIni:         Periodo de pago
     fechaPagoFin:         Fecha de Pago Final
     salario:              Salario
     horasExtras:          Valor horas Extras
@@ -120,15 +120,15 @@ dictionary:
     nuevoPago:            Nuevo Pago al Trabajador
     editarPago:           Editar Pago al Trabajador
     fecha_M:              Fecha 
-    tipo:                 TipoUsoId
+    tipo:                 Tipo Uso
     num id:               Documento De Identidad
-    idTipo:               CodigoTipoId
+    idTipo:               Tipo Id
     #-------Ciudad-----------
     ciudad:               Ciudad
     idCiudad:             Cod Ciudad
     filtroCiudad:         Ciudad
     iva:                  Iva
-    eliminar en masa:     Eliminar Seleccion
+    eliminar en masa:     Eliminar Selección
     nuevo:                Nuevo
     #-------Cliente-----------
     cliente:              Cliente
@@ -137,7 +137,7 @@ dictionary:
     nuevo cliente:        Nuevo Cliente
     selectCliente:        Seleccionar cliente
     acciones:             Acciones
-    de:                   de
+    de:                   De
     ver:                  Ver
     modificar:            Modificar
     modificarPerfil:      Modificar perfil
@@ -148,19 +148,19 @@ dictionary:
     editar credencial:    Editar Credencial
     nueva credencial:     Nueva Credencial
     estado:               Estado
-    cre_id:               CredencialId
+    cre_id:               Credencial
     #-------Lote-----------
     editar lote:          Editar Lote
     lote:                 Lote
     nuevo lote:           Nuevo Lote
     unidad:               Unidad medida
-    tamano:               Tamaño
-    ubicacion:            Ubicacion
+    tamano:               Área
+    ubicacion:            Ubicación
     fecha riego:          Fecha de riego
     #-------Orden de servicio-----------
-    editar orden:         Editar Orden De Servicio
-    orden:                Orden De Servicio
-    nuevo orden:          Nueva Orden De Servicio
+    editar orden:         Editar Orden de Servicio
+    orden:                Orden de Servicio
+    nuevo orden:          Nueva Orden de Servicio
     fechaMantenimiento:   Fecha Mantenimiento
     nuevo tipoId:         Nuevo Tipo de Identidad
     tipo id:              Tipo Identidad
@@ -174,46 +174,47 @@ dictionary:
     editar insumo:        Editar Insumo
     insumo:               Insumo
     nuevo tipo insumo:    Nuevo Tipo Insumo
-    tipo insumo:          Tipo Insumo
+    tipo insumo:          Tipo insumo
     selectInsumo:         Seleccione el insumo
     cerrar:               cerrar
     #-------Filtros-----------
     filtros:              Filtros
-    eFiltros:             Eliminar Filtros
+    eFiltros:             Eliminar filtros
     filtrar:              Filtrar
-    fecha crear:          Fecha Creacion
-    fecha fin:            Fecha FInal
-    extReg:               El Registro fue Exitoso
-    des:                  Descripcion
+    fecha crear:          Fecha creación
+    fecha fin:            Fecha fInal
+    extReg:               El registro fue exitoso
+    des:                  Descripción
     update:               Actualizar 
-    email:                Email
-    valor:                Valor salario
-    fecha_M:              Fecha del Mantenimiento
+    email:                Correo electrónico
+    valor:                Valor salarió
+    fecha_M:              Fecha del mantenimiento
     origen:               Origen
     #-------Mano obra-----------
     nuevaMano:            Nueva Mano de Obra
     editarMano:           Edit Mano de Obra
     manoObra:             Mano de Obra
     #-------Seleccione-----------
-    selectEmpresa:        Seleccione la Empresa
-    selectProveedor:      Seleccione el Proveedor
-    selectProducto:       Seleccione el Producto
-    selectLote:           Seleccione el Lote
+    selectEmpresa:        Seleccione la empresa
+    selectProveedor:      Seleccione el proveedor
+    selectProducto:       Seleccione el producto
+    selectLote:           Seleccione el lote
     seleccione insumo:    Seleccione el insumo
+    selectEnfermedad:     Seleccione la enfermedad
     selectTPI:            Seleccione el tipo de insumo 
-    selectCiudad:         Seleccione la Ciudad
+    selectCiudad:         Seleccione la ciudad
     selectTipoUso:        Seleccione el tipo de uso maquina
-    selectUnidad:         Seleccione la Unidad de Medida
-    selectUsuario:        Seleccione el Usuario
-    selectCredencial:     Seleccione la Credencial
-    selectTipoId:         Seleccione el Tipo de Identificacion
+    selectUnidad:         Seleccione la unidad de Medida
+    selectUsuario:        Seleccione el usuario
+    selectCredencial:     Seleccione la credencial
+    selectTipoId:         Seleccione el tipo de Identificación
     #-------Solicitud insumo-----------
     solicitudInsumo:      Solicitud Insumo
-    idTipo:               CodigoTipoId
+    idTipo:               Tipo Id
     atras:                Pagina anterior
     #-------Eliminar-----------
     confirmar eliminar:   Confirmar Eliminar
-    configEliminar:       Confirmar Eliminacion
+    configEliminar:       Confirmar Eliminación
     configEliMas:         Confirmar Casillas Seleccionadas 
     exiEliMas:            Las Casillas Seleccionadas Fueron Eliminadas Exitosamente
     eliminarMas:          ¿Desea Eliminar las Casillas Seleccionadas? 
@@ -221,7 +222,7 @@ dictionary:
     cancel:               Cancelar
     personas:             Personas
     otros:                Otros
-    cerrarSesion:         Cerrar Sesion
+    cerrarSesion:         Cerrar Sesión
     idioma:               Idioma
     crearCuenta:          Crear Cuenta
     recordar:             Recordar me
@@ -229,16 +230,16 @@ dictionary:
     selectUnidadPeso:     Seleccione unidad de peso
     valor hora:           Valor hora
     cantidad hora:        Cantidad horas
-    paginas:              Paginas
-    of:                   de
+    paginas:              Páginas
+    of:                   De
     nuevoPedido:          Nuevo Pedido
     pedido:               Pedido
     Desea  eliminar este campo: ¿ Desea  eliminar el registro 
     ?:                    ?
-    Eliminacion exitosa:  Eliminacion exitosa
+    Eliminacion exitosa:  Eliminación exitosa
     documentos:           Documentos
     documento:            N° Documento
-    identificacion:       Identificacion
+    identificacion:       Identificación
     entrar:               Entrar
     register:             Registrar
   errors:

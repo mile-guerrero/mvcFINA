@@ -70,7 +70,7 @@
   
   
  <div class="form-group">
-      <label for="<?php echo productoInsumoTableClass::getNameField(productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID, true) ?>" class="col-sm-2">   <?php echo i18n::__('tipo') ?>:  </label>
+      <label for="<?php echo productoInsumoTableClass::getNameField(productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID, true) ?>" class="col-sm-2">   <?php echo i18n::__('tipo insumo') ?>:  </label>
       <div class="col-sm-10"> 
         <select class="form-control" id="<?php productoInsumoTableClass::getNameField(productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID, true)?>" name="<?php echo productoInsumoTableClass::getNameField(productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID, true);?>">
        <option value="<?php echo (session::getInstance()->hasFlash('selectTipo') or request::getInstance()->hasPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID, true))) ? request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID, true)) : ((isset($objPI[0])) ? '' : '') ?>" ><?php echo i18n::__('selectTPI') ?></option>

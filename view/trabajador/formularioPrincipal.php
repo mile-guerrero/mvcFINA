@@ -165,7 +165,7 @@
     <?php endif ?>
 
     <div class="form-group">
-         <label for="" class="col-sm-2"> id credencial </label>
+         <label for="" class="col-sm-2"> <?php echo i18n::__('credencial') ?>: </label>
          <div class="col-sm-10">
           <select class="form-control" id="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::ID, true)?>" name="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::ID_CREDENCIAL, true) ?>">
    <option value="<?php echo (session::getInstance()->hasFlash('selectCredencial') or request::getInstance()->hasPost(trabajadorTableClass::getNameField(trabajadorTableClass::ID_CREDENCIAL, true))) ? request::getInstance()->getPost(trabajadorTableClass::getNameField(trabajadorTableClass::ID_CREDENCIAL, true)) : ((isset($objTrabajador[0])) ? '' : '') ?>"><?php echo i18n::__('selectCredencial') ?></option>         

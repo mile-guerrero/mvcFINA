@@ -7,7 +7,7 @@ dictionary:
     descargar:            Download file
     #-------Usuario-----------
     user:                 User
-    usu_id:               User Id
+    usu_id:               User
     crearUsuario:         Create User
     pass:                 Password
     confirmarPass:        Confirm Password
@@ -78,7 +78,7 @@ dictionary:
     proveedor:            Provider
     editar proveedor:     Edit provider
     nuevo proveedor:      New provider
-    pro:                  Provider Id 
+    pro:                  Provider
     nomProveedor:         Provider
     nom:                  Name
     apell:                Surname
@@ -120,12 +120,12 @@ dictionary:
     nuevoPago:            New Pay Workers
     editarPago:           Edit Pay Workers
     fecha_M:              date 
-    tipo:                 Type Use Id
+    tipo:                 Type Use 
     num id:               Identity Card
-    idTipo:               Code Type Id
+    idTipo:               Type Id
     #-------Ciudad-----------
     ciudad:               City
-    idCiudad:             Cod City
+    idCiudad:             City
     filtroCiudad:         City
     iva:                  Iva
     eliminar en masa:     Remove Selection
@@ -148,13 +148,13 @@ dictionary:
     editar credencial:    Edit Credential
     nueva credencial:     New Credential
     estado:               State
-    cre_id:               Credential Id
+    cre_id:               Credential 
     #-------Lote-----------
     editar lote:          Edit batch
     lote:                 Batch
     nuevo lote:           New batch
     unidad:               Unit of Measure
-    tamano:               Size
+    tamano:               Area
     ubicacion:            Location
     fecha riego:          Date of riego
     #-------Orden de servicio-----------
@@ -195,28 +195,28 @@ dictionary:
     editarMano:           Edit Workforce
     manoObra:             Workforce
     #-------Seleccione-----------
-    selectEmpresa:        Select Company
-    selectProveedor:      Select Provider
+    selectEmpresa:        Select company
+    selectProveedor:      Select provider
     selectProducto:       Select Product
     selectLote:           Select the Lot
     seleccione insumo:    Select the input
     selectTPI:            Select the type of input
-    selectCiudad:         Select City
+    selectCiudad:         Select city
     selectTipoUso:        Select the type of machine use
-    selectUnidad:         Select the Unit of Measure
-    selectUsuario:        Select User
-    selectCredencial:     Select Credential
-    selectTipoId:         Select the Type Identification
+    selectUnidad:         Select the unit of measure
+    selectUsuario:        Select user
+    selectCredencial:     Select credential
+    selectTipoId:         Select the type identification
     #-------Solicitud insumo-----------
     solicitudInsumo:      Request Input
-    idTipo:               Code Type Id
+    idTipo:               Type Id
     atras:                Previous page
     #-------Eliminar-----------
     confirmar eliminar:   Confirm Delete
     configEliminar:       Confirm Delete
     configEliMas:         Check Casillas Selected 
-    exiEliMas:            The selected cells were removed Successfully
-    eliminarMas:          Do you want to remove the selected Casillas? 
+    exiEliMas:            The selected cells were removed successfully
+    eliminarMas:          Do you want to remove the selected casillas? 
     eliminarReg:          Do you want to delete the record?
     cancel:               Cancel
     personas:             People

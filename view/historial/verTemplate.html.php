@@ -7,6 +7,7 @@
 <?php $lote = historialTableClass:: LOTE_ID ?>
 <?php $plaga = historialTableClass:: PLAGA_ID ?>
 <?php $createdAt = historialTableClass::CREATED_AT ?>
+<?php $parrafo = '/\.([\n\r]|<\/p>)/' ?>
 <div class="container container-fluid" id="cuerpo">
   <div class="center-block" id="cuerpo6">
   <div class="center-block" id="cuerpo2">

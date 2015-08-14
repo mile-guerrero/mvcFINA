@@ -74,7 +74,7 @@
                 <label for="filterInsumo" class="col-sm-2 control-label"><?php echo i18n::__('insumo') ?></label>
                 <div class="col-sm-10">
                   <select class="form-control" id="filterInsumo" name="filter[insumo]">
-                    <option value=""><?php echo i18n::__('fUsuario') ?></option>
+                    <option value=""><?php echo i18n::__('seleccione insumo') ?></option>
               <?php foreach ($objHistorialProducto as $key): ?>  
               <option value="<?php echo $key->$insumoId ?>"> <?php echo $key->$productoIdsid ?></option>
               <?php endforeach; ?>
@@ -86,7 +86,7 @@
            <label for="filterEnfermedad" class="col-sm-2 control-label"><?php echo i18n::__('enfermedad') ?></label>
                 <div class="col-sm-10">
                   <select class="form-control" id="filterEnfermedad" name="filter[enfermedad]">
-                    <option value=""><?php echo i18n::__('fCredencial') ?></option>
+                    <option value=""><?php echo i18n::__('selectEnfermedad') ?></option>
               <?php foreach ($objHistorialEnfermedad as $key): ?>  
               <option value="<?php echo $key->$enfermedadIdeid ?>"> <?php echo $key->$desEnfermedad ?></option>
               <?php endforeach; ?>
@@ -139,7 +139,7 @@
                 <label for="reportInsumo" class="col-sm-2 control-label"><?php echo i18n::__('insumo') ?></label>
                 <div class="col-sm-10">
                   <select class="form-control" id="reportInsumo" name="report[insumo]">
-                    <option value=""><?php echo i18n::__('fUsuario') ?></option>
+                    <option value=""><?php echo i18n::__('seleccione insumo') ?></option>
               <?php foreach ($objHistorialProducto as $key): ?>  
               <option value="<?php echo $key->$insumoId ?>"> <?php echo $key->$productoIdsid ?></option>
               <?php endforeach; ?>
@@ -151,7 +151,7 @@
            <label for="reportEnfermedad" class="col-sm-2 control-label"><?php echo i18n::__('enfermedad') ?></label>
                 <div class="col-sm-10">
                   <select class="form-control" id="reportEnfermedad" name="report[enfermedad]">
-                    <option value=""><?php echo i18n::__('fCredencial') ?></option>
+                    <option value=""><?php echo i18n::__('selectEnfermedad') ?></option>
               <?php foreach ($objHistorialEnfermedad as $key): ?>  
               <option value="<?php echo $key->$enfermedadIdeid ?>"> <?php echo $key->$desEnfermedad ?></option>
               <?php endforeach; ?>

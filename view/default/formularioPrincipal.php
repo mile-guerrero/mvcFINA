@@ -72,9 +72,9 @@
     <?php endif ?>
   
   <div class="form-group">
-      <label for="<?php echo usuariotableClass::getNameField(usuarioTableClass::PASSWORD, true) . '_2' ?>" class="col-sm-2"> <?php echo i18n::__('pass') ?>:</label>     
+      <label for="<?php echo usuariotableClass::getNameField(usuarioTableClass::PASSWORD, true) . '_2' ?>" class="col-sm-2"> <?php echo i18n::__('confirmarPass') ?>:</label>     
       <div class="col-sm-10"> 
-        <input class="form-control" id="<?php echo usuarioTableClass::getNameField(usuarioTableClass::PASSWORD, true) . '_2' ?>" value="<?php echo (session::getInstance()->hasFlash('inputPass2') or '') ? '' : ((isset($objUsuarios[0])) ? '' : '') ?>" type="password" name="<?php echo usuarioTableClass::getNameField(usuarioTableClass::PASSWORD, true). '_2' ?>" placeholder="<?php echo i18n::__('pass') ?>" required>
+        <input class="form-control" id="<?php echo usuarioTableClass::getNameField(usuarioTableClass::PASSWORD, true) . '_2' ?>" value="<?php echo (session::getInstance()->hasFlash('inputPass2') or '') ? '' : ((isset($objUsuarios[0])) ? '' : '') ?>" type="password" name="<?php echo usuarioTableClass::getNameField(usuarioTableClass::PASSWORD, true). '_2' ?>" placeholder="<?php echo i18n::__('confirmarPass') ?>" required>
       </div>
   </div> 
     

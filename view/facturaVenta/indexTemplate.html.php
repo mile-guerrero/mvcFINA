@@ -2,6 +2,7 @@
 <?php use mvc\routing\routingClass as routing ?>
 <?php use mvc\i18n\i18nClass as i18n ?>
 <?php use mvc\view\viewClass as view ?>
+<?php use mvc\session\sessionClass as session ?>
 <?php $idCliente = facturaVentaTableClass::CLIENTE_ID?>
 <?php $fecha = facturaVentaTableClass::FECHA ?>
 <?php $id = facturaVentaTableClass::ID ?>
@@ -65,8 +66,8 @@
 
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo i18n::__('cancel') ?></button>
-            <button type="button" onclick="$('#filterForm').submit()" class="btn btn-primary"><?php echo i18n::__('filtros') ?></button>
+            <button type="button" class="btn btn-default btn btn-xs" data-dismiss="modal"><?php echo i18n::__('cancel') ?></button>
+            <button type="button" onclick="$('#filterForm').submit()" class="btn btn-primary btn btn-xs"><?php echo i18n::__('filtros') ?></button>
           </div>
         </div>
       </div>
