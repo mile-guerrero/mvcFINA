@@ -102,7 +102,7 @@
         </select> <?php echo i18n::__('de') ?> <?php echo $cntPages ?>
       </div>
   </div>
-    <br><br> <br><br> <br><br> <br><br><br><br>
+   <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </div>
   
  </div>

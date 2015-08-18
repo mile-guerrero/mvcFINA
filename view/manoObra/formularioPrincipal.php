@@ -146,7 +146,7 @@ caja["<?php echo manoObraTableClass::getNameField(manoObraTableClass::TOTAL, tru
 <a class="btn btn-lg btn-default btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('manoObra', 'index') ?>" ><?php echo i18n::__('atras') ?> </a>
 
 
- <br><br><br><br><br><br>
+ <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     </form>
   </div>
 </div>

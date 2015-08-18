@@ -24,68 +24,57 @@ class indexActionClass extends controllerClass implements controllerActionInterf
         $filter = request::getInstance()->getPost('filter');
         //Validar datos
 
-        if (request::getInstance()->hasPost(trabajadorTableClass::getNameField(trabajadorTableClass::DOCUMENTO, true)) and empty(mvc\request\requestClass::getInstance()->getPost(trabajadorTableClass::getNameField(trabajadorTableClass::DOCUMENTO, true))) === false) {
-
+         if ((isset($filter[trabajadorTableClass::getNameField(trabajadorTableClass::CREATED_AT, true) . '_1']) and empty($filter[trabajadorTableClass::getNameField(trabajadorTableClass::CREATED_AT, true) . '_1']) === false) and ( isset($filter[trabajadorTableClass::getNameField(trabajadorTableClass::CREATED_AT, true) . '_2']) and empty($filter[trabajadorTableClass::getNameField(trabajadorTableClass::CREATED_AT, true) . '_2']) === false)) {
           if (request::getInstance()->isMethod('POST')) {
-            $documento = request::getInstance()->getPost(trabajadorTableClass::getNameField(trabajadorTableClass::DOCUMENTO, true));
-            validator::validateFiltro();
-            if (isset($documento) and $documento !== null and $documento !== '') {
-              $where[trabajadorTableClass::DOCUMENTO] = $documento;
-            }//cierre del filtro usuario
-          }//cierre del filtro ubicacion   
+
+            $fechaInicial = $filter[trabajadorTableClass::getNameField(trabajadorTableClass::CREATED_AT, true) . '_1'];
+            $fechaFin = $filter[trabajadorTableClass::getNameField(trabajadorTableClass::CREATED_AT, true) . '_2'];
+
+            validator::validateFiltroFecha($fechaInicial, $fechaFin);
+
+            if ((isset($fechaInicial) and $fechaInicial !== null and $fechaInicial !== "") and ( isset($fechaFin) and $fechaFin !== null and $fechaFin !== "" )) {
+              $where[] = '(' . trabajadorTableClass::getNameField(trabajadorTableClass::CREATED_AT) . ' BETWEEN ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaInicial . ' 00:00:00')) . "'" . ' AND ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59')) . "'" . ' ) ';
+            }
+          }
         }
         
-        if (request::getInstance()->hasPost(trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRET, true)) and empty(mvc\request\requestClass::getInstance()->getPost(trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRET, true))) === false) {
-
+        if (isset($filter[trabajadorTableClass::getNameField(trabajadorTableClass::DOCUMENTO, true)]) and empty($filter[trabajadorTableClass::getNameField(trabajadorTableClass::DOCUMENTO, true)]) === false) {
           if (request::getInstance()->isMethod('POST')) {
-            $nombre = request::getInstance()->getPost(trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRET, true));
-            validator::validateFiltroNombre();
+
+            $documento = $filter[trabajadorTableClass::getNameField(trabajadorTableClass::DOCUMENTO, true)];
+              validator::validateFiltro($documento);
+            if (isset($documento) and $documento !== null and $documento !== '') {
+             $where[] = '(' . trabajadorTableClass::getNameField(trabajadorTableClass::DOCUMENTO) . ' = ' .  $documento  . ' ) ';
+            }
+          }
+        }
+        
+        if (isset($filter[trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRET, true)]) and empty($filter[trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRET, true)]) === false) {
+          if (request::getInstance()->isMethod('POST')) {
+
+            $nombre = $filter[trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRET, true)];
+             validator::validateFiltroNombre($nombre);
             if (isset($nombre) and $nombre !== null and $nombre !== '') {
           $where[] = '(' . trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRET) . ' LIKE ' . '\'' . $nombre . '%\'  '
                   . 'OR ' . trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRET) . ' LIKE ' . '\'%' . $nombre . '%\' '
                   . 'OR ' . trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRET) . ' LIKE ' . '\'%' . $nombre . '\') ';
-        }//cierre del filtro usuario
-          }//cierre del filtro ubicacion   
+        }
+          }
         }
         
-        if (request::getInstance()->hasPost(trabajadorTableClass::getNameField(trabajadorTableClass::APELLIDO, true)) and empty(mvc\request\requestClass::getInstance()->getPost(trabajadorTableClass::getNameField(trabajadorTableClass::APELLIDO, true))) === false) {
-
+        if (isset($filter[trabajadorTableClass::getNameField(trabajadorTableClass::APELLIDO, true)]) and empty($filter[trabajadorTableClass::getNameField(trabajadorTableClass::APELLIDO, true)]) === false) {
           if (request::getInstance()->isMethod('POST')) {
-            $apellido = request::getInstance()->getPost(trabajadorTableClass::getNameField(trabajadorTableClass::APELLIDO, true));
-            validator::validateFiltroApellido();
+
+            $apellido = $filter[trabajadorTableClass::getNameField(trabajadorTableClass::APELLIDO, true)];
+              validator::validateFiltroApellido($apellido);
             if (isset($apellido) and $apellido !== null and $apellido !== '') {
           $where[] = '(' . trabajadorTableClass::getNameField(trabajadorTableClass::APELLIDO) . ' LIKE ' . '\'' . $apellido . '%\'  '
                   . 'OR ' . trabajadorTableClass::getNameField(trabajadorTableClass::APELLIDO) . ' LIKE ' . '\'%' . $apellido . '%\' '
                   . 'OR ' . trabajadorTableClass::getNameField(trabajadorTableClass::APELLIDO) . ' LIKE ' . '\'%' . $apellido . '\') ';
         }
-          }//cierre del filtro ubicacion   
-        }
-
-        if (isset($filter['ciudad']) and $filter['ciudad'] !== null and $filter['ciudad'] !== '') {
-          $where[trabajadorTableClass::ID_CIUDAD] = $filter['ciudad'];
-        }
-
-        if (request::getInstance()->isMethod('POST')) {
-//            echo 'dsasda';
-//            exit();
-            $fechaInicial = request::getInstance()->getPost(trabajadorTableClass::getNameField(trabajadorTableClass::CREATED_AT, true). '_1');
-            
-            $fechaFin = request::getInstance()->getPost(trabajadorTableClass::getNameField(trabajadorTableClass::CREATED_AT, true). '_2');
-            
-            if($fechaFin < $fechaInicial){
-               session::getInstance()->setError('La fecha final no puede ser menor a la actual', 'inputFecha');
-            }elseif($fechaFin == $fechaInicial){
-                session::getInstance()->setError('La fecha final es igual a la inicial', 'inputFecha');
-            }
-            
-        if ((isset($fechaInicial) and $fechaInicial !== null and $fechaInicial !== "") and ( isset($fechaFin) and $fechaFin !== null and $fechaFin !== "" )) {
-          $where[trabajadorTableClass::CREATED_AT] = array(
-              date(config::getFormatTimestamp(), strtotime($fechaInicial . ' 00:00:00')),
-              date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59'))
-          );
-        }
-            
           }
+        }
+    
 //      session::getInstance()->setAttribute('trabajadorIndexFilters', $where);
 //       }else if(session::getInstance()->hasAttribute('trabajadorIndexFilters')){
 //        $where = session::getInstance()->getAttribute('trabajadorIndexFilters');
@@ -128,7 +117,6 @@ class indexActionClass extends controllerClass implements controllerActionInterf
           ciudadTableClass::NOMBRE_CIUDAD
       );
       $this->objCC = ciudadTableClass::getAll($fields, false, $orderBy, 'ASC');
-//      $this->objUsuarios = trabajadorTableClass::getAll($fields, true);
       $this->defineView('index', 'trabajador', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
        routing::getInstance()->redirect('trabajador', 'index');

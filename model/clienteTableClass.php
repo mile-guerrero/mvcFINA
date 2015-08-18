@@ -55,6 +55,44 @@ class clienteTableClass extends clienteBaseTableClass {
     }
     
   }
+  
+  public static function getNameDocumento($id){
+    try {
+      $sql = 'SELECT ' . clienteTableClass::DOCUMENTO .  ' As documento  '
+             . '  FROM ' . clienteTableClass::getNameTable() . '  '
+             . '  WHERE ' . clienteTableClass::ID . ' = :id';
+      $params = array(
+          ':id' => $id
+      );
+      $answer = model::getInstance()->prepare($sql);
+      $answer->execute($params);
+      $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+      return $answer[0]->documento;
+      
+    } catch (Exception $exc) {
+      throw $exc;
+    }
+    
+  }
+  
+   public static function getNameApellido($id){
+    try {
+      $sql = 'SELECT ' . clienteTableClass::APELLIDO .  ' As apellido  '
+             . '  FROM ' . clienteTableClass::getNameTable() . '  '
+             . '  WHERE ' . clienteTableClass::ID . ' = :id';
+      $params = array(
+          ':id' => $id
+      );
+      $answer = model::getInstance()->prepare($sql);
+      $answer->execute($params);
+      $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+      return $answer[0]->apellido;
+      
+    } catch (Exception $exc) {
+      throw $exc;
+    }
+    
+  }
 
   public static function getCliente($id){
     try {

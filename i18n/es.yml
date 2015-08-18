@@ -239,9 +239,10 @@ dictionary:
     Eliminacion exitosa:  Eliminación exitosa
     documentos:           Documentos
     documento:            N° Documento
-    identificacion:       Identificación
+    identificacion:       Correo electronico
     entrar:               Entrar
     register:             Registrar
+    reportes:             Reportes
   errors:
     00001:                El nombre excede la longitud permitida (:longitud)
     00002:                El apellido excede la longitud permitida (:longitud)

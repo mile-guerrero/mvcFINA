@@ -23,12 +23,12 @@ class indexTipoProductoInsumoActionClass extends controllerClass implements cont
       if (request::getInstance()->hasPost('filter')) {
         $filter = request::getInstance()->getPost('filter');
         //validar
-        if ((request::getInstance()->hasPost(tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::CREATED_AT, true) . '_1') and empty(mvc\request\requestClass::getInstance()->getPost(tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::CREATED_AT, true) . '_1')) === false) and ( (request::getInstance()->hasPost(tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::CREATED_AT, true) . '_2') and empty(mvc\request\requestClass::getInstance()->getPost(tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::CREATED_AT, true) . '_2')) === false))) {
-
+        //if ((request::getInstance()->hasPost(tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::CREATED_AT, true) . '_1') and empty(mvc\request\requestClass::getInstance()->getPost(tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::CREATED_AT, true) . '_1')) === false) and ( (request::getInstance()->hasPost(tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::CREATED_AT, true) . '_2') and empty(mvc\request\requestClass::getInstance()->getPost(tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::CREATED_AT, true) . '_2')) === false))) {
+if ((isset($filter[tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::CREATED_AT, true). '_1']) and empty($filter[tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::CREATED_AT, true). '_1']) === false) and (isset($filter[tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::CREATED_AT, true). '_2']) and empty($filter[tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::CREATED_AT, true). '_2']) === false) ){
           if (request::getInstance()->isMethod('POST')) {
            
-            $fechaInicial = request::getInstance()->getPost(tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::CREATED_AT, true) . '_1');
-            $fechaFin = request::getInstance()->getPost(tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::CREATED_AT, true) . '_2');
+            $fechaInicial = $filter[tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::CREATED_AT, true). '_1'];
+            $fechaFin = $filter[tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::CREATED_AT, true). '_2'];
      
             validator::validateFiltroFecha($fechaInicial,$fechaFin);
            
@@ -40,20 +40,21 @@ class indexTipoProductoInsumoActionClass extends controllerClass implements cont
 
 //      echo  'sdadsdasdas';
 //            exit();
-      if (request::getInstance()->hasPost(tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::DESCRIPCION, true)) and empty(mvc\request\requestClass::getInstance()->getPost(tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::DESCRIPCION, true))) === false) {
 
-          if (request::getInstance()->isMethod('POST')) {
-            $descripcion = request::getInstance()->getPost(tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::DESCRIPCION, true));
-            
-            validator::validateFiltro();
-
-            if(isset($descripcion) and $descripcion !== null and $descripcion !== ""){
-             $where[] = '(' . tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::DESCRIPCION) . ' LIKE ' . '\'' . $descripcion . '%\'  '
+        
+        if (isset($filter[tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::DESCRIPCION, true)]) and empty($filter[tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::DESCRIPCION, true)]) === false) {
+                    if (request::getInstance()->isMethod('POST')) {
+                        $descripcion = $filter[tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::DESCRIPCION, true)];
+                        validator::validateFiltro($descripcion);
+                        if (isset($filter[tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::DESCRIPCION, true)]) and empty($filter[tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::DESCRIPCION, true)]) === false) {
+                         $where[] = '(' . tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::DESCRIPCION) . ' LIKE ' . '\'' . $descripcion . '%\'  '
               . 'OR ' . tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $descripcion . '%\' '
               . 'OR ' . tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $descripcion .'\') ';       
-              }
-           }//cierre del filtro ubicacion   
-          }
+                  
+                        }
+                    }
+                }
+
       
       
 //  session::getInstance()->setAttribute('tipoProductoInsumoIndexFilters', $where);

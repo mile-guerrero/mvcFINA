@@ -35,7 +35,7 @@
 <a class="btn btn-lg btn-default btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'indexTipoProductoInsumo') ?>" ><?php echo i18n::__('atras') ?> </a>
 
 </form>
-    <br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
   </article>
 </div>
 </div>

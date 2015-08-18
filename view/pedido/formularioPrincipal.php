@@ -100,7 +100,7 @@
     <select class="form-control" id="<?php pedidoTableClass::getNameField(pedidoTableClass::ID_PROVEEDOR, true)?>" name="<?php echo pedidoTableClass::getNameField(pedidoTableClass::ID_PROVEEDOR, true);?>">
         <option value="<?php echo (session::getInstance()->hasFlash('selectProveedor') or request::getInstance()->hasPost(pedidoTableClass::getNameField(pedidoTableClass::ID_PROVEEDOR, true))) ? request::getInstance()->getPost(pedidoTableClass::getNameField(pedidoTableClass::ID_PROVEEDOR, true)) : ((isset($objPedido[0])) ? '' : '') ?>"><?php echo i18n::__('selectProveedor') ?></option>
        <?php foreach($objProveedor as $key):?>
-      <option <?php echo (request::getInstance()->hasPost(pedidoTableClass::getNameField(pedidoTableClass::ID_PROVEEDOR, true)) === true and request::getInstance()->getPost(pedidoTableClass::getNameField(pedidoTableClass::ID_PROVEEDOR, true)) == $key->$idProveedor) ? 'selected' : (isset($objPedido[0]->$proveedor) === true and $objPedido[0]->$proveedor == $key->$idProveedor) ? 'selected' : '' ?> value="<?php echo $key->$idProveedor ?>"><?php echo $key->$nomProveedor ?></option>
+      <option <?php echo (request::getInstance()->hasPost(pedidoTableClass::getNameField(pedidoTableClass::ID_PROVEEDOR, true)) === true and request::getInstance()->getPost(pedidoTableClass::getNameField(pedidoTableClass::ID_PROVEEDOR, true)) == $key->$idProveedor) ? 'selected' : (isset($objPedido[0]->$proveedor) === true and $objPedido[0]->$proveedor == $key->$idProveedor) ? 'selected' : '' ?> value="<?php echo $key->$idProveedor ?>"><?php echo $key->$nomProveedor . ' ' . proveedorTableClass::getApellidoProveedor($key->$idProveedor). ' ' .  ' CC: ' . ' ' . proveedorTableClass::getDocumentoProveedor($key->$idProveedor)   ?></option>
  <?php endforeach;?>
    </select> 
       </div> 
@@ -109,7 +109,7 @@
     <input   class="btn btn-lg btn-success btn-xs" type="submit" value="<?php echo i18n::__(((isset($objPedido)) ? 'update' : 'register')) ?>">
     <a class="btn btn-lg btn-default btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('pedido', 'index') ?>" ><?php echo i18n::__('atras') ?> </a>
 
-<br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     </form>
   </div>
 </div>

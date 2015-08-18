@@ -67,9 +67,9 @@
           <div class="form-group">
                   <label class="col-sm-2 control-label" for="<?php echo maquinaTableClass::getNameField(maquinaTableClass::CREATED_AT, true) . '_1' ?>" ><?php echo i18n::__('fecha crear') ?></label>
                   <div class="col-sm-10">
-                    <input type="date" class="form-control-filtro1" id="<?php echo maquinaTableClass::getNameField(maquinaTableClass::CREATED_AT, true).'_1' ?>" name="<?php echo maquinaTableClass::getNameField(maquinaTableClass::CREATED_AT, true).'_1' ?>">
+                    <input type="date" class="form-control-filtro1" id="<?php echo maquinaTableClass::getNameField(maquinaTableClass::CREATED_AT, true).'_1' ?>" name="filter[<?php echo maquinaTableClass::getNameField(maquinaTableClass::CREATED_AT, true).'_1' ?>]">
 
-                    <input type="date" class="form-control-filtro2" id="<?php echo maquinaTableClass::getNameField(maquinaTableClass::CREATED_AT, true).'_2' ?>" name="<?php echo maquinaTableClass::getNameField(maquinaTableClass::CREATED_AT, true).'_2' ?>">
+                    <input type="date" class="form-control-filtro2" id="<?php echo maquinaTableClass::getNameField(maquinaTableClass::CREATED_AT, true).'_2' ?>" name="filter[<?php echo maquinaTableClass::getNameField(maquinaTableClass::CREATED_AT, true).'_2' ?>]">
                   </div>
                 </div>
               
@@ -83,60 +83,18 @@
               <div class="form-group">
                 <label for="filterNombre" class="col-sm-2 control-label"><?php echo i18n::__('nom') ?></label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="filterNombre" name="<?php echo maquinaTableClass::getNameField(maquinaTableClass::NOMBRE, true) ?>" placeholder="<?php echo i18n::__('nom') ?>">
+                  <input type="text" class="form-control" id="filterNombre" name="filter[<?php echo maquinaTableClass::getNameField(maquinaTableClass::NOMBRE, true) ?>]" placeholder="<?php echo i18n::__('nom') ?>">
                 </div>
               </div>
-              <?php if (session::getInstance()->hasError('inputDescripcion')): ?>
-                    <div class="alert alert-danger alert-dismissible" role="alert" id="error">
-                      <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputDescripcion') ?>
-                    </div>
-                  <?php endif ?>
-              <div class="form-group">
-                <label for="filterDescripcion" class="col-sm-2 control-label"><?php echo i18n::__('des') ?></label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="filterDescripcion" name="<?php echo maquinaTableClass::getNameField(maquinaTableClass::DESCRIPCION, true) ?>" placeholder="<?php echo i18n::__('des') ?>">
-                </div>
-              </div>
-              
-              
-              <?php if (session::getInstance()->hasError('inputOrigen')): ?>
-                    <div class="alert alert-danger alert-dismissible" role="alert" id="error">
-                      <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputOrigen') ?>
-                    </div>
-                  <?php endif ?>
-              <div class="form-group">
-                <label for="filterOrigen" class="col-sm-2 control-label"><?php echo i18n::__('origenM') ?></label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="filterOrigen" name="<?php echo maquinaTableClass::getNameField(maquinaTableClass::ORIGEN_MAQUINA, true) ?>" placeholder="<?php echo i18n::__('origenM') ?>">
-                </div>
-              </div>
-              
-              
-              
-              
-              <div class="form-group">
-    <label for="filterTipo" class="col-sm-2 control-label"><?php echo i18n::__('tipo uso') ?></label>
-    <div class="col-sm-10">
-      <select class="form-control" id="filterTipo" name="filter[tipo]">
-        <option value=""><?php echo i18n::__('selectTipoUso') ?></option>
-<?php foreach ($objMTUM as $tipoU): ?>
-            <option value="<?php echo $tipoU->$idtipo ?>"><?php echo $tipoU->$destipo ?></option>
-<?php endforeach; ?>
-          </select>
-    </div>
-  </div>            
-              
-              
-              
+             
+                
               <div class="form-group">
     <label for="filterProveedor" class="col-sm-2 control-label"><?php echo i18n::__('nomProveedor') ?></label>
     <div class="col-sm-10">
-      <select class="form-control" id="filterProveedor" name="filter[proveedor]">
+      <select class="form-control" id="filterProveedor" name="filter[<?php echo maquinaTableClass::getNameField(maquinaTableClass::PROVEEDOR_ID, true) ?>]">
         <option value=""><?php echo i18n::__('selectProveedor') ?></option>
 <?php foreach ($objMP as $pro): ?>
-            <option value="<?php echo $pro->$idpro ?>"><?php echo $pro->$despro ?></option>
+            <option value="<?php echo $pro->$idpro ?>"><?php echo $pro->$despro . ' ' . proveedorTableClass::getApellidoProveedor($pro->$idpro). ' ' .  ' CC: ' . ' ' . proveedorTableClass::getDocumentoProveedor($pro->$idpro) ?></option>
 <?php endforeach; ?>
           </select>
     </div>

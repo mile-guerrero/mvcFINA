@@ -43,14 +43,7 @@
 
 <a class="btn btn-lg btn-warning btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('video', 'ver') ?>" ><?php echo i18n::__('ver') ?></a>
   </form>
-     <br>
-    <br>
-    <br>
-    <br><br>
-    <br>
-    <br>
-    <br>
-    <br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
   </article>
   
   </div>

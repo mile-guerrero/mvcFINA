@@ -241,6 +241,7 @@ dictionary:
     identificacion:       Identification
     entrar:               Enter
     register:             Register
+    reportes:             Reportes
   errors:
     00001:                El nombre excede la longitud permitida (:longitud)
     00002:                El apellido excede la longitud permitida (:longitud)

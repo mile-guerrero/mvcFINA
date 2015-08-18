@@ -33,42 +33,36 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       $filter = request::getInstance()->getPost('filter');
       //validar
       
-      if (request::getInstance()->hasPost(usuarioTableClass::getNameField(usuarioTableClass::USUARIO, true)) and empty(mvc\request\requestClass::getInstance()->getPost(usuarioTableClass::getNameField(usuarioTableClass::USUARIO, true))) === false) {
-
+      if ((isset($filter[usuarioTableClass::getNameField(usuarioTableClass::CREATED_AT, true) . '_1']) and empty($filter[usuarioTableClass::getNameField(usuarioTableClass::CREATED_AT, true) . '_1']) === false) and ( isset($filter[usuarioTableClass::getNameField(usuarioTableClass::CREATED_AT, true) . '_2']) and empty($filter[usuarioTableClass::getNameField(usuarioTableClass::CREATED_AT, true) . '_2']) === false)) {
           if (request::getInstance()->isMethod('POST')) {
-            $usuario = request::getInstance()->getPost(usuarioTableClass::getNameField(usuarioTableClass::USUARIO, true));
-            validator::validateFiltro();
+
+            $fechaInicial = $filter[usuarioTableClass::getNameField(usuarioTableClass::CREATED_AT, true) . '_1'];
+            $fechaFin = $filter[usuarioTableClass::getNameField(usuarioTableClass::CREATED_AT, true) . '_2'];
+
+            validator::validateFiltroFecha($fechaInicial, $fechaFin);
+
+            if ((isset($fechaInicial) and $fechaInicial !== null and $fechaInicial !== "") and ( isset($fechaFin) and $fechaFin !== null and $fechaFin !== "" )) {
+              $where[] = '(' . usuarioTableClass::getNameField(usuarioTableClass::CREATED_AT) . ' BETWEEN ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaInicial . ' 00:00:00')) . "'" . ' AND ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59')) . "'" . ' ) ';
+            }
+          }
+        }
+        
+        if (isset($filter[usuarioTableClass::getNameField(usuarioTableClass::USUARIO, true)]) and empty($filter[usuarioTableClass::getNameField(usuarioTableClass::USUARIO, true)]) === false) {
+          if (request::getInstance()->isMethod('POST')) {
+
+            $usuario = $filter[usuarioTableClass::getNameField(usuarioTableClass::USUARIO, true)];
+
+          validator::validateFiltro($usuario);
             if(isset($usuario) and $usuario !== null and $usuario !== ""){
-        $where[] = '(' . usuarioTableClass::getNameField(usuarioTableClass::USUARIO) . ' LIKE ' . '\'' . $usuario . '%\'  '
+          $where[] = '(' . usuarioTableClass::getNameField(usuarioTableClass::USUARIO) . ' LIKE ' . '\'' . $usuario . '%\'  '
               . 'OR ' . usuarioTableClass::getNameField(usuarioTableClass::USUARIO) . ' LIKE ' . '\'%' . $usuario . '%\' '
               . 'OR ' . usuarioTableClass::getNameField(usuarioTableClass::USUARIO) . ' LIKE ' . '\'%' . $usuario .'\') ';       
-              }//cierre del filtro usuario
-          }//cierre del filtro ubicacion   
+              }
+          }
         }
       
-      
-      
-      if (request::getInstance()->isMethod('POST')) {
-//            echo 'dsasda';
-//            exit();
-            $fechaInicial = request::getInstance()->getPost(usuarioTableClass::getNameField(usuarioTableClass::CREATED_AT, true). '_1');
-            
-            $fechaFin = request::getInstance()->getPost(usuarioTableClass::getNameField(usuarioTableClass::CREATED_AT, true). '_2');
-            
-            if($fechaFin < $fechaInicial){
-               session::getInstance()->setError('La fecha final no puede ser menor a la actual', 'inputFecha');
-            }elseif($fechaFin == $fechaInicial){
-                session::getInstance()->setError('La fecha final es igual a la inicial', 'inputFecha');
-            }
-            
-        if ((isset($fechaInicial) and $fechaInicial !== null and $fechaInicial !== "") and ( isset($fechaFin) and $fechaFin !== null and $fechaFin !== "" )) {
-          $where[usuarioTableClass::CREATED_AT] = array(
-              date(config::getFormatTimestamp(), strtotime($fechaInicial . ' 00:00:00')),
-              date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59'))
-          );
-        }
-            
-          }    
+     
+       
 //    session::getInstance()->setAttribute('defaultIndexFilters', $where);
 //       }else if(session::getInstance()->hasAttribute('defaultIndexFilters')){
 //        $where = session::getInstance()->getAttribute('defaultIndexFilters');

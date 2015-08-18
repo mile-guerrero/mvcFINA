@@ -64,9 +64,9 @@
               <div class="form-group">
                   <label class="col-sm-2 control-label" for="<?php echo cooperativaTableClass::getNameField(cooperativaTableClass::CREATED_AT, true) . '_1' ?>" ><?php echo i18n::__('fecha crear') ?></label>
                   <div class="col-sm-10">
-                    <input type="date" class="form-control-filtro1" id="<?php echo cooperativaTableClass::getNameField(cooperativaTableClass::CREATED_AT, true).'_1' ?>" name="<?php echo cooperativaTableClass::getNameField(cooperativaTableClass::CREATED_AT, true).'_1' ?>">
+                    <input type="date" class="form-control-filtro1" id="<?php echo cooperativaTableClass::getNameField(cooperativaTableClass::CREATED_AT, true).'_1' ?>" name="filter[<?php echo cooperativaTableClass::getNameField(cooperativaTableClass::CREATED_AT, true).'_1' ?>]">
 
-                    <input type="date" class="form-control-filtro2" id="<?php echo cooperativaTableClass::getNameField(cooperativaTableClass::CREATED_AT, true).'_2' ?>" name="<?php echo cooperativaTableClass::getNameField(cooperativaTableClass::CREATED_AT, true).'_2' ?>">
+                    <input type="date" class="form-control-filtro2" id="<?php echo cooperativaTableClass::getNameField(cooperativaTableClass::CREATED_AT, true).'_2' ?>" name="filter[<?php echo cooperativaTableClass::getNameField(cooperativaTableClass::CREATED_AT, true).'_2' ?>]">
                   </div>
                 </div>
               
@@ -80,37 +80,9 @@
               <div class="form-group">
                 <label for="filterNombre" class="col-sm-2 control-label"><?php echo i18n::__('nom') ?></label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="filterNombre" name="<?php echo cooperativaTableClass::getNameField(cooperativaTableClass::NOMBRE, true) ?>" placeholder="Nombre">
+                  <input type="text" class="form-control" id="filterNombre" name="filter[<?php echo cooperativaTableClass::getNameField(cooperativaTableClass::NOMBRE, true) ?>]" placeholder="Nombre">
                 </div>
               </div>
-              
-              <?php if (session::getInstance()->hasError('inputDescripcion')): ?>
-                  <div class="alert alert-danger alert-dismissible" role="alert" id="error">
-                    <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputDescripcion') ?>
-                  </div>
-                <?php endif ?>
-
-              <div class="form-group">
-                <label for="filterDescripcion" class="col-sm-2 control-label"><?php echo i18n::__('des') ?></label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="filterDescripcion" name="<?php echo cooperativaTableClass::getNameField(cooperativaTableClass::DESCRIPCION, true) ?>" placeholder="Descripcion">
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="filterCiudad" class="col-sm-2 control-label"><?php echo i18n::__('idCiudad') ?></label>
-                <div class="col-sm-10">
-                  <select class="form-control" id="filterCiudad" name="filter[ciudad]">
-                    <option value=""><?php echo i18n::__('selectCiudad') ?></option>
-<?php foreach ($objCC as $ciudad): ?>
-                      <option value="<?php echo $ciudad->$idCiudaddes ?>"><?php echo $ciudad->$descripcionciudad ?></option>
-<?php endforeach; ?>
-                  </select>
-                </div>
-              </div>
-
-
               
             </form>
 

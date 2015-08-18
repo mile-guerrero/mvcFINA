@@ -83,7 +83,7 @@
   <?php if (session::getInstance()->hasCredential('admin')): ?>
   <a class="btn btn-lg btn-default btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('default', 'index') ?>" ><?php echo i18n::__('atras') ?></a>
 <?php endif ?>
-  <br><br><br><br><br><br><br>
+  <br><br><br><br><br><br><br><br><br><br><br>
     </form>
   </div>
 </div>

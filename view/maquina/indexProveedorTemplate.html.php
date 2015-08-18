@@ -65,9 +65,9 @@
           <div class="form-group">
                   <label class="col-sm-2 control-label" for="<?php echo proveedorTableClass::getNameField(proveedorTableClass::CREATED_AT, true) . '_1' ?>" ><?php echo i18n::__('fecha crear') ?></label>
                   <div class="col-sm-10">
-                    <input type="date" class="form-control-filtro1" id="<?php echo proveedorTableClass::getNameField(proveedorTableClass::CREATED_AT, true).'_1' ?>" name="<?php echo proveedorTableClass::getNameField(proveedorTableClass::CREATED_AT, true).'_1' ?>">
+                    <input type="date" class="form-control-filtro1" id="<?php echo proveedorTableClass::getNameField(proveedorTableClass::CREATED_AT, true).'_1' ?>" name="filter[<?php echo proveedorTableClass::getNameField(proveedorTableClass::CREATED_AT, true).'_1' ?>]">
 
-                    <input type="date" class="form-control-filtro2" id="<?php echo proveedorTableClass::getNameField(proveedorTableClass::CREATED_AT, true).'_2' ?>" name="<?php echo proveedorTableClass::getNameField(proveedorTableClass::CREATED_AT, true).'_2' ?>">
+                    <input type="date" class="form-control-filtro2" id="<?php echo proveedorTableClass::getNameField(proveedorTableClass::CREATED_AT, true).'_2' ?>" name="filter[<?php echo proveedorTableClass::getNameField(proveedorTableClass::CREATED_AT, true).'_2' ?>]">
                   </div>
                 </div>
           
@@ -75,7 +75,7 @@
           <div class="form-group">
     <label for="filterCiudad" class="col-sm-2 control-label"><?php echo i18n::__('idCiudad') ?></label>
     <div class="col-sm-10">
-      <select class="form-control" id="filterCiudad" name="filter[ciudad]">
+      <select class="form-control" id="filterCiudad" name="filter[<?php echo proveedorTableClass::getNameField(proveedorTableClass::ID_CIUDAD, true) ?>]">
         <option value=""><?php echo i18n::__('selectCiudad') ?></option>
 <?php foreach ($objCC as $ciudad): ?>
             <option value="<?php echo $ciudad->$idCiudad ?>"><?php echo $ciudad->$nomCiu ?></option>
@@ -95,7 +95,7 @@
           <div class="form-group">
     <label for="filterDocumento" class="col-sm-2 control-label"><?php echo i18n::__('documento') ?></label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="filterDocumento" name="<?php echo proveedorTableClass::getNameField(proveedorTableClass::DOCUMENTO, true) ?>" placeholder="buscar por documento">
+      <input type="text" class="form-control" id="filterDocumento" name="filter[<?php echo proveedorTableClass::getNameField(proveedorTableClass::DOCUMENTO, true) ?>]" placeholder="buscar por documento">
     </div>
   </div>
           
@@ -108,7 +108,7 @@
           <div class="form-group">
     <label for="filterNombre" class="col-sm-2 control-label"><?php echo i18n::__('nom') ?></label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="filterNombre" name="<?php echo proveedorTableClass::getNameField(proveedorTableClass::NOMBREP, true) ?>" placeholder="buscar por nombre">
+      <input type="text" class="form-control" id="filterNombre" name="filter[<?php echo proveedorTableClass::getNameField(proveedorTableClass::NOMBREP, true) ?>]" placeholder="buscar por nombre">
     </div>
   </div>
           
@@ -121,7 +121,7 @@
           <div class="form-group">
     <label for="filterApellido" class="col-sm-2 control-label"><?php echo i18n::__('apell') ?></label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="filterApellido" name="<?php echo proveedorTableClass::getNameField(proveedorTableClass::APELLIDO, true) ?>" placeholder="buscar por apellido">
+      <input type="text" class="form-control" id="filterApellido" name="filter[<?php echo proveedorTableClass::getNameField(proveedorTableClass::APELLIDO, true) ?>]" placeholder="buscar por apellido">
     </div>
   </div>
           

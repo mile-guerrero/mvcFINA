@@ -31,7 +31,9 @@ class insertMaquinaActionClass extends controllerClass implements controllerActi
       
        $fields = array(
       proveedorTableClass::ID,
-      proveedorTableClass::NOMBREP
+      proveedorTableClass::NOMBREP,
+      proveedorTableClass::APELLIDO,
+      proveedorTableClass::DOCUMENTO
       );
       $orderBy = array(
       proveedorTableClass::NOMBREP   

@@ -117,7 +117,7 @@
         <select class="form-control" id="<?php echo ordenServicioTableClass::getNameField(ordenServicioTableClass::TRABAJADOR_ID, true)?>" name="<?php echo ordenServicioTableClass::getNameField(ordenServicioTableClass::TRABAJADOR_ID, true) ?>">
                <option value="<?php echo (session::getInstance()->hasFlash('selectTrabajador') or request::getInstance()->hasPost(ordenServiciotableClass::getNameField(ordenServiciotableClass::TRABAJADOR_ID, true))) ? request::getInstance()->getPost(ordenServiciotableClass::getNameField(ordenServiciotableClass::TRABAJADOR_ID, true)) : ((isset($objOS[0])) ? '' : '') ?>"><?php echo i18n::__('selectTrabajador') ?></option>
 <?php foreach ($objOST as $key): ?>
-            <option <?php echo (request::getInstance()->hasPost(ordenServicioTableClass::getNameField(ordenServicioTableClass::TRABAJADOR_ID, true)) === true and request::getInstance()->getPost(ordenServicioTableClass::getNameField(ordenServicioTableClass::TRABAJADOR_ID, true)) == $key->$idTra) ? 'selected' : (isset($objOS[0]->$idTrabajador) === true and $objOS[0]->$idTrabajador == $key->$idTra) ? 'selected' : '' ?> value="<?php echo $key->$idTra ?>"><?php echo $key->$nomTrabajador ?></option>
+            <option <?php echo (request::getInstance()->hasPost(ordenServicioTableClass::getNameField(ordenServicioTableClass::TRABAJADOR_ID, true)) === true and request::getInstance()->getPost(ordenServicioTableClass::getNameField(ordenServicioTableClass::TRABAJADOR_ID, true)) == $key->$idTra) ? 'selected' : (isset($objOS[0]->$idTrabajador) === true and $objOS[0]->$idTrabajador == $key->$idTra) ? 'selected' : '' ?> value="<?php echo $key->$idTra ?>"><?php echo $key->$nomTrabajador . ' ' . trabajadorTableClass::getNameApellido($key->$idTra). ' ' .  ' CC: ' . ' ' . trabajadorTableClass::getNameDocumento($key->$idTra)  ?></option>
 <?php endforeach; ?>
           </select> 
           </div>
@@ -132,7 +132,7 @@
   <input  class="btn btn-lg btn-success btn-xs" type="submit" value="<?php echo i18n::__(((isset($objOS)) ? 'update' : 'register')) ?>">
 <a class="btn btn-lg btn-default btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('ordenServicio', 'index') ?>" ><?php echo i18n::__('atras') ?> </a>
 
- <br><br><br><br><br>
+ <br><br><br><br><br><br><br><br><br><br><br><br><br>
     </form>
   </div>
 </div>

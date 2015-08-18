@@ -7,6 +7,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+use mvc\validator\credencialValidatorClass as validator;
 
 /**
  * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon 
@@ -31,33 +32,37 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       if(request::getInstance()->hasPost('filter')){
       $filter = request::getInstance()->getPost('filter');
       //validar
-      if(isset($filter['nombre']) and $filter['nombre'] !== null and $filter['nombre'] !== ""){
-        $where[] = '(' . credencialTableClass::getNameField(credencialTableClass::NOMBRE) . ' LIKE ' . '\'' . $filter['nombre'] . '%\'  '
-              . 'OR ' . credencialTableClass::getNameField(credencialTableClass::NOMBRE) . ' LIKE ' . '\'%' . $filter['nombre'] . '%\' '
-              . 'OR ' . credencialTableClass::getNameField(credencialTableClass::NOMBRE) . ' LIKE ' . '\'%' . $filter['nombre'].'\') ';       
-              }//cierre del filtro nombre
-              
-       if (request::getInstance()->isMethod('POST')) {
-//            echo 'dsasda';
-//            exit();
-            $fechaInicial = request::getInstance()->getPost(credencialTableClass::getNameField(credencialTableClass::CREATED_AT, true). '_1');
-            
-            $fechaFin = request::getInstance()->getPost(credencialTableClass::getNameField(credencialTableClass::CREATED_AT, true). '_2');
-            
-            if($fechaFin < $fechaInicial){
-               session::getInstance()->setError('La fecha final no puede ser menor a la actual', 'inputFecha');
-            }elseif($fechaFin == $fechaInicial){
-                session::getInstance()->setError('La fecha final es igual a la inicial', 'inputFecha');
+      
+      if ((isset($filter[credencialTableClass::getNameField(credencialTableClass::CREATED_AT, true) . '_1']) and empty($filter[credencialTableClass::getNameField(credencialTableClass::CREATED_AT, true) . '_1']) === false) and ( isset($filter[credencialTableClass::getNameField(credencialTableClass::CREATED_AT, true) . '_2']) and empty($filter[credencialTableClass::getNameField(credencialTableClass::CREATED_AT, true) . '_2']) === false)) {
+          if (request::getInstance()->isMethod('POST')) {
+
+            $fechaInicial = $filter[credencialTableClass::getNameField(credencialTableClass::CREATED_AT, true) . '_1'];
+            $fechaFin = $filter[credencialTableClass::getNameField(credencialTableClass::CREATED_AT, true) . '_2'];
+
+            validator::validateFiltroFecha($fechaInicial, $fechaFin);
+
+            if ((isset($fechaInicial) and $fechaInicial !== null and $fechaInicial !== "") and ( isset($fechaFin) and $fechaFin !== null and $fechaFin !== "" )) {
+              $where[] = '(' . credencialTableClass::getNameField(credencialTableClass::CREATED_AT) . ' BETWEEN ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaInicial . ' 00:00:00')) . "'" . ' AND ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59')) . "'" . ' ) ';
             }
-            
-        if ((isset($fechaInicial) and $fechaInicial !== null and $fechaInicial !== "") and ( isset($fechaFin) and $fechaFin !== null and $fechaFin !== "" )) {
-          $where[credencialTableClass::CREATED_AT] = array(
-              date(config::getFormatTimestamp(), strtotime($fechaInicial . ' 00:00:00')),
-              date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59'))
-          );
+          }
         }
-            
-          }       
+        
+      if (isset($filter[credencialTableClass::getNameField(credencialTableClass::NOMBRE, true)]) and empty($filter[credencialTableClass::getNameField(credencialTableClass::NOMBRE, true)]) === false) {
+          if (request::getInstance()->isMethod('POST')) {
+
+            $nombre = $filter[credencialTableClass::getNameField(credencialTableClass::NOMBRE, true)];
+     validator::validateFiltroNombre($nombre);
+            if (isset($nombre) and $nombre !== null and $nombre !== "") {
+            $where[] = '(' . credencialTableClass::getNameField(credencialTableClass::NOMBRE) . ' LIKE ' . '\'' . $nombre . '%\'  '
+              . 'OR ' . credencialTableClass::getNameField(credencialTableClass::NOMBRE) . ' LIKE ' . '\'%' . $nombre . '%\' '
+              . 'OR ' . credencialTableClass::getNameField(credencialTableClass::NOMBRE) . ' LIKE ' . '\'%' . $nombre.'\') ';       
+              }//cierre del filtro nombre
+          }
+        }
+        
+    
+              
+             
 //     session::getInstance()->setAttribute('credencialIndexFilters', $where);
 //       }else if(session::getInstance()->hasAttribute('credencialIndexFilters')){
 //        $where = session::getInstance()->getAttribute('credencialIndexFilters');

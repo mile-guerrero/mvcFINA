@@ -34,7 +34,7 @@
       
       
        <!-- filtros -->
-    <div class="modal fade" id="myModalFiltres" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+     <div class="modal fade" id="myModalFiltres" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -44,8 +44,7 @@
           <div class="modal-body">
             <form class="form-horizontal" id="filterForm" role="form" action="<?php echo routing::getInstance()->getUrlWeb('default', 'index') ?>" method="POST">
               
-              
-               <?php if (session::getInstance()->hasFlash('modalFilters') === true): ?>        
+                <?php if (session::getInstance()->hasFlash('modalFilters') === true): ?>        
                     <script>
                       $('#myModalFilters').modal({
                         backdrop: 'static', //dejar avierta la ventana modal
@@ -53,7 +52,7 @@
                       })
                     </script>
                   <?php endif; ?>
-              <?php if (session::getInstance()->hasError('inputFecha')): ?>
+                <?php if (session::getInstance()->hasError('inputFecha')): ?>
                     <div class="alert alert-danger alert-dismissible" role="alert" id="error">
                       <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                       <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputFecha') ?>
@@ -63,14 +62,13 @@
               <div class="form-group">
                   <label class="col-sm-2 control-label" for="<?php echo usuarioTableClass::getNameField(usuarioTableClass::CREATED_AT, true) . '_1' ?>" ><?php echo i18n::__('fecha crear') ?></label>
                   <div class="col-sm-10">
-                    <input type="date" class="form-control-filtro1" id="<?php echo usuarioTableClass::getNameField(usuarioTableClass::CREATED_AT, true).'_1' ?>" name="<?php echo usuarioTableClass::getNameField(usuarioTableClass::CREATED_AT, true).'_1' ?>">
+                    <input type="date" class="form-control-filtro1" id="<?php echo usuarioTableClass::getNameField(usuarioTableClass::CREATED_AT, true).'_1' ?>" name="filter[<?php echo usuarioTableClass::getNameField(usuarioTableClass::CREATED_AT, true).'_1' ?>]">
 
-                    <input type="date" class="form-control-filtro2" id="<?php echo usuarioTableClass::getNameField(usuarioTableClass::CREATED_AT, true).'_2' ?>" name="<?php echo usuarioTableClass::getNameField(usuarioTableClass::CREATED_AT, true).'_2' ?>">
+                    <input type="date" class="form-control-filtro2" id="<?php echo usuarioTableClass::getNameField(usuarioTableClass::CREATED_AT, true).'_2' ?>" name="filter[<?php echo usuarioTableClass::getNameField(usuarioTableClass::CREATED_AT, true).'_2' ?>]">
                   </div>
                 </div>
-              
-              
-              
+                        
+               
               <?php if (session::getInstance()->hasError('inputUsuario')): ?>
                     <div class="alert alert-danger alert-dismissible" role="alert" id="error">
                       <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -80,7 +78,7 @@
               <div class="form-group">
                 <label for="filterUsuario" class="col-sm-2 control-label"><?php echo i18n::__('user') ?></label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="filterUsuario" name="<?php echo usuarioTableClass::getNameField(usuarioTableClass::USUARIO, true) ?>" placeholder="Nombre">
+                  <input type="text" class="form-control" id="filterUsuario" name="filter[<?php echo usuarioTableClass::getNameField(usuarioTableClass::USUARIO, true) ?>]" placeholder="Nombre">
                 </div>
               </div>
 

@@ -286,51 +286,61 @@ namespace mvc\validator {
         routing::getInstance()->forward('maquina', 'editProveedor');
       }
     }
-     public static function validateFiltro() {
-    $soloLetras = "/^[a-z]+$/i";
-      $soloTelefono = "/^(\d{3,3}\-\d{3,3}\-\d{4,4})|^(\+\d\-\d{3,3}\-\d{4,4})/";
-      $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
+     public static function validateFiltroFecha($fechaInicial,$fechaFin) {
+      
+      if (strtotime($fechaFin) < strtotime($fechaInicial)){
+        session::getInstance()->setError('La fecha final no puede ser menor a la actual', 'inputFecha');
+          session::getInstance()->setFlash('modalFilters', true);
          
-      if (!is_numeric(request::getInstance()->getPost(\proveedorTableClass::getNameField(\proveedorTableClass::DOCUMENTO, true)))) {
-        session::getInstance()->setError('El documento no permite letras, solo numeros', 'inputDocumento');
-      
-        session::getInstance()->setFlash('modalFilters', true);
-      }   else if(strlen(request::getInstance()->getPost(\proveedorTableClass::getNameField(\proveedorTableClass::DOCUMENTO, true))) > \proveedorTableClass::DOCUMENTO_LENGTH) {
-        session::getInstance()->setError('El documento digitado es mayor en cantidad de caracteres a lo permitido', 'inputDocumento');
-      
-        session::getInstance()->setFlash('modalFilters', true);
-      } 
+         // echo "<script> alert(' La fecha final no puede ser menor a la actual');</script>'";
+      }       
     }
     
-    public static function validateFiltroNombre() {
-      $soloLetras = "/^[a-z]+$/i";
+     public static function validateFiltro($documento) {
+       
+         $soloLetras = "/^[a-z]+$/i";
       $soloTelefono = "/^(\d{3,3}\-\d{3,3}\-\d{4,4})|^(\+\d\-\d{3,3}\-\d{4,4})/";
       $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
       
-   if (!preg_match($soloLetras, (request::getInstance()->getPost(\proveedorTableClass::getNameField(\proveedorTableClass::NOMBREP, true))))){
-          session::getInstance()->setError('El nombre no permite numeros, solo letras', 'inputNombre');
-     session::getInstance()->setFlash('modalFilters', true);
-          } //----sobre pasar los caracteres----
-        else if(strlen(request::getInstance()->getPost(\proveedorTableClass::getNameField(\proveedorTableClass::NOMBREP, true))) > \proveedorTableClass::NOMBREP_LENGTH) {
-        session::getInstance()->setError('El nombre digitado es mayor en cantidad de caracteres a lo permitido', 'inputNombre');
-      
+      if (!is_numeric($documento)) {       
+           session::getInstance()->setError('El documento no permite letras, solo numeros', 'inputDocumento');
+           session::getInstance()->setFlash('modalFilters', true);
+           } //----sobre pasar los caracteres----
+        else if(strlen($documento) > \proveedorTableClass::DOCUMENTO_LENGTH) {
+        session::getInstance()->setError('El documento digitado es mayor en cantidad de caracteres a lo permitido', 'inputDocumento');
         session::getInstance()->setFlash('modalFilters', true);
-        } 
-    }
+      }
+     }
     
-    public static function validateFiltroApellido() {
+    public static function validateFiltroNombre($nombre) {
        $soloLetras = "/^[a-z]+$/i";
       $soloTelefono = "/^(\d{3,3}\-\d{3,3}\-\d{4,4})|^(\+\d\-\d{3,3}\-\d{4,4})/";
       $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
       
-      if (!preg_match($soloLetras, (request::getInstance()->getPost(\proveedorTableClass::getNameField(\proveedorTableClass::APELLIDO, true))))){
+      if (!preg_match($soloLetras, ($nombre))){
+        session::getInstance()->setError('El nombre no permite numeros, solo letras', 'inputNombre');
+     session::getInstance()->setFlash('modalFilters', true);
+        } //----sobre pasar los caracteres----
+        else if(strlen($nombre) > \proveedorTableClass::NOMBREP_LENGTH) {
+        session::getInstance()->setError('El nombre digitado es mayor en cantidad de caracteres a lo permitido', 'inputNombre');
+      
+        session::getInstance()->setFlash('modalFilters', true);
+        }  
+    }
+    
+    public static function validateFiltroApellido($apellido) {
+  $soloLetras = "/^[a-z]+$/i";
+      $soloTelefono = "/^(\d{3,3}\-\d{3,3}\-\d{4,4})|^(\+\d\-\d{3,3}\-\d{4,4})/";
+      $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
+      
+      if (!preg_match($soloLetras, ($apellido))){
         session::getInstance()->setError('El apellido no permite numeros, solo letras', 'inputApellido');
      session::getInstance()->setFlash('modalFilters', true);
         } //----sobre pasar los caracteres----
-        else if(strlen(request::getInstance()->getPost(\proveedorTableClass::getNameField(\proveedorTableClass::APELLIDO, true))) > \proveedorTableClass::APELLIDO_LENGTH) {
-        session::getInstance()->setError('El apellido digitado es mayor en cantidad de caracteres a lo permitido', 'inputApellido');
-      session::getInstance()->setFlash('modalFilters', true);
-        
+        else if(strlen($apellido) > \proveedorTableClass::APELLIDO_LENGTH) {
+   session::getInstance()->setError('El apellido digitado es mayor en cantidad de caracteres a lo permitido', 'inputApellido');
+      
+   session::getInstance()->setFlash('modalFilters', true);
         } 
     }
   }

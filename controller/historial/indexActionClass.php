@@ -7,6 +7,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+use mvc\validator\historialValidatorClass as validator;
 
 /**
  * Description of ejemploClass
@@ -21,32 +22,49 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       if (request::getInstance()->hasPost('filter')) {
         $filter = request::getInstance()->getPost('filter');
         //validar
-        if (isset($filter['insumo']) and $filter['insumo'] !== null and $filter['insumo'] !== "") {
-          $where[historialTableClass::PRODUCTO_INSUMO_ID] = $filter['insumo'];
-        }
-        if (isset($filter['enfermedad']) and $filter['enfermedad'] !== null and $filter['enfermedad'] !== "") {
-          $where[historialTableClass::ENFERMEDAD_ID] = $filter['enfermedad'];
-        }
-        if (request::getInstance()->isMethod('POST')) {
-//            echo 'dsasda';
-//            exit();
-          $fechaInicial = request::getInstance()->getPost(historialTableClass::getNameField(historialTableClass::CREATED_AT, true) . '_1');
 
-          $fechaFin = request::getInstance()->getPost(historialTableClass::getNameField(historialTableClass::CREATED_AT, true) . '_2');
 
-          if ($fechaFin < $fechaInicial) {
-            session::getInstance()->setError('La fecha final no puede ser menor a la actual', 'inputFecha');
-          } elseif ($fechaFin == $fechaInicial) {
-            session::getInstance()->setError('La fecha final es igual a la inicial', 'inputFecha');
-          }
+        if ((isset($filter[historialTableClass::getNameField(historialTableClass::CREATED_AT, true) . '_1']) and empty($filter[historialTableClass::getNameField(historialTableClass::CREATED_AT, true) . '_1']) === false) and ( isset($filter[historialTableClass::getNameField(historialTableClass::CREATED_AT, true) . '_2']) and empty($filter[historialTableClass::getNameField(historialTableClass::CREATED_AT, true) . '_2']) === false)) {
+          if (request::getInstance()->isMethod('POST')) {
 
-          if ((isset($fechaInicial) and $fechaInicial !== null and $fechaInicial !== "") and ( isset($fechaFin) and $fechaFin !== null and $fechaFin !== "" )) {
-            $where[historialTableClass::CREATED_AT] = array(
-                date(config::getFormatTimestamp(), strtotime($fechaInicial . ' 00:00:00')),
-                date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59'))
-            );
+            $fechaInicial = $filter[historialTableClass::getNameField(historialTableClass::CREATED_AT, true) . '_1'];
+            $fechaFin = $filter[historialTableClass::getNameField(historialTableClass::CREATED_AT, true) . '_2'];
+
+            validator::validateFiltroFecha($fechaInicial, $fechaFin);
+
+            if ((isset($fechaInicial) and $fechaInicial !== null and $fechaInicial !== "") and ( isset($fechaFin) and $fechaFin !== null and $fechaFin !== "" )) {
+              $where[] = '(' . historialTableClass::getNameField(historialTableClass::CREATED_AT) . ' BETWEEN ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaInicial . ' 00:00:00')) . "'" . ' AND ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59')) . "'" . ' ) ';
+            }
           }
         }
+
+      if (isset($filter[historialTableClass::getNameField(historialTableClass::LOTE_ID, true)]) and empty($filter[historialTableClass::getNameField(historialTableClass::LOTE_ID, true)]) === false) {
+          if (request::getInstance()->isMethod('POST')) {
+
+            $lote = $filter[historialTableClass::getNameField(historialTableClass::LOTE_ID, true)];
+
+            if (isset($lote) and $lote !== null and $lote !== "") {
+             $where[] = '(' . historialTableClass::getNameField(historialTableClass::LOTE_ID) . ' = ' .  $lote  . ' ) ';
+            }
+          }
+        }
+        
+        if (isset($filter[historialTableClass::getNameField(historialTableClass::PRODUCTO_INSUMO_ID, true)]) and empty($filter[historialTableClass::getNameField(historialTableClass::PRODUCTO_INSUMO_ID, true)]) === false) {
+          if (request::getInstance()->isMethod('POST')) {
+
+            $insumo = $filter[historialTableClass::getNameField(historialTableClass::PRODUCTO_INSUMO_ID, true)];
+
+            if (isset($insumo) and $insumo !== null and $insumo !== "") {
+              $where[] = '(' . historialTableClass::getNameField(historialTableClass::PRODUCTO_INSUMO_ID) . ' = ' .  $insumo  . ' ) ';
+            }
+          }
+        }
+
+        
+
+
+
+
 //      session::getInstance()->setAttribute('historialIndexFilters', $where);
 //       }else if(session::getInstance()->hasAttribute('historialIndexFilters')){
 //        $where = session::getInstance()->getAttribute('historialIndexFilters');

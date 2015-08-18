@@ -49,14 +49,7 @@
    
    
   </form>
-    <br>
-    <br>
-    <br>
-    <br><br>
-    <br>
-    <br>
-    <br>
-    <br>
+   <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
   </article>
   </div>
   </div>

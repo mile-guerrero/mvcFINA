@@ -56,21 +56,36 @@
                       })
                     </script>
                   <?php endif; ?>
+                    
+                    <?php if (session::getInstance()->hasError('inputFecha')): ?>
+                    <div class="alert alert-danger alert-dismissible" role="alert" id="error">
+                      <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputFecha') ?>
+                    </div>
+                  <?php endif ?>
+
+                <div class="form-group">
+                  <label class="col-sm-2 control-label" for="<?php echo enfermedadTableClass::getNameField(enfermedadTableClass::CREATED_AT, true) . '_1' ?>" ><?php echo i18n::__('fecha crear') ?></label>
+                  <div class="col-sm-10">
+                    <input type="date" class="form-control-filtro1" id="<?php echo enfermedadTableClass::getNameField(enfermedadTableClass::CREATED_AT, true).'_1' ?>" name="filter[<?php echo enfermedadTableClass::getNameField(enfermedadTableClass::CREATED_AT, true).'_1' ?>]">
+
+                    <input type="date" class="form-control-filtro2" id="<?php echo enfermedadTableClass::getNameField(enfermedadTableClass::CREATED_AT, true).'_2' ?>" name="filter[<?php echo enfermedadTableClass::getNameField(enfermedadTableClass::CREATED_AT, true).'_2' ?>]">
+                  </div>
+                </div>
+                
+                    <?php if (session::getInstance()->hasError('inputNombre')): ?>
+                    <div class="alert alert-danger alert-dismissible" role="alert" id="error">
+                      <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputNombre') ?>
+                    </div>
+                  <?php endif ?>
           <div class="form-group">
     <label for="filterNombre" class="col-sm-2 control-label"><?php echo i18n::__('nom') ?></label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="filterNombre" name="filter[nombre]" placeholder="buscar por nombre">
+      <input type="text" class="form-control" id="filterNombre" name="filter[<?php echo enfermedadTableClass::getNameField(enfermedadTableClass::NOMBRE, true) ?>]" placeholder="buscar por nombre">
     </div>
   </div>
-          
-    
-  <div class="form-group">
-    <label for="filterDescripcion" class="col-sm-2 control-label"><?php echo i18n::__('des') ?></label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="filterDescripcion" name="filter[descripcion]" placeholder="buscar por descripcion">
-    </div>
-  </div>
-         
+ 
   </form>
       </div>
       <div class="modal-footer">

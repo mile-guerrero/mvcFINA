@@ -2947,5 +2947,27 @@ crearUsuarioCredencial_create:
     - model/base/credencialBaseTableClass.php
     - model/credencialTableClass.php
     
+#-------------------modulo -crear reportes----------------------------  
+
+reportes_index:
+  url:    /reportes/index
+  param:  { module: reportes, action: index, format: html }
+  load:
+    - model/base/reporteBaseTableClass.php
+    - model/reporteTableClass.php
+  
+reportes_insert:
+  url:    /reportes/insert
+  param:  { module: reportes, action: insert, format: html }
+  load:
+    - model/base/reporteBaseTableClass.php
+    - model/reporteTableClass.php    
+    
+reportes_ver:
+  url:    /reportes/ver
+  param:  { module: reportes, action: ver, format: html }
+  load:
+    - model/base/reporteBaseTableClass.php
+    - model/reporteTableClass.php     
      
         

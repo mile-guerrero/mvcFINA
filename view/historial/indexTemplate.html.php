@@ -4,10 +4,15 @@
 <?php use mvc\view\viewClass as view?>
 <?php use mvc\session\sessionClass as session?>
 <?php $id = historialTableClass::ID ?>
+
 <?php $lote = historialTableClass::LOTE_ID ?>
+<?php $loteId = loteTableClass::ID ?>
+<?php $desLote = loteTableClass::UBICACION ?>
+
 <?php $insumoId = productoInsumoTableClass::ID ?>
 <?php $productoIdsid = productoInsumoTableClass::DESCRIPCION ?>
 <?php $productoId = historialTableClass::PRODUCTO_INSUMO_ID ?>
+
 <?php $enfermedadIdeid = enfermedadTableClass::ID ?>
 <?php $desEnfermedad = enfermedadTableClass::NOMBRE ?>
 
@@ -64,16 +69,28 @@
           <div class="form-group">
                   <label class="col-sm-2 control-label" for="<?php echo historialTableClass::getNameField(historialTableClass::CREATED_AT, true) . '_1' ?>" ><?php echo i18n::__('fecha crear') ?></label>
                   <div class="col-sm-10">
-                    <input type="date" class="form-control-filtro1" id="<?php echo historialTableClass::getNameField(historialTableClass::CREATED_AT, true).'_1' ?>" name="<?php echo historialTableClass::getNameField(historialTableClass::CREATED_AT, true).'_1' ?>">
+                    <input type="date" class="form-control-filtro1" id="<?php echo historialTableClass::getNameField(historialTableClass::CREATED_AT, true).'_1' ?>" name="filter[<?php echo historialTableClass::getNameField(historialTableClass::CREATED_AT, true).'_1' ?>]">
 
-                    <input type="date" class="form-control-filtro2" id="<?php echo historialTableClass::getNameField(historialTableClass::CREATED_AT, true).'_2' ?>" name="<?php echo historialTableClass::getNameField(historialTableClass::CREATED_AT, true).'_2' ?>">
+                    <input type="date" class="form-control-filtro2" id="<?php echo historialTableClass::getNameField(historialTableClass::CREATED_AT, true).'_2' ?>" name="filter[<?php echo historialTableClass::getNameField(historialTableClass::CREATED_AT, true).'_2' ?>]">
                   </div>
                 </div>
+                    
+              <div class="form-group">
+           <label for="filterLote" class="col-sm-2 control-label"><?php echo i18n::__('lote') ?></label>
+                <div class="col-sm-10">
+                  <select class="form-control" id="filterLote" name="filter[<?php echo historialTableClass::getNameField(historialTableClass::LOTE_ID, true)?>]">
+                    <option value=""><?php echo i18n::__('selectLote') ?></option>
+              <?php foreach ($objHistorialLote as $key): ?>  
+              <option value="<?php echo $key->$loteId ?>"> <?php echo $key->$desLote ?></option>
+              <?php endforeach; ?>
+              </select>
+                </div>
+              </div>      
               
               <div class="form-group">
                 <label for="filterInsumo" class="col-sm-2 control-label"><?php echo i18n::__('insumo') ?></label>
                 <div class="col-sm-10">
-                  <select class="form-control" id="filterInsumo" name="filter[insumo]">
+                  <select class="form-control" id="filterInsumo" name="filter[<?php echo historialTableClass::getNameField(historialTableClass::PRODUCTO_INSUMO_ID, true)?>]">
                     <option value=""><?php echo i18n::__('seleccione insumo') ?></option>
               <?php foreach ($objHistorialProducto as $key): ?>  
               <option value="<?php echo $key->$insumoId ?>"> <?php echo $key->$productoIdsid ?></option>
@@ -81,20 +98,6 @@
               </select>
                 </div>
               </div>
-              
-              <div class="form-group">
-           <label for="filterEnfermedad" class="col-sm-2 control-label"><?php echo i18n::__('enfermedad') ?></label>
-                <div class="col-sm-10">
-                  <select class="form-control" id="filterEnfermedad" name="filter[enfermedad]">
-                    <option value=""><?php echo i18n::__('selectEnfermedad') ?></option>
-              <?php foreach ($objHistorialEnfermedad as $key): ?>  
-              <option value="<?php echo $key->$enfermedadIdeid ?>"> <?php echo $key->$desEnfermedad ?></option>
-              <?php endforeach; ?>
-              </select>
-                </div>
-              </div>
-              
-              
             </form>
 
           </div>

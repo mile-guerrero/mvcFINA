@@ -68,9 +68,9 @@ use mvc\request\requestClass as request ?>
                   <div class="form-group">
                     <label class="col-sm-2 control-label"  for="<?php echo tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::CREATED_AT, true) . '_1' ?>" ><?php echo i18n::__('fecha crear') ?></label>
                     <div class="col-sm-10">
-                      <input type="date" class="form-control-filtro1" id="<?php echo tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::CREATED_AT, true) . '_1' ?>" name="<?php echo tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::CREATED_AT, true) . '_1' ?>" >
+                      <input type="date" class="form-control-filtro1" id="<?php echo tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::CREATED_AT, true) . '_1' ?>" name="filter[<?php echo tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::CREATED_AT, true) . '_1' ?>]" >
 
-                      <input type="date" class="form-control-filtro2" id="<?php echo tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::CREATED_AT, true) . '_2' ?>" name="<?php echo tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::CREATED_AT, true) . '_2' ?>" >
+                      <input type="date" class="form-control-filtro2" id="<?php echo tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::CREATED_AT, true) . '_2' ?>" name="filter[<?php echo tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::CREATED_AT, true) . '_2' ?>]" >
                     </div>
                   </div>
 
@@ -80,14 +80,11 @@ use mvc\request\requestClass as request ?>
                       <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputDescripcion') ?>
                     </div>
                   <?php endif ?>
-
-
-
-
+                    
                   <div class="form-group">
                     <label for="filterDescripcion" class="col-sm-2 control-label"><?php echo i18n::__('des') ?></label>
                     <div class="col-sm-10">
-                      <input  type="text"    class="form-control" id="filterDescripcion"   name="<?php echo tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::DESCRIPCION, true) ?>" placeholder="descripcion">
+                      <input  type="text"    class="form-control" id="filterDescripcion"   name="filter[<?php echo tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::DESCRIPCION, true) ?>]" placeholder="descripcion">
                     </div>
                   </div>
               

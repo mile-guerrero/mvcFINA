@@ -17,6 +17,11 @@ principal:
     credentials:
       - [admin]  
       - [consultor]
+  ver:
+    security: true
+    credentials:
+      - [admin]  
+      - [consultor]    
 #-------------------modulo - default----------------------------    
 default:
   index:
@@ -1157,4 +1162,12 @@ detalleFacturaCompra:
     credentials:
       - [admin]
       - [consultor]      
-            
+          
+#-----------------------reportes-------------------
+  
+reportes:
+  index:
+    security: true
+    credentials:
+      - [admin]
+      - [consultor]            

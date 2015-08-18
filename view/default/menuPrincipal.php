@@ -68,6 +68,9 @@ use mvc\i18n\i18nClass as i18n ?>
               <li><a  href="<?php echo routing::getInstance()->getUrlWeb('manoObra', 'index') ?>">mano obra</a></li>
               <li><a  href="<?php echo routing::getInstance()->getUrlWeb('facturaVenta', 'index') ?>"><?php echo i18n::__('factura') ?></a></li>
               <li><a  href="<?php echo routing::getInstance()->getUrlWeb('facturaCompra', 'index') ?>"><?php echo i18n::__('facturaCompra') ?></a></li>
+              <li class="divider"></li>
+              <li><a  href="<?php echo routing::getInstance()->getUrlWeb('reportes', 'index') ?>"><?php echo i18n::__('reportes') ?></a></li>
+           
             </ul>
           </li>
 
@@ -176,6 +179,7 @@ use mvc\i18n\i18nClass as i18n ?>
         <li data-target="#carousel-example-generic" data-slide-to="2"></li>
         <li data-target="#carousel-example-generic" data-slide-to="3"></li>
         <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="5"></li>
       </ol>
 
       <!-- Wrapper for slides -->
@@ -206,8 +210,16 @@ use mvc\i18n\i18nClass as i18n ?>
 
           </div>
         </div>
+        
         <div class="item">
           <img class="img-responsive"  id="imgPortada4" src="" alt="">
+          <div class="carousel-caption">
+
+          </div>
+        </div>
+        
+        <div class="item">
+          <img class="img-responsive"  id="imgPortada5" src="" alt="">
           <div class="carousel-caption">
 
           </div>

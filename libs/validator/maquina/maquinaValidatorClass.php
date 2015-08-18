@@ -145,58 +145,26 @@ namespace mvc\validator {
       
       }
     }
-   public static function validateFiltro() {
+   public static function validateFiltro($nombre) {
         $soloLetras = "/^[a-z]+$/i";
       $soloTelefono = "/^(\d{3,3}\-\d{3,3}\-\d{4,4})|^(\+\d\-\d{3,3}\-\d{4,4})/";
       $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
       
-      if(strlen(request::getInstance()->getPost(\maquinaTableClass::getNameField(\maquinaTableClass::NOMBRE, true))) > \maquinaTableClass::NOMBRE_LENGTH) {
+      if(strlen($nombre) > \maquinaTableClass::NOMBRE_LENGTH) {
         session::getInstance()->setError('El nombre digitado es mayor en cantidad de caracteres a lo permitido', 'inputNombre');
-      
-        session::getInstance()->setFlash('modalFilters', true);
+       session::getInstance()->setFlash('modalFilters', true);
       }
        
     }
     
-     public static function validateFiltroDescripcion() {
-        $soloLetras = "/^[a-z]+$/i";
-      $soloTelefono = "/^(\d{3,3}\-\d{3,3}\-\d{4,4})|^(\+\d\-\d{3,3}\-\d{4,4})/";
-      $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
+     public static function validateFiltroFecha($fechaInicial,$fechaFin) {
       
-      if (self::notBlank(request::getInstance()->getPost(\maquinaTableClass::getNameField(\maquinaTableClass::DESCRIPCION, true)))) {
-        session::getInstance()->setError('La descripcion de la maquina es requerido', 'inputDescripcion');
-      
-        session::getInstance()->setFlash('modalFilters', true);
-      } //----sobre pasar los caracteres----
-        else if(strlen(request::getInstance()->getPost(\maquinaTableClass::getNameField(\maquinaTableClass::DESCRIPCION, true))) > \maquinaTableClass::DESCRIPCION_LENGTH) {
-        session::getInstance()->setError('La descripcion digitada es mayor en cantidad de caracteres a lo permitido', 'inputDescripcion');
-     session::getInstance()->setFlash('modalFilters', true);
-        }//----sobre pasar los caracteres----
-        if(strlen(request::getInstance()->getPost(\maquinaTableClass::getNameField(\maquinaTableClass::ORIGEN_MAQUINA, true))) > \maquinaTableClass::ORIGEN_MAQUINA_LENGTH) {
-        session::getInstance()->setError('El origen de la maquina digitada es mayor en cantidad de caracteres a lo permitido', 'inputOrigen');
-     session::getInstance()->setFlash('modalFilters', true);
-        }else if (!preg_match($soloLetras, (request::getInstance()->getPost(\maquinaTableClass::getNameField(\maquinaTableClass::ORIGEN_MAQUINA, true))))) {
-        session::getInstance()->setError('El origen no permite letras, solo numeros', 'inputOrigen');
-     session::getInstance()->setFlash('modalFilters', true);
-        }
-       
-    }
-    
-     public static function validateFiltroOrigen() {
-        $soloLetras = "/^[a-z]+$/i";
-      $soloTelefono = "/^(\d{3,3}\-\d{3,3}\-\d{4,4})|^(\+\d\-\d{3,3}\-\d{4,4})/";
-      $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
-      
-      if(strlen(request::getInstance()->getPost(\maquinaTableClass::getNameField(\maquinaTableClass::ORIGEN_MAQUINA, true))) > \maquinaTableClass::ORIGEN_MAQUINA_LENGTH) {
-        session::getInstance()->setError('El origen de la maquina digitada es mayor en cantidad de caracteres a lo permitido', 'inputOrigen');
-      
-        session::getInstance()->setFlash('modalFilters', true);
-      }else if (!preg_match($soloLetras, (request::getInstance()->getPost(\maquinaTableClass::getNameField(\maquinaTableClass::ORIGEN_MAQUINA, true))))) {
-        session::getInstance()->setError('El origen no permite letras, solo numeros', 'inputOrigen');
-      
-        session::getInstance()->setFlash('modalFilters', true);
-      }
-       
+      if (strtotime($fechaFin) < strtotime($fechaInicial)){
+        session::getInstance()->setError('La fecha final no puede ser menor a la actual', 'inputFecha');
+          session::getInstance()->setFlash('modalFilters', true);
+         
+         // echo "<script> alert(' La fecha final no puede ser menor a la actual');</script>'";
+      }       
     }
   }
   

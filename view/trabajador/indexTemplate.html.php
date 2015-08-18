@@ -64,7 +64,7 @@ use mvc\session\sessionClass as session ?>
                       })
                     </script>
                   <?php endif; ?>
- <?php if (session::getInstance()->hasError('inputFecha')): ?>
+                <?php if (session::getInstance()->hasError('inputFecha')): ?>
                     <div class="alert alert-danger alert-dismissible" role="alert" id="error">
                       <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                       <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputFecha') ?>
@@ -74,27 +74,14 @@ use mvc\session\sessionClass as session ?>
           <div class="form-group">
                   <label class="col-sm-2 control-label" for="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::CREATED_AT, true) . '_1' ?>" ><?php echo i18n::__('fecha crear') ?></label>
                   <div class="col-sm-10">
-                    <input type="date" class="form-control-filtro1" id="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::CREATED_AT, true).'_1' ?>" name="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::CREATED_AT, true).'_1' ?>">
+                    <input type="date" class="form-control-filtro1" id="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::CREATED_AT, true).'_1' ?>" name="filter[<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::CREATED_AT, true).'_1' ?>]">
 
-                    <input type="date" class="form-control-filtro2" id="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::CREATED_AT, true).'_2' ?>" name="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::CREATED_AT, true).'_2' ?>">
+                    <input type="date" class="form-control-filtro2" id="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::CREATED_AT, true).'_2' ?>" name="filter[<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::CREATED_AT, true).'_2' ?>]">
                   </div>
                 </div>
               
               
-              
-              
-              
-              <div class="form-group">
-                <label for="filterCiudad" class="col-sm-2 control-label"><?php echo i18n::__('idCiudad') ?></label>
-                <div class="col-sm-10">
-                  <select class="form-control" id="filterCiudad" name="filter[ciudad]">
-                    <option value=""><?php echo i18n::__('selectCiudad') ?></option>
-<?php foreach ($objCC as $ciudad): ?>
-                      <option value="<?php echo $ciudad->$idCiudad ?>"><?php echo $ciudad->$nomCiu ?></option>
-<?php endforeach; ?>
-                  </select>
-                </div>
-              </div>
+         
               
               <?php if (session::getInstance()->hasError('inputDocumento')): ?>
                     <div class="alert alert-danger alert-dismissible" role="alert" id="error">
@@ -106,7 +93,7 @@ use mvc\session\sessionClass as session ?>
              <div class="form-group">
                 <label for="filterDocumento" class="col-sm-2 control-label"><?php echo i18n::__('documento') ?></label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="filterDocumento" name="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::DOCUMENTO, true) ?>" placeholder="buscar por numero de documento">
+                  <input type="text" class="form-control" id="filterDocumento" name="filter[<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::DOCUMENTO, true) ?>]" placeholder="buscar por numero de documento">
                 </div>
               </div>
               
@@ -120,7 +107,7 @@ use mvc\session\sessionClass as session ?>
               <div class="form-group">
                 <label for="filterNombre" class="col-sm-2 control-label"><?php echo i18n::__('nom') ?></label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="filterNombre" name="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRET, true) ?>" placeholder="buscar por nombre">
+                  <input type="text" class="form-control" id="filterNombre" name="filter[<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::NOMBRET, true) ?>]" placeholder="buscar por nombre">
                 </div>
               </div>
               
@@ -134,7 +121,7 @@ use mvc\session\sessionClass as session ?>
               <div class="form-group">
                 <label for="filterApellido" class="col-sm-2 control-label"><?php echo i18n::__('apell') ?></label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="filterApellido" name="<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::APELLIDO, true) ?>" placeholder="buscar por apellido">
+                  <input type="text" class="form-control" id="filterApellido" name="filter[<?php echo trabajadorTableClass::getNameField(trabajadorTableClass::APELLIDO, true) ?>]" placeholder="buscar por apellido">
                 </div>
               </div>
               

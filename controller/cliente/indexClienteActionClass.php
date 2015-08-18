@@ -45,75 +45,68 @@ class indexClienteActionClass extends controllerClass implements controllerActio
         $filter = request::getInstance()->getPost('filter');
         //Validar datos
         
-        
-
-        if (request::getInstance()->hasPost(clienteTableClass::getNameField(clienteTableClass::DOCUMENTO, true)) and empty(mvc\request\requestClass::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::DOCUMENTO, true))) === false) {
-
+        if ((isset($filter[clienteTableClass::getNameField(clienteTableClass::CREATED_AT, true) . '_1']) and empty($filter[clienteTableClass::getNameField(clienteTableClass::CREATED_AT, true) . '_1']) === false) and ( isset($filter[clienteTableClass::getNameField(clienteTableClass::CREATED_AT, true) . '_2']) and empty($filter[clienteTableClass::getNameField(clienteTableClass::CREATED_AT, true) . '_2']) === false)) {
           if (request::getInstance()->isMethod('POST')) {
-            $documento = request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::DOCUMENTO, true));
-            validator::validateFiltro();
 
-            if (isset($documento) and $documento !== null and $documento !== '') {
-              $where[] = '( ' . clienteTableClass::getNameField(clienteTableClass::DOCUMENTO) . ' = ' . $documento . ' ) ';
-          
-            }//cierre del filtro documento
-          }//cierre del filtro ubicacion   
-        }
+            $fechaInicial = $filter[clienteTableClass::getNameField(clienteTableClass::CREATED_AT, true) . '_1'];
+            $fechaFin = $filter[clienteTableClass::getNameField(clienteTableClass::CREATED_AT, true) . '_2'];
 
-        if (request::getInstance()->hasPost(clienteTableClass::getNameField(clienteTableClass::NOMBRE, true)) and empty(mvc\request\requestClass::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::NOMBRE, true))) === false) {
+            validator::validateFiltroFecha($fechaInicial, $fechaFin);
 
-          if (request::getInstance()->isMethod('POST')) {
-            $nombre = request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::NOMBRE, true));
-            validator::validateFiltroNombre();
-            if (isset($nombre) and $nombre !== null and $nombre !== '') {
-              $where[] = '(' . clienteTableClass::getNameField(clienteTableClass::NOMBRE) . ' LIKE ' . '\'' . $nombre . '%\'  '
-                      . 'OR ' . clienteTableClass::getNameField(clienteTableClass::NOMBRE) . ' LIKE ' . '\'%' . $nombre . '%\' '
-                      . 'OR ' . clienteTableClass::getNameField(clienteTableClass::NOMBRE) . ' LIKE ' . '\'%' . $nombre . '\') ';
-             
-              
-            }//cierre del filtro nombre
-          }//cierre del filtro ubicacion   
-        }
-
-        if (request::getInstance()->hasPost(clienteTableClass::getNameField(clienteTableClass::APELLIDO, true)) and empty(mvc\request\requestClass::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::APELLIDO, true))) === false) {
-
-          if (request::getInstance()->isMethod('POST')) {
-            $apellido = request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::APELLIDO, true));
-            validator::validateFiltroApellido();
-            if (isset($apellido) and $apellido !== null and $apellido !== '') {
-              $where[] = '(' . clienteTableClass::getNameField(clienteTableClass::APELLIDO) . ' LIKE ' . '\'' . $apellido . '%\'  '
-                      . 'OR ' . clienteTableClass::getNameField(clienteTableClass::APELLIDO) . ' LIKE ' . '\'%' . $apellido . '%\' '
-                      . 'OR ' . clienteTableClass::getNameField(clienteTableClass::APELLIDO) . ' LIKE ' . '\'%' . $apellido . '\') ';
-            }//cierre del filtro apellio   
-          }//cierre del filtro ubicacion   
-        }
-
-if (request::getInstance()->isMethod('POST')) {
-//            echo 'dsasda';
-//            exit();
-            $fechaInicial = request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::CREATED_AT, true). '_1');
-            
-            $fechaFin = request::getInstance()->getPost(clienteTableClass::getNameField(clienteTableClass::CREATED_AT, true). '_2');
-            
-            if($fechaFin < $fechaInicial){
-               session::getInstance()->setError('La fecha final no puede ser menor a la actual', 'inputFecha');
-            }elseif($fechaFin == $fechaInicial){
-                session::getInstance()->setError('La fecha final es igual a la inicial', 'inputFecha');
+            if ((isset($fechaInicial) and $fechaInicial !== null and $fechaInicial !== "") and ( isset($fechaFin) and $fechaFin !== null and $fechaFin !== "" )) {
+              $where[] = '(' . clienteTableClass::getNameField(clienteTableClass::CREATED_AT) . ' BETWEEN ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaInicial . ' 00:00:00')) . "'" . ' AND ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59')) . "'" . ' ) ';
             }
-            
-        if ((isset($fechaInicial) and $fechaInicial !== null and $fechaInicial !== "") and ( isset($fechaFin) and $fechaFin !== null and $fechaFin !== "" )) {
-          $where[clienteTableClass::CREATED_AT] = array(
-              date(config::getFormatTimestamp(), strtotime($fechaInicial . ' 00:00:00')),
-              date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59'))
-          );
-        }
-            
           }
+        }
+        
+        if (isset($filter[clienteTableClass::getNameField(clienteTableClass::DOCUMENTO, true)]) and empty($filter[clienteTableClass::getNameField(clienteTableClass::DOCUMENTO, true)]) === false) {
+          if (request::getInstance()->isMethod('POST')) {
 
+            $documento = $filter[clienteTableClass::getNameField(clienteTableClass::DOCUMENTO, true)];
+              validator::validateFiltro($documento);
+            if (isset($documento) and $documento !== null and $documento !== '') {
+              $where[] = '(' . clienteTableClass::getNameField(clienteTableClass::DOCUMENTO) . ' = ' .  $documento  . ' ) ';
+            }
+          }
+        }
+        
+        if (isset($filter[clienteTableClass::getNameField(clienteTableClass::NOMBRE, true)]) and empty($filter[clienteTableClass::getNameField(clienteTableClass::NOMBRE, true)]) === false) {
+          if (request::getInstance()->isMethod('POST')) {
 
-        if (isset($filter['ciudad']) and $filter['ciudad'] !== null and $filter['ciudad'] !== '') {
-          $where[clienteTableClass::ID_CIUDAD] = $filter['ciudad'];
+            $nombre = $filter[clienteTableClass::getNameField(clienteTableClass::NOMBRE, true)];
+             validator::validateFiltroNombre($nombre);
+            if (isset($nombre) and $nombre !== null and $nombre !== '') {
+          $where[] = '(' . clienteTableClass::getNameField(clienteTableClass::NOMBRE) . ' LIKE ' . '\'' . $nombre . '%\'  '
+                  . 'OR ' . clienteTableClass::getNameField(clienteTableClass::NOMBRE) . ' LIKE ' . '\'%' . $nombre . '%\' '
+                  . 'OR ' . clienteTableClass::getNameField(clienteTableClass::NOMBRE) . ' LIKE ' . '\'%' . $nombre . '\') ';
+        }
+          }
+        }
+        
+        if (isset($filter[clienteTableClass::getNameField(clienteTableClass::APELLIDO, true)]) and empty($filter[clienteTableClass::getNameField(clienteTableClass::APELLIDO, true)]) === false) {
+          if (request::getInstance()->isMethod('POST')) {
+
+            $apellido = $filter[clienteTableClass::getNameField(clienteTableClass::APELLIDO, true)];
+              validator::validateFiltroApellido($apellido);
+            if (isset($apellido) and $apellido !== null and $apellido !== '') {
+          $where[] = '(' . clienteTableClass::getNameField(clienteTableClass::APELLIDO) . ' LIKE ' . '\'' . $apellido . '%\'  '
+                  . 'OR ' . clienteTableClass::getNameField(clienteTableClass::APELLIDO) . ' LIKE ' . '\'%' . $apellido . '%\' '
+                  . 'OR ' . clienteTableClass::getNameField(clienteTableClass::APELLIDO) . ' LIKE ' . '\'%' . $apellido . '\') ';
+        }
+          }
+        }
+
+ if (isset($filter[clienteTableClass::getNameField(clienteTableClass::ID_CIUDAD, true)]) and empty($filter[clienteTableClass::getNameField(clienteTableClass::ID_CIUDAD, true)]) === false) {
+          if (request::getInstance()->isMethod('POST')) {
+
+            $ciudad = $filter[clienteTableClass::getNameField(clienteTableClass::ID_CIUDAD, true)];
+             
+             if (isset($ciudad) and $ciudad !== null and $ciudad !== '') {
+          $where[clienteTableClass::ID_CIUDAD] = $ciudad;
         }//cierre del filtro ciudad
+          }
+        }
+      
 
        
         

@@ -68,8 +68,8 @@ namespace mvc\validator {
       
       }
     }
-     public static function validateFiltro() {
-      if(strlen(request::getInstance()->getPost(\tipoProductoInsumoTableClass::getNameField(\tipoProductoInsumoTableClass::DESCRIPCION, true))) > \tipoProductoInsumoTableClass::DESCRIPCION_LENGTH) {
+     public static function validateFiltro($descripcion) {
+      if(strlen($descripcion) > \tipoProductoInsumoTableClass::DESCRIPCION_LENGTH) {
         session::getInstance()->setError('La descripcion digitada es mayor en cantidad de caracteres a lo permitido', 'inputDescripcion');
       session::getInstance()->setFlash('modalFilters', true);
       } 

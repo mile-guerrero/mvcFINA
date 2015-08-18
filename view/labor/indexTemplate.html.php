@@ -56,9 +56,9 @@ use mvc\session\sessionClass as session ?>
           <div class="form-group">
                   <label class="col-sm-2 control-label" for="<?php echo laborTableClass::getNameField(laborTableClass::CREATED_AT, true) . '_1' ?>" ><?php echo i18n::__('fecha crear') ?></label>
                   <div class="col-sm-10">
-                    <input type="date" class="form-control-filtro1" id="<?php echo laborTableClass::getNameField(laborTableClass::CREATED_AT, true).'_1' ?>" name="<?php echo laborTableClass::getNameField(laborTableClass::CREATED_AT, true).'_1' ?>">
+                    <input type="date" class="form-control-filtro1" id="<?php echo laborTableClass::getNameField(laborTableClass::CREATED_AT, true).'_1' ?>" name="filter[<?php echo laborTableClass::getNameField(laborTableClass::CREATED_AT, true).'_1' ?>]">
 
-                    <input type="date" class="form-control-filtro2" id="<?php echo laborTableClass::getNameField(laborTableClass::CREATED_AT, true).'_2' ?>" name="<?php echo laborTableClass::getNameField(laborTableClass::CREATED_AT, true).'_2' ?>">
+                    <input type="date" class="form-control-filtro2" id="<?php echo laborTableClass::getNameField(laborTableClass::CREATED_AT, true).'_2' ?>" name="filter[<?php echo laborTableClass::getNameField(laborTableClass::CREATED_AT, true).'_2' ?>]">
                   </div>
                 </div>
               
@@ -72,19 +72,9 @@ use mvc\session\sessionClass as session ?>
               <div class="form-group">
                 <label for="filterDescripcion" class="col-sm-2 control-label"><?php echo i18n::__('des') ?></label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="filterDescripcion" name="<?php echo laborTableClass::getNameField(laborTableClass::DESCRIPCION, true) ?>" placeholder="Descripcion">
+                  <input type="text" class="form-control" id="filterDescripcion" name="filter[<?php echo laborTableClass::getNameField(laborTableClass::DESCRIPCION, true) ?>]" placeholder="Descripcion">
                 </div>
-              </div>
-
-               <div class="form-group">
-    <label class="col-sm-2 control-label"><?php echo i18n::__('valor') ?></label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control-filtro1" id="filtervalor1" name="filter[valor1]">
-      
-       <input type="text" class="form-control-filtro2" id="filtervalor2" name="filter[valor2]">
-    </div>
-  </div>
-              
+              </div>               
             </form>
 
           </div>

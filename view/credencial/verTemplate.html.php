@@ -53,7 +53,7 @@ use mvc\i18n\i18nClass as i18n ?>
     </article>
   
 </div>
- <br><br><br><br><br><br>
+ <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </div>
   
  </div>

@@ -53,4 +53,42 @@ public static function getNameProveedor($id){
     }
     
   }
+  
+  public static function getApellidoProveedor($id){
+    try {
+      $sql = 'SELECT ' . proveedorTableClass::APELLIDO .  ' As apellido  '
+             . '  FROM ' . proveedorTableClass::getNameTable() . '  '
+             . '  WHERE ' . proveedorTableClass::ID . ' = :id';
+      $params = array(
+          ':id' => $id
+      );
+      $answer = model::getInstance()->prepare($sql);
+      $answer->execute($params);
+      $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+      return $answer[0]->apellido;
+      
+    } catch (Exception $exc) {
+      throw $exc;
+    }
+    
+  }
+  
+  public static function getDocumentoProveedor($id){
+    try {
+      $sql = 'SELECT ' . proveedorTableClass::DOCUMENTO .  ' As documento  '
+             . '  FROM ' . proveedorTableClass::getNameTable() . '  '
+             . '  WHERE ' . proveedorTableClass::ID . ' = :id';
+      $params = array(
+          ':id' => $id
+      );
+      $answer = model::getInstance()->prepare($sql);
+      $answer->execute($params);
+      $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+      return $answer[0]->documento;
+      
+    } catch (Exception $exc) {
+      throw $exc;
+    }
+    
+  }
 }

@@ -66,16 +66,16 @@
           <div class="form-group">
                   <label class="col-sm-2 control-label" for="<?php echo usuarioCredencialTableClass::getNameField(usuarioCredencialTableClass::CREATED_AT, true) . '_1' ?>" ><?php echo i18n::__('fecha crear') ?></label>
                   <div class="col-sm-10">
-                    <input type="date" class="form-control-filtro1" id="<?php echo usuarioCredencialTableClass::getNameField(usuarioCredencialTableClass::CREATED_AT, true).'_1' ?>" name="<?php echo usuarioCredencialTableClass::getNameField(usuarioCredencialTableClass::CREATED_AT, true).'_1' ?>">
+                    <input type="date" class="form-control-filtro1" id="<?php echo usuarioCredencialTableClass::getNameField(usuarioCredencialTableClass::CREATED_AT, true).'_1' ?>" name="filter[<?php echo usuarioCredencialTableClass::getNameField(usuarioCredencialTableClass::CREATED_AT, true).'_1' ?>]">
 
-                    <input type="date" class="form-control-filtro2" id="<?php echo usuarioCredencialTableClass::getNameField(usuarioCredencialTableClass::CREATED_AT, true).'_2' ?>" name="<?php echo usuarioCredencialTableClass::getNameField(usuarioCredencialTableClass::CREATED_AT, true).'_2' ?>">
+                    <input type="date" class="form-control-filtro2" id="<?php echo usuarioCredencialTableClass::getNameField(usuarioCredencialTableClass::CREATED_AT, true).'_2' ?>" name="filter[<?php echo usuarioCredencialTableClass::getNameField(usuarioCredencialTableClass::CREATED_AT, true).'_2' ?>]">
                   </div>
                 </div>
               
               <div class="form-group">
                 <label for="filterUsuario" class="col-sm-2 control-label"><?php echo i18n::__('user') ?></label>
                 <div class="col-sm-10">
-                  <select class="form-control" id="filterUsuario" name="filter[usuario]">
+                  <select class="form-control" id="filterUsuario" name="filter[<?php echo usuarioCredencialTableClass::getNameField(usuarioCredencialTableClass::USUARIO_ID, true) ?>]">
                     <option value=""><?php echo i18n::__('fUsuario') ?></option>
               <?php foreach ($objUCU as $key): ?>  
               <option value="<?php echo $key->$usuid ?>"> <?php echo $key->$usuariosid ?></option>
@@ -87,7 +87,7 @@
               <div class="form-group">
            <label for="filterCredencial" class="col-sm-2 control-label"><?php echo i18n::__('credencial') ?></label>
                 <div class="col-sm-10">
-                  <select class="form-control" id="filterCredencial" name="filter[credencial]">
+                  <select class="form-control" id="filterCredencial" name="filter[<?php echo usuarioCredencialTableClass::getNameField(usuarioCredencialTableClass::CREDENCIAL_ID, true) ?>]">
                     <option value=""><?php echo i18n::__('fCredencial') ?></option>
               <?php foreach ($objUCC as $key): ?>  
               <option value="<?php echo $key->$credeid ?>"> <?php echo $key->$nomcredeid ?></option>

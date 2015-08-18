@@ -23,54 +23,35 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       if (request::getInstance()->hasPost('filter')) {
         $filter = request::getInstance()->getPost('filter');
         //Validar datos
-        if (request::getInstance()->hasPost(empresaTableClass::getNameField(empresaTableClass::NOMBRE, true)) and empty(mvc\request\requestClass::getInstance()->getPost(empresaTableClass::getNameField(empresaTableClass::NOMBRE, true))) === false) {
-
+        if ((isset($filter[empresaTableClass::getNameField(empresaTableClass::CREATED_AT, true) . '_1']) and empty($filter[empresaTableClass::getNameField(empresaTableClass::CREATED_AT, true) . '_1']) === false) and ( isset($filter[empresaTableClass::getNameField(empresaTableClass::CREATED_AT, true) . '_2']) and empty($filter[empresaTableClass::getNameField(empresaTableClass::CREATED_AT, true) . '_2']) === false)) {
           if (request::getInstance()->isMethod('POST')) {
-            $nombre = request::getInstance()->getPost(empresaTableClass::getNameField(empresaTableClass::NOMBRE, true));
 
-            validator::validateFiltro();
+            $fechaInicial = $filter[empresaTableClass::getNameField(empresaTableClass::CREATED_AT, true) . '_1'];
+            $fechaFin = $filter[empresaTableClass::getNameField(empresaTableClass::CREATED_AT, true) . '_2'];
 
-            if (isset($nombre) and $nombre !== null and $nombre !== '') {
-              $where[] = '(' . empresaTableClass::getNameField(empresaTableClass::NOMBRE) . ' LIKE ' . '\'' . $nombre . '%\'  '
-                      . 'OR ' . empresaTableClass::getNameField(empresaTableClass::NOMBRE) . ' LIKE ' . '\'%' . $nombre . '%\' '
-                      . 'OR ' . empresaTableClass::getNameField(empresaTableClass::NOMBRE) . ' LIKE ' . '\'%' . $nombre . '\') ';
-            }//cierre del filtro nombre
-          }//cierre del filtro documento
-        }//cierre del filtro ubicacion   
-       if (request::getInstance()->hasPost(empresaTableClass::getNameField(empresaTableClass::DIRECCION, true)) and empty(mvc\request\requestClass::getInstance()->getPost(empresaTableClass::getNameField(empresaTableClass::DIRECCION, true))) === false) {
-        if (request::getInstance()->isMethod('POST')) {
-          $direccion = request::getInstance()->getPost(empresaTableClass::getNameField(empresaTableClass::DIRECCION, true));
-          validator::validateFiltroDireccion();
-          if (isset($direccion) and $direccion !== null and $direccion !== '') {
-            $where[] = '(' . empresaTableClass::getNameField(empresaTableClass::DIRECCION) . ' LIKE ' . '\'' . $direccion . '%\'  '
-                    . 'OR ' . empresaTableClass::getNameField(empresaTableClass::DIRECCION) . ' LIKE ' . '\'%' . $direccion . '%\' '
-                    . 'OR ' . empresaTableClass::getNameField(empresaTableClass::DIRECCION) . ' LIKE ' . '\'%' . $direccion . '\') ';
-          }//cierre del filtro nombre
-        }//cierre del filtro documento
-         }
+            validator::validateFiltroFecha($fechaInicial, $fechaFin);
 
-
-if (request::getInstance()->isMethod('POST')) {
-//            echo 'dsasda';
-//            exit();
-            $fechaInicial = request::getInstance()->getPost(empresaTableClass::getNameField(empresaTableClass::CREATED_AT, true). '_1');
-            
-            $fechaFin = request::getInstance()->getPost(empresaTableClass::getNameField(empresaTableClass::CREATED_AT, true). '_2');
-            
-            if($fechaFin < $fechaInicial){
-               session::getInstance()->setError('La fecha final no puede ser menor a la actual', 'inputFecha');
-            }elseif($fechaFin == $fechaInicial){
-                session::getInstance()->setError('La fecha final es igual a la inicial', 'inputFecha');
+            if ((isset($fechaInicial) and $fechaInicial !== null and $fechaInicial !== "") and ( isset($fechaFin) and $fechaFin !== null and $fechaFin !== "" )) {
+              $where[] = '(' . empresaTableClass::getNameField(empresaTableClass::CREATED_AT) . ' BETWEEN ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaInicial . ' 00:00:00')) . "'" . ' AND ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59')) . "'" . ' ) ';
             }
-            
-        if ((isset($fechaInicial) and $fechaInicial !== null and $fechaInicial !== "") and ( isset($fechaFin) and $fechaFin !== null and $fechaFin !== "" )) {
-          $where[empresaTableClass::CREATED_AT] = array(
-              date(config::getFormatTimestamp(), strtotime($fechaInicial . ' 00:00:00')),
-              date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59'))
-          );
-        }
-            
           }
+        }
+        
+         if (isset($filter[empresaTableClass::getNameField(empresaTableClass::NOMBRE, true)]) and empty($filter[empresaTableClass::getNameField(empresaTableClass::NOMBRE, true)]) === false) {
+          if (request::getInstance()->isMethod('POST')) {
+
+            $nombre = $filter[empresaTableClass::getNameField(empresaTableClass::NOMBRE, true)];
+            validator::validateFiltroNombre($nombre);
+            if (isset($nombre) and $nombre !== null and $nombre !== "") {
+            $where[] = '(' . empresaTableClass::getNameField(empresaTableClass::NOMBRE) . ' LIKE ' . '\'' . $nombre . '%\'  '
+              . 'OR ' . empresaTableClass::getNameField(empresaTableClass::NOMBRE) . ' LIKE ' . '\'%' . $nombre . '%\' '
+              . 'OR ' . empresaTableClass::getNameField(empresaTableClass::NOMBRE) . ' LIKE ' . '\'%' . $nombre.'\') ';       
+              }//cierre del filtro nombre
+          }
+        }
+        
+       
+
 //       session::getInstance()->setAttribute('empresaIndexFilters', $where);
 //       }else if(session::getInstance()->hasAttribute('empresaIndexFilters')){
 //        $where = session::getInstance()->getAttribute('empresaIndexFilters');

@@ -23,54 +23,34 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       if (request::getInstance()->hasPost('filter')) {
         $filter = request::getInstance()->getPost('filter');
         //Validar datos
-if (request::getInstance()->hasPost('filter')) {
-        $filter = request::getInstance()->getPost('filter');
-        //Validar datos
-
-        if (request::getInstance()->hasPost(laborTableClass::getNameField(laborTableClass::DESCRIPCION, true)) and empty(mvc\request\requestClass::getInstance()->getPost(laborTableClass::getNameField(laborTableClass::DESCRIPCION, true))) === false) {
-
+        
+       if ((isset($filter[laborTableClass::getNameField(laborTableClass::CREATED_AT, true) . '_1']) and empty($filter[laborTableClass::getNameField(laborTableClass::CREATED_AT, true) . '_1']) === false) and ( isset($filter[laborTableClass::getNameField(laborTableClass::CREATED_AT, true) . '_2']) and empty($filter[laborTableClass::getNameField(laborTableClass::CREATED_AT, true) . '_2']) === false)) {
           if (request::getInstance()->isMethod('POST')) {
-            $descripcion = request::getInstance()->getPost(laborTableClass::getNameField(laborTableClass::DESCRIPCION, true));
-            validator::validateFiltro();
 
-            if (isset($descripcion) and $descripcion !== null and $descripcion !== '') {
-          $where[] ='(' .  laborTableClass::getNameField(laborTableClass::DESCRIPCION) . ' LIKE ' . '\'' . $descripcion . '%\'  '
-              . 'OR ' . laborTableClass::getNameField(laborTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $descripcion . '%\' '
-              . 'OR ' . laborTableClass::getNameField(laborTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $descripcion .'\') ';       
-              }//cierre del filtro nombre
-       
-            }//cierre del filtro documento
-          }//cierre del filtro ubicacion   
-        }
-        
-        if (isset($filter['valor1']) and $filter['valor1'] !== null and $filter['valor1'] !== '' and (isset($filter['valor2']) and $filter['valor2'] !== null and $filter['valor2'] !== '')) {
-          $where[laborTableClass::VALOR] = array(
-         $filter['valor1'],
-         $filter['valor2']
-          );
-        } 
-        
-        if (request::getInstance()->isMethod('POST')) {
-//            echo 'dsasda';
-//            exit();
-            $fechaInicial = request::getInstance()->getPost(laborTableClass::getNameField(laborTableClass::CREATED_AT, true). '_1');
-            
-            $fechaFin = request::getInstance()->getPost(laborTableClass::getNameField(laborTableClass::CREATED_AT, true). '_2');
-            
-            if($fechaFin < $fechaInicial){
-               session::getInstance()->setError('La fecha final no puede ser menor a la actual', 'inputFecha');
-            }elseif($fechaFin == $fechaInicial){
-                session::getInstance()->setError('La fecha final es igual a la inicial', 'inputFecha');
+            $fechaInicial = $filter[laborTableClass::getNameField(laborTableClass::CREATED_AT, true) . '_1'];
+            $fechaFin = $filter[laborTableClass::getNameField(laborTableClass::CREATED_AT, true) . '_2'];
+
+            validator::validateFiltroFecha($fechaInicial, $fechaFin);
+
+            if ((isset($fechaInicial) and $fechaInicial !== null and $fechaInicial !== "") and ( isset($fechaFin) and $fechaFin !== null and $fechaFin !== "" )) {
+              $where[] = '(' . laborTableClass::getNameField(laborTableClass::CREATED_AT) . ' BETWEEN ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaInicial . ' 00:00:00')) . "'" . ' AND ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59')) . "'" . ' ) ';
             }
-            
-        if ((isset($fechaInicial) and $fechaInicial !== null and $fechaInicial !== "") and ( isset($fechaFin) and $fechaFin !== null and $fechaFin !== "" )) {
-          $where[laborTableClass::CREATED_AT] = array(
-              date(config::getFormatTimestamp(), strtotime($fechaInicial . ' 00:00:00')),
-              date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59'))
-          );
-        }
-            
           }
+        }
+        
+         if (isset($filter[laborTableClass::getNameField(laborTableClass::DESCRIPCION, true)]) and empty($filter[laborTableClass::getNameField(laborTableClass::DESCRIPCION, true)]) === false) {
+          if (request::getInstance()->isMethod('POST')) {
+
+            $descripcion = $filter[laborTableClass::getNameField(laborTableClass::DESCRIPCION, true)];
+            validator::validateFiltroNombre($descripcion);
+            if (isset($descripcion) and $descripcion !== null and $descripcion !== "") {
+            $where[] = '(' . laborTableClass::getNameField(laborTableClass::DESCRIPCION) . ' LIKE ' . '\'' . $descripcion . '%\'  '
+              . 'OR ' . laborTableClass::getNameField(laborTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $descripcion . '%\' '
+              . 'OR ' . laborTableClass::getNameField(laborTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $descripcion.'\') ';       
+              }//cierre del filtro nombre
+          }
+        }
+        
 //      session::getInstance()->setAttribute('laborIndexFilters', $where);
 //       }else if(session::getInstance()->hasAttribute('laborIndexFilters')){
 //        $where = session::getInstance()->getAttribute('laborIndexFilters');

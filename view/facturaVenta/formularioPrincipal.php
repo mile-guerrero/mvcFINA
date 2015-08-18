@@ -58,7 +58,7 @@
     <select class="form-control" id="<?php facturaVentaTableClass::getNameField(facturaVentaTableClass::TRABAJADOR_ID, true)?>" name="<?php echo facturaVentaTableClass::getNameField(facturaVentaTableClass::TRABAJADOR_ID, true);?>"required>
         <option value="<?php echo (session::getInstance()->hasFlash('selectTrabajador') or request::getInstance()->hasPost(facturaVentaTableClass::getNameField(facturaVentaTableClass::TRABAJADOR_ID, true))) ? request::getInstance()->getPost(facturaVentaTableClass::getNameField(facturaVentaTableClass::TRABAJADOR_ID, true)) : ((isset($objFactura[0])) ? '' : '') ?>"><?php echo i18n::__('selectTrabajador') ?></option>
        <?php foreach($objTrabajador as $key):?>
-      <option <?php echo (request::getInstance()->hasPost(facturaVentaTableClass::getNameField(facturaVentaTableClass::TRABAJADOR_ID, true)) === true and request::getInstance()->getPost(facturaVentaTableClass::getNameField(facturaVentaTableClass::TRABAJADOR_ID, true)) == $key->$idTrabajador) ? 'selected' : (isset($objFactura[0]->$trabajador) === true and $objFactura[0]->$trabajador == $key->$idTrabajador) ? 'selected' : '' ?> value="<?php echo $key->$idTrabajador ?>"><?php echo $key->$nomTrabajador ?></option>
+        <option <?php echo (request::getInstance()->hasPost(facturaVentaTableClass::getNameField(facturaVentaTableClass::TRABAJADOR_ID, true)) === true and request::getInstance()->getPost(facturaVentaTableClass::getNameField(facturaVentaTableClass::TRABAJADOR_ID, true)) == $key->$idTrabajador) ? 'selected' : (isset($objFactura[0]->$trabajador) === true and $objFactura[0]->$trabajador == $key->$idTrabajador) ? 'selected' : '' ?> value="<?php echo $key->$idTrabajador ?>"><?php echo $key->$nomTrabajador . ' ' . trabajadorTableClass::getNameApellido($key->$idTrabajador). ' ' .  ' CC: ' . ' ' . trabajadorTableClass::getNameDocumento($key->$idTrabajador) ?></option>
        <?php endforeach;?>
    </select> 
       </div> 
@@ -79,7 +79,7 @@
     <select class="form-control" id="<?php facturaVentaTableClass::getNameField(facturaVentaTableClass::CLIENTE_ID, true)?>" name="<?php echo facturaVentaTableClass::getNameField(facturaVentaTableClass::CLIENTE_ID, true);?>"required>
         <option value="<?php echo (session::getInstance()->hasFlash('selectCliente') or request::getInstance()->hasPost(facturaVentaTableClass::getNameField(facturaVentaTableClass::CLIENTE_ID, true))) ? request::getInstance()->getPost(facturaVentaTableClass::getNameField(facturaVentaTableClass::CLIENTE_ID, true)) : ((isset($objFactura[0])) ? '' : '') ?>"><?php echo i18n::__('selectCliente') ?></option>
        <?php foreach($objCliente as $clien):?>
-       <option <?php echo (isset($objFactura[0]->$cliente) === true and $objFactura[0]->$cliente == $clien->$idCliente) ? 'selected' : '' ?> value="<?php echo $clien->$idCliente?>"><?php echo $clien->$nomCliente?></option>
+       <option <?php echo (isset($objFactura[0]->$cliente) === true and $objFactura[0]->$cliente == $clien->$idCliente) ? 'selected' : '' ?> value="<?php echo $clien->$idCliente?>"><?php echo $clien->$nomCliente . ' ' . clienteTableClass::getNameApellido($clien->$idCliente). ' ' .  ' CC: ' . ' ' . clienteTableClass::getNameDocumento($clien->$idCliente) ?></option>
        <?php endforeach;?>
    </select> 
       </div> 
@@ -90,7 +90,7 @@
     <input   class="btn btn-lg btn-success btn-xs" type="submit" value="<?php echo i18n::__(((isset($objFactura)) ? 'update' : 'register')) ?>">
     <a class="btn btn-lg btn-default btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('facturaVenta', 'index') ?>" ><?php echo i18n::__('atras') ?> </a>
 
-  <br><br><br><br><br><br>   <br><br><br><br>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     </form>
   </div>
 </div>

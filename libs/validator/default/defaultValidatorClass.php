@@ -131,19 +131,24 @@ namespace mvc\validator {
         routing::getInstance()->forward('default', 'edit');
       }
     }
-     public static function validateFiltro() {
+     public static function validateFiltro($usuario) {
     //-------------------------------campo descripcion-----------------------------
      $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
       
        
-     if(strlen(request::getInstance()->getPost(\usuarioTableClass::getNameField(\usuarioTableClass::USUARIO, true))) > \usuarioTableClass::USUARIO_LENGTH) {
+     if(strlen($usuario) > \usuarioTableClass::USUARIO_LENGTH) {
        session::getInstance()->setError('El usuario digitado es mayor en cantidad de caracteres a lo permitido', 'inputUsuario');
        session::getInstance()->setFlash('modalFilters', true);
-     } else if (!preg_match($emailcorrecto, (request::getInstance()->getPost(\usuarioTableClass::getNameField(\usuarioTableClass::USUARIO, true))))){
-        session::getInstance()->setError('Por favor digite un corre válido ', 'inputUsuario');
-        session::getInstance()->setFlash('modalFilters', true);
-      }
-       
+     } 
+    }
+    public static function validateFiltroFecha($fechaInicial,$fechaFin) {
+      
+      if (strtotime($fechaFin) < strtotime($fechaInicial)){
+        session::getInstance()->setError('La fecha final no puede ser menor a la actual', 'inputFecha');
+          session::getInstance()->setFlash('modalFilters', true);
+         
+         // echo "<script> alert(' La fecha final no puede ser menor a la actual');</script>'";
+      }       
     }
   }
 }

@@ -217,25 +217,30 @@ namespace mvc\validator {
         routing::getInstance()->forward('enfermedad', 'index');
       }
     }
-     public static function validateFiltro() {
+    public static function validateFiltroFecha($fechaInicial,$fechaFin) {
+      
+      if (strtotime($fechaFin) < strtotime($fechaInicial)){
+        session::getInstance()->setError('La fecha final no puede ser menor a la actual', 'inputFecha');
+          session::getInstance()->setFlash('modalFilters', true);
+         
+         // echo "<script> alert(' La fecha final no puede ser menor a la actual');</script>'";
+      }       
+    }
+    
+     public static function validateFiltroNombre($nombre) {
        $soloLetras = "/^[a-z]+$/i";
-      if (!preg_match($soloLetras, (request::getInstance()->getPost(\enfermedadTableClass::getNameField(\enfermedadTableClass::NOMBRE, true))))){
+      $soloTelefono = "/^(\d{3,3}\-\d{3,3}\-\d{4,4})|^(\+\d\-\d{3,3}\-\d{4,4})/";
+      $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
+      
+      if (!preg_match($soloLetras, ($nombre))){
         session::getInstance()->setError('El nombre no permite numeros, solo letras', 'inputNombre');
      session::getInstance()->setFlash('modalFilters', true);
         } //----sobre pasar los caracteres----
-        else if(strlen(request::getInstance()->getPost(\enfermedadTableClass::getNameField(\enfermedadTableClass::NOMBRE, true))) > \enfermedadTableClass::NOMBRE_LENGTH) {
+        else if(strlen($nombre) > \enfermedadTableClass::NOMBRE_LENGTH) {
         session::getInstance()->setError('El nombre digitado es mayor en cantidad de caracteres a lo permitido', 'inputNombre');
-     session::getInstance()->setFlash('modalFilters', true);
-        }
-    }
-    
-     public static function validateFiltroDescripcion() {
-   
-      if(strlen(request::getInstance()->getPost(\enfermedadTableClass::getNameField(\enfermedadTableClass::DESCRIPCION, true))) > \enfermedadTableClass::DESCRIPCION_LENGTH) {
-        session::getInstance()->setError('La descripcion digitada es mayor en cantidad de caracteres a lo permitido', 'inputDescripcion');
       
         session::getInstance()->setFlash('modalFilters', true);
-      }       
+        }  
     }
   }  
 }

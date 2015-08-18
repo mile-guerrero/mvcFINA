@@ -11,7 +11,8 @@
 <?php $origen_id = maquinaTableClass::ORIGEN_MAQUINA ?>
 <?php $proveedor_id = maquinaTableClass::PROVEEDOR_ID ?>
 <?php $proveedor_ids = proveedorTableClass::ID ?>
-<?php $des_proveedor = proveedorTableClass::NOMBREP ?>
+<?php $desProveedor = proveedorTableClass::NOMBREP ?>
+<?php $apellido = proveedorTableClass::APELLIDO ?>
 
 <div class="container container-fluid" id="cuerpo">
   <div class="center-block" id="cuerpo5">
@@ -106,7 +107,7 @@
     <select class="form-control" id="<?php maquinaTableClass::getNameField(maquinaTableClass::ID, true)?>" name="<?php echo maquinaTableClass::getNameField(maquinaTableClass::PROVEEDOR_ID, true);?>">
        <option value="<?php echo (session::getInstance()->hasFlash('selectProveedor') or request::getInstance()->hasPost(maquinaTableClass::getNameField(maquinaTableClass::PROVEEDOR_ID, true))) ? request::getInstance()->getPost(maquinaTableClass::getNameField(maquinaTableClass::PROVEEDOR_ID, true)) : ((isset($objMaquina[0])) ? '' : '') ?>" ><?php echo i18n::__('selectProveedor') ?></option>
        <?php foreach($objMP as $P):?>
-       <option <?php echo (request::getInstance()->hasPost(maquinaTableClass::getNameField(maquinaTableClass::PROVEEDOR_ID, true)) === true and request::getInstance()->getPost(maquinaTableClass::getNameField(maquinaTableClass::PROVEEDOR_ID, true)) == $P->$proveedor_ids) ? 'selected' : (isset($objMaquina[0]->$proveedor_id) === true and $objMaquina[0]->$proveedor_id == $P->$proveedor_ids) ? 'selected' : '' ?> value="<?php echo $P->$proveedor_ids?>"><?php echo $P->$des_proveedor?></option>
+       <option <?php echo (request::getInstance()->hasPost(maquinaTableClass::getNameField(maquinaTableClass::PROVEEDOR_ID, true)) === true and request::getInstance()->getPost(maquinaTableClass::getNameField(maquinaTableClass::PROVEEDOR_ID, true)) == $P->$proveedor_ids) ? 'selected' : (isset($objMaquina[0]->$proveedor_id) === true and $objMaquina[0]->$proveedor_id == $P->$proveedor_ids) ? 'selected' : '' ?> value="<?php echo $P->$proveedor_ids?>"><?php echo $P->$desProveedor . ' ' . proveedorTableClass::getApellidoProveedor($P->$proveedor_ids). ' ' .  ' CC: ' . ' ' . proveedorTableClass::getDocumentoProveedor($P->$proveedor_ids) ?></option>
        <?php endforeach;?>
    </select> 
       </div> 
@@ -115,7 +116,7 @@
   <input class="btn btn-lg btn-success btn-xs" type="submit" value="<?php echo i18n::__(((isset($objMaquina)) ? 'update' : 'register')) ?>">
 <a class="btn btn-lg btn-default btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('maquina', 'indexMaquina') ?>" ><?php echo i18n::__('atras') ?> </a>
 
-<br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br>
     </form>
     </article>
   </div>

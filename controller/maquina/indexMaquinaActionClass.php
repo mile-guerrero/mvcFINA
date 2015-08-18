@@ -22,80 +22,48 @@ class indexMaquinaActionClass extends controllerClass implements controllerActio
       if (request::getInstance()->hasPost('filter')) {
         $filter = request::getInstance()->getPost('filter');
         //validar
-        if (request::getInstance()->hasPost(maquinaTableClass::getNameField(maquinaTableClass::NOMBRE, true)) and empty(mvc\request\requestClass::getInstance()->getPost(maquinaTableClass::getNameField(maquinaTableClass::NOMBRE, true))) === false) {
-
+        
+        if ((isset($filter[maquinaTableClass::getNameField(maquinaTableClass::CREATED_AT, true) . '_1']) and empty($filter[maquinaTableClass::getNameField(maquinaTableClass::CREATED_AT, true) . '_1']) === false) and ( isset($filter[maquinaTableClass::getNameField(maquinaTableClass::CREATED_AT, true) . '_2']) and empty($filter[maquinaTableClass::getNameField(maquinaTableClass::CREATED_AT, true) . '_2']) === false)) {
           if (request::getInstance()->isMethod('POST')) {
-            $nombre = request::getInstance()->getPost(maquinaTableClass::getNameField(maquinaTableClass::NOMBRE, true));
-            validator::validateFiltro();
+
+            $fechaInicial = $filter[maquinaTableClass::getNameField(maquinaTableClass::CREATED_AT, true) . '_1'];
+            $fechaFin = $filter[maquinaTableClass::getNameField(maquinaTableClass::CREATED_AT, true) . '_2'];
+
+            validator::validateFiltroFecha($fechaInicial, $fechaFin);
+
+            if ((isset($fechaInicial) and $fechaInicial !== null and $fechaInicial !== "") and ( isset($fechaFin) and $fechaFin !== null and $fechaFin !== "" )) {
+              $where[] = '(' . maquinaTableClass::getNameField(maquinaTableClass::CREATED_AT) . ' BETWEEN ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaInicial . ' 00:00:00')) . "'" . ' AND ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59')) . "'" . ' ) ';
+            }
+          }
+        }
+        
+        if (isset($filter[maquinaTableClass::getNameField(maquinaTableClass::NOMBRE, true)]) and empty($filter[maquinaTableClass::getNameField(maquinaTableClass::NOMBRE, true)]) === false) {
+          if (request::getInstance()->isMethod('POST')) {
+
+            $nombre = $filter[maquinaTableClass::getNameField(maquinaTableClass::NOMBRE, true)];
+
+          validator::validateFiltro($nombre);
             if (isset($nombre) and $nombre !== null and $nombre !== "") {
               $where[] = '(' . maquinaTableClass::getNameField(maquinaTableClass::NOMBRE) . ' LIKE ' . '\'' . $nombre . '%\'  '
                       . 'OR ' . maquinaTableClass::getNameField(maquinaTableClass::NOMBRE) . ' LIKE ' . '\'%' . $nombre . '%\' '
                       . 'OR ' . maquinaTableClass::getNameField(maquinaTableClass::NOMBRE) . ' LIKE ' . '\'%' . $nombre . '\') ';
             }
-          }//cierre del filtro ubicacion   
-        }
-      
-        
-        if (request::getInstance()->hasPost(maquinaTableClass::getNameField(maquinaTableClass::DESCRIPCION, true)) and empty(mvc\request\requestClass::getInstance()->getPost(maquinaTableClass::getNameField(maquinaTableClass::DESCRIPCION, true))) === false) {
-
-          if (request::getInstance()->isMethod('POST')) {
-            $descripcion = request::getInstance()->getPost(maquinaTableClass::getNameField(maquinaTableClass::DESCRIPCION, true));
-            validator::validateFiltroDescripcion();
-            if (isset($descripcion) and $descripcion !== null and $descripcion !== "") {
-                $where[] = '(' . maquinaTableClass::getNameField(maquinaTableClass::DESCRIPCION) . ' LIKE ' . '\'' . $descripcion . '%\'  '
-                . 'OR ' . maquinaTableClass::getNameField(maquinaTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $descripcion . '%\' '
-                . 'OR ' . maquinaTableClass::getNameField(maquinaTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $descripcion . '\') ';
-      }
-          }//cierre del filtro ubicacion   
-        }
-        
-        if (request::getInstance()->hasPost(maquinaTableClass::getNameField(maquinaTableClass::ORIGEN_MAQUINA, true)) and empty(mvc\request\requestClass::getInstance()->getPost(maquinaTableClass::getNameField(maquinaTableClass::ORIGEN_MAQUINA, true))) === false) {
-
-          if (request::getInstance()->isMethod('POST')) {
-            $origen = request::getInstance()->getPost(maquinaTableClass::getNameField(maquinaTableClass::ORIGEN_MAQUINA, true));
-            validator::validateFiltroOrigen();
-            if (isset($origen) and $origen !== null and $origen !== "") {
-        $where[] = '(' . maquinaTableClass::getNameField(maquinaTableClass::ORIGEN_MAQUINA) . ' LIKE ' . '\'' . $origen . '%\'  '
-                . 'OR ' . maquinaTableClass::getNameField(maquinaTableClass::ORIGEN_MAQUINA) . ' LIKE ' . '\'%' . $origen . '%\' '
-                . 'OR ' . maquinaTableClass::getNameField(maquinaTableClass::ORIGEN_MAQUINA) . ' LIKE ' . '\'%' . $origen . '\') ';
-      }
-          }//cierre del filtro ubicacion   
-        }
-
-
-      if (request::getInstance()->isMethod('POST')) {
-//            echo 'dsasda';
-//            exit();
-            $fechaInicial = request::getInstance()->getPost(maquinaTableClass::getNameField(maquinaTableClass::CREATED_AT, true). '_1');
-            
-            $fechaFin = request::getInstance()->getPost(maquinaTableClass::getNameField(maquinaTableClass::CREATED_AT, true). '_2');
-            
-            if($fechaFin < $fechaInicial){
-               session::getInstance()->setError('La fecha final no puede ser menor a la actual', 'inputFecha');
-            }elseif($fechaFin == $fechaInicial){
-                session::getInstance()->setError('La fecha final es igual a la inicial', 'inputFecha');
-            }
-            
-        if ((isset($fechaInicial) and $fechaInicial !== null and $fechaInicial !== "") and ( isset($fechaFin) and $fechaFin !== null and $fechaFin !== "" )) {
-          $where[maquinaTableClass::CREATED_AT] = array(
-              date(config::getFormatTimestamp(), strtotime($fechaInicial . ' 00:00:00')),
-              date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59'))
-          );
-        }
-            
           }
+        }
+        
+        
+        if (isset($filter[maquinaTableClass::getNameField(maquinaTableClass::PROVEEDOR_ID, true)]) and empty($filter[maquinaTableClass::getNameField(maquinaTableClass::PROVEEDOR_ID, true)]) === false) {
+          if (request::getInstance()->isMethod('POST')) {
 
+            $proveedor = $filter[maquinaTableClass::getNameField(maquinaTableClass::PROVEEDOR_ID, true)];
+
+           if (isset($proveedor) and $proveedor !== null and $proveedor !== "") {
+        $where[maquinaTableClass::PROVEEDOR_ID] = $proveedor;
       
-
-     
-//      
-      if (isset($filter['tipo']) and $filter['tipo'] !== null and $filter['tipo'] !== "") {
-        $where[maquinaTableClass::TIPO_USO_ID] = $filter['tipo'];
-      }
-
-      if (isset($filter['proveedor']) and $filter['proveedor'] !== null and $filter['proveedor'] !== "") {
-        $where[maquinaTableClass::PROVEEDOR_ID] = $filter['proveedor'];
-      }
+            }
+          }
+        }
+        
 //
 //       session::getInstance()->setAttribute('maquinaIndexFilters', $where);
 //       }else if(session::getInstance()->hasAttribute('maquinaIndexFilters')){
@@ -137,7 +105,9 @@ class indexMaquinaActionClass extends controllerClass implements controllerActio
 
       $fields = array(
           proveedorTableClass::ID,
-          proveedorTableClass::NOMBREP
+          proveedorTableClass::NOMBREP,
+          proveedorTableClass::APELLIDO,
+          proveedorTableClass::DOCUMENTO
       );
       $orderBy = array(
           proveedorTableClass::ID

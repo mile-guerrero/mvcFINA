@@ -28,6 +28,45 @@ class trabajadorTableClass extends trabajadorBaseTableClass {
     }
     
   }
+  
+   public static function getNameDocumento($id){
+    try {
+      $sql = 'SELECT ' . trabajadorTableClass::DOCUMENTO .  ' As documento  '
+             . '  FROM ' . trabajadorTableClass::getNameTable() . '  '
+             . '  WHERE ' . trabajadorTableClass::ID . ' = :id';
+      $params = array(
+          ':id' => $id
+      );
+      $answer = model::getInstance()->prepare($sql);
+      $answer->execute($params);
+      $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+      return $answer[0]->documento;
+      
+    } catch (Exception $exc) {
+      throw $exc;
+    }
+    
+  }
+  
+    public static function getNameApellido($id){
+    try {
+      $sql = 'SELECT ' . trabajadorTableClass::APELLIDO .  ' As apellido  '
+             . '  FROM ' . trabajadorTableClass::getNameTable() . '  '
+             . '  WHERE ' . trabajadorTableClass::ID . ' = :id';
+      $params = array(
+          ':id' => $id
+      );
+      $answer = model::getInstance()->prepare($sql);
+      $answer->execute($params);
+      $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+      return $answer[0]->apellido;
+      
+    } catch (Exception $exc) {
+      throw $exc;
+    }
+    
+  }
+  
 public static function getTotalPages($lines, $where) {
     try {
       $sql = 'SELECT count(' . trabajadorTableClass::ID . ') AS cantidad ' .

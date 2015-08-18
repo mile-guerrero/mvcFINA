@@ -37,57 +37,34 @@ class indexActionClass extends controllerClass implements controllerActionInterf
         $filter = request::getInstance()->getPost('filter');
         //Validar datos
         
-        if (request::getInstance()->hasPost(cooperativaTableClass::getNameField(cooperativaTableClass::NOMBRE, true)) and empty(mvc\request\requestClass::getInstance()->getPost(cooperativaTableClass::getNameField(cooperativaTableClass::NOMBRE, true))) === false) {
-
+         if ((isset($filter[cooperativaTableClass::getNameField(cooperativaTableClass::CREATED_AT, true) . '_1']) and empty($filter[cooperativaTableClass::getNameField(cooperativaTableClass::CREATED_AT, true) . '_1']) === false) and ( isset($filter[cooperativaTableClass::getNameField(cooperativaTableClass::CREATED_AT, true) . '_2']) and empty($filter[cooperativaTableClass::getNameField(cooperativaTableClass::CREATED_AT, true) . '_2']) === false)) {
           if (request::getInstance()->isMethod('POST')) {
-            $nombre = request::getInstance()->getPost(cooperativaTableClass::getNameField(cooperativaTableClass::NOMBRE, true));
-            validator::validateFiltroNombre();
-            if (isset($nombre) and $nombre !== null and $nombre !== '') {
-              $where[] = '(' . cooperativaTableClass::getNameField(cooperativaTableClass::NOMBRE) . ' LIKE ' . '\'' . $nombre . '%\'  '
-                      . 'OR ' . cooperativaTableClass::getNameField(cooperativaTableClass::NOMBRE) . ' LIKE ' . '\'%' . $nombre . '%\' '
-                      . 'OR ' . cooperativaTableClass::getNameField(cooperativaTableClass::NOMBRE) . ' LIKE ' . '\'%' . $nombre . '\') ';
-            }//cierre del filtro nombre
-          }//cierre del filtro ubicacion   
-        }
-        
-        if (request::getInstance()->hasPost(cooperativaTableClass::getNameField(cooperativaTableClass::DESCRIPCION, true)) and empty(mvc\request\requestClass::getInstance()->getPost(cooperativaTableClass::getNameField(cooperativaTableClass::DESCRIPCION, true))) === false) {
 
-          if (request::getInstance()->isMethod('POST')) {
-            $descripcion = request::getInstance()->getPost(cooperativaTableClass::getNameField(cooperativaTableClass::DESCRIPCION, true));
-            validator::validateFiltroDescripcion();
-            if (isset($descripcion) and $descripcion !== null and $descripcion !== '') {
-              $where[] = '(' . cooperativaTableClass::getNameField(cooperativaTableClass::DESCRIPCION) . ' LIKE ' . '\'' . $descripcion . '%\'  '
-                      . 'OR ' . cooperativaTableClass::getNameField(cooperativaTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $descripcion . '%\' '
-                      . 'OR ' . cooperativaTableClass::getNameField(cooperativaTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $descripcion . '\') ';
-            }//cierre del filtro nombre
-          }//cierre del filtro ubicacion   
-        }
-        
-        if (request::getInstance()->isMethod('POST')) {
-//            echo 'dsasda';
-//            exit();
-            $fechaInicial = request::getInstance()->getPost(cooperativaTableClass::getNameField(cooperativaTableClass::CREATED_AT, true). '_1');
-            
-            $fechaFin = request::getInstance()->getPost(cooperativaTableClass::getNameField(cooperativaTableClass::CREATED_AT, true). '_2');
-            
-            if($fechaFin < $fechaInicial){
-               session::getInstance()->setError('La fecha final no puede ser menor a la actual', 'inputFecha');
-            }elseif($fechaFin == $fechaInicial){
-                session::getInstance()->setError('La fecha final es igual a la inicial', 'inputFecha');
+            $fechaInicial = $filter[cooperativaTableClass::getNameField(cooperativaTableClass::CREATED_AT, true) . '_1'];
+            $fechaFin = $filter[cooperativaTableClass::getNameField(cooperativaTableClass::CREATED_AT, true) . '_2'];
+
+            validator::validateFiltroFecha($fechaInicial, $fechaFin);
+
+            if ((isset($fechaInicial) and $fechaInicial !== null and $fechaInicial !== "") and ( isset($fechaFin) and $fechaFin !== null and $fechaFin !== "" )) {
+              $where[] = '(' . cooperativaTableClass::getNameField(cooperativaTableClass::CREATED_AT) . ' BETWEEN ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaInicial . ' 00:00:00')) . "'" . ' AND ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59')) . "'" . ' ) ';
             }
-            
-        if ((isset($fechaInicial) and $fechaInicial !== null and $fechaInicial !== "") and ( isset($fechaFin) and $fechaFin !== null and $fechaFin !== "" )) {
-          $where[cooperativaTableClass::CREATED_AT] = array(
-              date(config::getFormatTimestamp(), strtotime($fechaInicial . ' 00:00:00')),
-              date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59'))
-          );
-        }
-            
           }
-
-       if (isset($filter['ciudad']) and $filter['ciudad'] !== null and $filter['ciudad'] !== '') {
-          $where[cooperativaTableClass::ID_CIUDAD] = $filter['ciudad'];
         }
+        
+         if (isset($filter[cooperativaTableClass::getNameField(cooperativaTableClass::NOMBRE, true)]) and empty($filter[cooperativaTableClass::getNameField(cooperativaTableClass::NOMBRE, true)]) === false) {
+          if (request::getInstance()->isMethod('POST')) {
+
+            $nombre = $filter[cooperativaTableClass::getNameField(cooperativaTableClass::NOMBRE, true)];
+     validator::validateFiltroNombre($nombre);
+            if (isset($nombre) and $nombre !== null and $nombre !== "") {
+            $where[] = '(' . cooperativaTableClass::getNameField(cooperativaTableClass::NOMBRE) . ' LIKE ' . '\'' . $nombre . '%\'  '
+              . 'OR ' . cooperativaTableClass::getNameField(cooperativaTableClass::NOMBRE) . ' LIKE ' . '\'%' . $nombre . '%\' '
+              . 'OR ' . cooperativaTableClass::getNameField(cooperativaTableClass::NOMBRE) . ' LIKE ' . '\'%' . $nombre.'\') ';       
+              }//cierre del filtro nombre
+          }
+        }
+        
+        
        
 //       session::getInstance()->setAttribute('cooperativaIndexFilters', $where);
 //       }else if(session::getInstance()->hasAttribute('cooperativaIndexFilters')){

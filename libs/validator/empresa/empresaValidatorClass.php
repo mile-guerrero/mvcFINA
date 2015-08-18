@@ -167,24 +167,30 @@ namespace mvc\validator {
       
       }
     }
-     public static function validateFiltro() {
+      public static function validateFiltroFecha($fechaInicial,$fechaFin) {
+      
+      if (strtotime($fechaFin) < strtotime($fechaInicial)){
+        session::getInstance()->setError('La fecha final no puede ser menor a la actual', 'inputFecha');
+          session::getInstance()->setFlash('modalFilters', true);
          
-      if(strlen(request::getInstance()->getPost(\empresaTableClass::getNameField(\empresaTableClass::NOMBRE, true))) > \empresaTableClass::NOMBRE_LENGTH) {
+         // echo "<script> alert(' La fecha final no puede ser menor a la actual');</script>'";
+      }       
+    }
+    
+     public static function validateFiltroNombre($nombre) {
+       $soloLetras = "/^[a-z]+$/i";
+      $soloTelefono = "/^(\d{3,3}\-\d{3,3}\-\d{4,4})|^(\+\d\-\d{3,3}\-\d{4,4})/";
+      $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
+      
+      if (!preg_match($soloLetras, ($nombre))){
+        session::getInstance()->setError('El nombre no permite numeros, solo letras', 'inputNombre');
+     session::getInstance()->setFlash('modalFilters', true);
+        } //----sobre pasar los caracteres----
+        else if(strlen($nombre) > \empresaTableClass::NOMBRE_LENGTH) {
         session::getInstance()->setError('El nombre digitado es mayor en cantidad de caracteres a lo permitido', 'inputNombre');
       
         session::getInstance()->setFlash('modalFilters', true);
-      }
-         
-    }
-    
-     public static function validateFiltroDireccion() {
-     
-      if(strlen(request::getInstance()->getPost(\empresaTableClass::getNameField(\empresaTableClass::DIRECCION, true))) > \empresaTableClass::DIRECCION_LENGTH) {
-        session::getInstance()->setError('La direccion digitada es mayor en cantidad de caracteres a lo permitido', 'inputDireccion');
-      
-        session::getInstance()->setFlash('modalFilters', true);
-      }
-       
+        }  
     }
   }  
 }

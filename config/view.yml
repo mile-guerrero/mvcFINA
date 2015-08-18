@@ -19,7 +19,11 @@ shfSecurity:
       - signin.css
       
       
-   
+ #-------------------modulo - reportes----------------------------    
+reportes: 
+  index:
+    javascript:
+      - confirmar.js  
 #-------------------modulo - default----------------------------    
 default: 
   index:
