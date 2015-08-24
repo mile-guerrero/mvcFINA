@@ -242,6 +242,7 @@ dictionary:
     entrar:               Enter
     register:             Register
     reportes:             Reportes
+    importar pdf:         Importar pdf
   errors:
     00001:                El nombre excede la longitud permitida (:longitud)
     00002:                El apellido excede la longitud permitida (:longitud)

@@ -1170,4 +1170,19 @@ reportes:
     security: true
     credentials:
       - [admin]
-      - [consultor]            
+      - [consultor] 
+  insert:
+    security: true
+    credentials:
+      - [admin]
+      - [consultor]
+  create:
+    security: true
+    credentials:
+      - [admin]
+      - [consultor]   
+  generarGrafica:
+    security: true
+    credentials:
+      - [admin]
+      - [consultor]    

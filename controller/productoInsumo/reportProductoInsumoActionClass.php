@@ -46,11 +46,8 @@ class reportProductoInsumoActionClass extends controllerClass implements control
       $fields = array(
           productoInsumoTableClass::ID,
           productoInsumoTableClass::DESCRIPCION,
-          productoInsumoTableClass::CANTIDAD,
-          productoInsumoTableClass::UNIDAD_MEDIDA_ID,
           productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID,
-          productoInsumoTableClass::CREATED_AT,
-          productoInsumoTableClass::UPDATED_AT
+          productoInsumoTableClass::CREATED_AT
       );
       $orderBy = array(
          productoInsumoTableClass::ID

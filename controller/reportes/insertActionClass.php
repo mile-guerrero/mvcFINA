@@ -14,22 +14,44 @@ use mvc\i18n\i18nClass as i18n;
  * @category: modulo de defautl.
  */
 class insertActionClass extends controllerClass implements controllerActionInterface {
- /**
-* @author: Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon .
-* @date: fecha de inicio del desarrollo.
-* @return               
- * define la vista  y la accion en la variable $defineView
-*/
+
+  /**
+   * @author: Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon .
+   * @date: fecha de inicio del desarrollo.
+   * @return               
+   * define la vista  y la accion en la variable $defineView
+   */
   public function execute() {
     try {
+      $fields = array(
+          loteTableClass::ID,
+          loteTableClass::UBICACION,
+          loteTableClass::CREATED_AT,
+          loteTableClass::TAMANO,
+          loteTableClass::UNIDAD_DISTANCIA_ID,
+          loteTableClass::DESCRIPCION,
+          loteTableClass::FECHA_INICIO_SIEMBRA,
+          loteTableClass::NUMERO_PLANTULAS,
+          loteTableClass::PRESUPUESTO,
+          loteTableClass::PRODUCTO_INSUMO_ID,
+          loteTableClass::ID_CIUDAD,
+          loteTableClass::UPDATED_AT
+      );
+      $orderBy = array(
+          loteTableClass::ID
+      );
 
+      $this->objLote = loteTableClass::getAll($fields, true, $orderBy, 'ASC');
       $this->defineView('insert', 'reportes', session::getInstance()->getFormatOutput());
     } //cierre del try
-     catch (PDOException $exc) {
+    catch (PDOException $exc) {
       echo $exc->getMessage();
       echo '<br>';
       echo $exc->getTraceAsString();
-   }//cierre del catch
-}//cierre de la funcion execute
+    }//cierre del catch
+  }
 
-}//cierre de la clase
+//cierre de la funcion execute
+}
+
+//cierre de la clase

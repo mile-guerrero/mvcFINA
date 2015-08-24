@@ -9,5 +9,5 @@
 </h2>
   <br><br>
    </div>
-<?php view::includePartial('reportes/formularioPrincipal') ?>
+<?php view::includePartial('reportes/formularioPrincipal',array('objLote'=>$objLote)) ?>
 </div>

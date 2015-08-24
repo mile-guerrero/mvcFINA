@@ -2955,19 +2955,53 @@ reportes_index:
   load:
     - model/base/reporteBaseTableClass.php
     - model/reporteTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
   
 reportes_insert:
   url:    /reportes/insert
   param:  { module: reportes, action: insert, format: html }
   load:
     - model/base/reporteBaseTableClass.php
-    - model/reporteTableClass.php    
+    - model/reporteTableClass.php  
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
     
-reportes_ver:
-  url:    /reportes/ver
-  param:  { module: reportes, action: ver, format: html }
+reportes_create:
+  url:    /reportes/generar
+  param:  { module: reportes, action: create, format: html }
   load:
     - model/base/reporteBaseTableClass.php
-    - model/reporteTableClass.php     
-     
+    - model/reporteTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+
+reportes_genararGrafica:
+  url:    /reportes/grafica
+  param:  { module: reportes, action: grafica, format: html }
+  load:
+    - model/base/reporteBaseTableClass.php
+    - model/reporteTableClass.php   
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    
+reportes_reporte:
+  url:    /reportes/reporte
+  param:  { module: reportes, action: report, format: pdf } 
+  load:
+    - libs/fpdf/fpdf.php 
+    - model/base/historialBaseTableClass.php
+    - model/historialTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - model/base/enfermedadBaseTableClass.php
+    - model/enfermedadTableClass.php
+    - model/base/plagaBaseTableClass.php
+    - model/plagaTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
+    - libs/funciones/calcularGraficaExcel.php
         

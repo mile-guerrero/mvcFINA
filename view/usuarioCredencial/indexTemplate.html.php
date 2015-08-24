@@ -48,7 +48,7 @@
               
               <?php if (session::getInstance()->hasFlash('modalFilters') === true): ?>        
                     <script>
-                      $('#myModalFilters').modal({
+                      $('#myModalFiltres').modal({
                         backdrop: 'static', //dejar avierta la ventana modal
                         keyboard: false//true para quitarla con escape 
                       })

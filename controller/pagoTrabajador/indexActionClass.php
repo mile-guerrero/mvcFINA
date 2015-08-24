@@ -7,6 +7,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+use mvc\validator\pagoTrabajadorValidatorClass as validator;
 
 /**
  * Description of ejemploClass
@@ -23,29 +24,22 @@ class indexActionClass extends controllerClass implements controllerActionInterf
         $filter = request::getInstance()->getPost('filter');
         //Validar datos
         
-        if (request::getInstance()->hasPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::FECHA_INICIAL, true)) and empty(mvc\request\requestClass::getInstance()->getPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::FECHA_INICIAL, true))) === false) {
-
+        
+        if ((isset($filter[pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::CREATED_AT, true) . '_1']) and empty($filter[pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::CREATED_AT, true) . '_1']) === false) and ( isset($filter[pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::CREATED_AT, true) . '_2']) and empty($filter[pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::CREATED_AT, true) . '_2']) === false)) {
           if (request::getInstance()->isMethod('POST')) {
-            $fechaInicio = request::getInstance()->getPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::FECHA_INICIAL, true));
-            $fechaFin = request::getInstance()->getPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::FECHA_FINAL, true));
-           // validator::validateFiltro();
-            
-             if($fechaFin < $fechaInicio){
-                session::getInstance()->setError('La fecha final no puede ser menor a la actual', 'inputFecha');
-                
-            }elseif($fechaFin == $fechaInicio){
-                session::getInstance()->setError('La fecha final es igual a la inicial', 'inputFecha');
-            }
 
-         if (isset($fechaInicio) and $fechaInicio !== null and $fechaInicio !== '' and (isset($fechaFin) and $fechaFin !== null and $fechaFin !== '')) {
-          $where[pagoTrabajadorTableClass::FECHA_INICIAL] = array(
-          date(config::getFormatTimestamp(), strtotime($fechaInicio . ' 00:00:00')),
-          date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59'))
-          );
-        }
-          }//cierre del filtro ubicacion   
+            $fechaInicial = $filter[pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::CREATED_AT, true) . '_1'];
+            $fechaFin = $filter[pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::CREATED_AT, true) . '_2'];
+
+            validator::validateFiltroFecha($fechaInicial, $fechaFin);
+
+            if ((isset($fechaInicial) and $fechaInicial !== null and $fechaInicial !== "") and ( isset($fechaFin) and $fechaFin !== null and $fechaFin !== "" )) {
+              $where[] = '(' . pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::CREATED_AT) . ' BETWEEN ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaInicial . ' 00:00:00')) . "'" . ' AND ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59')) . "'" . ' ) ';
+            }
+          }
         }
         
+       
         if(isset($filter['empresa']) and $filter['empresa'] !== null and $filter['empresa'] !== ""){
         $where[pagoTrabajadorTableClass::EMPRESA_ID] = $filter['empresa'];
         }

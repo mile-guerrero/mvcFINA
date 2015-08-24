@@ -119,7 +119,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       $this->objCC = ciudadTableClass::getAll($fields, false, $orderBy, 'ASC');
       $this->defineView('index', 'trabajador', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
-       routing::getInstance()->redirect('trabajador', 'index');
+      routing::getInstance()->redirect('trabajador', 'index');
 //      echo $exc->getMessage();
 //      echo '<br>';
 //      echo $exc->getTraceAsString();

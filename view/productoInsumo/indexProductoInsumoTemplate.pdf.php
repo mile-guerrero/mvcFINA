@@ -2,9 +2,7 @@
 use mvc\routing\routingClass as routing;
   
   $descripcion = productoInsumoTableClass::DESCRIPCION;
-  $cantidad = productoInsumoTableClass::CANTIDAD;
   $created_at = productoInsumoTableClass::CREATED_AT;
-  $unidadMedida = productoInsumoTableClass::UNIDAD_MEDIDA_ID;
   $tipo = productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID;
 class PDF extends FPDF {
 
@@ -32,25 +30,21 @@ class PDF extends FPDF {
 
 $pdf = new PDF();
 $pdf->AddPage();
-$pdf->SetFont('Arial', 'B', 6);
+$pdf->SetFont('Arial', 'B', 8);
 
 $pdf->Ln();
 $pdf->Ln();
 $pdf->Cell(190, 10, $mensaje, 1, 0, 'C');
 $pdf->Ln();
-$pdf->Cell(40, 10, "DESCRIPCION",1, 0, 'C');
-$pdf->Cell(30, 10, "CANTIDAD",1, 0, 'C');
-$pdf->Cell(30, 10, "UNIDAD MEDIDA",1, 0, 'C');
-$pdf->Cell(40, 10, "TIPO DE INSUMO",1, 0, 'C');
+$pdf->Cell(80, 10, "DESCRIPCION",1, 0, 'C');
+$pdf->Cell(60, 10, "TIPO DE INSUMO",1, 0, 'C');
 $pdf->Cell(50, 10, "FECHA DE CREACCION",1, 0, 'C');
 $pdf->Ln();
 
 foreach ($objPI as $valor) {
-  $pdf->Cell(40, 8, utf8_decode($valor->$descripcion),1);
-  $pdf->Cell(30, 8, utf8_decode($valor->$cantidad),1, 0, 'C');
-  $pdf->Cell(30, 8, unidadMedidaTableClass::getNameUnidadMedida($valor->$unidadMedida),1);
-  $pdf->Cell(40, 8, tipoProductoInsumoTableClass::getNameTipoProductoInsumo($valor->$tipo),1);
-  $pdf->Cell(50, 8, utf8_decode($valor->$created_at),1);
+  $pdf->Cell(80, 8, utf8_decode($valor->$descripcion),1, 0, 'C');
+  $pdf->Cell(60, 8, tipoProductoInsumoTableClass::getNameTipoProductoInsumo($valor->$tipo),1, 0, 'C');
+  $pdf->Cell(50, 8, utf8_decode($valor->$created_at),1, 0, 'C');
   $pdf->Ln();
 }
 

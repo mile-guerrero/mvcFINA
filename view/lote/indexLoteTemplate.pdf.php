@@ -6,7 +6,7 @@ $tamano = loteTableClass::TAMANO;
 $des = loteTableClass::DESCRIPCION;
 $createdAt = loteTableClass::CREATED_AT;
 $fecha = loteTableClass::FECHA_INICIO_SIEMBRA;
-$presupuesto = loteTableClass::PRESUPUESTO;
+$plantas = loteTableClass::NUMERO_PLANTULAS;
 $insumo = loteTableClass::PRODUCTO_INSUMO_ID;
 $updated_at = loteTableClass::UPDATED_AT;
 $nomCiu = loteTableClass::ID_CIUDAD;
@@ -40,30 +40,37 @@ class PDF extends FPDF {
 
 $pdf = new PDF();
 $pdf->AddPage();
-$pdf->SetFont('Arial', 'B', 6);
+$pdf->SetFont('courier', 'B', 12);
 
 $pdf->Ln();
 $pdf->Ln();
 $pdf->Cell(190, 10, $mensaje, 1, 0, 'C');
 $pdf->Ln();
-$pdf->Cell(30, 10, "UBICACION",1, 0, 'C');
+$pdf->SetFont('courier', 'B', 10);
+$pdf->Cell(35, 10, "UBICACION",1, 0, 'C');
 $pdf->Cell(15, 10, utf8_decode("TAMAÑO"),1, 0, 'C');
-$pdf->Cell(30, 10, "DESCRIPCION",1, 0, 'C');
-$pdf->Cell(25, 10, "FECHA SIEMBRA",1, 0, 'C');
+$pdf->Cell(50, 10, "DESCRIPCION",1, 0, 'C');
+$pdf->Cell(35, 10, "FECHA SIEMBRA",1, 0, 'C');
 $pdf->Cell(30, 10, "INSUMO",1, 0, 'C');
-$pdf->Cell(30, 10, "PRESUPUESTO",1, 0, 'C');
-$pdf->Cell(30, 10, "FECHA DE CREACCION",1, 0, 'C');
+$pdf->Cell(25, 10, "# PLANTULAS",1, 0, 'C');
 $pdf->Ln();
 
-
+$pdf->SetFont('courier', 'B', 8);
 foreach ($objLote as $valor){
-  $pdf->Cell(30,8, utf8_decode($valor->$ubi).' '.ciudadTableClass::getNameCiudad($valor->$nomCiu),1);
+  $pdf->Cell(35,8, utf8_decode($valor->$ubi).' '.ciudadTableClass::getNameCiudad($valor->$nomCiu),1);
   $pdf->Cell(15,8, utf8_decode($valor->$tamano),1, 0, 'C');
-  $pdf->Cell(30,8, utf8_decode($valor->$des),1);
-  $pdf->Cell(25,8, utf8_decode($valor->$fecha),1);
-  $pdf->Cell(30,8, productoInsumoTableClass::getNameProductoInsumo($valor->$insumo),1);
-  $pdf->Cell(30,8, utf8_decode($valor->$presupuesto),1);
-  $pdf->Cell(30,8, utf8_decode($valor->$createdAt),1);
+  $pdf->Cell(50,8, utf8_decode($valor->$des),1);
+  $pdf->Cell(35,8, utf8_decode($valor->$fecha),1);
+   
+  if (($valor->$insumo) === null){        
+               $pdf->Cell(30,8, ' ',1);
+             }else{
+                $pdf->Cell(30,8, productoInsumoTableClass::getNameProductoInsumo($valor->$insumo),1);
+             }
+    
+  
+  
+  $pdf->Cell(25,8, utf8_decode($valor->$plantas),1);
   
   $pdf->Ln();  
 }

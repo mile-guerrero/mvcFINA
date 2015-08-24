@@ -105,7 +105,16 @@ namespace mvc\validator {
             }
         }
         
-
+ public static function validateFiltroFecha($fechaInicial,$fechaFin) {
+      
+      if (strtotime($fechaFin) < strtotime($fechaInicial)){
+        session::getInstance()->setError('La fecha final no puede ser menor a la actual', 'inputFecha');
+          session::getInstance()->setFlash('modalFilters', true);
+         
+         // echo "<script> alert(' La fecha final no puede ser menor a la actual');</script>'";
+      }       
+    }
+    
     }
 
 }

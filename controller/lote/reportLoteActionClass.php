@@ -81,8 +81,9 @@ class reportLoteActionClass extends controllerClass implements controllerActionI
           loteTableClass::TAMANO,
           loteTableClass::DESCRIPCION,
           loteTableClass::ID_CIUDAD, 
-          loteTableClass::PRESUPUESTO,
+          loteTableClass::NUMERO_PLANTULAS,
           loteTableClass::FECHA_INICIO_SIEMBRA,
+          loteTableClass::FECHA_RIEGO,
           loteTableClass::PRODUCTO_INSUMO_ID,
           loteTableClass::CREATED_AT,
           loteTableClass::UPDATED_AT

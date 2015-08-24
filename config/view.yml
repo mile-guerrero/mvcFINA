@@ -20,10 +20,25 @@ shfSecurity:
       
       
  #-------------------modulo - reportes----------------------------    
+     
 reportes: 
   index:
     javascript:
-      - confirmar.js  
+      - confirmar.js 
+  create:
+    javascript:
+      - confirmar.js   
+  insert:
+    javascript:
+      - confirmar.js     
+  grafica:
+    javascript:
+      - jqPlot/jquery.jqplot.min.js
+      - jqPlot/plugins/jqplot.canvasTextRenderer.min.js
+      - jqPlot/plugins/jqplot.canvasAxisLabelRenderer.min.js
+      - graficas/grafica1.js
+    stylesheet:
+      - jquery.jqplot.min.css      
 #-------------------modulo - default----------------------------    
 default: 
   index:

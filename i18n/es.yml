@@ -243,6 +243,7 @@ dictionary:
     entrar:               Entrar
     register:             Registrar
     reportes:             Reportes
+    importar pdf:         Importar pdf
   errors:
     00001:                El nombre excede la longitud permitida (:longitud)
     00002:                El apellido excede la longitud permitida (:longitud)
@@ -264,5 +265,4 @@ dictionary:
     00018:                Las password no coinciden 
     00019:                El telefono excede la longitud permitida
     00020:                Ya existe el correo (:email)
-    00021:                El documento excede la longitud permitida (:longitud)
-    
+    00021:                El documento excede la longitud permitida (:longitud)    

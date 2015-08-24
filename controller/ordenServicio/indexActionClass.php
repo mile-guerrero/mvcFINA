@@ -7,6 +7,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+use mvc\validator\ordenServicioValidatorClass as validator;
 
 /**
  * Description of ejemploClass
@@ -21,34 +22,24 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       if (request::getInstance()->hasPost('filter')) {
         $filter = request::getInstance()->getPost('filter');
         //Validar datos
+if ((isset($filter[ordenServicioTableClass::getNameField(ordenServicioTableClass::CREATED_AT, true) . '_1']) and empty($filter[ordenServicioTableClass::getNameField(ordenServicioTableClass::CREATED_AT, true) . '_1']) === false) and ( isset($filter[ordenServicioTableClass::getNameField(ordenServicioTableClass::CREATED_AT, true) . '_2']) and empty($filter[ordenServicioTableClass::getNameField(ordenServicioTableClass::CREATED_AT, true) . '_2']) === false)) {
+          if (request::getInstance()->isMethod('POST')) {
 
-        if (isset($filter['fechaMantenimiento']) and $filter['fechaMantenimiento'] !== null and $filter['fechaMantenimiento'] !== '') {
-          $where[ordenServicioTableClass::FECHA_MANTENIMIENTO] = $filter['fechaMantenimiento'];
+            $fechaInicial = $filter[ordenServicioTableClass::getNameField(ordenServicioTableClass::CREATED_AT, true) . '_1'];
+            $fechaFin = $filter[ordenServicioTableClass::getNameField(ordenServicioTableClass::CREATED_AT, true) . '_2'];
+
+            validator::validateFiltroFecha($fechaInicial, $fechaFin);
+
+            if ((isset($fechaInicial) and $fechaInicial !== null and $fechaInicial !== "") and ( isset($fechaFin) and $fechaFin !== null and $fechaFin !== "" )) {
+              $where[] = '(' . ordenServicioTableClass::getNameField(ordenServicioTableClass::CREATED_AT) . ' BETWEEN ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaInicial . ' 00:00:00')) . "'" . ' AND ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59')) . "'" . ' ) ';
+            }
+          }
         }
+      
         if (isset($filter['trabajador']) and $filter['trabajador'] !== null and $filter['trabajador'] !== '') {
           $where[ordenServicioTableClass::TRABAJADOR_ID] = $filter['trabajador'];
         }
-        if (request::getInstance()->isMethod('POST')) {
-//            echo 'dsasda';
-//            exit();
-            $fechaInicial = request::getInstance()->getPost(ordenServicioTableClass::getNameField(ordenServicioTableClass::CREATED_AT, true). '_1');
-            
-            $fechaFin = request::getInstance()->getPost(ordenServicioTableClass::getNameField(ordenServicioTableClass::CREATED_AT, true). '_2');
-            
-            if($fechaFin < $fechaInicial){
-               session::getInstance()->setError('La fecha final no puede ser menor a la actual', 'inputFecha');
-            }elseif($fechaFin == $fechaInicial){
-                session::getInstance()->setError('La fecha final es igual a la inicial', 'inputFecha');
-            }
-            
-        if ((isset($fechaInicial) and $fechaInicial !== null and $fechaInicial !== "") and ( isset($fechaFin) and $fechaFin !== null and $fechaFin !== "" )) {
-          $where[ordenServicioTableClass::CREATED_AT] = array(
-              date(config::getFormatTimestamp(), strtotime($fechaInicial . ' 00:00:00')),
-              date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59'))
-          );
-        }
-            
-          }
+        
 //      session::getInstance()->setAttribute('ordenServicioIndexFilters', $where);
 //       }else if(session::getInstance()->hasAttribute('ordenServicioIndexFilters')){
 //        $where = session::getInstance()->getAttribute('ordenServicioIndexFilters');
