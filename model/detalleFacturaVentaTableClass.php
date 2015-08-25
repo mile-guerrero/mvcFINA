@@ -10,6 +10,26 @@ use mvc\config\configClass as config;
  */
 class detalleFacturaVentaTableClass extends detalleFacturaVentaBaseTableClass {
 
+  
+  public static function getNameTotalPagar($idFacturar){
+    try {
+      $sql = 'SELECT ' . '  '. 'SUM ('. detalleFacturaVentaTableClass::VALOR_TOTAL  . ') ' .  ' As total'
+             . '  FROM ' . detalleFacturaVentaTableClass::getNameTable() . '  ' 
+             . ' WHERE ' . detalleFacturaVentaTableClass::FACTURA_ID . ' = ' . $idFacturar;
+    
+      $answer = model::getInstance()->prepare($sql);
+            $answer->execute();
+            $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+//       print_r($sql);
+//     exit();
+      return $answer[0]->total;
+      
+      
+    } catch (Exception $exc) {
+      throw $exc;
+    }
+    
+  }
   public static function getTotalPages($lines) {
     try {
       $sql = 'SELECT count(' . detalleFacturaVentaTableClass::ID . ') AS cantidad ' .

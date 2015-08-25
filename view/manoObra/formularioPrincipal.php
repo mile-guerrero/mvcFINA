@@ -128,7 +128,7 @@ caja["<?php echo manoObraTableClass::getNameField(manoObraTableClass::TOTAL, tru
     
             </div>
         <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-           <input  class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputCantidad')) ? request::getInstance()->getPost(manoObraTableClass::getNameField(manoObraTableClass::CANTIDAD_HORA, true)) : ((isset($objManoObra[0])) ? $objManoObra[0]->$cantidad : '') ?>" type="text" name="<?php echo manoObraTableClass::getNameField(manoObraTableClass::CANTIDAD_HORA, true) ?>" placeholder="<?php echo i18n::__('cantidad hora') ?>" onKeyUp="fncTotal()" required>
+           <input  class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputCantidad') or request::getInstance()->hasPost(manoObraTableClass::getNameField(manoObraTableClass::CANTIDAD_HORA, true))) ? request::getInstance()->getPost(manoObraTableClass::getNameField(manoObraTableClass::CANTIDAD_HORA, true)) : ((isset($objManoObra[0])) ? $objManoObra[0]->$cantidad : '') ?>" type="text" name="<?php echo manoObraTableClass::getNameField(manoObraTableClass::CANTIDAD_HORA, true) ?>" placeholder="<?php echo i18n::__('cantidad hora') ?>" onKeyUp="fncTotal()" required>
       
         </div>
       </div>

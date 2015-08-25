@@ -27,6 +27,12 @@ class createActionClass extends controllerClass implements controllerActionInter
         $idProducto = request::getInstance()->getPost(pedidoTableClass::getNameField(pedidoTableClass::PRODUCTO_INSUMO_ID, true));
         
         validator::validateInsert();
+        
+        if($cantidad <= 0){
+                session::getInstance()->setFlash('inputCantidad', true);
+                session::getInstance()->setError('Los valores numericos no pueden ser negativos', 'inputCantidad');
+                routing::getInstance()->forward('pedido', 'insert');
+            }
 
         $data = array(
             pedidoTableClass::EMPRESA_ID => $idEmpresa,

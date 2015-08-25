@@ -2,6 +2,7 @@
 <?php use mvc\routing\routingClass as routing ?>
 <?php use mvc\i18n\i18nClass as i18n ?>
 <?php use mvc\request\requestClass as request ?>
+<?php use mvc\session\sessionClass as session ?>
 <?php $idProveedor = facturaCompraTableClass::PROVEEDOR_ID ?>
 <?php $idProducto = detalleFacturaCompraTableClass::DESCRIPCION ?>
 <?php $descripcion = detalleFacturaCompraTableClass::DESCRIPCION ?>
@@ -10,6 +11,7 @@
 <?php $valor_total = detalleFacturaCompraTableClass::VALOR_TOTAL ?>
 <?php $id = detalleFacturaCompraTableClass::ID ?>
 <?php $idFactura = facturaCompraTableClass::ID ?>
+<?php $idCompra = detalleFacturaCompraTableClass::FACTURA_COMPRA_ID ?>
 <?php $fecha = facturaCompraTableClass::FECHA ?>
 <div class="container container-fluid" id="cuerpo">
   <div class="center-block" id="cuerpo6">
@@ -37,7 +39,7 @@
 <?php foreach ($objFactura as $factura): ?>
                         <tr> 
                            <th><?php echo i18n::__('documento') ?></th>
-                            <th><?php echo i18n::__('fecha') ?></th>
+                            <th><?php echo i18n::__('fechaNormal') ?></th>
                             <th><?php echo i18n::__('proveedor') ?></th>
                         </tr>
                         <tr> 
@@ -110,7 +112,7 @@
                             <th><?php echo i18n::__('des') ?></th> 
                             <th><?php echo i18n::__('cantidad') ?></th> 
                             <th><?php echo i18n::__('valorPorUnidad') ?></th>
-                            <th><?php echo i18n::__('total') ?></th>
+                            <th><?php echo i18n::__('subTotal') ?></th>
                             <th><?php echo i18n::__('acciones') ?></th>
                         </tr>
 <?php foreach ($objDetalleFactura as $key): ?>
@@ -132,7 +134,9 @@
                    <a class="btn btn-primary btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('detalleFacturaCompra', 'edit', array(facturaCompraTableClass::ID => $factura->$idFactura)) ?>"><?php echo i18n::__('modificar') ?></a>
                  </td>
 <?php endforeach; ?>
-                
+                 </tr>
+                 <tr>
+                   <td></td><td></td>  <td><?php echo 'total' ?></td> <td colspan="3"><?php $idFacturar = request::getInstance()->getGet(facturaCompraTableClass::ID) ?><?php echo detalleFacturaCompraTableClass::getNameTotalPagar($idFacturar);  ?></td>
                     </tr>
 
 

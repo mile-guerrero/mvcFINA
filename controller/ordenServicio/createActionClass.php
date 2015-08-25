@@ -29,6 +29,18 @@ class createActionClass extends controllerClass implements controllerActionInter
         $maquina = request::getInstance()->getPost(ordenServicioTableClass::getNameField(ordenServicioTableClass::MAQUINA_ID, true));
 
         validator::validateInsert();
+        
+        if($cantidad <= 0){
+                session::getInstance()->setFlash('inputCantidad', true);
+                session::getInstance()->setError('Los valores numericos no puede ser negativo', 'inputCantidad');
+                routing::getInstance()->forward('ordenServicio', 'insert');
+            }
+        
+        if($valor <= 0){
+                session::getInstance()->setFlash('inputValor', true);
+                session::getInstance()->setError('Los valores numericos no puede ser negativo', 'inputValor');
+                routing::getInstance()->forward('ordenServicio', 'insert');
+            }
 
         $data = array(
             ordenServicioTableClass::FECHA_MANTENIMIENTO => $fecha,

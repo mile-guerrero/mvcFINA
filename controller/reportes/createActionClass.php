@@ -48,7 +48,7 @@ class createActionClass extends controllerClass implements controllerActionInter
 
           if (request::getInstance()->isMethod('POST')) {
             $ubicacion = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::UBICACION, true));
-            $objLote = loteTableClass::getProduccion($ubicacion);
+//            $objLote = loteTableClass::getProduccion($ubicacion);
             session::getInstance()->setAttribute('graficaUbicacion', $ubicacion);
 //          print_r($where);  
 //          echo $ubicacion;

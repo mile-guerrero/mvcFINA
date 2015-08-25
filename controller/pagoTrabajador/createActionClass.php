@@ -42,16 +42,38 @@ class createActionClass extends controllerClass implements controllerActionInter
                 session::getInstance()->setError('La fecha final es igual a la actual', 'selectFechaIni');
                 routing::getInstance()->forward('pagoTrabajador', 'insert');
             }
-//          date_default_timezone_set('America/Bogota');     
-//          echo  date('d-m-Y h:i:s a') . "\n" . '<br>';
-        
-//         if($fecha_fin < $fecha_ini){
-//            echo  'la fecha final no puede ser menor ala actual' .  '<br>';  
-//         } 
-//         if($fecha_fin == $fecha_ini){
-//          echo  'la fecha final es igual ala actual' .  '<br>';
-//         }         
-        
+       
+        if($horas > $valor){
+                session::getInstance()->setFlash('selectFechaIni', true);
+                session::getInstance()->setError('Las deudas a cancelar no pueden ser mayor al sueldo', 'inputValor');
+                routing::getInstance()->forward('pagoTrabajador', 'insert');
+            }
+            
+            if($total <= 0){
+                session::getInstance()->setFlash('selectFechaIni', true);
+                session::getInstance()->setError('El total a pagar no puede ser negativo', 'inputTotal');
+                routing::getInstance()->forward('pagoTrabajador', 'insert');
+            }
+            
+            if($horas <= 0){
+                session::getInstance()->setFlash('inputHorasPerdidas', true);
+                session::getInstance()->setError('Los valores numericos no puede ser negativo', 'inputHorasPerdidas');
+                routing::getInstance()->forward('pagoTrabajador', 'insert');
+            }
+            
+            if($valorHoras <= 0){
+                session::getInstance()->setFlash('inputHoras', true);
+                session::getInstance()->setError('Los valores numericos no puede ser negativo', 'inputHoras');
+                routing::getInstance()->forward('pagoTrabajador', 'insert');
+            }
+            
+            if($cantidad <= 0){
+                session::getInstance()->setFlash('inputCantidad', true);
+                session::getInstance()->setError('Los valores numericos no puede ser negativo', 'inputCantidad');
+                routing::getInstance()->forward('pagoTrabajador', 'insert');
+            }
+            
+            
         $data = array(
           pagoTrabajadorTableClass::FECHA_INICIAL => $fecha_ini,
           pagoTrabajadorTableClass::FECHA_FINAL => $fecha_fin,

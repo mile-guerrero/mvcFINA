@@ -101,11 +101,13 @@
                 </td>
                 <td>
                   <?php echo proveedorTableClass::getNameProveedor($key->$idProveedor) ?>
+                  
                 </td>
               <td>
                 <a class="btn btn-success btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('detalleFacturaCompra', 'index', array(facturaCompraTableClass::ID => $key->$id)) ?> "><?php echo i18n::__('detalle')?></a>
               </td>
             </tr>
+           
 <?php endforeach; ?>
         </tbody>
       </table>

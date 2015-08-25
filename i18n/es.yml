@@ -35,11 +35,12 @@ dictionary:
     fCredencial:          Buscar por credencial
     #-------Factura venta-----------
     factura:              Factura venta
-    fecha:                Fecha
+    fechaNormal:          Fecha
     nuevaFactura:         Nueva factura venta
     detalleFactura:       Detalle factura venta
     nuevoDetalleFactura:  Nuevo detalle de factura venta
     editDetalleFactura:   Editar detalle de factura venta
+    subTotal:             Subtotal
     #-------Factura compra-----------
     facturaCompra:        Factura compra
     nuevaFacturaCompra:   Nueva factura compra
@@ -158,6 +159,7 @@ dictionary:
     ubicacion:            Ubicación
     fecha riego:          Fecha de riego
     #-------Orden de servicio-----------
+    valor a pagar por trabajo realizado: Valor a pagar por trabajo realizado
     editar orden:         Editar Orden de Servicio
     orden:                Orden de Servicio
     nuevo orden:          Nueva Orden de Servicio
@@ -212,6 +214,7 @@ dictionary:
     solicitudInsumo:      Solicitud Insumo
     idTipo:               Tipo Id
     atras:                Pagina anterior
+    cantidad por kilo:    Cantidad por kilo
     #-------Eliminar-----------
     confirmar eliminar:   Confirmar Eliminar
     configEliminar:       Confirmar Eliminación

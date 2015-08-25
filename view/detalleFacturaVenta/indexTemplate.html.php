@@ -39,7 +39,7 @@
 <?php foreach ($objFactura as $factura): ?>
                         <tr> 
                             <th><?php echo i18n::__('documento') ?></th>  
-                            <th><?php echo i18n::__('fecha') ?></th>
+                            <th><?php echo i18n::__('fechaNormal') ?></th>
                             <th><?php echo i18n::__('cliente') ?></th>
                         </tr>
                         <tr> 
@@ -150,7 +150,7 @@
                             <th><?php echo i18n::__('des') ?></th> 
                             <th><?php echo i18n::__('cantidad') ?></th> 
                             <th><?php echo i18n::__('valorPorUnidad') ?></th>
-                            <th><?php echo i18n::__('total') ?></th>
+                            <th><?php echo i18n::__('subTotal') ?></th>
                             <th><?php echo i18n::__('acciones') ?></th>
                         </tr>
 <?php foreach ($objDetalleFactura as $key): ?>
@@ -171,8 +171,11 @@
                    <a class="btn btn-primary btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('detalleFacturaVenta', 'edit', array(facturaVentaTableClass::ID => $factura->$idFactura)) ?>"><?php echo i18n::__('modificar') ?></a>
                  </td>
 <?php endforeach; ?>
-                
+                </tr>
+                 <tr>
+                   <td></td><td></td>  <td><?php echo 'total' ?></td> <td colspan="3"><?php $idFacturar = request::getInstance()->getGet(facturaventaTableClass::ID) ?><?php echo detalleFacturaVentaTableClass::getNameTotalPagar($idFacturar);  ?></td>
                     </tr>
+
 
 
 

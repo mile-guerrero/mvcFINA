@@ -36,12 +36,74 @@ class updateActionClass extends controllerClass implements controllerActionInter
         if($fecha_fin < $fecha_ini){
                 session::getInstance()->setFlash('selectFechaIni', true);
                 session::getInstance()->setError('La fecha final no puede ser menor a la actual', 'selectFechaIni');
-                routing::getInstance()->forward('pagoTrabajador', 'insert');
+               request::getInstance()->setMethod('GET');
+                request::getInstance()->addParamGet(array(\pagoTrabajadorTableClass::ID => request::getInstance()->getPost(\pagoTrabajadorTableClass::getNameField(\pagoTrabajadorTableClass::ID, true))));
+                routing::getInstance()->forward('pagoTrabajador', 'edit');
             }elseif($fecha_fin == $fecha_ini){
                 session::getInstance()->setFlash('selectFechaIni', true);
                 session::getInstance()->setError('La fecha final es igual a la actual', 'selectFechaIni');
-                routing::getInstance()->forward('pagoTrabajador', 'insert');
+                request::getInstance()->setMethod('GET');
+                request::getInstance()->addParamGet(array(\pagoTrabajadorTableClass::ID => request::getInstance()->getPost(\pagoTrabajadorTableClass::getNameField(\pagoTrabajadorTableClass::ID, true))));
+                routing::getInstance()->forward('pagoTrabajador', 'edit');
             }
+             if($horas > $valor){
+                session::getInstance()->setFlash('selectFechaIni', true);
+                session::getInstance()->setError('Las deudas a cancelar no pueden ser mayor al sueldo', 'inputValor');
+               request::getInstance()->setMethod('GET');
+                request::getInstance()->addParamGet(array(\pagoTrabajadorTableClass::ID => request::getInstance()->getPost(\pagoTrabajadorTableClass::getNameField(\pagoTrabajadorTableClass::ID, true))));
+                routing::getInstance()->forward('pagoTrabajador', 'edit');
+            }
+            
+            if($total <= 0){
+                session::getInstance()->setFlash('selectFechaIni', true);
+                session::getInstance()->setError('El total a pagar no puede ser negativo', 'inputTotal');
+                request::getInstance()->setMethod('GET');
+                request::getInstance()->addParamGet(array(\pagoTrabajadorTableClass::ID => request::getInstance()->getPost(\pagoTrabajadorTableClass::getNameField(\pagoTrabajadorTableClass::ID, true))));
+                routing::getInstance()->forward('pagoTrabajador', 'edit');
+            }
+            
+            if($total <= 0){
+                session::getInstance()->setFlash('selectFechaIni', true);
+                session::getInstance()->setError('El total a pagar no puede ser negativo', 'inputTotal');
+                request::getInstance()->setMethod('GET');
+                request::getInstance()->addParamGet(array(\pagoTrabajadorTableClass::ID => request::getInstance()->getPost(\pagoTrabajadorTableClass::getNameField(\pagoTrabajadorTableClass::ID, true))));
+                routing::getInstance()->forward('pagoTrabajador', 'edit');
+            }
+            
+            if($total <= 0){
+                session::getInstance()->setFlash('selectFechaIni', true);
+                session::getInstance()->setError('El total a pagar no puede ser negativo', 'inputTotal');
+                request::getInstance()->setMethod('GET');
+                request::getInstance()->addParamGet(array(\pagoTrabajadorTableClass::ID => request::getInstance()->getPost(\pagoTrabajadorTableClass::getNameField(\pagoTrabajadorTableClass::ID, true))));
+                routing::getInstance()->forward('pagoTrabajador', 'edit');
+            }
+            
+            if($horas <= 0){
+                session::getInstance()->setFlash('inputHorasPerdidas', true);
+                session::getInstance()->setError('Los valores numericos no puede ser negativo', 'inputHorasPerdidas');
+                request::getInstance()->setMethod('GET');
+                request::getInstance()->addParamGet(array(\pagoTrabajadorTableClass::ID => request::getInstance()->getPost(\pagoTrabajadorTableClass::getNameField(\pagoTrabajadorTableClass::ID, true))));
+                routing::getInstance()->forward('pagoTrabajador', 'edit');
+            }
+            
+            if($valorHoras <= 0){
+                session::getInstance()->setFlash('inputHoras', true);
+                session::getInstance()->setError('Los valores numericos no puede ser negativo', 'inputHoras');
+                request::getInstance()->setMethod('GET');
+                request::getInstance()->addParamGet(array(\pagoTrabajadorTableClass::ID => request::getInstance()->getPost(\pagoTrabajadorTableClass::getNameField(\pagoTrabajadorTableClass::ID, true))));
+                routing::getInstance()->forward('pagoTrabajador', 'edit');
+            }
+            
+            if($cantidad <= 0){
+                session::getInstance()->setFlash('inputCantidad', true);
+                session::getInstance()->setError('Los valores numericos no puede ser negativo', 'inputCantidad');
+                request::getInstance()->setMethod('GET');
+                request::getInstance()->addParamGet(array(\pagoTrabajadorTableClass::ID => request::getInstance()->getPost(\pagoTrabajadorTableClass::getNameField(\pagoTrabajadorTableClass::ID, true))));
+                routing::getInstance()->forward('pagoTrabajador', 'edit');
+            }
+            
+            
+            
         $ids = array(
             pagoTrabajadorTableClass::ID => $id
         );

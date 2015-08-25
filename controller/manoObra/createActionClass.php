@@ -30,6 +30,24 @@ class createActionClass extends controllerClass implements controllerActionInter
 
         //$this->validate($cantidad, $valor);
         validator::validateInsert();
+        
+        if($total <= 0){
+                session::getInstance()->setFlash('inputTotal', true);
+                session::getInstance()->setError('Los valores numericos no pueden ser negativos', 'inputTotal');
+                routing::getInstance()->forward('manoObra', 'insert');
+            }
+            
+        if($cantidad <= 0){
+                session::getInstance()->setFlash('inputCantidad', true);
+                session::getInstance()->setError('Los valores numericos no pueden ser negativos', 'inputCantidad');
+                routing::getInstance()->forward('manoObra', 'insert');
+            }
+            
+        if($valor <= 0){
+                session::getInstance()->setFlash('inputValor', true);
+                session::getInstance()->setError('Los valores numericos no pueden ser negativos', 'inputValor');
+                routing::getInstance()->forward('manoObra', 'insert');
+            }
 
         $data = array(
             manoObraTableClass::CANTIDAD_HORA => $cantidad,

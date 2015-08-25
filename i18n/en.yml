@@ -35,11 +35,12 @@ dictionary:
     fCredencial:          Search pro credentials
     #-------Factura venta-----------
     factura:              Bill sale
-    fecha:                Date
+    fechaNormal:          Fecha
     nuevaFactura:         New bill sale
     detalleFactura:       Invoice detail sale
     nuevoDetalleFactura:  New details of bill sale
     editDetalleFactura:   Edit detail of bill sale
+    subTotal:             Subtotal
     #-------Factura compra-----------
     facturaCompra:        Purchase invoice
     nuevaFacturaCompra:   New Invoice purchase
@@ -158,6 +159,7 @@ dictionary:
     ubicacion:            Location
     fecha riego:          Date of riego
     #-------Orden de servicio-----------
+    valor a pagar por trabajo realizado: Valor a pagar por trabajo realizado
     editar orden:         Edit Service Order
     orden:                Service Order
     nuevo orden:          New Service Order
@@ -200,6 +202,7 @@ dictionary:
     selectProducto:       Select Product
     selectLote:           Select the Lot
     seleccione insumo:    Select the input
+    selectEnfermedad:     Seleccione la enfermedad
     selectTPI:            Select the type of input
     selectCiudad:         Select city
     selectTipoUso:        Select the type of machine use
@@ -211,6 +214,7 @@ dictionary:
     solicitudInsumo:      Request Input
     idTipo:               Type Id
     atras:                Previous page
+    cantidad por kilo:    Cantidad por kilo
     #-------Eliminar-----------
     confirmar eliminar:   Confirm Delete
     configEliminar:       Confirm Delete

@@ -29,6 +29,12 @@ class createActionClass extends controllerClass implements controllerActionInter
 //          throw new PDOException(i18n::__(00001, null, 'errors', array(':longitud' => credencialTableClass::NOMBRE_LENGTH)), 00001);
 //        }
                 validator::validateInsert();
+                
+                if($cantidad <= 0){
+                session::getInstance()->setFlash('inputCantidad', true);
+                session::getInstance()->setError('Los valores numericos no puede ser negativo', 'inputCantidad');
+                routing::getInstance()->forward('solicitudInsumo', 'insert');
+            }
 
         $data = array(
             solicitudInsumoTableClass::FECHA_HORA => $fecha,

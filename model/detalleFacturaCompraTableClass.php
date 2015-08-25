@@ -54,5 +54,25 @@ class detalleFacturaCompraTableClass extends detalleFacturaCompraBaseTableClass 
     }
     
   }
+  
+   public static function getNameTotalPagar($idFacturar){
+    try {
+      $sql = 'SELECT ' . '  '. 'SUM ('. detalleFacturaCompraTableClass::VALOR_TOTAL  . ') ' .  ' As total'
+             . '  FROM ' . detalleFacturaCompraTableClass::getNameTable() . '  ' 
+             . ' WHERE ' . detalleFacturaCompraTableClass::FACTURA_COMPRA_ID . ' = ' . $idFacturar;
+    
+      $answer = model::getInstance()->prepare($sql);
+            $answer->execute();
+            $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+//       print_r($sql);
+//     exit();
+      return $answer[0]->total;
+      
+      
+    } catch (Exception $exc) {
+      throw $exc;
+    }
+    
+  }
 
 }

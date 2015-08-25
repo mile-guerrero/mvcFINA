@@ -31,6 +31,22 @@ class updateActionClass extends controllerClass implements controllerActionInter
         
         validator::validateUpdate();
         
+        if($cantidad <= 0){
+                session::getInstance()->setFlash('inputCantidad', true);
+                session::getInstance()->setError('Los valores numericos no pueden ser negativos', 'inputCantidad');
+                request::getInstance()->setMethod('GET');
+                request::getInstance()->addParamGet(array(\ordenServicioTableClass::ID => request::getInstance()->getPost(\ordenServicioTableClass::getNameField(\ordenServicioTableClass::ID, true))));
+                routing::getInstance()->forward('ordenServicio', 'edit');
+            }
+            
+        if($valor <= 0){
+                session::getInstance()->setFlash('inputValor', true);
+                session::getInstance()->setError('Los valores numericos no pueden ser negativos', 'inputValor');
+                request::getInstance()->setMethod('GET');
+                request::getInstance()->addParamGet(array(\ordenServicioTableClass::ID => request::getInstance()->getPost(\ordenServicioTableClass::getNameField(\ordenServicioTableClass::ID, true))));
+                routing::getInstance()->forward('ordenServicio', 'edit');
+            }
+        
         $ids = array(
             ordenServicioTableClass::ID => $id
         );

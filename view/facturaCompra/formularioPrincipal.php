@@ -29,7 +29,7 @@
         <?php endif ?>
     
      <div class="form-group">
-       <label for="<?php echo facturaCompraTableClass::getNameField(facturaCompraTableClass::FECHA, true) ?>" class="col-sm-2"><?php echo i18n::__('fecha') ?>:</label>     
+       <label for="<?php echo facturaCompraTableClass::getNameField(facturaCompraTableClass::FECHA, true) ?>" class="col-sm-2"><?php echo i18n::__('fechaNormal') ?>:</label>     
       <div class="col-sm-10">
    <input  class="form-control" value="<?php echo (session::getInstance()->hasFlash('fechaPagoFin') or request::getInstance()->hasPost(facturaCompraTableClass::getNameField(facturaCompraTableClass::FECHA, true))) ? request::getInstance()->getPost(facturaCompraTableClass::getNameField(facturaCompraTableClass::FECHA, true)) : ((isset($objFactura) == true) ? date('Y-m-d\TH:i:s', strtotime($objFactura[0]->$fecha)) : date('Y-m-d\TH:i:s')) ?>" type="datetime-local" name="<?php echo facturaCompraTableClass::getNameField(facturaCompraTableClass::FECHA, true) ?>"required readonly>
       </div>
