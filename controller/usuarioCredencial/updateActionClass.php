@@ -8,6 +8,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+use mvc\validator\usuarioCredencialValidatorClass as validator;
 use hook\log\logHookClass as log;
 
 /**
@@ -24,6 +25,8 @@ class updateActionClass extends controllerClass implements controllerActionInter
         $usuario = request::getInstance()->getPost(usuarioCredencialTableClass::getNameField(usuarioCredencialTableClass::USUARIO_ID, true));
         $credencial = request::getInstance()->getPost(usuarioCredencialTableClass::getNameField(usuarioCredencialTableClass::CREDENCIAL_ID, true));
 
+        validator::validateEdit();
+        
         $ids = array(
             usuarioCredencialTableClass::ID => $id
         );

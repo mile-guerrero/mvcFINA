@@ -60,7 +60,7 @@ class updateActionClass extends controllerClass implements controllerActionInter
             usuarioTableClass::NOMBRE_IMAGEN => $file['name'],
             usuarioTableClass::EXTENCION_IMAGEN => $ext,
             usuarioTableClass::HASH_IMAGEN => $hashImagen,
-            usuarioTableClass::PASSWORD => $password
+            usuarioTableClass::PASSWORD => md5($password)
         );
         usuarioTableClass::update($ids, $data);
         session::getInstance()->setSuccess('La actualizacion fue correcta');

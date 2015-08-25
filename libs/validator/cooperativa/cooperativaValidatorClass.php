@@ -31,7 +31,11 @@ namespace mvc\validator {
         $flag = true;
         session::getInstance()->setFlash('inputNombre', true);
         session::getInstance()->setError('El nombre digitado es mayor en cantidad de caracteres a lo permitido', 'inputNombre');
-      }
+      }else if (self::isUnique(\cooperativaTableClass::NOMBRE, true, array(\cooperativaTableClass::NOMBRE => request::getInstance()->getPost(\cooperativaTableClass::getNameField(\cooperativaTableClass::NOMBRE, true))), \cooperativaTableClass::getNameTable())) {
+                $flag = true;
+                session::getInstance()->setFlash('inputNombre', true);
+                session::getInstance()->setError('El nombre digitado ya existe', 'inputNombre');
+            }
 
    //-------------------------------campo descripcion-----------------------------
           //----campo nulo----

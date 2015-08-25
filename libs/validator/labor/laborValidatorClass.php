@@ -28,11 +28,17 @@ namespace mvc\validator {
         session::getInstance()->setFlash('inputDescripcion', true);
         session::getInstance()->setError('La descripcion es requerido', 'inputDescripcion');
       }  //----sobre pasar los caracteres----
-        else if(strlen(request::getInstance()->getPost(\laborTableClass::getNameField(\laborTableClass::DESCRIPCION, true))) > \laborTableClass::DESCRIPCION_LENGTH) {
+        
+      else if(strlen(request::getInstance()->getPost(\laborTableClass::getNameField(\laborTableClass::DESCRIPCION, true))) > \laborTableClass::DESCRIPCION_LENGTH) {
         $flag = true;
         session::getInstance()->setFlash('inputDescripcion', true);
         session::getInstance()->setError('la descripcion digitada es mayor en cantidad de caracteres a lo permitido', 'inputDescripcion');
       }
+      else if (self::isUnique(\laborTableClass::DESCRIPCION, false, array(\laborTableClass::DESCRIPCION => request::getInstance()->getPost(\laborTableClass::getNameField(\laborTableClass::DESCRIPCION, true))), \laborTableClass::getNameTable())) {
+                $flag = true;
+                session::getInstance()->setFlash('inputDescripcion', true);
+                session::getInstance()->setError('La descripcion digitada ya existe', 'inputDescripcion');
+            } 
    
     //-------------------------------campo valor-----------------------------
           //----campo nulo----

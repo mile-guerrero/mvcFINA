@@ -1,6 +1,7 @@
 <?php use mvc\routing\routingClass as routing ?>
 <?php use mvc\i18n\i18nClass as i18n ?>
 <?php use mvc\view\viewClass as view?>
+<?php use mvc\session\sessionClass as session ?>
 
 <?php $idCredencial = credencialTableClass::ID ?>
 <div class="container container-fluid" id="cuerpo">
@@ -11,7 +12,12 @@
       <input  name="<?php echo credencialTableClass::getNameField(credencialTableClass::ID, true) ?>" value="<?php echo $objCredencial[0]->$idCredencial ?>" type="hidden">
     <?php endif ?>
       <br><br><br><br><br><br><br><br>
-  <?php view::includeHandlerMessage()?>
+      <?php if(session::getInstance()->hasError('inputNombre')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert" id="error">
+    <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputNombre') ?>
+    </div>
+    <?php endif ?>
     <div class="form-group">
       <label for="<?php echo credencialTableClass::getNameField(credencialTableClass::NOMBRE, true) ?>" class="col-sm-2"> <?php echo i18n::__('nom') ?>:</label>     
       <div class="col-sm-10">      

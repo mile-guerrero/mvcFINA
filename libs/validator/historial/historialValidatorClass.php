@@ -22,6 +22,18 @@ namespace mvc\validator {
         session::getInstance()->setError('El insumo del historial es requerido', 'inputInsumo');
         }
         
+        if (self::notBlank(request::getInstance()->getPost(\historialTableClass::getNameField(\historialTableClass::ENFERMEDAD_ID, true)))) {
+        $flag = true;
+        session::getInstance()->setFlash('inputLote', true);
+        session::getInstance()->setError('La lote del historial es requerido', 'inputLote');
+        }
+        
+        if (self::notBlank(request::getInstance()->getPost(\historialTableClass::getNameField(\historialTableClass::ENFERMEDAD_ID, true)))) {
+        $flag = true;
+        session::getInstance()->setFlash('inputPlaga', true);
+        session::getInstance()->setError('La plaga del historial es requerido', 'inputPlaga');
+        }
+        
        //-------------------------------campo enfermedad-----------------------------
           //----campo nulo----
       if (self::notBlank(request::getInstance()->getPost(\historialTableClass::getNameField(\historialTableClass::ENFERMEDAD_ID, true)))) {

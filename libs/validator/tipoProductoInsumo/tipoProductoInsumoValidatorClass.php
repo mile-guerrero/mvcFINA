@@ -27,7 +27,12 @@ namespace mvc\validator {
         session::getInstance()->setFlash('inputDescripcion', true);
         session::getInstance()->setError('La descripcion del tipo insumo es requerido', 'inputDescripcion');
       } //----sobre pasar los caracteres----
-        else if(strlen(request::getInstance()->getPost(\tipoProductoInsumoTableClass::getNameField(\tipoProductoInsumoTableClass::DESCRIPCION, true))) > \tipoProductoInsumoTableClass::DESCRIPCION_LENGTH) {
+      else if (self::isUnique(\tipoProductoInsumoTableClass::DESCRIPCION, true, array(\tipoProductoInsumoTableClass::DESCRIPCION => request::getInstance()->getPost(\tipoProductoInsumoTableClass::getNameField(\tipoProductoInsumoTableClass::DESCRIPCION, true))), \tipoProductoInsumoTableClass::getNameTable())) {
+                $flag = true;
+                session::getInstance()->setFlash('inputDescripcion', true);
+                session::getInstance()->setError('La descripcion digitada ya existe', 'inputDescripcion');
+      }  
+      else if(strlen(request::getInstance()->getPost(\tipoProductoInsumoTableClass::getNameField(\tipoProductoInsumoTableClass::DESCRIPCION, true))) > \tipoProductoInsumoTableClass::DESCRIPCION_LENGTH) {
         $flag = true;
         session::getInstance()->setFlash('inputDescripcion', true);
         session::getInstance()->setError('La descripcion digitada es mayor en cantidad de caracteres a lo permitido', 'inputDescripcion');

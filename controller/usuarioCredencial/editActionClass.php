@@ -18,14 +18,14 @@ class editActionClass extends controllerClass implements controllerActionInterfa
   public function execute() {
     try {
    
-      if (request::getInstance()->hasRequest(usuarioCredencialTableClass::ID)) {
+      if (request::getInstance()->hasGet(usuarioCredencialTableClass::ID)) {
         $fields = array(
             usuarioCredencialTableClass::ID,
             usuarioCredencialTableClass::USUARIO_ID,          
             usuarioCredencialTableClass::CREDENCIAL_ID
         );
         $where = array(
-            usuarioCredencialTableClass::ID => request::getInstance()->getRequest(usuarioCredencialTableClass::ID)
+            usuarioCredencialTableClass::ID => request::getInstance()->getGet(usuarioCredencialTableClass::ID)
         );
         $this->objUC = usuarioCredencialTableClass::getAll($fields,false, null, null, null, null, $where);
        $fields = array(

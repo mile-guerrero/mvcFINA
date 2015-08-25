@@ -7,6 +7,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
+use mvc\validator\credencialValidatorClass as validator;
 use hook\log\logHookClass as log;
 
 /**
@@ -29,7 +30,7 @@ class createActionClass extends controllerClass implements controllerActionInter
 
         $nombre = request::getInstance()->getPost(credencialTableClass::getNameField(credencialTableClass::NOMBRE, true));
         
-      $this->validate($nombre);
+      validator::validateInsert();
      
         
         $data = array(
@@ -53,32 +54,5 @@ class createActionClass extends controllerClass implements controllerActionInter
       echo $exc->getTraceAsString();
     }//cierre del catch
   }//cierre de la funcion execute 
-  public function validate($nombre) {
-     $flag = false;
-    
-    if (strlen($nombre) > credencialTableClass::NOMBRE_LENGTH) {
-      session::getInstance()->setError(i18n::__(00001, null, 'errors', array(':longitud' => credencialTableClass::NOMBRE_LENGTH)), 00001);
-      $flag = true;
-      session::getInstance()->setFlash(credencialTableClass::getNameField(credencialTableClass::NOMBRE, true),true);
-      }
-
-    if (strlen($nombre) == null) {
-      session::getInstance()->setError(i18n::__(00009, null, 'errors', array(':campo vacio' => credencialTableClass::NOMBRE)), 00009);
-      $flag = true;
-      session::getInstance()->setFlash(credencialTableClass::getNameField(credencialTableClass::NOMBRE, true), true);
-     }
-     
-    
-    if (!preg_match("/^[a-z]+$/i", $nombre)){         
-      session::getInstance()->setError(i18n::__(00012, null, 'errors', array(':letras' => credencialTableClass::NOMBRE)), 00012);
-      $flag = true;
-      session::getInstance()->setFlash(credencialTableClass::getNameField(credencialTableClass::NOMBRE, true), true);
-      }
-      
-      if ($flag === true){
-    request::getInstance()->setMethod('GET');
-    routing::getInstance()->forward('credencial', 'insert');
-  }
-    
-  }
+  
 }//cierre de la clase

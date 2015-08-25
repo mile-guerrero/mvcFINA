@@ -30,7 +30,11 @@ namespace mvc\validator {
         $flag = true;
         session::getInstance()->setFlash('inputNombre', true);
         session::getInstance()->setError('El nombre digitado es mayor en cantidad de caracteres a lo permitido', 'inputNombre');
-      }
+      } else if (self::isUnique(\empresaTableClass::NOMBRE, true, array(\empresaTableClass::NOMBRE => request::getInstance()->getPost(\empresaTableClass::getNameField(\empresaTableClass::NOMBRE, true))), \empresaTableClass::getNameTable())) {
+                $flag = true;
+                session::getInstance()->setFlash('inputNombre', true);
+                session::getInstance()->setError('El nombre digitado ya existe', 'inputNombre');
+            }
   
       
     //-------------------------------campo direccion-----------------------------

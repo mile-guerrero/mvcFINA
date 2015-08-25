@@ -32,7 +32,11 @@ namespace mvc\validator {
         $flag = true;
         session::getInstance()->setFlash('inputDescripcion', true);
         session::getInstance()->setError('La descripcion del insumo es requerido', 'inputDescripcion');
-      } //----sobre pasar los caracteres----
+      } else if (self::isUnique(\productoInsumoTableClass::DESCRIPCION, true, array(\productoInsumoTableClass::DESCRIPCION => request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::DESCRIPCION, true))), \productoInsumoTableClass::getNameTable())) {
+                $flag = true;
+                session::getInstance()->setFlash('inputDescripcion', true);
+                session::getInstance()->setError('La descripcion digitada ya existe', 'inputDescripcion');
+            } //----sobre pasar los caracteres----
       else if (strlen(request::getInstance()->getPost(\productoInsumoTableClass::getNameField(\productoInsumoTableClass::DESCRIPCION, true))) > \productoInsumoTableClass::DESCRIPCION_LENGTH) {
         $flag = true;
         session::getInstance()->setFlash('inputDescripcion', true);

@@ -12,6 +12,20 @@ namespace mvc\validator {
    * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
    */
   class credencialValidatorClass extends validatorClass {
+    
+    public static function validateInsert() {
+
+     $flag = false;
+     if (self::isUnique(\credencialTableClass::NOMBRE, true, array(\credencialTableClass::NOMBRE => request::getInstance()->getPost(\credencialTableClass::getNameField(\credencialTableClass::NOMBRE, true))), \credencialTableClass::getNameTable())) {
+                $flag = true;
+                session::getInstance()->setFlash('inputNombre', true);
+                session::getInstance()->setError('El nombre digitado ya existe', 'inputNombre');
+            }
+    if ($flag === true) {
+        //request::getInstance()->setMethod('GET');
+        routing::getInstance()->forward('credencial', 'insert');
+      }
+    }
     public static function validateFiltroFecha($fechaInicial,$fechaFin) {
       
       if (strtotime($fechaFin) < strtotime($fechaInicial)){
@@ -23,6 +37,7 @@ namespace mvc\validator {
     }
     
      public static function validateFiltroNombre($nombre) {
+       $flag = false;
        $soloLetras = "/^[a-z]+$/i";
       $soloTelefono = "/^(\d{3,3}\-\d{3,3}\-\d{4,4})|^(\+\d\-\d{3,3}\-\d{4,4})/";
       $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
