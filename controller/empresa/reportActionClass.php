@@ -44,7 +44,7 @@ class reportActionClass extends controllerClass implements controllerActionInter
         }
       }
        
-      $this->mensaje = 'Informacion de Empresa';
+      $this->mensaje = 'Informacion de la Empresa';
       $fields = array(
           empresaTableClass::ID,
           empresaTableClass::NOMBRE,

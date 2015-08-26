@@ -45,7 +45,7 @@ class reportActionClass extends controllerClass implements controllerActionInter
             );
       }//cierre del filtro fechaIni y fechaFin      
       }//cierre del POST del reporte
-      $this->mensaje = 'Informacion de Usuaros';
+      $this->mensaje = 'Informacion del Usuario';
       $fields = array(
           usuarioTableClass::ID,
           usuarioTableClass::USUARIO,

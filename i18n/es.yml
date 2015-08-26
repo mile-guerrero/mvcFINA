@@ -5,6 +5,7 @@ dictionary:
     introduccion:         El Sistema cuenta con la funcionabilidad de transferir y procesar datos e informes de manera controlada tomando como referencia los procesos y producción del sector agropecuario, teniendo la gran capacidad de guardar información siendo esta oculta y manejada por los administradores para su control y cambio de registros e inventarios, para mayor seguridad los empleados solo tendrán el campo de consultoría y reportes de tareas para completar la funcionabilidad del sistema de información
     mas:                  Mas
     descargar:            Descargar archivo
+    fecha:                Fecha
     #-------Usuario-----------
     user:                 Usuario
     usu_id:               Usuario

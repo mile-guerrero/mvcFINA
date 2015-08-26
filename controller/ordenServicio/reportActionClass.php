@@ -35,7 +35,7 @@ class reportActionClass extends controllerClass implements controllerActionInter
           );
         }
       }
-      $this->mensaje = 'Informacion de las Ordenes de Servicio';
+      $this->mensaje = 'Informacion de la Orden de Servicio';
       $fields = array(
           ordenServicioTableClass::ID,
           ordenServicioTableClass::FECHA_MANTENIMIENTO,

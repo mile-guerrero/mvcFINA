@@ -11,12 +11,16 @@ class PDF extends FPDF {
 
   function Header() {
     
-    $this->Image(routing::getInstance()->getUrlImg('portada4.png'), 0, 0, 210);
-    $this->SetFont('Arial', 'B', '15');
-    $this->Ln(10);
-   # $this->Cell(80);
-   # $this->Cell(30, 10, 'Cliente', 1, 0, 'C');
-    $this->Ln(30);
+     $this->Image(routing::getInstance()->getUrlImg('logoColmenar.png'), 10, 22, 80);
+    $this->SetFont('courier', 'B', '25');
+//    $this->SetDrawColor(0,80,180);
+    $this->SetFillColor(255,204,51); 
+//    $this->SetTextColor(220,50,50);
+//    $this->Cell(10);
+//    $this->SetFillColor(200,220,255);
+    
+    $this->Cell( 0, 10, 'Enfermedad' , 2, 10,'C', true);
+    $this->Ln(45);
     
   }
  
@@ -37,27 +41,29 @@ $pdf->SetFont('courier', 'B', 10);
 
 $pdf->Ln();
 $pdf->Ln();
-$pdf->Cell(190, 10, $mensaje, 1, 0, 'C');
+$pdf->SetFillColor(255,204,51);//color
+$pdf->Cell(190, 10, $mensaje, 1, 0, 'C', true);
 $pdf->Ln();
 $pdf->SetFont('courier', 'B', 8);
 
 foreach ($objEnfermedad as $valor) {  
-  $pdf->Cell(50, 10, "NOMBRE",1, 0, 'C');
+  $pdf->Cell(50, 10, "Nombre",1, 0, 'C');
   $pdf->Cell(140, 10, utf8_decode($valor->$nombre),1);
   $pdf->Ln();  
 
 
-$pdf->Cell(50, 10, "FECHA DE CREACCION",1, 0, 'C');
+$pdf->Cell(50, 10, "Fecha de cracion",1, 0, 'C');
 
-   $pdf->Cell(140, 10, utf8_decode($valor->$createdAt),1);
+  $pdf->Cell(140, 10, utf8_decode($valor->$createdAt),1);
   $pdf->Ln();  
 
-  $pdf->Cell(190, 50,"DESCRIPCION" . ' '. utf8_decode($valor->$descripcion),1);
+  $pdf->Cell(190, 50,"Descripcion:" . ' '. utf8_decode($valor->$descripcion),1);
   $pdf->Ln();  
 
-   $pdf->Cell(190, 50,"TRATAMIENTO" . ' ' . utf8_decode($valor->$tratamiento),1);
+   $pdf->Cell(190, 50,"Tratamiento:" . ' ' . utf8_decode($valor->$tratamiento),1);
   $pdf->Ln();  
-  $pdf->Ln();$pdf->Ln();
+  $pdf->Ln();
+  $pdf->Ln();
 }
 $pdf->Ln();
 $pdf->Ln();

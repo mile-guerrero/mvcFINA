@@ -37,7 +37,7 @@ class reportActionClass extends controllerClass implements controllerActionInter
           );
         }
       }
-      $this->mensaje = 'Informacion de la Solicitudes de los Insumos';
+      $this->mensaje = 'Informacion de la Solicitud del Insumo';
       $fields = array(
           solicitudInsumoTableClass::ID,
           solicitudInsumoTableClass::FECHA_HORA,

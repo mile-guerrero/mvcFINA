@@ -33,7 +33,7 @@ class reportActionClass extends controllerClass implements controllerActionInter
         }
       }
       
-      $this->mensaje = 'Informacion de Trabajadores';
+      $this->mensaje = 'Informacion del pago trabajador';
       $fields = array(
           pagoTrabajadorTableClass::ID,
           pagoTrabajadorTableClass::FECHA_INICIAL,

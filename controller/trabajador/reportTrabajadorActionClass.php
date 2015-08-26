@@ -51,7 +51,7 @@ class reportTrabajadorActionClass extends controllerClass implements controllerA
         }
       }
       
-      $this->mensaje = 'Informacion de Trabajadores';
+      $this->mensaje = 'Informacion del Trabajador';
       $fields = array(
           trabajadorTableClass::ID,
           trabajadorTableClass::DOCUMENTO,

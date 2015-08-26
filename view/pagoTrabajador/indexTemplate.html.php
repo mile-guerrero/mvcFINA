@@ -63,9 +63,9 @@
   </div>
           
            <div class="form-group">
-                <label for="filterEmpresa" class="col-sm-2 control-label"><?php echo i18n::__('empresa') ?></label>
+                <label for="reportEmpresa" class="col-sm-2 control-label"><?php echo i18n::__('empresa') ?></label>
                 <div class="col-sm-10">
-                  <select class="form-control" id="filterEmpresa" name="filter[empresa]">
+                  <select class="form-control" id="reportEmpresa" name="report[empresa]">
                     <option value=""><?php echo i18n::__('selectEmpresa') ?></option>
 <?php foreach ($objEmpresa as $empresa): ?>
                       <option value="<?php echo $empresa->$idEmp ?>"><?php echo $empresa->$nomEmpresa ?></option>

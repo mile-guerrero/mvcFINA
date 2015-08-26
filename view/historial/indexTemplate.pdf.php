@@ -10,12 +10,16 @@ class PDF extends FPDF {
 
   function Header() {
     
-    $this->Image(routing::getInstance()->getUrlImg('portada4.png'), 0, 0, 210);
-    $this->SetFont('Arial', 'B', '15');
-    $this->Ln(10);
-   # $this->Cell(80);
-   # $this->Cell(30, 10, 'Historial', 1, 0, 'C');
-    $this->Ln(30);
+    $this->Image(routing::getInstance()->getUrlImg('logoColmenar.png'), 10, 22, 80);
+    $this->SetFont('Arial', 'B', '25');
+//    $this->SetDrawColor(0,80,180);
+    $this->SetFillColor(255,204,51);
+//    $this->SetTextColor(220,50,50);
+//    $this->Cell(10);
+//    $this->SetFillColor(200,220,255);
+    
+    $this->Cell( 0, 10, 'Historial' , 2, 10,'C', true);
+    $this->Ln(45);
     
   }
  
@@ -36,13 +40,14 @@ $pdf->SetFont('Arial', 'B', 8);
 
 $pdf->Ln();
 $pdf->Ln();
-$pdf->Cell(190, 10, $mensaje, 1, 0, 'C');
+$pdf->SetFillColor(255,204,51);//color
+$pdf->Cell(190, 10, $mensaje, 1, 0, 'C', true);
 $pdf->Ln();
-$pdf->Cell(30, 10, "INSUMO",1, 0, 'C');
-$pdf->Cell(30, 10, "ENFERMEDAD",1, 0, 'C');
-$pdf->Cell(50, 10, "DESCRIPCION",1, 0, 'C');
-$pdf->Cell(45, 10, "TRATAMIENTO",1, 0, 'C');
-$pdf->Cell(35, 10, "FECHA DE CREACCION",1, 0, 'C');
+$pdf->Cell(30, 10, "Insumo",1, 0, 'C');
+$pdf->Cell(30, 10, "Enfermedad",1, 0, 'C');
+$pdf->Cell(50, 10, "Descripcion",1, 0, 'C');
+$pdf->Cell(45, 10, "Tratamiento",1, 0, 'C');
+$pdf->Cell(35, 10, "Fecha de creacion",1, 0, 'C');
 $pdf->Ln();
 foreach ($objHistorial as $valor) {
   $pdf->Cell(30, 8, productoInsumoTableClass::getNameProductoInsumo($valor->$insumo),1);

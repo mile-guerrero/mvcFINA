@@ -108,20 +108,9 @@
           <div class="modal-body">
             <form class="form-horizontal" id="reportForm" role="form" action="<?php echo routing::getInstance()->getUrlWeb('detalleFacturaVenta', 'report', array(facturaVentaTableClass::ID => $factura->$idFactura)) ?>" method="POST">
                 
-                
-              <div class="form-group">
-                <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
-                <div class="col-sm-10">
-                  <input type="date" class="form-control" id="reportFechaIni" name="report[fechaIni]" >
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label  class="col-sm-2 control-label"><?php echo i18n::__('fecha fin') ?></label>
-                <div class="col-sm-10">
-                  <input type="date" class="form-control" id="reportFechaFin" name="report[fechaFin]" >
-                </div>
-              </div>
+       <div class="modal-body">
+        <?php echo i18n::__('factura') ?>
+       </div>
 
             </form>
 
@@ -168,7 +157,7 @@
                            
 
                  <td>
-                   <a class="btn btn-primary btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('detalleFacturaVenta', 'edit', array(facturaVentaTableClass::ID => $factura->$idFactura)) ?>"><?php echo i18n::__('modificar') ?></a>
+                   <a class="btn btn-primary btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('detalleFacturaVenta', 'edit', array(facturaVentaTableClass::ID => $key->$idFactura)) ?>"><?php echo i18n::__('modificar') ?></a>
                  </td>
 <?php endforeach; ?>
                 </tr>

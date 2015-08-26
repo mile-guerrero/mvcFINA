@@ -63,7 +63,7 @@ class reportActionClass extends controllerClass implements controllerActionInter
           );
         }
       }
-      $this->mensaje = 'Informacion de Cooperativa';
+      $this->mensaje = 'Informacion de la Cooperativa';
       $fields = array(
           cooperativaTableClass::ID,
           cooperativaTableClass::NOMBRE,

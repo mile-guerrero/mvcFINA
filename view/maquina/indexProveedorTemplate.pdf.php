@@ -15,12 +15,17 @@ class PDF extends FPDF {
 
   function Header() {
     
-    $this->Image(routing::getInstance()->getUrlImg('portada4.png'), 0, 0, 210);
-    $this->SetFont('Arial', 'B', '15');
-    $this->Ln(10);
-   # $this->Cell(80);
-   # $this->Cell(30, 10, 'Cliente', 1, 0, 'C');
-    $this->Ln(30);
+     $this->Image(routing::getInstance()->getUrlImg('logoColmenar.png'), 10, 22, 80);
+    $this->SetFont('Arial', 'B', '25');
+//    $this->SetDrawColor(0,80,180);
+    $this->SetFillColor(255,204,51);
+//    $this->SetTextColor(220,50,50);
+//    $this->Cell(10);
+//    $this->SetFillColor(200,220,255);
+    
+    $this->Cell( 0, 10, 'Proveedor' , 2, 10,'C', true);
+    $this->Ln(45);
+    
     
   }
  
@@ -41,14 +46,15 @@ $pdf->SetFont('Arial', 'B', 6);
 
 $pdf->Ln();
 $pdf->Ln();
-$pdf->Cell(190, 10, $mensaje, 1, 0, 'C');
+$pdf->SetFillColor(255,204,51);//color
+$pdf->Cell(190, 10, $mensaje, 1, 0, 'C', true);
 $pdf->Ln();
-$pdf->Cell(30, 10, "NOMBRE",1, 0, 'C');
-$pdf->Cell(35, 10, utf8_decode("DOCUMENTO"),1, 0, 'C');
-$pdf->Cell(30, 10, "DIRECCION",1, 0, 'C');
-$pdf->Cell(25, 10, "TELEFONO",1, 0, 'C');
-$pdf->Cell(30, 10, "EMAIL",1, 0, 'C');
-$pdf->Cell(40, 10, "FECHA DE CREACCION",1, 0, 'C');
+$pdf->Cell(30, 10, "Nombre",1, 0, 'C');
+$pdf->Cell(35, 10, utf8_decode("Documento"),1, 0, 'C');
+$pdf->Cell(30, 10, "Direccion",1, 0, 'C');
+$pdf->Cell(25, 10, "Telefono",1, 0, 'C');
+$pdf->Cell(30, 10, "Correo electronico",1, 0, 'C');
+$pdf->Cell(40, 10, "Fecha de cracion",1, 0, 'C');
 $pdf->Ln();
 foreach ($objProveedor as $valor) {
   $pdf->Cell(30, 8, utf8_decode($valor->$nom).' '.($valor->$apell),1);

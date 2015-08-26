@@ -11,5 +11,5 @@
     <br>
     <br>
   </div>
-<?php view::includePartial('ordenServicio/formularioPrincipal',array('objOS'=> $objOS, 'trabajador_id'=>$trabajador, 'objOST'=>$objOST, 'objOSPI'=>$objOSPI, 'objOSM'=>$objOSM)) ?>
+<?php view::includePartial('ordenServicio/formularioPrincipal',array('objOS'=> $objOS, 'objOST'=>$objOST, 'objOSPI'=>$objOSPI, 'objOSM'=>$objOSM)) ?>
 </div>

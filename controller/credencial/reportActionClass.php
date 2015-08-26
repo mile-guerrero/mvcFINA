@@ -49,7 +49,7 @@ class reportActionClass extends controllerClass implements controllerActionInter
       }//cierre del filtro fecha1 y fecha2       
       }//cierre del POST del reporte
       
-      $this->mensaje = 'Informacion de Credenciales';
+      $this->mensaje = 'Informacion de la Credencial';
       $fields = array(
           credencialTableClass::ID,
           credencialTableClass::NOMBRE,

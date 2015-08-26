@@ -131,7 +131,7 @@
                             
 
                  <td>
-                   <a class="btn btn-primary btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('detalleFacturaCompra', 'edit', array(facturaCompraTableClass::ID => $factura->$idFactura)) ?>"><?php echo i18n::__('modificar') ?></a>
+                   <a class="btn btn-primary btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('detalleFacturaCompra', 'edit', array(facturaCompraTableClass::ID => $key->$idFactura)) ?>"><?php echo i18n::__('modificar') ?></a>
                  </td>
 <?php endforeach; ?>
                  </tr>

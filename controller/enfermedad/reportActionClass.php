@@ -58,7 +58,7 @@ class reportActionClass extends controllerClass implements controllerActionInter
         }//cierre del filtro fecha1 y fecha2
           
       }//cierre del POST filter
-      $this->mensaje = 'Informacion de Enfermedades';
+      $this->mensaje = 'Informacion de la Enfermedad';
       $fields = array(
           enfermedadTableClass::ID,
           enfermedadTableClass::NOMBRE,

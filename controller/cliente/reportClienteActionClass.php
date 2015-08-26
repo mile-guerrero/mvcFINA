@@ -68,7 +68,7 @@ class reportClienteActionClass extends controllerClass implements controllerActi
         }//cierre del filtro fecha1 y fecha2
           
       }//cierre del POST filter
-      $this->mensaje = 'Informacion de Clientes';
+      $this->mensaje = 'Informacion del Cliente';
       $fields = array(
           clienteTableClass::ID,
           clienteTableClass::NOMBRE,
