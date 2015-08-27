@@ -23,6 +23,14 @@ class insertActionClass extends controllerClass implements controllerActionInter
    */
   public function execute() {
     try {
+     
+      
+       $id = array(
+            registroLoteTableClass::ID => request::getInstance()->getRequest(registroLoteTableClass::ID)
+        );
+//        print_r($id); 
+         session::getInstance()->setAttribute('idRegistro', $id);
+//    exit();
       $fields = array(
           registroLoteTableClass::ID,
           registroLoteTableClass::UBICACION,
@@ -36,6 +44,7 @@ class insertActionClass extends controllerClass implements controllerActionInter
       $orderBy = array(
           registroLoteTableClass::ID
       );
+       
 
       $this->objLote = registroLoteTableClass::getAll($fields, false, $orderBy, 'ASC');
       $this->defineView('insert', 'reportes', session::getInstance()->getFormatOutput());

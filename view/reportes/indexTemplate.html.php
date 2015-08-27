@@ -52,7 +52,8 @@
                   <?php echo $key->$descripcion ?>
                 </td>
                 <td>
-                  <a class="btn btn-warning btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('reportes', 'insert', array(reporteTableClass::ID => $key->$id)) ?>" ><?php echo i18n::__('ver') ?></a> 
+                
+                  <a class="btn btn-warning btn-xs" href="<?php  echo routing::getInstance()->getUrlWeb('reportes', 'insert', array(reporteTableClass::ID => $key->$id)) ?>" ><?php echo i18n::__('ver') ?></a> 
                 </td>
 
               </tr>

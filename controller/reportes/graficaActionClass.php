@@ -16,12 +16,11 @@ use mvc\i18n\i18nClass as i18n;
 class graficaActionClass extends controllerClass implements controllerActionInterface {
 
   public function execute() {
-    try {
-
-     $where = null;
+    try {      
+      $where = null;
+      $value = session::getInstance()->getAttribute('idGrafica');
+       if ($value == 1) {
       $where = session::getInstance()->getAttribute('graficaWhere');
-//      print_r($where);
-//     exit();
       $fields = array(
           registroLoteTableClass::PRODUCCION,
           registroLoteTableClass::CREATED_AT,
@@ -29,27 +28,58 @@ class graficaActionClass extends controllerClass implements controllerActionInte
       $orderBy = array(
           registroLoteTableClass::PRODUCCION
       );
-      $objLote = registroLoteTableClass::getAll($fields,false,$orderBy, 'ASC',null,null,$where);
+      $objLote = registroLoteTableClass::getAll($fields, false, $orderBy, 'ASC', null, null, $where);
 
       $cosPoints = array();
       foreach ($objLote as $objeto) {
         $cosPoints[] = array($objeto->produccion, (date('Y-m-d', strtotime($objeto->created_at))));
       }
       $this->cosPoints = $cosPoints;
+       }
+       
+        if ($value == 2) {
+          $where = session::getInstance()->getAttribute('graficaWhere');
+      $fields = array(
+          registroLoteTableClass::NUMERO_PLANTULAS,
+          registroLoteTableClass::UBICACION,
+      );
+      $orderBy = array(
+          registroLoteTableClass::NUMERO_PLANTULAS
+      );
+      $objLote = registroLoteTableClass::getAll($fields, false, $orderBy, 'ASC', null, null, $where);
+
+      $cosPoints = array();
+      foreach ($objLote as $objeto) {
+        $cosPoints[] = array($objeto->numero_plantulas, $objeto->ubicacion);
+//         print_r($cosPoints);
+//         exit();
+      }
+//       $cosPoints[] = array(1, 2);
+      $this->cosPoints2 = $cosPoints;
+      
+         
+        }
+
+
+
+
+
+
+
+
+
+
+      
+      
+
 //      print_r($cosPoints);
 //      exit();
-
 //      $fechaInicial = session::getInstance()->getAttribute('graficaRFecha1');
 //      $fechaFin = session::getInstance()->getAttribute('graficaRFecha2');
 //      $ubicacion = session::getInstance()->getAttribute('graficaUbicacion');
 //      $objLoteProduccion = registroLoteTableClass::getProduccion($ubicacion, $fechaInicial, $fechaFin);
 //      $objLoteFecha = registroLoteTableClass::getFecha($ubicacion, $fechaInicial, $fechaFin);
-
 //      $this->cosPoints = array(array($objLoteProduccion,$objLoteFecha));
-      
-      
-      
-      
 //        $this->cosPoints = array(array($objLote[1]->produccion,$objLote[1]->created_at));
 //     $this->cosPoints = array(array($objLoteProduccion,$objLoteFecha));
 //       $this->cosPoints = array([0,0],[0,$objLote],[2,$objLote]);
@@ -58,10 +88,7 @@ class graficaActionClass extends controllerClass implements controllerActionInte
 //          rand(1, $objLote),
 //          rand(1, $objLote)
 //      );
-
-
-
-      $this->defineView('grafica', 'reportes', session::getInstance()->getFormatOutput());
+  $this->defineView('grafica', 'reportes', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
       echo $exc->getMessage();
       echo '<br>';

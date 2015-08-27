@@ -33,11 +33,15 @@ class reportActionClass extends controllerClass implements controllerActionInter
 //      print_r($where);
 //     exit();
       $this->mensaje = 'Informacion de produccion';
+      $this->mensaje1 = 'Informacion de lotes';
       $fields = array(
           registroLoteTableClass::UBICACION,
           registroLoteTableClass::PRODUCCION,
           registroLoteTableClass::UNIDAD_MEDIDA_ID,
           registroLoteTableClass::CREATED_AT,
+          registroLoteTableClass::PRODUCTO_INSUMO_ID,
+          registroLoteTableClass::NUMERO_PLANTULAS,
+          registroLoteTableClass::FECHA_RIEGO,
       );
       $orderBy = array(
           registroLoteTableClass::PRODUCCION
