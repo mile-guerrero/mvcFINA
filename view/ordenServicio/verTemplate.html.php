@@ -59,7 +59,7 @@
             </tr>
             <tr>
               <td> <?php echo i18n::__('valor') ?></td>      
-              <td><?php echo $key->$valor ?></td>
+              <td><?php echo '$' . number_format($key->$valor, 0, ',', '.') ?></td>
             </tr>
             
 <?php endforeach; ?>

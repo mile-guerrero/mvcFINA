@@ -52,12 +52,12 @@ foreach ($objEnfermedad as $valor) {
   $pdf->Ln();  
 
 
-$pdf->Cell(50, 10, "Fecha de cracion",1, 0, 'C');
+$pdf->Cell(50, 10, utf8_decode("Fecha de cración"),1, 0, 'C');
 
   $pdf->Cell(140, 10, utf8_decode($valor->$createdAt),1);
   $pdf->Ln();  
 
-  $pdf->Cell(190, 50,"Descripcion:" . ' '. utf8_decode($valor->$descripcion),1);
+  $pdf->Cell(190, 50, utf8_decode("Descripción:") . ' '. utf8_decode($valor->$descripcion),1);
   $pdf->Ln();  
 
    $pdf->Cell(190, 50,"Tratamiento:" . ' ' . utf8_decode($valor->$tratamiento),1);

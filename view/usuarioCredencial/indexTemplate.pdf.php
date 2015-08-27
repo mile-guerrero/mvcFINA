@@ -45,7 +45,7 @@ $pdf->Cell(190, 10, $mensaje, 1, 0, 'C', true);
 $pdf->Ln();
 $pdf->Cell(60, 10, "Usuario",1, 0, 'C');
 $pdf->Cell(60, 10, "Credencial",1, 0, 'C');
-$pdf->Cell(70, 10, "Fecha de creacion",1, 0, 'C');
+$pdf->Cell(70, 10, utf8_decode("Fecha de creación"),1, 0, 'C');
 $pdf->Ln();
 foreach ($objUC as $valor) {
   $pdf->Cell(60, 8, utf8_decode($valor->$usuario).' '.usuarioTableClass::getNameUsuario($valor->$usuario),1);

@@ -57,19 +57,19 @@ class createActionClass extends controllerClass implements controllerActionInter
             
             if($horas <= 0){
                 session::getInstance()->setFlash('inputHorasPerdidas', true);
-                session::getInstance()->setError('Los valores numericos no puede ser negativo', 'inputHorasPerdidas');
+                session::getInstance()->setError('Los valores numericos no pueden ser negativos', 'inputHorasPerdidas');
                 routing::getInstance()->forward('pagoTrabajador', 'insert');
             }
             
             if($valorHoras <= 0){
                 session::getInstance()->setFlash('inputHoras', true);
-                session::getInstance()->setError('Los valores numericos no puede ser negativo', 'inputHoras');
+                session::getInstance()->setError('Los valores numericos no pueden ser negativos', 'inputHoras');
                 routing::getInstance()->forward('pagoTrabajador', 'insert');
             }
             
             if($cantidad <= 0){
                 session::getInstance()->setFlash('inputCantidad', true);
-                session::getInstance()->setError('Los valores numericos no puede ser negativo', 'inputCantidad');
+                session::getInstance()->setError('Los valores numericos no pueden ser negativos', 'inputCantidad');
                 routing::getInstance()->forward('pagoTrabajador', 'insert');
             }
             

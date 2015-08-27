@@ -50,7 +50,7 @@ namespace mvc\validator {
         session::getInstance()->setFlash('inputNombre', true);
         session::getInstance()->setError('El nombre del cliente es requerido', 'inputNombre');
       } //----solo permitir letras----
-        else if (!preg_match($soloLetras, (request::getInstance()->getPost(\clienteTableClass::getNameField(\clienteTableClass::NOMBRE, true))))){
+        else if (!preg_match($soloLetras, trim(request::getInstance()->getPost(\clienteTableClass::getNameField(\clienteTableClass::NOMBRE, true))))){
         $flag = true;
         session::getInstance()->setFlash('inputNombre', true);
         session::getInstance()->setError('El nombre no permite numeros, solo letras', 'inputNombre');
@@ -68,7 +68,7 @@ namespace mvc\validator {
         session::getInstance()->setFlash('inputApellido', true);
         session::getInstance()->setError('El apellido del cliente es requerido', 'inputApellido');
       } //----solo permitir letras----
-        else if (!preg_match($soloLetras, (request::getInstance()->getPost(\clienteTableClass::getNameField(\clienteTableClass::APELLIDO, true))))){
+        else if (!preg_match($soloLetras, trim(request::getInstance()->getPost(\clienteTableClass::getNameField(\clienteTableClass::APELLIDO, true))))){
         $flag = true;
         session::getInstance()->setFlash('inputApellido', true);
         session::getInstance()->setError('El apellido no permite numeros, solo letras', 'inputApellido');

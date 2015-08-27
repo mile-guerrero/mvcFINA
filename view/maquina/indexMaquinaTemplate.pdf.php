@@ -47,11 +47,11 @@ $pdf->SetFillColor(255,204,51);//color
 $pdf->Cell(190, 10, $mensaje, 1, 0, 'C',  true);
 $pdf->Ln();
 $pdf->Cell(30, 10, "Nombre",1, 0, 'C');
-$pdf->Cell(35, 10, utf8_decode("Descripcion"),1, 0, 'C');
+$pdf->Cell(35, 10, utf8_decode("Descripción"),1, 0, 'C');
 $pdf->Cell(30, 10, "Origen maquina",1, 0, 'C');
 $pdf->Cell(25, 10, "Tipo uso maquina ",1, 0, 'C');
 $pdf->Cell(30, 10, "Proveedor",1, 0, 'C');
-$pdf->Cell(40, 10, "Fecha de creacion",1, 0, 'C');
+$pdf->Cell(40, 10, utf8_decode("Fecha de creación"),1, 0, 'C');
 $pdf->Ln();
 foreach ($objMaquina as $valor){
   $pdf->Cell(30,8, utf8_decode($valor->$nombb),1);

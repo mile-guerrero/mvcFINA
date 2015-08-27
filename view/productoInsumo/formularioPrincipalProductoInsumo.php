@@ -52,7 +52,7 @@
     <?php endif ?>
    
    <div class="form-group">
-      <label for="" class="col-sm-2"> <?php echo i18n::__('subir archivos') ?>:</label>     
+      <label for="" class="col-sm-2"> <?php echo i18n::__('subir imagen') ?>:</label>     
       <div class="col-sm-10">
                <input class="form-control"  value="<?php echo (session::getInstance()->hasFlash('inputImagen') or request::getInstance()->hasPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::NOMBRE_IMAGEN, true))) ? request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::NOMBRE_IMAGEN, true)) : ((isset($objPI[0])) ? $objPI[0]->$nombre : '') ?>"  type="file" name="<?php echo productoInsumoTableClass::getNameField(productoInsumoTableClass::NOMBRE_IMAGEN, true) ?>" required>
      </div>

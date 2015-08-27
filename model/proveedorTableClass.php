@@ -91,4 +91,42 @@ public static function getNameProveedor($id){
     }
     
   }
+  
+ public static function getNameDireccion($id){
+    try {
+      $sql = 'SELECT ' . proveedorTableClass::DIRECCION .  ' As direccion  '
+             . '  FROM ' . proveedorTableClass::getNameTable() . '  '
+             . '  WHERE ' . proveedorTableClass::ID . ' = :id';
+      $params = array(
+          ':id' => $id
+      );
+      $answer = model::getInstance()->prepare($sql);
+      $answer->execute($params);
+      $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+      return $answer[0]->direccion;
+      
+    } catch (Exception $exc) {
+      throw $exc;
+    }
+    
+  }
+  
+  public static function getNameTelefono($id){
+    try {
+      $sql = 'SELECT ' . proveedorTableClass::TELEFONO .  ' As telefono  '
+             . '  FROM ' . proveedorTableClass::getNameTable() . '  '
+             . '  WHERE ' . proveedorTableClass::ID . ' = :id';
+      $params = array(
+          ':id' => $id
+      );
+      $answer = model::getInstance()->prepare($sql);
+      $answer->execute($params);
+      $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+      return $answer[0]->telefono;
+      
+    } catch (Exception $exc) {
+      throw $exc;
+    }
+    
+  }
 }

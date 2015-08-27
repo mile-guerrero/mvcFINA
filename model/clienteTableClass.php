@@ -93,6 +93,44 @@ class clienteTableClass extends clienteBaseTableClass {
     }
     
   }
+  
+  public static function getNameDireccion($id){
+    try {
+      $sql = 'SELECT ' . clienteTableClass::DIRECCION .  ' As direccion  '
+             . '  FROM ' . clienteTableClass::getNameTable() . '  '
+             . '  WHERE ' . clienteTableClass::ID . ' = :id';
+      $params = array(
+          ':id' => $id
+      );
+      $answer = model::getInstance()->prepare($sql);
+      $answer->execute($params);
+      $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+      return $answer[0]->direccion;
+      
+    } catch (Exception $exc) {
+      throw $exc;
+    }
+    
+  }
+  
+  public static function getNameTelefono($id){
+    try {
+      $sql = 'SELECT ' . clienteTableClass::TELEFONO .  ' As telefono  '
+             . '  FROM ' . clienteTableClass::getNameTable() . '  '
+             . '  WHERE ' . clienteTableClass::ID . ' = :id';
+      $params = array(
+          ':id' => $id
+      );
+      $answer = model::getInstance()->prepare($sql);
+      $answer->execute($params);
+      $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+      return $answer[0]->telefono;
+      
+    } catch (Exception $exc) {
+      throw $exc;
+    }
+    
+  }
 
   public static function getCliente($id){
     try {
@@ -127,3 +165,4 @@ class clienteTableClass extends clienteBaseTableClass {
    
   
 }
+

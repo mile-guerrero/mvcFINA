@@ -55,10 +55,10 @@ $pdf->Ln();
 $pdf->SetFont('Arial', 'B', 6);
 $pdf->Cell(35, 10, "Nombre",1, 0, 'C');
 $pdf->Cell(35, 10, "Documento",1, 0, 'C');
-$pdf->Cell(30, 10, "Direccion",1, 0, 'C');
-$pdf->Cell(30, 10, "Telefono",1, 0, 'C');
-$pdf->Cell(30, 10, "Correo electronico",1, 0, 'C');
-$pdf->Cell(30, 10, "Fecha creacion",1, 0, 'C');
+$pdf->Cell(30, 10, utf8_decode("Dirección"),1, 0, 'C');
+$pdf->Cell(30, 10, utf8_decode("Teléfono"),1, 0, 'C');
+$pdf->Cell(30, 10, utf8_decode("Correo electrónico"),1, 0, 'C');
+$pdf->Cell(30, 10, utf8_decode("Fecha creación"),1, 0, 'C');
 $pdf->Ln();
 
 foreach ($objT as $valor) {

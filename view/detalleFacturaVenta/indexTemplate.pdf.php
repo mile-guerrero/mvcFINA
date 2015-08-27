@@ -1,7 +1,8 @@
 <?php
 
 use mvc\routing\routingClass as routing;
-  
+use mvc\request\requestClass as request;
+
  $cliente = facturaVentaTableClass::CLIENTE_ID;
  $descripcion = detalleFacturaVentaTableClass::DESCRIPCION; 
  $cantidad = detalleFacturaVentaTableClass::CANTIDAD; 
@@ -10,6 +11,8 @@ use mvc\routing\routingClass as routing;
  $id = detalleFacturaVentaTableClass::ID; 
  $idFactura = facturaVentaTableClass::ID; 
  $fecha = facturaVentaTableClass::FECHA; 
+ $idCliente = clienteTableClass::ID;
+
  
 class PDF extends FPDF {
 
@@ -90,25 +93,42 @@ $pdf->Cell(1);
 $pdf->Cell(55, 8, "Cliente",1, 0, 'C', true);
 $pdf->Ln();
 $pdf->Cell(1);
-$pdf->Cell(55, 8, clienteTableClass::getNameCliente($valor->$cliente),1);
+$pdf->Cell(55, 8, "CC",1, 0, 'C', true);
+$pdf->Cell(50, 8, clienteTableClass::getNameDocumento($valor->$idCliente),1);
+$pdf->Ln();
+$pdf->Cell(1);
+$pdf->Cell(55, 8, "Nombre y Apellido",1, 0, 'C', true);
+$pdf->Cell(50, 8, clienteTableClass::getNameCliente($valor->$cliente). ' '. clienteTableClass::getNameApellido($valor->$idCliente),1);
+$pdf->Ln();
+$pdf->Cell(1);
+$pdf->Cell(55, 8, "Direccion",1, 0, 'C', true);
+$pdf->Cell(50, 8, clienteTableClass::getNameDireccion($valor->$idCliente),1);
+$pdf->Ln();
+$pdf->Cell(1);
+$pdf->Cell(55, 8, "Telefono",1, 0, 'C', true);
+$pdf->Cell(50, 8, clienteTableClass::getNameTelefono($valor->$idCliente),1);
+
 }
+
 $pdf->Ln();
 $pdf->Ln();
 $pdf->Ln();
 $pdf->Cell(70, 10, "Descripcion",1, 0, 'C', true);
 $pdf->Cell(35, 10, "Cantidad",1, 0, 'C', true);
 $pdf->Cell(30, 10, "Valor por unidad",1, 0, 'C', true);
-$pdf->Cell(55, 10, "Valor total",1, 0, 'C', true);
+$pdf->Cell(55, 10, "Subtotal",1, 0, 'C', true);
 $pdf->Ln();
-
+$idFacturar = request::getInstance()->getGet(facturaventaTableClass::ID);
 foreach ($objDetalleFactura as $valor) {   
   $pdf->Cell(70, 8, productoInsumoTableClass::getNameProductoInsumo($valor->$descripcion),1);
   $pdf->Cell(35, 8, utf8_decode($valor->$cantidad),1);
-  $pdf->Cell(30, 8, utf8_decode($valor->$valorUnidad),1);  
-  $pdf->Cell(55, 8, utf8_decode($valor->$valorTotal),1);
-  $pdf->Ln();  
+  $pdf->Cell(30, 8, '$' . number_format($valor->$valorUnidad, 0, ',', '.'),1);  
+  $pdf->Cell(55, 8, '$' . number_format($valor->$valorTotal, 0, ',', '.'),1);
+  $pdf->Ln(); 
 }
-
+ $pdf->Cell(105);
+ $pdf->Cell(30, 8, "Total",1, 0, 'C', true);
+ $pdf->Cell(55, 8, '$' . number_format(detalleFacturaVentaTableClass::getNameTotalPagar($idFacturar, 0, ',', '.')),1);
 
 $pdf->Output();
 ?>

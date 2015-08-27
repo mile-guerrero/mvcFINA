@@ -41,7 +41,7 @@ $pdf->SetFillColor(255,204,51);//color
 $pdf->Cell(190, 10, $mensaje, 1, 0, 'C', true);
 $pdf->Ln();
 $pdf->Cell(95, 10, "Nombre de la credencial",1, 0, 'C');
-$pdf->Cell(95, 10, "Fecha de cracion de la credencial",1, 0, 'C');
+$pdf->Cell(95, 10, utf8_decode("Fecha de cración de la credencial"),1, 0, 'C');
 $pdf->Ln();
 foreach ($objCredencial as $valor){
   $pdf->Cell(95,8, utf8_decode($valor->$cre),1);

@@ -51,10 +51,10 @@ $pdf->Cell(190, 10, $mensaje, 1, 0, 'C', true);
 $pdf->Ln();
 $pdf->Cell(30, 10, "Nombre",1, 0, 'C');
 $pdf->Cell(35, 10, utf8_decode("Documento"),1, 0, 'C');
-$pdf->Cell(30, 10, "Direccion",1, 0, 'C');
-$pdf->Cell(25, 10, "Telefono",1, 0, 'C');
-$pdf->Cell(30, 10, "Correo electronico",1, 0, 'C');
-$pdf->Cell(40, 10, "Fecha de cracion",1, 0, 'C');
+$pdf->Cell(30, 10, utf8_decode("Dirección"),1, 0, 'C');
+$pdf->Cell(25, 10, utf8_decode("Teléfono"),1, 0, 'C');
+$pdf->Cell(30, 10, utf8_decode("Correo electrónico"),1, 0, 'C');
+$pdf->Cell(40, 10, utf8_decode("Fecha de cración"),1, 0, 'C');
 $pdf->Ln();
 foreach ($objProveedor as $valor) {
   $pdf->Cell(30, 8, utf8_decode($valor->$nom).' '.($valor->$apell),1);

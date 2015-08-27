@@ -30,19 +30,38 @@ class updateLoteMasActionClass extends controllerClass implements controllerActi
     try {
       if (request::getInstance()->isMethod('POST')) {
         $id = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::ID, true));
-        $ubicacion = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::UBICACION, true));
-        $tamano = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::TAMANO, true));
-        $unidadDistancia = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::UNIDAD_DISTANCIA_ID, true));
         $unidadMedida = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::UNIDAD_MEDIDA_ID, true));
-        $descripcion = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::DESCRIPCION, true));
         $fechaSiembra = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::FECHA_INICIO_SIEMBRA, true));
-        $idCiudad = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::ID_CIUDAD, true));
         $numero = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::NUMERO_PLANTULAS, true));
         $produccion = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::PRODUCCION, true));
         $insumo = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::PRODUCTO_INSUMO_ID, true));
         $presupuesto = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::PRESUPUESTO, true));
         $fechaRiego = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::FECHA_RIEGO, true));
         
+        
+        if($numero <= 0){
+                session::getInstance()->setFlash('inputPlantulas', true);
+                session::getInstance()->setError('Los valores numericos no pueden ser negativos', 'inputPlantulas');
+                request::getInstance()->setMethod('GET');
+                request::getInstance()->addParamGet(array(\loteTableClass::ID => request::getInstance()->getPost(\loteTableClass::getNameField(\loteTableClass::ID, true))));
+                routing::getInstance()->forward('lote', 'editLoteMas');
+            }
+            
+            if($produccion <= 0){
+                session::getInstance()->setFlash('inputProduccion', true);
+                session::getInstance()->setError('Los valores numericos no pueden ser negativos', 'inputProduccion');
+                request::getInstance()->setMethod('GET');
+                request::getInstance()->addParamGet(array(\loteTableClass::ID => request::getInstance()->getPost(\loteTableClass::getNameField(\loteTableClass::ID, true))));
+                routing::getInstance()->forward('lote', 'editLoteMas');
+            }
+            
+            if($presupuesto <= 0){
+                session::getInstance()->setFlash('inputPresupuesto', true);
+                session::getInstance()->setError('Los valores numericos no pueden ser negativos', 'inputPresupuesto');
+                request::getInstance()->setMethod('GET');
+                request::getInstance()->addParamGet(array(\loteTableClass::ID => request::getInstance()->getPost(\loteTableClass::getNameField(\loteTableClass::ID, true))));
+                routing::getInstance()->forward('lote', 'editLoteMas');
+            }
         
 //        if (strlen($fechaSiembra) == null or $fechaSiembra =='') {
 //           $fechaSiembra = 'null';

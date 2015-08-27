@@ -47,9 +47,9 @@ $pdf->SetFillColor(255,204,51);//color
 $pdf->Cell(190, 10, $mensaje, 1, 0, 'C', true);
 $pdf->Ln();
 $pdf->Cell(60, 10, "Nombre",1, 0, 'C');
-$pdf->Cell(50, 10, "Direccion",1, 0, 'C');
-$pdf->Cell(30, 10, "Telefono",1, 0, 'C');
-$pdf->Cell(50, 10, "Email",1, 0, 'C');
+$pdf->Cell(50, 10, utf8_decode("Dirección"),1, 0, 'C');
+$pdf->Cell(30, 10, utf8_decode("Teléfono"),1, 0, 'C');
+$pdf->Cell(50, 10, utf8_decode("Correo electrónico"),1, 0, 'C');
 $pdf->Ln();
 foreach ($objEmpresa as $valor) {
   $pdf->Cell(60, 8, utf8_decode($valor->$nombre),1);

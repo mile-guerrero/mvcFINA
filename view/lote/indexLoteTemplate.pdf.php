@@ -52,9 +52,9 @@ $pdf->SetFillColor(255,204,51);//color
 $pdf->Cell(190, 10, $mensaje, 1, 0, 'C', true);
 $pdf->Ln();
 $pdf->SetFont('courier', 'B', 10);
-$pdf->Cell(35, 10, "Ubicacion",1, 0, 'C');
-$pdf->Cell(15, 10, utf8_decode("Tamaño"),1, 0, 'C');
-$pdf->Cell(50, 10, "Descripcion",1, 0, 'C');
+$pdf->Cell(35, 10, utf8_decode("Ubicación"),1, 0, 'C');
+$pdf->Cell(15, 10, utf8_decode("Área"),1, 0, 'C');
+$pdf->Cell(50, 10, utf8_decode("Descripción"),1, 0, 'C');
 $pdf->Cell(35, 10, "Fecha siembra",1, 0, 'C');
 $pdf->Cell(30, 10, "Insumo",1, 0, 'C');
 $pdf->Cell(25, 10, "# Plantulas",1, 0, 'C');

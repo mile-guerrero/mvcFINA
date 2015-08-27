@@ -22,6 +22,8 @@ dictionary:
     nuevo historial:      Rew record
     #-------Subir archivos-----------
     subir archivos:       Upload files
+    subir imagen:         Upload img
+    subir video:          Upload video
     #-------plaga-----------
     selectPlaga:     Seleccione la plaga
     plaga:           Plaga

@@ -32,13 +32,13 @@ class createActionClass extends controllerClass implements controllerActionInter
         
         if($cantidad <= 0){
                 session::getInstance()->setFlash('inputCantidad', true);
-                session::getInstance()->setError('Los valores numericos no puede ser negativo', 'inputCantidad');
+                session::getInstance()->setError('Los valores numericos no pueden ser negativos', 'inputCantidad');
                 routing::getInstance()->forward('ordenServicio', 'insert');
             }
         
         if($valor <= 0){
                 session::getInstance()->setFlash('inputValor', true);
-                session::getInstance()->setError('Los valores numericos no puede ser negativo', 'inputValor');
+                session::getInstance()->setError('Los valores numericos no pueden ser negativos', 'inputValor');
                 routing::getInstance()->forward('ordenServicio', 'insert');
             }
 

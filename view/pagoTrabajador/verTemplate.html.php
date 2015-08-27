@@ -50,20 +50,20 @@
           
              <tr> 
               <td><?php echo i18n::__('valor') ?></td>                   
-              <td><?php echo $key->$valor ?></td>
+              <td><?php echo '$' . number_format($key->$valor, 0, ',', '.') ?></td>
             </tr>
            
              <tr> 
               <td><?php echo i18n::__('horasExtras') ?> - <?php echo i18n::__('cantidad') ?></td>                   
-              <td><?php echo $key->$valorHoras ?> - <?php echo $key->$cantidad ?></td>
+              <td><?php echo '$' . number_format($key->$valorHoras, 0, ',', '.') ?> * <?php echo $key->$cantidad ?></td>
             </tr>
             <tr>
               <td><?php echo i18n::__('horasPerdidas') ?></td> 
-              <td><?php echo $key->$horas ?></td>
+              <td><?php echo '$' . number_format($key->$horas, 0, ',', '.') ?></td>
             </tr>
              <tr> 
               <td><?php echo i18n::__('totalPagar') ?></td>                   
-              <td><?php echo $key->$total ?></td>
+              <td><?php echo '$' . number_format($key->$total, 0, ',', '.') ?></td>
             </tr>
 
 <?php endforeach; ?>

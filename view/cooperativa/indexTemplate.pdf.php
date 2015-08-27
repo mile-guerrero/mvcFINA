@@ -49,10 +49,10 @@ $pdf->SetFillColor(255,204,51);//color
 $pdf->Cell(190, 10, $mensaje, 1, 0, 'C', true);
 $pdf->Ln();
 $pdf->Cell(40, 10, "Nombre",1, 0, 'C');
-$pdf->Cell(35, 10, "Descripcion",1, 0, 'C');
-$pdf->Cell(30, 10, "Direccion",1, 0, 'C');
-$pdf->Cell(30, 10, "Telefono",1, 0, 'C');
-$pdf->Cell(55, 10, "fecha de creacion",1, 0, 'C');
+$pdf->Cell(35, 10, utf8_decode("Descripción"),1, 0, 'C');
+$pdf->Cell(30, 10, utf8_decode("Dirección"),1, 0, 'C');
+$pdf->Cell(30, 10, utf8_decode("Teléfono"),1, 0, 'C');
+$pdf->Cell(55, 10, utf8_decode("fecha de creación"),1, 0, 'C');
 $pdf->Ln();
 foreach ($objCooperativa as $valor) {
   $pdf->Cell(40, 8, utf8_decode($valor->$nombre),1);

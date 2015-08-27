@@ -33,7 +33,7 @@
   
   
   <div class="form-group">
-      <label for="" class="col-sm-2"> <?php echo i18n::__('subir archivos') ?>:</label>     
+      <label for="" class="col-sm-2"> <?php echo i18n::__('subir imagen') ?>:</label>     
       <div class="col-sm-10">
                <input class="form-control"  value=""  type="file" name="<?php echo imagenTableClass::getNameField(imagenTableClass::NOMBRE, true) ?>" required>
      </div>

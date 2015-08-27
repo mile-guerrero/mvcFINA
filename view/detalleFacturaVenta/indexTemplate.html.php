@@ -150,9 +150,9 @@
 
                             <td><?php echo $key->$cantidad ?></td>
 
-                            <td><?php echo $key->$valor_unidad ?></td>
+                            <td><?php echo '$' . number_format($key->$valor_unidad, 0, ',', '.') ?></td>
 
-                            <td><?php echo $key->$valor_total ?></td>
+                            <td><?php echo '$' . number_format($key->$valor_total, 0, ',', '.') ?></td>
 
                            
 
@@ -162,7 +162,7 @@
 <?php endforeach; ?>
                 </tr>
                  <tr>
-                   <td></td><td></td>  <td><?php echo 'total' ?></td> <td colspan="3"><?php $idFacturar = request::getInstance()->getGet(facturaventaTableClass::ID) ?><?php echo detalleFacturaVentaTableClass::getNameTotalPagar($idFacturar);  ?></td>
+                   <td></td><td></td>  <td><?php echo i18n::__('total') ?></td> <td colspan="3"><?php $idFacturar = request::getInstance()->getGet(facturaventaTableClass::ID) ?><?php echo '$' . number_format (detalleFacturaVentaTableClass::getNameTotalPagar($idFacturar, 0, ',', '.'));  ?></td>
                     </tr>
 
 

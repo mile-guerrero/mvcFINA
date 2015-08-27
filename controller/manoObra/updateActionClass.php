@@ -31,13 +31,30 @@ class updateActionClass extends controllerClass implements controllerActionInter
         validator::validateUpdate();
         
         if($total <= 0){
+                session::getInstance()->setFlash('inputTotal', true);
+                session::getInstance()->setError('Los valores numericos no pueden ser negativos', 'inputTotal');
+                request::getInstance()->setMethod('GET');
+                request::getInstance()->addParamGet(array(\manoObraTableClass::ID => request::getInstance()->getPost(\manoObraTableClass::getNameField(\manoObraTableClass::ID, true))));
+                routing::getInstance()->forward('manoObra', 'edit');
+            }
+        
+            if($cantidad <= 0){
+                session::getInstance()->setFlash('inputCantidad', true);
+                session::getInstance()->setError('Los valores numericos no pueden ser negativos', 'inputCantidad');
+                request::getInstance()->setMethod('GET');
+                request::getInstance()->addParamGet(array(\manoObraTableClass::ID => request::getInstance()->getPost(\manoObraTableClass::getNameField(\manoObraTableClass::ID, true))));
+                routing::getInstance()->forward('manoObra', 'edit');
+            }
+            
+            if($valor <= 0){
                 session::getInstance()->setFlash('inputValor', true);
                 session::getInstance()->setError('Los valores numericos no pueden ser negativos', 'inputValor');
                 request::getInstance()->setMethod('GET');
                 request::getInstance()->addParamGet(array(\manoObraTableClass::ID => request::getInstance()->getPost(\manoObraTableClass::getNameField(\manoObraTableClass::ID, true))));
                 routing::getInstance()->forward('manoObra', 'edit');
             }
-        
+            
+            
         $ids = array(
             manoObraTableClass::ID => $id
         );

@@ -22,6 +22,8 @@ dictionary:
     nuevo historial:      Nuevo historial
     #-------Subir archivos-----------
     subir archivos:       Subir archivos
+    subir imagen:         Subir imagen
+    subir video:          Subir video
     #-------plaga-----------
     selectPlaga:          Seleccione la plaga
     plaga:                Plaga

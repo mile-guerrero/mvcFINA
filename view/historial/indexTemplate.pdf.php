@@ -45,9 +45,9 @@ $pdf->Cell(190, 10, $mensaje, 1, 0, 'C', true);
 $pdf->Ln();
 $pdf->Cell(30, 10, "Insumo",1, 0, 'C');
 $pdf->Cell(30, 10, "Enfermedad",1, 0, 'C');
-$pdf->Cell(50, 10, "Descripcion",1, 0, 'C');
+$pdf->Cell(50, 10, utf8_decode("Descripcion"),1, 0, 'C');
 $pdf->Cell(45, 10, "Tratamiento",1, 0, 'C');
-$pdf->Cell(35, 10, "Fecha de creacion",1, 0, 'C');
+$pdf->Cell(35, 10, utf8_decode("Fecha de creación"),1, 0, 'C');
 $pdf->Ln();
 foreach ($objHistorial as $valor) {
   $pdf->Cell(30, 8, productoInsumoTableClass::getNameProductoInsumo($valor->$insumo),1);

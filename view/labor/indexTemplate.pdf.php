@@ -51,7 +51,7 @@ $pdf->Cell(70, 10, "Fecha de cracion",1, 0, 'C');
 $pdf->Ln();
 foreach ($objLabor as $valor) {
   $pdf->Cell(60, 8, utf8_decode($valor->$descripcion),1);
-  $pdf->Cell(60, 8, utf8_decode($valor->$valor1),1);
+  $pdf->Cell(60, 8, '$' . number_format($valor->$valor1, 0, ',', '.'),1);
   $pdf->Cell(70, 8, utf8_decode($valor->$created_at),1);
   $pdf->Ln();
 }

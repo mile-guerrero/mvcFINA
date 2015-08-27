@@ -4,6 +4,7 @@
 <?php $id = manoObraTableClass::ID ?>
 <?php $cantidad = manoObraTableClass::CANTIDAD_HORA ?>
 <?php $valor = manoObraTableClass::VALOR_HORA ?>
+<?php $total = manoObraTableClass::TOTAL ?>
 <?php $created_at = manoObraTableClass::CREATED_AT ?>
 <?php $updated_at = manoObraTableClass::UPDATED_AT ?>
 <?php $idCooperativa = manoObraTableClass::COOPERATIVA_ID ?>
@@ -55,7 +56,11 @@
             </tr>
             <tr>
             <td><?php echo i18n::__('valor') ?></td>   
-              <td><?php echo $key->$valor ?></td>
+              <td><?php echo '$' . number_format($key->$valor, 0, ',', '.') ?></td>
+            </tr>
+            <tr>
+            <td><?php echo i18n::__('total') ?></td>   
+              <td><?php echo '$' . number_format($key->$total, 0, ',', '.') ?></td>
             </tr>
 <?php endforeach; ?>
         </tbody>

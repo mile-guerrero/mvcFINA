@@ -52,9 +52,9 @@ $pdf->Cell(190, 10, $mensaje, 1, 0, 'C', true);
 $pdf->Ln();
 $pdf->Cell(40, 10, "Nombre y Apellido",1, 0, 'C');
 $pdf->Cell(35, 10, "Documento",1, 0, 'C');
-$pdf->Cell(30, 10, "Direccion",1, 0, 'C');
-$pdf->Cell(30, 10, "Telefono",1, 0, 'C');
-$pdf->Cell(55, 10, "Fecha de creacion",1, 0, 'C');
+$pdf->Cell(30, 10, utf8_decode("Dirección"),1, 0, 'C');
+$pdf->Cell(30, 10, utf8_decode("Teléfono"),1, 0, 'C');
+$pdf->Cell(55, 10, utf8_decode("Fecha de creación"),1, 0, 'C');
 $pdf->Ln();
 foreach ($objC as $valor) {  
   $pdf->Cell(40, 8, utf8_decode($valor->$nom).' '.($valor->$apell),1);

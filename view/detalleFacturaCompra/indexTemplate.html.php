@@ -71,18 +71,9 @@
             <form class="form-horizontal" id="reportForm" role="form" action="<?php echo routing::getInstance()->getUrlWeb('detalleFacturaCompra', 'report', array(facturaCompraTableClass::ID => $factura->$idFactura)) ?>" method="POST">
                 
                 
-              <div class="form-group">
-                <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
-                <div class="col-sm-10">
-                  <input type="date" class="form-control" id="reportFechaIni" name="report[fechaIni]" >
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label  class="col-sm-2 control-label"><?php echo i18n::__('fecha fin') ?></label>
-                <div class="col-sm-10">
-                  <input type="date" class="form-control" id="reportFechaFin" name="report[fechaFin]" >
-                </div>
+              <div class="modal-body">
+                <?php echo i18n::__('facturaCompra') ?></label>
+                
               </div>
 
             </form>
@@ -124,9 +115,9 @@
 
                             <td><?php echo $key->$cantidad ?></td>
 
-                            <td><?php echo $key->$valor_unidad ?></td>
+                            <td><?php echo '$' . number_format($key->$valor_unidad, 0, ',', '.') ?></td>
 
-                            <td><?php echo $key->$valor_total ?></td>
+                            <td><?php echo '$' . number_format($key->$valor_total, 0, ',', '.') ?></td>
 
                             
 
@@ -136,7 +127,7 @@
 <?php endforeach; ?>
                  </tr>
                  <tr>
-                   <td></td><td></td>  <td><?php echo 'total' ?></td> <td colspan="3"><?php $idFacturar = request::getInstance()->getGet(facturaCompraTableClass::ID) ?><?php echo detalleFacturaCompraTableClass::getNameTotalPagar($idFacturar);  ?></td>
+                   <td></td><td></td>  <td><?php echo i18n::__('total') ?></td> <td colspan="3"><?php $idFacturar = request::getInstance()->getGet(facturaCompraTableClass::ID) ?><?php echo '$' . number_format(detalleFacturaCompraTableClass::getNameTotalPagar($idFacturar, 0, ',', '.'));  ?></td>
                     </tr>
 
 
