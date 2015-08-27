@@ -1181,7 +1181,12 @@ reportes:
     credentials:
       - [admin]
       - [consultor]   
-  generarGrafica:
+  grafica:
+    security: true
+    credentials:
+      - [admin]
+      - [consultor]
+  report:
     security: true
     credentials:
       - [admin]

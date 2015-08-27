@@ -3014,6 +3014,8 @@ reportes_reporte:
     - model/plagaTableClass.php
     - model/base/loteBaseTableClass.php
     - model/loteTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     - model/base/registroLoteBaseTableClass.php
     - model/registroLoteTableClass.php
     - hooks/logHookClass.php

@@ -18,7 +18,7 @@
 <div id="chart3" style="width: 600px; height: 400px"></div>
 </h2>
       <br>
- <a class="btn btn-lg btn-success btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('reportes', 'index') ?>" ><?php echo i18n::__('importar pdf') ?></a>
+ <a class="btn btn-lg btn-success btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('reportes', 'report') ?>" ><?php echo i18n::__('importar pdf') ?></a>
       <br><br><br><br><br><br><br><br><br><br><br><br>
        </div>    
   </div>    

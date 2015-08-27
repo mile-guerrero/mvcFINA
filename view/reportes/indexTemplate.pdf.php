@@ -1,10 +1,9 @@
 <?php
 use mvc\routing\routingClass as routing;
-
-$usu = usuarioTableClass::USUARIO;
-$actived = usuarioTableClass::ACTIVED;
-$cre = usuarioTableClass::CREATED_AT;
-
+$ubicacion = registroLoteTableClass::UBICACION;
+$produccion = registroLoteTableClass::PRODUCCION;
+$cre = registroLoteTableClass::CREATED_AT;
+$unidad = registroLoteTableClass::UNIDAD_MEDIDA_ID;
 class PDF extends FPDF {
 
   function Header() {
@@ -37,14 +36,14 @@ $pdf->Ln();
 $pdf->Ln();
 $pdf->Cell(190, 10, $mensaje, 1, 0, 'C');
 $pdf->Ln();
-$pdf->Cell(80, 10, "USUARIO",1, 0, 'C');
-$pdf->Cell(40, 10, "ACTIVACION",1, 0, 'C');
-$pdf->Cell(70, 10, "FECHA DE CREACCION DEL CLIENTE",1, 0, 'C');
+$pdf->Cell(80, 10, "LOTE",1, 0, 'C');
+$pdf->Cell(50, 10, "PRODUCCION",1, 0, 'C');
+$pdf->Cell(60, 10, "FECHA DE PRODUCCION",1, 0, 'C');
 $pdf->Ln();
-foreach ($objUsuarios as $valor){
-  $pdf->Cell(80,8, utf8_decode($valor->$usu),1);
-  $pdf->Cell(40,8, utf8_decode($valor->$actived),1, 0, 'C');
-  $pdf->Cell(70,8, utf8_decode($valor->$cre),1);
+foreach ($objLote as $valor){
+  $pdf->Cell(80,8, utf8_decode($valor->$ubicacion),1);
+  $pdf->Cell(50,8, utf8_decode($valor->$produccion). '  ' . unidadMedidaTableClass::getNameUnidadMedida($valor->$unidad),1, 0, 'C');  
+  $pdf->Cell(60,8, utf8_decode($valor->$cre),1);
   $pdf->Ln();   
 }
 $pdf->Output();
