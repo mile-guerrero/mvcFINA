@@ -38,7 +38,16 @@ class updateLoteActionClass extends controllerClass implements controllerActionI
         $descripcion = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::DESCRIPCION, true));
         $idCiudad = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::ID_CIUDAD, true));
 
-        
+        if (strlen($tamano) === 0) {
+           $tamano = 00;
+        }
+        else if($tamano < 0){
+                session::getInstance()->setFlash('inputTamano', true);
+                session::getInstance()->setError('Los valores numericos no pueden ser negativos', 'inputTamano');
+                request::getInstance()->setMethod('GET');
+                request::getInstance()->addParamGet(array(\loteTableClass::ID => request::getInstance()->getPost(\loteTableClass::getNameField(\loteTableClass::ID, true))));
+                routing::getInstance()->forward('lote', 'editLote');
+            }
         validator::validateEdit();
 //        $this->validate($ubicacion, $tamano, $descripcion);
 

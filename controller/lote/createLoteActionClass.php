@@ -31,7 +31,11 @@ class createLoteActionClass extends controllerClass implements controllerActionI
 //        $insumo = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::PRODUCTO_INSUMO_ID, true));
         $idCiudad = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::ID_CIUDAD, true));
        
-        
+          if($tamano < 0){
+                session::getInstance()->setFlash('inputTamano', true);
+                session::getInstance()->setError('Los valores numericos no pueden ser negativos', 'inputTamano');
+                routing::getInstance()->forward('lote', 'insertLote');
+            }
         validator::validateInsert();
 //        $this->validate($ubicacion, $tamano, $descripcion);
 
