@@ -65,7 +65,7 @@ use mvc\i18n\i18nClass as i18n ?>
               <li><a  href="<?php echo routing::getInstance()->getUrlWeb('solicitudInsumo', 'index') ?>"><?php echo i18n::__('solicitudInsumo') ?></a></li>
               <li><a  href="<?php echo routing::getInstance()->getUrlWeb('ordenServicio', 'index') ?>"><?php echo i18n::__('orden') ?></a></li>
               <li><a  href="<?php echo routing::getInstance()->getUrlWeb('pedido', 'index') ?>"><?php echo i18n::__('pedido') ?></a></li>
-              <li><a  href="<?php echo routing::getInstance()->getUrlWeb('manoObra', 'index') ?>">mano obra</a></li>
+              <li><a  href="<?php echo routing::getInstance()->getUrlWeb('manoObra', 'index') ?>"><?php echo i18n::__('manoObra') ?></a></li>
               <li><a  href="<?php echo routing::getInstance()->getUrlWeb('facturaVenta', 'index') ?>"><?php echo i18n::__('factura') ?></a></li>
               <li><a  href="<?php echo routing::getInstance()->getUrlWeb('facturaCompra', 'index') ?>"><?php echo i18n::__('facturaCompra') ?></a></li>
               <li class="divider"></li>

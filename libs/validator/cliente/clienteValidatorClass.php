@@ -7,15 +7,15 @@ namespace mvc\validator {
   use mvc\routing\routingClass as routing;
   use mvc\config\myConfigClass as config;
   /**
-   * Description of manoObraValidatorClass
+   * Description of clienteValidatorClass
    *
-   * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+   * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
    */
   class clienteValidatorClass extends validatorClass {
     public static function validateInsert() {
       $flag = false;
 //      $soloNumeros = "/^[[:digit:]]+$/";
-      $soloLetras = "/^[a-z]+$/i";
+      $soloLetras = "/^[a-z áéíóúÁÉÍÓÚnÑ]+$/i";
       $soloTelefono = "/^(\d{3,3}\-\d{3,3}\-\d{4,4})|^(\+\d\-\d{3,3}\-\d{4,4})/";
       $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
       
@@ -138,7 +138,7 @@ namespace mvc\validator {
   public static function validateEdit() {
       $flag = false;
 //      $soloNumeros = "/^[[:digit:]]+$/";
-      $soloLetras = "/^[a-z]+$/i";
+      $soloLetras = "/^[a-z áéíóúÁÉÍÓÚnÑ]+$/i";
       $soloTelefono = "/^(\d{3,3}\-\d{3,3}\-\d{4,4})|^(\+\d\-\d{3,3}\-\d{4,4})/";
       $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
       

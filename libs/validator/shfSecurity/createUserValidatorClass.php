@@ -9,7 +9,7 @@ namespace mvc\validator {
   /**
    * Description of shfSecurityCreateUserValidationClass
    *
-   * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+   * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
    */
   class createUserValidatorClass extends validatorClass {
     public static function validateInsert() {

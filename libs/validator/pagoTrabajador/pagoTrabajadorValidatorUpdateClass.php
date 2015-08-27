@@ -9,7 +9,7 @@ namespace mvc\validator {
     use mvc\config\myConfigClass as config;
 
     /**
-     * Description of manoObraValidatorClass
+     * Description of pagoTrabajadorValidatorClass
      *
      * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
      */

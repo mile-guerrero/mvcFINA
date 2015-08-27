@@ -7,9 +7,9 @@ namespace mvc\validator {
   use mvc\routing\routingClass as routing;
   use mvc\config\myConfigClass as config;
   /**
-   * Description of manoObraValidatorClass
+   * Description of laborValidatorClass
    *
-   * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+   * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
    */
   class laborValidatorClass extends validatorClass {
     public static function validateInsert() {

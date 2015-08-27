@@ -32,8 +32,8 @@ class reportActionClass extends controllerClass implements controllerActionInter
       $where = session::getInstance()->getAttribute('graficaWhere');
 //      print_r($where);
 //     exit();
-      $this->mensaje = 'Informacion de produccion';
-      $this->mensaje1 = 'Informacion de lotes';
+      $this->mensaje = 'Informacion de Producción';
+      $this->mensaje1 = 'Informacion de Lotes';
       $fields = array(
           registroLoteTableClass::UBICACION,
           registroLoteTableClass::PRODUCCION,

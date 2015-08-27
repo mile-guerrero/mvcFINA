@@ -16,12 +16,16 @@ if ($value == 1) {
 
 
 
-      $this->Image(routing::getInstance()->getUrlImg('portada4.png'), 0, 0, 210);
-      $this->SetFont('Arial', 'B', '15');
-      $this->Ln(10);
-      # $this->Cell(80);
-      # $this->Cell(30, 10, 'Cliente', 1, 0, 'C');
-      $this->Ln(30);
+    $this->Image(routing::getInstance()->getUrlImg('logoColmenar.png'), 10, 22, 80);
+    $this->SetFont('Arial', 'B', '25');
+//    $this->SetDrawColor(0,80,180);
+    $this->SetFillColor(204,204,255);
+//    $this->SetTextColor(220,50,50);
+//    $this->Cell(10);
+//    $this->SetFillColor(200,220,255);
+    
+    $this->Cell(0 , 10, utf8_decode('Informe de la Producción') , 2, 10,'C', true);
+    $this->Ln(15);
     }
 
     function Footer() {
@@ -38,16 +42,17 @@ if ($value == 1) {
 
   $pdf->Ln();
   $pdf->Ln();
-  $pdf->Cell(190, 10, $mensaje, 1, 0, 'C');
+  $pdf->SetFillColor(204,204,255);
+  $pdf->Cell(190, 10, utf8_decode($mensaje), 1, 0, 'C', true);
   $pdf->Ln();
-  $pdf->Cell(80, 10, "LOTE", 1, 0, 'C');
-  $pdf->Cell(50, 10, "PRODUCCION", 1, 0, 'C');
-  $pdf->Cell(60, 10, "FECHA DE PRODUCCION", 1, 0, 'C');
+  $pdf->Cell(80, 10, "Lote", 1, 0, 'C');
+  $pdf->Cell(50, 10, utf8_decode("Poducción"), 1, 0, 'C');
+  $pdf->Cell(60, 10, utf8_decode("Fecha producción"), 1, 0, 'C');
   $pdf->Ln();
   foreach ($objLote as $valor) {
-    $pdf->Cell(80, 8, utf8_decode($valor->$ubicacion), 1);
+    $pdf->Cell(80, 8, utf8_decode($valor->$ubicacion), 1, 0, 'C');
     $pdf->Cell(50, 8, utf8_decode($valor->$produccion) . '  ' . unidadMedidaTableClass::getNameUnidadMedida($valor->$unidad), 1, 0, 'C');
-    $pdf->Cell(60, 8, utf8_decode($valor->$cre), 1);
+    $pdf->Cell(60, 8, utf8_decode($valor->$cre), 1, 0, 'C');
     $pdf->Ln();
   }
   $pdf->Output();
@@ -70,12 +75,16 @@ if ($value == 2) {
 
 
 
-      $this->Image(routing::getInstance()->getUrlImg('portada4.png'), 0, 0, 210);
-      $this->SetFont('Arial', 'B', '15');
-      $this->Ln(10);
-      # $this->Cell(80);
-      # $this->Cell(30, 10, 'Cliente', 1, 0, 'C');
-      $this->Ln(30);
+    $this->Image(routing::getInstance()->getUrlImg('logoColmenar.png'), 10, 22, 80);
+    $this->SetFont('Arial', 'B', '25');
+//    $this->SetDrawColor(0,80,180);
+    $this->SetFillColor(204,204,255);
+//    $this->SetTextColor(220,50,50);
+//    $this->Cell(10);
+//    $this->SetFillColor(200,220,255);
+    
+    $this->Cell(0 , 10, utf8_decode('Informe de los Lotes') , 2, 10,'C', true);
+    $this->Ln(15);
     }
 
     function Footer() {
@@ -92,16 +101,17 @@ if ($value == 2) {
 
   $pdf->Ln();
   $pdf->Ln();
-  $pdf->Cell(190, 10, $mensaje1, 1, 0, 'C');
+  $pdf->SetFillColor(204,204,255);
+  $pdf->Cell(190, 10, $mensaje1, 1, 0, 'C',true);
   $pdf->Ln();
-  $pdf->Cell(80, 10, "LOTE", 1, 0, 'C');
-  $pdf->Cell(50, 10, "# PLANTULAS", 1, 0, 'C');
-  $pdf->Cell(60, 10, "FECHA DE RIEGO", 1, 0, 'C');
+  $pdf->Cell(80, 10, "Lote", 1, 0, 'C');
+  $pdf->Cell(50, 10, "# Plantulas", 1, 0, 'C');
+  $pdf->Cell(60, 10, "Fecha riego", 1, 0, 'C');
   $pdf->Ln();
   foreach ($objLote as $valor) {
-    $pdf->Cell(80, 8, utf8_decode($valor->$loteNombre), 1);
+    $pdf->Cell(80, 8, utf8_decode($valor->$loteNombre), 1, 0, 'C');
     $pdf->Cell(50, 8, utf8_decode($valor->$numeroPlantulas) . '  ' . productoInsumoTableClass::getNameProductoInsumo($valor->$insumo), 1, 0, 'C');
-    $pdf->Cell(60, 8, utf8_decode($valor->$fechaRiego), 1);
+    $pdf->Cell(60, 8, utf8_decode($valor->$fechaRiego), 1, 0, 'C');
     $pdf->Ln();
   }
   $pdf->Output();

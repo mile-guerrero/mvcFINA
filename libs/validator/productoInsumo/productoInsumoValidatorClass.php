@@ -9,9 +9,9 @@ namespace mvc\validator {
   use mvc\config\myConfigClass as config;
 
   /**
-   * Description of manoObraValidatorClass
+   * Description of productoInsumoValidatorClass
    *
-   * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
+   * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
    */
   class productoInsumoValidatorClass extends validatorClass {
 

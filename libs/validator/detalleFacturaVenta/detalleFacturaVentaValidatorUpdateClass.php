@@ -7,13 +7,15 @@ namespace mvc\validator {
   use mvc\routing\routingClass as routing;
   use mvc\config\myConfigClass as config;
   /**
-   * Description of manoObraValidatorClass
+   * Description of detalleFacturaVentaValidatorClass
    *
    * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
    */
   class detalleFacturaVentaValidatorUpdateClass extends validatorClass {
     public static function validateUpdate() {
       $flag = false;
+      
+      $soloNumeros = "/^[[:digit:]]+$/";
       
       if (self::notBlank(request::getInstance()->getPost(\detalleFacturaVentaTableClass::getNameField(\detalleFacturaVentaTableClass::DESCRIPCION, true)))) {
         $flag = true;
@@ -28,6 +30,10 @@ namespace mvc\validator {
         $flag = true;
         session::getInstance()->setFlash('inputCantidad', true);
         session::getInstance()->setError('La cantidad no puede ser letras', 'inputCantidad');
+      } else if (!preg_match($soloNumeros, trim(request::getInstance()->getPost(\detalleFacturaVentaTableClass::getNameField(\detalleFacturaVentaTableClass::VALOR_UNIDAD, true))))){
+        $flag = true;
+        session::getInstance()->setFlash('inputValor', true);
+        session::getInstance()->setError('Los valores numericos no pueden ser negativos', 'inputValor');
 //      } else if(strlen(request::getInstance()->getPost(\detalleFacturaVentaTableClass::getNameField(\detalleFacturaVentaTableClass::VALOR_HORA, true))) > \detalleFacturaVentaTableClass::VALOR_HORA_LENGTH) {
 //        $flag = true;
 //        session::getInstance()->setFlash('inputValor', true);
@@ -40,7 +46,11 @@ namespace mvc\validator {
       } else if (!is_numeric(request::getInstance()->getPost(\detalleFacturaVentaTableClass::getNameField(\detalleFacturaVentaTableClass::VALOR_UNIDAD, true)))) {
         $flag = true;
         session::getInstance()->setFlash('inputValor', true);
-        session::getInstance()->setError('El valor por cantidad no puede ser letras', 'inputValor');
+        session::getInstance()->setError('El valor por unidad no puede ser letras', 'inputValor');
+      } else if (!preg_match($soloNumeros, trim(request::getInstance()->getPost(\detalleFacturaVentaTableClass::getNameField(\detalleFacturaVentaTableClass::VALOR_UNIDAD, true))))){
+        $flag = true;
+        session::getInstance()->setFlash('inputValor', true);
+        session::getInstance()->setError('Los valores numericos no pueden ser negativos', 'inputValor');
       }
         if (self::notBlank(request::getInstance()->getPost(\detalleFacturaVentaTableClass::getNameField(\detalleFacturaVentaTableClass::VALOR_TOTAL, true)))) {
         $flag = true;
