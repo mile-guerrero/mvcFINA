@@ -24,24 +24,20 @@ class insertActionClass extends controllerClass implements controllerActionInter
   public function execute() {
     try {
       $fields = array(
-          loteTableClass::ID,
-          loteTableClass::UBICACION,
-          loteTableClass::CREATED_AT,
-          loteTableClass::TAMANO,
-          loteTableClass::UNIDAD_DISTANCIA_ID,
-          loteTableClass::DESCRIPCION,
-          loteTableClass::FECHA_INICIO_SIEMBRA,
-          loteTableClass::NUMERO_PLANTULAS,
-          loteTableClass::PRESUPUESTO,
-          loteTableClass::PRODUCTO_INSUMO_ID,
-          loteTableClass::ID_CIUDAD,
-          loteTableClass::UPDATED_AT
+          registroLoteTableClass::ID,
+          registroLoteTableClass::UBICACION,
+          registroLoteTableClass::CREATED_AT,
+          registroLoteTableClass::PRODUCCION,
+          registroLoteTableClass::FECHA_RIEGO,
+          registroLoteTableClass::NUMERO_PLANTULAS,
+          registroLoteTableClass::PRODUCTO_INSUMO_ID,
+          registroLoteTableClass::UNIDAD_MEDIDA_ID
       );
       $orderBy = array(
-          loteTableClass::ID
+          registroLoteTableClass::ID
       );
 
-      $this->objLote = loteTableClass::getAll($fields, true, $orderBy, 'ASC');
+      $this->objLote = registroLoteTableClass::getAll($fields, false, $orderBy, 'ASC');
       $this->defineView('insert', 'reportes', session::getInstance()->getFormatOutput());
     } //cierre del try
     catch (PDOException $exc) {

@@ -36,9 +36,12 @@ reportes:
       - jqPlot/jquery.jqplot.min.js
       - jqPlot/plugins/jqplot.canvasTextRenderer.min.js
       - jqPlot/plugins/jqplot.canvasAxisLabelRenderer.min.js
+      - jqPlot/jquery.jqplot.js
+      - jqPlot/plugins/jqplot.dateAxisRenderer.js
       - graficas/grafica1.js
     stylesheet:
-      - jquery.jqplot.min.css      
+      - jquery.jqplot.min.css 
+      - jqPlot/jquery.jqplot.css
 #-------------------modulo - default----------------------------    
 default: 
   index:

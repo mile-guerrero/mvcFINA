@@ -4,8 +4,9 @@ function crearGrafica(cosPoints) {
     title: 'Producción de la semana',
     legend: {show: false},
     axes: {
-      pad: 2,
+         pad: 2,
       xaxis: {
+          tickRenderer:$.jqplot.CanvasAxisTickRenderer,
         renderer: $.jqplot.CategoryAxisRenderer,
           label: 'eje x',
           labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
@@ -18,11 +19,12 @@ function crearGrafica(cosPoints) {
          
       },
       yaxis: {
-        pad: 2,
+//        pad: 2,
         renderer: $.jqplot.CategoryAxisRenderer,
           label: 'eje y',
           labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
           tickRenderer: $.jqplot.CanvasAxisTickRenderer,
+          renderer: $.jqplot.DateAxisRenderer,
           tickOptions: {
               angle: 30,
               fontFamily: 'Courier New',
@@ -31,7 +33,8 @@ function crearGrafica(cosPoints) {
       }
 
     },
-    series: [{lineWidth: 4, markerOptions: {style: 'dimaond'}, shadow: false, }],
+    
+    series: [{lineWidth: 1, markerOptions: {style: 'dimaond'}, shadow: false, }],
   }
   );
 }

@@ -931,6 +931,8 @@ lote_create:
     - model/bitacoraTableClass.php
     - model/base/unidadMedidaBaseTableClass.php
     - model/unidadMedidaTableClass.php
+    - model/base/registroLoteBaseTableClass.php
+    - model/registroLoteTableClass.php
     
 lote_insertMas:
   url:    /lote/insertarMas
@@ -946,6 +948,8 @@ lote_insertMas:
     - model/unidadDistanciaTableClass.php
     - model/base/unidadMedidaBaseTableClass.php
     - model/unidadMedidaTableClass.php
+    - model/base/registroLoteBaseTableClass.php
+    - model/registroLoteTableClass.php
         
 lote_createMas:
   url:    /lote/crearMas
@@ -965,6 +969,8 @@ lote_createMas:
     - model/bitacoraTableClass.php
     - model/base/unidadMedidaBaseTableClass.php
     - model/unidadMedidaTableClass.php
+    - model/base/registroLoteBaseTableClass.php
+    - model/registroLoteTableClass.php
         
     
 lote_edit:
@@ -2957,6 +2963,8 @@ reportes_index:
     - model/reporteTableClass.php
     - model/base/loteBaseTableClass.php
     - model/loteTableClass.php
+    - model/base/registroLoteBaseTableClass.php
+    - model/registroLoteTableClass.php
   
 reportes_insert:
   url:    /reportes/insert
@@ -2966,6 +2974,8 @@ reportes_insert:
     - model/reporteTableClass.php  
     - model/base/loteBaseTableClass.php
     - model/loteTableClass.php
+    - model/base/registroLoteBaseTableClass.php
+    - model/registroLoteTableClass.php
     
 reportes_create:
   url:    /reportes/generar
@@ -2975,6 +2985,8 @@ reportes_create:
     - model/reporteTableClass.php
     - model/base/loteBaseTableClass.php
     - model/loteTableClass.php
+    - model/base/registroLoteBaseTableClass.php
+    - model/registroLoteTableClass.php
 
 reportes_genararGrafica:
   url:    /reportes/grafica
@@ -2984,6 +2996,8 @@ reportes_genararGrafica:
     - model/reporteTableClass.php   
     - model/base/loteBaseTableClass.php
     - model/loteTableClass.php
+    - model/base/registroLoteBaseTableClass.php
+    - model/registroLoteTableClass.php
     
 reportes_reporte:
   url:    /reportes/reporte
@@ -3000,6 +3014,8 @@ reportes_reporte:
     - model/plagaTableClass.php
     - model/base/loteBaseTableClass.php
     - model/loteTableClass.php
+    - model/base/registroLoteBaseTableClass.php
+    - model/registroLoteTableClass.php
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php

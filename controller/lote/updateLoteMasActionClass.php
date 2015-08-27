@@ -29,25 +29,28 @@ class updateLoteMasActionClass extends controllerClass implements controllerActi
   public function execute() {
     try {
       if (request::getInstance()->isMethod('POST')) {
-        $id = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::ID, true));
+       $id = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::ID, true));
+        $ubicacion = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::UBICACION, true));
+//        $tamano = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::TAMANO, true));
+//        $unidadDistancia = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::UNIDAD_DISTANCIA_ID, true));
         $unidadMedida = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::UNIDAD_MEDIDA_ID, true));
+//        $descripcion = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::DESCRIPCION, true));
         $fechaSiembra = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::FECHA_INICIO_SIEMBRA, true));
+        $idCiudad = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::ID_CIUDAD, true));
         $numero = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::NUMERO_PLANTULAS, true));
         $produccion = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::PRODUCCION, true));
         $insumo = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::PRODUCTO_INSUMO_ID, true));
         $presupuesto = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::PRESUPUESTO, true));
         $fechaRiego = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::FECHA_RIEGO, true));
         
-        
-        if($numero <= 0){
-                session::getInstance()->setFlash('inputPlantulas', true);
-                session::getInstance()->setError('Los valores numericos no pueden ser negativos', 'inputPlantulas');
-                request::getInstance()->setMethod('GET');
-                request::getInstance()->addParamGet(array(\loteTableClass::ID => request::getInstance()->getPost(\loteTableClass::getNameField(\loteTableClass::ID, true))));
-                routing::getInstance()->forward('lote', 'editLoteMas');
-            }
-            
-            if($produccion <= 0){
+     
+        if (strlen($produccion) === 0) {
+           $produccion = 00;
+        }
+        else if (strlen($produccion) == null or $produccion =='') {
+           $produccion = 'null';
+        }//cierre de validacin de nulo
+        else if($produccion < 0){
                 session::getInstance()->setFlash('inputProduccion', true);
                 session::getInstance()->setError('Los valores numericos no pueden ser negativos', 'inputProduccion');
                 request::getInstance()->setMethod('GET');
@@ -55,42 +58,52 @@ class updateLoteMasActionClass extends controllerClass implements controllerActi
                 routing::getInstance()->forward('lote', 'editLoteMas');
             }
             
-            if($presupuesto <= 0){
+            
+         if (strlen($unidadMedida) == null or $unidadMedida =='') {
+           $unidadMedida = 'null';
+        }//cierre de validacin de nulo
+        
+        
+        if (strlen($numero) === 0) {
+           $numero = 00;
+        }
+        else if (strlen($numero) == null or $numero =='') {
+           $numero = 'null';
+        }//cierre de validacin de nulo
+        else if($numero < 0){
+                session::getInstance()->setFlash('inputPlantulas', true);
+                session::getInstance()->setError('Los valores numericos no pueden ser negativos', 'inputPlantulas');
+                request::getInstance()->setMethod('GET');
+                request::getInstance()->addParamGet(array(\loteTableClass::ID => request::getInstance()->getPost(\loteTableClass::getNameField(\loteTableClass::ID, true))));
+                routing::getInstance()->forward('lote', 'editLoteMas');
+            }
+            
+            
+        if (strlen($insumo) == null or $insumo =='') {
+           $insumo = 'null';
+        }//cierre de validacin de nulo
+         
+        if (strlen($presupuesto) === 0) {
+           $presupuesto = 00;
+        }
+        else if (strlen($presupuesto) == null or $presupuesto =='') {
+           $presupuesto = 'null';
+        }//cierre de validacin de nulo
+         else if($presupuesto < 0){
                 session::getInstance()->setFlash('inputPresupuesto', true);
                 session::getInstance()->setError('Los valores numericos no pueden ser negativos', 'inputPresupuesto');
                 request::getInstance()->setMethod('GET');
                 request::getInstance()->addParamGet(array(\loteTableClass::ID => request::getInstance()->getPost(\loteTableClass::getNameField(\loteTableClass::ID, true))));
                 routing::getInstance()->forward('lote', 'editLoteMas');
             }
-        
-//        if (strlen($fechaSiembra) == null or $fechaSiembra =='') {
-//           $fechaSiembra = 'null';
-//        }//cierre de validacin de nulo
-        
-        if (strlen($produccion) == null or $produccion =='') {
-           $produccion = 'null';
-        }//cierre de validacin de nulo
-        
-         if (strlen($unidadMedida) == null or $unidadMedida =='') {
-           $unidadMedida = 'null';
-        }//cierre de validacin de nulo
-        
-        if (strlen($numero) == null or $numero =='') {
-           $numero = 'null';
-        }//cierre de validacin de nulo
-        
-        if (strlen($insumo) == null or $insumo =='') {
-           $insumo = 'null';
-        }//cierre de validacin de nulo
-         
-         if (strlen($presupuesto) == null or $presupuesto =='') {
-           $presupuesto = 'null';
-        }//cierre de validacin de nulo
-        
+            
         validator::validateEditMas();
 //        $this->validate($numero, $presupuesto);
         
         loteTableClass::loteupdateMas($id,$fechaSiembra,$fechaRiego,$numero,$insumo,$presupuesto,$produccion, $unidadMedida);
+        
+        
+        registroLoteTableClass::regitroLoteInsert($ubicacion,$fechaRiego,$numero,$insumo,$produccion,$unidadMedida);
         session::getInstance()->setSuccess('La actualizacion fue correcta');
         $observacion ='se ha modificado el lote mas';
         log::register('Modificar', loteTableClass::getNameTable(),$observacion,$id);

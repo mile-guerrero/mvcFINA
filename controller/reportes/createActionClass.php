@@ -7,7 +7,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
-//use mvc\validator\defaultValidatorClass as validator;
+//use mvc\validator\lotetValidatorClass as validator;
 use hook\log\logHookClass as log;
 
 /**
@@ -29,33 +29,51 @@ class createActionClass extends controllerClass implements controllerActionInter
     try {
 
     $where = null;
-//        if ((request::getInstance()->hasPost(loteTableClass::getNameField(loteTableClass::CREATED_AT, true) . '_1') and empty(mvc\request\requestClass::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::CREATED_AT, true) . '_1')) === false) and ( (request::getInstance()->hasPost(loteTableClass::getNameField(loteTableClass::CREATED_AT, true) . '_2') and empty(mvc\request\requestClass::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::CREATED_AT, true) . '_2')) === false))) {
-//
-//          if (request::getInstance()->isMethod('POST')) {
-//           
-//            $fechaInicial = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::CREATED_AT, true) . '_1');
-//            $fechaFin = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::CREATED_AT, true) . '_2');
-//     
-//            validator::validateFiltroFecha($fechaInicial,$fechaFin);
-//           
-//            if ((isset($fechaInicial) and $fechaInicial !== null and $fechaInicial !== "") and ( isset($fechaFin) and $fechaFin !== null and $fechaFin !== "" )) {
-//              $where[] = '(' . loteTableClass::getNameField(loteTableClass::CREATED_AT) . ' BETWEEN ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaInicial . ' 00:00:00')) . "'" . ' AND ' . "'" .  date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59')) . "'" . ' ) ';             
-//            }
-//          }
-//        }
-
-        if (request::getInstance()->hasPost(loteTableClass::getNameField(loteTableClass::UBICACION, true)) and empty(mvc\request\requestClass::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::UBICACION, true))) === false) {
+    
+        if ((request::getInstance()->hasPost(registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_1') and empty(mvc\request\requestClass::getInstance()->getPost(registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_1')) === false) and ( (request::getInstance()->hasPost(registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_2') and empty(mvc\request\requestClass::getInstance()->getPost(registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_2')) === false))) {
 
           if (request::getInstance()->isMethod('POST')) {
-            $ubicacion = request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::UBICACION, true));
-//            $objLote = loteTableClass::getProduccion($ubicacion);
-            session::getInstance()->setAttribute('graficaUbicacion', $ubicacion);
-//          print_r($where);  
-//          echo $ubicacion;
+           
+            $fechaInicial = request::getInstance()->getPost(registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_1');
+            $fechaFin = request::getInstance()->getPost(registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_2');
+            $ubicacion = request::getInstance()->getPost(registroLoteTableClass::getNameField(registroLoteTableClass::UBICACION, true));
+            
+            if (strtotime($fechaFin) < strtotime($fechaInicial)){
+        session::getInstance()->setError('La fecha final no puede ser menor a la actual', 'inputFecha');
+         session::getInstance()->setFlash('modalFilters', true);
+         routing::getInstance()->forward('reportes', 'insert');
+      }
+            
+            
+             session::getInstance()->setAttribute('graficaUbicacion', $ubicacion);
+             session::getInstance()->setAttribute('graficaRFecha1', $fechaInicial);
+             session::getInstance()->setAttribute('graficaRFecha2', $fechaFin);
+            
+            $where[] =  '(' . registroLoteTableClass::getNameField(registroLoteTableClass::UBICACION) . ' LIKE ' . '\'' . $ubicacion . '%\'  '
+              . 'OR ' . registroLoteTableClass::getNameField(registroLoteTableClass::UBICACION) . ' LIKE ' . '\'%' . $ubicacion . '%\' '
+              . 'OR ' . registroLoteTableClass::getNameField(registroLoteTableClass::UBICACION) . ' LIKE ' . '\'%' . $ubicacion . '\') '
+              . ' AND ' . '(' . registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT) . ' BETWEEN ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaInicial . ' 00:00:00')) . "'" . ' AND ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59')) . "'" . ' ) ';
+//             $where[] = '(' . registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT) . ' BETWEEN ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaInicial . ' 00:00:00')) . "'" . ' AND ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59')) . "'" . ' ) ';
+             session::getInstance()->setAttribute('graficaWhere', $where);
+//              print_r($where);  
+//          echo $fechaInicial.' '. $fechaFin;
 //          exit();
-//            }
+           // }
           }
         }
+
+//        if (request::getInstance()->hasPost(registroLoteTableClass::getNameField(registroLoteTableClass::UBICACION, true)) and empty(mvc\request\requestClass::getInstance()->getPost(registroLoteTableClass::getNameField(registroLoteTableClass::UBICACION, true))) === false) {
+//
+//          if (request::getInstance()->isMethod('POST')) {
+//            $ubicacion = request::getInstance()->getPost(registroLoteTableClass::getNameField(registroLoteTableClass::UBICACION, true));
+//
+//            session::getInstance()->setAttribute('graficaUbicacion', $ubicacion);
+////          print_r($where);  
+////          echo $ubicacion;
+////          exit();
+////            }
+//          }
+//        }
         
 
        routing::getInstance()->redirect('reportes', 'grafica');
