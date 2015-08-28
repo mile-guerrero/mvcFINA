@@ -44,8 +44,8 @@
                  <td>
                    <?php
               if($key->$extencion == 'jpg'){//para poner icono 
-           echo '<img id="margenImagen" src="' . routing::getInstance()->getUrlImg('../imgInsumo/' . $key->$hash) . '"/>' ;          
-                   }
+           echo '<a href="'.mvc\config\configClass::getUrlBase() . 'imgInsumo/' . $key->$hash.'"><img id="margenImagen" src="' . routing::getInstance()->getUrlImg('../imgInsumo/' . $key->$hash) . '"/></a>';          
+              }
                    ?></td>
                   </tr>                   
                        <tr>

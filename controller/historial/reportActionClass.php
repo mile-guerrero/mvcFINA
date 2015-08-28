@@ -40,7 +40,8 @@ class reportActionClass extends controllerClass implements controllerActionInter
        $this->mensaje = 'Informe de historial';
      $fields = array(
           historialTableClass::ID,
-            historialTableClass::PRODUCTO_INSUMO_ID,          
+            historialTableClass::PRODUCTO_INSUMO_ID,
+          historialTableClass::LOTE_ID,
             historialTableClass::ENFERMEDAD_ID,
           historialTableClass::CREATED_AT 
       );

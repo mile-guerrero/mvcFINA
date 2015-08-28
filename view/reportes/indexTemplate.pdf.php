@@ -66,6 +66,7 @@ $loteNombre = registroLoteTableClass::UBICACION;
 $numeroPlantulas = registroLoteTableClass::NUMERO_PLANTULAS;
 $fechaRiego = registroLoteTableClass::FECHA_RIEGO;
 $insumo = registroLoteTableClass::PRODUCTO_INSUMO_ID;
+$enfermedad = historialTableClass::ENFERMEDAD_ID;
 
 
 if ($value == 2) {
@@ -113,7 +114,11 @@ if ($value == 2) {
     $pdf->Cell(50, 8, utf8_decode($valor->$numeroPlantulas) . '  ' . productoInsumoTableClass::getNameProductoInsumo($valor->$insumo), 1, 0, 'C');
     $pdf->Cell(60, 8, utf8_decode($valor->$fechaRiego), 1, 0, 'C');
     $pdf->Ln();
+  
   }
+  
+ $pdf->Ln();
+ 
   $pdf->Output();
 }
 ?>

@@ -69,7 +69,7 @@ class createActionClass extends controllerClass implements controllerActionInter
 
       if ($value == 2) {
        
-        if ((request::getInstance()->hasPost(registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_1') and empty(mvc\request\requestClass::getInstance()->getPost(registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_1')) === false) and ( (request::getInstance()->hasPost(registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_2') and empty(mvc\request\requestClass::getInstance()->getPost(registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_2')) === false))) {
+        if ((request::getInstance()->hasPost(registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_1') and empty(mvc\request\requestClass::getInstance()->getPost(registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_1')) === false) and ( (request::getInstance()->hasPost(registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_2') and empty(mvc\request\requestClass::getInstance()->getPost(registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_2')) === false)) and ( (request::getInstance()->hasPost(registroLoteTableClass::getNameField(registroLoteTableClass::UBICACION, true)) and empty(mvc\request\requestClass::getInstance()->getPost(registroLoteTableClass::getNameField(registroLoteTableClass::UBICACION, true))) === false))) {
 
           if (request::getInstance()->isMethod('POST')) {
 

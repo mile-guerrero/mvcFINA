@@ -30,7 +30,7 @@ if (config::getDbUnixSocket() !== null) {
 }
 
 config::setPathAbsolute('c:/xampp/htdocs/mvcfinal/');
-config::setUrlBase('http://www.colmenar.com/');
+config::setUrlBase('http://www.elcolmenar.com/');
 
 config::setScope('prod'); // prod  dev
 
@@ -54,8 +54,8 @@ config::setHeaderExcel2007('Content-Type: application/vnd.openxmlformats-officed
 
 config::setCookieNameRememberMe('mvcSiteRememberMe');
 config::setCookieNameSite('mvcSite');
-config::setCookiePath('/www.colmenar.com/' . config::getIndexFile());
-config::setCookieDomain('http://www.colmenar.com/');
+config::setCookiePath('/www.elcolmenar.com/' . config::getIndexFile());
+config::setCookieDomain('http://www.elcolmenar.com/');
 config::setCookieTime(3600 * 8); // una hora en segundo 3600 y por 8 serían 8 horas
 
 config::setDefaultModule('principal');

@@ -48,6 +48,20 @@ class reportActionClass extends controllerClass implements controllerActionInter
       );
       $this->objLote = registroLoteTableClass::getAll($fields, false, $orderBy, 'ASC', null, null, $where);
 
+      
+//      $fields = array(
+//          historialTableClass::ID,
+//            historialTableClass::PRODUCTO_INSUMO_ID,
+//          historialTableClass::LOTE_ID,
+//            historialTableClass::ENFERMEDAD_ID,
+//          historialTableClass::CREATED_AT 
+//      );
+//      $orderBy = array(
+//      historialTableClass::ID   
+//      ); 
+//      
+//      $this->objHistorial = historialTableClass::getAll($fields, false, $orderBy, 'ASC',null,null,$where);
+
       $this->defineView('index', 'reportes', session::getInstance()->getFormatOutput());
     } //cierre del try
     catch (PDOException $exc) {
