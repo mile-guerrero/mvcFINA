@@ -6,6 +6,31 @@ dictionary:
     mas:                  Mas
     descargar:            Descargar archivo
     fecha:                Fecha
+    #-------Registros---------
+    registroCliente:      Registro de cliente
+    registroCooperativa:  Registro de cooperativa
+    registroCredencial:   Registro de credencial
+    registroUsuario:      Registro de usuario
+    registroDetallCompra: Registro de 
+    registroDetallVenta:  Registro de 
+    registroEmpresa:      Registro de empresa
+    registroEnfermedad:   Registro de enfermedad
+    registroFactuCompra:  Registro de factura compra
+    registroFactuVenta:   Registro de factura venta
+    registroHistorial:    Registro de historial
+    registroLabor:        Registro de labor
+    registroLote:         Registro de lote
+    registroManoObra:     Registro de mano obra
+    registroMaquina:      Registro de máquina
+    registroProveedor:    Registro de proveedor
+    registroOrdServicio:  Registro de orden servicio
+    registroPagTrabaja:   Registro de pago trabajador
+    registroPedido:       Registro de pedido
+    registroProInsumo:    Registro de producto insumo
+    registroTiProInsumo:  Registro de tipo producto insumo
+    registroSoliInsumo:   Registro de solicitud insumo
+    registroTrabajador:   Registro de trabajador
+    registroUsuCreden:    Registro de usuario credencial
     #-------Usuario-----------
     user:                 Usuario
     usu_id:               Usuario
@@ -37,6 +62,8 @@ dictionary:
     produccion:           Producción
     fCredencial:          Buscar por credencial
     #-------Factura venta-----------
+    verFactura:           Ver factura
+    verFacturaVenta:      Ver factura venta
     factura:              Factura venta
     fechaNormal:          Fecha
     nuevaFactura:         Nueva factura venta
@@ -45,6 +72,7 @@ dictionary:
     editDetalleFactura:   Editar detalle de factura venta
     subTotal:             Subtotal
     #-------Factura compra-----------
+    verFacturaCompra:     Ver factura compra
     facturaCompra:        Factura compra
     nuevaFacturaCompra:   Nueva factura compra
     detalleFacturaCompra: Detalle factura compra
@@ -99,14 +127,14 @@ dictionary:
     cantidad:             Cantidad
 #   maquina:              codigoMaquina
     #-------Maquina-----------
-    editar maquina:       Editar Maquina
-    nuevo maquina:        Nueva Maquina
-    maquina:              Maquina
-    selectMaquina:        Seleccione la maquina
-    nuevo tipo:           Nuevo Tipo Uso Maquina
-    origenM:              Origen Maquina
-    nuevo origen:         Nuevo Origen De Maquina
-    tipo uso:             Tipo Uso Maquina
+    editar maquina:       Editar máquina
+    nuevo maquina:        Nueva máquina
+    maquina:              Máquina
+    selectMaquina:        Seleccione la máquina
+    nuevo tipo:           Nuevo Tipo Uso máquina
+    origenM:              Origen máquina
+    nuevo origen:         Nuevo Origen De máquina
+    tipo uso:             Tipo Uso máquina
     #-------Trabajador-----------
     trabajador:           Trabajador
     selectTrabajador:     Seleccione el trabajador

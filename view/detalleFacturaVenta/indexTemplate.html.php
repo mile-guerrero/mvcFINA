@@ -72,19 +72,8 @@
             <form class="form-horizontal" id="filterForm" role="form" action="<?php echo routing::getInstance()->getUrlWeb('detalleFacturaVenta', 'ver', array(facturaVentaTableClass::ID => $factura->$idFactura)) ?>" method="POST">
                 
                 
-              <div class="form-group">
-                <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
-                <div class="col-sm-10">
-                  <input type="date" class="form-control" id="filterFechaIni" name="filter[fechaIni]" >
-                </div>
-              </div>
+               <?php echo i18n::__('verFacturaVenta') ?>
 
-              <div class="form-group">
-                <label  class="col-sm-2 control-label"><?php echo i18n::__('fecha fin') ?></label>
-                <div class="col-sm-10">
-                  <input type="date" class="form-control" id="filterFechaFin" name="filter[fechaFin]" >
-                </div>
-              </div>
 
             </form>
 
@@ -103,13 +92,13 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('informe') ?></h4>
+            <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('factura') ?></h4>
           </div>
           <div class="modal-body">
             <form class="form-horizontal" id="reportForm" role="form" action="<?php echo routing::getInstance()->getUrlWeb('detalleFacturaVenta', 'report', array(facturaVentaTableClass::ID => $factura->$idFactura)) ?>" method="POST">
                 
        <div class="modal-body">
-        <?php echo i18n::__('factura') ?>
+           <label><?php echo i18n::__('verFacturaVenta') ?></label>
        </div>
 
             </form>
@@ -117,7 +106,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-xs btn-default" data-dismiss="modal"><?php echo i18n::__('cancel') ?></button>
-            <button type="button" onclick="$('#reportForm').submit()" class="btn btn-xs btn-warning"><?php echo i18n::__('informe') ?></button>
+            <button type="button" onclick="$('#reportForm').submit()" class="btn btn-xs btn-warning"><?php echo i18n::__('verFactura') ?></button>
           </div>
         </div>
       </div>

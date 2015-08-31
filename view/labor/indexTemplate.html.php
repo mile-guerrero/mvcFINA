@@ -27,7 +27,7 @@ use mvc\session\sessionClass as session ?>
     <h1><?php echo i18n::__('labor') ?></h1> 
     <ul>
       <?php if (session::getInstance()->hasCredential('admin')): ?>  
-        <a class="btn  btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('labor', 'insert') ?>"><img class="img-responsive"  id="imgnuevo" src="" alt=" "><?php echo i18n::__('nuevo') ?></a> 
+        <a class="btn  btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('labor', 'insert') ?>"><img class="img-responsive"  id="imgnuevo" src="" alt=" "><?php echo i18n::__('registroLabor') ?></a> 
 
       <?php endif ?>
       <a type="button" class="btn  btn-xs" data-toggle="modal" data-target="#myModalFilters"><img class="img-responsive"  id="imgfiltros" src="" alt=" "><?php echo i18n::__('filtros') ?></a>  

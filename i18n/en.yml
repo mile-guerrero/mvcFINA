@@ -6,6 +6,31 @@ dictionary:
     mas:                  More
     descargar:            Download file
     fecha:                Fecha
+    #-------Registros---------
+    registroCliente:      Customer registration
+    registroCooperativa:  Registration cooperative
+    registroCredencial:   Registration credential
+    registroUsuario:      User Registration
+    registroDetallCompra: Registro de 
+    registroDetallVenta:  Registro de 
+    registroEmpresa:      Registration company
+    registroEnfermedad:   Registration disease
+    registroFactuCompra:  Purchase invoice record
+    registroFactuVenta:   Invoice record sales
+    registroHistorial:    Registration history
+    registroLabor:        Registration work
+    registroLote:         Batch record
+    registroManoObra:     Registration of hand work
+    registroMaquina:      Registration machine
+    registroProveedor:    Vendor record
+    registroOrdServicio:  Order record service
+    registroPagTrabaja:   Worker Registration payment
+    registroPedido:       Order record
+    registroProInsumo:    Registration input-output
+    registroTiProInsumo:  egistration input-output type
+    registroSoliInsumo:   Registration request input
+    registroTrabajador:   Worker Registration
+    registroUsuCreden:    Registration user credential
     #-------Usuario-----------
     user:                 User
     usu_id:               User
@@ -37,6 +62,8 @@ dictionary:
     produccion:           Production
     fCredencial:          Search pro credentials
     #-------Factura venta-----------
+    verFactura:           View invoice
+    verFacturaVenta:      See bill sale
     factura:              Bill sale
     fechaNormal:          Fecha
     nuevaFactura:         New bill sale
@@ -45,6 +72,7 @@ dictionary:
     editDetalleFactura:   Edit detail of bill sale
     subTotal:             Subtotal
     #-------Factura compra-----------
+    verFacturaCompra:     See invoice purchase
     facturaCompra:        Purchase invoice
     nuevaFacturaCompra:   New Invoice purchase
     detalleFacturaCompra: Purchase invoice detail

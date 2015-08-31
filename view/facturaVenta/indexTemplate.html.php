@@ -23,7 +23,7 @@
 
     <h1><?php echo i18n::__('factura') ?></h1> 
     <ul>      
-      <a class="btn btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('facturaVenta', 'insert') ?>"><img class="img-responsive"  id="imgnuevo" src="" alt=" "><?php echo i18n::__('nuevo') ?></a> 
+      <a class="btn btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('facturaVenta', 'insert') ?>"><img class="img-responsive"  id="imgnuevo" src="" alt=" "><?php echo i18n::__('registroFactuVenta') ?></a> 
       <a type="button" class="btn btn-xs" data-toggle="modal" data-target="#myModalFiltres"><img class="img-responsive"  id="imgfiltros" src="" alt=" "><?php echo i18n::__('filtros') ?></button>  
       <a href="<?php echo routing::getInstance()->getUrlWeb('facturaVenta', 'deleteFilters') ?>" class="btn btn-xs" ><img class="img-responsive"  id="imgelifiltro" src="" alt=" "><?php echo i18n::__('eFiltros') ?></a>             
     </ul> 

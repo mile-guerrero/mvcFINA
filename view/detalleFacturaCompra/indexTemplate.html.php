@@ -65,14 +65,14 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('informe') ?></h4>
+            <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('facturaCompra') ?></h4>
           </div>
           <div class="modal-body">
             <form class="form-horizontal" id="reportForm" role="form" action="<?php echo routing::getInstance()->getUrlWeb('detalleFacturaCompra', 'report', array(facturaCompraTableClass::ID => $factura->$idFactura)) ?>" method="POST">
                 
                 
               <div class="modal-body">
-                <?php echo i18n::__('facturaCompra') ?></label>
+                <label><?php echo i18n::__('verFacturaCompra') ?></label>
                 
               </div>
 
@@ -81,7 +81,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-xs btn-default" data-dismiss="modal"><?php echo i18n::__('cancel') ?></button>
-            <button type="button" onclick="$('#reportForm').submit()" class="btn btn-xs btn-warning"><?php echo i18n::__('informe') ?></button>
+            <button type="button" onclick="$('#reportForm').submit()" class="btn btn-xs btn-warning"><?php echo i18n::__('verFactura') ?></button>
           </div>
         </div>
       </div>

@@ -27,7 +27,7 @@
       <h1><?php echo i18n::__('pedido') ?></h1> 
       <ul>
      
-        <a class="btn btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('pedido', 'insert') ?>"><img class="img-responsive"  id="imgnuevo" src="" alt=" "><?php echo i18n::__('nuevo') ?></a> 
+        <a class="btn btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('pedido', 'insert') ?>"><img class="img-responsive"  id="imgnuevo" src="" alt=" "><?php echo i18n::__('registroPedido') ?></a> 
         <?php if (session::getInstance()->hasCredential('admin')):?>
         <a href="javascript:eliminarMasivo()" class="btn  btn btn-xs" id="btnDeleteMasivo"><img class="img-responsive"  id="imgmasivo" src="" alt=" "><?php echo i18n::__('eliminar en masa') ?></a> 
         <?php endif?>

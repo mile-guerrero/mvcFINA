@@ -27,7 +27,7 @@
     <h1><?php echo i18n::__('cooperativa') ?></h1> 
     <ul>
 <?php if (session::getInstance()->hasCredential('admin')): ?>  
-        <a class="btn  btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('cooperativa', 'insert') ?>"><img class="img-responsive"  id="imgnuevo" src="" alt=" "><?php echo i18n::__('nuevo') ?></a> 
+        <a class="btn  btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('cooperativa', 'insert') ?>"><img class="img-responsive"  id="imgnuevo" src="" alt=" "><?php echo i18n::__('registroCooperativa') ?></a> 
         <a href="javascript:eliminarMasivo()" class="btn  btn-xs" id="btnDeleteMasivo"><img class="img-responsive"  id="imgmasivo" src="" alt=" "><?php echo i18n::__('eliminar en masa') ?></a> 
 <?php endif ?>
       <a type="button" class="btn  btn-xs" data-toggle="modal" data-target="#myModalFilters"><img class="img-responsive"  id="imgfiltros" src="" alt=" "><?php echo i18n::__('filtros') ?></a>  
