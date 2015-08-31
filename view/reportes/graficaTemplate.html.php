@@ -37,7 +37,7 @@
       
       
       <br>
- <a class="btn btn-lg btn-success btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('reportes', 'report') ?>" ><?php echo i18n::__('importar pdf') ?></a>
+      <a class="btn btn-lg btn-success btn-xs" target="_blank" href="<?php echo routing::getInstance()->getUrlWeb('reportes', 'report') ?>" ><?php echo i18n::__('importar pdf') ?></a>
        <a class="btn btn-lg btn-default btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('reportes', 'index') ?>" ><?php echo i18n::__('atras') ?></a>
  <br><br><br><br><br><br><br><br><br><br><br><br>
        </div>    

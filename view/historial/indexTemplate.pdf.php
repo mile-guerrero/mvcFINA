@@ -3,6 +3,7 @@ use mvc\routing\routingClass as routing;
 
 $insumo = historialTableClass::PRODUCTO_INSUMO_ID;
 $enfermedad = historialTableClass::ENFERMEDAD_ID;
+$plaga = historialTableClass::PLAGA_ID;
 $createdAt = historialTableClass::CREATED_AT;
 
 
@@ -47,21 +48,29 @@ $pdf->Ln();
 
 
 
-$pdf->SetFont('courier', 'B', 8);
+$pdf->SetFont('courier', 'B', 10);
 
 foreach ($objHistorial as $valor) {
-  $pdf->Cell(40, 10, "Insumo",1, 0, 'C');
+  $pdf->SetFillColor(255,204,51);//color
+  $pdf->Cell(40, 10, "Insumo",1, 0, 'C',true);
   $pdf->Cell(150, 10, productoInsumoTableClass::getNameProductoInsumo($valor->$insumo),1);
   $pdf->Ln();
-  $pdf->Cell(40, 10, "Enfermedad",1, 0, 'C');
+  $pdf->Cell(40, 10, "Enfermedad",1, 0, 'C',true);
   $pdf->Cell(150, 10, enfermedadTableClass::getNameEnfermedad($valor->$enfermedad),1);
   $pdf->Ln();
-  $pdf->MultiCell(190, 5, utf8_decode("Descripción:") . ' '. utf8_decode(enfermedadTableClass::getNameDes($valor->$enfermedad)),1);
-  $pdf->MultiCell(190, 5, utf8_decode("Tratamiento:") . ' '. utf8_decode(enfermedadTableClass::getNameTratamiento($valor->$enfermedad)),1,'J', false);
-  
+  $pdf->Cell(40, 10, utf8_decode("Descripción"),1, 0, 'C',true);
+  $pdf->MultiCell(150, 8,utf8_decode(enfermedadTableClass::getNameDes($valor->$enfermedad)),1);
+  $pdf->Cell(40, 10, utf8_decode("Tratamiento"),1, 0, 'C',true);
+  $pdf->MultiCell(150, 8,utf8_decode(enfermedadTableClass::getNameTratamiento($valor->$enfermedad)),1,'J', false);
+  $pdf->Cell(40, 10, "plaga",1, 0, 'C',true);
+  $pdf->Cell(150, 10,utf8_decode(plagaTableClass::getNamePlaga($valor->$plaga)),1);
+  $pdf->Ln();
+  $pdf->Cell(40, 10, utf8_decode("Descripción"),1, 0, 'C',true);
+  $pdf->MultiCell(150, 8,utf8_decode(plagaTableClass::getNameDes($valor->$plaga)),1);
+  $pdf->Cell(40, 10, utf8_decode("Tratamiento"),1, 0, 'C',true);
+  $pdf->MultiCell(150, 8,utf8_decode(plagaTableClass::getNameTratamiento($valor->$plaga)),1,'J', false);
   $pdf->Ln();
 }
-$pdf->Ln();
 $pdf->Ln();
 $pdf->Ln();
 $pdf->Ln();
