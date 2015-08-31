@@ -1,4 +1,4 @@
-<?php mvc\view\viewClass::includePartial('default/menuPrincipal') ?>
+<?php mvc\view\viewClass::includePartial('default/menuPrincipal2') ?>
 <?php use mvc\routing\routingClass as routing ?>
 <?php use mvc\i18n\i18nClass as i18n ?>
 <?php use mvc\view\viewClass as view ?>
@@ -38,7 +38,8 @@
       
       <br>
  <a class="btn btn-lg btn-success btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('reportes', 'report') ?>" ><?php echo i18n::__('importar pdf') ?></a>
-      <br><br><br><br><br><br><br><br><br><br><br><br>
+       <a class="btn btn-lg btn-default btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('reportes', 'index') ?>" ><?php echo i18n::__('atras') ?></a>
+ <br><br><br><br><br><br><br><br><br><br><br><br>
        </div>    
   </div>    
 </div>

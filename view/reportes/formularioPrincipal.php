@@ -17,7 +17,7 @@ use mvc\request\requestClass as request ?>
 
 <div class="container container-fluid" id="cuerpo">
   <div class="center-block" id="cuerpo5">
-    <div class="center-block" id="cuerpo2">
+    <div class="center-block" id="cuerpo3">
 
       <form class="form-horizontal" id="filterForm" role="form" action="<?php echo routing::getInstance()->getUrlWeb('reportes', 'create') ?>" method="POST">
 <?php if (isset($objReportes) == true): ?>
@@ -72,7 +72,7 @@ use mvc\request\requestClass as request ?>
 <?php if (session::getInstance()->hasCredential('admin')): ?>
           <a class="btn btn-lg btn-default btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('reportes', 'index') ?>" ><?php echo i18n::__('atras') ?></a>
 <?php endif ?>
-        <br><br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
       </form>
     </div>
   </div>

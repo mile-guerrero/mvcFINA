@@ -1,4 +1,4 @@
-<?php mvc\view\viewClass::includePartial('default/menuPrincipal') ?>
+<?php mvc\view\viewClass::includePartial('default/menuPrincipal2') ?>
 <?php  use mvc\routing\routingClass as routing ?>
 <?php use mvc\i18n\i18nClass as i18n ?>
 <?php $id = usuarioCredencialTableClass::ID ?>
@@ -52,7 +52,7 @@
 	  </article>
    
 </div>
-     <br><br><br><br><br><br><br><br><br><br><br><br><br>
+     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </div>
   
  </div>
