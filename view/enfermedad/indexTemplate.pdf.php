@@ -57,10 +57,8 @@ $pdf->Cell(50, 10, utf8_decode("Fecha de cración"),1, 0, 'C');
   $pdf->Cell(140, 10, utf8_decode($valor->$createdAt),1);
   $pdf->Ln();  
 
-  $pdf->Cell(190, 50, utf8_decode("Descripción:") . ' '. utf8_decode($valor->$descripcion),1);
-  $pdf->Ln();  
-
-   $pdf->Cell(190, 50,"Tratamiento:" . ' ' . utf8_decode($valor->$tratamiento),1);
+  $pdf->MultiCell(190, 5, utf8_decode("Descripción:") . ' '. utf8_decode($valor->$descripcion),1);
+  $pdf->MultiCell(190, 5,"Tratamiento:" . ' ' . utf8_decode($valor->$tratamiento),1);
   $pdf->Ln();  
   $pdf->Ln();
   $pdf->Ln();

@@ -54,7 +54,7 @@ class updateActionClass extends controllerClass implements controllerActionInter
                 routing::getInstance()->forward('pagoTrabajador', 'edit');
             }
             
-            if($total <= 0){
+            if($total < 0){
                 session::getInstance()->setFlash('selectFechaIni', true);
                 session::getInstance()->setError('El total a pagar no puede ser negativo', 'inputTotal');
                 request::getInstance()->setMethod('GET');
@@ -62,23 +62,7 @@ class updateActionClass extends controllerClass implements controllerActionInter
                 routing::getInstance()->forward('pagoTrabajador', 'edit');
             }
             
-            if($total <= 0){
-                session::getInstance()->setFlash('selectFechaIni', true);
-                session::getInstance()->setError('El total a pagar no puede ser negativo', 'inputTotal');
-                request::getInstance()->setMethod('GET');
-                request::getInstance()->addParamGet(array(\pagoTrabajadorTableClass::ID => request::getInstance()->getPost(\pagoTrabajadorTableClass::getNameField(\pagoTrabajadorTableClass::ID, true))));
-                routing::getInstance()->forward('pagoTrabajador', 'edit');
-            }
-            
-            if($total <= 0){
-                session::getInstance()->setFlash('selectFechaIni', true);
-                session::getInstance()->setError('El total a pagar no puede ser negativo', 'inputTotal');
-                request::getInstance()->setMethod('GET');
-                request::getInstance()->addParamGet(array(\pagoTrabajadorTableClass::ID => request::getInstance()->getPost(\pagoTrabajadorTableClass::getNameField(\pagoTrabajadorTableClass::ID, true))));
-                routing::getInstance()->forward('pagoTrabajador', 'edit');
-            }
-            
-            if($horas <= 0){
+            if($horas < 0){
                 session::getInstance()->setFlash('inputHorasPerdidas', true);
                 session::getInstance()->setError('Los valores numericos no pueden ser negativos', 'inputHorasPerdidas');
                 request::getInstance()->setMethod('GET');
@@ -86,7 +70,7 @@ class updateActionClass extends controllerClass implements controllerActionInter
                 routing::getInstance()->forward('pagoTrabajador', 'edit');
             }
             
-            if($valorHoras <= 0){
+            if($valorHoras < 0){
                 session::getInstance()->setFlash('inputHoras', true);
                 session::getInstance()->setError('Los valores numericos no pueden ser negativos', 'inputHoras');
                 request::getInstance()->setMethod('GET');
@@ -94,7 +78,7 @@ class updateActionClass extends controllerClass implements controllerActionInter
                 routing::getInstance()->forward('pagoTrabajador', 'edit');
             }
             
-            if($cantidad <= 0){
+            if($cantidad < 0){
                 session::getInstance()->setFlash('inputCantidad', true);
                 session::getInstance()->setError('Los valores numericos no pueden ser negativos', 'inputCantidad');
                 request::getInstance()->setMethod('GET');

@@ -8,7 +8,7 @@ function crearGrafica(cosPoints) {
       xaxis: {
           tickRenderer:$.jqplot.CanvasAxisTickRenderer,
         renderer: $.jqplot.CategoryAxisRenderer,
-          label: 'eje x',
+          label: 'Peso en kilos',
           labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
           tickRenderer: $.jqplot.CanvasAxisTickRenderer,
           tickOptions: {
@@ -21,7 +21,7 @@ function crearGrafica(cosPoints) {
       yaxis: {
 //        pad: 2,
         renderer: $.jqplot.CategoryAxisRenderer,
-          label: 'eje y',
+          label: 'Fecha',
           labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
           tickRenderer: $.jqplot.CanvasAxisTickRenderer,
           renderer: $.jqplot.DateAxisRenderer,
@@ -48,7 +48,7 @@ function crearGrafica2(cosPoints2) {
          pad: 2,
       xaxis: {
           renderer: $.jqplot.CategoryAxisRenderer,
-                label: 'eje x',
+                label: 'Cantidad de plantas',
                 labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
                 tickRenderer: $.jqplot.CanvasAxisTickRenderer,
                 tickOptions: {
@@ -58,7 +58,7 @@ function crearGrafica2(cosPoints2) {
       yaxis: {
 //        pad: 2,
            renderer: $.jqplot.CategoryAxisRenderer,
-          label: 'eje y',
+          label: 'Ubicacion',
           labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
           tickRenderer: $.jqplot.CanvasAxisTickRenderer,
       }

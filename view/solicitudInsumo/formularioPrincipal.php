@@ -22,7 +22,7 @@
 
 <div class="container container-fluid" id="cuerpo">
   <div class="center-block" id="cuerpo5">
-  <div class="center-block" id="cuerpo2">
+  <div class="center-block" id="cuerpo3">
 <form  class="form-horizontal" role="form" method="post" action="<?php echo routing::getInstance()->getUrlWeb('solicitudInsumo', ((isset($objS)) ? 'update' : 'create')) ?>">
   <?php if(isset($objS)== true): ?>
   <input  name="<?php echo solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::ID, true) ?>" value="<?php echo $objS[0]->$id ?>" type="hidden">
@@ -123,7 +123,7 @@
 <a class="btn btn-lg btn-default btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('solicitudInsumo', 'index') ?>" ><?php echo i18n::__('atras') ?> </a>
 
 </form>
-      <br><br><br><br><br><br><br><br><br>
+      <br><br><br><br><br><br><br><br><br><br><br>
   
   </div>
 </div>

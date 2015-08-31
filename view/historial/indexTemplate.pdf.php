@@ -11,7 +11,7 @@ class PDF extends FPDF {
   function Header() {
     
     $this->Image(routing::getInstance()->getUrlImg('logoColmenar.png'), 10, 22, 80);
-    $this->SetFont('Arial', 'B', '25');
+    $this->SetFont('courier', 'B', '25');
 //    $this->SetDrawColor(0,80,180);
     $this->SetFillColor(255,204,51);
 //    $this->SetTextColor(220,50,50);
@@ -36,25 +36,29 @@ class PDF extends FPDF {
 
 $pdf = new PDF();
 $pdf->AddPage();
-$pdf->SetFont('Arial', 'B', 8);
+$pdf->SetFont('courier', 'B', 8);
 
 $pdf->Ln();
 $pdf->Ln();
 $pdf->SetFillColor(255,204,51);//color
 $pdf->Cell(190, 10, $mensaje, 1, 0, 'C', true);
 $pdf->Ln();
-$pdf->Cell(30, 10, "Insumo",1, 0, 'C');
-$pdf->Cell(30, 10, "Enfermedad",1, 0, 'C');
-$pdf->Cell(50, 10, utf8_decode("Descripcion"),1, 0, 'C');
-$pdf->Cell(45, 10, "Tratamiento",1, 0, 'C');
-$pdf->Cell(35, 10, utf8_decode("Fecha de creación"),1, 0, 'C');
-$pdf->Ln();
+
+
+
+
+$pdf->SetFont('courier', 'B', 8);
+
 foreach ($objHistorial as $valor) {
-  $pdf->Cell(30, 8, productoInsumoTableClass::getNameProductoInsumo($valor->$insumo),1);
-  $pdf->Cell(30, 8, enfermedadTableClass::getNameEnfermedad($valor->$enfermedad),1);
-  $pdf->Cell(50, 8, enfermedadTableClass::getNameDes($valor->$enfermedad),1);
-  $pdf->Cell(45, 8, enfermedadTableClass::getNameTratamiento($valor->$enfermedad),1);
-  $pdf->Cell(35, 8, utf8_decode($valor->$createdAt),1);
+  $pdf->Cell(40, 10, "Insumo",1, 0, 'C');
+  $pdf->Cell(150, 10, productoInsumoTableClass::getNameProductoInsumo($valor->$insumo),1);
+  $pdf->Ln();
+  $pdf->Cell(40, 10, "Enfermedad",1, 0, 'C');
+  $pdf->Cell(150, 10, enfermedadTableClass::getNameEnfermedad($valor->$enfermedad),1);
+  $pdf->Ln();
+  $pdf->MultiCell(190, 5, utf8_decode("Descripción:") . ' '. utf8_decode(enfermedadTableClass::getNameDes($valor->$enfermedad)),1);
+  $pdf->MultiCell(190, 5, utf8_decode("Tratamiento:") . ' '. utf8_decode(enfermedadTableClass::getNameTratamiento($valor->$enfermedad)),1,'J', false);
+  
   $pdf->Ln();
 }
 $pdf->Ln();

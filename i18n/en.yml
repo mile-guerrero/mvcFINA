@@ -75,7 +75,7 @@ dictionary:
     fechaFsiembra:        Start planting date
     selectUnidadDis:      Select the type of distance
     fecha siembra:        Planting date
-    numero:               Number of plants to plant
+    numero:               N° of plants
     presupuesto:          Budget
     informe:              Information
     #-------Proveedor-----------

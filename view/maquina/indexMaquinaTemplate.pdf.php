@@ -4,7 +4,6 @@ use mvc\routing\routingClass as routing;
           
   $nombb =  maquinaTableClass::NOMBRE;
   $des =  maquinaTableClass::DESCRIPCION;
-  $createdAt =  maquinaTableClass::CREATED_AT;
   $tipo =  maquinaTableClass::TIPO_USO_ID;
   $origen =  maquinaTableClass::ORIGEN_MAQUINA;
   $proveedor =  maquinaTableClass::PROVEEDOR_ID;
@@ -39,7 +38,7 @@ class PDF extends FPDF {
 
 $pdf = new PDF();
 $pdf->AddPage();
-$pdf->SetFont('Arial', 'B', 6);
+$pdf->SetFont('Arial', 'B', 7);
 
 $pdf->Ln();
 $pdf->Ln();
@@ -47,19 +46,17 @@ $pdf->SetFillColor(255,204,51);//color
 $pdf->Cell(190, 10, $mensaje, 1, 0, 'C',  true);
 $pdf->Ln();
 $pdf->Cell(30, 10, "Nombre",1, 0, 'C');
-$pdf->Cell(35, 10, utf8_decode("Descripción"),1, 0, 'C');
+$pdf->Cell(75, 10, utf8_decode("Descripción"),1, 0, 'C');
 $pdf->Cell(30, 10, "Origen maquina",1, 0, 'C');
 $pdf->Cell(25, 10, "Tipo uso maquina ",1, 0, 'C');
 $pdf->Cell(30, 10, "Proveedor",1, 0, 'C');
-$pdf->Cell(40, 10, utf8_decode("Fecha de creación"),1, 0, 'C');
 $pdf->Ln();
 foreach ($objMaquina as $valor){
   $pdf->Cell(30,8, utf8_decode($valor->$nombb),1);
-  $pdf->Cell(35,8, utf8_decode($valor->$des),1);
+  $pdf->Cell(75,8, utf8_decode($valor->$des),1);
   $pdf->Cell(30,8, utf8_decode($valor->$origen),1);
   $pdf->Cell(25,8, tipoUsoMaquinaTableClass::getNameTipoUsoMaquina($valor->$tipo),1);
   $pdf->Cell(30,8, proveedorTableClass::getNameProveedor($valor->$proveedor),1);
-  $pdf->Cell(40,8, utf8_decode($valor->$createdAt),1);
   $pdf->Ln();    
 }
 $pdf->Output();

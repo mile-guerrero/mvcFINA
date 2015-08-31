@@ -25,7 +25,7 @@ use mvc\request\requestClass as request ?>
 
 <div class="container container-fluid" id="cuerpo">
   <div class="center-block" id="cuerpo5">
-  <div class="center-block" id="cuerpo2">
+  <div class="center-block" id="cuerpo3">
 
     <!--<article id='derecha'>-->
 
@@ -82,7 +82,7 @@ use mvc\request\requestClass as request ?>
         </div>
       </div>
 
-
+  <br>
 
 
      
@@ -176,7 +176,7 @@ use mvc\request\requestClass as request ?>
 
       <input class="btn btn-lg btn-success btn-xs" type="submit" value="<?php echo i18n::__(((isset($objCliente)) ? 'update' : 'register')) ?>">
       <a class="btn btn-lg btn-default btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('cliente', 'indexCliente') ?>" ><?php echo i18n::__('atras') ?> </a>
-<br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br>
     </form> 
     <!--  </article>-->
   </div>

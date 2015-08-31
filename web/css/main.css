@@ -214,6 +214,8 @@ color:#005a1e;
   #cuerpo5{
     background: center;
     width: 85%;
+    margin-top:   -127px;
+   background-color: #efebce;
   }
   
  #cuerpo4{
@@ -223,14 +225,11 @@ color:#005a1e;
    background-color: #efebce;
       width: 70%;      
   }
-  
-  #cuerpo5{
-   margin-top:   -127px;
-   //padding-top: 50px;
-  // background-color: #f0eccf;
-   background-color: #efebce;
-      width: 70%; 
+  #cuerpo3{
+    background: center;
+    width: 70%;
   }
+
 #cuerpo6{
    margin-top:   -100px;
    //padding-top: 50px;

@@ -47,14 +47,14 @@ $pdf->Cell(190, 10, $mensaje, 1, 0, 'C', true);
 $pdf->Ln();
 $pdf->Cell(47, 10, "Empresa",1, 0, 'C');
 $pdf->Cell(47, 10, "Producto",1, 0, 'C');
-$pdf->Cell(47, 10, "Cantidad",1, 0, 'C');
-$pdf->Cell(49, 10, "Proveedor",1, 0, 'C');
+$pdf->Cell(27, 10, "Cantidad",1, 0, 'C');
+$pdf->Cell(69, 10, "Proveedor",1, 0, 'C');
 $pdf->Ln();
 foreach ($objPedido as $valor) {   
   $pdf->Cell(47, 8, empresaTableClass::getNameEmpresa($valor->$empresa),1);
   $pdf->Cell(47, 8, productoInsumoTableClass::getNameProductoInsumo($valor->$producto),1);
-  $pdf->Cell(47, 8, utf8_decode($valor->$cantidad),1);
-  $pdf->Cell(49, 8, proveedorTableClass::getNameProveedor($valor->$proveedor),1);
+  $pdf->Cell(27, 8, utf8_decode($valor->$cantidad),1);
+  $pdf->Cell(69, 8, proveedorTableClass::getNameProveedor($valor->$proveedor) . ' ' .proveedorTableClass::getApellidoProveedor($valor->$proveedor) . ' CC: ' .proveedorTableClass::getDocumentoProveedor($valor->$proveedor),1);
   $pdf->Ln();  
 }
 

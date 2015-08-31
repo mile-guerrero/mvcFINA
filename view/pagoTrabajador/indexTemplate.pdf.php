@@ -50,16 +50,16 @@ $pdf->SetFillColor(255,204,51);//color
 $pdf->Cell(190, 10, $mensaje, 1, 0, 'C', true);
 $pdf->Ln();
 $pdf->Cell(40, 10, "Empresa",1, 0, 'C');
-$pdf->Cell(35, 10, "Trabajador",1, 0, 'C');
+$pdf->Cell(55, 10, "Trabajador",1, 0, 'C');
 $pdf->Cell(60, 10, "Periodo de pago",1, 0, 'C');
-$pdf->Cell(55, 10, utf8_decode("Valor Salarió"),1, 0, 'C');
+$pdf->Cell(35, 10, utf8_decode("Valor Salarió"),1, 0, 'C');
 $pdf->Ln();
 foreach ($objPT as $valor) {  
   $pdf->Cell(40, 8, empresaTableClass::getNameEmpresa($valor->$nomEmpresa),1);
-  $pdf->Cell(35, 8, trabajadorTableClass::getNameTrabajador($valor->$nomTrabajador),1);
+  $pdf->Cell(55, 8, trabajadorTableClass::getNameTrabajador($valor->$nomTrabajador). ' '. trabajadorTableClass::getNameApellido($valor->$nomTrabajador) . ' CC:' . trabajadorTableClass::getNameDocumento($valor->$nomTrabajador),1);
   $pdf->Cell(30, 8, utf8_decode($valor->$fechaIni),1); 
   $pdf->Cell(30, 8, utf8_decode($valor->$fechaFin),1);
-  $pdf->Cell(55, 8, '$' . number_format($valor->$valorSalario, 0, ',', '.'),1);
+  $pdf->Cell(35, 8, '$' . number_format($valor->$valorSalario, 0, ',', '.'),1);
   $pdf->Ln();
   $pdf->Ln();
 }

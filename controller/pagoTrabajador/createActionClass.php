@@ -49,25 +49,25 @@ class createActionClass extends controllerClass implements controllerActionInter
                 routing::getInstance()->forward('pagoTrabajador', 'insert');
             }
             
-            if($total <= 0){
+            if($total < 0){
                 session::getInstance()->setFlash('selectFechaIni', true);
                 session::getInstance()->setError('El total a pagar no puede ser negativo', 'inputTotal');
                 routing::getInstance()->forward('pagoTrabajador', 'insert');
             }
             
-            if($horas <= 0){
+            if($horas < 0){
                 session::getInstance()->setFlash('inputHorasPerdidas', true);
                 session::getInstance()->setError('Los valores numericos no pueden ser negativos', 'inputHorasPerdidas');
                 routing::getInstance()->forward('pagoTrabajador', 'insert');
             }
             
-            if($valorHoras <= 0){
+            if($valorHoras < 0){
                 session::getInstance()->setFlash('inputHoras', true);
                 session::getInstance()->setError('Los valores numericos no pueden ser negativos', 'inputHoras');
                 routing::getInstance()->forward('pagoTrabajador', 'insert');
             }
             
-            if($cantidad <= 0){
+            if($cantidad < 0){
                 session::getInstance()->setFlash('inputCantidad', true);
                 session::getInstance()->setError('Los valores numericos no pueden ser negativos', 'inputCantidad');
                 routing::getInstance()->forward('pagoTrabajador', 'insert');

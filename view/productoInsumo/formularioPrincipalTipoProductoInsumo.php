@@ -8,7 +8,7 @@
 
 <div class="container container-fluid" id="cuerpo">
   <div class="center-block" id="cuerpo5">
-  <div class="center-block" id="cuerpo2">
+  <div class="center-block" id="cuerpo3">
   <article id='derecha'>
 <form class="form-horizontal" role="form" method="post" action="<?php echo routing::getInstance()->getUrlWeb('productoInsumo', ((isset($objTPI)) ? 'updateTipoProductoInsumo' : 'createTipoProductoInsumo')) ?>">
   <?php if(isset($objTPI)==true): ?>
@@ -35,7 +35,7 @@
 <a class="btn btn-lg btn-default btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'indexTipoProductoInsumo') ?>" ><?php echo i18n::__('atras') ?> </a>
 
 </form>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
   </article>
 </div>
 </div>

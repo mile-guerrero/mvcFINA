@@ -3,7 +3,6 @@ use mvc\routing\routingClass as routing;
   
   $des = tipoProductoInsumoTableClass::DESCRIPCION;
   $cre = tipoProductoInsumoTableClass::CREATED_AT;
-  $upd = tipoProductoInsumoTableClass::UPDATED_AT;
 // routing::getInstance()->redirect('productoInsumo', 'indexTipoProductoInsumo');
   class PDF extends FPDF {
 
@@ -48,6 +47,7 @@ $pdf->Ln();
 foreach ($objTPI as $valor) {
   $pdf->Cell(95, 8, utf8_decode($valor->$des),1, 0, 'C');
   $pdf->Cell(95, 8, utf8_decode($valor->$cre),1, 0, 'C');
+  $pdf->Ln();
 }
 $pdf->Output();
 ?>

@@ -52,31 +52,24 @@ $pdf->SetFillColor(255,204,51);//color
 $pdf->Cell(190, 10, $mensaje, 1, 0, 'C', true);
 $pdf->Ln();
 $pdf->SetFont('courier', 'B', 10);
-$pdf->Cell(35, 10, utf8_decode("Ubicación"),1, 0, 'C');
-$pdf->Cell(15, 10, utf8_decode("Área"),1, 0, 'C');
-$pdf->Cell(50, 10, utf8_decode("Descripción"),1, 0, 'C');
-$pdf->Cell(35, 10, "Fecha siembra",1, 0, 'C');
-$pdf->Cell(30, 10, "Insumo",1, 0, 'C');
-$pdf->Cell(25, 10, "# Plantulas",1, 0, 'C');
+$pdf->Cell(40, 10, utf8_decode("Ubicación"),1, 0, 'C');
+$pdf->Cell(25, 10, utf8_decode("Área"),1, 0, 'C');
+$pdf->Cell(75, 10, utf8_decode("Descripción"),1, 0, 'C');
+$pdf->Cell(50, 10, "Insumo",1, 0, 'C');
 $pdf->Ln();
 
 $pdf->SetFont('courier', 'B', 8);
 foreach ($objLote as $valor){
-  $pdf->Cell(35,8, utf8_decode($valor->$ubi).' '.ciudadTableClass::getNameCiudad($valor->$nomCiu),1);
-  $pdf->Cell(15,8, utf8_decode($valor->$tamano),1, 0, 'C');
-  $pdf->Cell(50,8, utf8_decode($valor->$des),1);
-  $pdf->Cell(35,8, utf8_decode($valor->$fecha),1);
+  $pdf->Cell(40,8, utf8_decode($valor->$ubi),1);
+  $pdf->Cell(25,8, utf8_decode($valor->$tamano),1, 0, 'C');
+  $pdf->Cell(75,8, utf8_decode($valor->$des),1);
    
   if (($valor->$insumo) === null){        
-               $pdf->Cell(30,8, ' ',1);
+               $pdf->Cell(50,8, ' ',1);
              }else{
-                $pdf->Cell(30,8, productoInsumoTableClass::getNameProductoInsumo($valor->$insumo),1);
+                $pdf->Cell(50,8, productoInsumoTableClass::getNameProductoInsumo($valor->$insumo),1);
              }
-    
-  
-  
-  $pdf->Cell(25,8, utf8_decode($valor->$plantas),1);
-  
+     
   $pdf->Ln();  
 }
 $pdf->Output();

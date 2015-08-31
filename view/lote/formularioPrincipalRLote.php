@@ -33,7 +33,7 @@
 
 <div class="container container-fluid" id="cuerpo">
   <div class="center-block" id="cuerpo5">
-  <div class="center-block" id="cuerpo2">
+  <div class="center-block" id="cuerpo3">
     
 <form class="form-horizontal" role="form" method="post" action="<?php echo routing::getInstance()->getUrlWeb('lote', ((isset($objLote)) ? 'updateLoteMas' : 'createLote')) ?>">
   <?php if(isset($objLote)== true): ?>
@@ -104,7 +104,7 @@
         </div>
       </div>
   
- 
+<br>
 
 <?php if(session::getInstance()->hasError('inputPresupuesto')): ?>
     <div class="alert alert-danger alert-dismissible" role="alert" id="error">
@@ -167,7 +167,7 @@
     <br>
 <input class="btn btn-lg btn-success btn-xs" type="submit" value="<?php echo i18n::__(((isset($objLote)) ? 'update' : 'register')) ?>">
 <a class="btn btn-lg btn-default btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('lote', 'indexLote') ?>" ><?php echo i18n::__('atras') ?> </a>
-<br><br><br><br>
+<br><br><br><br><br><br><br><br>
 </form>
   </div>
 </div>

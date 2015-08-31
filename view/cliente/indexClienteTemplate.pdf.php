@@ -43,25 +43,23 @@ class PDF extends FPDF {
 
 $pdf = new PDF();
 $pdf->AddPage();
-$pdf->SetFont('Arial', 'B', 8);
+$pdf->SetFont('Arial', 'B', 7);
 
 $pdf->Ln();
 $pdf->Ln();
 $pdf->SetFillColor(255,204,51);//color
 $pdf->Cell(190, 10, $mensaje, 1, 0, 'C', true);
 $pdf->Ln();
-$pdf->Cell(40, 10, "Nombre y Apellido",1, 0, 'C');
+$pdf->Cell(65, 10, "Nombre y Apellido",1, 0, 'C');
 $pdf->Cell(35, 10, "Documento",1, 0, 'C');
-$pdf->Cell(30, 10, utf8_decode("Dirección"),1, 0, 'C');
+$pdf->Cell(60, 10, utf8_decode("Dirección"),1, 0, 'C');
 $pdf->Cell(30, 10, utf8_decode("Teléfono"),1, 0, 'C');
-$pdf->Cell(55, 10, utf8_decode("Fecha de creación"),1, 0, 'C');
 $pdf->Ln();
 foreach ($objC as $valor) {  
-  $pdf->Cell(40, 8, utf8_decode($valor->$nom).' '.($valor->$apell),1);
+  $pdf->Cell(65, 8, utf8_decode($valor->$nom).' '.($valor->$apell),1);
   $pdf->Cell(35, 8, tipoIdTableClass::getNameTipoId($valor->$tipo).' '.($valor->$documento),1);
-  $pdf->Cell(30, 8, utf8_decode($valor->$dire).' '.ciudadTableClass::getNameCiudad($valor->$nomCiu),1);
+  $pdf->Cell(60, 8, utf8_decode($valor->$dire).' '.ciudadTableClass::getNameCiudad($valor->$nomCiu),1);
   $pdf->Cell(30, 8, utf8_decode($valor->$tel),1);  
-  $pdf->Cell(55, 8, utf8_decode($valor->$createdAt),1);
   $pdf->Ln();  
 }
 

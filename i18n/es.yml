@@ -75,7 +75,7 @@ dictionary:
     fechaFsiembra:        Fecha inicio siembra
     selectUnidadDis:      Seleccione el tipo de distacia
     fecha siembra:        Fecha de siembra
-    numero:               Cantidad de plantas a sembrar
+    numero:               N° de plantas
     presupuesto:          Presupuesto
     informe:              Informes
     #-------Proveedor-----------

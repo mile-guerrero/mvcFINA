@@ -9,8 +9,6 @@ $dire = trabajadorTableClass::DIRECCION;
 $tipo = trabajadorTableClass::ID_TIPO_ID;
 $tel = trabajadorTableClass::TELEFONO;
 $email = trabajadorTableClass::EMAIL;
-$createdAt = trabajadorTableClass::CREATED_AT;
-$habi = ciudadTableClass::HABITANTES;
 $ciudad = trabajadorTableClass::ID_CIUDAD;
 $desTipo = tipoIdTableClass::DESCRIPCION;
 
@@ -55,19 +53,17 @@ $pdf->Ln();
 $pdf->SetFont('Arial', 'B', 6);
 $pdf->Cell(35, 10, "Nombre",1, 0, 'C');
 $pdf->Cell(35, 10, "Documento",1, 0, 'C');
-$pdf->Cell(30, 10, utf8_decode("Dirección"),1, 0, 'C');
+$pdf->Cell(45, 10, utf8_decode("Dirección"),1, 0, 'C');
 $pdf->Cell(30, 10, utf8_decode("Teléfono"),1, 0, 'C');
-$pdf->Cell(30, 10, utf8_decode("Correo electrónico"),1, 0, 'C');
-$pdf->Cell(30, 10, utf8_decode("Fecha creación"),1, 0, 'C');
+$pdf->Cell(45, 10, utf8_decode("Correo electrónico"),1, 0, 'C');
 $pdf->Ln();
 
 foreach ($objT as $valor) {
   $pdf->Cell(35, 8, utf8_decode($valor->$nom).' '.($valor->$apell),1);
   $pdf->Cell(35, 8, tipoIdTableClass::getNameTipoId($valor->$tipo).' '.($valor->$documento),1);
-  $pdf->Cell(30, 8, utf8_decode($valor->$dire).' '.ciudadTableClass::getNameCiudad($valor->$ciudad),1);
+  $pdf->Cell(45, 8, utf8_decode($valor->$dire).' '.ciudadTableClass::getNameCiudad($valor->$ciudad),1);
   $pdf->Cell(30, 8, utf8_decode($valor->$tel),1);
-  $pdf->Cell(30, 8, utf8_decode($valor->$email),1);
-  $pdf->Cell(30, 8, utf8_decode($valor->$createdAt),1);
+  $pdf->Cell(45, 8, utf8_decode($valor->$email),1);
   $pdf->Ln();
 }
 

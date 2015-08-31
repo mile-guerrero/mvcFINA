@@ -20,7 +20,7 @@
 
 <div class="container container-fluid" id="cuerpo">
   <div class="center-block" id="cuerpo5">
-  <div class="center-block" id="cuerpo2">
+  <div class="center-block" id="cuerpo3">
    
 <form  class="form-horizontal" role="form" method="post" action="<?php echo routing::getInstance()->getUrlWeb('ordenServicio', ((isset($objOS)) ? 'update' : 'create')) ?>">
   <?php if(isset($objOS)== true): ?>
@@ -132,7 +132,7 @@
   <input  class="btn btn-lg btn-success btn-xs" type="submit" value="<?php echo i18n::__(((isset($objOS)) ? 'update' : 'register')) ?>">
 <a class="btn btn-lg btn-default btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('ordenServicio', 'index') ?>" ><?php echo i18n::__('atras') ?> </a>
 
- <br><br><br><br><br><br><br><br><br><br><br><br><br>
+ <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     </form>
   </div>
 </div>

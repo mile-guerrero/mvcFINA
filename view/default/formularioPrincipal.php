@@ -9,7 +9,7 @@
 <?php $nombre = usuarioTableClass::NOMBRE_IMAGEN ?>
 <div class="container container-fluid" id="cuerpo">
   <div class="center-block" id="cuerpo5">
-  <div class="center-block" id="cuerpo2">
+  <div class="center-block" id="cuerpo3">
     
 <form enctype="multipart/form-data"  class="form-horizontal" role="form" class="form-horizontal" role="form"  method="post" action="<?php echo routing::getInstance()->getUrlWeb('default', ((isset($objUsuarios)) ? 'update' : 'create')) ?>">
   <?php if(isset($objUsuarios)==true): ?>
@@ -83,7 +83,7 @@
   <?php if (session::getInstance()->hasCredential('admin')): ?>
   <a class="btn btn-lg btn-default btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('default', 'index') ?>" ><?php echo i18n::__('atras') ?></a>
 <?php endif ?>
-  <br><br><br><br><br><br><br><br><br><br><br>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     </form>
   </div>
 </div>

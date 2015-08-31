@@ -72,7 +72,7 @@ $pdf->Ln();
 $pdf->SetFont('Arial', '' , 10);
 $pdf->Cell(5, 5, 'Empresa: Colmenar');
 $pdf->Ln();
-$pdf->Cell(20, 5, 'Direccion: Via pierna de chucha');
+$pdf->Cell(20, 5, 'Direccion: la floresta pradera valle');
 $pdf->Ln();
 $pdf->Cell(20, 5, 'Ciudad: Pradera');
 $pdf->Ln();
@@ -121,7 +121,7 @@ $pdf->Ln();
 $idFacturar = request::getInstance()->getGet(facturaventaTableClass::ID);
 foreach ($objDetalleFactura as $valor) {   
   $pdf->Cell(70, 8, productoInsumoTableClass::getNameProductoInsumo($valor->$descripcion),1);
-  $pdf->Cell(35, 8, utf8_decode($valor->$cantidad),1);
+  $pdf->Cell(35, 8, utf8_decode($valor->$cantidad). ' Kilos',1);
   $pdf->Cell(30, 8, '$' . number_format($valor->$valorUnidad, 0, ',', '.'),1);  
   $pdf->Cell(55, 8, '$' . number_format($valor->$valorTotal, 0, ',', '.'),1);
   $pdf->Ln(); 

@@ -85,7 +85,7 @@ $pdf->Ln();
 $idFacturar = request::getInstance()->getGet(facturaCompraTableClass::ID);
 foreach ($objDetalleFactura as $valor) {   
   $pdf->Cell(70, 8, productoInsumoTableClass::getNameProductoInsumo($valor->$producto),1);
-  $pdf->Cell(35, 8, utf8_decode($valor->$cantidad),1);
+  $pdf->Cell(35, 8, utf8_decode($valor->$cantidad). ' Kilos',1);
   $pdf->Cell(30, 8, '$' . number_format($valor->$valorUnidad, 0, ',', '.'),1);  
   $pdf->Cell(55, 8, '$' . number_format($valor->$valorTotal, 0, ',', '.'),1);
   $pdf->Ln();  
