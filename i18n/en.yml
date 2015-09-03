@@ -6,6 +6,7 @@ dictionary:
     mas:                  More
     descargar:            Download file
     fecha:                Fecha
+    informacion:          Information
     #-------Registros---------
     registroCliente:      Customer registration
     registroCooperativa:  Registration cooperative

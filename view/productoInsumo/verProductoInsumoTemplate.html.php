@@ -10,7 +10,7 @@
 <?php $created = productoInsumoTableClass::CREATED_AT ?>
 <?php $hash = productoInsumoTableClass::HASH_IMAGEN ?>
 <?php $extencion = productoInsumoTableClass::EXTENCION_IMAGEN ?>
-
+<?php $informacion = productoInsumoTableClass::INFORMACION ?>
 
 <div class="container container-fluid" id="cuerpo">
   <div class="center-block" id="cuerpo6">
@@ -30,7 +30,7 @@
        <br>
        
      <div class="rwd">
-      <table class="table table-bordered table-responsive rwd_auto">
+      <table class="table table-bordered table-responsive">
           <tr>
             <thead>
             <th colspan="2"> <?php echo i18n::__('datos') ?></th>
@@ -51,6 +51,10 @@
                        <tr>
                        <td><?php echo i18n::__('tipoProducto') ?></td> 
                        <td><?php echo tipoProductoInsumoTableClass::getNameTipoProductoInsumo($key->$tipo) ?></td>
+                        </tr> 
+                        <tr>
+                       <td><?php echo i18n::__('informacion') ?></td> 
+                       <td><?php echo $key->$informacion ?></td>
                         </tr> 
                   <?php endforeach; ?>
                  

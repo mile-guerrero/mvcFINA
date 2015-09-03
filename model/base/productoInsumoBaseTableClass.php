@@ -15,6 +15,7 @@ class productoInsumoBaseTableClass extends tableBaseClass {
  private $extencionImagen;
  private $hashImagen;
  private $tipoProductoInsumoId;
+ private $informacion;
  private $createdAt;
  private $updatedAt;
  private $deletedAt;
@@ -33,10 +34,18 @@ class productoInsumoBaseTableClass extends tableBaseClass {
   const HASH_IMAGEN = 'hashimagen';
   const HASH_IMAGEN_LENGTH = 37;
   const TIPO_PRODUCTO_INSUMO_ID = 'tipo_producto_insumo_id';
-  
+  const INFORMACION = 'informacion';
+  const INFORMACION_LENGTH = 3000;
 
-    
-  public function get_id() {
+  public function get_informacion() {
+    return $this->informacion;
+  }
+
+  public function set_informacion($informacion) {
+    $this->informacion = $informacion;
+  }
+
+    public function get_id() {
     return $this->id;
   }
 

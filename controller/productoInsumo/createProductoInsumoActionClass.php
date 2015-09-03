@@ -25,9 +25,8 @@ class createProductoInsumoActionClass extends controllerClass implements control
        // $iva = request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::IVA, true));
 //        $cantidad = request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::CANTIDAD, true));
 //        $unidad = request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::UNIDAD_MEDIDA_ID, true));
-          $tipo = request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID, true));
-
-
+        $tipo = request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID, true));
+        $informacion = request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::INFORMACION, true));
         $file = request::getInstance()->getFile(productoInsumoTableClass::getNameField(productoInsumoTableClass::NOMBRE_IMAGEN, true));
         
         validator::validateInsert();
@@ -53,6 +52,7 @@ class createProductoInsumoActionClass extends controllerClass implements control
                 productoInsumoTableClass::EXTENCION_IMAGEN => $ext,
                 productoInsumoTableClass::HASH_IMAGEN => $hashImagen,
                 productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID => $tipo,
+                productoInsumoTableClass::INFORMACION => $informacion,
                 '__sequence' => 'producto_insumo_id_seq'
             );
             $id = productoInsumoTableClass::insert($data);

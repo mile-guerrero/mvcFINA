@@ -184,9 +184,7 @@
           <th>
             <?php echo i18n::__('nom') ?>
           </th>
-          <th>
-            <?php echo i18n::__('des') ?>
-          </th>          
+                    
           <th id="acciones">
             <?php echo i18n::__('acciones') ?>
           </th>
@@ -201,9 +199,7 @@
                 <td>
                   <?php echo $key->$nombre ?>
                 </td>
-                <td>
-                  <?php echo $key->$descripcion ?>
-                </td>
+                
                 
                 <td>
                   <a class="btn btn-warning btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('enfermedad', 'ver', array(enfermedadTableClass::ID => $key->$id)) ?>" > <?php echo i18n::__('ver') ?></a>

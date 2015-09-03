@@ -13,7 +13,7 @@
 <?php $descripcion = productoInsumoTableClass::DESCRIPCION ?>
 <?php// $cantidad = productoInsumoTableClass::CANTIDAD ?>
 <?php $nombre = productoInsumoTableClass::NOMBRE_IMAGEN ?>
-
+<?php $informacion = productoInsumoTableClass::INFORMACION ?>
 
 
 <div class="container container-fluid" id="cuerpo">
@@ -43,6 +43,12 @@
   </div>
 </div>
    
+   <div class="form-group">
+      <label for="<?php echo productoInsumoTableClass::getNameField(productoInsumoTableClass::INFORMACION, true) ?>" class="col-sm-2">   <?php echo i18n::__('informacion') ?>: </label>     
+      <div class="col-sm-10">
+        <input class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputDescripcion') or request::getInstance()->hasPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::INFORMACION, true))) ? request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::INFORMACION, true)) : ((isset($objPI[0])) ? $objPI[0]->$informacion : '') ?>" type="text" name="<?php echo productoInsumoTableClass::getNameField(productoInsumoTableClass::INFORMACION, true) ?>" placeholder="<?php echo i18n::__('informacion') ?>" required>
+  </div>
+  </div>
    
    <?php if(session::getInstance()->hasError('inputImagen')): ?>
     <div class="alert alert-danger alert-dismissible" role="alert" id="error">

@@ -25,7 +25,7 @@
       <br><br>
       
       <div class="rwd">
-      <table class="table table-bordered table-responsive rwd_auto">
+      <table class="table table-bordered table-responsive">
         <tr>
         <thead>
         <th colspan="2"> <?php echo i18n::__('datos') ?></th>

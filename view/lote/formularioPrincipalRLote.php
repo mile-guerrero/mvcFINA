@@ -96,10 +96,10 @@
         </div>
         <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
            <select  class="form-control" id="<?php loteTableClass::getNameField(loteTableClass::ID, true)?>" name="<?php echo loteTableClass::getNameField(loteTableClass::PRODUCTO_INSUMO_ID, true);?>">
-  <option value="null"><?php echo i18n::__('seleccione insumo') ?></option>
+  <option value="1"><?php echo i18n::__('seleccione insumo') ?></option>
        <?php foreach($objLPI as $C):?>
-       <option <?php echo (isset($objLote[0]->$idInsu) === true and $objLote[0]->$idInsu == $C->$idInsumo) ? 'selected' : '' ?>  value="<?php echo $C->$idInsumo?>"><?php echo $C->$desInsumo?></option>
-       <?php endforeach;?>
+       <option <?php echo (request::getInstance()->hasPost(loteTableClass::getNameField(loteTableClass::PRODUCTO_INSUMO_ID, true)) === true and request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::PRODUCTO_INSUMO_ID, true)) == $C->$idInsumo) ? 'selected' :  (isset($objLote[0]->$idInsu) === true and $objLote[0]->$idInsu == $C->$idInsumo) ? 'selected' : '' ?>  value="<?php echo $C->$idInsumo?>"><?php echo $C->$desInsumo?></option>
+        <?php endforeach;?>
    </select>
         </div>
       </div>
@@ -155,10 +155,10 @@
         </div>
         <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
            <select  class="form-control" id="<?php loteTableClass::getNameField(loteTableClass::ID, true)?>" name="<?php echo loteTableClass::getNameField(loteTableClass::UNIDAD_MEDIDA_ID, true);?>">
-      <option value="null" ><?php echo i18n::__('selectUnidadPeso') ?></option>
+      <option value="2" ><?php echo i18n::__('selectUnidadPeso') ?></option>
        <?php foreach($objLUMedida as $C):?>
-       <option  <?php echo (isset($objLote[0]->$idUnidadMedidaId) === true and $objLote[0]->$idUnidadMedidaId == $C->$idUnidadMedida) ? 'selected' : '' ?>  value="<?php echo $C->$idUnidadMedida?>"><?php echo $C->$desUnidadMedida?></option>
-       <?php endforeach;?>
+       <option  <?php  echo (request::getInstance()->hasPost(loteTableClass::getNameField(loteTableClass::UNIDAD_MEDIDA_ID, true)) === true and request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::UNIDAD_MEDIDA_ID, true)) == $C->$idUnidad) ? 'selected' :  (isset($objLote[0]->$idUnidadMedidaId) === true and $objLote[0]->$idUnidadMedidaId == $C->$idUnidadMedida) ? 'selected' : '' ?>  value="<?php echo $C->$idUnidadMedida?>"><?php echo $C->$desUnidadMedida?></option>
+        <?php endforeach;?>
    </select>
         </div>
       </div>

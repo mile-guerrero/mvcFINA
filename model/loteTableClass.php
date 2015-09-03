@@ -105,8 +105,8 @@ class loteTableClass extends loteBaseTableClass {
 
   public static function loteInsert($ubicacion, $idCiudad, $tamano, $descripcion, $unidadDistancia) {
     try {
-      $sql = 'INSERT INTO' . '  ' . loteTableClass::getNameTable() . ' (' . loteTableClass::UBICACION . ',' . loteTableClass::TAMANO . ',' . loteTableClass::UNIDAD_DISTANCIA_ID . ',' . loteTableClass::DESCRIPCION . ',' . loteTableClass::ID_CIUDAD . ' ) '
-              . ' VALUES (' . "'" . $ubicacion . "'" . ',' . $tamano . ',' . $unidadDistancia . ',' . "'" . $descripcion . "'" . ',' . $idCiudad . ' )';
+      $sql = 'INSERT INTO' . '  ' . loteTableClass::getNameTable() . ' (' . loteTableClass::UBICACION . ',' . loteTableClass::TAMANO . ',' . loteTableClass::UNIDAD_DISTANCIA_ID . ',' . loteTableClass::DESCRIPCION . ',' . loteTableClass::ID_CIUDAD  . ',' . loteTableClass::NUMERO_PLANTULAS . ',' . loteTableClass::PRESUPUESTO . ',' . loteTableClass::PRODUCCION . ',' . loteTableClass::UNIDAD_MEDIDA_ID .' ) '
+              . ' VALUES (' . "'" . $ubicacion . "'" . ',' . $tamano . ',' . $unidadDistancia . ',' . "'" . $descripcion . "'" . ',' . $idCiudad . ',' . 0 . ',' . 0 . ',' . 0 . ',' . 2 .' )';
 
 
       model::getInstance()->beginTransaction();

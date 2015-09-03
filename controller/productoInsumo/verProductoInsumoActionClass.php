@@ -24,6 +24,7 @@ class verProductoInsumoActionClass extends controllerClass implements controller
           productoInsumoTableClass::EXTENCION_IMAGEN,
           productoInsumoTableClass::HASH_IMAGEN,
           productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID,
+          productoInsumoTableClass::INFORMACION,
           productoInsumoTableClass::CREATED_AT,
           productoInsumoTableClass::UPDATED_AT
       );

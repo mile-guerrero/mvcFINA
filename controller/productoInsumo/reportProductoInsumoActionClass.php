@@ -18,46 +18,36 @@ class reportProductoInsumoActionClass extends controllerClass implements control
   public function execute() {
     try {
       $where = null;
-//      if(request::getInstance()->hasPost('report')){
-//      $report = request::getInstance()->getPost('report');
+      if(request::getInstance()->hasPost('report')){
+      $report = request::getInstance()->getPost('report');
       //validar
-//        if (request::getInstance()->hasPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::DESCRIPCION, true)) and empty(mvc\request\requestClass::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::DESCRIPCION, true))) === false) {
-//
-//          if (request::getInstance()->isMethod('POST')) {
-//            $descripcion = request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::DESCRIPCION, true));
-//
-//
-//
-//            validator::validateFiltro();
-//
-//            if (isset($descripcion) and $descripcion !== null and $descripcion !== "") {
-//              $where[] = '(' . productoInsumoTableClass::getNameField(productoInsumoTableClass::DESCRIPCION) . ' LIKE ' . '\'' . $descripcion . '%\'  '
-//                      . 'OR ' . productoInsumoTableClass::getNameField(productoInsumoTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $descripcion . '%\' '
-//                      . 'OR ' . productoInsumoTableClass::getNameField(productoInsumoTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $descripcion . '\') ';
-//            }
-//          }
-//        }
-//
-//         if ((request::getInstance()->hasPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::CREATED_AT, true) . '_1') and empty(mvc\request\requestClass::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::CREATED_AT, true) . '_1')) === false) and ( (request::getInstance()->hasPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::CREATED_AT, true) . '_2') and empty(mvc\request\requestClass::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::CREATED_AT, true) . '_2')) === false))) {
-//
-//          if (request::getInstance()->isMethod('POST')) {
-//           
-//            $fechaInicial = request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::CREATED_AT, true) . '_1');
-//            $fechaFin = request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::CREATED_AT, true) . '_2');
-//     
-//            validator::validateFiltroFecha($fechaInicial,$fechaFin);
-//           
-//            if ((isset($fechaInicial) and $fechaInicial !== null and $fechaInicial !== "") and ( isset($fechaFin) and $fechaFin !== null and $fechaFin !== "" )) {
-//              $where[] = '(' . productoInsumoTableClass::getNameField(productoInsumoTableClass::CREATED_AT) . ' BETWEEN ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaInicial . ' 00:00:00')) . "'" . ' AND ' . "'" .  date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59')) . "'" . ' ) ';             
-//            }
-//          }
-//        }
-//      }
+       if(isset($report['descripcion']) and $report['descripcion'] !== null and $report['descripcion'] !== ""){
+        $where[] = '(' . productoInsumoTableClass::getNameField(productoInsumoTableClass::DESCRIPCION) . ' LIKE ' . '\'' . $report['descripcion'] . '%\'  '
+              . 'OR ' . productoInsumoTableClass::getNameField(productoInsumoTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $report['descripcion'] . '%\' '
+              . 'OR ' . productoInsumoTableClass::getNameField(productoInsumoTableClass::DESCRIPCION) . ' LIKE ' . '\'%' . $report['descripcion'].'\') ';       
+              }              
+     
+      if((isset($report['fechaIni']) and $report['fechaIni'] !== null and $report['fechaIni'] !== "") and (isset($report['fechaFin']) and $report['fechaFin'] !== null and $report['fechaFin'] !== "" )){
+        $where[productoInsumoTableClass::CREATED_AT] = array(
+           date(config::getFormatTimestamp(), strtotime($report['fechaIni'].' 00:00:00')),
+           date(config::getFormatTimestamp(), strtotime($report['fechaFin'].' 23:59:59'))
+            );
+      }
+      
+      if(isset($report['unidadMedida']) and $report['unidadMedida'] !== null and $report['unidadMedida'] !== ""){
+        $where[productoInsumoTableClass::UNIDAD_MEDIDA_ID] = $report['unidadMedida'];
+      }
+      
+      if(isset($report['tipoInsumo']) and $report['tipoInsumo'] !== null and $report['tipoInsumo'] !== ""){
+        $where[productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID] = $report['tipoInsumo'];
+      }
+      }
       $this->mensaje = 'Informacion de Producto Insumo';
       $fields = array(
           productoInsumoTableClass::ID,
           productoInsumoTableClass::DESCRIPCION,
           productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID,
+          productoInsumoTableClass::INFORMACION,
           productoInsumoTableClass::CREATED_AT
       );
       $orderBy = array(

@@ -6,6 +6,7 @@ dictionary:
     mas:                  Mas
     descargar:            Descargar archivo
     fecha:                Fecha
+    informacion:          Información
     #-------Registros---------
     registroCliente:      Registro de cliente
     registroCooperativa:  Registro de cooperativa

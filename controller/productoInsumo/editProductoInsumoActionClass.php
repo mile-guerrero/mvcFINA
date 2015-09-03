@@ -25,7 +25,8 @@ class editProductoInsumoActionClass extends controllerClass implements controlle
             productoInsumoTableClass::NOMBRE_IMAGEN,
             productoInsumoTableClass::EXTENCION_IMAGEN,
             productoInsumoTableClass::HASH_IMAGEN,
-            productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID
+            productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID,
+            productoInsumoTableClass::INFORMACION 
         );
         $where = array(
             productoInsumoTableClass::ID => request::getInstance()->getGet(productoInsumoTableClass::ID)

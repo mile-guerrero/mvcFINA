@@ -29,7 +29,7 @@ class updateProductoInsumoActionClass extends controllerClass implements control
 //       
         $tipo = request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID, true));
         $file = request::getInstance()->getFile(productoInsumoTableClass::getNameField(productoInsumoTableClass::NOMBRE_IMAGEN, true));
-        
+        $informacion = request::getInstance()->getPost(productoInsumoTableClass::getNameField(productoInsumoTableClass::INFORMACION, true));
          validator::validateEdit();
 //        $this->validate($descripcion, $iva);
          
@@ -55,7 +55,8 @@ class updateProductoInsumoActionClass extends controllerClass implements control
             productoInsumoTableClass::NOMBRE_IMAGEN => $file['name'],
             productoInsumoTableClass::EXTENCION_IMAGEN => $ext,
             productoInsumoTableClass::HASH_IMAGEN => $hashImagen,
-            productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID => $tipo
+            productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID => $tipo,
+            productoInsumoTableClass::INFORMACION => $informacion
         );
             
             productoInsumoTableClass::update($ids, $data);

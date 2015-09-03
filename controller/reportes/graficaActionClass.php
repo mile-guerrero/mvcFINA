@@ -23,7 +23,7 @@ class graficaActionClass extends controllerClass implements controllerActionInte
       $where = session::getInstance()->getAttribute('graficaWhere');
       $fields = array(
           registroLoteTableClass::PRODUCCION,
-          registroLoteTableClass::CREATED_AT,
+          registroLoteTableClass::UBICACION,
       );
       $orderBy = array(
           registroLoteTableClass::PRODUCCION
@@ -32,7 +32,7 @@ class graficaActionClass extends controllerClass implements controllerActionInte
 
       $cosPoints = array();
       foreach ($objLote as $objeto) {
-        $cosPoints[] = array($objeto->produccion, (date('Y-m-d', strtotime($objeto->created_at))));
+        $cosPoints[] = array($objeto->ubicacion,$objeto->produccion );
       }
       $this->cosPoints = $cosPoints;
        }
@@ -50,7 +50,7 @@ class graficaActionClass extends controllerClass implements controllerActionInte
 
       $cosPoints = array();
       foreach ($objLote as $objeto) {
-        $cosPoints[] = array($objeto->numero_plantulas, $objeto->ubicacion,);
+        $cosPoints[] = array($objeto->ubicacion, $objeto->numero_plantulas,);
 //         print_r($cosPoints);
 //         exit();
       }

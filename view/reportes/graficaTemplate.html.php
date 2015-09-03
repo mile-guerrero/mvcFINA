@@ -8,8 +8,8 @@
  <?php $value = session::getInstance()->getAttribute('idGrafica'); ?>
  
 <div class="container container-fluid" id="cuerpo">
-  <div class="center-block" id="cuerpo4">
-    <div class="center-block" id="cuerpo2"> 
+  <div class="center-block" id="cuerpoReporte1">
+    <div class="center-block" id="cuerpoReporte2"> 
     
       
   <?php if ($value == 1) : ?>   
@@ -19,7 +19,7 @@
     crearGrafica(<?php echo json_encode($cosPoints) ?>);  
   });
 </script>
-<div id="chart3" style="width: 600px; height: 400px"></div>
+<div id="chart3" style="width: 900px; height: 500px"></div>
 </h2>
  <?php endif; ?>
       
@@ -31,7 +31,7 @@
     crearGrafica2(<?php echo json_encode($cosPoints2) ?>);  
   });
 </script>
-<div id="chart2" style="width: 600px; height: 400px"></div>
+<div id="chart2" style="width: 900px; height: 500px"></div>
 </h2>       
 <?php endif; ?> 
       

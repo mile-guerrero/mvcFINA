@@ -24,7 +24,7 @@
     <a class="btn btn-success btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('historial', 'index') ?>" > <?php echo i18n::__('atras') ?></a>
     <br><br>
       <div class="rwd">
-      <table class="table table-bordered table-responsive rwd_auto">
+      <table class="table table-bordered table-responsive">
           <tr>
             <thead>
             <th colspan="2"> <?php echo i18n::__('datos') ?></th>
