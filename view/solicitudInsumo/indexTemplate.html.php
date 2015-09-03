@@ -106,15 +106,21 @@
                       <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputFecha') ?>
                     </div>
                   <?php endif ?>
+                    
+                      <div class="form-group">
+                    <div class="col-sm-6">
+                      <label class="col-sm-4 control-label"  for="<?php echo solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::CREATED_AT, true) . '_1' ?>" ><?php echo i18n::__('fecha inicio') ?></label>
+                        <input type="date" class="form-control-filtro1" id="<?php echo solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::CREATED_AT, true).'_1' ?>" name="filter[<?php echo solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::CREATED_AT, true).'_1' ?>]">
 
-                <div class="form-group">
-                  <label class="col-sm-2 control-label" for="<?php echo solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::CREATED_AT, true) . '_1' ?>" ><?php echo i18n::__('fecha crear') ?></label>
-                  <div class="col-sm-10">
-                    <input type="date" class="form-control-filtro1" id="<?php echo solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::CREATED_AT, true).'_1' ?>" name="filter[<?php echo solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::CREATED_AT, true).'_1' ?>]">
-
-                    <input type="date" class="form-control-filtro2" id="<?php echo solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::CREATED_AT, true).'_2' ?>" name="filter[<?php echo solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::CREATED_AT, true).'_2' ?>]">
+                    </div>
+                    <div class="col-sm-6">
+                      <label class="col-sm-4 control-label" for="<?php echo solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::CREATED_AT, true) . '_2' ?>" ><?php echo i18n::__('fecha fin') ?></label>
+                           <input type="date" class="form-control-filtro2" id="<?php echo solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::CREATED_AT, true).'_2' ?>" name="filter[<?php echo solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::CREATED_AT, true).'_2' ?>]">
+                 
+                    </div>
                   </div>
-                </div>
+
+              
           
 <div class="form-group">
     <label for="filterLote" class="col-sm-2 control-label"><?php echo i18n::__('lote') ?></label>

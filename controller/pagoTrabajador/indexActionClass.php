@@ -57,8 +57,6 @@ class indexActionClass extends controllerClass implements controllerActionInterf
           pagoTrabajadorTableClass::EMPRESA_ID,
           pagoTrabajadorTableClass::TRABAJADOR_ID,
           pagoTrabajadorTableClass::VALOR_SALARIO,
-          pagoTrabajadorTableClass::CANTIDAD_HORAS_EXTRAS,
-          pagoTrabajadorTableClass::VALOR_HORAS_EXTRAS,
           pagoTrabajadorTableClass::HORAS_PERDIDAS,
           pagoTrabajadorTableClass::TOTAL_PAGAR,
           pagoTrabajadorTableClass::CREATED_AT,

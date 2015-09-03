@@ -147,7 +147,7 @@ dictionary:
     fechaPagoFin:         Fecha de Pago Final
     salario:              Salario
     horasExtras:          Valor horas Extras
-    horasPerdidas:        Valor a descontar por deudas
+    horasPerdidas:        Valor de bonificaciones
     totalPagar:           Total Pagar
     nuevoPago:            Nuevo Pago al Trabajador
     editarPago:           Editar Pago al Trabajador
@@ -215,7 +215,9 @@ dictionary:
     eFiltros:             Eliminar filtros
     filtrar:              Filtrar
     fecha crear:          Fecha creación
-    fecha fin:            Fecha fInal
+    fecha fin:            Fecha final
+    fecha inicio:         Fecha inicial
+    rango de fechas:      Rango de fechas
     extReg:               El registro fue exitoso
     des:                  Descripción
     update:               Actualizar 

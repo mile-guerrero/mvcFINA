@@ -445,8 +445,6 @@ CREATE TABLE pago_trabajador
     empresa_id BIGINT NOT NULL,	
     trabajador_id BIGINT NOT NULL,	
 	valor_salario BigInt NOT NULL,
-	cantidad_horas_extras BigInt NOT NULL,	
-	valor_horas_extras BigInt NOT NULL,
     horas_perdidas BigInt NOT NULL,
     total_pagar BigInt NOT NULL,	
 	created_at TIMESTAMP DEFAULT now() NOT NULL,

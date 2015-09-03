@@ -35,8 +35,8 @@ class PDF extends FPDF {
 $pdf = new PDF();
 $pdf->AddPage();
 $pdf->SetFont('Arial', 'B', 8);
-
-$pdf->Ln();
+$pdf->Image(routing::getInstance()->getUrlImg('portadaPdf2.png'), 0, 0, 210);
+$pdf->Ln(600);
 $pdf->Ln();
 $pdf->SetFillColor(255,204,51);//color
 $pdf->Cell(190, 10, $mensaje, 1, 0, 'C', true);

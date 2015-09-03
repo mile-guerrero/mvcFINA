@@ -47,6 +47,17 @@ class insertActionClass extends controllerClass implements controllerActionInter
        
 
       $this->objLote = registroLoteTableClass::getAll($fields, false, $orderBy, 'ASC');
+      
+      $fields = array(
+          loteTableClass::ID,
+          loteTableClass::UBICACION,
+      );
+      $orderBy = array(
+          loteTableClass::ID
+      );
+       
+
+      $this->objLoteR = loteTableClass::getAll($fields, true, $orderBy, 'ASC');
       $this->defineView('insert', 'reportes', session::getInstance()->getFormatOutput());
     } //cierre del try
     catch (PDOException $exc) {

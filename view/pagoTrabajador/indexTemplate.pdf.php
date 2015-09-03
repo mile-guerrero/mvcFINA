@@ -7,8 +7,6 @@ use mvc\routing\routingClass as routing;
  $fechaIni = pagoTrabajadorTableClass::FECHA_INICIAL;
  $fechaFin = pagoTrabajadorTableClass::FECHA_FINAL;
  $valorSalario = pagoTrabajadorTableClass::VALOR_SALARIO;
- $cantidad = pagoTrabajadorTableClass::CANTIDAD_HORAS_EXTRAS;
- $valorHoras = pagoTrabajadorTableClass::VALOR_HORAS_EXTRAS;
  $horas = pagoTrabajadorTableClass::HORAS_PERDIDAS;
  $total = pagoTrabajadorTableClass::TOTAL_PAGAR;
 
@@ -63,16 +61,13 @@ foreach ($objPT as $valor) {
   $pdf->Ln();
   $pdf->Ln();
 }
-$pdf->Cell(50, 10, "Cantidad",1, 0, 'C', true);
-$pdf->Cell(55, 10, "Valor horas extras",1, 0, 'C', true);
-$pdf->Cell(50, 10, "Horas perdidas",1, 0, 'C', true);
-$pdf->Cell(35, 10, "Total",1, 0, 'C', true);
+
+$pdf->Cell(95, 10, "Bonificaciones",1, 0, 'C', true);
+$pdf->Cell(95, 10, "Total",1, 0, 'C', true);
 $pdf->Ln();
-foreach ($objPT as $valor) {  
-  $pdf->Cell(50, 8, utf8_decode($valor->$cantidad),1); 
-  $pdf->Cell(55, 8, '$' . number_format($valor->$valorHoras, 0, ',', '.'),1);
-  $pdf->Cell(50, 8, '$' . number_format($valor->$horas, 0, ',', '.'),1); 
-  $pdf->Cell(35, 8, '$' . number_format($valor->$total, 0, ',', '.'),1); 
+foreach ($objPT as $valor) { 
+  $pdf->Cell(95, 8, '$' . number_format($valor->$horas, 0, ',', '.'),1); 
+  $pdf->Cell(95, 8, '$' . number_format($valor->$total, 0, ',', '.'),1); 
   $pdf->Ln();  
 }
 

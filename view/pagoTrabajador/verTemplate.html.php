@@ -7,8 +7,6 @@
 <?php $idEmpresa = pagoTrabajadorTableClass::EMPRESA_ID?>
 <?php $idTrabajador = pagoTrabajadorTableClass::TRABAJADOR_ID ?>
 <?php $valor = pagoTrabajadorTableClass::VALOR_SALARIO ?>
-<?php $cantidad = pagoTrabajadorTableClass::CANTIDAD_HORAS_EXTRAS?>
-<?php $valorHoras = pagoTrabajadorTableClass::VALOR_HORAS_EXTRAS ?>
 <?php $horas = pagoTrabajadorTableClass::HORAS_PERDIDAS?>
 <?php $total = pagoTrabajadorTableClass::TOTAL_PAGAR ?>
 
@@ -53,10 +51,6 @@
               <td><?php echo '$' . number_format($key->$valor, 0, ',', '.') ?></td>
             </tr>
            
-             <tr> 
-              <td><?php echo i18n::__('horasExtras') ?> - <?php echo i18n::__('cantidad') ?></td>                   
-              <td><?php echo '$' . number_format($key->$valorHoras, 0, ',', '.') ?> * <?php echo $key->$cantidad ?></td>
-            </tr>
             <tr>
               <td><?php echo i18n::__('horasPerdidas') ?></td> 
               <td><?php echo '$' . number_format($key->$horas, 0, ',', '.') ?></td>

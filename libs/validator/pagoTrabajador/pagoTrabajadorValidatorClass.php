@@ -18,45 +18,9 @@ namespace mvc\validator {
         public static function validateInsert() {
             $flag = false;
 
-            if (self::notBlank(request::getInstance()->getPost(\pagoTrabajadorTableClass::getNameField(\pagoTrabajadorTableClass::CANTIDAD_HORAS_EXTRAS, true)))) {
-                $flag = true;
-                session::getInstance()->setFlash('inputCantidad', true);
-                session::getInstance()->setError('La cantidad es requerida', 'inputCantidad');
-            } else if (!is_numeric(request::getInstance()->getPost(\pagoTrabajadorTableClass::getNameField(\pagoTrabajadorTableClass::CANTIDAD_HORAS_EXTRAS, true)))) {
-                $flag = true;
-                session::getInstance()->setFlash('inputCantidad', true);
-                session::getInstance()->setError('La cantidad no puede ser letras', 'inputCantidad');
-            } else if(strlen(request::getInstance()->getPost(\pagoTrabajadorTableClass::getNameField(\pagoTrabajadorTableClass::CANTIDAD_HORAS_EXTRAS, true))) > \pagoTrabajadorTableClass::CANTIDAD_HORAS_EXTRAS_LENGTH) {
-                $flag = true;
-                session::getInstance()->setFlash('inputCantidad', true);
-                session::getInstance()->setError('La catidad digitado sobre pasa los caracteres permitidos', 'inputCantidad');
-            }    
-            if (self::notBlank(request::getInstance()->getPost(\pagoTrabajadorTableClass::getNameField(\pagoTrabajadorTableClass::VALOR_SALARIO, true)))) {
-                $flag = true;
-                session::getInstance()->setFlash('inputValor', true);
-                session::getInstance()->setError('El valor es requerido', 'inputValor');
-            } else if (!is_numeric(request::getInstance()->getPost(\pagoTrabajadorTableClass::getNameField(\pagoTrabajadorTableClass::VALOR_SALARIO, true)))) {
-                $flag = true;
-                session::getInstance()->setFlash('inputValor', true);
-                session::getInstance()->setError('El valor no puede ser letras', 'inputValor');
-            } else if(strlen(request::getInstance()->getPost(\pagoTrabajadorTableClass::getNameField(\pagoTrabajadorTableClass::VALOR_SALARIO, true))) > \pagoTrabajadorTableClass::VALOR_SALARIO_LENGTH) {
-                $flag = true;
-                session::getInstance()->setFlash('inputValor', true);
-                session::getInstance()->setError('La catidad digitado sobre pasa los caracteres permitidos', 'inputValor');
-            }    
-            if (self::notBlank(request::getInstance()->getPost(\pagoTrabajadorTableClass::getNameField(\pagoTrabajadorTableClass::VALOR_HORAS_EXTRAS, true)))) {
-                $flag = true;
-                session::getInstance()->setFlash('inputHoras', true);
-                session::getInstance()->setError('Las horas extras son requeridas', 'inputHoras');
-            } else if (!is_numeric(request::getInstance()->getPost(\pagoTrabajadorTableClass::getNameField(\pagoTrabajadorTableClass::VALOR_HORAS_EXTRAS, true)))) {
-                $flag = true;
-                session::getInstance()->setFlash('inputHoras', true);
-                session::getInstance()->setError('Las horas extras no puede ser letras', 'inputHoras');
-            } else if(strlen(request::getInstance()->getPost(\pagoTrabajadorTableClass::getNameField(\pagoTrabajadorTableClass::VALOR_HORAS_EXTRAS, true))) > \pagoTrabajadorTableClass::VALOR_HORAS_EXTRAS_LENGTH) {
-                $flag = true;
-                session::getInstance()->setFlash('inputHoras', true);
-                session::getInstance()->setError('La catidad digitado sobre pasa los caracteres permitidos', 'inputHoras');
-            }    
+           
+             
+                
             if (self::notBlank(request::getInstance()->getPost(\pagoTrabajadorTableClass::getNameField(\pagoTrabajadorTableClass::HORAS_PERDIDAS, true)))) {
                 $flag = true;
                 session::getInstance()->setFlash('inputHorasPerdidas', true);

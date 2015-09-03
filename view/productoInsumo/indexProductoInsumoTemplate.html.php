@@ -16,8 +16,8 @@ use mvc\request\requestClass as request ?>
 <?php $id = tipoProductoInsumoTableClass::ID ?>
 <?php $idtipo = tipoProductoInsumoTableClass::ID ?>
 <?php $destipo = tipoProductoInsumoTableClass::DESCRIPCION ?>
-<?php// $unidadM = unidadMedidaTableClass::DESCRIPCION ?>
-<?php// $idUnidadM = unidadMedidaTableClass::ID ?>
+<?php $unidadM = unidadMedidaTableClass::DESCRIPCION ?>
+<?php $idUnidadM = unidadMedidaTableClass::ID ?>
 <div class="container container-fluid" id="cuerpo">
   <div class="center-block" id="cuerpo4">
     <div class="center-block" id="cuerpo2">
@@ -39,7 +39,7 @@ use mvc\request\requestClass as request ?>
           <?php endif ?>
           <a type="button" class="btn btn-xs" data-toggle="modal" data-target="#myModalFilters"><img class="img-responsive"  id="imgfiltros" src="" alt=" "><?php echo i18n::__('filtros') ?></a>  
           <a href="<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'deleteFiltersProductoInsumo') ?>" class="btn btn-xs" ><img class="img-responsive"  id="imgelifiltro" src="" alt=" "><?php echo i18n::__('eFiltros') ?></a>
-          <a type="button" class="btn btn-xs" data-toggle="modal" data-target="#myModalReport" ><img class="img-responsive"  id="imgreporte" src="" alt=" "><?php echo i18n::__('informe') ?></a>            
+          <a target="_blank" class="btn btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'reportProductoInsumo') ?>" > <img class="img-responsive"  id="imgreporte" src="" alt=" "><?php echo i18n::__('informe') ?></a>
         </ul> 
 
 
@@ -69,16 +69,22 @@ use mvc\request\requestClass as request ?>
                       <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputFecha') ?>
                     </div>
                   <?php endif ?>
-
-
-                  <div class="form-group">
-                    <label class="col-sm-2 control-label"  for="<?php echo productoInsumoTableClass::getNameField(productoInsumoTableClass::CREATED_AT, true) . '_1' ?>" ><?php echo i18n::__('fecha crear') ?></label>
-                    <div class="col-sm-10">
+                    
+                    
+                    <div class="form-group">
+                    <div class="col-sm-6">
+                      <label class="col-sm-4 control-label"  for="<?php echo productoInsumoTableClass::getNameField(productoInsumoTableClass::CREATED_AT, true) . '_1' ?>"  ><?php echo i18n::__('fecha inicio') ?></label>
                       <input type="date" class="form-control-filtro1" id="<?php echo productoInsumoTableClass::getNameField(productoInsumoTableClass::CREATED_AT, true) . '_1' ?>" name="<?php echo productoInsumoTableClass::getNameField(productoInsumoTableClass::CREATED_AT, true) . '_1' ?>" >
 
-                      <input type="date" class="form-control-filtro2" id="<?php echo productoInsumoTableClass::getNameField(productoInsumoTableClass::CREATED_AT, true) . '_2' ?>" name="<?php echo productoInsumoTableClass::getNameField(productoInsumoTableClass::CREATED_AT, true) . '_2' ?>" >
+                    </div>
+                    <div class="col-sm-6">
+                      <label class="col-sm-4 control-label"  for="<?php echo productoInsumoTableClass::getNameField(productoInsumoTableClass::CREATED_AT, true) . '_2' ?>"  ><?php echo i18n::__('fecha fin') ?></label>
+                     <input type="date" class="form-control-filtro2" id="<?php echo productoInsumoTableClass::getNameField(productoInsumoTableClass::CREATED_AT, true) . '_2' ?>" name="<?php echo productoInsumoTableClass::getNameField(productoInsumoTableClass::CREATED_AT, true) . '_2' ?>" >
+                   
                     </div>
                   </div>
+
+ 
 
                   <div class="form-group">
                     <label for="filterUnidadMedida" class="col-sm-2 control-label hidden"><?php echo i18n::__('unidad') ?></label>
@@ -126,60 +132,7 @@ use mvc\request\requestClass as request ?>
           </div>
         </div>  
 
-        <!---Informes--->
-        <div class="modal fade" id="myModalReport" tabindex="-1" role="modal" aria-labelledby="myModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('informe') ?></h4>
-              </div>
-              <div class="modal-body">
-                <form class="form-horizontal" id="reportForm" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'reportProductoInsumo') ?>">
-
-
-                  <div class="form-group">
-                    <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
-                    <div class="col-sm-10">
-                      <input type="date" class="form-control-filtro1" id="filterFechaIni" name="filter[fechaIni]" >
-
-<!--                <label  class="col-sm-2 control-label"><?php echo i18n::__('fecha fin') ?></label>-->
-
-                      <input type="date" class="form-control-filtro2" id="filterFechaFin" name="filter[fechaFin]" >
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="reportUnidadMedida" class="col-sm-2 control-label"><?php echo i18n::__('unidad') ?></label>
-                    <div class="col-sm-10">
-                      <select class="form-control" id="reportUnidadMedida" name="report[unidadMedida]">
-                        <option value=""><?php echo i18n::__('selectTipoUso') ?></option>
-                        <?php foreach ($objPIUM as $unidadMedida): ?>
-                          <option value="<?php echo $unidadMedida->$idUnidadM ?>"><?php echo $unidadMedida->$unidadM ?></option>
-                        <?php endforeach; ?>
-                      </select>
-                    </div>
-                  </div>      
-
-
-                  <div class="form-group">
-                    <label for="reportDescripcion" class="col-sm-2 control-label"><?php echo i18n::__('nom') ?></label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="reportDescripcion" name="report[descripcion]" placeholder="Nombre">
-                    </div>
-                  </div>
-
-
-                </form>
-                </form>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default btn btn-xs" data-dismiss="modal">  <?php echo i18n::__('cerrar') ?></button>
-                <button type="button" onclick="$('#reportForm').submit()" class="btn btn-warning btn btn-xs"><?php echo i18n::__('informe') ?></button>
-              </div>
-            </div>
-          </div>
-        </div>
+        
 
 
 

@@ -27,8 +27,6 @@ class updateActionClass extends controllerClass implements controllerActionInter
         $idEmpresa = request::getInstance()->getPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::EMPRESA_ID, true));
         $idTrabajador = request::getInstance()->getPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::TRABAJADOR_ID, true));
         $valor = request::getInstance()->getPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::VALOR_SALARIO, true));
-        $cantidad = request::getInstance()->getPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::CANTIDAD_HORAS_EXTRAS, true));
-        $valorHoras = request::getInstance()->getPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::VALOR_HORAS_EXTRAS, true));
         $horas = request::getInstance()->getPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::HORAS_PERDIDAS, true));
         $total = request::getInstance()->getPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::TOTAL_PAGAR, true));
 
@@ -70,24 +68,6 @@ class updateActionClass extends controllerClass implements controllerActionInter
                 routing::getInstance()->forward('pagoTrabajador', 'edit');
             }
             
-            if($valorHoras < 0){
-                session::getInstance()->setFlash('inputHoras', true);
-                session::getInstance()->setError('Los valores numericos no pueden ser negativos', 'inputHoras');
-                request::getInstance()->setMethod('GET');
-                request::getInstance()->addParamGet(array(\pagoTrabajadorTableClass::ID => request::getInstance()->getPost(\pagoTrabajadorTableClass::getNameField(\pagoTrabajadorTableClass::ID, true))));
-                routing::getInstance()->forward('pagoTrabajador', 'edit');
-            }
-            
-            if($cantidad < 0){
-                session::getInstance()->setFlash('inputCantidad', true);
-                session::getInstance()->setError('Los valores numericos no pueden ser negativos', 'inputCantidad');
-                request::getInstance()->setMethod('GET');
-                request::getInstance()->addParamGet(array(\pagoTrabajadorTableClass::ID => request::getInstance()->getPost(\pagoTrabajadorTableClass::getNameField(\pagoTrabajadorTableClass::ID, true))));
-                routing::getInstance()->forward('pagoTrabajador', 'edit');
-            }
-            
-            
-            
         $ids = array(
             pagoTrabajadorTableClass::ID => $id
         );
@@ -97,8 +77,6 @@ class updateActionClass extends controllerClass implements controllerActionInter
           pagoTrabajadorTableClass::EMPRESA_ID => $idEmpresa,
           pagoTrabajadorTableClass::TRABAJADOR_ID => $idTrabajador,
           pagoTrabajadorTableClass::VALOR_SALARIO => $valor,
-          pagoTrabajadorTableClass::CANTIDAD_HORAS_EXTRAS => $cantidad,
-          pagoTrabajadorTableClass::VALOR_HORAS_EXTRAS => $valorHoras,
           pagoTrabajadorTableClass::HORAS_PERDIDAS => $horas,
           pagoTrabajadorTableClass::TOTAL_PAGAR => $total
             

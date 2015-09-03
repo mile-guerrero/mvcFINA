@@ -19,8 +19,6 @@ use mvc\request\requestClass as request ?>
 <?php $fechaFin = pagoTrabajadorTableClass::FECHA_FINAL ?>
 <?php $idTrabajador = pagoTrabajadorTableClass::TRABAJADOR_ID ?>
 <?php $valor = pagoTrabajadorTableClass::VALOR_SALARIO ?>
-<?php $cantidad = pagoTrabajadorTableClass::CANTIDAD_HORAS_EXTRAS ?>
-<?php $valorHoras = pagoTrabajadorTableClass::VALOR_HORAS_EXTRAS ?>
 <?php $horas = pagoTrabajadorTableClass::HORAS_PERDIDAS ?>
 <?php $total = pagoTrabajadorTableClass::TOTAL_PAGAR ?>
 
@@ -30,14 +28,12 @@ use mvc\request\requestClass as request ?>
 <script>
 function fncTotal(){
 caja=document.forms["sumar"].elements;
-var <?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::VALOR_HORAS_EXTRAS, true) ?> = Number(caja["<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::VALOR_HORAS_EXTRAS, true) ?>"].value);
-var <?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::CANTIDAD_HORAS_EXTRAS, true) ?> = Number(caja["<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::CANTIDAD_HORAS_EXTRAS, true) ?>"].value);
 var <?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::VALOR_SALARIO, true) ?> = Number(caja["<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::VALOR_SALARIO, true) ?>"].value);
 var <?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::HORAS_PERDIDAS, true) ?> = Number(caja["<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::HORAS_PERDIDAS, true) ?>"].value);
 
-<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::TOTAL_PAGAR, true) ?> = (<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::VALOR_HORAS_EXTRAS, true) ?>)*(<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::CANTIDAD_HORAS_EXTRAS, true) ?>)+(<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::VALOR_SALARIO, true) ?>)-(<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::HORAS_PERDIDAS, true) ?>);
+<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::TOTAL_PAGAR, true) ?> = (<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::VALOR_SALARIO, true) ?>)+(<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::HORAS_PERDIDAS, true) ?>);
 if(!isNaN(<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::TOTAL_PAGAR, true) ?>)){
-caja["<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::TOTAL_PAGAR, true) ?>"].value=(<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::VALOR_HORAS_EXTRAS, true) ?>)*(<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::CANTIDAD_HORAS_EXTRAS, true) ?>)+(<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::VALOR_SALARIO, true) ?>)-(<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::HORAS_PERDIDAS, true) ?>) ;
+caja["<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::TOTAL_PAGAR, true) ?>"].value=(<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::VALOR_SALARIO, true) ?>)+(<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::HORAS_PERDIDAS, true) ?>) ;
 }
 }
 </script>
@@ -145,36 +141,7 @@ caja["<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass
 
           </div>
         </div>
-        <br>
-
-
-
-        <?php if (session::getInstance()->hasError('inputHoras')): ?>
-          <div class="alert alert-danger alert-dismissible" role="alert" id="error">
-            <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputHoras') ?>
-          </div>
-        <?php endif ?>
-
-
-        <?php if (session::getInstance()->hasError('inputCantidad')): ?>
-          <div class="alert alert-danger alert-dismissible" role="alert" id="error">
-            <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputCantidad') ?>
-          </div>
-        <?php endif ?>
-
-        <div class="row j1" >
-          <label for="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::VALOR_HORAS_EXTRAS, true) ?>" class="col-sm-2"><?php echo i18n::__('horasExtras') ?>:</label>     
-
-          <div class="col-lg-5">
-            <input  class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputHoras') or request::getInstance()->hasPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::VALOR_HORAS_EXTRAS, true))) ? request::getInstance()->getPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::VALOR_HORAS_EXTRAS, true)) : ((isset($objPagoT[0])) ? $objPagoT[0]->$valorHoras : '') ?>" type="text" name="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::VALOR_HORAS_EXTRAS, true) ?>" placeholder="<?php echo i18n::__('horasExtras') ?>" onKeyUp="fncTotal()" required>
-          </div>
-          <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-            <input  class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputCantidad') or request::getInstance()->hasPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::CANTIDAD_HORAS_EXTRAS, true))) ? request::getInstance()->getPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::CANTIDAD_HORAS_EXTRAS, true)) : ((isset($objPagoT[0])) ? $objPagoT[0]->$cantidad : '') ?>" type="text" name="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::CANTIDAD_HORAS_EXTRAS, true) ?>" placeholder="<?php echo i18n::__('cantidad') ?>" onKeyUp="fncTotal()" required>
-
-          </div>
-        </div>
+       
         <br>
 
 
@@ -196,7 +163,7 @@ caja["<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass
         <input   class="btn btn-lg btn-success btn-xs" type="submit" value="<?php echo i18n::__(((isset($objPagoT)) ? 'update' : 'register')) ?>">
         <a class="btn btn-lg btn-default btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('pagoTrabajador', 'index') ?>" ><?php echo i18n::__('atras') ?> </a>
 
-        <br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br>
       </form>
     </div>
   </div>

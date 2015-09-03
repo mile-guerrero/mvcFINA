@@ -15,8 +15,6 @@ class pagoTrabajadorBaseTableClass extends tableBaseClass {
  private $empresaId; 
  private $trabajadorId;
  private $valorSalario;
- private $cantidadHorasExtras;
- private $valorHorasExtras;
  private $horasPerdidas;
  private $totalPagar;
  private $createdAt;
@@ -30,10 +28,6 @@ class pagoTrabajadorBaseTableClass extends tableBaseClass {
   const TRABAJADOR_ID = 'trabajador_id';
   const VALOR_SALARIO = 'valor_salario';
   const VALOR_SALARIO_LENGTH = 30;
-  const CANTIDAD_HORAS_EXTRAS = 'cantidad_horas_extras';
-  const CANTIDAD_HORAS_EXTRAS_LENGTH = 30;
-  const VALOR_HORAS_EXTRAS = 'valor_horas_extras';
-  const VALOR_HORAS_EXTRAS_LENGTH = 30;
   const HORAS_PERDIDAS = 'horas_perdidas';
   const HORAS_PERDIDAS_LENGTH = 30;
   const TOTAL_PAGAR = 'total_pagar';
@@ -63,14 +57,6 @@ class pagoTrabajadorBaseTableClass extends tableBaseClass {
 
   public function getValorSalario() {
     return $this->valorSalario;
-  }
-
-  public function getCantidadHorasExtras() {
-    return $this->cantidadHorasExtras;
-  }
-
-  public function getValorHorasExtras() {
-    return $this->valorHorasExtras;
   }
 
   public function getHorasPerdidas() {
@@ -111,14 +97,6 @@ class pagoTrabajadorBaseTableClass extends tableBaseClass {
 
   public function setValorSalario($valorSalario) {
     $this->valorSalario = $valorSalario;
-  }
-
-  public function setCantidadHorasExtras($cantidadHorasExtras) {
-    $this->cantidadHorasExtras = $cantidadHorasExtras;
-  }
-
-  public function setValorHorasExtras($valorHorasExtras) {
-    $this->valorHorasExtras = $valorHorasExtras;
   }
 
   public function setHorasPerdidas($horasPerdidas) {

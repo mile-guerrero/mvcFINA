@@ -64,16 +64,22 @@ use mvc\request\requestClass as request ?>
                     </div>
                   <?php endif ?>
 
-
-                  <div class="form-group">
-                    <label class="col-sm-2 control-label"  for="<?php echo tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::CREATED_AT, true) . '_1' ?>" ><?php echo i18n::__('fecha crear') ?></label>
-                    <div class="col-sm-10">
+                    
+                    <div class="form-group">
+                    <div class="col-sm-6">
+                      <label class="col-sm-4 control-label"  for="<?php echo tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::CREATED_AT, true) . '_1' ?>"  ><?php echo i18n::__('fecha inicio') ?></label>
                       <input type="date" class="form-control-filtro1" id="<?php echo tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::CREATED_AT, true) . '_1' ?>" name="filter[<?php echo tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::CREATED_AT, true) . '_1' ?>]" >
 
+                    </div>
+                    <div class="col-sm-6">
+                      <label class="col-sm-4 control-label"  for="<?php echo tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::CREATED_AT, true) . '_2' ?>" ><?php echo i18n::__('fecha fin') ?></label>
                       <input type="date" class="form-control-filtro2" id="<?php echo tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::CREATED_AT, true) . '_2' ?>" name="filter[<?php echo tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::CREATED_AT, true) . '_2' ?>]" >
+                    
                     </div>
                   </div>
 
+                    
+                   
                <?php if (session::getInstance()->hasError('inputDescripcion')): ?>
                     <div class="alert alert-danger alert-dismissible" role="alert" id="error">
                       <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>

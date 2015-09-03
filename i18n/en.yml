@@ -215,7 +215,9 @@ dictionary:
     eFiltros:             Remove Filters
     filtrar:              Filter
     fecha crear:          Creation date
-    fecha fin:            Final date
+    fecha fin:            Find date
+    fecha inicio:         Creation date
+    rango de fechas:      Rang of date
     extReg:               The registration was successful
     des:                  Description
     update:               Update 
