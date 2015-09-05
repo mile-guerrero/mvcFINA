@@ -11,7 +11,7 @@ use mvc\config\configClass as config;
 
 class plagaTableClass extends plagaBaseTableClass {
  
-    
+ 
     public static function getNamePlaga($id){
     try {
       $sql = 'SELECT ' . plagaTableClass::NOMBRE .  ' As nombre  '

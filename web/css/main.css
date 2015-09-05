@@ -26,6 +26,8 @@ h1, h2, div, a, p{
 color:#005a1e; 
 }
 
+    
+    
 #color1{
   background-color: #333;
   color: #fff;
@@ -412,6 +414,25 @@ table.width200,table.rwd_auto {border:1px solid #ccc;width:100%;margin:0 0 50px 
 .form-control-filtro2 {
   margin: 0px 0px 0px 10px;
   width: 165px;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+.form-control-form2 {
+  margin: 0px 0px 0px 10px;
+  width: 230px;
   height: 34px;
   padding: 6px 12px;
   font-size: 14px;

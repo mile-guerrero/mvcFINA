@@ -2339,8 +2339,23 @@ detalleFacturaVenta_index:
     - model/productoInsumoTableClass.php
     - libs/validator/detalleFacturaVenta/detalleFacturaVentaValidatorClass.php
     
-    
-    
+getInsumo:
+  url:    /obtener_insumo.json
+  param:  { module: detalleFacturaVenta, action: getInsumo, format: json }
+  load:
+    - model/base/detalleFacturaVentaBaseTableClass.php
+    - model/detalleFacturaVentaTableClass.php
+    - model/base/facturaVentaBaseTableClass.php
+    - model/facturaVentaTableClass.php
+    - model/base/clienteBaseTableClass.php
+    - model/clienteTableClass.php
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php
+
 detalleFacturaVenta_insert:
   url:    /detalleFacturaVenta/insertar
   param:  { module: detalleFacturaVenta, action: insert, format: html }
@@ -2355,6 +2370,8 @@ detalleFacturaVenta_insert:
     - model/trabajadorTableClass.php
     - model/base/productoInsumoBaseTableClass.php
     - model/productoInsumoTableClass.php
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php
     
     
 detalleFacturaVenta_create:
@@ -2371,6 +2388,8 @@ detalleFacturaVenta_create:
     - model/trabajadorTableClass.php
     - model/base/productoInsumoBaseTableClass.php
     - model/productoInsumoTableClass.php
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php
     - libs/validator/detalleFacturaVenta/detalleFacturaVentaValidatorClass.php
     
 detalleFacturaVenta_edit:
@@ -2387,7 +2406,8 @@ detalleFacturaVenta_edit:
     - model/trabajadorTableClass.php
     - model/base/productoInsumoBaseTableClass.php
     - model/productoInsumoTableClass.php
-    
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php
     
 detalleFacturaVenta_update:
   url:    /detalleFacturaVenta/actualizar
@@ -2403,6 +2423,8 @@ detalleFacturaVenta_update:
     - model/trabajadorTableClass.php
     - model/base/productoInsumoBaseTableClass.php
     - model/productoInsumoTableClass.php
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php
     - libs/validator/detalleFacturaVenta/detalleFacturaVentaValidatorUpdateClass.php
     
 detalleFacturaVenta_ver:

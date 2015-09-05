@@ -1050,11 +1050,11 @@ INSERT INTO "enfermedad" (nombre, descripcion, tratamiento) VALUES ('Negrilla', 
 COMMIT;
 
 BEGIN;
-INSERT INTO "lote" (ubicacion, id_ciudad, tamano, unidad_distancia_id, descripcion, unidad_medida_id, producto_insumo_id, presupuesto, numero_plantulas, produccion) VALUES ('Finca colmenar lote1' , 2, 100, 2, 'lote establecido hace 3 años, 551 arboles', 2, 29, 0, 551, 0);
-INSERT INTO "lote" (ubicacion, id_ciudad, tamano, unidad_distancia_id, descripcion, unidad_medida_id, producto_insumo_id, presupuesto, numero_plantulas, produccion) VALUES ('Finca colmenar lote2' , 2, 200, 2, 'lote establecido hace 8 meses, 1632 plantas', 2, 48, 0, 1632, 0);
-INSERT INTO "lote" (ubicacion, id_ciudad, tamano, unidad_distancia_id, descripcion, unidad_medida_id, producto_insumo_id, presupuesto, numero_plantulas, produccion) VALUES ('Finca colmenar lote3' , 2, 200, 2, 'primera produccion, 1378 plantas', 2, 60, 0, 1378, 0);
-INSERT INTO "lote" (ubicacion, id_ciudad, tamano, unidad_distancia_id, descripcion, unidad_medida_id, producto_insumo_id, presupuesto, numero_plantulas, produccion) VALUES ('Finca colmenar lote4' , 2, 100, 2, 'plantas con promedio de 6 años', 2, 45, 0, 0, 0);
-INSERT INTO "lote" (ubicacion, id_ciudad, tamano, unidad_distancia_id, descripcion, unidad_medida_id, producto_insumo_id, presupuesto, numero_plantulas, produccion) VALUES ('Finca colmenar lote5' , 2, 200, 2, 'arboles con promedio de 6 años', 2, 8, 0, 0, 0);
+INSERT INTO "lote" (ubicacion, id_ciudad, tamano, unidad_distancia_id, descripcion, unidad_medida_id, producto_insumo_id, presupuesto, numero_plantulas, produccion) VALUES ('Finca colmenar lote1' , 2, 100, 2, 'lote establecido hace 3 años, 551 arboles', 2, 30, 0, 551, 0);
+INSERT INTO "lote" (ubicacion, id_ciudad, tamano, unidad_distancia_id, descripcion, unidad_medida_id, producto_insumo_id, presupuesto, numero_plantulas, produccion) VALUES ('Finca colmenar lote2' , 2, 200, 2, 'lote establecido hace 8 meses, 1632 plantas', 2, 49, 0, 1632, 0);
+INSERT INTO "lote" (ubicacion, id_ciudad, tamano, unidad_distancia_id, descripcion, unidad_medida_id, producto_insumo_id, presupuesto, numero_plantulas, produccion) VALUES ('Finca colmenar lote3' , 2, 200, 2, 'primera produccion, 1378 plantas', 2, 61, 0, 1378, 0);
+INSERT INTO "lote" (ubicacion, id_ciudad, tamano, unidad_distancia_id, descripcion, unidad_medida_id, producto_insumo_id, presupuesto, numero_plantulas, produccion) VALUES ('Finca colmenar lote4' , 2, 100, 2, 'plantas con promedio de 6 años', 2, 46, 0, 0, 0);
+INSERT INTO "lote" (ubicacion, id_ciudad, tamano, unidad_distancia_id, descripcion, unidad_medida_id, producto_insumo_id, presupuesto, numero_plantulas, produccion) VALUES ('Finca colmenar lote5' , 2, 200, 2, 'arboles con promedio de 6 años', 2, 9, 0, 0, 0);
 COMMIT;
 
 BEGIN;
@@ -1068,6 +1068,14 @@ INSERT INTO "registro_lote" (ubicacion, fecha_riego, numero_plantulas, produccio
 INSERT INTO "registro_lote" (ubicacion, fecha_riego, numero_plantulas, produccion, unidad_medida_id, producto_insumo_id) VALUES ('Finca colmenar lote3' ,'2015-08-26T23:42:51.952', 1000, 120, 2, 8);
 INSERT INTO "registro_lote" (ubicacion, fecha_riego, numero_plantulas, produccion, unidad_medida_id, producto_insumo_id) VALUES ('Finca colmenar lote4' ,'2015-08-27T23:42:51.952', 1378, 70, 2, 60);
 INSERT INTO "registro_lote" (ubicacion, fecha_riego, numero_plantulas, produccion, unidad_medida_id, producto_insumo_id) VALUES ('Finca colmenar lote5' ,'2015-08-27T23:42:51.952', 700, 90, 2, 34);
+COMMIT;
+
+BEGIN;
+INSERT INTO "historial" (producto_insumo_id, lote_id, plaga_id, enfermedad_id) VALUES ( 30, 1, 2,1);
+INSERT INTO "historial" (producto_insumo_id, lote_id, plaga_id, enfermedad_id) VALUES ( 49, 2, 3, 2);
+INSERT INTO "historial" (producto_insumo_id, lote_id, plaga_id, enfermedad_id) VALUES ( 61, 3, 4, 4);
+INSERT INTO "historial" (producto_insumo_id, lote_id, plaga_id, enfermedad_id) VALUES ( 46, 4, 5, 3);
+INSERT INTO "historial" (producto_insumo_id, lote_id, plaga_id, enfermedad_id) VALUES ( 9, 5, 6, 5);
 COMMIT;
 
 BEGIN;

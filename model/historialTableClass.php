@@ -9,6 +9,9 @@ use mvc\config\configClass as config;
  * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
  */
 class historialTableClass extends historialBaseTableClass {
+  
+    
+  
 public static function getTotalPages($lines, $where){
     try {
       $sql = 'SELECT count(' . historialTableClass::ID . ') AS cantidad ' .' '.

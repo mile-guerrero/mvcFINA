@@ -9,6 +9,141 @@ use mvc\config\configClass as config;
  * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
  */
 class registroLoteTableClass extends registroLoteBaseTableClass {
+  
+  
+   public static function getNamePlagaNombre($id){
+    try {
+      $sql = 'SELECT ' . plagaTableClass::getNameTable() . '.'. plagaTableClass::NOMBRE .  ' As nombre  '
+             . '  FROM ' . registroLoteTableClass::getNameTable() . ','. productoInsumoTableClass::getNameTable() . ','. historialTableClass::getNameTable() . ','. plagaTableClass::getNameTable() . ' '
+             . '  WHERE ' . historialTableClass::getNameField(historialTableClass::PRODUCTO_INSUMO_ID) .  ' = ' . productoInsumoTableClass::getNameField(productoInsumoTableClass::ID). '  AND ' . historialTableClass::getNameField(historialTableClass::PLAGA_ID) .  ' = ' . plagaTableClass::getNameField(plagaTableClass::ID). '  AND ' . registroLoteTableClass::getNameField(registroLoteTableClass::PRODUCTO_INSUMO_ID) .  ' = ' . productoInsumoTableClass::getNameField(productoInsumoTableClass::ID) ;
+//      print_r($sql);
+//     exit();
+      
+      $answer = model::getInstance()->prepare($sql);
+            $answer->execute();
+            $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+
+      return $answer[0]->nombre;
+   } catch (Exception $exc) {
+      throw $exc;
+    }
+  }
+  
+   public static function getNamePlagaDescripcion($id){
+    try {
+      $sql = 'SELECT ' . plagaTableClass::getNameTable() . '.'. plagaTableClass::DESCRIPCION .  ' As descripcion  '
+             . '  FROM ' . registroLoteTableClass::getNameTable() . ','. productoInsumoTableClass::getNameTable() . ','. historialTableClass::getNameTable() . ','. plagaTableClass::getNameTable() . ' '
+             . '  WHERE ' . historialTableClass::getNameField(historialTableClass::PRODUCTO_INSUMO_ID) .  ' = ' . productoInsumoTableClass::getNameField(productoInsumoTableClass::ID). '  AND ' . historialTableClass::getNameField(historialTableClass::PLAGA_ID) .  ' = ' . plagaTableClass::getNameField(plagaTableClass::ID). '  AND ' . registroLoteTableClass::getNameField(registroLoteTableClass::PRODUCTO_INSUMO_ID) .  ' = ' . productoInsumoTableClass::getNameField(productoInsumoTableClass::ID) ;
+//      print_r($sql);
+//     exit();
+      
+      $answer = model::getInstance()->prepare($sql);
+            $answer->execute();
+            $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+
+      return $answer[0]->descripcion;
+   } catch (Exception $exc) {
+      throw $exc;
+    }
+  }
+  
+  public static function getNamePlagaTratamiento($id){
+    try {
+      $sql = 'SELECT ' . plagaTableClass::getNameTable() . '.'. plagaTableClass::TRATAMIENTO .  ' As tratamiento  '
+             . '  FROM ' . registroLoteTableClass::getNameTable() . ','. productoInsumoTableClass::getNameTable() . ','. historialTableClass::getNameTable() . ','. plagaTableClass::getNameTable() . ' '
+             . '  WHERE ' . historialTableClass::getNameField(historialTableClass::PRODUCTO_INSUMO_ID) .  ' = ' . productoInsumoTableClass::getNameField(productoInsumoTableClass::ID). '  AND ' . historialTableClass::getNameField(historialTableClass::PLAGA_ID) .  ' = ' . plagaTableClass::getNameField(plagaTableClass::ID). '  AND ' . registroLoteTableClass::getNameField(registroLoteTableClass::PRODUCTO_INSUMO_ID) .  ' = ' . productoInsumoTableClass::getNameField(productoInsumoTableClass::ID) ;
+//      print_r($sql);
+//     exit();
+      
+      $answer = model::getInstance()->prepare($sql);
+            $answer->execute();
+            $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+
+      return $answer[0]->tratamiento;
+   } catch (Exception $exc) {
+      throw $exc;
+    }
+  }
+  
+  
+  
+   public static function getNameEnfermedadNombre($id){
+    try {
+      $sql = 'SELECT ' . enfermedadTableClass::getNameTable() . '.'. enfermedadTableClass::NOMBRE .  ' As nombre  '
+             . '  FROM ' . registroLoteTableClass::getNameTable() . ','. productoInsumoTableClass::getNameTable() . ','. historialTableClass::getNameTable() . ','. enfermedadTableClass::getNameTable() . ' '
+             . '  WHERE ' . historialTableClass::getNameField(historialTableClass::PRODUCTO_INSUMO_ID) .  ' = ' . productoInsumoTableClass::getNameField(productoInsumoTableClass::ID). '  AND ' . historialTableClass::getNameField(historialTableClass::ENFERMEDAD_ID) .  ' = ' . enfermedadTableClass::getNameField(enfermedadTableClass::ID). '  AND ' . registroLoteTableClass::getNameField(registroLoteTableClass::PRODUCTO_INSUMO_ID) .  ' = ' . productoInsumoTableClass::getNameField(productoInsumoTableClass::ID) ;
+//      print_r($sql);
+//     exit();
+      
+      $answer = model::getInstance()->prepare($sql);
+            $answer->execute();
+            $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+
+      return $answer[0]->nombre;
+   } catch (Exception $exc) {
+      throw $exc;
+    }
+  }
+  
+   public static function getNameEnfermedadDescripcion($id){
+    try {
+       $sql = 'SELECT ' . enfermedadTableClass::getNameTable() . '.'. enfermedadTableClass::DESCRIPCION .  ' As descripcion  '
+             . '  FROM ' . registroLoteTableClass::getNameTable() . ','. productoInsumoTableClass::getNameTable() . ','. historialTableClass::getNameTable() . ','. enfermedadTableClass::getNameTable() . ' '
+             . '  WHERE ' . historialTableClass::getNameField(historialTableClass::PRODUCTO_INSUMO_ID) .  ' = ' . productoInsumoTableClass::getNameField(productoInsumoTableClass::ID). '  AND ' . historialTableClass::getNameField(historialTableClass::ENFERMEDAD_ID) .  ' = ' . enfermedadTableClass::getNameField(enfermedadTableClass::ID). '  AND ' . registroLoteTableClass::getNameField(registroLoteTableClass::PRODUCTO_INSUMO_ID) .  ' = ' . productoInsumoTableClass::getNameField(productoInsumoTableClass::ID) ;
+//      print_r($sql);
+//     exit();
+      
+      $answer = model::getInstance()->prepare($sql);
+            $answer->execute();
+            $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+
+      return $answer[0]->descripcion;
+   } catch (Exception $exc) {
+      throw $exc;
+    }
+  }
+  
+  public static function getNameEnfermedadTratamiento($id){
+    try {
+      
+       $sql = 'SELECT ' . enfermedadTableClass::getNameTable() . '.'. enfermedadTableClass::TRATAMIENTO .  ' As tratamiento  '
+             . '  FROM ' . registroLoteTableClass::getNameTable() . ','. productoInsumoTableClass::getNameTable() . ','. historialTableClass::getNameTable() . ','. enfermedadTableClass::getNameTable() . ' '
+             . '  WHERE ' . historialTableClass::getNameField(historialTableClass::PRODUCTO_INSUMO_ID) .  ' = ' . productoInsumoTableClass::getNameField(productoInsumoTableClass::ID). '  AND ' . historialTableClass::getNameField(historialTableClass::ENFERMEDAD_ID) .  ' = ' . enfermedadTableClass::getNameField(enfermedadTableClass::ID). '  AND ' . registroLoteTableClass::getNameField(registroLoteTableClass::PRODUCTO_INSUMO_ID) .  ' = ' . productoInsumoTableClass::getNameField(productoInsumoTableClass::ID) ;
+//      print_r($sql);
+//     exit();
+     
+      
+      $answer = model::getInstance()->prepare($sql);
+            $answer->execute();
+            $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+
+      return $answer[0]->tratamiento;
+   } catch (Exception $exc) {
+      throw $exc;
+    }
+  }
+  
+  
+  
+   public static function getNameTotal($id){
+    try {
+      $sql = 'SELECT ' . '  '. 'SUM ('. registroLoteTableClass::PRODUCCION  . ') ' .  ' As total'
+             . '  FROM ' . registroLoteTableClass::getNameTable() . '  ' 
+             . ' WHERE ' . registroLoteTableClass::PRODUCTO_INSUMO_ID . ' = ' . $id;
+    
+      $answer = model::getInstance()->prepare($sql);
+            $answer->execute();
+            $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+//       print_r($sql);
+//     exit();
+      return $answer[0]->total;
+      
+      
+    } catch (Exception $exc) {
+      throw $exc;
+    }
+    
+  }
 
   public static function getProduccion($ubicacion, $fechaInicial, $fechaFin) {
     try {

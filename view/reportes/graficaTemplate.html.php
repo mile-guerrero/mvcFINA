@@ -13,26 +13,27 @@
     
       
   <?php if ($value == 1) : ?>   
-  <h2 class="form-signin-heading">
+  <h2 class="form-signin-heading rwd">
 <script>
   $(document).ready(function () {
     crearGrafica(<?php echo json_encode($cosPoints) ?>);  
   });
 </script>
-<div id="chart3" style="width: 900px; height: 500px"></div>
+<div id="chart3" style="width: 830px; height: 500px"></div>
 </h2>
  <?php endif; ?>
       
       
 <?php if ($value == 2) : ?>
-<h2 class="form-signin-heading">
+     
+<h2 class="form-signin-heading rwd">
 <script>
   $(document).ready(function () {
     crearGrafica2(<?php echo json_encode($cosPoints2) ?>);  
   });
 </script>
-<div id="chart2" style="width: 900px; height: 500px"></div>
-</h2>       
+<div id="chart2" style="width: 830px; height: 500px"></div>
+</h2>   
 <?php endif; ?> 
       
       

@@ -6,6 +6,8 @@ $ubicacion = registroLoteTableClass::UBICACION;
 $produccion = registroLoteTableClass::PRODUCCION;
 $cre = registroLoteTableClass::CREATED_AT;
 $unidad = registroLoteTableClass::UNIDAD_MEDIDA_ID;
+$insumo = registroLoteTableClass::PRODUCTO_INSUMO_ID;
+
 
 $value = session::getInstance()->getAttribute('idGrafica');
 if ($value == 1) {
@@ -46,14 +48,17 @@ if ($value == 1) {
   $pdf->Cell(190, 10, utf8_decode($mensaje), 1, 0, 'C', true);
   $pdf->Ln();
   $pdf->Cell(80, 10, "Lote", 1, 0, 'C');
-  $pdf->Cell(50, 10, utf8_decode("Poducción"), 1, 0, 'C');
-  $pdf->Cell(60, 10, utf8_decode("Fecha producción"), 1, 0, 'C');
+  $pdf->Cell(40, 10, utf8_decode("Poducción"), 1, 0, 'C');
+  $pdf->Cell(40, 10, utf8_decode("Fecha producción"), 1, 0, 'C');
+  $pdf->Cell(30, 10, utf8_decode("Total"), 1, 0, 'C');
   $pdf->Ln();
   foreach ($objLote as $valor) {
-    $pdf->Cell(80, 8, utf8_decode($valor->$ubicacion), 1, 0, 'C');
-    $pdf->Cell(50, 8, utf8_decode($valor->$produccion) . '  ' . unidadMedidaTableClass::getNameUnidadMedida($valor->$unidad), 1, 0, 'C');
-    $pdf->Cell(60, 8, utf8_decode($valor->$cre), 1, 0, 'C');
+    $pdf->Cell(80, 8, utf8_decode($valor->$ubicacion . '  ' . productoInsumoTableClass::getNameProductoInsumo($valor->$insumo)), 1, 0, 'C');
+    $pdf->Cell(40, 8, utf8_decode($valor->$produccion) . '  ' . unidadMedidaTableClass::getNameUnidadMedida($valor->$unidad), 1, 0, 'C');
+    $pdf->Cell(40, 8, utf8_decode($valor->$cre), 1, 0, 'C');
+    $pdf->Cell(30, 8, utf8_decode(registroLoteTableClass::getNameTotal($valor->$insumo). '  ' . unidadMedidaTableClass::getNameUnidadMedida($valor->$unidad)), 1, 0, 'C');
     $pdf->Ln();
+    
   }
   $pdf->Output();
 }
@@ -78,14 +83,11 @@ if ($value == 2) {
 
     $this->Image(routing::getInstance()->getUrlImg('logoColmenar.png'), 10, 22, 80);
     $this->SetFont('Arial', 'B', '25');
-//    $this->SetDrawColor(0,80,180);
     $this->SetFillColor(204,204,255);
-//    $this->SetTextColor(220,50,50);
-//    $this->Cell(10);
-//    $this->SetFillColor(200,220,255);
+    $this->Cell(10);
     
     $this->Cell(0 , 10, utf8_decode('Informe de los Lotes') , 2, 10,'C', true);
-    $this->Ln(15);
+    $this->Ln(30);
     }
 
     function Footer() {
@@ -115,8 +117,23 @@ if ($value == 2) {
     $pdf->Cell(60, 8, utf8_decode($valor->$fechaRiego), 1, 0, 'C');
     $pdf->Ln();
   
-  }
+  $pdf->Cell(40, 10, "Enfermedad",1, 0, 'C',true);
+  $pdf->Cell(150, 10,utf8_decode(registroLoteTableClass::getNameEnfermedadNombre($valor->$insumo)),1);
+  $pdf->Ln();
+  $pdf->Cell(40, 10, utf8_decode("Descripción"),1, 0, 'C',true);
+  $pdf->MultiCell(150, 8,utf8_decode(registroLoteTableClass::getNameEnfermedadDescripcion($valor->$insumo)),1);
+  $pdf->Cell(40, 10, utf8_decode("Tratamiento"),1, 0, 'C',true);
+  $pdf->MultiCell(150, 8,utf8_decode(registroLoteTableClass::getNameEnfermedadTratamiento($valor->$insumo)),1,'J', false);
   
+  $pdf->Cell(40, 10, "plaga",1, 0, 'C',true);
+  $pdf->Cell(150, 10,utf8_decode(registroLoteTableClass::getNamePlagaNombre($valor->$insumo)),1);
+  $pdf->Ln();
+  $pdf->Cell(40, 10, utf8_decode("Descripción"),1, 0, 'C',true);
+  $pdf->MultiCell(150, 8,utf8_decode(registroLoteTableClass::getNamePlagaDescripcion($valor->$insumo)),1);
+  $pdf->Cell(40, 10, utf8_decode("Tratamiento"),1, 0, 'C',true);
+  $pdf->MultiCell(150, 8,utf8_decode(registroLoteTableClass::getNamePlagaTratamiento($valor->$insumo)),1,'J', false);
+  $pdf->Ln();$pdf->Ln();
+  }
  $pdf->Ln();
  
   $pdf->Output();

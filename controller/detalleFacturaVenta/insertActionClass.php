@@ -45,6 +45,16 @@ class insertActionClass extends controllerClass implements controllerActionInter
       );
       $this->objProducto = productoInsumoTableClass::getAll($fields, true, $orderBy, 'ASC');
       
+      $fields = array(
+            tipoProductoInsumoTableClass::ID,
+            tipoProductoInsumoTableClass::DESCRIPCION
+      );
+      $orderBy = array(
+          tipoProductoInsumoTableClass::DESCRIPCION
+      );
+      $this->objTipo = tipoProductoInsumoTableClass::getAll($fields, true, $orderBy, 'ASC');
+      
+      
             $this->mensaje ="";
             $this->defineView('insert', 'detalleFacturaVenta', session::getInstance()->getFormatOutput());
             $idFactura = facturaVentaTableClass::ID;
