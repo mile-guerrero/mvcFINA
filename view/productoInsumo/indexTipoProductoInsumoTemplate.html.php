@@ -116,7 +116,7 @@ use mvc\request\requestClass as request ?>
         <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('informe') ?></h4>
       </div>
       <div class="modal-body">
-        <form class="form-horizontal" id="reportForm" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'reportTipoProductoInsumo')?>">
+        <form target="_blank" class="form-horizontal" id="reportForm" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'reportTipoProductoInsumo')?>">
            
           <?php if (session::getInstance()->hasError('inputFecha')): ?>
                     <div class="alert alert-danger alert-dismissible" role="alert" id="error">

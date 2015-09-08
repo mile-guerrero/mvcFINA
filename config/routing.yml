@@ -3020,6 +3020,8 @@ reportes_genararGrafica:
     - model/loteTableClass.php
     - model/base/registroLoteBaseTableClass.php
     - model/registroLoteTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
     
 reportes_reporte:
   url:    /reportes/reporte

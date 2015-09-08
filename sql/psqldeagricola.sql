@@ -1051,23 +1051,29 @@ COMMIT;
 
 BEGIN;
 INSERT INTO "lote" (ubicacion, id_ciudad, tamano, unidad_distancia_id, descripcion, unidad_medida_id, producto_insumo_id, presupuesto, numero_plantulas, produccion) VALUES ('Finca colmenar lote1' , 2, 100, 2, 'lote establecido hace 3 años, 551 arboles', 2, 30, 0, 551, 0);
-INSERT INTO "lote" (ubicacion, id_ciudad, tamano, unidad_distancia_id, descripcion, unidad_medida_id, producto_insumo_id, presupuesto, numero_plantulas, produccion) VALUES ('Finca colmenar lote2' , 2, 200, 2, 'lote establecido hace 8 meses, 1632 plantas', 2, 49, 0, 1632, 0);
-INSERT INTO "lote" (ubicacion, id_ciudad, tamano, unidad_distancia_id, descripcion, unidad_medida_id, producto_insumo_id, presupuesto, numero_plantulas, produccion) VALUES ('Finca colmenar lote3' , 2, 200, 2, 'primera produccion, 1378 plantas', 2, 61, 0, 1378, 0);
+INSERT INTO "lote" (ubicacion, id_ciudad, tamano, unidad_distancia_id, descripcion, unidad_medida_id, producto_insumo_id, presupuesto, numero_plantulas, produccion) VALUES ('Finca colmenar lote2' , 2, 200, 2, 'lote establecido hace 8 meses, 1635 plantas', 2, 49, 0, 1635, 0);
+INSERT INTO "lote" (ubicacion, id_ciudad, tamano, unidad_distancia_id, descripcion, unidad_medida_id, producto_insumo_id, presupuesto, numero_plantulas, produccion) VALUES ('Finca colmenar lote3' , 2, 200, 2, 'primera produccion, 1300 plantas', 2, 61, 0, 1300, 0);
 INSERT INTO "lote" (ubicacion, id_ciudad, tamano, unidad_distancia_id, descripcion, unidad_medida_id, producto_insumo_id, presupuesto, numero_plantulas, produccion) VALUES ('Finca colmenar lote4' , 2, 100, 2, 'plantas con promedio de 6 años', 2, 46, 0, 0, 0);
 INSERT INTO "lote" (ubicacion, id_ciudad, tamano, unidad_distancia_id, descripcion, unidad_medida_id, producto_insumo_id, presupuesto, numero_plantulas, produccion) VALUES ('Finca colmenar lote5' , 2, 200, 2, 'arboles con promedio de 6 años', 2, 9, 0, 0, 0);
 COMMIT;
 
 BEGIN;
-INSERT INTO "reporte" (nombre, descripcion, direccion) VALUES ('produccion', 'produccion semanal de lote', '@reporte/generarProduccion');
-INSERT INTO "reporte" (nombre, descripcion, direccion) VALUES ('historial', 'historico de plantulas de lote' , '@reporte/generarHistorial');
+INSERT INTO "reporte" (nombre, descripcion, direccion) VALUES ('Produccion', 'Produccion semanal de lote', '@reporte/generarProduccion');
+INSERT INTO "reporte" (nombre, descripcion, direccion) VALUES ('Historial', 'Historico de plantulas de lote' , '@reporte/generarHistorial');
+INSERT INTO "reporte" (nombre, descripcion, direccion) VALUES ('Pago trabajador', 'Historico de pago trabajador' , '@reporte/generarTrabajador');
+INSERT INTO "reporte" (nombre, descripcion, direccion) VALUES ('Presupuesto', 'historico de presupuesto de lote' , '@reporte/generarPresupuesto');
+INSERT INTO "reporte" (nombre, descripcion, direccion) VALUES ('Ganancia por cosecha', 'historico de ganancias por cosecha' , '@reporte/generarTotal');
 COMMIT;
 
 BEGIN;
-INSERT INTO "registro_lote" (ubicacion, fecha_riego, numero_plantulas, produccion, unidad_medida_id, producto_insumo_id) VALUES ('Finca colmenar lote1' ,'2015-08-24T23:42:51.952', 551, 100, 2, 29);  
-INSERT INTO "registro_lote" (ubicacion, fecha_riego, numero_plantulas, produccion, unidad_medida_id, producto_insumo_id) VALUES ('Finca colmenar lote2' ,'2015-08-25T23:42:51.952', 1632, 80, 2, 48);
-INSERT INTO "registro_lote" (ubicacion, fecha_riego, numero_plantulas, produccion, unidad_medida_id, producto_insumo_id) VALUES ('Finca colmenar lote3' ,'2015-08-26T23:42:51.952', 1000, 120, 2, 8);
-INSERT INTO "registro_lote" (ubicacion, fecha_riego, numero_plantulas, produccion, unidad_medida_id, producto_insumo_id) VALUES ('Finca colmenar lote4' ,'2015-08-27T23:42:51.952', 1378, 70, 2, 60);
-INSERT INTO "registro_lote" (ubicacion, fecha_riego, numero_plantulas, produccion, unidad_medida_id, producto_insumo_id) VALUES ('Finca colmenar lote5' ,'2015-08-27T23:42:51.952', 700, 90, 2, 34);
+INSERT INTO "registro_lote" (ubicacion, fecha_riego, numero_plantulas, produccion, unidad_medida_id, producto_insumo_id) VALUES ('Finca colmenar lote1' ,'2015-09-01T23:42:51.952', 551, 180, 2, 30);  
+INSERT INTO "registro_lote" (ubicacion, fecha_riego, numero_plantulas, produccion, unidad_medida_id, producto_insumo_id) VALUES ('Finca colmenar lote1' ,'2015-09-07T23:42:51.952', 551, 48, 2, 30);
+INSERT INTO "registro_lote" (ubicacion, fecha_riego, numero_plantulas, produccion, unidad_medida_id, producto_insumo_id) VALUES ('Finca colmenar lote2' ,'2015-09-01T23:42:51.952', 1635, 6, 2, 49);
+INSERT INTO "registro_lote" (ubicacion, fecha_riego, numero_plantulas, produccion, unidad_medida_id, producto_insumo_id) VALUES ('Finca colmenar lote3' ,'2015-08-26T23:42:51.952', 1300, 0, 2, 61);
+INSERT INTO "registro_lote" (ubicacion, fecha_riego, numero_plantulas, produccion, unidad_medida_id, producto_insumo_id) VALUES ('Finca colmenar lote5' ,'2015-08-27T23:42:51.952', 30, 40, 2, 9);
+INSERT INTO "registro_lote" (ubicacion, fecha_riego, numero_plantulas, produccion, unidad_medida_id, producto_insumo_id) VALUES ('Finca colmenar lote5' ,'2015-08-27T23:42:51.952', 40, 20, 2, 7);
+INSERT INTO "registro_lote" (ubicacion, fecha_riego, numero_plantulas, produccion, unidad_medida_id, producto_insumo_id) VALUES ('Finca colmenar lote5' ,'2015-08-27T23:42:51.952', 30, 40, 2, 4);
+INSERT INTO "registro_lote" (ubicacion, fecha_riego, numero_plantulas, produccion, unidad_medida_id, producto_insumo_id) VALUES ('Finca colmenar lote5' ,'2015-08-27T23:42:51.952', 30, 40, 2, 26);
 COMMIT;
 
 BEGIN;

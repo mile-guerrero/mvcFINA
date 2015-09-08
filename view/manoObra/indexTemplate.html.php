@@ -51,7 +51,7 @@
         
         
       <div class="modal-body">
-        <form class="form-horizontal" id="reportForm" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('manoObra', 'report')?>">
+        <form target="_blank" class="form-horizontal" id="reportForm" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('manoObra', 'report')?>">
 
           
            <div class="form-group">

@@ -113,7 +113,7 @@
         <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('informe') ?></h4>
       </div>
       <div class="modal-body">
-        <form class="form-horizontal" id="reportForm" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('enfermedad', 'report')?>">
+        <form target="_blank" class="form-horizontal" id="reportForm" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('enfermedad', 'report')?>">
           
          
     
@@ -152,9 +152,9 @@
     </div>
   </div>
          
-  
+        </form>
       </div>
-       </form>
+       
       <div class="modal-footer">
         <button type="button" class="btn btn-default btn btn-xs" data-dismiss="modal">  <?php echo i18n::__('cerrar') ?></button>
         <button type="button" onclick="$('#reportForm').submit()" class="btn btn-warning btn btn-xs"><?php echo i18n::__('informe') ?></button>

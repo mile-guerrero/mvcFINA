@@ -69,7 +69,7 @@
             <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('filtros') ?></h4>
           </div>
           <div class="modal-body">
-            <form class="form-horizontal" id="filterForm" role="form" action="<?php echo routing::getInstance()->getUrlWeb('detalleFacturaVenta', 'ver', array(facturaVentaTableClass::ID => $factura->$idFactura)) ?>" method="POST">
+            <form  class="form-horizontal" id="filterForm" role="form" action="<?php echo routing::getInstance()->getUrlWeb('detalleFacturaVenta', 'ver', array(facturaVentaTableClass::ID => $factura->$idFactura)) ?>" method="POST">
                 
                 
                <?php echo i18n::__('verFacturaVenta') ?>
@@ -95,7 +95,7 @@
             <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('factura') ?></h4>
           </div>
           <div class="modal-body">
-            <form class="form-horizontal" id="reportForm" role="form" action="<?php echo routing::getInstance()->getUrlWeb('detalleFacturaVenta', 'report', array(facturaVentaTableClass::ID => $factura->$idFactura)) ?>" method="POST">
+            <form target="_blank" class="form-horizontal" id="reportForm" role="form" action="<?php echo routing::getInstance()->getUrlWeb('detalleFacturaVenta', 'report', array(facturaVentaTableClass::ID => $factura->$idFactura)) ?>" method="POST">
                 
        <div class="modal-body">
            <label><?php echo i18n::__('verFacturaVenta') ?></label>

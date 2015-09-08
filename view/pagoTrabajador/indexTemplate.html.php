@@ -48,7 +48,7 @@
         <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('informe') ?></h4>
       </div>
       <div class="modal-body">
-        <form class="form-horizontal" id="reportForm" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('pagoTrabajador', 'report')?>">
+        <form target="_blank" class="form-horizontal" id="reportForm" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('pagoTrabajador', 'report')?>">
 
                     
  <div class="form-group">

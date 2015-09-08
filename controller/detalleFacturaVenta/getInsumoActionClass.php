@@ -21,45 +21,12 @@ class getInsumoActionClass extends controllerClass implements controllerActionIn
       if (request::getInstance()->isMethod('POST') and request::getInstance()->isAjaxRequest()) {
 
         $idTipoInsumo = request::getInstance()->getPost('idTipoInsumo');
-        $ConsultaInsumoDescripcion = detalleFacturaVentaTableClass::getTraerInsumo($idTipoInsumo);
-        $ConsultaInsumoId = detalleFacturaVentaTableClass::getTraerId($idTipoInsumo);
-        
-//        print_r($ConsultaInsumoDescripcion);
-//            print_r($ConsultaInsumoId);
-//        exit();
-//        
-        // crear SQL
-        $arrayAjax1 = array();
-        foreach ($ConsultaInsumoId as $key){
-           
-               print_r($ConsultaInsumoId);
-              
+        $consultaInsumo = detalleFacturaVentaTableClass::getTraerInsumo($idTipoInsumo);
+
+        $this->arrayAjax1 = array();
+        foreach ($consultaInsumo as $value){
+            $this->arrayAjax1[] = array("id" => $value->id , "name" => $value->descripcion);
         }
-        $arrayAjax2 = array();
-        foreach ($ConsultaInsumoDescripcion as $key){
-           $arrayAjax2 = array(
-                    'name'=>$key->descripcion                    
-                );
-        }
-        print_r($arrayAjax1);
-            print_r($arrayAjax2);
-        exit();
-//     $this->arrayAjax = $arrayAjax1.$arrayAjax2;
-        
-//        $this->arrayAjax = array(
-//            array(
-//                'id' => 98,
-//                'name' => 'Fruta1'
-//            ),
-//            array(
-//                'id' => 9,
-//                'name' => 'Fruta2'
-//            ),
-//            array(
-//                'id' => 8,
-//                'name' => 'Fruta3'
-//            )
-//        );
         
         $this->defineView('getInsumo', 'detalleFacturaVenta', session::getInstance()->getFormatOutput());
       } else {

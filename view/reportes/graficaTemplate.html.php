@@ -13,13 +13,14 @@
     
       
   <?php if ($value == 1) : ?>   
-  <h2 class="form-signin-heading rwd">
+      <h2 class="form-signin-heading rwd">
+<div id="chart3" style="width: 1024px; height: 500px"></div>
+<div id="info2c"></div>
 <script>
   $(document).ready(function () {
     crearGrafica(<?php echo json_encode($cosPoints) ?>);  
   });
 </script>
-<div id="chart3" style="width: 830px; height: 500px"></div>
 </h2>
  <?php endif; ?>
       
@@ -32,7 +33,7 @@
     crearGrafica2(<?php echo json_encode($cosPoints2) ?>);  
   });
 </script>
-<div id="chart2" style="width: 830px; height: 500px"></div>
+<div id="chart2" style="width: 1024px; height: 500px"></div>
 </h2>   
 <?php endif; ?> 
       

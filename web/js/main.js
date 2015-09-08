@@ -18,6 +18,8 @@ function cargarInsumo(url) {
        },
        dataType: 'json',
        success: function(data){
+         $('#slcInsumo').html('');
+         $('#slcInsumo').append('<option value="">Seleccione el insumo</option>');
          $(data).each(function(index){
            $('#slcInsumo').append('<option value="' + data[index].id + '">' + data[index].name + '</option>');
          });

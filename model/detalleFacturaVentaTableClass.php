@@ -65,7 +65,7 @@ class detalleFacturaVentaTableClass extends detalleFacturaVentaBaseTableClass {
   
    public static function getTraerInsumo($idTipoInsumo){
     try {
-      $sql = 'SELECT ' . productoInsumoTableClass::getNameTable() . '.'. productoInsumoTableClass::DESCRIPCION .  ' As descripcion ' . '  ' 
+      $sql = 'SELECT ' . productoInsumoTableClass::getNameTable() . '.'. productoInsumoTableClass::DESCRIPCION .  ' As descripcion ' . ' , ' . productoInsumoTableClass::getNameTable() . '.'. productoInsumoTableClass::ID . ' As id ' . '  '
              . '  FROM ' . productoInsumoTableClass::getNameTable() . ','. tipoProductoInsumoTableClass::getNameTable() . '  '
              . '  WHERE ' .  productoInsumoTableClass::getNameField(productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID) . ' = '. tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::ID) . ' AND ' . tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::ID) . ' = ' . $idTipoInsumo ;
 //      print_r($sql);
@@ -79,7 +79,7 @@ class detalleFacturaVentaTableClass extends detalleFacturaVentaBaseTableClass {
   $answer = model::getInstance()->prepare($sql);
             $answer->execute();
             $answer = $answer->fetchAll(PDO::FETCH_OBJ);
-      return $answer[0]->descripcion;
+      return (count($answer) > 0) ? $answer : array();
    } catch (Exception $exc) {
       throw $exc;
     }

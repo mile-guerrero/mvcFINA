@@ -45,7 +45,7 @@
         <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('filtros') ?></h4>
       </div>
       <div class="modal-body">
-        <form class="form-horizontal" id="filterForm" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('maquina', 'indexProveedor')?>">
+        <form target="_blank" class="form-horizontal" id="filterForm" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('maquina', 'indexProveedor')?>">
           
           <?php if (session::getInstance()->hasFlash('modalFilters') === true): ?>        
                     <script>

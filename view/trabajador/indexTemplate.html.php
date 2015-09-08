@@ -154,7 +154,7 @@ use mvc\session\sessionClass as session ?>
             <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('informe') ?></h4>
           </div>
           <div class="modal-body">
-            <form class="form-horizontal" id="reportForm" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('trabajador', 'reportTrabajador') ?>">
+            <form target="_blank" class="form-horizontal" id="reportForm" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('trabajador', 'reportTrabajador') ?>">
               
              <div class="form-group">
                 <label class="col-sm-2 control-label">Fecha Creacion</label>
