@@ -46,7 +46,7 @@ $pdf->SetFont('Arial', 'B', 8);
 foreach ($objFactura as $valor) {
 $pdf->SetFillColor(204,204,255);    
 $pdf->Cell(30, 8, "# Factura",1, 0, 'C', true);    
-$pdf->Cell(30, 8, utf8_decode($valor->$idFactura),1);
+$pdf->Cell(30, 8, str_pad($valor->$idFactura, 6, '0', STR_PAD_LEFT),1);
 $pdf->Ln();
 $pdf->Cell(30, 8, "Fecha",1, 0, 'C', true);
 $pdf->Cell(30, 8, utf8_decode($valor->$fecha),1);

@@ -72,10 +72,11 @@ class indexProductoInsumoActionClass extends controllerClass implements controll
           productoInsumoTableClass::EXTENCION_IMAGEN,
           productoInsumoTableClass::HASH_IMAGEN,
           productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID,
+          productoInsumoTableClass::INFORMACION,
           productoInsumoTableClass::CREATED_AT
       );
       $orderBy = array(
-          productoInsumoTableClass::ID
+          productoInsumoTableClass::DESCRIPCION
       );
       $page = 0;
       if (request::getInstance()->hasGet('page')) {

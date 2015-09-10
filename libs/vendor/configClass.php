@@ -5,7 +5,7 @@ namespace mvc\config {
     /**
      * Description of configClass
      *
-     * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
+     * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon 
      */
     class configClass {
 
@@ -44,7 +44,7 @@ namespace mvc\config {
         private static $default_action_permission;
 
         public static function getSohoFrameworkVersion() {
-            return '1.0.10';
+            return '1.0.13';
         }
 
         /**

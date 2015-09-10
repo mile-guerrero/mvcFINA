@@ -131,7 +131,7 @@ namespace mvc\routing {
          * @param array $variables [optional]
          */
         public function redirect($module, $action = null, $variables = null) {
-            if (preg_match('/^@\w+/', $module) === 1 and $action === null) {
+            if (preg_match('/^@\w+/', $module) === 1) {
                 $routing = $this->validateRouting($module);
                 $module = $routing['param']['module'];
                 $variables = $this->genVariables($action);
@@ -216,6 +216,8 @@ namespace mvc\routing {
                     $answer .= $key . '=' . $value . '&';
                 }
                 $answer = substr($answer, 0, (strlen($answer) - 1));
+            } else {
+                $answer = $variables;
             }
             return $answer;
         }

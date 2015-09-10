@@ -33,7 +33,7 @@ config::setPathAbsolute('c:/xampp/htdocs/mvcfinal/');
 config::setUrlBase('http://localhost/mvcfinal/web/');
 //config::setUrlBase('http://www.elcolmenar.com/');
 
-config::setScope('prod'); // prod             dev
+config::setScope('dev'); // prod - dev
 
 if (session::getInstance()->hasDefaultCulture() === false) {
   config::setDefaultCulture('es');

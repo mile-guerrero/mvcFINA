@@ -2,112 +2,114 @@
 
 namespace mvc\interfaces {
 
-  /**
-   * Description of sessionInterface
-   *
-   * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
-   */
-  interface sessionInterface {
+    /**
+     * Description of sessionInterface
+     *
+     * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon 
+     */
+    interface sessionInterface {
 
-    public static function getInstance();
+        public static function getInstance();
 
-    public function deleteCredentials();
+        public function deleteCredentials();
 
-    public function deleteAttribute($attribute);
+        public function deleteAttribute($attribute);
 
-    public function setAttribute($attribute, $value);
+        public function setAttribute($attribute, $value);
 
-    public function getAttribute($attribute);
+        public function getAttribute($attribute);
 
-    public function hasAttribute($attribute);
+        public function hasAttribute($attribute);
 
-    public function setFlash($flash, $value);
+        public function setFlash($flash, $value);
 
-    public function getFlash($flash);
+        public function getFlash($flash);
 
-    public function hasFlash($flash);
+        public function hasFlash($flash);
 
-    public function isUserAuthenticated();
+        public function isUserAuthenticated();
 
-    public function setUserAuthenticate($authenticate);
+        public function setUserAuthenticate($authenticate);
 
-    public function getCredentials();
+        public function getCredentials();
 
-    public function setCredentials($credentials);
+        public function setCredentials($credentials);
 
-    public function setCredential($credential);
+        public function setCredential($credential);
 
-    public function hasCredential($credential);
+        public function hasCredential($credential);
 
-    public function setModule($module);
+        public function setModule($module);
 
-    public function getModule();
+        public function getModule();
 
-    public function setAction($action);
+        public function setAction($action);
 
-    public function getAction();
+        public function getAction();
 
-    public function getFormatOutput();
+        public function getFormatOutput();
 
-    public function setFormatOutput($format_output);
+        public function setFormatOutput($format_output);
 
-    public function getLoadFiles();
+        public function getLoadFiles();
 
-    public function setLoadFiles($load_files);
+        public function setLoadFiles($load_files);
 
-    public function hasError($key = null);
+        public function hasError($key = null);
 
-    public function setError($error, $key = null);
+        public function setError($error, $key = null);
 
-    public function getError($key = null);
+        public function getError($key = null);
 
-    public function deleteErrorStack();
+        public function deleteErrorStack();
 
-    public function hasSuccess();
+        public function hasSuccess();
 
-    public function setSuccess($success);
+        public function setSuccess($success);
 
-    public function getSuccess();
+        public function getSuccess();
 
-    public function deleteSuccessStack();
+        public function deleteSuccessStack();
 
-    public function hasInformation();
+        public function hasInformation();
 
-    public function setInformation($information);
+        public function setInformation($information);
 
-    public function getInformation();
+        public function getInformation();
 
-    public function deleteInformationStack();
+        public function deleteInformationStack();
 
-    public function hasWarning();
+        public function hasWarning();
 
-    public function setWarning($warning);
+        public function setWarning($warning);
 
-    public function getWarning();
+        public function getWarning();
 
-    public function deleteWarningStack();
+        public function deleteWarningStack();
 
-    public function setFirstCall($first_call);
+        public function setFirstCall($first_call);
 
-    public function getFirstCall();
+        public function getFirstCall();
 
-    public function hasFirstCall();
+        public function hasFirstCall();
 
-    public function setUserId($id);
+        public function setUserId($id);
 
-    public function setUserName($name_user);
+        public function setUserName($name_user);
 
-    public function getUserId();
+        public function getUserId();
 
-    public function hasUserId();
+        public function hasUserId();
 
-    public function getUserName();
+        public function getUserName();
 
-    public function setCache($cache, $value);
+        public function setCache($cache, $value);
 
-    public function getCache($cache);
+        public function getCache($cache);
 
-    public function hasCache($cache);
-  }
+        public function hasCache($cache);
+
+        public function deleteCache($cache = null);
+    }
 
 }

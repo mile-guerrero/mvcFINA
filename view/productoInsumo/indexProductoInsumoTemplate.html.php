@@ -39,7 +39,7 @@ use mvc\request\requestClass as request ?>
           <?php endif ?>
           <a type="button" class="btn btn-xs" data-toggle="modal" data-target="#myModalFilters"><img class="img-responsive"  id="imgfiltros" src="" alt=" "><?php echo i18n::__('filtros') ?></a>  
           <a href="<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'deleteFiltersProductoInsumo') ?>" class="btn btn-xs" ><img class="img-responsive"  id="imgelifiltro" src="" alt=" "><?php echo i18n::__('eFiltros') ?></a>
-          <a target="_blank" class="btn btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'reportProductoInsumo') ?>" > <img class="img-responsive"  id="imgreporte" src="" alt=" "><?php echo i18n::__('informe') ?></a>
+          <a type="button" class="btn btn-xs" data-toggle="modal" data-target="#myModalReport" ><img class="img-responsive"  id="imgreporte" src="" alt=" "><?php echo i18n::__('informe') ?></a>            
         </ul> 
 
 
@@ -131,6 +131,45 @@ use mvc\request\requestClass as request ?>
             </div>
           </div>
         </div>  
+        <!---Informes--->
+        <div class="modal fade" id="myModalReport" tabindex="-1" role="modal" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('informe') ?></h4>
+              </div>
+              <div class="modal-body">
+                  <form class="form-horizontal" target="_blank" id="reportForm" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'reportProductoInsumo') ?>">
+
+
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
+                    <div class="col-sm-10">
+                      <input type="date" class="form-control-filtro1" id="filterFechaIni" name="filter[fechaIni]" >
+
+                      <input type="date" class="form-control-filtro2" id="filterFechaFin" name="filter[fechaFin]" >
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="reportDescripcion" class="col-sm-2 control-label"><?php echo i18n::__('des') ?></label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="reportDescripcion" name="report[descripcion]" placeholder="<?php echo i18n::__('des') ?>">
+                    </div>
+                  </div>
+
+
+                </form>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default btn btn-xs" data-dismiss="modal">  <?php echo i18n::__('cerrar') ?></button>
+                <button type="button" onclick="$('#reportForm').submit()" class="btn btn-warning btn btn-xs"><?php echo i18n::__('informe') ?></button>
+              </div>
+            </div>
+          </div>
+        </div>
 
         
 
