@@ -11,23 +11,42 @@ namespace mvc\validator {
    *
    * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
    */
-  class pedidoValidatorUpdateClass extends validatorClass {
+  class controlPlagaValidatorUpdateClass extends validatorClass {
     public static function validateUpdate() {
       $flag = false;
       
-      if (self::notBlank(request::getInstance()->getPost(\pedidoTableClass::getNameField(\pedidoTableClass::CANTIDAD, true)))) {
+     if (self::notBlank(request::getInstance()->getPost(\controlPlagaTableClass::getNameField(\controlPlagaTableClass::CANTIDAD, true)))) {
         $flag = true;
         session::getInstance()->setFlash('inputCantidad', true);
         session::getInstance()->setError('La cantidad es requerida', 'inputCantidad');
-      } else if (!is_numeric(request::getInstance()->getPost(\pedidoTableClass::getNameField(\pedidoTableClass::CANTIDAD, true)))) {
+      } else if (!is_numeric(request::getInstance()->getPost(\controlPlagaTableClass::getNameField(\controlPlagaTableClass::CANTIDAD, true)))) {
         $flag = true;
         session::getInstance()->setFlash('inputCantidad', true);
         session::getInstance()->setError('La cantidad no puede ser letras', 'inputCantidad');
-      } else if(strlen(request::getInstance()->getPost(\pedidoTableClass::getNameField(\pedidoTableClass::CANTIDAD, true))) > \pedidoTableClass::CANTIDAD_LENGTH) {
+      } else if(strlen(request::getInstance()->getPost(\controlPlagaTableClass::getNameField(\controlPlagaTableClass::CANTIDAD, true))) > \controlPlagaTableClass::CANTIDAD_LENGTH) {
         $flag = true;
         session::getInstance()->setFlash('inputCantidad', true);
         session::getInstance()->setError('La catidad digitado sobre pasa los caracteres permitidos', 'inputCantidad');
-//      }
+        
+       //-------------------------------campo Empresa-----------------------------
+          //----campo nulo----
+      } if (self::notBlank(request::getInstance()->getPost(\controlPlagaTableClass::getNameField(\controlPlagaTableClass::LOTE_ID, true)))) {
+        $flag = true;
+        session::getInstance()->setFlash('selectLote', true);
+        session::getInstance()->setError('El lote es requerido', 'selectLote');
+        //-------------------------------campo Labor-----------------------------
+          //----campo nulo----
+      } if (self::notBlank(request::getInstance()->getPost(\controlPlagaTableClass::getNameField(\controlPlagaTableClass::PRODUCTO_INSUMO_ID, true)))) {
+        $flag = true;
+        session::getInstance()->setFlash('selectProducto', true);
+        session::getInstance()->setError('El producto es requerido', 'selectProducto');
+        
+        //-------------------------------campo Maquina-----------------------------
+          //----campo nulo----
+      } if (self::notBlank(request::getInstance()->getPost(\controlPlagaTableClass::getNameField(\controlPlagaTableClass::PLAGA_ID, true)))) {
+        $flag = true;
+        session::getInstance()->setFlash('selectPlaga', true);
+        session::getInstance()->setError('La plaga es requerida', 'selectPlaga');
 //        if (self::notBlank(request::getInstance()->getPost(\solicitudInsumoTableClass::getNameField(\solicitudInsumoTableClass::VALOR_HORA, true)))) {
 //        $flag = true;
 //        session::getInstance()->setFlash('inputValor', true);
@@ -72,8 +91,8 @@ namespace mvc\validator {
       
       if ($flag === true) {
         request::getInstance()->setMethod('GET');
-        request::getInstance()->addParamGet(array(\pedidoTableClass::ID => request::getInstance()->getPost(\pedidoTableClass::getNameField(\pedidoTableClass::ID, true))));
-        routing::getInstance()->forward('pedido', 'edit');
+        request::getInstance()->addParamGet(array(\controlPlagaTableClass::ID => request::getInstance()->getPost(\controlPlagaTableClass::getNameField(\controlPlagaTableClass::ID, true))));
+        routing::getInstance()->forward('controlPlaga', 'edit');
       }
     }
   }

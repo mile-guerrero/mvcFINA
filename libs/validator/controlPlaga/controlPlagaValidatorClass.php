@@ -7,11 +7,11 @@ namespace mvc\validator {
   use mvc\routing\routingClass as routing;
   use mvc\config\myConfigClass as config;
   /**
-   * Description of pedidoValidatorClass
+   * Description of controlPlagaValidatorClass
    *
    * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
    */
-  class pedidoValidatorClass extends validatorClass {
+  class controlPlagaValidatorClass extends validatorClass {
     public static function validateInsert() {
       $flag = false;
       
@@ -32,8 +32,8 @@ namespace mvc\validator {
           //----campo nulo----
       } if (self::notBlank(request::getInstance()->getPost(\controlPlagaTableClass::getNameField(\controlPlagaTableClass::LOTE_ID, true)))) {
         $flag = true;
-        session::getInstance()->setFlash('selectEmpresa', true);
-        session::getInstance()->setError('La empresa es requerida', 'selectEmpresa');
+        session::getInstance()->setFlash('selectLote', true);
+        session::getInstance()->setError('El lote es requerido', 'selectLote');
         //-------------------------------campo Labor-----------------------------
           //----campo nulo----
       } if (self::notBlank(request::getInstance()->getPost(\controlPlagaTableClass::getNameField(\controlPlagaTableClass::PRODUCTO_INSUMO_ID, true)))) {
@@ -45,8 +45,8 @@ namespace mvc\validator {
           //----campo nulo----
       } if (self::notBlank(request::getInstance()->getPost(\controlPlagaTableClass::getNameField(\controlPlagaTableClass::PLAGA_ID, true)))) {
         $flag = true;
-        session::getInstance()->setFlash('selectProveedor', true);
-        session::getInstance()->setError('El proveedor es requerido', 'selectProveedor');
+        session::getInstance()->setFlash('selectPlaga', true);
+        session::getInstance()->setError('La plaga es requerida', 'selectPlaga');
 //      }
 //        if (self::notBlank(request::getInstance()->getPost(\solicitudInsumoTableClass::getNameField(\solicitudInsumoTableClass::VALOR_HORA, true)))) {
 //        $flag = true;

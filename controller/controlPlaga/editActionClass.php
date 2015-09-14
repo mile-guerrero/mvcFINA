@@ -43,9 +43,9 @@ class editActionClass extends controllerClass implements controllerActionInterfa
         );
         $this->objControlPlaga = controlPlagaTableClass::getAll($fields, true, null, null, null, null, $where);
         
-        $id = array(
-            controlPlagaTableClass::ID => request::getInstance()->getRequest(controlPlagaTableClass::ID)
-        );
+//        $id = array(
+//            controlPlagaTableClass::ID => request::getInstance()->getRequest(controlPlagaTableClass::ID)
+//        );
 
         $idProducto = $this->objControlPlaga[0]->producto_insumo_id;
         $this->idTipoProducto = controlPlagaTableClass::getTipoInsumo($idProducto);

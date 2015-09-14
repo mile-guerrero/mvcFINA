@@ -3203,7 +3203,7 @@ controlEnfermedad_update:
     - model/loteTableClass.php
     - model/base/productoInsumoBaseTableClass.php
     - model/productoInsumoTableClass.php
-    - libs/validator/controlEnfermedad/controlEnfermedadUpdateClass.php
+    - libs/validator/controlEnfermedad/controlEnfermedadValidatorUpdateClass.php
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
@@ -3344,7 +3344,7 @@ presupuestoHistorico_update:
     - model/loteTableClass.php
     - model/base/productoInsumoBaseTableClass.php
     - model/productoInsumoTableClass.php
-    - libs/validator/presupuestoHistorico/presupuestoHistoricoValidatorClass.php
+    - libs/validator/presupuestoHistorico/presupuestoHistoricoValidatorUpdateClass.php
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php

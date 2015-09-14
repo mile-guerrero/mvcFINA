@@ -48,11 +48,18 @@ use mvc\request\requestClass as request ?>
       <!--        &nbsp;-->
       <br><br><br><br><br>
       
+      <?php if (session::getInstance()->hasError('selectLote')): ?>
+            <div class=" alert alert-danger alert-dismissible" role="alert" id="error">
+              <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('selectLote') ?>
+            </div>
+          <?php endif ?>
+      
       <div class="form-group">
           <label class="col-sm-2" for="<?php echo controlPlagaTableClass::getNameField(controlPlagaTableClass::LOTE_ID, true) ?>" >  <?php echo i18n::__('lote') ?>:   </label>
           <div class="col-sm-10"> 
             <select class="form-control"  name="<?php echo controlPlagaTableClass::getNameField(controlPlagaTableClass::LOTE_ID, true); ?>" required>
-              <option value="<?php echo (session::getInstance()->hasFlash('inputDescripcion') or request::getInstance()->hasPost(controlPlagaTableClass::getNameField(controlPlagaTableClass::LOTE_ID, true))) ? request::getInstance()->getPost(controlPlagaTableClass::getNameField(controlPlagaTableClass::LOTE_ID, true)) : ((isset($objControlPlaga[0])) ? '' : '') ?>"><?php echo i18n::__('selectLote') ?></option>
+              <option value="<?php echo (session::getInstance()->hasFlash('selectLote') or request::getInstance()->hasPost(controlPlagaTableClass::getNameField(controlPlagaTableClass::LOTE_ID, true))) ? request::getInstance()->getPost(controlPlagaTableClass::getNameField(controlPlagaTableClass::LOTE_ID, true)) : ((isset($objControlPlaga[0])) ? '' : '') ?>"><?php echo i18n::__('selectLote') ?></option>
               <?php  foreach ($objLote as $key): ?>
          
               <option <?php echo (request::getInstance()->hasPost(controlPlagaTableClass::getNameField(controlPlagaTableClass::LOTE_ID, true)) === true and request::getInstance()->getPost(controlPlagaTableClass::getNameField(controlPlagaTableClass::LOTE_ID, true)) == $key->$idLote) ? 'selected' : (isset($objControlPlaga[0]->$lote) === true and $objControlPlaga[0]->$lote == $key->$idLote) ? 'selected' : ''  ?> value="<?php echo $key->$idLote  ?>"><?php echo $key->$nomLote  ?></option>
@@ -62,11 +69,18 @@ use mvc\request\requestClass as request ?>
         </div>
         <br>
         
+        <?php if (session::getInstance()->hasError('selectPlaga')): ?>
+            <div class=" alert alert-danger alert-dismissible" role="alert" id="error">
+              <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('selectPlaga') ?>
+            </div>
+          <?php endif ?>
+        
         <div class="form-group">
           <label class="col-sm-2" for="<?php echo controlPlagaTableClass::getNameField(controlPlagaTableClass::PLAGA_ID, true) ?>" >  <?php echo i18n::__('plaga') ?>:   </label>
           <div class="col-sm-10"> 
             <select class="form-control" name="<?php echo controlPlagaTableClass::getNameField(controlPlagaTableClass::PLAGA_ID, true) ?>" required>
-              <option value="<?php echo (session::getInstance()->hasFlash('inputDescripcion') or request::getInstance()->hasPost(controlPlagaTableClass::getNameField(controlPlagaTableClass::PLAGA_ID, true))) ? request::getInstance()->getPost(controlPlagaTableClass::getNameField(controlPlagaTableClass::PLAGA_ID, true)) : ((isset($objControlPlaga[0])) ? '' : '') ?>"><?php echo i18n::__('selectPlaga') ?></option>
+              <option value="<?php echo (session::getInstance()->hasFlash('selectPlaga') or request::getInstance()->hasPost(controlPlagaTableClass::getNameField(controlPlagaTableClass::PLAGA_ID, true))) ? request::getInstance()->getPost(controlPlagaTableClass::getNameField(controlPlagaTableClass::PLAGA_ID, true)) : ((isset($objControlPlaga[0])) ? '' : '') ?>"><?php echo i18n::__('selectPlaga') ?></option>
               <?php  foreach ($objPlaga as $key): ?>         
               <option <?php echo (request::getInstance()->hasPost(controlPlagaTableClass::getNameField(controlPlagaTableClass::PLAGA_ID, true)) === true and request::getInstance()->getPost(controlPlagaTableClass::getNameField(controlPlagaTableClass::PLAGA_ID, true)) == $key->$idPlaga) ? 'selected' : (isset($objControlPlaga[0]->$plaga) === true and $objControlPlaga[0]->$plaga == $key->$idPlaga) ? 'selected' : ''  ?> value="<?php echo $key->$idPlaga  ?>"><?php echo $key->$nomPlaga  ?></option>
                 <?php  endforeach; ?>
@@ -75,9 +89,10 @@ use mvc\request\requestClass as request ?>
         </div>
         <br>
       
-
+         
+        
       <div class="form-group">
-          <label class="col-sm-2"  for="<?php echo controlPlagaTableClass::getNameField(controlPlagaTableClass::PRODUCTO_INSUMO_ID, true) ?>">  <?php echo i18n::__('selectTPI') ?>:   </label>
+          <label class="col-sm-2"  for="<?php echo controlPlagaTableClass::getNameField(controlPlagaTableClass::PRODUCTO_INSUMO_ID, true) ?>">  <?php echo i18n::__('tipo insumo') ?>:   </label>
           <div class="col-sm-10"> 
             <select class="form-control" id="slcTipoDeInsumo" required onchange="cargarInsumo('<?php echo routing::getInstance()->getUrlWeb('@getInsumo') ?>')">
               <option value="">Seleccione el tipo de insumo</option>
@@ -89,18 +104,36 @@ use mvc\request\requestClass as request ?>
           </div>
         </div>
         
+                
+        <?php if (session::getInstance()->hasError('selectProducto')): ?>
+            <div class=" alert alert-danger alert-dismissible" role="alert" id="error">
+              <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('selectProducto') ?>
+            </div>
+          <?php endif ?>
+        
+        <?php if (session::getInstance()->hasError('inputCantidad')): ?>
+            <div class=" alert alert-danger alert-dismissible" role="alert" id="error">
+              <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputCantidad') ?>
+            </div>
+          <?php endif ?>
+        
+                        
         <div class="row j1" >
-         <label class="col-sm-2" for="<?php echo controlPlagaTableClass::getNameField(controlPlagaTableClass::PRODUCTO_INSUMO_ID, true) ?>" >  <?php echo i18n::__('des') ?>:   </label>
+         <label class="col-sm-2" for="<?php echo controlPlagaTableClass::getNameField(controlPlagaTableClass::PRODUCTO_INSUMO_ID, true) ?>" >  <?php echo i18n::__('insumo') ?>:   </label>
          <div class="col-lg-5">
          <select class="form-control" id="slcInsumo" name="<?php echo controlPlagaTableClass::getNameField(controlPlagaTableClass::PRODUCTO_INSUMO_ID, true); ?>" required>
-              <option value="<?php echo (session::getInstance()->hasFlash('inputDescripcion') or request::getInstance()->hasPost(controlPlagaTableClass::getNameField(controlPlagaTableClass::PRODUCTO_INSUMO_ID, true))) ? request::getInstance()->getPost(controlPlagaTableClass::getNameField(controlPlagaTableClass::PRODUCTO_INSUMO_ID, true)) : ((isset($objControlPlaga[0])) ? '' : '') ?>"><?php echo i18n::__('selectInsumo') ?></option>
+              <option value="<?php echo (session::getInstance()->hasFlash('selectProducto') or request::getInstance()->hasPost(controlPlagaTableClass::getNameField(controlPlagaTableClass::PRODUCTO_INSUMO_ID, true))) ? request::getInstance()->getPost(controlPlagaTableClass::getNameField(controlPlagaTableClass::PRODUCTO_INSUMO_ID, true)) : ((isset($objControlPlaga[0])) ? '' : '') ?>"><?php echo i18n::__('selectInsumo') ?></option>
               <?php  foreach ($objProducto as $key): ?>
          
               <option <?php echo (request::getInstance()->hasPost(controlPlagaTableClass::getNameField(controlPlagaTableClass::PRODUCTO_INSUMO_ID, true)) === true and request::getInstance()->getPost(controlPlagaTableClass::getNameField(controlPlagaTableClass::PRODUCTO_INSUMO_ID, true)) == $key->$idInsumoInsumo) ? 'selected' : (isset($objControlPlaga[0]->$insumoInsumo) === true and $objControlPlaga[0]->$insumoInsumo == $key->$idInsumoInsumo) ? 'selected' : ''  ?> value="<?php echo $key->$idInsumoInsumo  ?>"><?php echo $key->$nomInsumoInsumo  ?></option>
                 <?php  endforeach; ?>
             </select>
         </div>
-        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+        
+                 
+         <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
         <input  class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputCantidad') or request::getInstance()->hasPost(controlPlagaTableClass::getNameField(controlPlagaTableClass::CANTIDAD, true))) ? request::getInstance()->getPost(controlPlagaTableClass::getNameField(controlPlagaTableClass::CANTIDAD, true)) : ((isset($objControlPlaga[0])) ? $objControlPlaga[0]->$cantidad : '') ?>" type="text" name="<?php echo controlPlagaTableClass::getNameField(controlPlagaTableClass::CANTIDAD, true) ?>" placeholder="<?php echo i18n::__('cantidad') ?>" >
         </div>
       </div>

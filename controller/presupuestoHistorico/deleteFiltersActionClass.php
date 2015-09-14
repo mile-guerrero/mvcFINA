@@ -18,10 +18,10 @@ class deleteFiltersActionClass extends controllerClass implements controllerActi
 
   public function execute() {
     try {
-      if (session::getInstance()->hasAttribute('controlPlagaIndexFilters')) {
-          session::getInstance()->deleteAttribute('controlPlagaIndexFilters');
+      if (session::getInstance()->hasAttribute('presupuestoHistoricoIndexFilters')) {
+          session::getInstance()->deleteAttribute('presupuestoHistoricoIndexFilters');
       }
-      routing::getInstance()->redirect('controlPlaga', 'index');
+      routing::getInstance()->redirect('presupuestoHistorico', 'index');
     } catch (PDOException $exc) {
       echo $exc->getMessage();
       echo '<br>';

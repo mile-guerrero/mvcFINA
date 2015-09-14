@@ -8,7 +8,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
-use mvc\validator\clienteValidatorClass as validator;
+use mvc\validator\controlEnfermedadValidatorUpdateClass as validator;
 use hook\log\logHookClass as log;
 /**
 * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon 
@@ -38,7 +38,8 @@ class updateActionClass extends controllerClass implements controllerActionInter
         $insumo = trim(request::getInstance()->getPost(controlEnfermedadTableClass::getNameField(controlEnfermedadTableClass::PRODUCTO_INSUMO_ID, true)));
         $cantidad = trim(request::getInstance()->getPost(controlEnfermedadTableClass::getNameField(controlEnfermedadTableClass::CANTIDAD, true)));
         $id = request::getInstance()->getPost(controlEnfermedadTableClass::getNameField(controlEnfermedadTableClass::ID, true));
-//        validator::validateEdit();
+        
+        validator::validateUpdate();
          
         $ids = array(
             controlEnfermedadTableClass::ID => $id
@@ -59,9 +60,8 @@ class updateActionClass extends controllerClass implements controllerActionInter
 
     }//cierre del try
      catch (PDOException $exc) {
-      echo $exc->getMessage();
-      echo '<br>';
-      echo $exc->getTraceAsString();
+      routing::getInstance()->redirect('controlEnfermedad', 'edit');
+      session::getInstance()->setFlash('exc', $exc);
      }//cierre del catch
   }//cierre de la funcion execute
 }//cierre de la clase

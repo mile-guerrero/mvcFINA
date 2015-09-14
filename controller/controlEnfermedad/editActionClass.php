@@ -43,9 +43,9 @@ class editActionClass extends controllerClass implements controllerActionInterfa
         );
         $this->objControlEnfermedad = controlEnfermedadTableClass::getAll($fields, true, null, null, null, null, $where);
         
-        $id = array(
-            controlEnfermedadTableClass::ID => request::getInstance()->getRequest(controlEnfermedadTableClass::ID)
-        );
+//        $id = array(
+//            controlEnfermedadTableClass::ID => request::getInstance()->getRequest(controlEnfermedadTableClass::ID)
+//        );
 
         $idProducto = $this->objControlEnfermedad[0]->producto_insumo_id;
         $this->idTipoProducto = controlEnfermedadTableClass::getTipoInsumo($idProducto);

@@ -8,7 +8,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
-use mvc\validator\clienteValidatorClass as validator;
+use mvc\validator\controlPlagaValidatorUpdateClass as validator;
 use hook\log\logHookClass as log;
 /**
 * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon 
@@ -38,7 +38,8 @@ class updateActionClass extends controllerClass implements controllerActionInter
         $insumo = trim(request::getInstance()->getPost(controlPlagaTableClass::getNameField(controlPlagaTableClass::PRODUCTO_INSUMO_ID, true)));
         $cantidad = trim(request::getInstance()->getPost(controlPlagaTableClass::getNameField(controlPlagaTableClass::CANTIDAD, true)));
         $id = request::getInstance()->getPost(controlPlagaTableClass::getNameField(controlPlagaTableClass::ID, true));
-//        validator::validateEdit();
+        
+        validator::validateUpdate();
          
         $ids = array(
             controlPlagaTableClass::ID => $id
@@ -57,14 +58,13 @@ class updateActionClass extends controllerClass implements controllerActionInter
         routing::getInstance()->redirect('controlPlaga', 'index');
       }//cierre del if
 
-    }//cierre del try
-     catch (PDOException $exc) {
-      echo $exc->getMessage();
-      echo '<br>';
-      echo $exc->getTraceAsString();
-     }//cierre del catch
-  }//cierre de la funcion execute
-}//cierre de la clase
+     } catch (PDOException $exc) {
+      routing::getInstance()->redirect('controlPlaga', 'edit');
+      session::getInstance()->setFlash('exc', $exc);
+    }
+  }
+
+}
 //public function validate($nombre, $apellido, $documento, $direccion, $telefono) {
 //
 //    $flag = false;

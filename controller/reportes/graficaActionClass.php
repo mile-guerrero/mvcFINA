@@ -67,7 +67,11 @@ class graficaActionClass extends controllerClass implements controllerActionInte
 
         $cosPoints = array();
         foreach ($objLote as $objeto) {
-          $cosPoints[] = array($objeto->id . ' ' . $objeto->ubicacion . ' ', $objeto->numero_plantulas,);
+          $cosPoints[] = array($objeto->id . ' ' . $objeto->ubicacion . ' ', $objeto->numero_plantulas,
+              array(
+                  'id' => $objLote->id,
+                  'numeroPlantulas' => $objeto->numero_plantulas 
+              ));
 //         print_r($cosPoints);
 //         exit();
         }

@@ -8,7 +8,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
-use mvc\validator\clienteValidatorClass as validator;
+use mvc\validator\presupuestoHistoricoValidatorUpdateClass as validator;
 use hook\log\logHookClass as log;
 /**
 * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon 
@@ -39,7 +39,7 @@ class updateActionClass extends controllerClass implements controllerActionInter
         $totalProduccion = trim(request::getInstance()->getPost(presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::TOTAL_PRODUCCION, true)));
         $totalPago = trim(request::getInstance()->getPost(presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::TOTAL_PAGO_TRABAJADOR, true)));
         $id = request::getInstance()->getPost(presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::ID, true));
-//        validator::validateEdit();
+       validator::validateUpdate();
          
         $ids = array(
             presupuestoHistoricoTableClass::ID => $id
@@ -61,9 +61,8 @@ class updateActionClass extends controllerClass implements controllerActionInter
 
     }//cierre del try
      catch (PDOException $exc) {
-      echo $exc->getMessage();
-      echo '<br>';
-      echo $exc->getTraceAsString();
+      routing::getInstance()->redirect('presupuestoHistorico', 'edit');
+      session::getInstance()->setFlash('exc', $exc);
      }//cierre del catch
   }//cierre de la funcion execute
 }//cierre de la clase

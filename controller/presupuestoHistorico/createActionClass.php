@@ -7,7 +7,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
-use mvc\validator\clienteValidatorClass as validator;
+use mvc\validator\presupuestoHistoricoValidatorClass as validator;
 use hook\log\logHookClass as log;
 
 /**
@@ -40,7 +40,7 @@ class createActionClass extends controllerClass implements controllerActionInter
         $totalPago = trim(request::getInstance()->getPost(presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::TOTAL_PAGO_TRABAJADOR, true)));
         
         //llamar la funcion validateInsert()
-//        validator::validateInsert();
+        validator::validateInsert();
 
 
         $data = array(

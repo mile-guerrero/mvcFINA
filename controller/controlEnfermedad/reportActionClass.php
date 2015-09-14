@@ -13,7 +13,7 @@ use mvc\i18n\i18nClass as i18n;
 * @date: fecha de inicio del desarrollo.
 * @category: modulo de cliente.
 */
-class reportClienteActionClass extends controllerClass implements controllerActionInterface {
+class reportActionClass extends controllerClass implements controllerActionInterface {
 
   /**
 * @author: Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon .
@@ -39,76 +39,46 @@ class reportClienteActionClass extends controllerClass implements controllerActi
       if (request::getInstance()->hasPost('report')) {
         $report = request::getInstance()->getPost('report');
         //Validar datos
-
-        if (isset($report['nombre']) and $report['nombre'] !== null and $report['nombre'] !== '') {
-          $where[] ='(' .  clienteTableClass::getNameField(clienteTableClass::NOMBRE) . ' LIKE ' . '\'' . $report['nombre'] . '%\'  '
-              . 'OR ' . clienteTableClass::getNameField(clienteTableClass::NOMBRE) . ' LIKE ' . '\'%' . $report['nombre'] . '%\' '
-              . 'OR ' . clienteTableClass::getNameField(clienteTableClass::NOMBRE) . ' LIKE ' . '\'%' . $report['nombre'].'\') ';       
-              }//cierre del filtro nombre
-              
-        if (isset($report['apellido']) and $report['apellido'] !== null and $report['apellido'] !== '') {
-         $where[] = '(' . clienteTableClass::getNameField(clienteTableClass::APELLIDO) . ' LIKE ' . '\'' . $report['apellido'] . '%\'  '
-              . 'OR ' . clienteTableClass::getNameField(clienteTableClass::APELLIDO) . ' LIKE ' . '\'%' . $report['apellido'] . '%\' '
-              . 'OR ' . clienteTableClass::getNameField(clienteTableClass::APELLIDO) . ' LIKE ' . '\'%' . $report['apellido'].'\') ';       
-              }//cierre del filtro apellio    
-                
-        if (isset($report['documento']) and $report['documento'] !== null and $report['documento'] !== '') {
-          $where[clienteTableClass::DOCUMENTO] = $report['documento'];
-        }//cierre del filtro documento
         
-        if (isset($report['ciudad']) and $report['ciudad'] !== null and $report['ciudad'] !== '') {
-          $where[clienteTableClass::ID_CIUDAD] = $report['ciudad'];
+               
+        if (isset($report['lote']) and $report['lote'] !== null and $report['lote'] !== '') {
+          $where[controlEnfermedadTableClass::LOTE_ID] = $report['lote'];
         }//cierre del filtro ciudad
         
-        if (isset($report['fecha1']) and $report['fecha1'] !== null and $report['fecha1'] !== '' and (isset($report['fecha2']) and $report['fecha2'] !== null and $report['fecha2'] !== '')) {
-          $where[clienteTableClass::CREATED_AT] = array(
-          date(config::getFormatTimestamp(), strtotime($report['fecha1'] . ' 00:00:00')),
-          date(config::getFormatTimestamp(), strtotime($report['fecha2'] . ' 23:59:59'))
+        if (isset($report['fechaIni']) and $report['fechaIni'] !== null and $report['fechaIni'] !== '' and (isset($report['fechaFin']) and $report['fechaFin'] !== null and $report['fechaFin'] !== '')) {
+          $where[controlEnfermedadTableClass::CREATED_AT] = array(
+          date(config::getFormatTimestamp(), strtotime($report['fechaIni'] . ' 00:00:00')),
+          date(config::getFormatTimestamp(), strtotime($report['fechaFin'] . ' 23:59:59'))
           );
         }//cierre del filtro fecha1 y fecha2
           
       }//cierre del POST filter
-      $this->mensaje = 'Informacion del Cliente';
+      $this->mensaje = 'Informacion del control de enfermedades';
       $fields = array(
-          clienteTableClass::ID,
-          clienteTableClass::NOMBRE,
-          clienteTableClass::APELLIDO,
-          clienteTableClass::DOCUMENTO,
-          clienteTableClass::DIRECCION,
-          clienteTableClass::ID_TIPO_ID,
-           clienteTableClass::ID_CIUDAD,
-          clienteTableClass::TELEFONO,          
-          clienteTableClass::CREATED_AT,
-          clienteTableClass::UPDATED_AT
+          controlEnfermedadTableClass::ID,
+          controlEnfermedadTableClass::LOTE_ID,
+          controlEnfermedadTableClass::ENFERMEDAD_ID,
+          controlEnfermedadTableClass::PRODUCTO_INSUMO_ID,
+          controlEnfermedadTableClass::CANTIDAD
       );
       $orderBy = array(
-         clienteTableClass::ID
+         controlEnfermedadTableClass::ID
       );
      
-      $this->objC = clienteTableClass::getAll($fields, true, $orderBy, 'ASC',null,null,$where);
+      $this->objControlEnfermedad = controlEnfermedadTableClass::getAll($fields, true, $orderBy, 'ASC',null,null,$where);
  
        $fields = array(
-          ciudadTableClass::ID,
-          ciudadTableClass::NOMBRE_CIUDAD,
-          ciudadTableClass::HABITANTES
+          loteTableClass::ID,
+          loteTableClass::DESCRIPCION
       );
       $orderBy = array(
-         ciudadTableClass::ID
+          loteTableClass::DESCRIPCION
       );
-      $this->objCC = ciudadTableClass::getAll($fields, false, $orderBy, 'ASC');
- 
-      $fields = array(
-          tipoIdTableClass::ID,
-          tipoIdTableClass::DESCRIPCION
-      );
-      $orderBy = array(
-         tipoIdTableClass::ID
-      );
+      $this->objLote = loteTableClass::getAll($fields, true, $orderBy, 'ASC'); 
       
      
-      $this->objCTI = tipoIdTableClass::getAll($fields, false, $orderBy, 'ASC');
  
-      $this->defineView('indexCliente', 'cliente', session::getInstance()->getFormatOutput());
+      $this->defineView('index', 'controlEnfermedad', session::getInstance()->getFormatOutput());
     } //cierre del try
      catch (PDOException $exc) {
       echo $exc->getMessage();

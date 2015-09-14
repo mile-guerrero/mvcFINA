@@ -7,7 +7,7 @@ use mvc\request\requestClass as request;
 use mvc\routing\routingClass as routing;
 use mvc\session\sessionClass as session;
 use mvc\i18n\i18nClass as i18n;
-//use mvc\validator\clienteValidatorClass as validator;
+use mvc\validator\controlPlagaValidatorClass as validator;
 
 /**
  * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon 
@@ -41,71 +41,35 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       $where = null;
 
 
-//      if (request::getInstance()->hasPost('filter')) {
-//        $filter = request::getInstance()->getPost('filter');
-//        //Validar datos
-//        
-//        if ((isset($filter[controlPlagaTableClass::getNameField(controlPlagaTableClass::CREATED_AT, true) . '_1']) and empty($filter[controlPlagaTableClass::getNameField(controlPlagaTableClass::CREATED_AT, true) . '_1']) === false) and ( isset($filter[controlPlagaTableClass::getNameField(controlPlagaTableClass::CREATED_AT, true) . '_2']) and empty($filter[controlPlagaTableClass::getNameField(controlPlagaTableClass::CREATED_AT, true) . '_2']) === false)) {
-//          if (request::getInstance()->isMethod('POST')) {
-//
-//            $fechaInicial = $filter[controlPlagaTableClass::getNameField(controlPlagaTableClass::CREATED_AT, true) . '_1'];
-//            $fechaFin = $filter[controlPlagaTableClass::getNameField(controlPlagaTableClass::CREATED_AT, true) . '_2'];
-//
-//            validator::validateFiltroFecha($fechaInicial, $fechaFin);
-//
-//            if ((isset($fechaInicial) and $fechaInicial !== null and $fechaInicial !== "") and ( isset($fechaFin) and $fechaFin !== null and $fechaFin !== "" )) {
-//              $where[] = '(' . controlPlagaTableClass::getNameField(controlPlagaTableClass::CREATED_AT) . ' BETWEEN ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaInicial . ' 00:00:00')) . "'" . ' AND ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59')) . "'" . ' ) ';
-//            }
-//          }
-//        }
-//        
-//        if (isset($filter[controlPlagaTableClass::getNameField(controlPlagaTableClass::DOCUMENTO, true)]) and empty($filter[controlPlagaTableClass::getNameField(controlPlagaTableClass::DOCUMENTO, true)]) === false) {
-//          if (request::getInstance()->isMethod('POST')) {
-//
-//            $documento = $filter[controlPlagaTableClass::getNameField(controlPlagaTableClass::DOCUMENTO, true)];
-//              validator::validateFiltro($documento);
-//            if (isset($documento) and $documento !== null and $documento !== '') {
-//              $where[] = '(' . controlPlagaTableClass::getNameField(controlPlagaTableClass::DOCUMENTO) . ' = ' .  $documento  . ' ) ';
-//            }
-//          }
-//        }
-//        
-//        if (isset($filter[controlPlagaTableClass::getNameField(controlPlagaTableClass::NOMBRE, true)]) and empty($filter[controlPlagaTableClass::getNameField(controlPlagaTableClass::NOMBRE, true)]) === false) {
-//          if (request::getInstance()->isMethod('POST')) {
-//
-//            $nombre = $filter[controlPlagaTableClass::getNameField(controlPlagaTableClass::NOMBRE, true)];
-//             validator::validateFiltroNombre($nombre);
-//            if (isset($nombre) and $nombre !== null and $nombre !== '') {
-//          $where[] = '(' . controlPlagaTableClass::getNameField(controlPlagaTableClass::NOMBRE) . ' LIKE ' . '\'' . $nombre . '%\'  '
-//                  . 'OR ' . controlPlagaTableClass::getNameField(controlPlagaTableClass::NOMBRE) . ' LIKE ' . '\'%' . $nombre . '%\' '
-//                  . 'OR ' . controlPlagaTableClass::getNameField(controlPlagaTableClass::NOMBRE) . ' LIKE ' . '\'%' . $nombre . '\') ';
-//        }
-//          }
-//        }
-//        
-//        if (isset($filter[controlPlagaTableClass::getNameField(controlPlagaTableClass::APELLIDO, true)]) and empty($filter[controlPlagaTableClass::getNameField(controlPlagaTableClass::APELLIDO, true)]) === false) {
-//          if (request::getInstance()->isMethod('POST')) {
-//
-//            $apellido = $filter[controlPlagaTableClass::getNameField(controlPlagaTableClass::APELLIDO, true)];
-//              validator::validateFiltroApellido($apellido);
-//            if (isset($apellido) and $apellido !== null and $apellido !== '') {
-//          $where[] = '(' . controlPlagaTableClass::getNameField(controlPlagaTableClass::APELLIDO) . ' LIKE ' . '\'' . $apellido . '%\'  '
-//                  . 'OR ' . controlPlagaTableClass::getNameField(controlPlagaTableClass::APELLIDO) . ' LIKE ' . '\'%' . $apellido . '%\' '
-//                  . 'OR ' . controlPlagaTableClass::getNameField(controlPlagaTableClass::APELLIDO) . ' LIKE ' . '\'%' . $apellido . '\') ';
-//        }
-//          }
-//        }
-//
-// if (isset($filter[controlPlagaTableClass::getNameField(controlPlagaTableClass::ID_CIUDAD, true)]) and empty($filter[controlPlagaTableClass::getNameField(controlPlagaTableClass::ID_CIUDAD, true)]) === false) {
-//          if (request::getInstance()->isMethod('POST')) {
-//
-//            $ciudad = $filter[controlPlagaTableClass::getNameField(controlPlagaTableClass::ID_CIUDAD, true)];
-//             
-//             if (isset($ciudad) and $ciudad !== null and $ciudad !== '') {
-//          $where[controlPlagaTableClass::ID_CIUDAD] = $ciudad;
-//        }//cierre del filtro ciudad
-//          }
-//        }
+      if (request::getInstance()->hasPost('filter')) {
+        $filter = request::getInstance()->getPost('filter');
+        //Validar datos
+        
+        if ((isset($filter[controlPlagaTableClass::getNameField(controlPlagaTableClass::CREATED_AT, true) . '_1']) and empty($filter[controlPlagaTableClass::getNameField(controlPlagaTableClass::CREATED_AT, true) . '_1']) === false) and ( isset($filter[controlPlagaTableClass::getNameField(controlPlagaTableClass::CREATED_AT, true) . '_2']) and empty($filter[controlPlagaTableClass::getNameField(controlPlagaTableClass::CREATED_AT, true) . '_2']) === false)) {
+          if (request::getInstance()->isMethod('POST')) {
+
+            $fechaInicial = $filter[controlPlagaTableClass::getNameField(controlPlagaTableClass::CREATED_AT, true) . '_1'];
+            $fechaFin = $filter[controlPlagaTableClass::getNameField(controlPlagaTableClass::CREATED_AT, true) . '_2'];
+
+            validator::validateFiltroFecha($fechaInicial, $fechaFin);
+
+            if ((isset($fechaInicial) and $fechaInicial !== null and $fechaInicial !== "") and ( isset($fechaFin) and $fechaFin !== null and $fechaFin !== "" )) {
+              $where[] = '(' . controlPlagaTableClass::getNameField(controlPlagaTableClass::CREATED_AT) . ' BETWEEN ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaInicial . ' 00:00:00')) . "'" . ' AND ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59')) . "'" . ' ) ';
+            }
+          }
+        }
+
+
+ if (isset($filter[controlPlagaTableClass::getNameField(controlPlagaTableClass::LOTE_ID, true)]) and empty($filter[controlPlagaTableClass::getNameField(controlPlagaTableClass::LOTE_ID, true)]) === false) {
+          if (request::getInstance()->isMethod('POST')) {
+
+            $lote = $filter[controlPlagaTableClass::getNameField(controlPlagaTableClass::LOTE_ID, true)];
+             
+             if (isset($lote) and $lote !== null and $lote !== '') {
+          $where[controlPlagaTableClass::LOTE_ID] = $lote;
+        }//cierre del filtro ciudad
+          }
+        }
       
 
        
@@ -115,13 +79,14 @@ class indexActionClass extends controllerClass implements controllerActionInterf
 //        $where = session::getInstance()->getAttribute('clienteIndexFilters');
 //     
         
-//       }
+   }
 
       $fields = array(
           controlPlagaTableClass::ID,
           controlPlagaTableClass::LOTE_ID,
           controlPlagaTableClass::PLAGA_ID,
-          controlPlagaTableClass::PRODUCTO_INSUMO_ID
+          controlPlagaTableClass::PRODUCTO_INSUMO_ID,
+          controlPlagaTableClass::CANTIDAD
       );
       $orderBy = array(
           controlPlagaTableClass::LOTE_ID
@@ -135,7 +100,16 @@ class indexActionClass extends controllerClass implements controllerActionInterf
       $this->cntPages = controlPlagaTableClass::getTotalPages(config::getRowGrid(), $where);
       $this->objControlPlaga = controlPlagaTableClass::getAll($fields, true, $orderBy, 'ASC', config::getRowGrid(), $page, $where);
       
-
+      $fields = array(
+          loteTableClass::ID,
+          loteTableClass::UBICACION
+      );
+      $orderBy = array(
+          loteTableClass::UBICACION
+      );
+      $this->objLote = loteTableClass::getAll($fields, true, $orderBy, 'ASC'); 
+      
+      
       $this->defineView('index', 'controlPlaga', session::getInstance()->getFormatOutput());
     } //cierre del try
     catch (PDOException $exc) {

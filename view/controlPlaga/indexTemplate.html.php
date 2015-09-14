@@ -11,6 +11,8 @@ use mvc\session\sessionClass as session ?>
 <?php
 use mvc\request\requestClass as request ?>
 
+<?php $idLote = loteTableClass::ID ?>
+<?php $descLote = loteTableClass::UBICACION ?>
 <?php $lote = controlPlagaTableClass::LOTE_ID ?>
 <?php $plaga = controlPlagaTableClass::PLAGA_ID ?>
 <?php $id = controlPlagaTableClass::ID ?>
@@ -31,6 +33,114 @@ use mvc\request\requestClass as request ?>
         <a href="<?php echo routing::getInstance()->getUrlWeb('controlPlaga', 'deleteFilters') ?>" class="btn  btn-xs" ><img class="img-responsive"  id="imgelifiltro" src="" alt=" "><?php echo i18n::__('eFiltros') ?></a>
         <a type="button" class="btn  btn-xs" data-toggle="modal" data-target="#myModalReport" ><img class="img-responsive"  id="imgreporte" src="" alt=" "><?php echo i18n::__('informe') ?></a>          
       </ul>
+      
+      <!--Filtros-->
+    <div class="modal fade" id="myModalFilters" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('filtros') ?></h4>
+          </div>
+          <div class="modal-body">
+            <form class="form-horizontal" id="filterForm" role="form" action="<?php echo routing::getInstance()->getUrlWeb('controlPlaga', 'index') ?>"  method="POST" >
+              
+               <?php if (session::getInstance()->hasFlash('modalFilters') === true): ?>        
+                    <script>
+                      $('#myModalFilters').modal({
+                        backdrop: 'static', //dejar avierta la ventana modal
+                        keyboard: false//true para quitarla con escape 
+                      })
+                    </script>
+                  <?php endif; ?>
+              <?php if (session::getInstance()->hasError('inputFecha')): ?>
+                    <div class="alert alert-danger alert-dismissible" role="alert" id="error">
+                      <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputFecha') ?>
+                    </div>
+                  <?php endif ?>
+              
+                    <div class="form-group">
+                    <div class="col-sm-6">
+                        <label class="col-sm-4 control-label"  for="<?php echo controlPlagaTableClass::getNameField(controlPlagaTableClass::CREATED_AT, true) . '_1' ?>"><?php echo i18n::__('fecha inicio') ?></label>
+                        <input type="date" class="form-control-filtro1" id="<?php echo controlPlagaTableClass::getNameField(controlPlagaTableClass::CREATED_AT, true).'_1' ?>" name="filter[<?php echo controlPlagaTableClass::getNameField(controlPlagaTableClass::CREATED_AT, true).'_1' ?>]">
+
+                    </div>
+                    <div class="col-sm-6">
+                      <label class="col-sm-4 control-label" for="<?php echo controlPlagaTableClass::getNameField(controlPlagaTableClass::CREATED_AT, true) . '_2' ?>"><?php echo i18n::__('fecha fin') ?></label>
+                            <input type="date" class="form-control-filtro2" id="<?php echo controlPlagaTableClass::getNameField(controlPlagaTableClass::CREATED_AT, true).'_2' ?>" name="filter[<?php echo controlPlagaTableClass::getNameField(controlPlagaTableClass::CREATED_AT, true).'_2' ?>]">
+                 
+                    </div>
+                  </div>
+                    
+              <div class="form-group">
+    <label for="filterLote" class="col-sm-2 control-label"><?php echo i18n::__('lote') ?></label>
+    <div class="col-sm-10">
+      <select class="form-control" id="filterLote" name="filter[<?php echo controlPlagaTableClass::getNameField(controlPlagaTableClass::LOTE_ID, true) ?>]">
+         <option value=""><?php echo i18n::__('selectLote') ?></option>
+    <?php foreach ($objLote as $key): ?>
+                      <option value="<?php echo $key->$idLote ?>"><?php echo $key->$descLote ?></option>
+    <?php endforeach; ?>
+                  </select>
+                </div>
+              </div>
+                                      
+                            
+            </form>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default btn btn-xs" data-dismiss="modal">  <?php echo i18n::__('cancel') ?></button>
+            <button type="button" onclick="$('#filterForm').submit()" class="btn btn-primary btn btn-xs"><?php echo i18n::__('filtros') ?></button>
+          </div>
+        </div>
+      </div>
+    </div> 
+    <!---fin filtros--->
+    <!---Informes--->
+  <div class="modal fade" id="myModalReport" tabindex="-1" role="modal" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('informe') ?></h4>
+      </div>
+      <div class="modal-body">
+        <form target="_blank" class="form-horizontal" id="reportForm" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('controlPlaga', 'report')?>">
+          
+          <div class="form-group">
+    <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
+    <div class="col-sm-10">
+      <input type="date" class="form-control-filtro1" id="reportFechaIni" name="report[fechaIni]">
+      
+       <input type="date" class="form-control-filtro2" id="reportFechaFin" name="report[fechaFin]">
+    </div>
+  </div>
+                                        
+          
+     <div class="form-group">
+    <label for="reportLote" class="col-sm-2 control-label"><?php echo i18n::__('lote') ?></label>
+    <div class="col-sm-10">
+      <select class="form-control" id="reportLote" name="report[lote]">
+         <option value=""><?php echo i18n::__('selectLote') ?></option>
+    <?php foreach ($objLote as $key): ?>
+                      <option value="<?php echo $key->$idLote ?>"><?php echo $key->$descLote ?></option>
+    <?php endforeach; ?>
+                  </select>
+                </div>
+              </div>
+               
+  </form>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default btn btn-xs" data-dismiss="modal">  <?php echo i18n::__('cerrar') ?></button>
+        <button type="button" onclick="$('#reportForm').submit()" class="btn btn-warning btn btn-xs"><?php echo i18n::__('informe') ?></button>
+      </div>
+    </div>
+  </div>
+</div>
+ <!---fin Informes--->   
 
 
      <form class="form-signin" id="frmDeleteAll" action="<?php echo routing::getInstance()->getUrlWeb('controlPlaga', 'deleteSelect') ?>" method="POST">        

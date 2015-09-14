@@ -48,11 +48,18 @@ use mvc\request\requestClass as request ?>
       <!--        &nbsp;-->
       <br><br><br><br><br>
       
+      <?php if (session::getInstance()->hasError('selectLote')): ?>
+            <div class=" alert alert-danger alert-dismissible" role="alert" id="error">
+              <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('selectLote') ?>
+            </div>
+          <?php endif ?>
+      
       <div class="form-group">
           <label class="col-sm-2" for="<?php echo controlEnfermedadTableClass::getNameField(controlEnfermedadTableClass::LOTE_ID, true) ?>" >  <?php echo i18n::__('lote') ?>:   </label>
           <div class="col-sm-10"> 
             <select class="form-control"  name="<?php echo controlEnfermedadTableClass::getNameField(controlEnfermedadTableClass::LOTE_ID, true); ?>" required>
-              <option value="<?php echo (session::getInstance()->hasFlash('inputDescripcion') or request::getInstance()->hasPost(controlEnfermedadTableClass::getNameField(controlEnfermedadTableClass::LOTE_ID, true))) ? request::getInstance()->getPost(controlEnfermedadTableClass::getNameField(controlEnfermedadTableClass::LOTE_ID, true)) : ((isset($objControlEnfermedad[0])) ? '' : '') ?>"><?php echo i18n::__('selectLote') ?></option>
+              <option value="<?php echo (session::getInstance()->hasFlash('selectLote') or request::getInstance()->hasPost(controlEnfermedadTableClass::getNameField(controlEnfermedadTableClass::LOTE_ID, true))) ? request::getInstance()->getPost(controlEnfermedadTableClass::getNameField(controlEnfermedadTableClass::LOTE_ID, true)) : ((isset($objControlEnfermedad[0])) ? '' : '') ?>"><?php echo i18n::__('selectLote') ?></option>
               <?php  foreach ($objLote as $key): ?>
          
               <option <?php echo (request::getInstance()->hasPost(controlEnfermedadTableClass::getNameField(controlEnfermedadTableClass::LOTE_ID, true)) === true and request::getInstance()->getPost(controlEnfermedadTableClass::getNameField(controlEnfermedadTableClass::LOTE_ID, true)) == $key->$idLote) ? 'selected' : (isset($objControlEnfermedad[0]->$lote) === true and $objControlEnfermedad[0]->$lote == $key->$idLote) ? 'selected' : ''  ?> value="<?php echo $key->$idLote  ?>"><?php echo $key->$nomLote  ?></option>
@@ -62,11 +69,18 @@ use mvc\request\requestClass as request ?>
         </div>
         <br>
         
+         <?php if (session::getInstance()->hasError('selectEnfermedad')): ?>
+            <div class=" alert alert-danger alert-dismissible" role="alert" id="error">
+              <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('selectEnfermedad') ?>
+            </div>
+          <?php endif ?>
+        
         <div class="form-group">
           <label class="col-sm-2" for="<?php echo controlEnfermedadTableClass::getNameField(controlEnfermedadTableClass::ENFERMEDAD_ID, true) ?>" >  <?php echo i18n::__('enfermedad') ?>:   </label>
           <div class="col-sm-10"> 
             <select class="form-control" name="<?php echo controlEnfermedadTableClass::getNameField(controlEnfermedadTableClass::ENFERMEDAD_ID, true) ?>" required>
-              <option value="<?php echo (session::getInstance()->hasFlash('inputDescripcion') or request::getInstance()->hasPost(controlEnfermedadTableClass::getNameField(controlEnfermedadTableClass::ENFERMEDAD_ID, true))) ? request::getInstance()->getPost(controlEnfermedadTableClass::getNameField(controlEnfermedadTableClass::ENFERMEDAD_ID, true)) : ((isset($objControlEnfermedad[0])) ? '' : '') ?>"><?php echo i18n::__('selectEnfermedad') ?></option>
+              <option value="<?php echo (session::getInstance()->hasFlash('selectEnfermedad') or request::getInstance()->hasPost(controlEnfermedadTableClass::getNameField(controlEnfermedadTableClass::ENFERMEDAD_ID, true))) ? request::getInstance()->getPost(controlEnfermedadTableClass::getNameField(controlEnfermedadTableClass::ENFERMEDAD_ID, true)) : ((isset($objControlEnfermedad[0])) ? '' : '') ?>"><?php echo i18n::__('selectEnfermedad') ?></option>
               <?php  foreach ($objEnfermedad as $key): ?>         
               <option <?php echo (request::getInstance()->hasPost(controlEnfermedadTableClass::getNameField(controlEnfermedadTableClass::ENFERMEDAD_ID, true)) === true and request::getInstance()->getPost(controlEnfermedadTableClass::getNameField(controlEnfermedadTableClass::ENFERMEDAD_ID, true)) == $key->$idPlaga) ? 'selected' : (isset($objControlEnfermedad[0]->$plaga) === true and $objControlEnfermedad[0]->$plaga == $key->$idPlaga) ? 'selected' : ''  ?> value="<?php echo $key->$idPlaga  ?>"><?php echo $key->$nomPlaga  ?></option>
                 <?php  endforeach; ?>
@@ -77,7 +91,7 @@ use mvc\request\requestClass as request ?>
       
 
       <div class="form-group">
-          <label class="col-sm-2"  for="<?php echo controlEnfermedadTableClass::getNameField(controlEnfermedadTableClass::PRODUCTO_INSUMO_ID, true) ?>">  <?php echo i18n::__('selectTPI') ?>:   </label>
+          <label class="col-sm-2"  for="<?php echo controlEnfermedadTableClass::getNameField(controlEnfermedadTableClass::PRODUCTO_INSUMO_ID, true) ?>">  <?php echo i18n::__('tipo insumo') ?>:   </label>
           <div class="col-sm-10"> 
             <select class="form-control" id="slcTipoDeInsumo" required onchange="cargarInsumo('<?php echo routing::getInstance()->getUrlWeb('@getInsumo') ?>')">
               <option value="">Seleccione el tipo de insumo</option>
@@ -89,11 +103,25 @@ use mvc\request\requestClass as request ?>
           </div>
         </div>
         
+         <?php if (session::getInstance()->hasError('selectProducto')): ?>
+            <div class=" alert alert-danger alert-dismissible" role="alert" id="error">
+              <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('selectProducto') ?>
+            </div>
+          <?php endif ?>
+        
+        <?php if (session::getInstance()->hasError('inputCantidad')): ?>
+            <div class=" alert alert-danger alert-dismissible" role="alert" id="error">
+              <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputCantidad') ?>
+            </div>
+          <?php endif ?>
+        
         <div class="row j1" >
-         <label class="col-sm-2" for="<?php echo controlEnfermedadTableClass::getNameField(controlEnfermedadTableClass::PRODUCTO_INSUMO_ID, true) ?>" >  <?php echo i18n::__('des') ?>:   </label>
+         <label class="col-sm-2" for="<?php echo controlEnfermedadTableClass::getNameField(controlEnfermedadTableClass::PRODUCTO_INSUMO_ID, true) ?>" >  <?php echo i18n::__('insumo') ?>:   </label>
          <div class="col-lg-5">
          <select class="form-control" id="slcInsumo" name="<?php echo controlEnfermedadTableClass::getNameField(controlEnfermedadTableClass::PRODUCTO_INSUMO_ID, true); ?>" required>
-              <option value="<?php echo (session::getInstance()->hasFlash('inputDescripcion') or request::getInstance()->hasPost(controlEnfermedadTableClass::getNameField(controlEnfermedadTableClass::PRODUCTO_INSUMO_ID, true))) ? request::getInstance()->getPost(controlEnfermedadTableClass::getNameField(controlEnfermedadTableClass::PRODUCTO_INSUMO_ID, true)) : ((isset($objControlEnfermedad[0])) ? '' : '') ?>"><?php echo i18n::__('selectInsumo') ?></option>
+              <option value="<?php echo (session::getInstance()->hasFlash('selectProducto') or request::getInstance()->hasPost(controlEnfermedadTableClass::getNameField(controlEnfermedadTableClass::PRODUCTO_INSUMO_ID, true))) ? request::getInstance()->getPost(controlEnfermedadTableClass::getNameField(controlEnfermedadTableClass::PRODUCTO_INSUMO_ID, true)) : ((isset($objControlEnfermedad[0])) ? '' : '') ?>"><?php echo i18n::__('selectInsumo') ?></option>
               <?php  foreach ($objProducto as $key): ?>
          
               <option <?php echo (request::getInstance()->hasPost(controlEnfermedadTableClass::getNameField(controlEnfermedadTableClass::PRODUCTO_INSUMO_ID, true)) === true and request::getInstance()->getPost(controlEnfermedadTableClass::getNameField(controlEnfermedadTableClass::PRODUCTO_INSUMO_ID, true)) == $key->$idInsumoInsumo) ? 'selected' : (isset($objControlEnfermedad[0]->$insumoInsumo) === true and $objControlEnfermedad[0]->$insumoInsumo == $key->$idInsumoInsumo) ? 'selected' : ''  ?> value="<?php echo $key->$idInsumoInsumo  ?>"><?php echo $key->$nomInsumoInsumo  ?></option>

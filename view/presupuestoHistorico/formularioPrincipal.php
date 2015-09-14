@@ -48,11 +48,18 @@ use mvc\request\requestClass as request ?>
       <!--        &nbsp;-->
       <br><br><br><br><br>
       
+      <?php if (session::getInstance()->hasError('selectLote')): ?>
+            <div class=" alert alert-danger alert-dismissible" role="alert" id="error">
+              <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('selectLote') ?>
+            </div>
+          <?php endif ?>
+      
       <div class="form-group">
           <label class="col-sm-2" for="<?php echo presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::LOTE_ID, true) ?>" >  <?php echo i18n::__('lote') ?>:   </label>
           <div class="col-sm-10"> 
             <select class="form-control"  name="<?php echo presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::LOTE_ID, true); ?>" required>
-              <option value="<?php echo (session::getInstance()->hasFlash('inputDescripcion') or request::getInstance()->hasPost(presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::LOTE_ID, true))) ? request::getInstance()->getPost(presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::LOTE_ID, true)) : ((isset($objpresupuestoHistorico[0])) ? '' : '') ?>"><?php echo i18n::__('selectLote') ?></option>
+              <option value="<?php echo (session::getInstance()->hasFlash('selectLote') or request::getInstance()->hasPost(presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::LOTE_ID, true))) ? request::getInstance()->getPost(presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::LOTE_ID, true)) : ((isset($objpresupuestoHistorico[0])) ? '' : '') ?>"><?php echo i18n::__('selectLote') ?></option>
               <?php  foreach ($objLote as $key): ?>
          
               <option <?php echo (request::getInstance()->hasPost(presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::LOTE_ID, true)) === true and request::getInstance()->getPost(presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::LOTE_ID, true)) == $key->$idLote) ? 'selected' : (isset($objpresupuestoHistorico[0]->$lote) === true and $objpresupuestoHistorico[0]->$lote == $key->$idLote) ? 'selected' : ''  ?> value="<?php echo $key->$idLote  ?>"><?php echo $key->$nomLote  ?></option>
@@ -65,7 +72,7 @@ use mvc\request\requestClass as request ?>
             
 
       <div class="form-group">
-          <label class="col-sm-2"  for="<?php echo presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::PRODUCTO_INSUMO_ID, true) ?>">  <?php echo i18n::__('selectTPI') ?>:   </label>
+          <label class="col-sm-2"  for="<?php echo presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::PRODUCTO_INSUMO_ID, true) ?>">  <?php echo i18n::__('tipo insumo') ?>:   </label>
           <div class="col-sm-10"> 
             <select class="form-control" id="slcTipoDeInsumo" required onchange="cargarInsumo('<?php echo routing::getInstance()->getUrlWeb('@getInsumo') ?>')">
               <option value="">Seleccione el tipo de insumo</option>
@@ -77,11 +84,18 @@ use mvc\request\requestClass as request ?>
           </div>
         </div>
         
+        <?php if (session::getInstance()->hasError('selectProducto')): ?>
+            <div class=" alert alert-danger alert-dismissible" role="alert" id="error">
+              <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('selectProducto') ?>
+            </div>
+          <?php endif ?>
+        
         <div class="row j1" >
-         <label class="col-sm-2" for="<?php echo presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::PRODUCTO_INSUMO_ID, true) ?>" >  <?php echo i18n::__('des') ?>:   </label>
+         <label class="col-sm-2" for="<?php echo presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::PRODUCTO_INSUMO_ID, true) ?>" >  <?php echo i18n::__('insumo') ?>:   </label>
          <div class="col-lg-10">
          <select class="form-control" id="slcInsumo" name="<?php echo presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::PRODUCTO_INSUMO_ID, true); ?>" required>
-              <option value="<?php echo (session::getInstance()->hasFlash('inputDescripcion') or request::getInstance()->hasPost(presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::PRODUCTO_INSUMO_ID, true))) ? request::getInstance()->getPost(presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::PRODUCTO_INSUMO_ID, true)) : ((isset($objpresupuestoHistorico[0])) ? '' : '') ?>"><?php echo i18n::__('selectInsumo') ?></option>
+              <option value="<?php echo (session::getInstance()->hasFlash('selectProducto') or request::getInstance()->hasPost(presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::PRODUCTO_INSUMO_ID, true))) ? request::getInstance()->getPost(presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::PRODUCTO_INSUMO_ID, true)) : ((isset($objpresupuestoHistorico[0])) ? '' : '') ?>"><?php echo i18n::__('selectInsumo') ?></option>
               <?php  foreach ($objProducto as $key): ?>
          
               <option <?php echo (request::getInstance()->hasPost(presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::PRODUCTO_INSUMO_ID, true)) === true and request::getInstance()->getPost(presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::PRODUCTO_INSUMO_ID, true)) == $key->$idInsumoInsumo) ? 'selected' : (isset($objpresupuestoHistorico[0]->$insumoInsumo) === true and $objpresupuestoHistorico[0]->$insumoInsumo == $key->$idInsumoInsumo) ? 'selected' : ''  ?> value="<?php echo $key->$idInsumoInsumo  ?>"><?php echo $key->$nomInsumoInsumo  ?></option>
@@ -92,6 +106,14 @@ use mvc\request\requestClass as request ?>
         
        
         <br>
+        
+         <?php if (session::getInstance()->hasError('inputPresupuesto')): ?>
+            <div class=" alert alert-danger alert-dismissible" role="alert" id="error">
+              <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputPresupuesto') ?>
+            </div>
+          <?php endif ?>
+        
 
         <div class="form-group">
       <label for="<?php echo presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::PRESUPUESTO, true) ?>" class="col-sm-2"> <?php echo i18n::__('presupuesto') ?>: </label>     
@@ -100,12 +122,26 @@ use mvc\request\requestClass as request ?>
       </div>
  </div>
         
+         <?php if (session::getInstance()->hasError('inputTotalProduccion')): ?>
+            <div class=" alert alert-danger alert-dismissible" role="alert" id="error">
+              <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputTotalProduccion') ?>
+            </div>
+          <?php endif ?>
+        
         <div class="form-group">
       <label for="<?php echo presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::TOTAL_PRODUCCION, true) ?>" class="col-sm-2"> <?php echo i18n::__('totalProduccion') ?>: </label>     
       <div class="col-sm-10">   
         <input  class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputTotalProduccion') or request::getInstance()->hasPost(presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::TOTAL_PRODUCCION, true))) ? request::getInstance()->getPost(presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::TOTAL_PRODUCCION, true)) : ((isset($objpresupuestoHistorico[0])) ? $objpresupuestoHistorico[0]->$totalProduccion : '') ?>" type="text" name="<?php echo presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::TOTAL_PRODUCCION, true) ?>" placeholder="<?php echo i18n::__('totalProduccion') ?>" >
       </div>
  </div>
+        
+        <?php if (session::getInstance()->hasError('inputTotalPago')): ?>
+            <div class=" alert alert-danger alert-dismissible" role="alert" id="error">
+              <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputTotalPago') ?>
+            </div>
+          <?php endif ?>
         
         <div class="form-group">
       <label for="<?php echo presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::TOTAL_PAGO_TRABAJADOR, true) ?>" class="col-sm-2"> <?php echo i18n::__('totalPago') ?>: </label>     

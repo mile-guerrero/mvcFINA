@@ -7,46 +7,63 @@ namespace mvc\validator {
   use mvc\routing\routingClass as routing;
   use mvc\config\myConfigClass as config;
   /**
-   * Description of pedidoValidatorClass
+   * Description of presupuestoHistoricoValidatorClass
    *
    * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
    */
-  class pedidoValidatorClass extends validatorClass {
+  class presupuestoHistoricoValidatorClass extends validatorClass {
     public static function validateInsert() {
       $flag = false;
       
-      if (self::notBlank(request::getInstance()->getPost(\controlPlagaTableClass::getNameField(\controlPlagaTableClass::CANTIDAD, true)))) {
+      if (self::notBlank(request::getInstance()->getPost(\presupuestoHistoricoTableClass::getNameField(\presupuestoHistoricoTableClass::PRESUPUESTO, true)))) {
         $flag = true;
-        session::getInstance()->setFlash('inputCantidad', true);
-        session::getInstance()->setError('La cantidad es requerida', 'inputCantidad');
-      } else if (!is_numeric(request::getInstance()->getPost(\controlPlagaTableClass::getNameField(\controlPlagaTableClass::CANTIDAD, true)))) {
+        session::getInstance()->setFlash('inputPresupuesto', true);
+        session::getInstance()->setError('El presupuesto es requerida', 'inputPresupuesto');
+      } else if (!is_numeric(request::getInstance()->getPost(\presupuestoHistoricoTableClass::getNameField(\presupuestoHistoricoTableClass::PRESUPUESTO, true)))) {
         $flag = true;
-        session::getInstance()->setFlash('inputCantidad', true);
-        session::getInstance()->setError('La cantidad no puede ser letras', 'inputCantidad');
-      } else if(strlen(request::getInstance()->getPost(\controlPlagaTableClass::getNameField(\controlPlagaTableClass::CANTIDAD, true))) > \controlPlagaTableClass::CANTIDAD_LENGTH) {
+        session::getInstance()->setFlash('inputPresupuesto', true);
+        session::getInstance()->setError('El presupuesto no puede ser letras', 'inputPresupuesto');
+      
+       //-------------------------------campo presupuesto-----------------------------
+      }
+       if (self::notBlank(request::getInstance()->getPost(\presupuestoHistoricoTableClass::getNameField(\presupuestoHistoricoTableClass::TOTAL_PRODUCCION, true)))) {
         $flag = true;
-        session::getInstance()->setFlash('inputCantidad', true);
-        session::getInstance()->setError('La catidad digitado sobre pasa los caracteres permitidos', 'inputCantidad');
+        session::getInstance()->setFlash('inputTotalProduccion', true);
+        session::getInstance()->setError('La produccion es requerida', 'inputTotalProduccion');
+      } else if (!is_numeric(request::getInstance()->getPost(\presupuestoHistoricoTableClass::getNameField(\presupuestoHistoricoTableClass::TOTAL_PRODUCCION, true)))) {
+        $flag = true;
+        session::getInstance()->setFlash('inputTotalProduccion', true);
+        session::getInstance()->setError('La produccion no puede ser letras', 'inputTotalProduccion');
+      } else if(strlen(request::getInstance()->getPost(\presupuestoHistoricoTableClass::getNameField(\presupuestoHistoricoTableClass::TOTAL_PRODUCCION, true))) > \presupuestoHistoricoTableClass::TOTAL_PRODUCCION_LENGTH) {
+        $flag = true;
+        session::getInstance()->setFlash('inputTotalProduccion', true);
+        session::getInstance()->setError('La produccion digitada sobre pasa los caracteres permitidos', 'inputTotalProduccion');
         
-       //-------------------------------campo Empresa-----------------------------
-          //----campo nulo----
-      } if (self::notBlank(request::getInstance()->getPost(\controlPlagaTableClass::getNameField(\controlPlagaTableClass::LOTE_ID, true)))) {
+       //-------------------------------campo presupuesto----------------------------- 
+      }if (self::notBlank(request::getInstance()->getPost(\presupuestoHistoricoTableClass::getNameField(\presupuestoHistoricoTableClass::TOTAL_PAGO_TRABAJADOR, true)))) {
         $flag = true;
-        session::getInstance()->setFlash('selectEmpresa', true);
-        session::getInstance()->setError('La empresa es requerida', 'selectEmpresa');
+        session::getInstance()->setFlash('inputTotalPago', true);
+        session::getInstance()->setError('El total pago es requerida', 'inputTotalPago');
+      } else if (!is_numeric(request::getInstance()->getPost(\presupuestoHistoricoTableClass::getNameField(\presupuestoHistoricoTableClass::TOTAL_PAGO_TRABAJADOR, true)))) {
+        $flag = true;
+        session::getInstance()->setFlash('inputTotalPago', true);
+        session::getInstance()->setError('El total pago no puede ser letras', 'inputTotalPago');
+      } else if(strlen(request::getInstance()->getPost(\presupuestoHistoricoTableClass::getNameField(\presupuestoHistoricoTableClass::TOTAL_PAGO_TRABAJADOR, true))) > \presupuestoHistoricoTableClass::TOTAL_PAGO_TRABAJADOR_LENGTH) {
+        $flag = true;
+        session::getInstance()->setFlash('inputTotalPago', true);
+        session::getInstance()->setError('El total pago digitado sobre pasa los caracteres permitidos', 'inputTotalPago');
+        
+          //----campo nulo----
+      } if (self::notBlank(request::getInstance()->getPost(\presupuestoHistoricoTableClass::getNameField(\presupuestoHistoricoTableClass::LOTE_ID, true)))) {
+        $flag = true;
+        session::getInstance()->setFlash('selectLote', true);
+        session::getInstance()->setError('El lote es requerido', 'selectLote');
         //-------------------------------campo Labor-----------------------------
           //----campo nulo----
-      } if (self::notBlank(request::getInstance()->getPost(\controlPlagaTableClass::getNameField(\controlPlagaTableClass::PRODUCTO_INSUMO_ID, true)))) {
+      } if (self::notBlank(request::getInstance()->getPost(\presupuestoHistoricoTableClass::getNameField(\presupuestoHistoricoTableClass::PRODUCTO_INSUMO_ID, true)))) {
         $flag = true;
         session::getInstance()->setFlash('selectProducto', true);
         session::getInstance()->setError('El producto es requerido', 'selectProducto');
-        
-        //-------------------------------campo Maquina-----------------------------
-          //----campo nulo----
-      } if (self::notBlank(request::getInstance()->getPost(\controlPlagaTableClass::getNameField(\controlPlagaTableClass::PLAGA_ID, true)))) {
-        $flag = true;
-        session::getInstance()->setFlash('selectProveedor', true);
-        session::getInstance()->setError('El proveedor es requerido', 'selectProveedor');
 //      }
 //        if (self::notBlank(request::getInstance()->getPost(\solicitudInsumoTableClass::getNameField(\solicitudInsumoTableClass::VALOR_HORA, true)))) {
 //        $flag = true;
@@ -92,7 +109,7 @@ namespace mvc\validator {
       
       if ($flag === true) {
         //request::getInstance()->setMethod('GET');
-        routing::getInstance()->forward('controlPlaga', 'insert');
+        routing::getInstance()->forward('presupuestoHistorico', 'insert');
       }
     }
      public static function validateFiltroFecha($fechaInicial,$fechaFin) {

@@ -44,9 +44,9 @@ class editActionClass extends controllerClass implements controllerActionInterfa
         );
         $this->objpresupuestoHistorico = presupuestoHistoricoTableClass::getAll($fields, true, null, null, null, null, $where);
         
-        $id = array(
-            presupuestoHistoricoTableClass::ID => request::getInstance()->getRequest(presupuestoHistoricoTableClass::ID)
-        );
+//        $id = array(
+//            presupuestoHistoricoTableClass::ID => request::getInstance()->getRequest(presupuestoHistoricoTableClass::ID)
+//        );
 
         $idProducto = $this->objpresupuestoHistorico[0]->producto_insumo_id;
         $this->idTipoProducto = presupuestoHistoricoTableClass::getTipoInsumo($idProducto);
