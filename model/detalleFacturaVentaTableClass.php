@@ -30,6 +30,47 @@ class detalleFacturaVentaTableClass extends detalleFacturaVentaBaseTableClass {
     }
     
   }
+  
+  public static function getInsumo($idVenta){
+    try {
+      $sql = 'SELECT ' . '  ' . detalleFacturaVentaTableClass::DESCRIPCION  .  ' As producto_insumo_id'
+             . '  FROM ' . detalleFacturaVentaTableClass::getNameTable() . '  ' 
+             . ' WHERE ' . detalleFacturaVentaTableClass::ID . ' = ' . $idVenta;
+    
+      $answer = model::getInstance()->prepare($sql);
+            $answer->execute();
+            $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+//       print_r($sql);
+//     exit();
+      return $answer[0]->producto_insumo_id;
+      
+      
+    } catch (Exception $exc) {
+      throw $exc;
+    }
+    
+  }
+  
+  public static function getTipoInsumo($idProducto){
+    try {
+      $sql = 'SELECT ' . '  ' . tipoProductoInsumoTableClass::getNameTable() . '.' . tipoProductoInsumoTableClass::ID  .  ' As id'
+             . '  FROM ' . detalleFacturaVentaTableClass::getNameTable() . ' , ' . productoInsumoTableClass::getNameTable() . ' , ' . tipoProductoInsumoTableClass::getNameTable() . '  '
+             . ' WHERE ' .  detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::DESCRIPCION) . ' = '. productoInsumoTableClass::getNameField(productoInsumoTableClass::ID) . ' AND ' .  productoInsumoTableClass::getNameField(productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID) . ' = '. tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::ID) . ' AND '  . detalleFacturaVentaTableClass::getNameTable() . '.'. detalleFacturaVentaTableClass::DESCRIPCION . ' = ' . $idProducto;
+    
+      $answer = model::getInstance()->prepare($sql);
+            $answer->execute();
+            $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+//       print_r($sql);
+//     exit();
+      return $answer[0]->id;
+      
+      
+    } catch (Exception $exc) {
+      throw $exc;
+    }
+    
+  }
+  
   public static function getTotalPages($lines) {
     try {
       $sql = 'SELECT count(' . detalleFacturaVentaTableClass::ID . ') AS cantidad ' .

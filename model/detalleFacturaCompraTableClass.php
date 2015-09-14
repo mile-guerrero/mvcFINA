@@ -74,5 +74,26 @@ class detalleFacturaCompraTableClass extends detalleFacturaCompraBaseTableClass 
     }
     
   }
+  
+  
+  public static function getTipoInsumo($idProducto){
+    try {
+      $sql = 'SELECT ' . '  ' . tipoProductoInsumoTableClass::getNameTable() . '.' . tipoProductoInsumoTableClass::ID  .  ' As id'
+             . '  FROM ' . detalleFacturaCompraTableClass::getNameTable() . ' , ' . productoInsumoTableClass::getNameTable() . ' , ' . tipoProductoInsumoTableClass::getNameTable() . '  '
+             . ' WHERE ' .  detalleFacturaCompraTableClass::getNameField(detalleFacturaCompraTableClass::DESCRIPCION) . ' = '. productoInsumoTableClass::getNameField(productoInsumoTableClass::ID) . ' AND ' .  productoInsumoTableClass::getNameField(productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID) . ' = '. tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::ID) . ' AND '  . detalleFacturaCompraTableClass::getNameTable() . '.'. detalleFacturaCompraTableClass::DESCRIPCION . ' = ' . $idProducto;
+    
+      $answer = model::getInstance()->prepare($sql);
+            $answer->execute();
+            $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+//       print_r($sql);
+//     exit();
+      return $answer[0]->id;
+      
+      
+    } catch (Exception $exc) {
+      throw $exc;
+    }
+    
+  }
 
 }

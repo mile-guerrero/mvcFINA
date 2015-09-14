@@ -26,6 +26,16 @@ class insertActionClass extends controllerClass implements controllerActionInter
       );      
       $this->objHistoriInsumo = productoInsumoTableClass::getAll($fields, true, $orderBy, 'ASC');
       
+      $fields = array(
+            tipoProductoInsumoTableClass::ID,
+            tipoProductoInsumoTableClass::DESCRIPCION
+        );
+        $orderBy = array(
+            tipoProductoInsumoTableClass::DESCRIPCION
+        );
+        $this->objTipo = tipoProductoInsumoTableClass::getAll($fields, true, $orderBy, 'ASC');
+
+      
       $fields = array(     
       enfermedadTableClass::ID, 
       enfermedadTableClass::NOMBRE

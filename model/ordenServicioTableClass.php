@@ -9,6 +9,27 @@ use mvc\config\configClass as config;
  * @author Gonzalo Andres Bejarano, Elcy Milena Guerrero, Andres Eduardo Bahamon
  */
 class ordenServicioTableClass extends ordenServicioBaseTableClass {
+  
+  public static function getTipoInsumo($idProducto){
+    try {
+      $sql = 'SELECT ' . '  ' . tipoProductoInsumoTableClass::getNameTable() . '.' . tipoProductoInsumoTableClass::ID  .  ' As id'
+             . '  FROM ' . ordenServicioTableClass::getNameTable() . ' , ' . productoInsumoTableClass::getNameTable() . ' , ' . tipoProductoInsumoTableClass::getNameTable() . '  '
+             . ' WHERE ' .  ordenServicioTableClass::getNameField(ordenServicioTableClass::PRODUCTO_INSUMO_ID) . ' = '. productoInsumoTableClass::getNameField(productoInsumoTableClass::ID) . ' AND ' .  productoInsumoTableClass::getNameField(productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID) . ' = '. tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::ID) . ' AND '  . ordenServicioTableClass::getNameTable() . '.'. ordenServicioTableClass::PRODUCTO_INSUMO_ID . ' = ' . $idProducto;
+    
+      $answer = model::getInstance()->prepare($sql);
+            $answer->execute();
+            $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+//       print_r($sql);
+//     exit();
+      return $answer[0]->id;
+      
+      
+    } catch (Exception $exc) {
+      throw $exc;
+    }
+    
+  }
+  
   public static function getTotalPages($lines, $where) {
     try {
       $sql = 'SELECT count(' . ordenServicioTableClass::ID . ') AS cantidad ' .

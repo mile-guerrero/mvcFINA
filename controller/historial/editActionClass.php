@@ -31,6 +31,35 @@ class editActionClass extends controllerClass implements controllerActionInterfa
         );
         $this->objHistorial = historialTableClass::getAll($fields,false, null, null, null, null, $where);
        
+       $id = array(
+            historialTableClass::ID => request::getInstance()->getRequest(historialTableClass::ID)
+        );
+
+        $idProducto = $this->objHistorial[0]->producto_insumo_id;
+        $this->idTipoProducto = historialTableClass::getTipoInsumo($idProducto);
+
+        $fields = array(
+            productoInsumoTableClass::ID,
+            productoInsumoTableClass::DESCRIPCION
+        );
+        $orderBy = array(
+            productoInsumoTableClass::DESCRIPCION
+        );
+        $whereProducto = array(
+            productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID => $this->idTipoProducto
+        );
+        $this->objProducto = productoInsumoTableClass::getAll($fields, true, $orderBy, 'ASC', null, null, $whereProducto);
+
+ $fields = array(
+            tipoProductoInsumoTableClass::ID,
+            tipoProductoInsumoTableClass::DESCRIPCION
+        );
+        $orderBy = array(
+            tipoProductoInsumoTableClass::DESCRIPCION
+        );
+        $this->objTipo = tipoProductoInsumoTableClass::getAll($fields, true, $orderBy, 'ASC');
+ 
+        
         $fields = array(     
       plagaTableClass::ID, 
       plagaTableClass::NOMBRE,
@@ -52,15 +81,7 @@ class editActionClass extends controllerClass implements controllerActionInterfa
       ); 
       $this->objHistorialLote = loteTableClass::getAll($fields, true, $orderBy, 'ASC');
         
-        $fields = array(
-      productoInsumoTableClass::ID,
-      productoInsumoTableClass::DESCRIPCION
-      );
-      $orderBy = array(
-      productoInsumoTableClass::DESCRIPCION   
-      );      
-      $this->objHistoriInsumo = productoInsumoTableClass::getAll($fields, true, $orderBy, 'ASC');
-      
+        
       $fields = array(     
       enfermedadTableClass::ID, 
       enfermedadTableClass::NOMBRE

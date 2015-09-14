@@ -29,6 +29,8 @@ class createActionClass extends controllerClass implements controllerActionInter
         $horas = request::getInstance()->getPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::HORAS_PERDIDAS, true));
         $total = request::getInstance()->getPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::TOTAL_PAGAR, true));
 
+        
+         
         validator::validateInsert();
      
          if($fecha_fin < $fecha_ini){
@@ -41,11 +43,7 @@ class createActionClass extends controllerClass implements controllerActionInter
                 routing::getInstance()->forward('pagoTrabajador', 'insert');
             }
        
-        if($horas > $valor){
-                session::getInstance()->setFlash('selectFechaIni', true);
-                session::getInstance()->setError('Las deudas a cancelar no pueden ser mayor al sueldo', 'inputValor');
-                routing::getInstance()->forward('pagoTrabajador', 'insert');
-            }
+       
             
             if($total < 0){
                 session::getInstance()->setFlash('selectFechaIni', true);

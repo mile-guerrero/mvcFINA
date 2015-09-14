@@ -132,9 +132,24 @@ trabajador:
     javascript:
       - confirmar.js
  
-#-------------------modulo - Pedido-----------------------
+#-------------------modulo - control_plaga-----------------------
       
-pedido: 
+controlPlaga: 
+  index:
+    javascript:
+      - confirmar.js
+      
+      
+#-------------------modulo - control_enfermedad-----------------------
+      
+controlEnfermedad: 
+  index:
+    javascript:
+      - confirmar.js   
+      
+#-------------------modulo - presupuesto_historico-----------------------
+      
+presupuestoHistorico: 
   index:
     javascript:
       - confirmar.js

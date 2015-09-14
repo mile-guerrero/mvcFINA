@@ -28,8 +28,14 @@ class insertActionClass extends controllerClass implements controllerActionInter
        $id = array(
             registroLoteTableClass::ID => request::getInstance()->getRequest(registroLoteTableClass::ID)
         );
-//        print_r($id); 
+        
          session::getInstance()->setAttribute('idRegistro', $id);
+//        print_r($id);
+          $id = session::getInstance()->getAttribute('idRegistro');
+      foreach ($id as $value) {
+//      echo $value;
+      }
+      session::getInstance()->setAttribute('idGrafica', $value);
 //    exit();
       $fields = array(
           registroLoteTableClass::ID,
@@ -58,6 +64,24 @@ class insertActionClass extends controllerClass implements controllerActionInter
        
 
       $this->objLoteR = loteTableClass::getAll($fields, true, $orderBy, 'ASC');
+      
+      
+       $fields = array(
+          trabajadorTableClass::ID,
+          trabajadorTableClass::NOMBRET,
+           trabajadorTableClass::APELLIDO,
+           trabajadorTableClass::DOCUMENTO,
+           trabajadorTableClass::CREATED_AT
+      );
+      $orderBy = array(
+          trabajadorTableClass::ID
+      );
+       
+
+      $this->objTrabajador = trabajadorTableClass::getAll($fields, true, $orderBy, 'ASC');
+      
+     
+      
       $this->defineView('insert', 'reportes', session::getInstance()->getFormatOutput());
     } //cierre del try
     catch (PDOException $exc) {

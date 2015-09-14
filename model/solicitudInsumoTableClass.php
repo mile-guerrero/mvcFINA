@@ -10,6 +10,26 @@ use mvc\config\configClass as config;
  */
 class solicitudInsumoTableClass extends solicitudInsumoBaseTableClass {
   
+  public static function getTipoInsumo($idProducto){
+    try {
+      $sql = 'SELECT ' . '  ' . tipoProductoInsumoTableClass::getNameTable() . '.' . tipoProductoInsumoTableClass::ID  .  ' As id'
+             . '  FROM ' . solicitudInsumoTableClass::getNameTable() . ' , ' . productoInsumoTableClass::getNameTable() . ' , ' . tipoProductoInsumoTableClass::getNameTable() . '  '
+             . ' WHERE ' .  solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::PRODUCTO_INSUMO_ID) . ' = '. productoInsumoTableClass::getNameField(productoInsumoTableClass::ID) . ' AND ' .  productoInsumoTableClass::getNameField(productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID) . ' = '. tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::ID) . ' AND '  . solicitudInsumoTableClass::getNameTable() . '.'. solicitudInsumoTableClass::PRODUCTO_INSUMO_ID . ' = ' . $idProducto;
+    
+      $answer = model::getInstance()->prepare($sql);
+            $answer->execute();
+            $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+//       print_r($sql);
+//     exit();
+      return $answer[0]->id;
+      
+      
+    } catch (Exception $exc) {
+      throw $exc;
+    }
+    
+  }
+  
   public static function getTotalPages($lines, $where){
     try {
       $sql = 'SELECT count(' . solicitudInsumoTableClass::ID . ') AS cantidad ' .

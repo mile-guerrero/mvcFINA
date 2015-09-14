@@ -559,8 +559,8 @@ solicitudInsumo:
       - [admin]
       - [consultor]
 
-#-----------------------Pedido-------------------    
-pedido:
+#-----------------------control_plaga-------------------    
+controlPlaga:
   index:
     security: true
     credentials:
@@ -605,7 +605,103 @@ pedido:
     security: true 
     credentials:
       - [admin]
-      - [consultor]  
+      - [consultor]
+      
+#-----------------------control_enfermedad-------------------    
+controlEnfermedad:
+  index:
+    security: true
+    credentials:
+      - [admin]
+      - [consultor]
+  insert:
+    security: true
+    credentials:
+      - [admin]
+      - [consultor]
+  create:
+    security: true
+    credentials:
+      - [admin]
+      - [consultor]
+  edit: 
+    security: true
+    credentials:
+      - [admin]
+      - [consultor]
+  update:
+    security: true
+    credentials:
+      - [admin]
+      - [consultor]
+  delete:
+    security: true
+    credentials:
+      - [admin]
+      - [consultor]
+  deleteSelect:  
+    security: true
+    credentials:
+      - [admin]
+      - [consultor]
+  ver:
+    security: true
+    credentials:
+      - [admin]
+      - [consultor]
+  report:
+    security: true 
+    credentials:
+      - [admin]
+      - [consultor]
+      
+#-----------------------presupuesto_historico-------------------    
+presupuestoHistorico:
+  index:
+    security: true
+    credentials:
+      - [admin]
+      - [consultor]
+  insert:
+    security: true
+    credentials:
+      - [admin]
+      - [consultor]
+  create:
+    security: true
+    credentials:
+      - [admin]
+      - [consultor]
+  edit: 
+    security: true
+    credentials:
+      - [admin]
+      - [consultor]
+  update:
+    security: true
+    credentials:
+      - [admin]
+      - [consultor]
+  delete:
+    security: true
+    credentials:
+      - [admin]
+      - [consultor]
+  deleteSelect:  
+    security: true
+    credentials:
+      - [admin]
+      - [consultor]
+  ver:
+    security: true
+    credentials:
+      - [admin]
+      - [consultor]
+  report:
+    security: true 
+    credentials:
+      - [admin]
+      - [consultor]      
 
 #-----------------------trabajador-------------------    
 trabajador:

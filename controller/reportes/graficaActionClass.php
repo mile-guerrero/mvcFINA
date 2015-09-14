@@ -45,7 +45,7 @@ class graficaActionClass extends controllerClass implements controllerActionInte
         $cosPoints = array();
         //el 1 dato
         foreach ($objLote as $objeto) {
-          $cosPoints[] = array($objeto->id. ' ' . $objeto->ubicacion, $objeto->produccion . ' ' . 'Kg' . ' ' . productoInsumoTableClass::getNameProductoInsumo($objeto->producto_insumo_id));
+          $cosPoints[] = array($objeto->id . ' ' . $objeto->ubicacion . ' ' , $objeto->produccion . ' ' . 'Kg' . ' ' . productoInsumoTableClass::getNameProductoInsumo($objeto->producto_insumo_id));
         }
         $this->cosPoints = $cosPoints;
        
@@ -77,7 +77,25 @@ class graficaActionClass extends controllerClass implements controllerActionInte
 
 
       if ($value == 3) {
-        
+         $where = session::getInstance()->getAttribute('graficaWhere');
+        $fields = array(
+            pagoTrabajadorTableClass::TRABAJADOR_ID,
+            pagoTrabajadorTableClass::TOTAL_PAGAR,
+            pagoTrabajadorTableClass::ID,
+        );
+        $orderBy = array(
+            pagoTrabajadorTableClass::TOTAL_PAGAR,
+        );
+        $objTabajador = pagoTrabajadorTableClass::getAll($fields, false, $orderBy, 'ASC', null, null, $where);
+
+        $cosPoints = array();
+        foreach ($objTabajador as $objeto) {
+          $cosPoints[] = array($objeto->id . ' ' .trabajadorTableClass::getNameTrabajador($objeto->trabajador_id). ' ' . trabajadorTableClass::getNameApellido($objeto->trabajador_id). ' ' .  ' CC: ' . ' ' . trabajadorTableClass::getNameDocumento($objeto->trabajador_id) , $objeto->total_pagar);
+//         print_r($cosPoints);
+//         exit();
+        }
+//       $cosPoints[] = array(1, 2);
+        $this->cosPoints3 = $cosPoints;
       }
       if ($value == 4) {
         

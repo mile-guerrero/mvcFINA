@@ -14,7 +14,7 @@
       
   <?php if ($value == 1) : ?>   
       <h2 class="form-signin-heading rwd">
-<div id="chart3" style="width: 1024px; height: 500px"></div>
+<div id="chart3" style="width: 1050px; height: 500px"></div>
 <div id="info2c"></div>
 <script>
   $(document).ready(function () {
@@ -33,10 +33,29 @@
     crearGrafica2(<?php echo json_encode($cosPoints2) ?>);  
   });
 </script>
-<div id="chart2" style="width: 1024px; height: 500px"></div>
+<div id="chart2" style="width: 1050px; height: 500px"></div>
 </h2>   
 <?php endif; ?> 
       
+      
+    <?php if ($value == 3) : ?>
+        <h2 class="form-signin-heading rwd">
+<script>
+  $(document).ready(function () {
+    crearGrafica3(<?php echo json_encode($cosPoints3) ?>);  
+  });
+</script>
+<div id="chart4" style="width: 1050px; height: 500px"></div>
+</h2>   
+     <?php endif; ?> 
+      
+      
+      <?php if ($value == 4) : ?>
+        
+     <?php endif; ?> 
+     <?php if ($value == 5) : ?>
+        
+    <?php endif; ?>   
       
       <br>
  <a class="btn btn-lg btn-success btn-xs" target="_blank" href="<?php echo routing::getInstance()->getUrlWeb('reportes', 'report') ?>" ><?php echo i18n::__('importar pdf') ?></a>

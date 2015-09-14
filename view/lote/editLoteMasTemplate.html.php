@@ -13,5 +13,5 @@
     <br>
   </div>
  
-  <?php view::includePartial('lote/formularioPrincipalRLote',array('objLote'=>$objLote,'objLUD'=>$objLUD,'objLUMedida'=>$objLUMedida,'objLPI'=>$objLPI,'objLC'=>$objLC)) ?>
+  <?php view::includePartial('lote/formularioPrincipalRLote',array('idTipoProducto' => $idTipoProducto,'objLote'=>$objLote,'objLUD'=>$objLUD,'objLUMedida'=>$objLUMedida,'objProducto'=>$objProducto,'objTipo'=>$objTipo,'objLC'=>$objLC)) ?>
 </div>

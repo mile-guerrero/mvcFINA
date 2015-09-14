@@ -28,6 +28,23 @@ class pagoTrabajadorTableClass extends pagoTrabajadorBaseTableClass {
     }
     
   }
+  
+  
+  public static function getTotal($idTrabajador){
+    try {
+      $sql = 'SELECT ' . '  '. 'SUM ('. pagoTrabajadorTableClass::TOTAL_PAGAR  . ') ' .  ' As total'
+             . '  FROM ' . pagoTrabajadorTableClass::getNameTable() . '  ' 
+             . ' WHERE ' . pagoTrabajadorTableClass::TRABAJADOR_ID . ' = ' . $idTrabajador;
+    
+      $answer = model::getInstance()->prepare($sql);
+            $answer->execute();
+            $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+ return $answer[0]->total;
+   } catch (Exception $exc) {
+      throw $exc;
+    }
+    
+  }
 
   public static function getTotalPages($lines, $where) {
     try {

@@ -4,9 +4,13 @@
 <?php use mvc\session\sessionClass as session ?>
 <?php use mvc\request\requestClass as request ?>
 <?php $idHistorial = historialTableClass::ID ?>
-<?php $producto = historialTableClass::PRODUCTO_INSUMO_ID ?>
-<?php $productos = productoInsumoTableClass::ID ?>
-<?php $desProducto = productoInsumoTableClass::DESCRIPCION ?>
+<?php $insumo = historialTableClass::PRODUCTO_INSUMO_ID ?>
+<?php $idInsumo = tipoProductoInsumoTableClass::ID ?>
+<?php $nomInsumo = tipoProductoInsumoTableClass::DESCRIPCION ?>
+
+<?php $insumoInsumo = historialTableClass::PRODUCTO_INSUMO_ID ?>
+<?php $idInsumoInsumo = productoInsumoTableClass::ID ?>
+<?php $nomInsumoInsumo = productoInsumoTableClass::DESCRIPCION ?>
 
 <?php $enfermedad = historialTableClass::ENFERMEDAD_ID ?>
 <?php $enfermedads = enfermedadTableClass::ID ?>
@@ -59,18 +63,32 @@
     <?php endif ?>
   
   
-  <div class="form-group">
-    <label for="<?php echo historialTableClass::getNameField(historialTableClass::PRODUCTO_INSUMO_ID, true) ?>" class="col-sm-2"><?php echo i18n::__('insumo') ?>: </label>
-      <div class="col-sm-10"> 
-       <select class="form-control " id="<?php historialTableClass::getNameField(historialTableClass::ID, true) ?>" name="<?php echo historialTableClass::getNameField(historialTableClass::PRODUCTO_INSUMO_ID, true); ?>">
-         <option value="<?php echo (session::getInstance()->hasFlash('inputInsumo')  or request::getInstance()->hasPost(historialTableClass::getNameField(historialTableClass::PRODUCTO_INSUMO_ID, true))) ? request::getInstance()->getPost(historialTableClass::getNameField(historialTableClass::PRODUCTO_INSUMO_ID, true)) : ((isset($objHistorial[0])) ? '' : '') ?>"><?php echo i18n::__('selectInsumo')?></option>
-       <?php foreach($objHistoriInsumo as $histoProducto):?>
+ <div class="form-group">
+          <label class="col-sm-2"  for="<?php echo historialTableClass::getNameField(historialTableClass::PRODUCTO_INSUMO_ID, true) ?>">  <?php echo i18n::__('selectTPI') ?>:   </label>
+          <div class="col-sm-10"> 
+            <select class="form-control" id="slcTipoDeInsumo" required onchange="cargarInsumo('<?php echo routing::getInstance()->getUrlWeb('@getInsumo') ?>')">
+              <option value="">Seleccione el tipo de insumo</option>
+              <?php foreach ($objTipo as $key): ?>
+              <option <?php echo (isset($idTipoProducto) and $idTipoProducto == $key->$idInsumo ) ? 'selected' : '' ?> value="<?php echo $key->$idInsumo ?>"><?php echo $key->$nomInsumo ?></option>
+              <?php endforeach; ?>
+             
+            </select>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label class="col-sm-2" for="<?php echo historialTableClass::getNameField(historialTableClass::PRODUCTO_INSUMO_ID, true) ?>" >  <?php echo i18n::__('des') ?>:   </label>
+          <div class="col-sm-10"> 
+            <select class="form-control" id="slcInsumo" name="<?php echo historialTableClass::getNameField(historialTableClass::PRODUCTO_INSUMO_ID, true); ?>" required>
+              <option value="<?php echo (session::getInstance()->hasFlash('inputDescripcion') or request::getInstance()->hasPost(historialTableClass::getNameField(historialTableClass::PRODUCTO_INSUMO_ID, true))) ? request::getInstance()->getPost(historialTableClass::getNameField(historialTableClass::PRODUCTO_INSUMO_ID, true)) : ((isset($objHistorial[0])) ? '' : '') ?>"><?php echo i18n::__('selectInsumo') ?></option>
+              <?php  foreach ($objProducto as $key): ?>
          
-       <option <?php echo (request::getInstance()->hasPost(historialTableClass::getNameField(historialTableClass::PRODUCTO_INSUMO_ID, true)) === true and request::getInstance()->getPost(historialTableClass::getNameField(historialTableClass::PRODUCTO_INSUMO_ID, true)) == $histoProducto->$productos) ? 'selected' : (isset($objHistorial[0]->$producto) === true and $objHistorial[0]->$producto == $histoProducto->$productos) ? 'selected' : '' ?> value="<?php echo $histoProducto->$productos ?>"><?php echo $histoProducto->$desProducto ?></option>  
- <?php endforeach;?>
-   </select>    
-      </div> 
-    </div> 
+              <option <?php echo (request::getInstance()->hasPost(historialTableClass::getNameField(historialTableClass::PRODUCTO_INSUMO_ID, true)) === true and request::getInstance()->getPost(historialTableClass::getNameField(historialTableClass::PRODUCTO_INSUMO_ID, true)) == $key->$idInsumoInsumo) ? 'selected' : (isset($objHistorial[0]->$insumoInsumo) === true and $objHistorial[0]->$insumoInsumo == $key->$idInsumoInsumo) ? 'selected' : ''  ?> value="<?php echo $key->$idInsumoInsumo  ?>"><?php echo $key->$nomInsumoInsumo  ?></option>
+                <?php  endforeach; ?>
+            </select>
+          </div>
+        </div>
+        <br> 
    
    <?php if(session::getInstance()->hasError('inputPlaga')): ?>
   <div class="alert alert-danger alert-dismissible" role="alert" id="error">

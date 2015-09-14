@@ -7,6 +7,12 @@ dictionary:
     descargar:            Descargar archivo
     fecha:                Fecha
     informacion:          Información
+    control:              Control
+    controlPlaga:         Control plaga
+    controlEnfermedad:    Control enfermedad
+    presupuestoHistorico: Presupuesto historico
+    controlPlaga:         Control plaga
+    registroControlPlaga: Registro control plaga
     #-------Registros---------
     registroCliente:      Registro de cliente
     registroCooperativa:  Registro de cooperativa
@@ -249,6 +255,11 @@ dictionary:
     idTipo:               Tipo Id
     atras:                Pagina anterior
     cantidad por kilo:    Cantidad por kilo
+    controlEnfermedad:    Control enfermedad
+    registroControlEnfermedad: Registro control enfermedad
+    registroPresupuesto:  Registro presupuesto
+    totalProduccion:      Total produccion
+    totalPago:            Total pago
     #-------Eliminar-----------
     confirmar eliminar:   Confirmar Eliminar
     configEliminar:       Confirmar Eliminación

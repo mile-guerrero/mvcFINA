@@ -27,11 +27,10 @@ class reportActionClass extends controllerClass implements controllerActionInter
   public function execute() {
     try {
 
-      //$this->mensaje = 'Hola a todos';
       $where = null;
       $where = session::getInstance()->getAttribute('graficaWhere');
-//      print_r($where);
-//     exit();
+      $value = session::getInstance()->getAttribute('idGrafica');
+     if ($value == 1 or $value == 2) {
       $this->mensaje = 'Informacion de Producción';
       $this->mensaje1 = 'Informacion de Lotes';
       $fields = array(
@@ -47,20 +46,31 @@ class reportActionClass extends controllerClass implements controllerActionInter
           registroLoteTableClass::PRODUCCION
       );
       $this->objLote = registroLoteTableClass::getAll($fields, false, $orderBy, 'ASC', null, null, $where);
-
+     }
       
-//      $fields = array(
-//          historialTableClass::ID,
-//            historialTableClass::PRODUCTO_INSUMO_ID,
-//          historialTableClass::LOTE_ID,
-//            historialTableClass::ENFERMEDAD_ID,
-//          historialTableClass::CREATED_AT 
-//      );
-//      $orderBy = array(
-//      historialTableClass::ID   
-//      ); 
-//      
-//      $this->objHistorial = historialTableClass::getAll($fields, false, $orderBy, 'ASC',null,null,$where);
+     
+     if ($value == 3){
+       $this->idTrabajador = session::getInstance()->getAttribute('Trabajador');
+       
+        $this->mensaje3 = 'Informacion de pago a trabajadores';
+       $fields = array(
+          pagoTrabajadorTableClass::ID,
+          pagoTrabajadorTableClass::FECHA_INICIAL,
+          pagoTrabajadorTableClass::FECHA_FINAL,
+          pagoTrabajadorTableClass::EMPRESA_ID,
+          pagoTrabajadorTableClass::TRABAJADOR_ID,
+          pagoTrabajadorTableClass::VALOR_SALARIO,
+          pagoTrabajadorTableClass::HORAS_PERDIDAS,
+          pagoTrabajadorTableClass::TOTAL_PAGAR,
+          pagoTrabajadorTableClass::CREATED_AT,
+          pagoTrabajadorTableClass::UPDATED_AT
+      );
+      $orderBy = array(
+          pagoTrabajadorTableClass::ID
+      );
+      $this->objPTrabajador = pagoTrabajadorTableClass::getAll($fields, false, $orderBy, 'ASC', null, null, $where);       
+     }
+
 
       $this->defineView('index', 'reportes', session::getInstance()->getFormatOutput());
     } //cierre del try

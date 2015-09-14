@@ -32,6 +32,36 @@ class editActionClass extends controllerClass implements controllerActionInterfa
             ordenServicioTableClass::ID => request::getInstance()->getGet(ordenServicioTableClass::ID)
         );
         $this->objOS = ordenServicioTableClass::getAll($fields, false, null, null, null, null, $where);
+       
+       $id = array(
+            ordenServicioTableClass::ID => request::getInstance()->getRequest(ordenServicioTableClass::ID)
+        );
+
+        $idProducto = $this->objOS[0]->producto_insumo_id;
+        $this->idTipoProducto = ordenServicioTableClass::getTipoInsumo($idProducto);
+
+        $fields = array(
+            productoInsumoTableClass::ID,
+            productoInsumoTableClass::DESCRIPCION
+        );
+        $orderBy = array(
+            productoInsumoTableClass::DESCRIPCION
+        );
+        $whereProducto = array(
+            productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID => $this->idTipoProducto
+        );
+        $this->objProducto = productoInsumoTableClass::getAll($fields, true, $orderBy, 'ASC', null, null, $whereProducto);
+
+ $fields = array(
+            tipoProductoInsumoTableClass::ID,
+            tipoProductoInsumoTableClass::DESCRIPCION
+        );
+        $orderBy = array(
+            tipoProductoInsumoTableClass::DESCRIPCION
+        );
+        $this->objTipo = tipoProductoInsumoTableClass::getAll($fields, true, $orderBy, 'ASC');
+  
+        
         $fields = array(
       trabajadorTableClass::ID,
       trabajadorTableClass::NOMBRET
@@ -40,15 +70,6 @@ class editActionClass extends controllerClass implements controllerActionInterfa
       trabajadorTableClass::NOMBRET   
       );      
       $this->objOST = trabajadorTableClass::getAll($fields, true, $orderBy, 'ASC');
-    
-      $fields = array(
-      productoInsumoTableClass::ID,
-      productoInsumoTableClass::DESCRIPCION
-      );
-      $orderBy = array(
-      productoInsumoTableClass::DESCRIPCION   
-      );      
-      $this->objOSPI = productoInsumoTableClass::getAll($fields, true, $orderBy, 'ASC');
     
        $fields = array(
       maquinaTableClass::ID,

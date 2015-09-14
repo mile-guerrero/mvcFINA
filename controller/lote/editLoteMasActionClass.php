@@ -60,7 +60,14 @@ class editLoteMasActionClass extends controllerClass implements controllerAction
       ); 
       $this->objLUMedida = unidadMedidaTableClass::getAll($fields, false, $orderBy, 'ASC');
      
-        
+         $fields = array(     
+      tipoProductoInsumoTableClass::ID, 
+      tipoProductoInsumoTableClass::DESCRIPCION
+      );
+      $orderBy = array(
+      tipoProductoInsumoTableClass::DESCRIPCION    
+      ); 
+      $this->objTipo = tipoProductoInsumoTableClass::getAll($fields, false, $orderBy, 'ASC');
         
         $fields = array(     
       ciudadTableClass::ID, 
@@ -71,14 +78,21 @@ class editLoteMasActionClass extends controllerClass implements controllerAction
       ); 
       $this->objLC = ciudadTableClass::getAll($fields, false, $orderBy, 'ASC');
      
-      $fields = array(     
-      productoInsumoTableClass::ID, 
-      productoInsumoTableClass::DESCRIPCION
-      );
-      $orderBy = array(
-      productoInsumoTableClass::DESCRIPCION    
-      ); 
-      $this->objLPI = productoInsumoTableClass::getAll($fields, true, $orderBy, 'ASC');
+     $idProducto = $this->objLote[0]->producto_insumo_id;
+        $this->idTipoProducto = loteTableClass::getTipoInsumo($idProducto);
+
+        $fields = array(
+            productoInsumoTableClass::ID,
+            productoInsumoTableClass::DESCRIPCION
+        );
+        $orderBy = array(
+            productoInsumoTableClass::DESCRIPCION
+        );
+        $whereProducto = array(
+            productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID => $this->idTipoProducto
+        );
+        $this->objProducto = productoInsumoTableClass::getAll($fields, true, $orderBy, 'ASC', null, null, $whereProducto);
+
      
       
         $this->defineView('editLoteMas', 'lote', session::getInstance()->getFormatOutput());

@@ -7,6 +7,17 @@ dictionary:
     descargar:            Download file
     fecha:                Fecha
     informacion:          Information
+    control:              Control
+    controlPlaga:         Control plaga
+    controlEnfermedad:    Control enfermedad
+    presupuestoHistorico: Presupuesto historico
+    controlPlaga:         Control plaga
+    registroControlPlaga: Registro control plaga
+    controlEnfermedad:    Control enfermedad
+    registroControlEnfermedad: Registro control enfermedad
+    registroPresupuesto:  Registro presupuesto
+    totalProduccion:      Total produccion
+    totalPago:            Total pago
     #-------Registros---------
     registroCliente:      Customer registration
     registroCooperativa:  Registration cooperative

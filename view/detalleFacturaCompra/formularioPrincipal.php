@@ -12,9 +12,14 @@
 <?php $facturaCompra = detalleFacturaCompraTableClass::FACTURA_COMPRA_ID ?>
 <?php $idProveedor = proveedorTableClass::ID ?>
 <?php $nomProveedor = proveedorTableClass::NOMBREP ?>
+
 <?php $insumo = detalleFacturaCompraTableClass::DESCRIPCION ?>
-<?php $idInsumo = productoInsumoTableClass::ID ?>
-<?php $nomInsumo = productoInsumoTableClass::DESCRIPCION ?>
+<?php $idInsumo = tipoProductoInsumoTableClass::ID ?>
+<?php $nomInsumo = tipoProductoInsumoTableClass::DESCRIPCION ?>
+
+<?php $insumoInsumo = detalleFacturaCompraTableClass::DESCRIPCION ?>
+<?php $idInsumoInsumo = productoInsumoTableClass::ID ?>
+<?php $nomInsumoInsumo = productoInsumoTableClass::DESCRIPCION ?>
 
 
 <div class="container container-fluid" id="cuerpo">
@@ -41,28 +46,41 @@ caja["<?php echo detalleFacturaCompraTableClass::getNameField(detalleFacturaComp
 
        <br><br><br><br><br>
       
-      
-      
-      <?php if(session::getInstance()->hasError('inputDescripcion')): ?>
-       <div class="alert alert-danger alert-dismissible" role="alert" id="error">
-      <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputDescripcion') ?>
-    </div>
-    <?php endif ?>
-      
+       <?php if (session::getInstance()->hasError('inputDescripcion')): ?>
+          <div class="alert alert-danger alert-dismissible" role="alert" id="error">
+            <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputDescripcion') ?>
+          </div>
+        <?php endif ?>
+
+ <div class="form-group">
+          <label class="col-sm-2"  for="<?php echo detalleFacturaCompraTableClass::getNameField(detalleFacturaCompraTableClass::DESCRIPCION, true) ?>">  <?php echo i18n::__('selectTPI') ?>:   </label>
+          <div class="col-sm-10"> 
+            <select class="form-control" id="slcTipoDeInsumo" required onchange="cargarInsumo('<?php echo routing::getInstance()->getUrlWeb('@getInsumo') ?>')">
+              <option value="">Seleccione el tipo de insumo</option>
+              <?php foreach ($objTipo as $key): ?>
+              <option <?php echo (isset($idTipoProducto) and $idTipoProducto == $key->$idInsumo ) ? 'selected' : '' ?> value="<?php echo $key->$idInsumo ?>"><?php echo $key->$nomInsumo ?></option>
+              <?php endforeach; ?>
+             
+            </select>
+          </div>
+        </div>
         
-       
-       <div class="form-group">
-      <label for="<?php echo detalleFacturaCompraTableClass::getNameField(detalleFacturaCompraTableClass::DESCRIPCION, true) ?>" class="col-sm-2">  <?php echo i18n::__('des') ?>:   </label>
-      <div class="col-sm-10"> 
-    <select class="form-control" id="<?php detalleFacturaCompraTableClass::getNameField(detalleFacturaCompraTableClass::DESCRIPCION, true)?>" name="<?php echo detalleFacturaCompraTableClass::getNameField(detalleFacturaCompraTableClass::DESCRIPCION, true);?>" required>
-        <option value="<?php echo (session::getInstance()->hasFlash('inputDescripcion') or request::getInstance()->hasPost(detalleFacturaCompraTableClass::getNameField(detalleFacturaCompraTableClass::DESCRIPCION, true))) ? request::getInstance()->getPost(detalleFacturaCompraTableClass::getNameField(detalleFacturaCompraTableClass::DESCRIPCION, true)) : ((isset($objDetalleFactura[0])) ? '' : '') ?>"><?php echo i18n::__('selectInsumo') ?></option>
-       <?php foreach($objProducto as $key):?>
-      <option <?php echo (request::getInstance()->hasPost(detalleFacturaCompraTableClass::getNameField(detalleFacturaCompraTableClass::DESCRIPCION, true)) === true and request::getInstance()->getPost(detalleFacturaCompraTableClass::getNameField(detalleFacturaCompraTableClass::DESCRIPCION, true)) == $key->$idInsumo) ? 'selected' : (isset($objDetalleFactura[0]->$insumo) === true and $objDetalleFactura[0]->$insumo == $key->$idInsumo) ? 'selected' : '' ?> value="<?php echo $key->$idInsumo ?>"><?php echo $key->$nomInsumo ?></option>
-       <?php endforeach;?>
-   </select> 
-      </div> 
-    </div> 
+        <div class="form-group">
+          <label class="col-sm-2" for="<?php echo detalleFacturaCompraTableClass::getNameField(detalleFacturaCompraTableClass::DESCRIPCION, true) ?>" >  <?php echo i18n::__('des') ?>:   </label>
+          <div class="col-sm-10"> 
+            <select class="form-control" id="slcInsumo" name="<?php echo detalleFacturaCompraTableClass::getNameField(detalleFacturaCompraTableClass::DESCRIPCION, true); ?>" required>
+              <option value="<?php echo (session::getInstance()->hasFlash('inputDescripcion') or request::getInstance()->hasPost(detalleFacturaCompraTableClass::getNameField(detalleFacturaCompraTableClass::DESCRIPCION, true))) ? request::getInstance()->getPost(detalleFacturaCompraTableClass::getNameField(detalleFacturaCompraTableClass::DESCRIPCION, true)) : ((isset($objDetalleFactura[0])) ? '' : '') ?>"><?php echo i18n::__('selectInsumo') ?></option>
+              <?php  foreach ($objProducto as $key): ?>
+         
+              <option <?php echo (request::getInstance()->hasPost(detalleFacturaCompraTableClass::getNameField(detalleFacturaCompraTableClass::DESCRIPCION, true)) === true and request::getInstance()->getPost(detalleFacturaCompraTableClass::getNameField(detalleFacturaCompraTableClass::DESCRIPCION, true)) == $key->$idInsumoInsumo) ? 'selected' : (isset($objDetalleFactura[0]->$insumoInsumo) === true and $objDetalleFactura[0]->$insumoInsumo == $key->$idInsumoInsumo) ? 'selected' : ''  ?> value="<?php echo $key->$idInsumoInsumo  ?>"><?php echo $key->$nomInsumoInsumo  ?></option>
+                <?php  endforeach; ?>
+            </select>
+          </div>
+        </div>
+        <br>
+      
+     
       
       <?php if(session::getInstance()->hasError('inputCantidad')): ?>
     <div class="alert alert-danger alert-dismissible" role="alert" id="error">

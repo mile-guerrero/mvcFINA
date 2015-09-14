@@ -27,11 +27,13 @@ class createActionClass extends controllerClass implements controllerActionInter
   public function execute() {
     try {
 
-      $id = session::getInstance()->getAttribute('idRegistro');
-      foreach ($id as $value) {
-//      echo $value;
-      }
-      session::getInstance()->setAttribute('idGrafica', $value);
+//      $id = session::getInstance()->getAttribute('idRegistro');
+//      foreach ($id as $value) {
+////      echo $value;
+//      }
+//      session::getInstance()->setAttribute('idGrafica', $value);
+      
+       $value = session::getInstance()->getAttribute('idGrafica');
       $where = null;
       if ($value == 1) {
         if (((request::getInstance()->hasPost(registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_1') and empty(mvc\request\requestClass::getInstance()->getPost(registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_1')) === false) and ( (request::getInstance()->hasPost(registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_2') and empty(mvc\request\requestClass::getInstance()->getPost(registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_2')) === false)) and empty(mvc\request\requestClass::getInstance()->getPost(registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_1')) === false) and ( (request::getInstance()->hasPost(registroLoteTableClass::getNameField(registroLoteTableClass::UBICACION, true)) and empty(mvc\request\requestClass::getInstance()->getPost(registroLoteTableClass::getNameField(registroLoteTableClass::UBICACION, true))) === false))) {
@@ -101,9 +103,38 @@ class createActionClass extends controllerClass implements controllerActionInter
           }
         }
       }
+       
       if ($value == 3) {
         
+        if ((request::getInstance()->hasPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::CREATED_AT, true) . '_1') and empty(mvc\request\requestClass::getInstance()->getPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::CREATED_AT, true) . '_1')) === false) and ( (request::getInstance()->hasPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::CREATED_AT, true) . '_2') and empty(mvc\request\requestClass::getInstance()->getPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::CREATED_AT, true) . '_2')) === false))) {
+
+          if (request::getInstance()->isMethod('POST')) {
+
+            $fechaInicial = request::getInstance()->getPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::CREATED_AT, true) . '_1');
+            $fechaFin = request::getInstance()->getPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::CREATED_AT, true) . '_2');
+            $nombre = request::getInstance()->getPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::TRABAJADOR_ID, true));
+             session::getInstance()->setAttribute('Trabajador', $nombre);
+        
+       
+            if (strtotime($fechaFin) < strtotime($fechaInicial)) {
+              session::getInstance()->setError('La fecha final no puede ser menor a la actual', 'inputFecha');
+              session::getInstance()->setFlash('modalFilters', true);
+              routing::getInstance()->forward('reportes', 'insert');
+            }
+
+
+          
+
+            $where[] = '(' . pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::TRABAJADOR_ID) . ' = ' . $nombre . ' ) '
+                    . ' AND ' . '(' . pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::CREATED_AT) . ' BETWEEN ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaInicial . ' 00:00:00')) . "'" . ' AND ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59')) . "'" . ' ) ';
+          
+            session::getInstance()->setAttribute('graficaWhere', $where);
+
+          }
+        }
       }
+
+      
       if ($value == 4) {
         
       }

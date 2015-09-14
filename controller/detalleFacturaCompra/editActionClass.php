@@ -35,6 +35,25 @@ class editActionClass extends controllerClass implements controllerActionInterfa
             detalleFacturaCompraTableClass::ID => request::getInstance()->getGet(detalleFacturaCompraTableClass::ID)
         );
         $this->objDetalleFactura = detalleFacturaCompraTableClass::getAll($fields, false, null, null, null, null, $where);
+        $id = array(
+            detalleFacturaCompraTableClass::ID => request::getInstance()->getRequest(detalleFacturaCompraTableClass::ID)
+        );
+
+        $idProducto = $this->objDetalleFactura[0]->producto_insumo_id;
+        $this->idTipoProducto = detalleFacturaCompraTableClass::getTipoInsumo($idProducto);
+        $fields = array(
+            productoInsumoTableClass::ID,
+            productoInsumoTableClass::DESCRIPCION
+        );
+        $orderBy = array(
+            productoInsumoTableClass::DESCRIPCION
+        );
+        $whereProducto = array(
+            productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID => $this->idTipoProducto
+        );
+        $this->objProducto = productoInsumoTableClass::getAll($fields, true, $orderBy, 'ASC', null, null, $whereProducto);
+
+        
         
          $fields = array(
            facturaCompraTableClass::ID,
@@ -44,15 +63,15 @@ class editActionClass extends controllerClass implements controllerActionInterfa
             facturaCompraTableClass::FECHA
         );
         $this->objFactura = facturaCompraTableClass::getAll($fields, false, $orderBy, 'ASC');
-        
-        $fields = array(
-            productoInsumoTableClass::ID,
-            productoInsumoTableClass::DESCRIPCION
+      
+       $fields = array(
+            tipoProductoInsumoTableClass::ID,
+            tipoProductoInsumoTableClass::DESCRIPCION
       );
       $orderBy = array(
-          productoInsumoTableClass::DESCRIPCION
+          tipoProductoInsumoTableClass::DESCRIPCION
       );
-      $this->objProducto = productoInsumoTableClass::getAll($fields, true, $orderBy, 'ASC');
+      $this->objTipo = tipoProductoInsumoTableClass::getAll($fields, true, $orderBy, 'ASC');
         $this->defineView('edit', 'detalleFacturaCompra', session::getInstance()->getFormatOutput());
         $idFactura = facturaCompraTableClass::ID;
         

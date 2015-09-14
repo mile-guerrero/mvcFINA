@@ -11,6 +11,27 @@ use mvc\config\configClass as config;
 class historialTableClass extends historialBaseTableClass {
   
     
+  public static function getTipoInsumo($idProducto){
+    try {
+      $sql = 'SELECT ' . '  ' . tipoProductoInsumoTableClass::getNameTable() . '.' . tipoProductoInsumoTableClass::ID  .  ' As id'
+             . '  FROM ' . historialTableClass::getNameTable() . ' , ' . productoInsumoTableClass::getNameTable() . ' , ' . tipoProductoInsumoTableClass::getNameTable() . '  '
+             . ' WHERE ' .  historialTableClass::getNameField(historialTableClass::PRODUCTO_INSUMO_ID) . ' = '. productoInsumoTableClass::getNameField(productoInsumoTableClass::ID) . ' AND ' .  productoInsumoTableClass::getNameField(productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID) . ' = '. tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::ID) . ' AND '  . historialTableClass::getNameTable() . '.'. historialTableClass::PRODUCTO_INSUMO_ID . ' = ' . $idProducto;
+    
+      $answer = model::getInstance()->prepare($sql);
+            $answer->execute();
+            $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+//       print_r($sql);
+//     exit();
+      return $answer[0]->id;
+      
+      
+    } catch (Exception $exc) {
+      throw $exc;
+    }
+    
+  }
+  
+  
   
 public static function getTotalPages($lines, $where){
     try {

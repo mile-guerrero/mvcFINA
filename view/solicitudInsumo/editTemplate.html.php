@@ -10,6 +10,6 @@
     <br>
     <br>
   </div>
-   <?php view::includePartial('solicitudInsumo/formularioPrincipal', array('objS' => $objS, 'objT' => $objT, 'objP' => $objP, 'objL' => $objL)) ?>
+   <?php view::includePartial('solicitudInsumo/formularioPrincipal', array('objProducto'=>$objProducto,'objTipo'=>$objTipo,'objS' => $objS, 'objT' => $objT,'idTipoProducto' => $idTipoProducto, 'objL' => $objL)) ?>
 </div>
   

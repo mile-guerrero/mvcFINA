@@ -32,6 +32,35 @@ class editActionClass extends controllerClass implements controllerActionInterfa
         );
         $this->objS = solicitudInsumoTableClass::getAll($fields, true, null, null, null, null, $where);
         
+         $id = array(
+            solicitudInsumoTableClass::ID => request::getInstance()->getRequest(solicitudInsumoTableClass::ID)
+        );
+
+        $idProducto = $this->objS[0]->producto_insumo_id;
+        $this->idTipoProducto = solicitudInsumoTableClass::getTipoInsumo($idProducto);
+
+        $fields = array(
+            productoInsumoTableClass::ID,
+            productoInsumoTableClass::DESCRIPCION
+        );
+        $orderBy = array(
+            productoInsumoTableClass::DESCRIPCION
+        );
+        $whereProducto = array(
+            productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID => $this->idTipoProducto
+        );
+        $this->objProducto = productoInsumoTableClass::getAll($fields, true, $orderBy, 'ASC', null, null, $whereProducto);
+
+ $fields = array(
+            tipoProductoInsumoTableClass::ID,
+            tipoProductoInsumoTableClass::DESCRIPCION
+        );
+        $orderBy = array(
+            tipoProductoInsumoTableClass::DESCRIPCION
+        );
+        $this->objTipo = tipoProductoInsumoTableClass::getAll($fields, true, $orderBy, 'ASC');
+
+        
         $fields = array(
             trabajadorTableClass::ID,
             trabajadorTableClass::NOMBRET
@@ -41,15 +70,7 @@ class editActionClass extends controllerClass implements controllerActionInterfa
         );
         $this->objT = trabajadorTableClass::getAll($fields, true, $orderBy, 'ASC');
         
-        $fields = array(
-            productoInsumoTableClass::ID,
-            productoInsumoTableClass::DESCRIPCION
-        );
-        $orderBy = array(
-            productoInsumoTableClass::DESCRIPCION
-        );
-        $this->objP = productoInsumoTableClass::getAll($fields, true, $orderBy, 'ASC');
-        
+     
         $fields = array(
             loteTableClass::ID,
             loteTableClass::UBICACION

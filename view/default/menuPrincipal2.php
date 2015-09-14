@@ -64,13 +64,20 @@ use mvc\i18n\i18nClass as i18n ?>
               <li><a  href="<?php echo routing::getInstance()->getUrlWeb('pagoTrabajador', 'index') ?>"><?php echo i18n::__('pagoTrabajador') ?></a></li>
               <li><a  href="<?php echo routing::getInstance()->getUrlWeb('solicitudInsumo', 'index') ?>"><?php echo i18n::__('solicitudInsumo') ?></a></li>
               <li><a  href="<?php echo routing::getInstance()->getUrlWeb('ordenServicio', 'index') ?>"><?php echo i18n::__('orden') ?></a></li>
-              <li><a  href="<?php echo routing::getInstance()->getUrlWeb('pedido', 'index') ?>"><?php echo i18n::__('pedido') ?></a></li>
               <li><a  href="<?php echo routing::getInstance()->getUrlWeb('manoObra', 'index') ?>"><?php echo i18n::__('manoObra') ?></a></li>
               <li><a  href="<?php echo routing::getInstance()->getUrlWeb('facturaVenta', 'index') ?>"><?php echo i18n::__('factura') ?></a></li>
               <li><a  href="<?php echo routing::getInstance()->getUrlWeb('facturaCompra', 'index') ?>"><?php echo i18n::__('facturaCompra') ?></a></li>
+            </ul>
+          </li>
+          
+          <li class="dropdown">
+            <a id="colorletra" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo i18n::__('control') ?> <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a  href="<?php echo routing::getInstance()->getUrlWeb('controlPlaga', 'index') ?>"><?php echo i18n::__('controlPlaga') ?></a></li>
+              <li><a  href="<?php echo routing::getInstance()->getUrlWeb('controlEnfermedad', 'index') ?>"><?php echo i18n::__('controlEnfermedad') ?></a></li>
+              <li><a  href="<?php echo routing::getInstance()->getUrlWeb('presupuestoHistorico', 'index') ?>"><?php echo i18n::__('presupuestoHistorico') ?></a></li>
               <li class="divider"></li>
               <li><a  href="<?php echo routing::getInstance()->getUrlWeb('reportes', 'index') ?>"><?php echo i18n::__('reportes') ?></a></li>
-           
             </ul>
           </li>
 

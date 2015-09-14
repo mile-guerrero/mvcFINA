@@ -6,11 +6,19 @@
 <?php $idLote = loteTableClass::ID ?>
 <?php $ubi = loteTableClass::UBICACION ?>
 <?php $tamano = loteTableClass::TAMANO ?>
-<?php $descripcion = loteTableClass::DESCRIPCION ?>
+<?php $descripcion = loteTableClass::PRODUCTO_INSUMO_ID ?>
 <?php $fecha = loteTableClass::FECHA_INICIO_SIEMBRA ?>
 <?php $fechaRiego = loteTableClass::FECHA_RIEGO ?>
 <?php $numero = loteTableClass::NUMERO_PLANTULAS ?>
 <?php $presupuesto = loteTableClass::PRESUPUESTO ?>
+
+<?php $insumo = loteTableClass::PRODUCTO_INSUMO_ID ?>
+<?php $idInsumo = tipoProductoInsumoTableClass::ID ?>
+<?php $nomInsumo = tipoProductoInsumoTableClass::DESCRIPCION ?>
+
+<?php $insumoInsumo = loteTableClass::PRODUCTO_INSUMO_ID ?>
+<?php $idInsumoInsumo = productoInsumoTableClass::ID ?>
+<?php $nomInsumoInsumo = productoInsumoTableClass::DESCRIPCION ?>
 
 <?php $produccion = loteTableClass::PRODUCCION ?>
 
@@ -22,9 +30,6 @@
 <?php $idUnidad = unidadDistanciaTableClass::ID ?>
 <?php $desUnidad = unidadDistanciaTableClass::DESCRIPCION ?>
 
-<?php $idInsu = loteTableClass::PRODUCTO_INSUMO_ID ?>
-<?php $idInsumo = productoInsumoTableClass::ID ?>
-<?php $desInsumo = productoInsumoTableClass::DESCRIPCION ?>
 
 <?php $idCiudad = loteTableClass::ID_CIUDAD ?>
 <?php $descripcionciudad = ciudadTableClass::NOMBRE_CIUDAD ?>
@@ -85,22 +90,39 @@
     </div>
     <?php endif ?>
 
-
+<div class="form-group">
+          <label class="col-sm-2"  for="<?php echo loteTableClass::getNameField(loteTableClass::PRODUCTO_INSUMO_ID, true) ?>">  <?php echo i18n::__('selectTPI') ?>:   </label>
+          <div class="col-sm-10"> 
+            <select class="form-control" id="slcTipoDeInsumo" required onchange="cargarInsumo('<?php echo routing::getInstance()->getUrlWeb('@getInsumo') ?>')">
+              <option value="">Seleccione el tipo de insumo</option>
+              <?php foreach ($objTipo as $key): ?>
+              <option <?php echo (isset($idTipoProducto) and $idTipoProducto == $key->$idInsumo ) ? 'selected' : '' ?> value="<?php echo $key->$idInsumo ?>"><?php echo $key->$nomInsumo ?></option>
+              <?php endforeach; ?>
+             
+            </select>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label class="col-sm-2" for="<?php echo loteTableClass::getNameField(loteTableClass::PRODUCTO_INSUMO_ID, true) ?>" >  <?php echo i18n::__('des') ?>:   </label>
+          <div class="col-sm-10"> 
+            <select class="form-control" id="slcInsumo" name="<?php echo loteTableClass::getNameField(loteTableClass::PRODUCTO_INSUMO_ID, true); ?>" required>
+              <option value="<?php echo (session::getInstance()->hasFlash('inputDescripcion') or request::getInstance()->hasPost(loteTableClass::getNameField(loteTableClass::PRODUCTO_INSUMO_ID, true))) ? request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::PRODUCTO_INSUMO_ID, true)) : ((isset($objLote[0])) ? '' : '') ?>"><?php echo i18n::__('selectInsumo') ?></option>
+              <?php  foreach ($objProducto as $key): ?>
+         
+              <option <?php echo (request::getInstance()->hasPost(loteTableClass::getNameField(loteTableClass::PRODUCTO_INSUMO_ID, true)) === true and request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::PRODUCTO_INSUMO_ID, true)) == $key->$idInsumoInsumo) ? 'selected' : (isset($objLote[0]->$insumoInsumo) === true and $objLote[0]->$insumoInsumo == $key->$idInsumoInsumo) ? 'selected' : ''  ?> value="<?php echo $key->$idInsumoInsumo  ?>"><?php echo $key->$nomInsumoInsumo  ?></option>
+                <?php  endforeach; ?>
+            </select>
+          </div>
+        </div>
+        <br>
 
 
 <div class="row j1" >
         <label for="<?php echo loteTableClass::getNameField(loteTableClass::NUMERO_PLANTULAS, true) ?>" class="col-sm-2"> <?php echo i18n::__('numero') ?>: </label>     
-        <div class="col-lg-5">
+        <div class="col-lg-10">
           <input  class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputPlantulas') or request::getInstance()->hasPost(loteTableClass::getNameField(loteTableClass::NUMERO_PLANTULAS, true))) ? request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::NUMERO_PLANTULAS, true)) : ((isset($objLote[0])) ? $objLote[0]->$numero : '') ?>" type="text" name="<?php echo loteTableClass::getNameField(loteTableClass::NUMERO_PLANTULAS, true) ?>" placeholder="<?php echo i18n::__('numero') ?>" >
       
-        </div>
-        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-           <select  class="form-control" id="<?php loteTableClass::getNameField(loteTableClass::ID, true)?>" name="<?php echo loteTableClass::getNameField(loteTableClass::PRODUCTO_INSUMO_ID, true);?>">
-  <option value="1"><?php echo i18n::__('seleccione insumo') ?></option>
-       <?php foreach($objLPI as $C):?>
-       <option <?php echo (request::getInstance()->hasPost(loteTableClass::getNameField(loteTableClass::PRODUCTO_INSUMO_ID, true)) === true and request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::PRODUCTO_INSUMO_ID, true)) == $C->$idInsumo) ? 'selected' :  (isset($objLote[0]->$idInsu) === true and $objLote[0]->$idInsu == $C->$idInsumo) ? 'selected' : '' ?>  value="<?php echo $C->$idInsumo?>"><?php echo $C->$desInsumo?></option>
-        <?php endforeach;?>
-   </select>
         </div>
       </div>
   

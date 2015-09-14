@@ -362,11 +362,15 @@ ordenServicio_insert:
     - model/productoInsumoTableClass.php
     - model/base/maquinaBaseTableClass.php
     - model/maquinaTableClass.php
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php
     
 ordenServicio_create:
   url:    /ordenServicio/crear
   param:  { module: ordenServicio, action: create, format: html }
   load:
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php
     - model/base/ordenServicioBaseTableClass.php
     - model/ordenServicioTableClass.php
     - model/base/trabajadorBaseTableClass.php
@@ -384,6 +388,8 @@ ordenServicio_edit:
   url:    /ordenServicio/editar
   param:  { module: ordenServicio, action: edit, format: html }
   load:
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php
     - model/base/ordenServicioBaseTableClass.php
     - model/ordenServicioTableClass.php 
     - model/base/trabajadorBaseTableClass.php
@@ -397,6 +403,8 @@ ordenServicio_update:
   url:    /ordenServicio/actualizar
   param:  { module: ordenServicio, action: update, format: html }
   load:
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php
     - model/base/ordenServicioBaseTableClass.php
     - model/ordenServicioTableClass.php 
     - model/base/trabajadorBaseTableClass.php
@@ -950,6 +958,8 @@ lote_insertMas:
     - model/unidadMedidaTableClass.php
     - model/base/registroLoteBaseTableClass.php
     - model/registroLoteTableClass.php
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php
         
 lote_createMas:
   url:    /lote/crearMas
@@ -971,6 +981,8 @@ lote_createMas:
     - model/unidadMedidaTableClass.php
     - model/base/registroLoteBaseTableClass.php
     - model/registroLoteTableClass.php
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php
         
     
 lote_edit:
@@ -1341,11 +1353,15 @@ solicitudInsumo_insert:
     - model/productoInsumoTableClass.php
     - model/base/loteBaseTableClass.php
     - model/loteTableClass.php
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php
     
 solicitudInsumo_create:
   url:    /solicitudInsumo/crear
   param:  { module: solicitudInsumo, action: create, format: html }
   load:
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php
     - model/base/solicitudInsumoBaseTableClass.php
     - model/solicitudInsumoTableClass.php
     - model/base/trabajadorBaseTableClass.php
@@ -1363,6 +1379,8 @@ solicitudInsumo_edit:
   url:    /solicitudInsumo/editar
   param:  { module: solicitudInsumo, action: edit, format: html }
   load:
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php
     - model/base/solicitudInsumoBaseTableClass.php
     - model/solicitudInsumoTableClass.php 
     - model/base/trabajadorBaseTableClass.php
@@ -1376,6 +1394,8 @@ solicitudInsumo_update:
   url:    /solicitudInsumo/actualizar
   param:  { module: solicitudInsumo, action: update, format: html }
   load:
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php
     - model/base/solicitudInsumoBaseTableClass.php
     - model/solicitudInsumoTableClass.php 
     - model/base/trabajadorBaseTableClass.php
@@ -1692,148 +1712,7 @@ pagoTrabajador_deleteFilters:
   url:    /pagoTrabajador/borrarFiltros
   param:  { module: pagoTrabajador, action: deleteFilters, format: html }
   load:    
-#----------------------Pedido--------------------------------    
-pedido_index:
-  url:    /pedido/index
-  param:  { module: pedido, action: index, format: html }
-  load:
-    - model/base/pedidoBaseTableClass.php
-    - model/pedidoTableClass.php
-    - model/base/empresaBaseTableClass.php
-    - model/empresaTableClass.php
-    - model/base/proveedorBaseTableClass.php
-    - model/proveedorTableClass.php
-    - model/base/productoInsumoBaseTableClass.php
-    - model/productoInsumoTableClass.php
-    - libs/validator/pedido/pedidoValidatorClass.php
     
-    
-pedido_insert:
-  url:    /pedido/insertar
-  param:  { module: pedido, action: insert, format: html }
-  load:
-    - model/base/pedidoBaseTableClass.php
-    - model/pedidoTableClass.php
-    - model/base/empresaBaseTableClass.php
-    - model/empresaTableClass.php
-    - model/base/proveedorBaseTableClass.php
-    - model/proveedorTableClass.php
-    - model/base/productoInsumoBaseTableClass.php
-    - model/productoInsumoTableClass.php
-    
-pedido_create:
-  url:    /pedido/crear
-  param:  { module: pedido, action: create, format: html }
-  load:
-    - model/base/pedidoBaseTableClass.php
-    - model/pedidoTableClass.php
-    - model/base/empresaBaseTableClass.php
-    - model/empresaTableClass.php
-    - model/base/proveedorBaseTableClass.php
-    - model/proveedorTableClass.php
-    - model/base/productoInsumoBaseTableClass.php
-    - model/productoInsumoTableClass.php
-    - libs/validator/pedido/pedidoValidatorClass.php
-    - hooks/logHookClass.php
-    - model/base/bitacoraBaseTableClass.php
-    - model/bitacoraTableClass.php
-
-pedido_edit:
-  url:    /pedido/editar
-  param:  { module: pedido, action: edit, format: html }
-  load:
-    - model/base/pedidoBaseTableClass.php
-    - model/pedidoTableClass.php
-    - model/base/empresaBaseTableClass.php
-    - model/empresaTableClass.php
-    - model/base/proveedorBaseTableClass.php
-    - model/proveedorTableClass.php
-    - model/base/productoInsumoBaseTableClass.php
-    - model/productoInsumoTableClass.php
-    
-pedido_update:
-  url:    /pedido/actualizar
-  param:  { module: pedido, action: update, format: html }
-  load:
-    - model/base/pedidoBaseTableClass.php
-    - model/pedidoTableClass.php
-    - model/base/empresaBaseTableClass.php
-    - model/empresaTableClass.php
-    - model/base/proveedorBaseTableClass.php
-    - model/proveedorTableClass.php
-    - model/base/productoInsumoBaseTableClass.php
-    - model/productoInsumoTableClass.php
-    - libs/validator/pedido/pedidoValidatorUpdateClass.php
-    - hooks/logHookClass.php
-    - model/base/bitacoraBaseTableClass.php
-    - model/bitacoraTableClass.php
-    
-pedido_delete:
-  url:    /pedido/eliminar
-  param:  { module: pedido, action: delete, format: json }
-  load:
-    - model/base/pedidoBaseTableClass.php
-    - model/pedidoTableClass.php
-    - model/base/empresaBaseTableClass.php
-    - model/empresaTableClass.php
-    - model/base/proveedorBaseTableClass.php
-    - model/proveedorTableClass.php
-    - model/base/productoInsumoBaseTableClass.php
-    - model/productoInsumoTableClass.php
-    - hooks/logHookClass.php
-    - model/base/bitacoraBaseTableClass.php
-    - model/bitacoraTableClass.php
-    
-pedido_deleteSelect:
-  url:    /pedido/eliminarSeleccion
-  param:  { module: pedido, action: deleteSelect, format: html }
-  load:
-    - model/base/pedidoBaseTableClass.php
-    - model/pedidoTableClass.php
-    - model/base/empresaBaseTableClass.php
-    - model/empresaTableClass.php
-    - model/base/proveedorBaseTableClass.php
-    - model/proveedorTableClass.php
-    - model/base/productoInsumoBaseTableClass.php
-    - model/productoInsumoTableClass.php
-    - hooks/logHookClass.php
-    - model/base/bitacoraBaseTableClass.php
-    - model/bitacoraTableClass.php
-    
-pedido_ver:
-  url:    /pedido/ver
-  param:  { module: pedido, action: ver, format: html }
-  load:
-    - model/base/pedidoBaseTableClass.php
-    - model/pedidoTableClass.php
-    - model/base/empresaBaseTableClass.php
-    - model/empresaTableClass.php
-    - model/base/proveedorBaseTableClass.php
-    - model/proveedorTableClass.php
-    - model/base/productoInsumoBaseTableClass.php
-    - model/productoInsumoTableClass.php
-    
-pedido_reporte:
-  url:    /pedido/reporte
-  param:  { module: pedido, action: report, format: pdf }
-  load:
-    - libs/fpdf/fpdf.php
-    - model/base/pedidoBaseTableClass.php
-    - model/pedidoTableClass.php
-    - model/base/empresaBaseTableClass.php
-    - model/empresaTableClass.php
-    - model/base/proveedorBaseTableClass.php
-    - model/proveedorTableClass.php
-    - model/base/productoInsumoBaseTableClass.php
-    - model/productoInsumoTableClass.php
-    - hooks/logHookClass.php
-    - model/base/bitacoraBaseTableClass.php
-    - model/bitacoraTableClass.php
-    
-pedido_deleteFilters:
-  url:    /pedido/borrarFiltros
-  param:  { module: pedido, action: deleteFilters, format: html }
-  load:    
 #----------------------Mano de Obra--------------------------------    
 manoObra_index:
   url:    /manoObra/index
@@ -2441,6 +2320,8 @@ detalleFacturaVenta_ver:
     - model/trabajadorTableClass.php
     - model/base/productoInsumoBaseTableClass.php
     - model/productoInsumoTableClass.php
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php
     - libs/validator/detalleFacturaVenta/detalleFacturaVentaValidatorClass.php
     
     
@@ -2462,6 +2343,8 @@ detalleFacturaVenta_reporte:
     - model/bitacoraTableClass.php   
     - model/base/productoInsumoBaseTableClass.php
     - model/productoInsumoTableClass.php
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php
     
 #----------------------Documento Factura Compra--------------------------------
 
@@ -2564,6 +2447,8 @@ detalleFacturaCompra_insert:
     - model/proveedorTableClass.php
     - model/base/productoInsumoBaseTableClass.php
     - model/productoInsumoTableClass.php
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php
     
 detalleFacturaCompra_create:
   url:    /detalleFacturaCompra/crear
@@ -2577,6 +2462,8 @@ detalleFacturaCompra_create:
     - model/proveedorTableClass.php
     - model/base/productoInsumoBaseTableClass.php
     - model/productoInsumoTableClass.php
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php
     - libs/validator/detalleFacturaCompra/detalleFacturaCompraValidatorClass.php
     
 detalleFacturaCompra_edit:
@@ -2591,6 +2478,8 @@ detalleFacturaCompra_edit:
     - model/proveedorTableClass.php
     - model/base/productoInsumoBaseTableClass.php
     - model/productoInsumoTableClass.php
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php
     
 detalleFacturaCompra_update:
   url:    /detalleFacturaCompra/actualizar
@@ -2604,6 +2493,8 @@ detalleFacturaCompra_update:
     - model/proveedorTableClass.php
     - model/base/productoInsumoBaseTableClass.php
     - model/productoInsumoTableClass.php
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php
     - libs/validator/detalleFacturaCompra/detalleFacturaCompraValidatorUpdateClass.php
     
 detalleFacturaCompra_ver:
@@ -2618,6 +2509,8 @@ detalleFacturaCompra_ver:
     - model/proveedorTableClass.php
     - model/base/productoInsumoBaseTableClass.php
     - model/productoInsumoTableClass.php
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php
     - libs/validator/detalleFacturaCompra/detalleFacturaCompraValidatorClass.php
     
 detalleFacturaCompra_reporte:
@@ -2636,6 +2529,8 @@ detalleFacturaCompra_reporte:
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php 
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php
         
         
 #---------------------------------enfermedad-----------------------
@@ -2758,11 +2653,15 @@ historial_insert:
     - model/plagaTableClass.php
     - model/base/loteBaseTableClass.php
     - model/loteTableClass.php
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php
     
 historial_create:
   url:    /historial/crear
   param:  { module: historial, action: create, format: html }
   load:
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php
     - model/base/historialBaseTableClass.php
     - model/historialTableClass.php
     - model/base/productoInsumoBaseTableClass.php
@@ -2792,11 +2691,15 @@ historial_edit:
     - model/plagaTableClass.php
     - model/base/loteBaseTableClass.php
     - model/loteTableClass.php
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php
     
 historial_update:
   url:    /historial/actualizar
   param:  { module: historial, action: update, format: html }
   load:
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php
     - model/base/historialBaseTableClass.php
     - model/historialTableClass.php
     - model/base/productoInsumoBaseTableClass.php
@@ -2987,6 +2890,10 @@ reportes_index:
     - model/loteTableClass.php
     - model/base/registroLoteBaseTableClass.php
     - model/registroLoteTableClass.php
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    - model/base/pagoTrabajadorBaseTableClass.php
+    - model/pagoTrabajadorTableClass.php
   
 reportes_insert:
   url:    /reportes/insert
@@ -2998,6 +2905,10 @@ reportes_insert:
     - model/loteTableClass.php
     - model/base/registroLoteBaseTableClass.php
     - model/registroLoteTableClass.php
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    - model/base/pagoTrabajadorBaseTableClass.php
+    - model/pagoTrabajadorTableClass.php
     
 reportes_create:
   url:    /reportes/generar
@@ -3009,6 +2920,10 @@ reportes_create:
     - model/loteTableClass.php
     - model/base/registroLoteBaseTableClass.php
     - model/registroLoteTableClass.php
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    - model/base/pagoTrabajadorBaseTableClass.php
+    - model/pagoTrabajadorTableClass.php
 
 reportes_genararGrafica:
   url:    /reportes/grafica
@@ -3022,6 +2937,10 @@ reportes_genararGrafica:
     - model/registroLoteTableClass.php
     - model/base/productoInsumoBaseTableClass.php
     - model/productoInsumoTableClass.php
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    - model/base/pagoTrabajadorBaseTableClass.php
+    - model/pagoTrabajadorTableClass.php
     
 reportes_reporte:
   url:    /reportes/reporte
@@ -3042,8 +2961,449 @@ reportes_reporte:
     - model/unidadMedidaTableClass.php
     - model/base/registroLoteBaseTableClass.php
     - model/registroLoteTableClass.php
+    - model/base/trabajadorBaseTableClass.php
+    - model/trabajadorTableClass.php
+    - model/base/pagoTrabajadorBaseTableClass.php
+    - model/pagoTrabajadorTableClass.php
+    - model/base/empresaBaseTableClass.php
+    - model/empresaTableClass.php
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
     - libs/funciones/calcularGraficaExcel.php
         
+#----------------------control_plaga--------------------------------    
+controlPlaga_index:
+  url:    /controlPlaga/index
+  param:  { module: controlPlaga, action: index, format: html }
+  load:
+    - model/base/controlPlagaBaseTableClass.php
+    - model/controlPlagaTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - model/base/plagaBaseTableClass.php
+    - model/plagaTableClass.php
+    - libs/validator/controlPlaga/controlPlagaValidatorClass.php
+    
+    
+controlPlaga_insert:
+  url:    /controlPlaga/insertar
+  param:  { module: controlPlaga, action: insert, format: html }
+  load:
+    - model/base/controlPlagaBaseTableClass.php
+    - model/controlPlagaTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - model/base/plagaBaseTableClass.php
+    - model/plagaTableClass.php
+    
+controlPlaga_create:
+  url:    /controlPlaga/crear
+  param:  { module: controlPlaga, action: create, format: html }
+  load:
+    - model/base/controlPlagaBaseTableClass.php
+    - model/controlPlagaTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - model/base/plagaBaseTableClass.php
+    - model/plagaTableClass.php
+    - libs/validator/controlPlaga/controlPlagaValidatorClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
+
+controlPlaga_edit:
+  url:    /controlPlaga/editar
+  param:  { module: controlPlaga, action: edit, format: html }
+  load:
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php
+    - model/base/controlPlagaBaseTableClass.php
+    - model/controlPlagaTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - model/base/plagaBaseTableClass.php
+    - model/plagaTableClass.php
+    
+controlPlaga_update:
+  url:    /controlPlaga/actualizar
+  param:  { module: controlPlaga, action: update, format: html }
+  load:
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php
+    - model/base/controlPlagaBaseTableClass.php
+    - model/controlPlagaTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - model/base/plagaBaseTableClass.php
+    - model/plagaTableClass.php
+    - libs/validator/controlPlaga/controlPlagaValidatorUpdateClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
+    
+controlPlaga_delete:
+  url:    /controlPlaga/eliminar
+  param:  { module: controlPlaga, action: delete, format: json }
+  load:
+    - model/base/controlPlagaBaseTableClass.php
+    - model/controlPlagaTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - model/base/plagaBaseTableClass.php
+    - model/plagaTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
+    
+controlPlaga_deleteSelect:
+  url:    /controlPlaga/eliminarSeleccion
+  param:  { module: controlPlaga, action: deleteSelect, format: html }
+  load:
+    - model/base/controlPlagaBaseTableClass.php
+    - model/controlPlagaTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - model/base/plagaBaseTableClass.php
+    - model/plagaTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
+    
+controlPlaga_ver:
+  url:    /controlPlaga/ver
+  param:  { module: controlPlaga, action: ver, format: html }
+  load:
+    - model/base/controlPlagaBaseTableClass.php
+    - model/controlPlagaTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - model/base/plagaBaseTableClass.php
+    - model/plagaTableClass.php
+    
+controlPlaga_reporte:
+  url:    /controlPlaga/reporte
+  param:  { module: controlPlaga, action: report, format: pdf }
+  load:
+    - libs/fpdf/fpdf.php
+    - model/base/controlPlagaBaseTableClass.php
+    - model/controlPlagaTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    - model/base/plagaBaseTableClass.php
+    - model/plagaTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
+    
+controlPlaga_deleteFilters:
+  url:    /controlPlaga/borrarFiltros
+  param:  { module: controlPlaga, action: deleteFilters, format: html }
+  load:
+ 
+
+#----------------------control_enfermedad--------------------------------    
+controlEnfermedad_index:
+  url:    /controlEnfermedad/index
+  param:  { module: controlEnfermedad, action: index, format: html }
+  load:
+    - model/base/controlEnfermedadBaseTableClass.php
+    - model/controlEnfermedadTableClass.php
+    - model/base/enfermedadBaseTableClass.php
+    - model/enfermedadTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - libs/validator/controlEnfermedad/controlEnfermedadValidatorClass.php
+    
+    
+controlEnfermedad_insert:
+  url:    /controlEnfermedad/insertar
+  param:  { module: controlEnfermedad, action: insert, format: html }
+  load:
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php
+    - model/base/controlEnfermedadBaseTableClass.php
+    - model/controlEnfermedadTableClass.php
+    - model/base/enfermedadBaseTableClass.php
+    - model/enfermedadTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    
+controlEnfermedad_create:
+  url:    /controlEnfermedad/crear
+  param:  { module: controlEnfermedad, action: create, format: html }
+  load:
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php
+    - model/base/controlEnfermedadBaseTableClass.php
+    - model/controlEnfermedadTableClass.php
+    - model/base/enfermedadBaseTableClass.php
+    - model/enfermedadTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - libs/validator/controlEnfermedad/controlEnfermedadValidatorClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
+
+controlEnfermedad_edit:
+  url:    /controlEnfermedad/editar
+  param:  { module: controlEnfermedad, action: edit, format: html }
+  load:
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php
+    - model/base/controlEnfermedadBaseTableClass.php
+    - model/controlEnfermedadTableClass.php
+    - model/base/enfermedadBaseTableClass.php
+    - model/enfermedadTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    
+controlEnfermedad_update:
+  url:    /controlEnfermedad/actualizar
+  param:  { module: controlEnfermedad, action: update, format: html }
+  load:
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php
+    - model/base/controlEnfermedadBaseTableClass.php
+    - model/controlEnfermedadTableClass.php
+    - model/base/enfermedadBaseTableClass.php
+    - model/enfermedadTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - libs/validator/controlEnfermedad/controlEnfermedadUpdateClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
+    
+controlEnfermedad_delete:
+  url:    /controlEnfermedad/eliminar
+  param:  { module: controlEnfermedad, action: delete, format: json }
+  load:
+    - model/base/controlEnfermedadBaseTableClass.php
+    - model/controlEnfermedadTableClass.php
+    - model/base/enfermedadBaseTableClass.php
+    - model/enfermedadTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
+    
+controlEnfermedad_deleteSelect:
+  url:    /controlEnfermedad/eliminarSeleccion
+  param:  { module: controlEnfermedad, action: deleteSelect, format: html }
+  load:
+    - model/base/controlEnfermedadBaseTableClass.php
+    - model/controlEnfermedadTableClass.php
+    - model/base/enfermedadBaseTableClass.php
+    - model/enfermedadTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
+    
+controlEnfermedad_ver:
+  url:    /controlEnfermedad/ver
+  param:  { module: controlEnfermedad, action: ver, format: html }
+  load:
+    - model/base/controlEnfermedadBaseTableClass.php
+    - model/controlEnfermedadTableClass.php
+    - model/base/enfermedadBaseTableClass.php
+    - model/enfermedadTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    
+controlEnfermedad_reporte:
+  url:    /controlEnfermedad/reporte
+  param:  { module: controlEnfermedad, action: report, format: pdf }
+  load:
+    - libs/fpdf/fpdf.php
+    - model/base/controlEnfermedadBaseTableClass.php
+    - model/controlEnfermedadTableClass.php
+    - model/base/enfermedadBaseTableClass.php
+    - model/enfermedadTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
+    
+controlEnfermedad_deleteFilters:
+  url:    /controlEnfermedad/borrarFiltros
+  param:  { module: controlEnfermedad, action: deleteFilters, format: html }
+  load:
+
+#----------------------presupuesto_historico--------------------------------    
+presupuestoHistorico_index:
+  url:    /presupuestoHistorico/index
+  param:  { module: presupuestoHistorico, action: index, format: html }
+  load:
+    - model/base/presupuestoHistoricoBaseTableClass.php
+    - model/presupuestoHistoricoTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - libs/validator/presupuestoHistorico/presupuestoHistoricoValidatorClass.php
+    
+    
+presupuestoHistorico_insert:
+  url:    /presupuestoHistorico/insertar
+  param:  { module: presupuestoHistorico, action: insert, format: html }
+  load:
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php
+    - model/base/presupuestoHistoricoBaseTableClass.php
+    - model/presupuestoHistoricoTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    
+presupuestoHistorico_create:
+  url:    /presupuestoHistorico/crear
+  param:  { module: presupuestoHistorico, action: create, format: html }
+  load:
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php
+    - model/base/presupuestoHistoricoBaseTableClass.php
+    - model/presupuestoHistoricoTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - libs/validator/presupuestoHistorico/presupuestoHistoricoValidatorClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
+
+presupuestoHistorico_edit:
+  url:    /presupuestoHistorico/editar
+  param:  { module: presupuestoHistorico, action: edit, format: html }
+  load:
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php
+    - model/base/presupuestoHistoricoBaseTableClass.php
+    - model/presupuestoHistoricoTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    
+presupuestoHistorico_update:
+  url:    /presupuestoHistorico/actualizar
+  param:  { module: presupuestoHistorico, action: update, format: html }
+  load:
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php
+    - model/base/presupuestoHistoricoBaseTableClass.php
+    - model/presupuestoHistoricoTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - libs/validator/presupuestoHistorico/presupuestoHistoricoValidatorClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
+    
+presupuestoHistorico_delete:
+  url:    /presupuestoHistorico/eliminar
+  param:  { module: presupuestoHistorico, action: delete, format: json }
+  load:
+    - model/base/presupuestoHistoricoBaseTableClass.php
+    - model/presupuestoHistoricoTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
+    
+presupuestoHistorico_deleteSelect:
+  url:    /presupuestoHistorico/eliminarSeleccion
+  param:  { module: presupuestoHistorico, action: deleteSelect, format: html }
+  load:
+    - model/base/presupuestoHistoricoBaseTableClass.php
+    - model/presupuestoHistoricoTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
+    
+presupuestoHistorico_ver:
+  url:    /presupuestoHistorico/ver
+  param:  { module: presupuestoHistorico, action: ver, format: html }
+  load:
+    - model/base/presupuestoHistoricoBaseTableClass.php
+    - model/presupuestoHistoricoTableClass.php
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    
+presupuestoHistorico_reporte:
+  url:    /presupuestoHistorico/reporte
+  param:  { module: presupuestoHistorico, action: report, format: pdf }
+  load:
+    - libs/fpdf/fpdf.php
+    - model/base/presupuestoHistoricoBaseTableClass.php
+    - model/presupuestoHistoricoTableClass.php    
+    - model/base/loteBaseTableClass.php
+    - model/loteTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
+    
+presupuestoHistorico_deleteFilters:
+  url:    /presupuestoHistorico/borrarFiltros
+  param:  { module: presupuestoHistorico, action: deleteFilters, format: html }
+  load:    

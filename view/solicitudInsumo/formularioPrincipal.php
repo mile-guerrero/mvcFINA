@@ -11,14 +11,21 @@
 <?php $idTra = trabajadorTableClass::ID ?>
 <?php $nomTrabajador = trabajadorTableClass::NOMBRET ?>
 
-<?php $producto = solicitudInsumoTableClass::PRODUCTO_INSUMO_ID ?>
+
 <?php $lote = solicitudInsumoTableClass::LOTE_ID ?>
 <?php $cantidad = solicitudInsumoTableClass::CANTIDAD ?>
-<?php $idProducto = productoInsumoTableClass::ID ?>
-<?php $descProducto = productoInsumoTableClass::DESCRIPCION ?>
+
 <?php $idLote = loteTableClass::ID ?>
 <?php $descLote = loteTableClass::UBICACION ?>
 
+
+<?php $insumo = solicitudInsumoTableClass::PRODUCTO_INSUMO_ID ?>
+<?php $idInsumo = tipoProductoInsumoTableClass::ID ?>
+<?php $nomInsumo = tipoProductoInsumoTableClass::DESCRIPCION ?>
+
+<?php $insumoInsumo = solicitudInsumoTableClass::PRODUCTO_INSUMO_ID ?>
+<?php $idInsumoInsumo = productoInsumoTableClass::ID ?>
+<?php $nomInsumoInsumo = productoInsumoTableClass::DESCRIPCION ?>
 
 <div class="container container-fluid" id="cuerpo">
   <div class="center-block" id="cuerpo5">
@@ -75,16 +82,32 @@
       <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputCantidad') ?>
     </div>
     <?php endif ?>
+
+<div class="form-group">
+          <label class="col-sm-2"  for="<?php echo solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::PRODUCTO_INSUMO_ID, true) ?>">  <?php echo i18n::__('selectTPI') ?>:   </label>
+          <div class="col-sm-10"> 
+            <select class="form-control" id="slcTipoDeInsumo" required onchange="cargarInsumo('<?php echo routing::getInstance()->getUrlWeb('@getInsumo') ?>')">
+              <option value="">Seleccione el tipo de insumo</option>
+              <?php foreach ($objTipo as $key): ?>
+              <option <?php echo (isset($idTipoProducto) and $idTipoProducto == $key->$idInsumo ) ? 'selected' : '' ?> value="<?php echo $key->$idInsumo ?>"><?php echo $key->$nomInsumo ?></option>
+              <?php endforeach; ?>
+             
+            </select>
+          </div>
+        </div>
+        
+        
   
    <div class="row j1" >
-        <label for="" class="col-sm-2"> <?php echo i18n::__('product') ?> </label>
-         <div class="col-lg-5">
-          <select class="form-control" id="<?php echo solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::PRODUCTO_INSUMO_ID, true)?>" name="<?php echo solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::PRODUCTO_INSUMO_ID, true) ?>">
-               <option value="<?php echo (session::getInstance()->hasFlash('selectProducto') or request::getInstance()->hasPost(solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::PRODUCTO_INSUMO_ID, true))) ? request::getInstance()->getPost(solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::PRODUCTO_INSUMO_ID, true)) : ((isset($objS[0])) ? '' : '') ?>"><?php echo i18n::__('selectProducto') ?></option>
-<?php foreach ($objP as $key): ?>
-            <option <?php echo (request::getInstance()->hasPost(solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::PRODUCTO_INSUMO_ID, true)) === true and request::getInstance()->getPost(solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::PRODUCTO_INSUMO_ID, true)) == $key->$idProducto) ? 'selected' : (isset($objS[0]->$producto) === true and $objS[0]->$producto == $key->$idProducto) ? 'selected' : '' ?> value="<?php echo $key->$idProducto ?>"><?php echo $key->$descProducto ?></option>
-<?php endforeach; ?>
-          </select>
+        <label class="col-sm-2" for="<?php echo solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::PRODUCTO_INSUMO_ID, true) ?>" >  <?php echo i18n::__('des') ?>:   </label>
+           <div class="col-lg-5">
+          <select class="form-control" id="slcInsumo" name="<?php echo solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::PRODUCTO_INSUMO_ID, true); ?>" required>
+              <option value="<?php echo (session::getInstance()->hasFlash('inputDescripcion') or request::getInstance()->hasPost(solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::PRODUCTO_INSUMO_ID, true))) ? request::getInstance()->getPost(solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::PRODUCTO_INSUMO_ID, true)) : ((isset($objS[0])) ? '' : '') ?>"><?php echo i18n::__('selectInsumo') ?></option>
+              <?php  foreach ($objProducto as $key): ?>
+         
+              <option <?php echo (request::getInstance()->hasPost(solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::PRODUCTO_INSUMO_ID, true)) === true and request::getInstance()->getPost(solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::PRODUCTO_INSUMO_ID, true)) == $key->$idInsumoInsumo) ? 'selected' : (isset($objS[0]->$insumoInsumo) === true and $objS[0]->$insumoInsumo == $key->$idInsumoInsumo) ? 'selected' : ''  ?> value="<?php echo $key->$idInsumoInsumo  ?>"><?php echo $key->$nomInsumoInsumo  ?></option>
+                <?php  endforeach; ?>
+            </select>
         </div>
         <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
              <input class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputCantidad') or request::getInstance()->hasPost(solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::CANTIDAD, true))) ? request::getInstance()->getPost(solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::CANTIDAD, true)) : ((isset($objS[0])) ? $objS[0]->$cantidad : '') ?>" type="text" name="<?php echo solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::CANTIDAD, true) ?>" placeholder="<?php echo i18n::__('cantidad por kilo') ?>">
