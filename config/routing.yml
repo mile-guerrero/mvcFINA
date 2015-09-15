@@ -2899,6 +2899,8 @@ reportes_insert:
   url:    /reportes/insert
   param:  { module: reportes, action: insert, format: html }
   load:
+    - model/base/presupuestoHistoricoBaseTableClass.php
+    - model/presupuestoHistoricoTableClass.php
     - model/base/reporteBaseTableClass.php
     - model/reporteTableClass.php  
     - model/base/loteBaseTableClass.php
@@ -2914,6 +2916,8 @@ reportes_create:
   url:    /reportes/generar
   param:  { module: reportes, action: create, format: html }
   load:
+    - model/base/presupuestoHistoricoBaseTableClass.php
+    - model/presupuestoHistoricoTableClass.php
     - model/base/reporteBaseTableClass.php
     - model/reporteTableClass.php
     - model/base/loteBaseTableClass.php
@@ -2929,6 +2933,8 @@ reportes_genararGrafica:
   url:    /reportes/grafica
   param:  { module: reportes, action: grafica, format: html }
   load:
+    - model/base/presupuestoHistoricoBaseTableClass.php
+    - model/presupuestoHistoricoTableClass.php
     - model/base/reporteBaseTableClass.php
     - model/reporteTableClass.php   
     - model/base/loteBaseTableClass.php
@@ -2946,6 +2952,8 @@ reportes_reporte:
   url:    /reportes/reporte
   param:  { module: reportes, action: report, format: pdf } 
   load:
+    - model/base/presupuestoHistoricoBaseTableClass.php
+    - model/presupuestoHistoricoTableClass.php
     - libs/fpdf/fpdf.php 
     - model/base/historialBaseTableClass.php
     - model/historialTableClass.php
@@ -3203,7 +3211,7 @@ controlEnfermedad_update:
     - model/loteTableClass.php
     - model/base/productoInsumoBaseTableClass.php
     - model/productoInsumoTableClass.php
-    - libs/validator/controlEnfermedad/controlEnfermedadValidatorUpdateClass.php
+    - libs/validator/controlEnfermedad/controlEnfermedadUpdateClass.php
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
@@ -3344,7 +3352,7 @@ presupuestoHistorico_update:
     - model/loteTableClass.php
     - model/base/productoInsumoBaseTableClass.php
     - model/productoInsumoTableClass.php
-    - libs/validator/presupuestoHistorico/presupuestoHistoricoValidatorUpdateClass.php
+    - libs/validator/presupuestoHistorico/presupuestoHistoricoValidatorClass.php
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php

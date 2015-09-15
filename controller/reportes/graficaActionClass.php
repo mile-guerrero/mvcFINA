@@ -67,11 +67,7 @@ class graficaActionClass extends controllerClass implements controllerActionInte
 
         $cosPoints = array();
         foreach ($objLote as $objeto) {
-          $cosPoints[] = array($objeto->id . ' ' . $objeto->ubicacion . ' ', $objeto->numero_plantulas,
-              array(
-                  'id' => $objLote->id,
-                  'numeroPlantulas' => $objeto->numero_plantulas 
-              ));
+          $cosPoints[] = array($objeto->id . ' ' . $objeto->ubicacion . ' ', $objeto->numero_plantulas,);
 //         print_r($cosPoints);
 //         exit();
         }
@@ -102,8 +98,153 @@ class graficaActionClass extends controllerClass implements controllerActionInte
         $this->cosPoints3 = $cosPoints;
       }
       if ($value == 4) {
+        $where = session::getInstance()->getAttribute('graficaWhere');
+        $fields = array(
+            presupuestoHistoricoTableClass::LOTE_ID,
+            presupuestoHistoricoTableClass::PRODUCTO_INSUMO_ID,
+            presupuestoHistoricoTableClass::ID,
+            presupuestoHistoricoTableClass::TOTAL_PAGO_TRABAJADOR,
+            presupuestoHistoricoTableClass::TOTAL_PRODUCCION,
+            presupuestoHistoricoTableClass::PRESUPUESTO,
+            presupuestoHistoricoTableClass::CREATED_AT
+        );
+        $orderBy = array(
+//            presupuestoHistoricoTableClass::ID,
+            presupuestoHistoricoTableClass::TOTAL_PRODUCCION
+        );
+        $objPresupuesto = presupuestoHistoricoTableClass::getAll($fields, true, $orderBy, 'ASC', null, null, $where);
+
+        $cosPoints = array();
+        foreach ($objPresupuesto as $objeto) {
+          $cosPoints[] = array($objeto->presupuesto,date('Y-m-d', strtotime($objeto->created_at)));
+        }
+        $this->cosPoints = $cosPoints;
+        
+        
+        
+        
+         $whereAno = session::getInstance()->getAttribute('graficaWhereAno');
+        $fields = array(
+            presupuestoHistoricoTableClass::LOTE_ID,
+            presupuestoHistoricoTableClass::PRODUCTO_INSUMO_ID,
+            presupuestoHistoricoTableClass::ID,
+            presupuestoHistoricoTableClass::TOTAL_PAGO_TRABAJADOR,
+            presupuestoHistoricoTableClass::TOTAL_PRODUCCION,
+            presupuestoHistoricoTableClass::PRESUPUESTO,
+            presupuestoHistoricoTableClass::CREATED_AT
+        );
+//        $orderBy = array(
+////            presupuestoHistoricoTableClass::ID,
+//            presupuestoHistoricoTableClass::TOTAL_PRODUCCION
+//        );
+        $objPresupuesto2 = presupuestoHistoricoTableClass::getAll($fields, true, $orderBy, 'ASC', null, null, $whereAno);
+
+         $cosPoints5 = array();
+        foreach ($objPresupuesto2 as $objeto) {
+          $cosPoints5[] = array($objeto->presupuesto,date('Y-m-d', strtotime($objeto->created_at)));
+        }
+        
+        $this->sinPoints = $cosPoints5;
+        //---------------------------------------------------------------------
+        //---------------------------------------------------------------------
+        $where = session::getInstance()->getAttribute('graficaWhere');
+        $fields = array(
+            presupuestoHistoricoTableClass::LOTE_ID,
+            presupuestoHistoricoTableClass::PRODUCTO_INSUMO_ID,
+            presupuestoHistoricoTableClass::ID,
+            presupuestoHistoricoTableClass::TOTAL_PAGO_TRABAJADOR,
+            presupuestoHistoricoTableClass::TOTAL_PRODUCCION,
+            presupuestoHistoricoTableClass::CREATED_AT
+        );
+        $orderBy = array(
+//            presupuestoHistoricoTableClass::ID,
+            presupuestoHistoricoTableClass::TOTAL_PAGO_TRABAJADOR
+        );
+        $objPresupuesto = presupuestoHistoricoTableClass::getAll($fields, true, $orderBy, 'ASC', null, null, $where);
+
+        $cosPoints = array();
+        foreach ($objPresupuesto as $objeto) {
+          $cosPoints[] = array($objeto->total_pago_trabajador,date('Y-m-d', strtotime($objeto->created_at)));
+        }
+        $this->pago1 = $cosPoints;
+        
+        
+        
+        
+         $whereAno = session::getInstance()->getAttribute('graficaWhereAno');
+        $fields = array(
+            presupuestoHistoricoTableClass::LOTE_ID,
+            presupuestoHistoricoTableClass::PRODUCTO_INSUMO_ID,
+            presupuestoHistoricoTableClass::ID,
+            presupuestoHistoricoTableClass::TOTAL_PAGO_TRABAJADOR,
+            presupuestoHistoricoTableClass::TOTAL_PRODUCCION,
+            presupuestoHistoricoTableClass::CREATED_AT
+        );
+//        $orderBy = array(
+////            presupuestoHistoricoTableClass::ID,
+//            presupuestoHistoricoTableClass::TOTAL_PRODUCCION
+//        );
+        $objPresupuesto2 = presupuestoHistoricoTableClass::getAll($fields, true, $orderBy, 'ASC', null, null, $whereAno);
+
+         $cosPoints5 = array();
+        foreach ($objPresupuesto2 as $objeto) {
+          $cosPoints5[] = array($objeto->total_pago_trabajador,date('Y-m-d', strtotime($objeto->created_at)));
+        }
+        
+        $this->pago2 = $cosPoints5;
+        
+        
+        //---------------------------------------------------------------------
+        //---------------------------------------------------------------------
+        $where = session::getInstance()->getAttribute('graficaWhere');
+        $fields = array(
+            presupuestoHistoricoTableClass::LOTE_ID,
+            presupuestoHistoricoTableClass::PRODUCTO_INSUMO_ID,
+            presupuestoHistoricoTableClass::ID,
+            presupuestoHistoricoTableClass::TOTAL_PAGO_TRABAJADOR,
+            presupuestoHistoricoTableClass::TOTAL_PRODUCCION,
+            presupuestoHistoricoTableClass::CREATED_AT
+        );
+        $orderBy = array(
+//            presupuestoHistoricoTableClass::ID,
+            presupuestoHistoricoTableClass::TOTAL_PRODUCCION
+        );
+        $objPresupuesto = presupuestoHistoricoTableClass::getAll($fields, true, $orderBy, 'ASC', null, null, $where);
+
+        $cosPoints = array();
+        foreach ($objPresupuesto as $objeto) {
+          $cosPoints[] = array($objeto->total_produccion,date('Y-m-d', strtotime($objeto->created_at)));
+        }
+        $this->produccion1 = $cosPoints;
+        
+        
+        
+        
+         $whereAno = session::getInstance()->getAttribute('graficaWhereAno');
+        $fields = array(
+            presupuestoHistoricoTableClass::LOTE_ID,
+            presupuestoHistoricoTableClass::PRODUCTO_INSUMO_ID,
+            presupuestoHistoricoTableClass::ID,
+            presupuestoHistoricoTableClass::TOTAL_PAGO_TRABAJADOR,
+            presupuestoHistoricoTableClass::TOTAL_PRODUCCION,
+            presupuestoHistoricoTableClass::CREATED_AT
+        );
+//        $orderBy = array(
+////            presupuestoHistoricoTableClass::ID,
+//            presupuestoHistoricoTableClass::TOTAL_PRODUCCION
+//        );
+        $objPresupuesto2 = presupuestoHistoricoTableClass::getAll($fields, true, $orderBy, 'ASC', null, null, $whereAno);
+
+         $cosPoints5 = array();
+        foreach ($objPresupuesto2 as $objeto) {
+          $cosPoints5[] = array($objeto->total_produccion,date('Y-m-d', strtotime($objeto->created_at)));
+        }
+        
+        $this->produccion2 = $cosPoints5;
         
       }
+      
+      
       if ($value == 5) {
         
       }

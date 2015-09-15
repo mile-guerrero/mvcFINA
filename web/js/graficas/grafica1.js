@@ -107,3 +107,124 @@ function crearGrafica3(cosPoints3) {
   });
 
 }
+
+
+function crearGrafica4(cosPoints, sinPoints) {
+
+ 
+   plot3 = $.jqplot('chart5', [cosPoints, sinPoints], 
+    { 
+      title:'Presupuesto Historico', 
+    animate: !$.jqplot.use_excanvas,
+//    seriesDefaults: {
+//      renderer: $.jqplot.BarRenderer,
+//      pointLabels: {show: false},
+//      rendererOptions: {varyBarColor: true},
+//    },
+    axes: {
+      xaxis: {
+//        renderer: $.jqplot.CategoryAxisRenderer,
+renderer: $.jqplot.LogAxisRenderer,
+        label: 'Presupuesto en $',
+        labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+        tickRenderer: $.jqplot.CanvasAxisTickRenderer,
+        tickOptions: {
+          fontSize: '8pt'
+        },
+      },
+      yaxis: {
+        renderer: $.jqplot.CategoryAxisRenderer,
+        labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+        tickRenderer: $.jqplot.CanvasAxisTickRenderer,
+        tickOptions: {
+          fontSize: '10pt'
+        },
+      },
+    },
+  });
+    
+
+}
+
+function crearGrafica5(pago1, pago2) {
+
+ 
+   plot3 = $.jqplot('chart6', [pago1, pago2], 
+    { 
+      title:'Presupuesto pagos trabajador', 
+    animate: !$.jqplot.use_excanvas,
+//    seriesDefaults: {
+//      renderer: $.jqplot.BarRenderer,
+//      pointLabels: {show: false},
+//      rendererOptions: {varyBarColor: true},
+//    },
+// cursor:{
+//            show: true, 
+//            zoom: true
+//        },
+    axes: {
+      xaxis: {
+        renderer: $.jqplot.LogAxisRenderer,
+//        renderer: $.jqplot.CategoryAxisRenderer,
+        label: 'Salario en $',
+        labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+        tickRenderer: $.jqplot.CanvasAxisTickRenderer,
+        tickOptions: {
+          fontSize: '8pt'
+        },
+      },
+      yaxis: {
+        renderer: $.jqplot.CategoryAxisRenderer,
+        labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+        tickRenderer: $.jqplot.CanvasAxisTickRenderer,
+        tickOptions: {
+          fontSize: '10pt'
+        },
+      },
+    },
+  });
+}
+
+function crearGrafica6(produccion1, produccion2) {
+
+ 
+   plot3 = $.jqplot('chart7', [produccion1, produccion2], 
+    { 
+      title:'Presupuesto produccion', 
+    animate: !$.jqplot.use_excanvas,
+   
+//    seriesDefaults: {
+//      renderer: $.jqplot.BarRenderer,
+//      pointLabels: {show: false},
+//      rendererOptions: {varyBarColor: true},
+//    },
+//   cursor:{
+//            show: true, 
+//            zoom: true
+//        },
+    axes: {
+      xaxis: {
+//        min:0,
+//        max: 500,
+//        renderer: $.jqplot.CategoryAxisRenderer,
+        renderer: $.jqplot.LogAxisRenderer,
+        label: 'Producción en Kg',
+        labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+        tickRenderer: $.jqplot.CanvasAxisTickRenderer,
+        tickOptions: {
+          fontSize: '8pt'
+        },
+      },
+      yaxis: {
+        renderer: $.jqplot.CategoryAxisRenderer,
+        labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+        tickRenderer: $.jqplot.CanvasAxisTickRenderer,
+        tickOptions: {
+          fontSize: '10pt'
+        },
+      },
+    },
+    
+  });
+  
+}

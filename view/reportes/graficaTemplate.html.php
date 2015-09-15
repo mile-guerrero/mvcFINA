@@ -51,8 +51,39 @@
       
       
       <?php if ($value == 4) : ?>
-        
+        <h2 class="form-signin-heading rwd">
+<script>
+  $(document).ready(function () {
+    crearGrafica4(<?php echo json_encode($cosPoints) ?>, <?php echo json_encode($sinPoints) ?>); 
+  });
+</script>
+
+
+<div id="chart5" style="width: 1050px; height: 400px"></div>
+
+</h2> 
+      <br><br><br>
+      <h2 class="form-signin-heading rwd">
+<script>
+  $(document).ready(function () {
+    crearGrafica5(<?php echo json_encode($pago1) ?>, <?php echo json_encode($pago2) ?>); 
+  });
+</script>
+<div id="chart6" style="width: 1050px; height: 400px"></div>
+ </h2>
+      
+   <br><br><br>
+      <h2 class="form-signin-heading rwd">
+<script>
+  $(document).ready(function () {
+    crearGrafica6(<?php echo json_encode($produccion1) ?>, <?php echo json_encode($produccion2) ?>); 
+  });
+</script>
+<div id="chart7" style="width: 1050px; height: 400px"></div>
+ </h2>    
      <?php endif; ?> 
+      
+      
      <?php if ($value == 5) : ?>
         
     <?php endif; ?>   

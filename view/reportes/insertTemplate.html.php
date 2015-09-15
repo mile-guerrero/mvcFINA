@@ -29,4 +29,17 @@
    </div>
 <?php view::includePartial('reportes/formularioTrabajador',array('objTrabajador'=>$objTrabajador)) ?>
 </div>
-<?php endif; ?> 
+<?php endif; ?>
+
+<?php $value = session::getInstance()->getAttribute('idGrafica');?>
+<?php if ($value == 4) : ?>
+<div class="container container-fluid" id="cuerpo">
+<div class="center-block" id="cuerpo2">
+<h2 class="form-signin-heading">
+<?php echo i18n::__('reportes') ?>
+</h2>
+  <br><br>
+   </div>
+<?php view::includePartial('reportes/formularioPresupuesto',array('objLoteR'=>$objLoteR)) ?>
+</div>
+<?php endif; ?>

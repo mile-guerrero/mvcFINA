@@ -41,9 +41,10 @@ reportes:
       # - jqPlot/jquery.jqplot.js
       - jqPlot/plugins/jqplot.categoryAxisRenderer.js
       - jqPlot/plugins/jqplot.barRenderer.js
-      # - jqPlot/plugins/jqplot.dateAxisRenderer.js 
-      # - jqPlot/plugins/jqplot.logAxisRenderer.js
+      - jqPlot/plugins/jqplot.dateAxisRenderer.js 
+      - jqPlot/plugins/jqplot.logAxisRenderer.js     
       - jqPlotplugins/jqplot.canvasAxisTickRenderer.js
+#      - jqPlot/plugins/jqplot.cursor.js
       - graficas/grafica1.js
     stylesheet:
       - jquery.jqplot.min.css 
