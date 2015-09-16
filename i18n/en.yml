@@ -18,6 +18,7 @@ dictionary:
     registroPresupuesto:  Registro presupuesto
     totalProduccion:      Total produccion
     totalPago:            Total pago
+    inventario:           Inventario
     #-------Registros---------
     registroCliente:      Customer registration
     registroCooperativa:  Registration cooperative

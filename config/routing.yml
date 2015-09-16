@@ -1216,6 +1216,23 @@ productoInsumo_ver:
     - model/base/imagenBaseTableClass.php
     - model/imagenTableClass.php
     
+productoInsumo_inventario:
+  url:    /productoInsumo/inventario
+  param:  { module: productoInsumo, action: inventarioProductoInsumo, format: html }
+  load:
+    - model/base/tipoProductoInsumoBaseTableClass.php
+    - model/tipoProductoInsumoTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - model/base/controlPlagaBaseTableClass.php
+    - model/controlPlagaTableClass.php
+    - model/base/controlEnfermedadBaseTableClass.php
+    - model/controlEnfermedadTableClass.php
+    - model/base/facturaCompraBaseTableClass.php
+    - model/facturaCompraTableClass.php
+    - model/base/detalleFacturaCompraBaseTableClass.php
+    - model/detalleFacturaCompraTableClass.php     
+    
 productoInsumo_reporte:
   url:    /productoInsumo/reporte
   param:  { module: productoInsumo, action: reportProductoInsumo, format: pdf } 
@@ -2511,7 +2528,7 @@ detalleFacturaCompra_ver:
     - model/productoInsumoTableClass.php
     - model/base/tipoProductoInsumoBaseTableClass.php
     - model/tipoProductoInsumoTableClass.php
-    - libs/validator/detalleFacturaCompra/detalleFacturaCompraValidatorClass.php
+    - libs/validator/detalleFacturaCompra/detalleFacturaCompraValidatorClass.php  
     
 detalleFacturaCompra_reporte:
   url:    /detalleFacturaCompra/reporte
@@ -3415,3 +3432,6 @@ presupuestoHistorico_deleteFilters:
   url:    /presupuestoHistorico/borrarFiltros
   param:  { module: presupuestoHistorico, action: deleteFilters, format: html }
   load:    
+    
+
+       

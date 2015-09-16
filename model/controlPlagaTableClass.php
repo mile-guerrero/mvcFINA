@@ -56,4 +56,27 @@ class controlPlagaTableClass extends controlPlagaBaseTableClass {
       throw $exc;
     }
   }
+  
+  
+  public static function getInventario($idControlPlaga){
+    try {
+      $sql = 'SELECT ' . '  '. 'SUM ('. controlPlagaTableClass::CANTIDAD  . ') ' . ' As total'
+             . '  FROM ' . controlPlagaTableClass::getNameTable() . ',' . productoInsumoTableClass::getNameTable() . ',' . tipoProductoInsumoTableClass::getNameTable() . '  ' 
+             . ' WHERE ' .  controlPlagaTableClass::getNameField(controlPlagaTableClass::PRODUCTO_INSUMO_ID) . ' = '. productoInsumoTableClass::getNameField(productoInsumoTableClass::ID) . ' AND ' .  productoInsumoTableClass::getNameField(productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID) . ' = '. tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::ID) .'  '
+             . ' AND ' . productoInsumoTableClass::getNameTable() . '.'. productoInsumoTableClass::ID . ' = ' . $idControlPlaga. '  '
+              ;
+    
+      $answer = model::getInstance()->prepare($sql);
+            $answer->execute();
+            $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+//       print_r($sql);
+//     exit();
+      return $answer[0]->total;
+      
+      
+    } catch (Exception $exc) {
+      throw $exc;
+    }
+    
+  }
 }

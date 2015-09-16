@@ -56,4 +56,27 @@ class controlEnfermedadTableClass extends controlEnfermedadBaseTableClass {
       throw $exc;
     }
   }
+  
+  public static function getInventario($idControlEnfermedad){
+    try {
+      $sql = 'SELECT ' . '  '. 'SUM ('. controlEnfermedadTableClass::CANTIDAD  . ') ' . ' As total'
+             . '  FROM ' . controlEnfermedadTableClass::getNameTable() . ',' . productoInsumoTableClass::getNameTable() . ',' . tipoProductoInsumoTableClass::getNameTable() . '  ' 
+             . ' WHERE ' .  controlEnfermedadTableClass::getNameField(controlEnfermedadTableClass::PRODUCTO_INSUMO_ID) . ' = '. productoInsumoTableClass::getNameField(productoInsumoTableClass::ID) . ' AND ' .  productoInsumoTableClass::getNameField(productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID) . ' = '. tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::ID) .'  '
+             . ' AND ' . productoInsumoTableClass::getNameTable() . '.'. productoInsumoTableClass::ID . ' = ' . $idControlEnfermedad . '  '
+              ;
+    
+      $answer = model::getInstance()->prepare($sql);
+            $answer->execute();
+            $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+//       print_r($sql);
+//     exit();
+      return $answer[0]->total;
+      
+      
+    } catch (Exception $exc) {
+      throw $exc;
+    }
+    
+  }
+  
 }

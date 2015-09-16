@@ -52,4 +52,51 @@ class productoInsumoTableClass extends productoInsumoBaseTableClass {
     }  catch (PDOException $exc){
        throw  $exc;
   }
-   }}
+   }
+   
+   
+   public static function tipoInsumoInventario(){
+    try {
+      $sql = 'SELECT ' . productoInsumoTableClass::getNameTable() . '.'. productoInsumoTableClass::DESCRIPCION  . ' As descripcion'
+             . '  FROM ' . productoInsumoTableClass::getNameTable() . ',' . tipoProductoInsumoTableClass::getNameTable() . '  ' 
+             . ' WHERE ' .  productoInsumoTableClass::getNameField(productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID) . ' = '. tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::ID) .'  '
+             . ' AND ' . tipoProductoInsumoTableClass::getNameTable() . '.'. tipoProductoInsumoTableClass::ID . ' = ' . '2'. '  ';
+    
+      $answer = model::getInstance()->prepare($sql);
+            $answer->execute();
+            $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+       print_r($sql);
+     exit();
+      return $answer[0]->descripcion;
+      
+      
+    } catch (Exception $exc) {
+      throw $exc;
+    }
+    
+  }
+   
+
+   public static function getInventario($idProducto){
+    try {
+      $sql = 'SELECT ' . '  '. 'SUM ('. detalleFacturaCompraTableClass::CANTIDAD  . ') ' . ' As total'
+             . '  FROM ' . detalleFacturaCompraTableClass::getNameTable() . ',' . productoInsumoTableClass::getNameTable() . ',' . tipoProductoInsumoTableClass::getNameTable() . '  ' 
+             . ' WHERE ' .  detalleFacturaCompraTableClass::getNameField(detalleFacturaCompraTableClass::DESCRIPCION) . ' = '. productoInsumoTableClass::getNameField(productoInsumoTableClass::ID) . ' AND ' .  productoInsumoTableClass::getNameField(productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID) . ' = '. tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::ID) .'  '
+             . ' AND ' . productoInsumoTableClass::getNameTable() . '.'. productoInsumoTableClass::ID . ' = ' . $idProducto. '  '
+              ;
+    
+      $answer = model::getInstance()->prepare($sql);
+            $answer->execute();
+            $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+//       print_r($sql);
+//     exit();
+      return $answer[0]->total;
+      
+      
+    } catch (Exception $exc) {
+      throw $exc;
+    }
+    
+  }
+   
+    }

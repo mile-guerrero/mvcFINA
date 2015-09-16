@@ -78,6 +78,7 @@ use mvc\i18n\i18nClass as i18n ?>
               <li><a  href="<?php echo routing::getInstance()->getUrlWeb('presupuestoHistorico', 'index') ?>"><?php echo i18n::__('presupuestoHistorico') ?></a></li>
               <li class="divider"></li>
               <li><a  href="<?php echo routing::getInstance()->getUrlWeb('reportes', 'index') ?>"><?php echo i18n::__('reportes') ?></a></li>
+              <li><a  href="<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'inventarioProductoInsumo') ?>"><?php echo i18n::__('inventario') ?></a></li>
             </ul>
           </li>
 

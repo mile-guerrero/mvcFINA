@@ -13,6 +13,7 @@ dictionary:
     presupuestoHistorico: Presupuesto historico
     controlPlaga:         Control plaga
     registroControlPlaga: Registro control plaga
+    inventario:           Inventario
     #-------Registros---------
     registroCliente:      Registro de cliente
     registroCooperativa:  Registro de cooperativa
