@@ -136,15 +136,17 @@
             
             
              <div class="form-group">
-                <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
-                <div class="col-sm-10">
-                  <input type="date" class="form-control-filtro1" id="reportFechaIni" name="report[fechaIni]" >
-               
-<!--                <label  class="col-sm-2 control-label"><?php echo i18n::__('fecha fin') ?></label>-->
-              
-                  <input type="date" class="form-control-filtro2" id="reportFechaFin" name="report[fechaFin]" >
-                </div>
-              </div>
+                    <div class="col-sm-6">
+                      <label class="col-sm-4 control-label"><?php echo i18n::__('fecha inicio') ?></label>
+                       <input type="date" class="form-control-filtro1" id="reportFechaIni" name="report[fechaIni]">  
+
+                    </div>
+                    <div class="col-sm-6">
+                      <label class="col-sm-4 control-label"><?php echo i18n::__('fecha fin') ?></label>
+                         <input type="date" class="form-control-filtro1" id="reportFechaFin" name="report[fechaFin]">
+                 
+                    </div>
+                  </div>
               
               <div class="form-group">  
     <label for="reportUsuario" class="col-sm-2 control-label"><?php echo i18n::__('user') ?></label>

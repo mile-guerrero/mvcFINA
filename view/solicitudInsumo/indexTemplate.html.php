@@ -49,8 +49,21 @@
         <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('informe') ?></h4>
       </div>
       <div class="modal-body">
-        <form class="form-horizontal" id="reportForm" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('solicitudInsumo', 'report')?>">
+          <form class="form-horizontal" target="_blank" id="reportForm" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('solicitudInsumo', 'report')?>">
           
+             <div class="form-group">
+                    <div class="col-sm-6">
+                      <label class="col-sm-4 control-label"><?php echo i18n::__('fecha inicio') ?></label>
+                       <input type="date" class="form-control-filtro1" id="reportFecha1" name="report[fecha1]">  
+
+                    </div>
+                    <div class="col-sm-6">
+                      <label class="col-sm-4 control-label"><?php echo i18n::__('fecha fin') ?></label>
+                         <input type="date" class="form-control-filtro1" id="reportFecha2" name="report[fecha2]">
+                 
+                    </div>
+             </div>
+            
            <div class="form-group">
     <label for="reportLote" class="col-sm-2 control-label"><?php echo i18n::__('lote') ?></label>
     <div class="col-sm-10">
@@ -60,14 +73,6 @@
             <option value="<?php echo $key->$idLote ?>"><?php echo $key->$ubicacionLote ?></option>
 <?php endforeach; ?>
           </select>
-    </div>
-  </div>
-  <div class="form-group">
-    <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
-    <div class="col-sm-10">
-      <input type="date" class="form-control-filtro1" id="reportFecha1" name="report[fecha1]">
-      
-       <input type="date" class="form-control-filtro2" id="reportFecha2" name="report[fecha2]">
     </div>
   </div>
 </form>

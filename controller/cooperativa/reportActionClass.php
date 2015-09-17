@@ -56,7 +56,7 @@ class reportActionClass extends controllerClass implements controllerActionInter
           $where[cooperativaTableClass::ID_CIUDAD] = $report['ciudad'];
         }
         
-        if (isset($report['fechaIni']) and $report['fechaIni'] !== null and $report['fechaIni'] !== '' and (isset($report['fechaFin']) and $filter['fechaFin'] !== null and $filter['fechaFin'] !== '')) {
+        if (isset($report['fechaIni']) and $report['fechaIni'] !== null and $report['fechaIni'] !== '' and (isset($report['fechaFin']) and $report['fechaFin'] !== null and $report['fechaFin'] !== '')) {
           $where[cooperativaTableClass::CREATED_AT] = array(
           date(config::getFormatTimestamp(), strtotime($report['fechaIni'] . ' 00:00:00')),
           date(config::getFormatTimestamp(), strtotime($report['fechaFin'] . ' 23:59:59'))

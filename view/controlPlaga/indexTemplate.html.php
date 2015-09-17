@@ -109,13 +109,17 @@ use mvc\request\requestClass as request ?>
         <form target="_blank" class="form-horizontal" id="reportForm" role="form" method="POST" action="<?php echo routing::getInstance()->getUrlWeb('controlPlaga', 'report')?>">
           
           <div class="form-group">
-    <label class="col-sm-2 control-label"><?php echo i18n::__('fecha crear') ?></label>
-    <div class="col-sm-10">
-      <input type="date" class="form-control-filtro1" id="reportFechaIni" name="report[fechaIni]">
-      
-       <input type="date" class="form-control-filtro2" id="reportFechaFin" name="report[fechaFin]">
-    </div>
-  </div>
+                    <div class="col-sm-6">
+                      <label class="col-sm-4 control-label"><?php echo i18n::__('fecha inicio') ?></label>
+                       <input type="date" class="form-control-filtro1" id="reportFechaIni" name="report[fechaIni]">  
+
+                    </div>
+                    <div class="col-sm-6">
+                      <label class="col-sm-4 control-label"><?php echo i18n::__('fecha fin') ?></label>
+                         <input type="date" class="form-control-filtro1" id="reportFechaFin" name="report[fechaFin]">
+                 
+                    </div>
+                  </div>
                                         
           
      <div class="form-group">
