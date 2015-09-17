@@ -51,9 +51,9 @@ class createActionClass extends controllerClass implements controllerActionInter
             }
 
 
-//            session::getInstance()->setAttribute('graficaUbicacion', $ubicacion);
-//            session::getInstance()->setAttribute('graficaRFecha1', $fechaInicial);
-//            session::getInstance()->setAttribute('graficaRFecha2', $fechaFin);
+            session::getInstance()->setAttribute('graficaUbicacion', $ubicacion);
+            session::getInstance()->setAttribute('graficaRFecha1', $fechaInicial);
+            session::getInstance()->setAttribute('graficaRFecha2', $fechaFin);
 
             $where[] = '(' . registroLoteTableClass::getNameField(registroLoteTableClass::UBICACION) . ' LIKE ' . '\'' . $ubicacion . '%\'  '
                     . 'OR ' . registroLoteTableClass::getNameField(registroLoteTableClass::UBICACION) . ' LIKE ' . '\'%' . $ubicacion . '%\' '
@@ -113,8 +113,9 @@ class createActionClass extends controllerClass implements controllerActionInter
             $fechaInicial = request::getInstance()->getPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::FECHA_INICIAL, true) . '_1');
             $fechaFin = request::getInstance()->getPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::FECHA_FINAL, true) . '_2');
             $nombre = request::getInstance()->getPost(pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::TRABAJADOR_ID, true));
-             session::getInstance()->setAttribute('Trabajador', $nombre);
-        
+            session::getInstance()->setAttribute('TrabajadorFechaInicial', $fechaInicial); 
+            session::getInstance()->setAttribute('TrabajadorFechaFin', $fechaFin);
+            session::getInstance()->setAttribute('Trabajador', $nombre);
        
             if (strtotime($fechaFin) < strtotime($fechaInicial)) {
               session::getInstance()->setError('La fecha final no puede ser menor a la actual', 'inputFecha');

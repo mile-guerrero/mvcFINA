@@ -33,6 +33,11 @@ class reportActionClass extends controllerClass implements controllerActionInter
      if ($value == 1 or $value == 2) {
       $this->mensaje = 'Informacion de Producción';
       $this->mensaje1 = 'Informacion de Lotes';
+      
+      $this->fechaInicial = session::getInstance()->getAttribute('graficaRFecha1');
+       $this->fechaFin = session::getInstance()->getAttribute('graficaRFecha2');
+//       $this->idProducto = session::getInstance()->getAttribute('Trabajador');
+      
       $fields = array(
           registroLoteTableClass::UBICACION,
           registroLoteTableClass::PRODUCCION,
@@ -50,9 +55,13 @@ class reportActionClass extends controllerClass implements controllerActionInter
       
      
      if ($value == 3){
+       $this->fechaInicial = session::getInstance()->getAttribute('TrabajadorFechaInicial');
+       $this->fechaFin = session::getInstance()->getAttribute('TrabajadorFechaFin');
        $this->idTrabajador = session::getInstance()->getAttribute('Trabajador');
-       
+       $this->where = session::getInstance()->getAttribute('graficaWhere');
         $this->mensaje3 = 'Informacion de pago a trabajadores';
+        
+        
        $fields = array(
           pagoTrabajadorTableClass::ID,
           pagoTrabajadorTableClass::FECHA_INICIAL,
@@ -61,14 +70,16 @@ class reportActionClass extends controllerClass implements controllerActionInter
           pagoTrabajadorTableClass::TRABAJADOR_ID,
           pagoTrabajadorTableClass::VALOR_SALARIO,
           pagoTrabajadorTableClass::HORAS_PERDIDAS,
-          pagoTrabajadorTableClass::TOTAL_PAGAR,
-          pagoTrabajadorTableClass::CREATED_AT,
-          pagoTrabajadorTableClass::UPDATED_AT
+          pagoTrabajadorTableClass::TOTAL_PAGAR
       );
       $orderBy = array(
           pagoTrabajadorTableClass::ID
       );
-      $this->objPTrabajador = pagoTrabajadorTableClass::getAll($fields, false, $orderBy, 'ASC', null, null, $where);       
+      $this->objPTrabajador = pagoTrabajadorTableClass::getAll($fields, false, $orderBy, 'ASC', null, null, $where); 
+//      print_r($objPTrabajador);
+//            exit();
+      
+            
      }
 
  if ($value == 4){

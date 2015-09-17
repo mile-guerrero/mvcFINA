@@ -14,13 +14,32 @@
       
   <?php if ($value == 1) : ?>   
       <h2 class="form-signin-heading rwd">
-<div id="chart3" style="width: 1400px; height: 3000px"></div>
+<!--<div id="chart3" style="width: 1400px; height: 3000px"></div>-->
 <div id="info2c"></div>
 <script>
   $(document).ready(function () {
     crearGrafica(<?php echo json_encode($cosPoints) ?>);  
   });
 </script>
+<?php if (count($cosPoints) >= 0 and count($cosPoints) <=8) : ?>
+<div id="chart3" style="width: 1000px; height: 500px"></div>
+<?php endif; ?>  
+
+<?php if (count($cosPoints) >= 9 and count($cosPoints) <=17) : ?>
+<div id="chart3" style="width: 2000px; height: 700px"></div>
+<?php endif; ?> 
+
+<?php if (count($cosPoints) >= 18 and count($cosPoints) <=25) : ?>
+<div id="chart3" style="width: 3500px; height: 800px"></div>
+<?php endif; ?> 
+
+<?php if (count($cosPoints) >= 26 and count($cosPoints) <=38) : ?>
+<div id="chart3" style="width: 3500px; height: 1100px"></div>
+<?php endif; ?> 
+
+<?php if (count($cosPoints) >= 39) : ?>
+<div id="chart3" style="width: 6500px; height: 2800px"></div>
+<?php endif; ?>
 </h2>
  <?php endif; ?>
       
@@ -33,7 +52,26 @@
     crearGrafica2(<?php echo json_encode($cosPoints2) ?>);  
   });
 </script>
-<div id="chart2" style="width: 1400px; height: 3000px"></div>
+<?php if (count($cosPoints2) >= 0 and count($cosPoints2) <=8) : ?>
+<div id="chart2" style="width: 800px; height: 500px"></div>
+<?php endif; ?>  
+
+<?php if (count($cosPoints2) >= 9 and count($cosPoints2) <=17) : ?>
+<div id="chart2" style="width: 1500px; height: 700px"></div>
+<?php endif; ?> 
+
+<?php if (count($cosPoints2) >= 18 and count($cosPoints2) <=25) : ?>
+<div id="chart2" style="width: 1500px; height: 800px"></div>
+<?php endif; ?> 
+
+<?php if (count($cosPoints2) >= 26 and count($cosPoints2) <=38) : ?>
+<div id="chart2" style="width: 1800px; height: 1100px"></div>
+<?php endif; ?> 
+
+<?php if (count($cosPoints2) >= 39) : ?>
+<div id="chart2" style="width: 1800px; height: 1800px"></div>
+<?php endif; ?>
+<!--<div id="chart2" style="width: 1400px; height: 3000px"></div>-->
 </h2>   
 <?php endif; ?> 
       
@@ -45,7 +83,26 @@
     crearGrafica3(<?php echo json_encode($cosPoints3) ?>);  
   });
 </script>
-<div id="chart4" style="width: 1500px; height: 3000px"></div>
+ <?php if (count($cosPoints3) >= 0 and count($cosPoints3) <=8) : ?>
+<div id="chart4" style="width: 800px; height: 500px"></div>
+<?php endif; ?>  
+
+<?php if (count($cosPoints3) >= 9 and count($cosPoints3) <=17) : ?>
+<div id="chart4" style="width: 1500px; height: 700px"></div>
+<?php endif; ?> 
+
+<?php if (count($cosPoints3) >= 18 and count($cosPoints3) <=25) : ?>
+<div id="chart4" style="width: 1500px; height: 800px"></div>
+<?php endif; ?> 
+
+<?php if (count($cosPoints3) >= 26 and count($cosPoints3) <=38) : ?>
+<div id="chart4" style="width: 1800px; height: 1100px"></div>
+<?php endif; ?> 
+
+<?php if (count($cosPoints3) >= 39) : ?>
+<div id="chart4" style="width: 1800px; height: 1800px"></div>
+<?php endif; ?>
+
 </h2>   
      <?php endif; ?> 
       
@@ -92,7 +149,7 @@
  <a class="btn btn-lg btn-success btn-xs" target="_blank" href="<?php echo routing::getInstance()->getUrlWeb('reportes', 'report') ?>" ><?php echo i18n::__('importar pdf') ?></a>
      <a class="btn btn-lg btn-default btn-xs" href="<?php echo routing::getInstance()->getUrlWeb('reportes', 'index') ?>" ><?php echo i18n::__('atras') ?></a>
        
- <br><br><br><br><br><br><br><br><br><br><br><br>
+ <br><br> <br><br>
        </div>    
   </div>    
 </div>

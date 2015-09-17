@@ -14,9 +14,9 @@ body {
   font-family: Calibri,Arial, Helvetica, sans-serif;
   font-size: 16px;
   color: #333;
-  background: center;
-  width: 100%;
+  background: center;  
   background-image: url('../img/jeje.png');
+  width: 100%;
   position: relative;
 }
 

@@ -47,20 +47,26 @@ if ($value == 1) {
   $pdf->SetFillColor(204,204,255);
   $pdf->Cell(190, 10, utf8_decode($mensaje), 1, 0, 'C', true);
   $pdf->Ln();
-  $pdf->Cell(80, 10, "Lote", 1, 0, 'C');
-  $pdf->Cell(40, 10, utf8_decode("Poducción"), 1, 0, 'C');
-  $pdf->Cell(40, 10, utf8_decode("Fecha producción"), 1, 0, 'C');
-  $pdf->Cell(30, 10, utf8_decode("Total"), 1, 0, 'C');
+  $pdf->Cell(90, 10, "Lote", 1, 0, 'C');
+  $pdf->Cell(50, 10, utf8_decode("Poducción"), 1, 0, 'C');
+  $pdf->Cell(50, 10, utf8_decode("Fecha producción"), 1, 0, 'C');
   $pdf->Ln();
   foreach ($objLote as $valor) {
-    $pdf->Cell(80, 8, utf8_decode($valor->$ubicacion . '  ' . productoInsumoTableClass::getNameProductoInsumo($valor->$insumo)), 1, 0, 'C');
-    $pdf->Cell(40, 8, utf8_decode($valor->$produccion) . '  ' . unidadMedidaTableClass::getNameUnidadMedida($valor->$unidad), 1, 0, 'C');
-    $pdf->Cell(40, 8, utf8_decode($valor->$cre), 1, 0, 'C');
-    $pdf->Cell(30, 8, utf8_decode(registroLoteTableClass::getNameTotal($valor->$insumo). '  ' . unidadMedidaTableClass::getNameUnidadMedida($valor->$unidad)), 1, 0, 'C');
+    $pdf->Cell(90, 8, utf8_decode($valor->$ubicacion . '  ' . productoInsumoTableClass::getNameProductoInsumo($valor->$insumo)), 1, 0, 'C');
+    $pdf->Cell(50, 8, utf8_decode($valor->$produccion) . '  ' . unidadMedidaTableClass::getNameUnidadMedida($valor->$unidad), 1, 0, 'C');
+    $pdf->Cell(50, 8, utf8_decode($valor->$cre), 1, 0, 'C');
     $pdf->Ln();
     
+
   }
-  $pdf->Output();
+  
+$pdf->Cell(190, 10, "Total",1, 0, 'C', true);
+$pdf->Ln();
+$pdf->Cell(190, 8, utf8_decode(registroLoteTableClass::getNameTotal($valor->$insumo,$fechaInicial,$fechaFin). '  ' . unidadMedidaTableClass::getNameUnidadMedida($valor->$unidad)), 1, 0, 'C');
+$pdf->Ln();
+$pdf->Ln();
+
+$pdf->Output();
 }
 
 
@@ -214,7 +220,7 @@ foreach ($objPTrabajador as $valor) {
 
 $pdf->Cell(190, 10, "Total",1, 0, 'C', true);
 $pdf->Ln();
-$pdf->Cell(190, 8, '$' . number_format(pagoTrabajadorTableClass::getTotal($idTrabajador), 0, ',', '.'),1, 0, 'C'); 
+$pdf->Cell(190, 8, '$' . number_format(pagoTrabajadorTableClass::getTotalJaja($idTrabajador,$fechaInicial,$fechaFin), 0, ',', '.'),1, 0, 'C'); 
 $pdf->Ln();
 $pdf->Ln();
 $pdf->Output();

@@ -2,7 +2,7 @@
 
 use mvc\model\modelClass as model;
 use mvc\config\configClass as config;
-
+use mvc\session\sessionClass as session;
 /**
  * Description of pagoTrabajadorTableClass
  *
@@ -45,6 +45,29 @@ class pagoTrabajadorTableClass extends pagoTrabajadorBaseTableClass {
     }
     
   }
+  
+  
+  public static function getTotalJaja($idTrabajador,$fechaInicial,$fechaFin){
+    try {
+      $fechaFin = session::getInstance()->getAttribute('TrabajadorFechaFin');
+     
+      $sql = 'SELECT ' . '  '. 'SUM ('. pagoTrabajadorTableClass::TOTAL_PAGAR  . ') ' .  ' As total'
+             . '  FROM ' . pagoTrabajadorTableClass::getNameTable() . '  ' 
+             . ' WHERE ' . '(' . pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::TRABAJADOR_ID) . ' = ' . $idTrabajador . ' ) '
+                    . ' AND ' . '(' . pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::FECHA_INICIAL) . ' BETWEEN ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaInicial . ' 00:00:00')) . "'" . ' AND ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59')) . "'" . ' ) ';
+          
+//     print_r($sql);
+//            exit();
+      $answer = model::getInstance()->prepare($sql);
+            $answer->execute();
+            $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+ return $answer[0]->total;
+   } catch (Exception $exc) {
+      throw $exc;
+    }
+    
+  }
+
 
   public static function getTotalPages($lines, $where) {
     try {

@@ -24,7 +24,6 @@
   </section>
     <article id='derecha'>
        <br><br>
-      <br><br>
       <div class="rwd">
       <table class="table table-bordered table-responsive ">
         <tr>
@@ -52,7 +51,7 @@
     </article>
 
 </div>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br>
 </div>
   
  </div> 

@@ -2,7 +2,7 @@
 
 use mvc\model\modelClass as model;
 use mvc\config\configClass as config;
-
+use mvc\session\sessionClass as session;
 /**
  * Description of registroLoteTableClass
  *
@@ -125,12 +125,16 @@ class registroLoteTableClass extends registroLoteBaseTableClass {
   
   
   
-   public static function getNameTotal($id){
+   public static function getNameTotal($insumo,$fechaInicial,$fechaFin){
     try {
+      $fechaFin = session::getInstance()->getAttribute('graficaRFecha2');
       $sql = 'SELECT ' . '  '. 'SUM ('. registroLoteTableClass::PRODUCCION  . ') ' .  ' As total'
              . '  FROM ' . registroLoteTableClass::getNameTable() . '  ' 
-             . ' WHERE ' . registroLoteTableClass::PRODUCTO_INSUMO_ID . ' = ' . $id;
-    
+             . ' WHERE ' . '(' . registroLoteTableClass::getNameField(registroLoteTableClass::PRODUCTO_INSUMO_ID) . ' = ' . $insumo . ' ) '
+                    . ' AND ' . '(' . registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT) . ' BETWEEN ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaInicial . ' 00:00:00')) . "'" . ' AND ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59')) . "'" . ' ) ';
+          
+//     print_r($sql);
+//            exit();
       $answer = model::getInstance()->prepare($sql);
             $answer->execute();
             $answer = $answer->fetchAll(PDO::FETCH_OBJ);

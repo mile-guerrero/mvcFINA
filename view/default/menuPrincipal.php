@@ -252,7 +252,6 @@ use mvc\i18n\i18nClass as i18n ?>
 
 <div id="separasdor"> <br></div>
 <div id="separasdor2"> <br></div>
-
 <section  navbar-header id="contenido">
 
   <!--  <div class="btn-group-vertical" role="group" aria-label="...">
