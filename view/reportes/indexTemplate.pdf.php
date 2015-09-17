@@ -270,7 +270,7 @@ $pdf->Ln();
 $pdf->SetFillColor(204,204,255);//color
 foreach ($objPresupuesto as $valor) {  
 $pdf->Cell(190, 10, 'Fecha:' . ' ' . date('Y-m-d', strtotime($valor->$created)), 1, 0, 'C', true);
-}
+
 $pdf->Ln();
 $pdf->Cell(38, 10, "Lote",1, 0, 'C',true);
 $pdf->Cell(38, 10, "Producto",1, 0, 'C',true);
@@ -278,7 +278,7 @@ $pdf->Cell(38, 10, "Presupuesto",1, 0, 'C',true);
 $pdf->Cell(38, 10, "Total produccion",1, 0, 'C',true);
 $pdf->Cell(38, 10, "Total pago",1, 0, 'C',true);
 $pdf->Ln();
-foreach ($objPresupuesto as $valor) {  
+
   $pdf->Cell(38, 8, loteTableClass::getNameLote($valor->$lote),1);
   $pdf->Cell(38, 8, productoInsumoTableClass::getNameProductoInsumo($valor->$producto),1);  
   $pdf->Cell(38, 8, '$' . number_format ($valor->$presupuesto),1);
@@ -288,10 +288,12 @@ foreach ($objPresupuesto as $valor) {
   $pdf->Ln();
   $pdf->Ln();
 }
+ $pdf->Ln();
+ 
 foreach ($objPresupuesto2 as $valor) {  
 $pdf->SetFillColor(204,204,255);//color
 $pdf->Cell(190, 10, 'Fecha:' . ' ' . date('Y-m-d', strtotime($valor->$created)), 1, 0, 'C', true);
-}
+
 $pdf->Ln();
 $pdf->Cell(38, 10, "Lote",1, 0, 'C',true);
 $pdf->Cell(38, 10, "Producto",1, 0, 'C',true);
@@ -299,13 +301,14 @@ $pdf->Cell(38, 10, "Presupuesto",1, 0, 'C',true);
 $pdf->Cell(38, 10, "Total produccion",1, 0, 'C',true);
 $pdf->Cell(38, 10, "Total pago",1, 0, 'C',true);
 $pdf->Ln();
-foreach ($objPresupuesto2 as $valor) {  
+
   $pdf->Cell(38, 8, loteTableClass::getNameLote($valor->$lote),1);
   $pdf->Cell(38, 8, productoInsumoTableClass::getNameProductoInsumo($valor->$producto),1);  
   $pdf->Cell(38, 8, '$' . number_format ($valor->$presupuesto),1);
   $pdf->Cell(38, 8, $valor->$totalProduccion . ' ' . 'Kg',1);
   $pdf->Cell(38, 8, '$' . number_format ($valor->$totalPago),1);
-
+$pdf->Ln();
+$pdf->Ln();
 }
 
 $pdf->Ln();
