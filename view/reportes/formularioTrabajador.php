@@ -34,20 +34,20 @@ use mvc\request\requestClass as request ?>
             <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputFecha') ?>
           </div>
 <?php endif ?>
-<!--<label class="col-sm-2 control-label" for="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::CREATED_AT, true) . '_1' ?>" ><?php echo i18n::__('rango de fechas') ?></label>-->
+<!--<label class="col-sm-2 control-label" for="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::FECHA_INICIAL, true) . '_1' ?>" ><?php echo i18n::__('rango de fechas') ?></label>-->
 
         <div class="row j1" >
           <div class=""> 
-          <label class="col-sm-2 control-label" for="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::CREATED_AT, true) . '_1' ?>" ><?php echo i18n::__('fecha inicio') ?></label>
+          <label class="col-sm-2 control-label" for="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::FECHA_INICIAL, true) . '_1' ?>" ><?php echo i18n::__('fecha inicio') ?></label>
            </div>
           <div class="col-lg-4">            
-            <input type="date" class="form-control" id="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::CREATED_AT, true) . '_1' ?>" name="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::CREATED_AT, true) . '_1' ?>" required>
+            <input type="date" class="form-control" id="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::FECHA_INICIAL, true) . '_1' ?>" name="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::FECHA_INICIAL, true) . '_1' ?>" required>
           </div>
           <div class="">
-          <label class="col-sm-2 control-label" for="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::CREATED_AT, true) . '_1' ?>" ><?php echo i18n::__('fecha fin') ?></label>
+          <label class="col-sm-2 control-label" for="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::FECHA_FINAL, true) . '_1' ?>" ><?php echo i18n::__('fecha fin') ?></label>
            </div>
           <div class="col-lg-4 ">            
-            <input type="date" class="form-control" id="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::CREATED_AT, true) . '_2' ?>" name="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::CREATED_AT, true) . '_2' ?>" required>
+            <input type="date" class="form-control" id="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::FECHA_FINAL, true) . '_2' ?>" name="<?php echo pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::FECHA_FINAL, true) . '_2' ?>" required>
           </div>
         </div>
         <br>

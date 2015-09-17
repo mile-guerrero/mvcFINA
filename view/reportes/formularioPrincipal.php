@@ -43,13 +43,13 @@ use mvc\request\requestClass as request ?>
           <label class="col-sm-2 control-label" for="<?php echo registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_1' ?>" ><?php echo i18n::__('fecha inicio') ?></label>
            </div>
           <div class="col-lg-4">            
-            <input type="date" class="form-control" id="<?php echo registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_1' ?>" name="<?php echo registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_1' ?>">
+            <input type="date" class="form-control" id="<?php echo registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_1' ?>" name="<?php echo registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_1' ?>" required>
           </div>
           <div class="">
           <label class="col-sm-2 control-label" for="<?php echo registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_1' ?>" ><?php echo i18n::__('fecha fin') ?></label>
            </div>
           <div class="col-lg-4 ">            
-            <input type="date" class="form-control" id="<?php echo registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_2' ?>" name="<?php echo registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_2' ?>">
+            <input type="date" class="form-control" id="<?php echo registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_2' ?>" name="<?php echo registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_2' ?>" required>
           </div>
         </div>
         <br>
@@ -59,7 +59,7 @@ use mvc\request\requestClass as request ?>
          <div class="form-group">
     <label for="filterLote" class="col-sm-2 control-label"><?php echo i18n::__('lote') ?></label>
     <div class="col-sm-10">
-      <select class="form-control" id="filterLote" name="<?php echo registroLoteTableClass::getNameField(registroLoteTableClass::UBICACION, true) ?>">
+      <select class="form-control" id="filterLote" name="<?php echo registroLoteTableClass::getNameField(registroLoteTableClass::UBICACION, true) ?>" >
         <option value="lote"><?php echo i18n::__('selectLote') ?></option>
 <?php foreach ($objLoteR as $key): ?>
             <option value="<?php echo $key->$ubicacion ?>"><?php echo $key->$ubicacion ?></option>

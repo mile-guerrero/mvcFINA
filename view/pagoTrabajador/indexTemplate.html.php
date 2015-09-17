@@ -133,8 +133,8 @@
                 <div class="col-sm-10">
                   <select class="form-control" id="filterEmpresa" name="filter[empresa]">
                     <option value=""><?php echo i18n::__('selectEmpresa') ?></option>
-<?php foreach ($objEmpresa as $empresa): ?>
-                      <option value="<?php echo $empresa->$idEmp ?>"><?php echo $empresa->$nomEmpresa ?></option>
+<?php foreach ($objPT as $key): ?>
+                      <option value="<?php echo $key->$idEmp ?>"><?php echo $key->$nomEmpresa ?></option>
 <?php endforeach; ?>
                   </select>
                 </div>
@@ -165,6 +165,9 @@
             <th>
               <?php echo i18n::__('empresa') ?>
             </th>
+            <th>
+              <?php echo i18n::__('nom') ?>
+            </th>
             <th id="acciones">
           <?php echo i18n::__('acciones') ?>
             </th> 
@@ -175,6 +178,9 @@
             <tr>
                 <td>
                   <?php echo empresaTableClass::getNameEmpresa($key->$idEmpresa) ?>
+                 </td>
+                 <td>
+                  <?php echo trabajadorTableClass::getNameTrabajador($key->$idTrabajador) ?>
                  </td>
               <td>
                

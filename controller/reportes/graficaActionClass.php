@@ -29,10 +29,7 @@ class graficaActionClass extends controllerClass implements controllerActionInte
             registroLoteTableClass::CREATED_AT,
         );
         $orderBy = array(
-            registroLoteTableClass::PRODUCCION,
-            registroLoteTableClass::CREATED_AT,
-            registroLoteTableClass::UBICACION,
-            registroLoteTableClass::PRODUCTO_INSUMO_ID
+            registroLoteTableClass::CREATED_AT
         );
         $objLote = registroLoteTableClass::getAll($fields, false, $orderBy, 'ASC', null, null, $where);
 
@@ -45,7 +42,7 @@ class graficaActionClass extends controllerClass implements controllerActionInte
         $cosPoints = array();
         //el 1 dato
         foreach ($objLote as $objeto) {
-          $cosPoints[] = array($objeto->id . ' ' . $objeto->ubicacion . ' ' , $objeto->produccion . ' ' . 'Kg' . ' ' . productoInsumoTableClass::getNameProductoInsumo($objeto->producto_insumo_id));
+          $cosPoints[] = array($objeto->produccion . 'Kg' . ' ' . productoInsumoTableClass::getNameProductoInsumo($objeto->producto_insumo_id),date('Y-m-d', strtotime($objeto->created_at)) . ' ' . $objeto->ubicacion . ' ' );
         }
         $this->cosPoints = $cosPoints;
        
@@ -59,15 +56,17 @@ class graficaActionClass extends controllerClass implements controllerActionInte
             registroLoteTableClass::NUMERO_PLANTULAS,
             registroLoteTableClass::UBICACION,
             registroLoteTableClass::ID,
+             registroLoteTableClass::CREATED_AT
         );
         $orderBy = array(
-            registroLoteTableClass::NUMERO_PLANTULAS,
+//            registroLoteTableClass::CREATED_AT,
+            registroLoteTableClass::NUMERO_PLANTULAS
         );
         $objLote = registroLoteTableClass::getAll($fields, false, $orderBy, 'ASC', null, null, $where);
 
         $cosPoints = array();
         foreach ($objLote as $objeto) {
-          $cosPoints[] = array($objeto->id . ' ' . $objeto->ubicacion . ' ', $objeto->numero_plantulas,);
+          $cosPoints[] = array($objeto->numero_plantulas,date('Y-m-d', strtotime($objeto->created_at)) . ' ' . $objeto->ubicacion . ' ');
 //         print_r($cosPoints);
 //         exit();
         }
@@ -82,6 +81,7 @@ class graficaActionClass extends controllerClass implements controllerActionInte
             pagoTrabajadorTableClass::TRABAJADOR_ID,
             pagoTrabajadorTableClass::TOTAL_PAGAR,
             pagoTrabajadorTableClass::ID,
+            pagoTrabajadorTableClass::FECHA_INICIAL
         );
         $orderBy = array(
             pagoTrabajadorTableClass::TOTAL_PAGAR,
@@ -90,7 +90,7 @@ class graficaActionClass extends controllerClass implements controllerActionInte
 
         $cosPoints = array();
         foreach ($objTabajador as $objeto) {
-          $cosPoints[] = array($objeto->id . ' ' .trabajadorTableClass::getNameTrabajador($objeto->trabajador_id). ' ' . trabajadorTableClass::getNameApellido($objeto->trabajador_id). ' ' .  ' CC: ' . ' ' . trabajadorTableClass::getNameDocumento($objeto->trabajador_id) , $objeto->total_pagar);
+          $cosPoints[] = array($objeto->total_pagar,date('Y-m-d', strtotime($objeto->fecha_inicial)). ' ' .trabajadorTableClass::getNameTrabajador($objeto->trabajador_id). ' ' . trabajadorTableClass::getNameApellido($objeto->trabajador_id). ' ' .  ' CC: ' . ' ' . trabajadorTableClass::getNameDocumento($objeto->trabajador_id));
 //         print_r($cosPoints);
 //         exit();
         }

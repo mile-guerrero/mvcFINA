@@ -195,8 +195,8 @@ $pdf->Ln();
 foreach ($objPTrabajador as $valor) {  
   $pdf->Cell(40, 8, empresaTableClass::getNameEmpresa($valor->$nomEmpresa),1);
   $pdf->Cell(55, 8, trabajadorTableClass::getNameTrabajador($valor->$nomTrabajador). ' '. trabajadorTableClass::getNameApellido($valor->$nomTrabajador) . ' CC:' . trabajadorTableClass::getNameDocumento($valor->$nomTrabajador),1);
-  $pdf->Cell(30, 8, utf8_decode($valor->$fechaIni),1); 
-  $pdf->Cell(30, 8, utf8_decode($valor->$fechaFin),1);
+  $pdf->Cell(30, 8, date('Y-m-d', strtotime($valor->$fechaIni)),1); 
+  $pdf->Cell(30, 8, date('Y-m-d', strtotime($valor->$fechaFin)),1);
   $pdf->Cell(35, 8, '$' . number_format($valor->$valorSalario, 0, ',', '.'),1);
   $pdf->Ln();
   $pdf->Ln();
@@ -216,6 +216,98 @@ $pdf->Cell(190, 10, "Total",1, 0, 'C', true);
 $pdf->Ln();
 $pdf->Cell(190, 8, '$' . number_format(pagoTrabajadorTableClass::getTotal($idTrabajador), 0, ',', '.'),1, 0, 'C'); 
 $pdf->Ln();
+$pdf->Ln();
+$pdf->Output();
+  
+}
+
+
+if ($value == 4) {
+  
+ $lote = presupuestoHistoricoTableClass::LOTE_ID;
+ $producto = presupuestoHistoricoTableClass::PRODUCTO_INSUMO_ID;
+ $idPresupuestoHistorico = presupuestoHistoricoTableClass::ID;
+ $totalPago = presupuestoHistoricoTableClass::TOTAL_PAGO_TRABAJADOR;
+ $totalProduccion = presupuestoHistoricoTableClass::TOTAL_PRODUCCION;
+ $presupuesto = presupuestoHistoricoTableClass::PRESUPUESTO;
+ $created = presupuestoHistoricoTableClass::CREATED_AT;
+ 
+ 
+ class PDF extends FPDF {
+
+  function Header() {
+    
+    $this->Image(routing::getInstance()->getUrlImg('logoColmenar.png'), 10, 22, 80);
+    $this->SetFont('Arial', 'B', '25');
+//    $this->SetDrawColor(0,80,180);
+    $this->SetFillColor(204,204,255);
+//    $this->SetTextColor(220,50,50);
+//    $this->Cell(10);
+//    $this->SetFillColor(200,220,255);
+    
+    $this->Cell( 0, 10, 'Presupuesto historico' , 2, 10,'C', true);
+    $this->Ln(45);
+    
+  }
+ 
+
+  
+  function Footer() {
+    $this->SetY(-15);
+    $this->SetFont('Arial', 'I', 8);
+    $this->Cell(0, 10, 'page' . $this->PageNo() . '/{Presupuesto historico}', 0, 0, 'C');
+    
+  }
+
+}
+
+$pdf = new PDF();
+$pdf->AddPage();
+$pdf->SetFont('Arial', 'B', 8);
+
+$pdf->Ln();
+$pdf->Ln();
+$pdf->SetFillColor(204,204,255);//color
+foreach ($objPresupuesto as $valor) {  
+$pdf->Cell(190, 10, 'Fecha:' . ' ' . date('Y-m-d', strtotime($valor->$created)), 1, 0, 'C', true);
+}
+$pdf->Ln();
+$pdf->Cell(38, 10, "Lote",1, 0, 'C',true);
+$pdf->Cell(38, 10, "Producto",1, 0, 'C',true);
+$pdf->Cell(38, 10, "Presupuesto",1, 0, 'C',true);
+$pdf->Cell(38, 10, "Total produccion",1, 0, 'C',true);
+$pdf->Cell(38, 10, "Total pago",1, 0, 'C',true);
+$pdf->Ln();
+foreach ($objPresupuesto as $valor) {  
+  $pdf->Cell(38, 8, loteTableClass::getNameLote($valor->$lote),1);
+  $pdf->Cell(38, 8, productoInsumoTableClass::getNameProductoInsumo($valor->$producto),1);  
+  $pdf->Cell(38, 8, '$' . number_format ($valor->$presupuesto),1);
+  $pdf->Cell(38, 8, $valor->$totalProduccion . ' ' . 'Kg',1);
+  $pdf->Cell(38, 8, '$' . number_format ($valor->$totalPago),1);
+  
+  $pdf->Ln();
+  $pdf->Ln();
+}
+foreach ($objPresupuesto2 as $valor) {  
+$pdf->SetFillColor(204,204,255);//color
+$pdf->Cell(190, 10, 'Fecha:' . ' ' . date('Y-m-d', strtotime($valor->$created)), 1, 0, 'C', true);
+}
+$pdf->Ln();
+$pdf->Cell(38, 10, "Lote",1, 0, 'C',true);
+$pdf->Cell(38, 10, "Producto",1, 0, 'C',true);
+$pdf->Cell(38, 10, "Presupuesto",1, 0, 'C',true);
+$pdf->Cell(38, 10, "Total produccion",1, 0, 'C',true);
+$pdf->Cell(38, 10, "Total pago",1, 0, 'C',true);
+$pdf->Ln();
+foreach ($objPresupuesto2 as $valor) {  
+  $pdf->Cell(38, 8, loteTableClass::getNameLote($valor->$lote),1);
+  $pdf->Cell(38, 8, productoInsumoTableClass::getNameProductoInsumo($valor->$producto),1);  
+  $pdf->Cell(38, 8, '$' . number_format ($valor->$presupuesto),1);
+  $pdf->Cell(38, 8, $valor->$totalProduccion . ' ' . 'Kg',1);
+  $pdf->Cell(38, 8, '$' . number_format ($valor->$totalPago),1);
+
+}
+
 $pdf->Ln();
 $pdf->Output();
   

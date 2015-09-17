@@ -71,7 +71,45 @@ class reportActionClass extends controllerClass implements controllerActionInter
       $this->objPTrabajador = pagoTrabajadorTableClass::getAll($fields, false, $orderBy, 'ASC', null, null, $where);       
      }
 
-
+ if ($value == 4){
+       $where = session::getInstance()->getAttribute('graficaWhere');
+       
+       $this->mensaje4 = 'Informacion del presupuesto historico';
+       $fields = array(
+            presupuestoHistoricoTableClass::LOTE_ID,
+            presupuestoHistoricoTableClass::PRODUCTO_INSUMO_ID,
+            presupuestoHistoricoTableClass::ID,
+            presupuestoHistoricoTableClass::TOTAL_PAGO_TRABAJADOR,
+            presupuestoHistoricoTableClass::TOTAL_PRODUCCION,
+            presupuestoHistoricoTableClass::PRESUPUESTO,
+            presupuestoHistoricoTableClass::CREATED_AT
+        );
+        $orderBy = array(
+//            presupuestoHistoricoTableClass::ID,
+            presupuestoHistoricoTableClass::TOTAL_PRODUCCION
+        );
+        $this->objPresupuesto = presupuestoHistoricoTableClass::getAll($fields, true, $orderBy, 'ASC', null, null, $where);
+     }
+     
+     if ($value == 4){
+       $whereAno = session::getInstance()->getAttribute('graficaWhereAno');
+       
+       $this->mensaje5 = 'Informacion del presupuesto historico año anterior';
+       $fields = array(
+            presupuestoHistoricoTableClass::LOTE_ID,
+            presupuestoHistoricoTableClass::PRODUCTO_INSUMO_ID,
+            presupuestoHistoricoTableClass::ID,
+            presupuestoHistoricoTableClass::TOTAL_PAGO_TRABAJADOR,
+            presupuestoHistoricoTableClass::TOTAL_PRODUCCION,
+            presupuestoHistoricoTableClass::PRESUPUESTO,
+            presupuestoHistoricoTableClass::CREATED_AT
+        );
+        $orderBy = array(
+//            presupuestoHistoricoTableClass::ID,
+            presupuestoHistoricoTableClass::TOTAL_PRODUCCION
+        );
+        $this->objPresupuesto2 = presupuestoHistoricoTableClass::getAll($fields, true, $orderBy, 'ASC', null, null, $whereAno);
+     }
       $this->defineView('index', 'reportes', session::getInstance()->getFormatOutput());
     } //cierre del try
     catch (PDOException $exc) {

@@ -14,7 +14,7 @@
       
   <?php if ($value == 1) : ?>   
       <h2 class="form-signin-heading rwd">
-<div id="chart3" style="width: 1050px; height: 500px"></div>
+<div id="chart3" style="width: 1400px; height: 3000px"></div>
 <div id="info2c"></div>
 <script>
   $(document).ready(function () {
@@ -33,7 +33,7 @@
     crearGrafica2(<?php echo json_encode($cosPoints2) ?>);  
   });
 </script>
-<div id="chart2" style="width: 1050px; height: 500px"></div>
+<div id="chart2" style="width: 1400px; height: 3000px"></div>
 </h2>   
 <?php endif; ?> 
       
@@ -45,7 +45,7 @@
     crearGrafica3(<?php echo json_encode($cosPoints3) ?>);  
   });
 </script>
-<div id="chart4" style="width: 1050px; height: 500px"></div>
+<div id="chart4" style="width: 1500px; height: 3000px"></div>
 </h2>   
      <?php endif; ?> 
       

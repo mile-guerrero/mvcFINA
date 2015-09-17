@@ -5,24 +5,15 @@ function crearGrafica($cosPoints) {
   var plot3 = $.jqplot('chart3', [$cosPoints], {
     title: 'Producción en kilos por semana',
     animate: !$.jqplot.use_excanvas,
-    seriesDefaults: {
+   seriesDefaults: {
       renderer: $.jqplot.BarRenderer,
-      pointLabels: {show: true},
-      rendererOptions: {varyBarColor: true},
-      pointLabels: {show: false}//ensima de las barras
+      pointLabels: {show: false},
+      rendererOptions: {varyBarColor: true,
+                    barDirection: 'horizontal'
+                }
     },
     axes: {
       xaxis: {
-        renderer: $.jqplot.CategoryAxisRenderer,
-        label: 'Ubicacion',
-        labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
-        tickRenderer: $.jqplot.CanvasAxisTickRenderer,
-        tickOptions: {
-//   fontFamily: 'Georgia, Serif',
-          fontSize: '7pt'
-        },
-      },
-      yaxis: {
         renderer: $.jqplot.CategoryAxisRenderer,
         labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
         tickRenderer: $.jqplot.CanvasAxisTickRenderer,
@@ -30,7 +21,17 @@ function crearGrafica($cosPoints) {
 //   fontFamily: 'Georgia, Serif',
           fontSize: '10pt'
         },
-      }
+      },
+      yaxis: {
+        renderer: $.jqplot.CategoryAxisRenderer,
+        label: 'Lote',
+        labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+        tickRenderer: $.jqplot.CanvasAxisTickRenderer,
+        tickOptions: {
+//          fontFamily: 'Georgia, Serif',
+          fontSize: '8pt'
+        },
+      },
 
     },
   });
@@ -46,26 +47,28 @@ function crearGrafica2(cosPoints2) {
     seriesDefaults: {
       renderer: $.jqplot.BarRenderer,
       pointLabels: {show: false},
-      rendererOptions: {varyBarColor: true},
+      rendererOptions: {varyBarColor: true,
+                    barDirection: 'horizontal'
+                }
     },
     axes: {
       xaxis: {
-        renderer: $.jqplot.CategoryAxisRenderer,
-        label: 'Ubicacion',
-        labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
-        tickRenderer: $.jqplot.CanvasAxisTickRenderer,
-        tickOptions: {
-//          fontFamily: 'Georgia, Serif',
-          fontSize: '7pt'
-        },
-      },
-      yaxis: {
         renderer: $.jqplot.CategoryAxisRenderer,
         labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
         tickRenderer: $.jqplot.CanvasAxisTickRenderer,
         tickOptions: {
 //   fontFamily: 'Georgia, Serif',
           fontSize: '10pt'
+        },
+      },
+      yaxis: {
+        renderer: $.jqplot.CategoryAxisRenderer,
+        label: 'Tabajador',
+        labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+        tickRenderer: $.jqplot.CanvasAxisTickRenderer,
+        tickOptions: {
+//          fontFamily: 'Georgia, Serif',
+          fontSize: '8pt'
         },
       },
     },
@@ -81,10 +84,21 @@ function crearGrafica3(cosPoints3) {
     seriesDefaults: {
       renderer: $.jqplot.BarRenderer,
       pointLabels: {show: false},
-      rendererOptions: {varyBarColor: true},
+      rendererOptions: {varyBarColor: true,
+                    barDirection: 'horizontal'
+                }
     },
     axes: {
       xaxis: {
+        renderer: $.jqplot.CategoryAxisRenderer,
+        labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+        tickRenderer: $.jqplot.CanvasAxisTickRenderer,
+        tickOptions: {
+//   fontFamily: 'Georgia, Serif',
+          fontSize: '10pt'
+        },
+      },
+      yaxis: {
         renderer: $.jqplot.CategoryAxisRenderer,
         label: 'Tabajador',
         labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
@@ -92,15 +106,6 @@ function crearGrafica3(cosPoints3) {
         tickOptions: {
 //          fontFamily: 'Georgia, Serif',
           fontSize: '8pt'
-        },
-      },
-      yaxis: {
-        renderer: $.jqplot.CategoryAxisRenderer,
-        labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
-        tickRenderer: $.jqplot.CanvasAxisTickRenderer,
-        tickOptions: {
-//   fontFamily: 'Georgia, Serif',
-          fontSize: '10pt'
         },
       },
     },
