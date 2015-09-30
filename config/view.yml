@@ -88,11 +88,13 @@ maquina:
 
   
       
-#-------------------modulo - tipoUsoMaquina------------------
-
-   
-
-
+#-------------------modulo - vivero------------------
+vivero: 
+  index:
+    javascript:
+      - confirmar.js
+  
+  
 #-------------------modulo - cliente-------------------------
 cliente: 
   indexCliente:

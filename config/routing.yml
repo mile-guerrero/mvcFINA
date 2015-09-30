@@ -3432,6 +3432,112 @@ presupuestoHistorico_deleteFilters:
   url:    /presupuestoHistorico/borrarFiltros
   param:  { module: presupuestoHistorico, action: deleteFilters, format: html }
   load:    
+      
+#-------------------modulo - vivero----------------------------
+vivero_index:
+  url:    /vivero/index
+  param:  { module: vivero, action: index, format: html }
+  load:
+    - model/base/viveroBaseTableClass.php
+    - model/viveroTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - libs/validator/vivero/viveroValidatorClass.php
+    
+vivero_insert:
+  url:    /vivero/insertar
+  param:  { module: vivero, action: insert, format: html }
+  load:
+    - model/base/viveroBaseTableClass.php
+    - model/viveroTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    
+vivero_create:
+  url:    /vivero/crear
+  param:  { module: vivero, action: create, format: html }
+  load:
+    - model/base/viveroBaseTableClass.php
+    - model/viveroTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - libs/validator/vivero/viveroValidatorClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
+    
+vivero_edit:
+  url:    /vivero/editar
+  param:  { module: vivero, action: edit, format: html }
+  load:
+    - model/base/viveroBaseTableClass.php
+    - model/viveroTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    
+vivero_update:
+  url:    /vivero/actualizar
+  param:  { module: vivero, action: update, format: html }
+  load:
+    - model/base/viveroBaseTableClass.php
+    - model/viveroTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - libs/validator/vivero/viveroValidatorUpdateClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
+    
+vivero_delete:
+  url:    /vivero/eliminar
+  param:  { module: vivero, action: delete, format: json }
+  load:
+    - model/base/viveroBaseTableClass.php
+    - model/viveroTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
+    
+vivero_deleteSelect:
+  url:    /vivero/eliminarSeleccion
+  param:  { module: vivero, action: deleteSelect, format: html }
+  load:
+    - model/base/viveroBaseTableClass.php
+    - model/viveroTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
+    
+vivero_ver:
+  url:    /vivero/ver
+  param:  { module: vivero, action: ver, format: html }
+  load:
+    - model/base/viveroBaseTableClass.php
+    - model/viveroTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    
+vivero_reporte:
+  url:    /vivero/reporte
+  param:  { module: vivero, action: report, format: pdf } 
+  load:
+    - libs/fpdf/fpdf.php
+    - model/base/viveroBaseTableClass.php
+    - model/viveroTableClass.php
+    - model/base/productoInsumoBaseTableClass.php
+    - model/productoInsumoTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
+
+vivero_deleteFilters:
+  url:    /vivero/borrarFiltros
+  param:  { module: vivero, action: deleteFilters, format: html }
+  load:      
     
 
        

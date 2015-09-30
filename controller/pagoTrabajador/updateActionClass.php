@@ -34,7 +34,7 @@ class updateActionClass extends controllerClass implements controllerActionInter
         if($fecha_fin < $fecha_ini){
                 session::getInstance()->setFlash('selectFechaIni', true);
                 session::getInstance()->setError('La fecha final no puede ser menor a la actual', 'selectFechaIni');
-               request::getInstance()->setMethod('GET');
+                request::getInstance()->setMethod('GET');
                 request::getInstance()->addParamGet(array(\pagoTrabajadorTableClass::ID => request::getInstance()->getPost(\pagoTrabajadorTableClass::getNameField(\pagoTrabajadorTableClass::ID, true))));
                 routing::getInstance()->forward('pagoTrabajador', 'edit');
             }elseif($fecha_fin == $fecha_ini){

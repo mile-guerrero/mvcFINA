@@ -19,7 +19,9 @@ dictionary:
     totalProduccion:      Total produccion
     totalPago:            Total pago
     inventario:           Inventario
+    vivero:               Vivero
     #-------Registros---------
+    registroVivero:       Registro de vivero
     registroCliente:      Customer registration
     registroCooperativa:  Registration cooperative
     registroCredencial:   Registration credential

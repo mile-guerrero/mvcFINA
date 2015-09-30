@@ -14,7 +14,9 @@ dictionary:
     controlPlaga:         Control plaga
     registroControlPlaga: Registro control plaga
     inventario:           Inventario
+    vivero:               Vivero
     #-------Registros---------
+    registroVivero:       Registro de vivero
     registroCliente:      Registro de cliente
     registroCooperativa:  Registro de cooperativa
     registroCredencial:   Registro de credencial
