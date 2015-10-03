@@ -30,7 +30,6 @@ if (config::getDbUnixSocket() !== null) {
 }
 
 config::setPathAbsolute('c:/xampp/htdocs/mvcfinal/');
-//config::setUrlBase('http://localhost/mvcfinal/web/');
 config::setUrlBase('http://www.elcolmenar.com/');
 
 config::setScope('dev'); // prod  dev

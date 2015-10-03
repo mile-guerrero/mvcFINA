@@ -172,7 +172,37 @@ class createActionClass extends controllerClass implements controllerActionInter
         }
       }
       if ($value == 5) {
-        
+        if (((request::getInstance()->hasPost(registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_1') and empty(mvc\request\requestClass::getInstance()->getPost(registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_1')) === false) and ( (request::getInstance()->hasPost(registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_2') and empty(mvc\request\requestClass::getInstance()->getPost(registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_2')) === false)) and empty(mvc\request\requestClass::getInstance()->getPost(registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_1')) === false) and ( (request::getInstance()->hasPost(registroLoteTableClass::getNameField(registroLoteTableClass::UBICACION, true)) and empty(mvc\request\requestClass::getInstance()->getPost(registroLoteTableClass::getNameField(registroLoteTableClass::UBICACION, true))) === false))) {
+
+          if (request::getInstance()->isMethod('POST')) {
+
+            $fechaInicial = request::getInstance()->getPost(registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_1');
+            $fechaFin = request::getInstance()->getPost(registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_2');
+            $ubicacion = request::getInstance()->getPost(registroLoteTableClass::getNameField(registroLoteTableClass::UBICACION, true));
+
+            if (strtotime($fechaFin) < strtotime($fechaInicial)) {
+              session::getInstance()->setError('La fecha final no puede ser menor a la actual', 'inputFecha');
+              session::getInstance()->setFlash('modalFilters', true);
+              routing::getInstance()->forward('reportes', 'insert');
+            }
+
+
+            session::getInstance()->setAttribute('totalUbicacion', $ubicacion);
+            session::getInstance()->setAttribute('totalRFecha1', $fechaInicial);
+            session::getInstance()->setAttribute('totalRFecha2', $fechaFin);
+
+            $where[] = '(' . registroLoteTableClass::getNameField(registroLoteTableClass::UBICACION) . ' LIKE ' . '\'' . $ubicacion . '%\'  '
+                    . 'OR ' . registroLoteTableClass::getNameField(registroLoteTableClass::UBICACION) . ' LIKE ' . '\'%' . $ubicacion . '%\' '
+                    . 'OR ' . registroLoteTableClass::getNameField(registroLoteTableClass::UBICACION) . ' LIKE ' . '\'%' . $ubicacion . '\') '
+                    . ' AND ' . '(' . registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT) . ' BETWEEN ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaInicial . ' 00:00:00')) . "'" . ' AND ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59')) . "'" . ' ) ';
+//             $where[] = '(' . registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT) . ' BETWEEN ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaInicial . ' 00:00:00')) . "'" . ' AND ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59')) . "'" . ' ) ';
+            session::getInstance()->setAttribute('totalWhere', $where);
+//              print_r($where);  
+//          echo $fechaInicial.' '. $fechaFin;
+//          exit();
+            // }
+          }
+        }
       }
       routing::getInstance()->redirect('reportes', 'grafica');
       $this->defineView('grafica', 'reportes', session::getInstance()->getFormatOutput());

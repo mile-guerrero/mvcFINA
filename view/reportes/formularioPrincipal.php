@@ -59,8 +59,8 @@ use mvc\request\requestClass as request ?>
          <div class="form-group">
     <label for="filterLote" class="col-sm-2 control-label"><?php echo i18n::__('lote') ?></label>
     <div class="col-sm-10">
-      <select class="form-control" id="filterLote" name="<?php echo registroLoteTableClass::getNameField(registroLoteTableClass::UBICACION, true) ?>" >
-        <option value="lote"><?php echo i18n::__('selectLote') ?></option>
+      <select class="form-control" id="filterLote" name="<?php echo registroLoteTableClass::getNameField(registroLoteTableClass::UBICACION, true) ?>" required>
+        <option value=""><?php echo i18n::__('selectLote') ?></option>
 <?php foreach ($objLoteR as $key): ?>
             <option value="<?php echo $key->$ubicacion ?>"><?php echo $key->$ubicacion ?></option>
 <?php endforeach; ?>

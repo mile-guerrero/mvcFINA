@@ -142,7 +142,33 @@
       
       
      <?php if ($value == 5) : ?>
-        
+        <h2 class="form-signin-heading rwd">
+<div id="info2c"></div>
+<script>
+  $(document).ready(function () {
+    crearGrafica8(<?php echo json_encode($cosPoints) ?>);  
+  });
+</script>
+<?php if (count($cosPoints) >= 0 and count($cosPoints) <=8) : ?>
+<div id="chart8" style="width: 1000px; height: 500px"></div>
+<?php endif; ?>  
+
+<?php if (count($cosPoints) >= 9 and count($cosPoints) <=17) : ?>
+<div id="chart8" style="width: 2000px; height: 700px"></div>
+<?php endif; ?> 
+
+<?php if (count($cosPoints) >= 18 and count($cosPoints) <=25) : ?>
+<div id="chart8" style="width: 3500px; height: 800px"></div>
+<?php endif; ?> 
+
+<?php if (count($cosPoints) >= 26 and count($cosPoints) <=38) : ?>
+<div id="chart8" style="width: 3500px; height: 1100px"></div>
+<?php endif; ?> 
+
+<?php if (count($cosPoints) >= 39) : ?>
+<div id="chart8" style="width: 6500px; height: 2800px"></div>
+<?php endif; ?>
+</h2>
     <?php endif; ?>   
       
       <br>

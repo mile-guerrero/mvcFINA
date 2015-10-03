@@ -246,7 +246,40 @@ class graficaActionClass extends controllerClass implements controllerActionInte
       
       
       if ($value == 5) {
+        $where = session::getInstance()->getAttribute('totalWhere');
+        $fields = array(
+            registroLoteTableClass::PRODUCCION,
+            registroLoteTableClass::UBICACION,
+            registroLoteTableClass::ID,
+            registroLoteTableClass::PRODUCTO_INSUMO_ID,
+            registroLoteTableClass::CREATED_AT
+        );
+        $orderBy = array(
+            registroLoteTableClass::CREATED_AT
+        );
+        $objLote = registroLoteTableClass::getAll($fields, false, $orderBy, 'ASC', null, null, $where);
+
+//        echo '<pre>';
+//        print_r($objLote);
+//        echo '</pre>';
+//        exit();
+         
+         
+        echo detalleFacturaCompraTableClass::getPlagaGanancia();
+        echo '<br>';
+        echo detalleFacturaCompraTableClass::getEnfermedadGanancia();
+        echo '<br>';
+        echo detalleFacturaCompraTableClass::getTrabajadorGanancia();
+        echo '<br>';
+        echo detalleFacturaCompraTableClass::getVentaGanancia();
         
+        
+        $cosPoints = array();
+        //el 1 dato
+        foreach ($objLote as $objeto) {
+          $cosPoints[] = array(productoInsumoTableClass::getNameProductoInsumo($objeto->producto_insumo_id),date('Y-m-d', strtotime($objeto->created_at)) . ' ' . $objeto->ubicacion . ' ' );
+        }
+        $this->cosPoints = $cosPoints;
       }
 
 

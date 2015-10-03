@@ -4,7 +4,7 @@
 <?php use mvc\view\viewClass as view ?>
 <?php use mvc\session\sessionClass as session ?>
 <?php $value = session::getInstance()->getAttribute('idGrafica'); ?>
- <?php if ($value == 1 or $value == 2) : ?>
+ <?php if ($value == 1 or $value == 2 or $value == 5) : ?>
 <div class="container container-fluid" id="cuerpo">
 <div class="center-block" id="cuerpo2">
 <h2 class="form-signin-heading">

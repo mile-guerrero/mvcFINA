@@ -60,8 +60,8 @@ class controlEnfermedadTableClass extends controlEnfermedadBaseTableClass {
   public static function getInventario($idControlEnfermedad){
     try {
       $sql = 'SELECT ' . '  '. 'SUM ('. controlEnfermedadTableClass::CANTIDAD  . ') ' . ' As total'
-             . '  FROM ' . controlEnfermedadTableClass::getNameTable() . ',' . productoInsumoTableClass::getNameTable() . ',' . tipoProductoInsumoTableClass::getNameTable() . '  ' 
-             . ' WHERE ' .  controlEnfermedadTableClass::getNameField(controlEnfermedadTableClass::PRODUCTO_INSUMO_ID) . ' = '. productoInsumoTableClass::getNameField(productoInsumoTableClass::ID) . ' AND ' .  productoInsumoTableClass::getNameField(productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID) . ' = '. tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::ID) .'  '
+             . '  FROM ' . controlEnfermedadTableClass::getNameTable() . ',' . productoInsumoTableClass::getNameTable()  . '  ' 
+             . ' WHERE ' .  controlEnfermedadTableClass::getNameField(controlEnfermedadTableClass::PRODUCTO_INSUMO_ID) . ' = '. productoInsumoTableClass::getNameField(productoInsumoTableClass::ID)  .'  '
              . ' AND ' . productoInsumoTableClass::getNameTable() . '.'. productoInsumoTableClass::ID . ' = ' . $idControlEnfermedad . '  '
               ;
     

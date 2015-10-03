@@ -233,3 +233,41 @@ function crearGrafica6(produccion1, produccion2) {
   });
   
 }
+
+
+function crearGrafica8($cosPoints) {
+  var plot3 = $.jqplot('chart8', [$cosPoints], {
+    title: 'Ganancia Lote ',
+    animate: !$.jqplot.use_excanvas,
+   seriesDefaults: {
+      renderer: $.jqplot.BarRenderer,
+      pointLabels: {show: false},
+      rendererOptions: {varyBarColor: true,
+                    barDirection: 'horizontal'
+                }
+    },
+    axes: {
+      xaxis: {
+        renderer: $.jqplot.CategoryAxisRenderer,
+        labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+        tickRenderer: $.jqplot.CanvasAxisTickRenderer,
+        tickOptions: {
+//   fontFamily: 'Georgia, Serif',
+          fontSize: '10pt'
+        },
+      },
+      yaxis: {
+        renderer: $.jqplot.CategoryAxisRenderer,
+        label: 'Lote',
+        labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+        tickRenderer: $.jqplot.CanvasAxisTickRenderer,
+        tickOptions: {
+//          fontFamily: 'Georgia, Serif',
+          fontSize: '8pt'
+        },
+      },
+
+    },
+  });
+
+}

@@ -2911,6 +2911,10 @@ reportes_index:
     - model/trabajadorTableClass.php
     - model/base/pagoTrabajadorBaseTableClass.php
     - model/pagoTrabajadorTableClass.php
+    - model/base/facturaCompraBaseTableClass.php
+    - model/facturaCompraTableClass.php
+    - model/base/detalleFacturaCompraBaseTableClass.php
+    - model/detalleFacturaCompraTableClass.php
   
 reportes_insert:
   url:    /reportes/insert
@@ -2928,6 +2932,10 @@ reportes_insert:
     - model/trabajadorTableClass.php
     - model/base/pagoTrabajadorBaseTableClass.php
     - model/pagoTrabajadorTableClass.php
+    - model/base/facturaCompraBaseTableClass.php
+    - model/facturaCompraTableClass.php
+    - model/base/detalleFacturaCompraBaseTableClass.php
+    - model/detalleFacturaCompraTableClass.php
     
 reportes_create:
   url:    /reportes/generar
@@ -2945,11 +2953,19 @@ reportes_create:
     - model/trabajadorTableClass.php
     - model/base/pagoTrabajadorBaseTableClass.php
     - model/pagoTrabajadorTableClass.php
+    - model/base/facturaCompraBaseTableClass.php
+    - model/facturaCompraTableClass.php
+    - model/base/detalleFacturaCompraBaseTableClass.php
+    - model/detalleFacturaCompraTableClass.php
 
 reportes_genararGrafica:
   url:    /reportes/grafica
   param:  { module: reportes, action: grafica, format: html }
   load:
+    - model/base/detalleFacturaCompraBaseTableClass.php
+    - model/detalleFacturaCompraTableClass.php
+    - model/base/detalleFacturaVentaBaseTableClass.php
+    - model/detalleFacturaVentaTableClass.php
     - model/base/presupuestoHistoricoBaseTableClass.php
     - model/presupuestoHistoricoTableClass.php
     - model/base/reporteBaseTableClass.php
@@ -2964,6 +2980,11 @@ reportes_genararGrafica:
     - model/trabajadorTableClass.php
     - model/base/pagoTrabajadorBaseTableClass.php
     - model/pagoTrabajadorTableClass.php
+    - model/base/controlPlagaBaseTableClass.php
+    - model/controlPlagaTableClass.php
+    - model/base/controlEnfermedadBaseTableClass.php
+    - model/controlEnfermedadTableClass.php
+    
     
 reportes_reporte:
   url:    /reportes/reporte
@@ -2992,6 +3013,10 @@ reportes_reporte:
     - model/pagoTrabajadorTableClass.php
     - model/base/empresaBaseTableClass.php
     - model/empresaTableClass.php
+    - model/base/facturaCompraBaseTableClass.php
+    - model/facturaCompraTableClass.php
+    - model/base/detalleFacturaCompraBaseTableClass.php
+    - model/detalleFacturaCompraTableClass.php
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php

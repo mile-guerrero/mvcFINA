@@ -61,8 +61,8 @@ class controlPlagaTableClass extends controlPlagaBaseTableClass {
   public static function getInventario($idControlPlaga){
     try {
       $sql = 'SELECT ' . '  '. 'SUM ('. controlPlagaTableClass::CANTIDAD  . ') ' . ' As total'
-             . '  FROM ' . controlPlagaTableClass::getNameTable() . ',' . productoInsumoTableClass::getNameTable() . ',' . tipoProductoInsumoTableClass::getNameTable() . '  ' 
-             . ' WHERE ' .  controlPlagaTableClass::getNameField(controlPlagaTableClass::PRODUCTO_INSUMO_ID) . ' = '. productoInsumoTableClass::getNameField(productoInsumoTableClass::ID) . ' AND ' .  productoInsumoTableClass::getNameField(productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID) . ' = '. tipoProductoInsumoTableClass::getNameField(tipoProductoInsumoTableClass::ID) .'  '
+             . '  FROM ' . controlPlagaTableClass::getNameTable() . ',' . productoInsumoTableClass::getNameTable() . '  ' 
+             . ' WHERE ' .  controlPlagaTableClass::getNameField(controlPlagaTableClass::PRODUCTO_INSUMO_ID) . ' = '. productoInsumoTableClass::getNameField(productoInsumoTableClass::ID)  .'  '
              . ' AND ' . productoInsumoTableClass::getNameTable() . '.'. productoInsumoTableClass::ID . ' = ' . $idControlPlaga. '  '
               ;
     
