@@ -162,17 +162,18 @@ class detalleFacturaCompraTableClass extends detalleFacturaCompraBaseTableClass 
   
    public static function getTrabajadorGanancia(){
     try {
+      
+      
+      $canLote = 5;
+      
       $idLote = session::getInstance()->getAttribute('totalUbicacion');
       $fechaInicial = session::getInstance()->getAttribute('totalRFecha1');
       $fechaFin = session::getInstance()->getAttribute('totalRFecha2');
   
       
-      $sql = 'SELECT ' . '  '. 'SUM ('. detalleFacturaVentaTableClass::getNameTable() .'.'. detalleFacturaVentaTableClass::VALOR_TOTAL  . ') ' .  ' As total'
-             . '  FROM ' . loteTableClass::getNameTable() . ' , ' . productoInsumoTableClass::getNameTable() . ' , ' . detalleFacturaVentaTableClass::getNameTable() . '  '
-             . ' WHERE ' .  loteTableClass::getNameField(loteTableClass::PRODUCTO_INSUMO_ID) . ' = '. productoInsumoTableClass::getNameField(productoInsumoTableClass::ID)  .'  '
-             . ' AND ' .  detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::DESCRIPCION) . ' = '. productoInsumoTableClass::getNameField(productoInsumoTableClass::ID)  .'  '
-             . ' AND ' . '(' . detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::CREATED_AT) . ' BETWEEN ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaInicial . ' 00:00:00')) . "'" . ' AND ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59')) . "'" . ' ) '
-             . ' AND ' . loteTableClass::getNameTable() . '.'. loteTableClass::UBICACION . ' = ' . "'" . $idLote . "'" . '  ' ;
+     $sql = 'SELECT ' . ' SUM ('. pagoTrabajadorTableClass::getNameTable().'.'. pagoTrabajadorTableClass::TOTAL_PAGAR  .  '/' . '  ' . $canLote  . ' ) ' . ' As total'
+             . '  FROM ' . pagoTrabajadorTableClass::getNameTable() . ' , ' . trabajadorTableClass::getNameTable() . ' , ' . loteTableClass::getNameTable() . '  ' 
+             . ' WHERE ' . '(' . pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::FECHA_INICIAL) . ' BETWEEN ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaInicial . ' 00:00:00')) . "'" . ' AND ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59')) . "'" . ' ) ';
           
 //     print_r($sql);
 //            exit();

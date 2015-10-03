@@ -265,24 +265,24 @@ class graficaActionClass extends controllerClass implements controllerActionInte
 //        exit();
          
          
-        echo detalleFacturaCompraTableClass::getPlagaGanancia();
-        echo '<br>';
-        echo detalleFacturaCompraTableClass::getEnfermedadGanancia();
-        echo '<br>';
-        echo detalleFacturaCompraTableClass::getTrabajadorGanancia();
-        echo '<br>';
-        echo detalleFacturaCompraTableClass::getVentaGanancia();
-        
-        
+        $ventas = detalleFacturaCompraTableClass::getVentaGanancia();
+        $gastos = (detalleFacturaCompraTableClass::getPlagaGanancia() + detalleFacturaCompraTableClass::getEnfermedadGanancia() + detalleFacturaCompraTableClass::getTrabajadorGanancia());       
+        $ganacias = ($ventas - $gastos);
+        $fechaInicial = session::getInstance()->getAttribute('totalRFecha1');
+        $fechaFin = session::getInstance()->getAttribute('totalRFecha2');
         $cosPoints = array();
         //el 1 dato
         foreach ($objLote as $objeto) {
-          $cosPoints[] = array(productoInsumoTableClass::getNameProductoInsumo($objeto->producto_insumo_id),date('Y-m-d', strtotime($objeto->created_at)) . ' ' . $objeto->ubicacion . ' ' );
+          $cosPoints[] = array($ganacias,date('Y-m-d', strtotime($fechaInicial)) . ' ' . ' al '. ' ' . date('Y-m-d', strtotime($fechaFin)). ' ' . ($objeto->ubicacion));
         }
         $this->cosPoints = $cosPoints;
       }
 
-
+      
+      
+      $this->ventas = detalleFacturaCompraTableClass::getVentaGanancia();
+      $this->gastos = (detalleFacturaCompraTableClass::getPlagaGanancia() + detalleFacturaCompraTableClass::getEnfermedadGanancia() + detalleFacturaCompraTableClass::getTrabajadorGanancia());       
+      $this->ganacias = ($ventas - $gastos);
 
 
 
