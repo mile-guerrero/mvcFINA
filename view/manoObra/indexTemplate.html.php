@@ -8,7 +8,7 @@
 <?php $cantidad = manoObraTableClass::CANTIDAD_HORA ?>
 <?php $valor = manoObraTableClass::VALOR_HORA ?>
 <?php $idCooperativa = manoObraTableClass::COOPERATIVA_ID ?>
-<?php $idLabor = manoObraTableClass::LABOR_ID ?>
+<?php $idLote = manoObraTableClass::LOTE_ID ?>
 <?php $idMaquina = manoObraTableClass::MAQUINA_ID ?>
 <?php $cooperativa = cooperativaTableClass::ID ?>
 <?php $descCooperativa = cooperativaTableClass::NOMBRE ?>

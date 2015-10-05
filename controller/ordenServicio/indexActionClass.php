@@ -49,7 +49,7 @@ if ((isset($filter[ordenServicioTableClass::getNameField(ordenServicioTableClass
           ordenServicioTableClass::ID,
           ordenServicioTableClass::FECHA_MANTENIMIENTO,
           ordenServicioTableClass::TRABAJADOR_ID,
-          ordenServicioTableClass::PRODUCTO_INSUMO_ID,
+          ordenServicioTableClass::LOTE_ID,
           ordenServicioTableClass::CANTIDAD,
           ordenServicioTableClass::VALOR,
           ordenServicioTableClass::MAQUINA_ID,

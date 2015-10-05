@@ -22,9 +22,9 @@ class editActionClass extends controllerClass implements controllerActionInterfa
           manoObraTableClass::ID,
           manoObraTableClass::CANTIDAD_HORA,
           manoObraTableClass::VALOR_HORA,
-            manoObraTableClass::TOTAL,
+          manoObraTableClass::TOTAL,
           manoObraTableClass::COOPERATIVA_ID,
-          manoObraTableClass::LABOR_ID,
+          manoObraTableClass::LOTE_ID,
           manoObraTableClass::MAQUINA_ID,
           manoObraTableClass::CREATED_AT,
           manoObraTableClass::UPDATED_AT,
@@ -44,13 +44,13 @@ class editActionClass extends controllerClass implements controllerActionInterfa
       $this->objCooperativa = cooperativaTableClass::getAll($fields, true, $orderBy, 'ASC');
     
       $fields = array(
-          laborTableClass::ID,
-          laborTableClass::DESCRIPCION
+          loteTableClass::ID,
+          loteTableClass::UBICACION
       );
       $orderBy = array(
-      laborTableClass::DESCRIPCION   
+      loteTableClass::UBICACION   
       );      
-      $this->objLabor = laborTableClass::getAll($fields, false, $orderBy, 'ASC');
+      $this->objLote = loteTableClass::getAll($fields, false, $orderBy, 'ASC');
     
        $fields = array(
       maquinaTableClass::ID,

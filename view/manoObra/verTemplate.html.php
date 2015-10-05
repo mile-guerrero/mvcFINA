@@ -8,7 +8,7 @@
 <?php $created_at = manoObraTableClass::CREATED_AT ?>
 <?php $updated_at = manoObraTableClass::UPDATED_AT ?>
 <?php $idCooperativa = manoObraTableClass::COOPERATIVA_ID ?>
-<?php $idLabor = manoObraTableClass::LABOR_ID ?>
+<?php $idLote = manoObraTableClass::LOTE_ID ?>
 <?php $idMaquina = manoObraTableClass::MAQUINA_ID ?>
 
 <div class="container container-fluid" id="cuerpo">
@@ -43,8 +43,8 @@
           <td><?php echo cooperativaTableClass::getNameCooperativa($key->$idCooperativa) ?></td>
           </tr>
             <tr>
-               <td><?php echo i18n::__('labor') ?></td>   
-              <td><?php echo laborTableClass::getNameLabor($key->$idLabor) ?></td>
+               <td><?php echo i18n::__('lote') ?></td>   
+               <td><?php echo loteTableClass::getNameLote($key->$idLote) ?></td>
             </tr>
             <tr>
               <td><?php echo i18n::__('maquina') ?></td>      

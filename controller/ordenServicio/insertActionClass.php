@@ -26,24 +26,15 @@ class insertActionClass extends controllerClass implements controllerActionInter
       );      
       $this->objOST = trabajadorTableClass::getAll($fields, true, $orderBy, 'ASC');
     
+           
       $fields = array(
-            tipoProductoInsumoTableClass::ID,
-            tipoProductoInsumoTableClass::DESCRIPCION
-        );
-        $orderBy = array(
-            tipoProductoInsumoTableClass::DESCRIPCION
-        );
-        $this->objTipo = tipoProductoInsumoTableClass::getAll($fields, true, $orderBy, 'ASC');
-
-      
-      $fields = array(
-      productoInsumoTableClass::ID,
-      productoInsumoTableClass::DESCRIPCION
+          loteTableClass::ID,
+          loteTableClass::UBICACION
       );
       $orderBy = array(
-      productoInsumoTableClass::DESCRIPCION   
+      loteTableClass::UBICACION   
       );      
-      $this->objOSPI = productoInsumoTableClass::getAll($fields, true, $orderBy, 'ASC');
+      $this->objLote = loteTableClass::getAll($fields, true, $orderBy, 'ASC');
     
        $fields = array(
       maquinaTableClass::ID,

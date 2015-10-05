@@ -25,7 +25,7 @@ class updateActionClass extends controllerClass implements controllerActionInter
         $valor = request::getInstance()->getPost(manoObraTableClass::getNameField(manoObraTableClass::VALOR_HORA, true));
         $total = request::getInstance()->getPost(manoObraTableClass::getNameField(manoObraTableClass::TOTAL, true));
         $cooperativa = request::getInstance()->getPost(manoObraTableClass::getNameField(manoObraTableClass::COOPERATIVA_ID, true));
-        $labor = request::getInstance()->getPost(manoObraTableClass::getNameField(manoObraTableClass::LABOR_ID, true));
+        $lote = request::getInstance()->getPost(manoObraTableClass::getNameField(manoObraTableClass::LOTE_ID, true));
         $maquina = request::getInstance()->getPost(manoObraTableClass::getNameField(manoObraTableClass::MAQUINA_ID, true));
         
         validator::validateUpdate();
@@ -63,7 +63,7 @@ class updateActionClass extends controllerClass implements controllerActionInter
             manoObraTableClass::VALOR_HORA => $valor,
             manoObraTableClass::TOTAL => $total,
             manoObraTableClass::COOPERATIVA_ID => $cooperativa,
-            manoObraTableClass::LABOR_ID => $labor,            
+            manoObraTableClass::LOTE_ID => $lote,            
             manoObraTableClass::MAQUINA_ID => $maquina
         );
         manoObraTableClass::update($ids, $data);

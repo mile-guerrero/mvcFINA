@@ -25,7 +25,7 @@ class editActionClass extends controllerClass implements controllerActionInterfa
             ordenServicioTableClass::TRABAJADOR_ID,
             ordenServicioTableClass::CANTIDAD,
             ordenServicioTableClass::VALOR,            
-            ordenServicioTableClass::PRODUCTO_INSUMO_ID,
+            ordenServicioTableClass::LOTE_ID,
             ordenServicioTableClass::MAQUINA_ID
         );
         $where = array(
@@ -33,34 +33,19 @@ class editActionClass extends controllerClass implements controllerActionInterfa
         );
         $this->objOS = ordenServicioTableClass::getAll($fields, false, null, null, null, null, $where);
        
-       $id = array(
-            ordenServicioTableClass::ID => request::getInstance()->getRequest(ordenServicioTableClass::ID)
-        );
-
-        $idProducto = $this->objOS[0]->producto_insumo_id;
-        $this->idTipoProducto = ordenServicioTableClass::getTipoInsumo($idProducto);
+//       $id = array(
+//            ordenServicioTableClass::ID => request::getInstance()->getRequest(ordenServicioTableClass::ID)
+//        );
 
         $fields = array(
-            productoInsumoTableClass::ID,
-            productoInsumoTableClass::DESCRIPCION
+            loteTableClass::ID,
+            loteTableClass::UBICACION
         );
         $orderBy = array(
-            productoInsumoTableClass::DESCRIPCION
+            loteTableClass::UBICACION
         );
-        $whereProducto = array(
-            productoInsumoTableClass::TIPO_PRODUCTO_INSUMO_ID => $this->idTipoProducto
-        );
-        $this->objProducto = productoInsumoTableClass::getAll($fields, true, $orderBy, 'ASC', null, null, $whereProducto);
-
- $fields = array(
-            tipoProductoInsumoTableClass::ID,
-            tipoProductoInsumoTableClass::DESCRIPCION
-        );
-        $orderBy = array(
-            tipoProductoInsumoTableClass::DESCRIPCION
-        );
-        $this->objTipo = tipoProductoInsumoTableClass::getAll($fields, true, $orderBy, 'ASC');
-  
+        $this->objLote = loteTableClass::getAll($fields, true, $orderBy, 'ASC');
+ 
         
         $fields = array(
       trabajadorTableClass::ID,

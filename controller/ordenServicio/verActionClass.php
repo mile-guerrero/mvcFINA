@@ -22,7 +22,7 @@ class verActionClass extends controllerClass implements controllerActionInterfac
           ordenServicioTableClass::FECHA_MANTENIMIENTO,
           ordenServicioTableClass::CANTIDAD,
           ordenServicioTableClass::VALOR,
-          ordenServicioTableClass::PRODUCTO_INSUMO_ID,
+          ordenServicioTableClass::LOTE_ID,
           ordenServicioTableClass::MAQUINA_ID,
           ordenServicioTableClass::TRABAJADOR_ID,
           ordenServicioTableClass::CREATED_AT,

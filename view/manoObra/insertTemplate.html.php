@@ -8,5 +8,5 @@
   <br>
     <br>
 </div>
-  <?php view::includePartial('manoObra/formularioPrincipal',array ('objCooperativa' => $objCooperativa,'objLabor' => $objLabor, 'objMaquina' => $objMaquina))?>
+  <?php view::includePartial('manoObra/formularioPrincipal',array ('objCooperativa' => $objCooperativa,'objLote' => $objLote, 'objMaquina' => $objMaquina))?>
 </div>

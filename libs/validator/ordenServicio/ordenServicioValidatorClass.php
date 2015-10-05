@@ -49,10 +49,10 @@ namespace mvc\validator {
         session::getInstance()->setError('El trabajador es requerido', 'selectTrabajador');
         //-------------------------------campo Producto-----------------------------
           //----campo nulo----
-      } if (self::notBlank(request::getInstance()->getPost(\ordenServicioTableClass::getNameField(\ordenServicioTableClass::PRODUCTO_INSUMO_ID, true)))) {
+      } if (self::notBlank(request::getInstance()->getPost(\ordenServicioTableClass::getNameField(\ordenServicioTableClass::LOTE_ID, true)))) {
         $flag = true;
-        session::getInstance()->setFlash('selectProducto', true);
-        session::getInstance()->setError('El producto es requerido', 'selectProducto');
+        session::getInstance()->setFlash('selectLote', true);
+        session::getInstance()->setError('El lote es requerido', 'selectLote');
         
         //-------------------------------campo Maquina-----------------------------
           //----campo nulo----

@@ -407,7 +407,7 @@ CREATE TABLE orden_servicio
     trabajador_id BIGINT NOT NULL,
     cantidad BigInt NOT NULL,
 	valor BigInt NOT NULL,	
-    producto_insumo_id BIGINT NOT NULL,
+    lote_id BIGINT NOT NULL,
     maquina_id BIGINT NOT NULL,		
 	created_at TIMESTAMP DEFAULT now() NOT NULL,
 	updated_at TIMESTAMP DEFAULT now() NOT NULL
@@ -471,8 +471,8 @@ CREATE TABLE mano_obra
 	valor_hora BigInt NOT NULL,
 	total_pagar BigInt NOT NULL,
 	cooperativa_id BIGINT NOT NULL,	
-    maquina_id BIGINT NOT NULL,
-    labor_id BIGINT NOT NULL,	
+        maquina_id BIGINT NOT NULL,
+        lote_id BIGINT NOT NULL,	
 	created_at TIMESTAMP DEFAULT now() NOT NULL,
 	updated_at TIMESTAMP DEFAULT now() NOT NULL,
 	deleted_at TIMESTAMP NULL
@@ -821,8 +821,8 @@ ALTER TABLE orden_servicio ADD CONSTRAINT fk_orden_servicio_trabajador
 	FOREIGN KEY (trabajador_id) REFERENCES trabajador(id)
 	ON UPDATE RESTRICT ON DELETE RESTRICT;	
 
-ALTER TABLE orden_servicio ADD CONSTRAINT fk_orden_servicio_producto_insumo
-	FOREIGN KEY (producto_insumo_id) REFERENCES producto_insumo(id)
+ALTER TABLE orden_servicio ADD CONSTRAINT fk_orden_servicio_lote
+	FOREIGN KEY (lote_id) REFERENCES lote(id)
 	ON UPDATE RESTRICT ON DELETE RESTRICT;
 
 ALTER TABLE orden_servicio ADD CONSTRAINT fk_orden_servicio_maquina
@@ -833,8 +833,8 @@ ALTER TABLE cooperativa ADD CONSTRAINT fk_cooperativa_ciudad
 	FOREIGN KEY (id_ciudad) REFERENCES ciudad(id)
 	ON UPDATE RESTRICT ON DELETE RESTRICT;
 
-ALTER TABLE mano_obra ADD CONSTRAINT fk_mano_obra_labor
-	FOREIGN KEY (labor_id) REFERENCES labor(id)
+ALTER TABLE mano_obra ADD CONSTRAINT fk_mano_obra_lote
+	FOREIGN KEY (lote_id) REFERENCES lote(id)
 	ON UPDATE RESTRICT ON DELETE RESTRICT;
 
 ALTER TABLE mano_obra ADD CONSTRAINT fk_mano_obra_cooperativa

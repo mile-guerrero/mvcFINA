@@ -8,7 +8,7 @@
 <?php $created_at = ordenServicioTableClass::CREATED_AT ?>
 <?php $updated_at = ordenServicioTableClass::UPDATED_AT ?>
 <?php $idTrabajador = ordenServicioTableClass::TRABAJADOR_ID ?>
-<?php $idProducto = ordenServicioTableClass::PRODUCTO_INSUMO_ID ?>
+<?php $idLote = ordenServicioTableClass::LOTE_ID ?>
 <?php $idMaquina = ordenServicioTableClass::MAQUINA_ID ?>
 
 <div class="container container-fluid" id="cuerpo">
@@ -46,8 +46,8 @@
           </tr>
             
             <tr>
-              <td><?php echo i18n::__('insumo') ?></td>      
-              <td><?php echo productoInsumoTableClass::getNameProductoInsumo($key->$idProducto) ?></td>
+              <td><?php echo i18n::__('lote') ?></td>      
+              <td><?php echo loteTableClass::getNameLote($key->$idLote) ?></td>
             </tr>
             <tr>
               <td><?php echo i18n::__('maquina') ?></td>      

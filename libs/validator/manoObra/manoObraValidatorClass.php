@@ -48,10 +48,10 @@ namespace mvc\validator {
         session::getInstance()->setError('La cooperativa es requerida', 'selectCooperativa');
         //-------------------------------campo Labor-----------------------------
           //----campo nulo----
-      } if (self::notBlank(request::getInstance()->getPost(\manoObraTableClass::getNameField(\manoObraTableClass::LABOR_ID, true)))) {
+      } if (self::notBlank(request::getInstance()->getPost(\manoObraTableClass::getNameField(\manoObraTableClass::LOTE_ID, true)))) {
         $flag = true;
-        session::getInstance()->setFlash('selectLabor', true);
-        session::getInstance()->setError('La labor es requerida', 'selectLabor');
+        session::getInstance()->setFlash('selectLote', true);
+        session::getInstance()->setError('El lote es requerida', 'selectLote');
         
         //-------------------------------campo Maquina-----------------------------
           //----campo nulo----

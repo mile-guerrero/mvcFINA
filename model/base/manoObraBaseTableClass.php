@@ -15,7 +15,7 @@ class manoObraBaseTableClass extends tableBaseClass {
  private $total;
  private $cooperativaId;
  private $maquinaId;
- private $laborId;
+ private $loteId;
  private $createdAt;
  private $updatedAt;
  private $deletedAt;
@@ -30,7 +30,7 @@ class manoObraBaseTableClass extends tableBaseClass {
   const TOTAL_LENGTH = 15;
   const COOPERATIVA_ID = 'cooperativa_id';
   const MAQUINA_ID = 'maquina_id';
-  const LABOR_ID = 'labor_id';
+  const LOTE_ID = 'lote_id';
   const CREATED_AT = 'created_at';
   const UPDATED_AT = 'updated_at';
   const DELETED_AT = 'deleted_at';
@@ -63,7 +63,7 @@ class manoObraBaseTableClass extends tableBaseClass {
     return $this->maquinaId;
   }
 
-  public function get_laborId() {
+  public function get_loteId() {
     return $this->laborId;
   }
 
@@ -99,8 +99,8 @@ class manoObraBaseTableClass extends tableBaseClass {
     $this->maquinaId = $maquinaId;
   }
 
-  public function set_laborId($laborId) {
-    $this->laborId = $laborId;
+  public function set_loteId($loteId) {
+    $this->laborId = $loteId;
   }
 
   public function set_createdAt($createdAt) {

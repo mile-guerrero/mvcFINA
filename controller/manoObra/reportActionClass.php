@@ -73,7 +73,7 @@ class reportActionClass extends controllerClass implements controllerActionInter
           manoObraTableClass::VALOR_HORA,
           manoObraTableClass::TOTAL,
           manoObraTableClass::COOPERATIVA_ID,
-          manoObraTableClass::LABOR_ID,
+          manoObraTableClass::LOTE_ID,
           manoObraTableClass::MAQUINA_ID,
           manoObraTableClass::CREATED_AT,
           manoObraTableClass::UPDATED_AT,

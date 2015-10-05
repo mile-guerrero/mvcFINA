@@ -27,13 +27,13 @@ class insertActionClass extends controllerClass implements controllerActionInter
       $this->objCooperativa = cooperativaTableClass::getAll($fields, true, $orderBy, 'ASC');
     
       $fields = array(
-          laborTableClass::ID,
-          laborTableClass::DESCRIPCION
+          loteTableClass::ID,
+          loteTableClass::UBICACION
       );
       $orderBy = array(
-      laborTableClass::DESCRIPCION   
+      loteTableClass::UBICACION   
       );      
-      $this->objLabor = laborTableClass::getAll($fields, false, $orderBy, 'ASC');
+      $this->objLote = loteTableClass::getAll($fields, false, $orderBy, 'ASC');
     
        $fields = array(
       maquinaTableClass::ID,

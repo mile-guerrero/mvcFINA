@@ -14,7 +14,7 @@ class ordenServicioBaseTableClass extends tableBaseClass {
  private $trabajadorId; 
  private $cantidad;
  private $valor;
- private $productoInsumoId;
+ private $loteId;
  private $maquinaId;
  private $createdAt;
  private $updatedAt;
@@ -27,7 +27,7 @@ class ordenServicioBaseTableClass extends tableBaseClass {
   const CANTIDAD_LENGTH = 30;
   const VALOR = 'valor';  
   const VALOR_LENGTH = 30;
-  const PRODUCTO_INSUMO_ID = 'producto_insumo_id';
+  const LOTE_ID = 'lote_id';
   const MAQUINA_ID = 'maquina_id';
   const CREATED_AT = 'created_at';
   const UPDATED_AT = 'updated_at';
@@ -52,8 +52,8 @@ class ordenServicioBaseTableClass extends tableBaseClass {
     return $this->valor;
   }
   
-  public function get_productoInsumoId() {
-    return $this->productoInsumoId;
+  public function get_loteId() {
+    return $this->loteId;
   }
 
   public function get_maquinaId() {
@@ -88,8 +88,8 @@ class ordenServicioBaseTableClass extends tableBaseClass {
     $this->valor = $valor;
   }
   
-  public function set_productoInsumoId($productoInsumoId) {
-    $this->productoInsumoId = $productoInsumoId;
+  public function set_loteId($loteId) {
+    $this->loteId = $loteId;
   }
 
   public function set_maquinaId($maquinaId) {

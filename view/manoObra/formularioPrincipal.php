@@ -9,9 +9,9 @@
 <?php $cantidad = manoObraTableClass::CANTIDAD_HORA ?>
 <?php $valor = manoObraTableClass::VALOR_HORA ?>
 
-<?php $labor = manoObraTableClass::LABOR_ID ?>
-<?php $idLabor = laborTableClass::ID ?>
-<?php $descLabor = laborTableClass::DESCRIPCION ?>
+<?php $lote = manoObraTableClass::LOTE_ID ?>
+<?php $idLote = loteTableClass::ID ?>
+<?php $descLote = loteTableClass::UBICACION ?>
 
 <?php $maquina = manoObraTableClass::MAQUINA_ID ?>
 <?php $idMaquina = maquinaTableClass::ID ?>
@@ -77,10 +77,10 @@ caja["<?php echo manoObraTableClass::getNameField(manoObraTableClass::TOTAL, tru
     </div>
     <?php endif ?>
   
-  <?php if(session::getInstance()->hasError('selectLabor')): ?>
+  <?php if(session::getInstance()->hasError('selectLote')): ?>
   <div class="alert alert-danger alert-dismissible" role="alert" id="error">
       <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('selectLabor') ?>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('selectLote') ?>
     </div>
     <?php endif ?>
    
@@ -96,10 +96,10 @@ caja["<?php echo manoObraTableClass::getNameField(manoObraTableClass::TOTAL, tru
           </select>
 </div>
         <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-           <select class="form-control" id="<?php echo manoObraTableClass::getNameField(manoObraTableClass::LABOR_ID, true)?>" name="<?php echo manoObraTableClass::getNameField(manoObraTableClass::LABOR_ID, true) ?>">
-               <option value="<?php echo (session::getInstance()->hasFlash('selectLabor') or request::getInstance()->hasPost(manoObraTableClass::getNameField(manoObraTableClass::LABOR_ID, true))) ? request::getInstance()->getPost(manoObraTableClass::getNameField(manoObraTableClass::LABOR_ID, true)) : ((isset($objManoObra[0])) ? '' : '') ?>"><?php echo i18n::__('selectLabor') ?></option>
-<?php foreach ($objLabor as $key): ?>
-            <option <?php echo (request::getInstance()->hasPost(manoObraTableClass::getNameField(manoObraTableClass::LABOR_ID, true)) === true and request::getInstance()->getPost(manoObraTableClass::getNameField(manoObraTableClass::LABOR_ID, true)) == $key->$idLabor) ? 'selected' : (isset($objManoObra[0]->$labor) === true and $objManoObra[0]->$labor == $key->$idLabor) ? 'selected' : '' ?> value="<?php echo $key->$idLabor ?>"><?php echo $key->$descLabor ?></option>
+           <select class="form-control" id="<?php echo manoObraTableClass::getNameField(manoObraTableClass::LOTE_ID, true)?>" name="<?php echo manoObraTableClass::getNameField(manoObraTableClass::LOTE_ID, true) ?>">
+               <option value="<?php echo (session::getInstance()->hasFlash('selectLote') or request::getInstance()->hasPost(manoObraTableClass::getNameField(manoObraTableClass::LOTE_ID, true))) ? request::getInstance()->getPost(manoObraTableClass::getNameField(manoObraTableClass::LOTE_ID, true)) : ((isset($objManoObra[0])) ? '' : '') ?>"><?php echo i18n::__('selectLote') ?></option>
+<?php foreach ($objLote as $key): ?>
+            <option <?php echo (request::getInstance()->hasPost(manoObraTableClass::getNameField(manoObraTableClass::LOTE_ID, true)) === true and request::getInstance()->getPost(manoObraTableClass::getNameField(manoObraTableClass::LOTE_ID, true)) == $key->$idLote) ? 'selected' : (isset($objManoObra[0]->$lote) === true and $objManoObra[0]->$lote == $key->$idLote) ? 'selected' : '' ?> value="<?php echo $key->$idLote ?>"><?php echo $key->$descLote ?></option>
 <?php endforeach; ?>
           </select>
         </div>

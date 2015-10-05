@@ -5,7 +5,7 @@ use mvc\routing\routingClass as routing;
   $id = manoObraTableClass::ID;
   $cantidad = manoObraTableClass::CANTIDAD_HORA;
   $valorHoras = manoObraTableClass::VALOR_HORA;
-  $labor = manoObraTableClass::LABOR_ID;
+  $lote = manoObraTableClass::LOTE_ID;
   $maquina = manoObraTableClass::MAQUINA_ID;
   $cooperativa = manoObraTableClass::COOPERATIVA_ID;
   $total = manoObraTableClass::TOTAL;
@@ -48,15 +48,19 @@ $pdf->SetFillColor(255,204,51);//color
 $pdf->Cell(190, 10, $mensaje, 1, 0, 'C', true);
 $pdf->Ln();
 $pdf->Cell(45, 10, "Cooperativa",1, 0, 'C');
-$pdf->Cell(40, 10, "Maquina",1, 0, 'C');
-$pdf->Cell(80, 10, "Labor",1, 0, 'C');
-$pdf->Cell(25, 10, "Total",1, 0, 'C');
+$pdf->Cell(30, 10, "Maquina",1, 0, 'C');
+$pdf->Cell(30, 10, "Lote",1, 0, 'C');
+$pdf->Cell(25, 10, "Valor hora",1, 0, 'C');
+$pdf->Cell(25, 10, "Cantidad horas",1, 0, 'C');
+$pdf->Cell(35, 10, "Total",1, 0, 'C');
 $pdf->Ln();
 foreach ($objManoObra as $valor) {  
   $pdf->Cell(45, 8, cooperativaTableClass::getNameCooperativa($valor->$cooperativa),1);
-  $pdf->Cell(40, 8, maquinaTableClass::getNameMaquina($valor->$maquina),1);
-  $pdf->Cell(80, 8, laborTableClass::getNameLabor($valor->$labor),1);
-  $pdf->Cell(25, 8, '$' . number_format($valor->$total, 0, ',', '.'),1);
+  $pdf->Cell(30, 8, utf8_decode(maquinaTableClass::getNameMaquina($valor->$maquina)),1);
+  $pdf->Cell(30, 8, loteTableClass::getNameLote($valor->$lote),1);
+  $pdf->Cell(25, 8, $valor->$valorHoras,1);
+  $pdf->Cell(25, 8, $valor->$cantidad,1);
+  $pdf->Cell(35, 8, '$' . number_format($valor->$total, 0, ',', '.'),1);
   $pdf->Ln();  
 }
 
