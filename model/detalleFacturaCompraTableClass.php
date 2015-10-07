@@ -121,7 +121,6 @@ class detalleFacturaCompraTableClass extends detalleFacturaCompraBaseTableClass 
 //     exit();
       return $answer[0]->total;
       
-      
     } catch (Exception $exc) {
       throw $exc;
     }
@@ -182,6 +181,59 @@ class detalleFacturaCompraTableClass extends detalleFacturaCompraBaseTableClass 
             $answer = $answer->fetchAll(PDO::FETCH_OBJ);
  return $answer[0]->total;
    } catch (Exception $exc) {
+      throw $exc;
+    }
+    
+  }
+  
+  public static function getManoObra(){
+    try {
+      $idLote = session::getInstance()->getAttribute('totalUbicacion');
+      $fechaInicial = session::getInstance()->getAttribute('totalRFecha1');
+      $fechaFin = session::getInstance()->getAttribute('totalRFecha2');
+      $sql = 'SELECT ' . '  '. ' ('. manoObraTableClass::getNameTable() .'.'. manoObraTableClass::CANTIDAD_HORA  . ') ' .  ' * ' . '  '. ' ('. manoObraTableClass::getNameTable() .'.'. manoObraTableClass::VALOR_HORA  . ') '  . ' As total '
+             . '  FROM ' . manoObraTableClass::getNameTable() . ',' . loteTableClass::getNameTable() . '  '  
+             . ' WHERE ' .  manoObraTableClass::getNameField(manoObraTableClass::LOTE_ID) . ' = '. loteTableClass::getNameField(loteTableClass::ID)  .'  '
+             . ' AND ' . loteTableClass::getNameTable() . '.' . loteTableClass::UBICACION . ' = ' . "'" . $idLote . "'" . '  ' 
+             . ' AND ' . '(' . manoObraTableClass::getNameField(manoObraTableClass::CREATED_AT) . ' BETWEEN ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaInicial . ' 00:00:00')) . "'" . ' AND ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59')) . "'" . ' ) ';
+              ;
+    
+      $answer = model::getInstance()->prepare($sql);
+            $answer->execute();
+            $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+//       print_r($sql);
+//     exit();
+      return $answer[0]->total;
+      
+      
+    } catch (Exception $exc) {
+      throw $exc;
+    }
+    
+  }
+  
+  public static function getOrdenServicio(){
+    try {
+      $idLote = session::getInstance()->getAttribute('totalUbicacion');
+      $fechaInicial = session::getInstance()->getAttribute('totalRFecha1');
+      $fechaFin = session::getInstance()->getAttribute('totalRFecha2');
+       $sql = 'SELECT ' . '  '. ' ('. ordenServicioTableClass::getNameTable() .'.'. ordenServicioTableClass::CANTIDAD  . ') ' .  ' * ' . '  '. ' ('. ordenServicioTableClass::getNameTable() .'.'. ordenServicioTableClass::VALOR  . ') '  . ' As total '
+             . '  FROM ' . ordenServicioTableClass::getNameTable() . ',' . loteTableClass::getNameTable() . '  '  
+             . ' WHERE ' .  ordenServicioTableClass::getNameField(ordenServicioTableClass::LOTE_ID) . ' = '. loteTableClass::getNameField(loteTableClass::ID)  .'  '
+             . ' AND ' . loteTableClass::getNameTable() . '.' . loteTableClass::UBICACION . ' = ' . "'" . $idLote . "'" . '  ' 
+             . ' AND ' . '(' . ordenServicioTableClass::getNameField(ordenServicioTableClass::CREATED_AT) . ' BETWEEN ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaInicial . ' 00:00:00')) . "'" . ' AND ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59')) . "'" . ' ) ';
+              ;
+    
+      $answer = model::getInstance()->prepare($sql);
+            $answer->execute();
+            $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+//       print_r($sql);
+//     exit();
+      return $answer[0]->total;
+      
+      
+      
+    } catch (Exception $exc) {
       throw $exc;
     }
     

@@ -65,8 +65,8 @@ class productoInsumoTableClass extends productoInsumoBaseTableClass {
       $answer = model::getInstance()->prepare($sql);
             $answer->execute();
             $answer = $answer->fetchAll(PDO::FETCH_OBJ);
-       print_r($sql);
-     exit();
+//       print_r($sql);
+//     exit();
       return $answer[0]->descripcion;
       
       

@@ -258,15 +258,19 @@ class graficaActionClass extends controllerClass implements controllerActionInte
             registroLoteTableClass::CREATED_AT
         );
         $objLote = registroLoteTableClass::getAll($fields, false, $orderBy, 'ASC', null, null, $where);
-
-//        echo '<pre>';
-//        print_r($objLote);
-//        echo '</pre>';
-//        exit();
-         
-         
+        
+       $plaga = detalleFacturaCompraTableClass::getPlagaGanancia(); 
+       
+       
+       
+       $enfermedad = detalleFacturaCompraTableClass::getEnfermedadGanancia() ;
+       $trabajador = detalleFacturaCompraTableClass::getTrabajadorGanancia();
+       $manoObra = detalleFacturaCompraTableClass::getManoObra();
+       $orden = detalleFacturaCompraTableClass::getOrdenServicio();
+       
+        $gastos = ($plaga + $enfermedad + $trabajador + $manoObra + $orden );       
+        
         $ventas = detalleFacturaCompraTableClass::getVentaGanancia();
-        $gastos = (detalleFacturaCompraTableClass::getPlagaGanancia() + detalleFacturaCompraTableClass::getEnfermedadGanancia() + detalleFacturaCompraTableClass::getTrabajadorGanancia());       
         $ganacias = ($ventas - $gastos);
         $fechaInicial = session::getInstance()->getAttribute('totalRFecha1');
         $fechaFin = session::getInstance()->getAttribute('totalRFecha2');
@@ -277,11 +281,8 @@ class graficaActionClass extends controllerClass implements controllerActionInte
         }
         $this->cosPoints = $cosPoints;
       }
-
-      
-      
       $this->ventas = detalleFacturaCompraTableClass::getVentaGanancia();
-      $this->gastos = (detalleFacturaCompraTableClass::getPlagaGanancia() + detalleFacturaCompraTableClass::getEnfermedadGanancia() + detalleFacturaCompraTableClass::getTrabajadorGanancia());       
+      $this->gastos = (detalleFacturaCompraTableClass::getPlagaGanancia() + detalleFacturaCompraTableClass::getEnfermedadGanancia() + detalleFacturaCompraTableClass::getTrabajadorGanancia() + detalleFacturaCompraTableClass::getManoObra()+ detalleFacturaCompraTableClass::getOrdenServicio()  );       
       $this->ganacias = ($ventas - $gastos);
 
 

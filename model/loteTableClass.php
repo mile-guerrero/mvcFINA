@@ -45,23 +45,7 @@ class loteTableClass extends loteBaseTableClass {
         }
     }
     
-//     public static function getProduccion($ubicacion) {
-//        try {
-//            $sql = 'SELECT ' . loteTableClass::PRODUCCION .  ' AS '  .' produccion '  . ' ' .
-//                    ' FROM ' . loteTableClass::getNameTable() .
-//                    ' WHERE ' . loteTableClass::DELETED_AT . ' IS NULL ' .  ' AND ' .  '(' . loteTableClass::getNameField(loteTableClass::UBICACION) . ' LIKE ' . '\'' . $ubicacion . '%\'  '
-//                      . 'OR ' . loteTableClass::getNameField(loteTableClass::UBICACION) . ' LIKE ' . '\'%' . $ubicacion . '%\' '
-//                      . 'OR ' . loteTableClass::getNameField(loteTableClass::UBICACION) . ' LIKE ' . '\'%' . $ubicacion . '\') ';
-////           print_r($sql);  
-////          exit();
-//            $answer = model::getInstance()->prepare($sql);
-//            $answer->execute();
-//            $answer = $answer->fetchAll(PDO::FETCH_OBJ);
-//      return $answer[0]->produccion;
-//        } catch (PDOException $exc) {
-//            throw $exc;
-//        }
-//    }
+
   
   public static function getNameLote($id) {
     try {

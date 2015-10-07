@@ -2956,6 +2956,10 @@ reportes_genararGrafica:
   url:    /reportes/grafica
   param:  { module: reportes, action: grafica, format: html }
   load:
+    - model/base/manoObraBaseTableClass.php
+    - model/manoObraTableClass.php
+    - model/base/ordenServicioBaseTableClass.php
+    - model/ordenServicioTableClass.php
     - model/base/detalleFacturaCompraBaseTableClass.php
     - model/detalleFacturaCompraTableClass.php
     - model/base/detalleFacturaVentaBaseTableClass.php
