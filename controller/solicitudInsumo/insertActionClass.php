@@ -53,6 +53,15 @@ class insertActionClass extends controllerClass implements controllerActionInter
           loteTableClass::UBICACION
       );
       $this->objL = loteTableClass::getAll($fields, true, $orderBy, 'ASC');
+      
+      $fields = array(
+          unidadMedidaTableClass::ID,
+          unidadMedidaTableClass::DESCRIPCION
+      );
+      $orderBy = array(
+          unidadMedidaTableClass::DESCRIPCION
+      );
+      $this->objUnidadMedida = unidadMedidaTableClass::getAll($fields, false, $orderBy, 'ASC');
 
       $this->defineView('insert', 'solicitudInsumo', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {

@@ -25,6 +25,10 @@ class reportActionClass extends controllerClass implements controllerActionInter
         if(isset($report['empresa']) and $report['empresa'] !== null and $report['empresa'] !== ""){
         $where[pagoTrabajadorTableClass::EMPRESA_ID] = $report['empresa'];
         }
+        
+        if(isset($report['trabajador']) and $report['trabajador'] !== null and $report['trabajador'] !== ""){
+        $where[pagoTrabajadorTableClass::TRABAJADOR_ID] = $report['trabajador'];
+        }
         if (isset($report['fecha1']) and $report['fecha1'] !== null and $report['fecha1'] !== '' and (isset($report['fecha2']) and $report['fecha2'] !== null and $report['fecha2'] !== '')) {
           $where[pagoTrabajadorTableClass::FECHA_INICIAL] = array(
           date(config::getFormatTimestamp(), strtotime($report['fecha1'] . ' 00:00:00')),

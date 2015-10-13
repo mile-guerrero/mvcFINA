@@ -89,6 +89,7 @@ class reportActionClass extends controllerClass implements controllerActionInter
           detalleFacturaVentaTableClass::VALOR_UNIDAD,
           detalleFacturaVentaTableClass::VALOR_TOTAL,
           detalleFacturaVentaTableClass::FACTURA_ID,
+          detalleFacturaVentaTableClass::UNIDAD_MEDIDA_ID,
           detalleFacturaVentaTableClass::CREATED_AT,
           detalleFacturaVentaTableClass::UPDATED_AT
       );

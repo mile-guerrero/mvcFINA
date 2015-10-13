@@ -53,6 +53,7 @@ if ((isset($filter[ordenServicioTableClass::getNameField(ordenServicioTableClass
           ordenServicioTableClass::CANTIDAD,
           ordenServicioTableClass::VALOR,
           ordenServicioTableClass::MAQUINA_ID,
+          ordenServicioTableClass::UNIDAD_DISTANCIA_ID,
           ordenServicioTableClass::CREATED_AT,
           ordenServicioTableClass::UPDATED_AT
       );

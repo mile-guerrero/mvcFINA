@@ -25,7 +25,8 @@ class editActionClass extends controllerClass implements controllerActionInterfa
             solicitudInsumoTableClass::TRABAJADOR_ID,
             solicitudInsumoTableClass::CANTIDAD,
             solicitudInsumoTableClass::PRODUCTO_INSUMO_ID,
-            solicitudInsumoTableClass::LOTE_ID
+            solicitudInsumoTableClass::LOTE_ID,
+            solicitudInsumoTableClass::UNIDAD_MEDIDA_ID
         );
         $where = array(
             solicitudInsumoTableClass::ID => request::getInstance()->getGet(solicitudInsumoTableClass::ID)
@@ -51,7 +52,7 @@ class editActionClass extends controllerClass implements controllerActionInterfa
         );
         $this->objProducto = productoInsumoTableClass::getAll($fields, true, $orderBy, 'ASC', null, null, $whereProducto);
 
- $fields = array(
+        $fields = array(
             tipoProductoInsumoTableClass::ID,
             tipoProductoInsumoTableClass::DESCRIPCION
         );
@@ -79,6 +80,16 @@ class editActionClass extends controllerClass implements controllerActionInterfa
             loteTableClass::UBICACION
         );
         $this->objL = loteTableClass::getAll($fields, true, $orderBy, 'ASC');
+        
+        $fields = array(
+          unidadMedidaTableClass::ID,
+          unidadMedidaTableClass::DESCRIPCION
+      );
+      $orderBy = array(
+          unidadMedidaTableClass::DESCRIPCION
+      );
+      $this->objUnidadMedida = unidadMedidaTableClass::getAll($fields, false, $orderBy, 'ASC');
+        
         $this->defineView('edit', 'solicitudInsumo', session::getInstance()->getFormatOutput());
      
       }else{

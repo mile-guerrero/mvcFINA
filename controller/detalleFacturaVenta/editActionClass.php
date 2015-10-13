@@ -36,6 +36,7 @@ class editActionClass extends controllerClass implements controllerActionInterfa
             detalleFacturaVentaTableClass::VALOR_UNIDAD,
             detalleFacturaVentaTableClass::VALOR_TOTAL,
             detalleFacturaVentaTableClass::FACTURA_ID,
+            detalleFacturaVentaTableClass::UNIDAD_MEDIDA_ID,
             detalleFacturaVentaTableClass::CREATED_AT,
             detalleFacturaVentaTableClass::UPDATED_AT
         );
@@ -82,7 +83,14 @@ class editActionClass extends controllerClass implements controllerActionInterfa
         );
         $this->objFactura = facturaVentaTableClass::getAll($fields, false, $orderBy, 'ASC');
 
-       
+        $fields = array(
+          unidadMedidaTableClass::ID,
+          unidadMedidaTableClass::DESCRIPCION
+        );
+        $orderBy = array(
+          unidadMedidaTableClass::DESCRIPCION
+        );
+        $this->objUnidadMedida = unidadMedidaTableClass::getAll($fields, false, $orderBy, 'ASC');
 
         $this->defineView('edit', 'detalleFacturaVenta', session::getInstance()->getFormatOutput());
         $idFactura = facturaVentaTableClass::ID;

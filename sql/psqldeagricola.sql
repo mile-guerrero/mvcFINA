@@ -238,7 +238,7 @@ CREATE TABLE cliente
 	direccion VARCHAR(400) NOT NULL,
 	telefono BigInt NOT NULL,
 	id_tipo_id BIGINT NOT NULL,
-    id_ciudad BIGINT NOT NULL,		
+        id_ciudad BIGINT NOT NULL,		
 	created_at TIMESTAMP DEFAULT now() NOT NULL,
 	updated_at TIMESTAMP DEFAULT now() NOT NULL,
 	deleted_at TIMESTAMP NULL
@@ -257,8 +257,8 @@ CREATE TABLE trabajador
 	telefono BigInt NOT NULL,
 	email VARCHAR(40) NOT NULL,
 	id_tipo_id BIGINT NOT NULL,
-    id_ciudad BIGINT NOT NULL,
-    id_credencial BIGINT NOT NULL,	
+        id_ciudad BIGINT NOT NULL,
+        id_credencial BIGINT NOT NULL,	
 	created_at TIMESTAMP DEFAULT now() NOT NULL,
 	updated_at TIMESTAMP DEFAULT now() NOT NULL,
 	deleted_at TIMESTAMP NULL
@@ -272,7 +272,7 @@ CREATE TABLE labor
 	id BIGINT DEFAULT nextval('public.labor_id_seq'::regclass) NOT NULL,
 	descripcion VARCHAR(80) NOT NULL,
 	valor BigInt NOT NULL,
-    created_at TIMESTAMP DEFAULT now() NOT NULL,
+        created_at TIMESTAMP DEFAULT now() NOT NULL,
 	updated_at TIMESTAMP DEFAULT now() NOT NULL
 );
 
@@ -285,7 +285,7 @@ CREATE TABLE empresa
 	nombre VARCHAR(80) NOT NULL,
 	direccion VARCHAR(400) NOT NULL,
 	telefono BigInt NOT NULL,
-    email VARCHAR(40) NOT NULL,	
+        email VARCHAR(40) NOT NULL,	
 	created_at TIMESTAMP DEFAULT now() NOT NULL,
 	updated_at TIMESTAMP DEFAULT now() NOT NULL,
 	deleted_at TIMESTAMP NULL
@@ -301,7 +301,7 @@ CREATE TABLE maquina
 	descripcion VARCHAR(400) NOT NULL,
 	origen_maquina VARCHAR(80) NOT NULL,
 	id_tipo_uso BIGINT NOT NULL,    
-    id_proveedor BIGINT NOT NULL,	
+        id_proveedor BIGINT NOT NULL,	
 	created_at TIMESTAMP DEFAULT now() NOT NULL,
 	updated_at TIMESTAMP DEFAULT now() NOT NULL,
 	deleted_at TIMESTAMP NULL
@@ -318,7 +318,7 @@ CREATE TABLE producto_insumo
 	extencionImagen VARCHAR(5)  NULL,
 	hashImagen VARCHAR(37)  NULL,
 	tipo_producto_insumo_id BIGINT NOT NULL,
-    informacion VARCHAR(3000) NOT NULL,	
+        informacion VARCHAR(3000) NOT NULL,	
 	created_at TIMESTAMP DEFAULT now() NOT NULL,
 	updated_at TIMESTAMP DEFAULT now() NOT NULL,
 	deleted_at TIMESTAMP NULL
@@ -341,7 +341,7 @@ CREATE TABLE lote
 	unidad_medida_id BIGINT NULL,
 	presupuesto BIGINT NULL,
 	producto_insumo_id BIGINT NULL,	
-    id_ciudad BIGINT NULL,		
+        id_ciudad BIGINT NULL,		
 	created_at TIMESTAMP DEFAULT now() NOT NULL,
 	updated_at TIMESTAMP DEFAULT now() NOT NULL,
 	deleted_at TIMESTAMP NULL
@@ -374,7 +374,7 @@ CREATE TABLE proveedor
 	direccion VARCHAR(400) NOT NULL,
 	telefono BigInt NOT NULL,
 	email VARCHAR(40) NOT NULL,
-    id_ciudad BIGINT NOT NULL,		
+        id_ciudad BIGINT NOT NULL,		
 	created_at TIMESTAMP DEFAULT now() NOT NULL,
 	updated_at TIMESTAMP DEFAULT now() NOT NULL,
 	deleted_at TIMESTAMP NULL
@@ -391,7 +391,7 @@ CREATE TABLE cooperativa
 	descripcion VARCHAR(400) NOT NULL,
 	direccion VARCHAR(400) NOT NULL,
 	telefono BigInt NOT NULL,
-    id_ciudad BIGINT NOT NULL,		
+        id_ciudad BIGINT NOT NULL,		
 	created_at TIMESTAMP DEFAULT now() NOT NULL,
 	updated_at TIMESTAMP DEFAULT now() NOT NULL,
 	deleted_at TIMESTAMP NULL
@@ -404,11 +404,12 @@ CREATE TABLE orden_servicio
 (
 	id BIGINT DEFAULT nextval('public.orden_servicio_id_seq'::regclass) NOT NULL,
 	fecha_mantenimiento TIMESTAMP DEFAULT now() NOT NULL,
-    trabajador_id BIGINT NOT NULL,
-    cantidad BigInt NOT NULL,
-	valor BigInt NOT NULL,	
-    lote_id BIGINT NOT NULL,
-    maquina_id BIGINT NOT NULL,		
+        trabajador_id BIGINT NOT NULL,
+        cantidad BigInt NOT NULL,
+        valor BigInt NOT NULL,	
+        lote_id BIGINT NOT NULL,
+        unidad_distancia_id BIGINT NOT NULL,
+        maquina_id BIGINT NOT NULL,		
 	created_at TIMESTAMP DEFAULT now() NOT NULL,
 	updated_at TIMESTAMP DEFAULT now() NOT NULL
 );
@@ -420,10 +421,11 @@ CREATE TABLE solicitud_insumo
 (
 	id BIGINT DEFAULT nextval('public.solicitud_insumo_id_seq'::regclass) NOT NULL,
 	fecha_hora TIMESTAMP DEFAULT now() NOT NULL,
-    trabajador_id BIGINT NOT NULL,	
-    cantidad BigInt NOT NULL,	
-    producto_insumo_id BIGINT NOT NULL,
-    lote_id BIGINT NOT NULL,	
+        trabajador_id BIGINT NOT NULL,	
+        cantidad BigInt NOT NULL,	
+        producto_insumo_id BIGINT NOT NULL,
+        unidad_medida_id BIGINT NOT NULL,
+        lote_id BIGINT NOT NULL,	
 	created_at TIMESTAMP DEFAULT now() NOT NULL,
 	updated_at TIMESTAMP DEFAULT now() NOT NULL,
 	deleted_at TIMESTAMP NULL
@@ -452,11 +454,11 @@ CREATE TABLE pago_trabajador
 	id BIGINT DEFAULT nextval('public.pago_trabajador_id_seq'::regclass) NOT NULL,
 	fecha_inicial TIMESTAMP DEFAULT now() NOT NULL,
 	fecha_final TIMESTAMP DEFAULT now() NOT NULL,
-    empresa_id BIGINT NOT NULL,	
-    trabajador_id BIGINT NOT NULL,	
+        empresa_id BIGINT NOT NULL,	
+        trabajador_id BIGINT NOT NULL,	
 	valor_salario BigInt NOT NULL,
-    horas_perdidas BigInt NOT NULL,
-    total_pagar BigInt NOT NULL,	
+        horas_perdidas BigInt NOT NULL,
+        total_pagar BigInt NOT NULL,	
 	created_at TIMESTAMP DEFAULT now() NOT NULL,
 	updated_at TIMESTAMP DEFAULT now() NOT NULL
 );
@@ -471,8 +473,8 @@ CREATE TABLE mano_obra
 	valor_hora BigInt NOT NULL,
 	total_pagar BigInt NOT NULL,
 	cooperativa_id BIGINT NOT NULL,	
-    maquina_id BIGINT NOT NULL,
-    lote_id BIGINT NOT NULL,	
+        maquina_id BIGINT NOT NULL,
+        lote_id BIGINT NOT NULL,	
 	created_at TIMESTAMP DEFAULT now() NOT NULL,
 	updated_at TIMESTAMP DEFAULT now() NOT NULL,
 	deleted_at TIMESTAMP NULL
@@ -526,7 +528,7 @@ CREATE TABLE historial
 	producto_insumo_id BigInt NOT NULL,
 	lote_id BigInt NOT NULL,
 	plaga_id BigInt NOT NULL,
-    enfermedad_id BIGINT NOT NULL,		
+        enfermedad_id BIGINT NOT NULL,		
 	created_at TIMESTAMP DEFAULT now() NOT NULL,
 	updated_at TIMESTAMP DEFAULT now() NOT NULL
 );
@@ -576,9 +578,9 @@ CREATE TABLE control_plaga
 (
 	id BIGINT DEFAULT nextval('public.control_plaga_id_seq'::regclass) NOT NULL,
 	lote_id BIGINT NOT NULL,
-    plaga_id BIGINT NOT NULL,
-    cantidad BigInt NOT NULL,	
-    producto_insumo_id BIGINT NOT NULL,	
+        plaga_id BIGINT NOT NULL,
+        cantidad BigInt NOT NULL,	
+        producto_insumo_id BIGINT NOT NULL,	
 	created_at TIMESTAMP DEFAULT now() NOT NULL,
 	updated_at TIMESTAMP DEFAULT now() NOT NULL,
 	deleted_at TIMESTAMP NULL
@@ -591,9 +593,9 @@ CREATE TABLE control_enfermedad
 (
 	id BIGINT DEFAULT nextval('public.control_enfermedad_id_seq'::regclass) NOT NULL,
 	lote_id BIGINT NOT NULL,
-    enfermedad_id BIGINT NOT NULL,
-    cantidad BigInt NOT NULL,	
-    producto_insumo_id BIGINT NOT NULL,	
+        enfermedad_id BIGINT NOT NULL,
+        cantidad BigInt NOT NULL,	
+        producto_insumo_id BIGINT NOT NULL,	
 	created_at TIMESTAMP DEFAULT now() NOT NULL,
 	updated_at TIMESTAMP DEFAULT now() NOT NULL,
 	deleted_at TIMESTAMP NULL
@@ -606,9 +608,9 @@ CREATE TABLE presupuesto_historico
 (
 	id BIGINT DEFAULT nextval('public.presupuesto_historico_id_seq'::regclass) NOT NULL,
 	lote_id BIGINT NOT NULL,
-    producto_insumo_id BIGINT NOT NULL,	
-    presupuesto BigInt NOT NULL,
-    total_produccion BigInt NOT NULL,	
+        producto_insumo_id BIGINT NOT NULL,	
+        presupuesto BigInt NOT NULL,
+        total_produccion BigInt NOT NULL,	
 	total_pago_trabajador BigInt NOT NULL,
 	created_at TIMESTAMP DEFAULT now() NOT NULL,
 	updated_at TIMESTAMP DEFAULT now() NOT NULL,
@@ -650,6 +652,7 @@ CREATE TABLE detalle_factura_compra
 	valor_unidad BigInt NOT NULL,
 	valor_total BigInt NOT NULL,	
 	factura_compra_id BigInt NOT NULL,
+        unidad_medida_id BigInt NOT NULL,
 	created_at TIMESTAMP DEFAULT now() NOT NULL,
 	updated_at TIMESTAMP DEFAULT now() NOT NULL
 );
@@ -665,6 +668,7 @@ CREATE TABLE detalle_factura_venta
 	valor_unidad BigInt NOT NULL,
 	valor_total BigInt NOT NULL,
 	factura_venta_id BigInt NOT NULL,
+        unidad_medida_id BigInt NOT NULL,
 	created_at TIMESTAMP DEFAULT now() NOT NULL,
 	updated_at TIMESTAMP DEFAULT now() NOT NULL,
 	deleted_at TIMESTAMP DEFAULT now() NOT NULL
@@ -813,9 +817,13 @@ ALTER TABLE vivero ADD CONSTRAINT fk_vivero_producto_insumo
 	FOREIGN KEY (producto_insumo_id) REFERENCES producto_insumo(id)
 	ON UPDATE RESTRICT ON DELETE RESTRICT;
 
+ALTER TABLE solicitud_insumo ADD CONSTRAINT fk_solicitud_insumo_unidad_medida
+	FOREIGN KEY (unidad_medida_id) REFERENCES unidad_medida(id)
+	ON UPDATE RESTRICT ON DELETE RESTRICT;	
+
 ALTER TABLE solicitud_insumo ADD CONSTRAINT fk_solicitud_insumo_lote
 	FOREIGN KEY (lote_id) REFERENCES lote(id)
-	ON UPDATE RESTRICT ON DELETE RESTRICT;		
+	ON UPDATE RESTRICT ON DELETE RESTRICT;	
 
 ALTER TABLE orden_servicio ADD CONSTRAINT fk_orden_servicio_trabajador
 	FOREIGN KEY (trabajador_id) REFERENCES trabajador(id)
@@ -828,6 +836,10 @@ ALTER TABLE orden_servicio ADD CONSTRAINT fk_orden_servicio_lote
 ALTER TABLE orden_servicio ADD CONSTRAINT fk_orden_servicio_maquina
 	FOREIGN KEY (maquina_id) REFERENCES maquina(id)
 	ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+ALTER TABLE orden_servicio ADD CONSTRAINT fk_orden_servicio_unidad_distancia
+	FOREIGN KEY (unidad_distancia_id) REFERENCES unidad_distancia(id)
+	ON UPDATE RESTRICT ON DELETE RESTRICT;	
 
 ALTER TABLE cooperativa ADD CONSTRAINT fk_cooperativa_ciudad
 	FOREIGN KEY (id_ciudad) REFERENCES ciudad(id)
@@ -889,6 +901,10 @@ ALTER TABLE detalle_factura_compra ADD CONSTRAINT fk_detalle_factura_compra_fact
 ALTER TABLE detalle_factura_compra ADD CONSTRAINT fk_detalle_factura_compra_producto_insumo
 	FOREIGN KEY (producto_insumo_id) REFERENCES producto_insumo (id)
 	ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+ALTER TABLE detalle_factura_compra ADD CONSTRAINT fk_detalle_factura_compra_unidad_medida
+	FOREIGN KEY (unidad_medida_id) REFERENCES unidad_medida (id)
+	ON UPDATE RESTRICT ON DELETE RESTRICT;
 	
 ALTER TABLE detalle_factura_venta ADD CONSTRAINT fk_detalle_factura_venta_factura_venta
 	FOREIGN KEY (factura_venta_id) REFERENCES factura_venta (id)
@@ -905,6 +921,10 @@ ALTER TABLE factura_venta ADD CONSTRAINT fk_factura_venta_cliente
 ALTER TABLE detalle_factura_venta ADD CONSTRAINT fk_detalle_factura_venta_producto_insumo
 	FOREIGN KEY (producto_insumo_id) REFERENCES producto_insumo (id)
 	ON UPDATE RESTRICT ON DELETE RESTRICT;	
+
+ALTER TABLE detalle_factura_venta ADD CONSTRAINT fk_detalle_factura_venta_unidad_medida
+	FOREIGN KEY (unidad_medida_id) REFERENCES unidad_medida (id)
+	ON UPDATE RESTRICT ON DELETE RESTRICT;
 
 ALTER TABLE historial ADD CONSTRAINT fk_historial_producto_insumo
 	FOREIGN KEY (producto_insumo_id) REFERENCES producto_insumo (id)
@@ -948,13 +968,16 @@ INSERT INTO "usuario_credencial" (usuario_id, credencial_id) VALUES (1, 1);
 COMMIT;
 
 BEGIN;
-INSERT INTO "unidad_distancia" (descripcion) VALUES ('Kilometros cuadrados');
-INSERT INTO "unidad_distancia" (descripcion) VALUES ('Metros cuadrados');
+INSERT INTO "unidad_distancia" (descripcion) VALUES ('Km2');
+INSERT INTO "unidad_distancia" (descripcion) VALUES ('m2');
 COMMIT;
 
 BEGIN;
 INSERT INTO "unidad_medida" (descripcion) VALUES ('Arroa');
-INSERT INTO "unidad_medida" (descripcion) VALUES ('Kilogramos');
+INSERT INTO "unidad_medida" (descripcion) VALUES ('Kg');
+INSERT INTO "unidad_medida" (descripcion) VALUES ('Ltr');
+INSERT INTO "unidad_medida" (descripcion) VALUES ('Gramos');
+INSERT INTO "unidad_medida" (descripcion) VALUES ('Cm3');
 COMMIT;
 
 BEGIN;
@@ -1018,7 +1041,7 @@ COMMIT;
 
 BEGIN;
 INSERT INTO "tipo_producto_insumo" (descripcion) VALUES ('fruto');
-INSERT INTO "tipo_producto_insumo" (descripcion) VALUES ('Veneno');
+INSERT INTO "tipo_producto_insumo" (descripcion) VALUES ('Pulguicida');
 INSERT INTO "tipo_producto_insumo" (descripcion) VALUES ('Fertilizantes');
 COMMIT;
 
@@ -1159,16 +1182,6 @@ INSERT INTO "reporte" (nombre, descripcion, direccion) VALUES ('Ganancia por cos
 COMMIT;
 
 BEGIN;
-INSERT INTO "registro_lote" (ubicacion, fecha_riego, numero_plantulas, produccion, unidad_medida_id, producto_insumo_id) VALUES ('Colmenar lote1' ,'2015-09-01T23:42:51.952', 551, 180, 2, 30);  
-INSERT INTO "registro_lote" (ubicacion, fecha_riego, numero_plantulas, produccion, unidad_medida_id, producto_insumo_id) VALUES ('Colmenar lote1' ,'2015-09-07T23:42:51.952', 551, 48, 2, 30);
-INSERT INTO "registro_lote" (ubicacion, fecha_riego, numero_plantulas, produccion, unidad_medida_id, producto_insumo_id) VALUES ('Colmenar lote2' ,'2015-09-01T23:42:51.952', 1635, 6, 2, 49);
-INSERT INTO "registro_lote" (ubicacion, fecha_riego, numero_plantulas, produccion, unidad_medida_id, producto_insumo_id) VALUES ('Colmenar lote3' ,'2015-08-26T23:42:51.952', 1300, 0, 2, 61);
-INSERT INTO "registro_lote" (ubicacion, fecha_riego, numero_plantulas, produccion, unidad_medida_id, producto_insumo_id) VALUES ('Colmenar lote5' ,'2015-08-27T23:42:51.952', 30, 40, 2, 9);
-INSERT INTO "registro_lote" (ubicacion, fecha_riego, numero_plantulas, produccion, unidad_medida_id, producto_insumo_id) VALUES ('Colmenar lote5' ,'2015-08-27T23:42:51.952', 40, 20, 2, 7);
-INSERT INTO "registro_lote" (ubicacion, fecha_riego, numero_plantulas, produccion, unidad_medida_id, producto_insumo_id) VALUES ('Colmenar lote5' ,'2015-08-27T23:42:51.952', 30, 40, 2, 4);
-COMMIT;
-
-BEGIN;
 INSERT INTO "historial" (producto_insumo_id, lote_id, plaga_id, enfermedad_id) VALUES ( 30, 1, 2,1);
 INSERT INTO "historial" (producto_insumo_id, lote_id, plaga_id, enfermedad_id) VALUES ( 49, 2, 3, 2);
 INSERT INTO "historial" (producto_insumo_id, lote_id, plaga_id, enfermedad_id) VALUES ( 61, 3, 4, 4);
@@ -1183,9 +1196,4 @@ COMMIT;
 
 BEGIN;
 INSERT INTO "empresa" (nombre, direccion, telefono, email) VALUES ('Finca El Colmenar', 'finca via la floresta Pradera valle', 2670036 , 'elcolmenar@hotmail.com');
-COMMIT;
-
-BEGIN;
-INSERT INTO "pago_trabajador" (fecha_inicial, fecha_final, empresa_id, trabajador_id, valor_salario, horas_perdidas, total_pagar) VALUES ( '2014-09-06T06:00:51.952', '2014-09-12T15:00:51.952', 1, 2, 100000, 0, 100000);
-INSERT INTO "pago_trabajador" (fecha_inicial, fecha_final, empresa_id, trabajador_id, valor_salario, horas_perdidas, total_pagar) VALUES ( '2014-09-06T06:00:51.952', '2014-09-12T15:00:51.952', 1, 3, 100000, 0, 100000);
 COMMIT;

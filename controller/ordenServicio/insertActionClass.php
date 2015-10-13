@@ -36,7 +36,7 @@ class insertActionClass extends controllerClass implements controllerActionInter
       );      
       $this->objLote = loteTableClass::getAll($fields, true, $orderBy, 'ASC');
     
-       $fields = array(
+      $fields = array(
       maquinaTableClass::ID,
       maquinaTableClass::NOMBRE
       );
@@ -44,6 +44,15 @@ class insertActionClass extends controllerClass implements controllerActionInter
       maquinaTableClass::NOMBRE   
       );      
       $this->objOSM = maquinaTableClass::getAll($fields, true, $orderBy, 'ASC');
+      
+      $fields = array(
+          unidadDistanciaTableClass::ID,
+          unidadDistanciaTableClass::DESCRIPCION
+      );
+      $orderBy = array(
+          unidadDistanciaTableClass::DESCRIPCION   
+      );      
+      $this->objUnidadDistancia = unidadDistanciaTableClass::getAll($fields, false, $orderBy, 'ASC');
     
       $this->defineView('insert', 'ordenServicio', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {

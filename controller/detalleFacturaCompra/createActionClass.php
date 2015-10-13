@@ -25,7 +25,7 @@ class createActionClass extends controllerClass implements controllerActionInter
        $valorUnidad = request::getInstance()->getPost(detalleFacturaCompraTableClass::getNameField(detalleFacturaCompraTableClass::VALOR_UNIDAD, true));
        $valorTotal = request::getInstance()->getPost(detalleFacturaCompraTableClass::getNameField(detalleFacturaCompraTableClass::VALOR_TOTAL, true));
        $facturaCompra = request::getInstance()->getPost(detalleFacturaCompraTableClass::getNameField(detalleFacturaCompraTableClass::FACTURA_COMPRA_ID, true));
-       
+       $unidadMedida = request::getInstance()->getPost(detalleFacturaCompraTableClass::getNameField(detalleFacturaCompraTableClass::UNIDAD_MEDIDA_ID, true));
 //        if (strlen($usuario) > usuarioTableClass::USUARIO_LENGTH) {
 //          throw new PDOException(i18n::__(00001, null, 'errors', array(':longitud' => usuarioTableClass::USUARIO_LENGTH)), 00001);
 //        }
@@ -37,7 +37,8 @@ class createActionClass extends controllerClass implements controllerActionInter
           detalleFacturaCompraTableClass::CANTIDAD => $cantidad,
           detalleFacturaCompraTableClass::VALOR_UNIDAD => $valorUnidad,
           detalleFacturaCompraTableClass::VALOR_TOTAL => $valorTotal,
-          detalleFacturaCompraTableClass::FACTURA_COMPRA_ID => $facturaCompra
+          detalleFacturaCompraTableClass::FACTURA_COMPRA_ID => $facturaCompra,
+          detalleFacturaCompraTableClass::UNIDAD_MEDIDA_ID => $unidadMedida  
             
         );
         detalleFacturaCompraTableClass::insert($data);

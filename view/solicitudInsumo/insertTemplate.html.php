@@ -8,5 +8,5 @@
   <br>
     <br>
 </div>
-<?php view::includePartial('solicitudInsumo/formularioPrincipal',array ('objTipo'=>$objTipo,'objT' => $objT,'objL' => $objL))?>
+<?php view::includePartial('solicitudInsumo/formularioPrincipal',array ('objTipo'=>$objTipo,'objT' => $objT,'objUnidadMedida'=>$objUnidadMedida,'objL' => $objL))?>
 </div>

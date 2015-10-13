@@ -26,6 +26,7 @@ class updateActionClass extends controllerClass implements controllerActionInter
        $valor_unidad = request::getInstance()->getPost(detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::VALOR_UNIDAD, true));
        $valor_total = request::getInstance()->getPost(detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::VALOR_TOTAL, true));
        $factura = request::getInstance()->getPost(detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::FACTURA_ID, true));
+       $unidadMedida = request::getInstance()->getPost(detalleFacturaVentaTableClass::getNameField(detalleFacturaVentaTableClass::UNIDAD_MEDIDA_ID, true));
        
        validator::validateUpdate();
        
@@ -38,7 +39,8 @@ class updateActionClass extends controllerClass implements controllerActionInter
           detalleFacturaVentaTableClass::CANTIDAD => $cantidad,
           detalleFacturaVentaTableClass::VALOR_UNIDAD => $valor_unidad,
           detalleFacturaVentaTableClass::VALOR_TOTAL => $valor_total,
-          detalleFacturaVentaTableClass::FACTURA_ID => $factura
+          detalleFacturaVentaTableClass::FACTURA_ID => $factura,
+          detalleFacturaVentaTableClass::UNIDAD_MEDIDA_ID => $unidadMedida  
           
             
         );

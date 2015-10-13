@@ -47,6 +47,11 @@ namespace mvc\validator {
         $flag = true;
         session::getInstance()->setFlash('selectLote', true);
         session::getInstance()->setError('El lote es requerido', 'selectLote');
+        
+      } if (self::notBlank(request::getInstance()->getPost(\solicitudInsumoTableClass::getNameField(\solicitudInsumoTableClass::UNIDAD_MEDIDA_ID, true)))) {
+        $flag = true;
+        session::getInstance()->setFlash('selectUnidadMedida', true);
+        session::getInstance()->setError('La unidad medida es requerida', 'selectUnidadMedida');
 //      }
 //        if (self::notBlank(request::getInstance()->getPost(\solicitudInsumoTableClass::getNameField(\solicitudInsumoTableClass::VALOR_HORA, true)))) {
 //        $flag = true;

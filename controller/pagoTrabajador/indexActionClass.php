@@ -40,6 +40,10 @@ class indexActionClass extends controllerClass implements controllerActionInterf
         }
         
        
+        if(isset($filter['trabajador']) and $filter['trabajador'] !== null and $filter['trabajador'] !== ""){
+        $where[pagoTrabajadorTableClass::TRABAJADOR_ID] = $filter['trabajador'];
+        }
+        
         if(isset($filter['empresa']) and $filter['empresa'] !== null and $filter['empresa'] !== ""){
         $where[pagoTrabajadorTableClass::EMPRESA_ID] = $filter['empresa'];
         }

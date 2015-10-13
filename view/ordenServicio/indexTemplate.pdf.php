@@ -9,6 +9,7 @@ use mvc\routing\routingClass as routing;
  $maquina = ordenServicioTableClass::MAQUINA_ID;
  $lote = ordenServicioTableClass::LOTE_ID;
  $trabajador = ordenServicioTableClass::TRABAJADOR_ID;
+ $unidadDistancia = ordenServicioTableClass::UNIDAD_DISTANCIA_ID;
  
 class PDF extends FPDF {
 
@@ -49,15 +50,15 @@ $pdf->SetFillColor(255,204,51);//color
 $pdf->Cell(190, 10, $mensaje, 1, 0, 'C', true);
 $pdf->Ln();
 $pdf->Cell(30, 10, "Maquina",1, 0, 'C');
-$pdf->Cell(45, 10, "Lote",1, 0, 'C');
-$pdf->Cell(30, 10, "Cantidad",1, 0, 'C');
+$pdf->Cell(40, 10, "Lote",1, 0, 'C');
+$pdf->Cell(35, 10, "Cantidad",1, 0, 'C');
 $pdf->Cell(55, 10, "Trabajador",1, 0, 'C');
 $pdf->Cell(30, 10, utf8_decode("Valor salarió"),1, 0, 'C');
 $pdf->Ln();
 foreach ($objOS as $valor) {  
   $pdf->Cell(30, 8, utf8_decode(maquinaTableClass::getNameMaquina($valor->$maquina)),1);
-  $pdf->Cell(45, 8, loteTableClass::getNameLote($valor->$lote),1);
-  $pdf->Cell(30, 8, utf8_decode($valor->$cantidad),1);
+  $pdf->Cell(40, 8, loteTableClass::getNameLote($valor->$lote),1);
+  $pdf->Cell(35, 8, utf8_decode($valor->$cantidad). ' ' . unidadDistanciaTableClass::getNameUnidadDistancia($valor->$unidadDistancia),1);
   $pdf->Cell(55, 8, trabajadorTableClass::getNameTrabajador($valor->$trabajador). ' ' . trabajadorTableClass::getNameApellido($valor->$trabajador) . ' CC '.trabajadorTableClass::getNameDocumento($valor->$trabajador),1);
   $pdf->Cell(30, 8, '$' . number_format($valor->$valorSalario, 0, ',', '.'),1);  
   $pdf->Ln();  

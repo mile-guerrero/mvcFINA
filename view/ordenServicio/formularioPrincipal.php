@@ -17,6 +17,9 @@
 <?php $descMaquina = maquinaTableClass::NOMBRE ?>
 <?php $idTrabajador = ordenServicioTableClass::TRABAJADOR_ID ?>
 <?php $maquina = ordenServicioTableClass::MAQUINA_ID ?>
+<?php $idUni = ordenServicioTableClass::UNIDAD_DISTANCIA_ID ?>
+<?php $idUnidad = unidadDistanciaTableClass::ID ?>
+<?php $desUnidad = unidadDistanciaTableClass::DESCRIPCION ?>
 
 <div class="container container-fluid" id="cuerpo">
   <div class="center-block" id="cuerpo5">
@@ -75,13 +78,20 @@
     <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
       <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputCantidad') ?>
     </div>
-    <?php endif ?>     
+    <?php endif ?>
+   
+   <?php if(session::getInstance()->hasError('selectUnidadMedida')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert" id="error">
+    <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('selectUnidadMedida') ?>
+    </div>
+    <?php endif ?>
    
   
   <div class="row j1" >
   <label class="col-sm-2" for="<?php echo ordenServicioTableClass::getNameField(ordenServicioTableClass::LOTE_ID, true) ?>" >  <?php echo i18n::__('lote') ?>:   </label>
          
-              <div class="col-lg-5">
+              <div class="col-lg-3">
        <select class="form-control" id="<?php echo ordenServicioTableClass::getNameField(ordenServicioTableClass::LOTE_ID, true)?>" name="<?php echo ordenServicioTableClass::getNameField(ordenServicioTableClass::LOTE_ID, true) ?>">
                <option value="<?php echo (session::getInstance()->hasFlash('selectLote') or request::getInstance()->hasPost(ordenServicioTableClass::getNameField(ordenServicioTableClass::LOTE_ID, true))) ? request::getInstance()->getPost(ordenServicioTableClass::getNameField(ordenServicioTableClass::LOTE_ID, true)) : ((isset($objOS[0])) ? '' : '') ?>"><?php echo i18n::__('selectLote') ?></option>
 <?php foreach ($objLote as $key): ?>
@@ -89,10 +99,20 @@
 <?php endforeach; ?>
           </select>
           </div>
-        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-        <input  class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputCantidad') or request::getInstance()->hasPost(ordenServiciotableClass::getNameField(ordenServiciotableClass::CANTIDAD, true))) ? request::getInstance()->getPost(ordenServiciotableClass::getNameField(ordenServiciotableClass::CANTIDAD, true)) : ((isset($objOS[0])) ? $objOS[0]->$cantidad : '') ?>" type="text" name="<?php echo ordenServicioTableClass::getNameField(ordenServicioTableClass::CANTIDAD, true) ?>" placeholder="<?php echo i18n::__('cantidad') ?>">
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+        <input  class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputCantidad') or request::getInstance()->hasPost(ordenServiciotableClass::getNameField(ordenServiciotableClass::CANTIDAD, true))) ? request::getInstance()->getPost(ordenServiciotableClass::getNameField(ordenServiciotableClass::CANTIDAD, true)) : ((isset($objOS[0])) ? $objOS[0]->$cantidad : '') ?>" type="text" name="<?php echo ordenServicioTableClass::getNameField(ordenServicioTableClass::CANTIDAD, true) ?>" placeholder="<?php echo i18n::__('tamano') ?>">
      
         </div>
+  
+  <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+      <select  class="form-control" id="<?php ordenServicioTableClass::getNameField(ordenServicioTableClass::ID, true) ?>" name="<?php echo ordenServicioTableClass::getNameField(ordenServicioTableClass::UNIDAD_DISTANCIA_ID, true); ?>" required>
+            <option value="<?php echo (session::getInstance()->hasFlash('selectUnidadMedida') or request::getInstance()->hasPost(loteTableClass::getNameField(loteTableClass::UNIDAD_DISTANCIA_ID, true))) ? request::getInstance()->getPost(ordenServicioTableClass::getNameField(ordenServicioTableClass::UNIDAD_DISTANCIA_ID, true)) : ((isset($objOS[0])) ? '' : '') ?>" ><?php echo i18n::__('selectUnidadDis') ?></option>
+<?php foreach ($objUnidadDistancia as $key): ?>
+              <option <?php echo (request::getInstance()->hasPost(ordenServicioTableClass::getNameField(ordenServicioTableClass::UNIDAD_DISTANCIA_ID, true)) === true and request::getInstance()->getPost(ordenServicioTableClass::getNameField(ordenServicioTableClass::UNIDAD_DISTANCIA_ID, true)) == $key->$idUnidad) ? 'selected' : (isset($objOS[0]->$idUni) === true and $objOS[0]->$idUni == $key->$idUnidad) ? 'selected' : '' ?>  value="<?php echo $key->$idUnidad ?>"><?php echo $key->$desUnidad ?></option>
+      <?php endforeach; ?>
+          </select>
+        </div>
+  
       </div>
 <br>
   

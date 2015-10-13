@@ -111,7 +111,7 @@ dictionary:
     FTipoInsumo:          Buscar por tipo insumo
     fUsuario:             Buscar por usuario
     fechaFsiembra:        Fecha inicio siembra
-    selectUnidadDis:      Seleccione el tipo de distacia
+    selectUnidadDis:      Seleccione el tipo de distancia
     fecha siembra:        Fecha de siembra
     numero:               N° de plantas
     presupuesto:          Presupuesto
@@ -196,6 +196,7 @@ dictionary:
     lote:                 Lote
     nuevo lote:           Nuevo Lote
     unidad:               Unidad medida
+    unidadDistancia:      Unidad Distancia
     tamano:               Área
     ubicacion:            Ubicación
     fecha riego:          Fecha de riego

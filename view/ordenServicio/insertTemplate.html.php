@@ -8,5 +8,5 @@
   <br>
     <br>
 </div>
-  <?php view::includePartial('ordenServicio/formularioPrincipal',array ('objOST' => $objOST,'objLote' => $objLote,'objOSM' => $objOSM))?>
+  <?php view::includePartial('ordenServicio/formularioPrincipal',array ('objOST' => $objOST,'objUnidadDistancia' => $objUnidadDistancia,'objLote' => $objLote,'objOSM' => $objOSM))?>
 </div>

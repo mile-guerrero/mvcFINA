@@ -45,6 +45,7 @@ class reportActionClass extends controllerClass implements controllerActionInter
           solicitudInsumoTableClass::CANTIDAD,
           solicitudInsumoTableClass::PRODUCTO_INSUMO_ID,
           solicitudInsumoTableClass::LOTE_ID,
+          solicitudInsumoTableClass::UNIDAD_MEDIDA_ID,
           solicitudInsumoTableClass::CREATED_AT,
           solicitudInsumoTableClass::UPDATED_AT,
           solicitudInsumoTableClass::DELETED_AT

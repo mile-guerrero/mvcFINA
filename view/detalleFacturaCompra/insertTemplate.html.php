@@ -7,5 +7,5 @@
 <h2 class="form-signin-heading"><?php echo i18n::__('nuevo') ?> </h2>
 <br><br>
   </div>
-  <?php view::includePartial('detalleFacturaCompra/formularioPrincipal',array ('objFactura' => $objFactura,'objTipo'=>$objTipo))?>
+  <?php view::includePartial('detalleFacturaCompra/formularioPrincipal',array ('objFactura' => $objFactura, 'objUnidadMedida' => $objUnidadMedida,'objTipo'=>$objTipo))?>
 </div>

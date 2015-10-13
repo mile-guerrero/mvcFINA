@@ -28,6 +28,7 @@ class editActionClass extends controllerClass implements controllerActionInterfa
           detalleFacturaCompraTableClass::VALOR_UNIDAD,
           detalleFacturaCompraTableClass::VALOR_TOTAL,
           detalleFacturaCompraTableClass::FACTURA_COMPRA_ID,
+          detalleFacturaCompraTableClass::UNIDAD_MEDIDA_ID,
           detalleFacturaCompraTableClass::CREATED_AT,
           detalleFacturaCompraTableClass::UPDATED_AT
         );
@@ -72,6 +73,16 @@ class editActionClass extends controllerClass implements controllerActionInterfa
           tipoProductoInsumoTableClass::DESCRIPCION
       );
       $this->objTipo = tipoProductoInsumoTableClass::getAll($fields, true, $orderBy, 'ASC');
+      
+      $fields = array(
+          unidadMedidaTableClass::ID,
+          unidadMedidaTableClass::DESCRIPCION
+      );
+      $orderBy = array(
+          unidadMedidaTableClass::DESCRIPCION
+      );
+      $this->objUnidadMedida = unidadMedidaTableClass::getAll($fields, false, $orderBy, 'ASC');
+      
         $this->defineView('edit', 'detalleFacturaCompra', session::getInstance()->getFormatOutput());
         $idFactura = facturaCompraTableClass::ID;
         

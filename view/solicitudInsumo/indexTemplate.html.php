@@ -196,7 +196,7 @@
         <h4 class="modal-title" id="myModalLabel"><?php echo i18n::__('confirmar eliminar') ?></h4>
       </div>
       <div class="modal-body">
-        <?php echo i18n::__('Desea  eliminar este campo') ?><?php echo $key->$cantidad ?><?php echo i18n::__('?') ?>
+        <?php echo i18n::__('Desea  eliminar este campo') ?> <?php echo loteTableClass::getNameLote($key->$desLote) ?><?php echo i18n::__('?') ?>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default btn-xs" data-dismiss="modal"><?php echo i18n::__('cerrar') ?></button>

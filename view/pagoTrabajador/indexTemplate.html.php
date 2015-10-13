@@ -12,6 +12,8 @@
 <?php $total = pagoTrabajadorTableClass::TOTAL_PAGAR ?>
 <?php $idEmp = empresaTableClass::ID ?>
 <?php $nomEmpresa = empresaTableClass::NOMBRE ?>
+<?php $idTra = trabajadorTableClass::ID ?>
+<?php $nomTrabajador = trabajadorTableClass::NOMBRET ?>
 <?php $id = pagoTrabajadorTableClass::ID ?>
 
 <div class="container container-fluid" id="cuerpo">
@@ -75,7 +77,18 @@
                   </select>
                 </div>
               </div>
-          
+            
+            <div class="form-group">
+                <label for="reportTrabajador" class="col-sm-2 control-label"><?php echo i18n::__('trabajador') ?></label>
+                <div class="col-sm-10">
+                  <select class="form-control" id="reportTrabajador" name="report[trabajador]">
+                    <option value=""><?php echo i18n::__('selectTrabajador') ?></option>
+<?php foreach ($objT as $trabajador): ?>
+                      <option value="<?php echo $trabajador->$idTra ?>"><?php echo $trabajador->$nomTrabajador ?></option>
+<?php endforeach; ?>
+                  </select>
+                </div>
+              </div>
           
 
 </form>
@@ -137,9 +150,21 @@
                 <div class="col-sm-10">
                   <select class="form-control" id="filterEmpresa" name="filter[empresa]">
                     <option value=""><?php echo i18n::__('selectEmpresa') ?></option>
-<?php foreach ($objPT as $key): ?>
+             <?php foreach ($objEmpresa as $key): ?>
                       <option value="<?php echo $key->$idEmp ?>"><?php echo $key->$nomEmpresa ?></option>
-<?php endforeach; ?>
+             <?php endforeach; ?>
+                  </select>
+                </div>
+              </div>
+                    
+                    <div class="form-group">
+                <label for="filterTrabajador" class="col-sm-2 control-label"><?php echo i18n::__('trabajador') ?></label>
+                <div class="col-sm-10">
+                  <select class="form-control" id="filterTrabajador" name="filter[trabajador]">
+                    <option value=""><?php echo i18n::__('selectTrabajador') ?></option>
+              <?php foreach ($objT as $trabajador): ?>
+                      <option value="<?php echo $trabajador->$idTra ?>"><?php echo $trabajador->$nomTrabajador ?></option>
+              <?php endforeach; ?>
                   </select>
                 </div>
               </div>

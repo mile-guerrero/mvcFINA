@@ -7,6 +7,6 @@
 <h2 class="form-signin-heading"><?php echo i18n::__('modificar') ?> </h2>
 <br><br>
   </div>
-   <?php view::includePartial('detalleFacturaVenta/formularioPrincipal', array('idTipoProducto' => $idTipoProducto,'objDetalleFactura' => $objDetalleFactura, 'objFactura' => $objFactura,'objTipo'=>$objTipo,'objProducto' => $objProducto)) ?>
+   <?php view::includePartial('detalleFacturaVenta/formularioPrincipal', array('idTipoProducto' => $idTipoProducto, 'objUnidadMedida' => $objUnidadMedida,'objDetalleFactura' => $objDetalleFactura, 'objFactura' => $objFactura,'objTipo'=>$objTipo,'objProducto' => $objProducto)) ?>
 </div>
   

@@ -27,6 +27,7 @@ class updateActionClass extends controllerClass implements controllerActionInter
         $cantidad = request::getInstance()->getPost(solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::CANTIDAD, true));
         $idProducto = request::getInstance()->getPost(solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::PRODUCTO_INSUMO_ID, true));
         $idLote = request::getInstance()->getPost(solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::LOTE_ID, true));
+        $idUnidadMedida = request::getInstance()->getPost(solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::UNIDAD_MEDIDA_ID, true));
 
         validator::validateUpdate();
         
@@ -46,7 +47,8 @@ class updateActionClass extends controllerClass implements controllerActionInter
             solicitudInsumoTableClass::TRABAJADOR_ID => $idTrabajador,
             solicitudInsumoTableClass::CANTIDAD => $cantidad,
             solicitudInsumoTableClass::PRODUCTO_INSUMO_ID => $idProducto,
-            solicitudInsumoTableClass::LOTE_ID => $idLote
+            solicitudInsumoTableClass::LOTE_ID => $idLote,
+            solicitudInsumoTableClass::UNIDAD_MEDIDA_ID => $idUnidadMedida
         );
         solicitudInsumoTableClass::update($ids, $data);
          session::getInstance()->setSuccess('La actualizacion fue correcta');

@@ -15,6 +15,7 @@ class solicitudInsumoBaseTableClass extends tableBaseClass {
  private $productoInsumoId;
  private $cantidad;
  private $loteId;
+ private $unidadMedidaId;
  private $createdAt;
  private $updatedAt;
  private $deletedAt;
@@ -26,82 +27,91 @@ class solicitudInsumoBaseTableClass extends tableBaseClass {
   const CANTIDAD = 'cantidad';
   const CANTIDAD_LENGTH = 30;
   const LOTE_ID = 'lote_id';
+  const UNIDAD_MEDIDA_ID = 'unidad_medida_id';
   const CREATED_AT = 'created_at';
   const UPDATED_AT = 'updated_at';
   const DELETED_AT = 'deleted_at';
   
   public function getId() {
-    return $this->id;
+      return $this->id;
   }
 
   public function getFechaHora() {
-    return $this->fechaHora;
+      return $this->fechaHora;
   }
 
   public function getTrabajadorId() {
-    return $this->trabajadorId;
+      return $this->trabajadorId;
   }
 
   public function getProductoInsumoId() {
-    return $this->productoInsumoId;
+      return $this->productoInsumoId;
   }
 
   public function getCantidad() {
-    return $this->cantidad;
+      return $this->cantidad;
   }
 
   public function getLoteId() {
-    return $this->loteId;
+      return $this->loteId;
+  }
+
+  public function getUnidadMedidaId() {
+      return $this->unidadMedidaId;
   }
 
   public function getCreatedAt() {
-    return $this->createdAt;
+      return $this->createdAt;
   }
 
   public function getUpdatedAt() {
-    return $this->updatedAt;
+      return $this->updatedAt;
   }
 
   public function getDeletedAt() {
-    return $this->deletedAt;
+      return $this->deletedAt;
   }
 
   public function setId($id) {
-    $this->id = $id;
+      $this->id = $id;
   }
 
   public function setFechaHora($fechaHora) {
-    $this->fechaHora = $fechaHora;
+      $this->fechaHora = $fechaHora;
   }
 
   public function setTrabajadorId($trabajadorId) {
-    $this->trabajadorId = $trabajadorId;
+      $this->trabajadorId = $trabajadorId;
   }
 
   public function setProductoInsumoId($productoInsumoId) {
-    $this->productoInsumoId = $productoInsumoId;
+      $this->productoInsumoId = $productoInsumoId;
   }
 
   public function setCantidad($cantidad) {
-    $this->cantidad = $cantidad;
+      $this->cantidad = $cantidad;
   }
 
   public function setLoteId($loteId) {
-    $this->loteId = $loteId;
+      $this->loteId = $loteId;
+  }
+
+  public function setUnidadMedidaId($unidadMedidaId) {
+      $this->unidadMedidaId = $unidadMedidaId;
   }
 
   public function setCreatedAt($createdAt) {
-    $this->createdAt = $createdAt;
+      $this->createdAt = $createdAt;
   }
 
   public function setUpdatedAt($updatedAt) {
-    $this->updatedAt = $updatedAt;
+      $this->updatedAt = $updatedAt;
   }
 
   public function setDeletedAt($deletedAt) {
-    $this->deletedAt = $deletedAt;
+      $this->deletedAt = $deletedAt;
   }
-  
+ 
   
    /**
    * Obtiene el nombre de la tabla

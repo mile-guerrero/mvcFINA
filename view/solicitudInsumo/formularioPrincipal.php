@@ -18,6 +18,9 @@
 <?php $idLote = loteTableClass::ID ?>
 <?php $descLote = loteTableClass::UBICACION ?>
 
+<?php $idUnidadMedidaId = solicitudInsumoTableClass::UNIDAD_MEDIDA_ID ?>
+<?php $idUnidadMedida = unidadMedidaTableClass::ID ?>
+<?php $desUnidadMedida = unidadMedidaTableClass::DESCRIPCION ?>
 
 <?php $insumo = solicitudInsumoTableClass::PRODUCTO_INSUMO_ID ?>
 <?php $idInsumo = tipoProductoInsumoTableClass::ID ?>
@@ -46,7 +49,7 @@
   <div class="form-group">
       <label for="<?php echo solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::FECHA_HORA, true) ?>" class="col-sm-2"><?php echo i18n::__('fecha') ?>:</label>     
       <div class="col-sm-10">
-   <input  class="form-control" value="<?php echo (session::getInstance()->hasFlash('selectFechaIni') or request::getInstance()->hasPost(solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::FECHA_HORA, true))) ? request::getInstance()->getPost(solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::FECHA_HORA, true)) : ((isset($objS) == true) ? date('Y-m-d\TH:i:s', strtotime($objS[0]->$fecha)) : date('Y-m-d\TH:i:s')) ?>" type="datetime-local" name="<?php echo solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::FECHA_HORA, true) ?>"required readonly>
+   <input  class="form-control" value="<?php echo (session::getInstance()->hasFlash('selectFechaIni') or request::getInstance()->hasPost(solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::FECHA_HORA, true))) ? request::getInstance()->getPost(solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::FECHA_HORA, true)) : ((isset($objS) == true) ? date('Y-m-d\TH:i:s', strtotime($objS[0]->$fecha)) : date('Y-m-d\TH:i:s')) ?>" type="datetime-local" name="<?php echo solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::FECHA_HORA, true) ?>"required>
       </div>
   </div>
   
@@ -97,10 +100,16 @@
         </div>
         
         
-  
+  <?php if(session::getInstance()->hasError('selectUnidadMedida')): ?>
+    <div class="alert alert-danger alert-dismissible" role="alert" id="error">
+    <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('selectUnidadMedida') ?>
+    </div>
+    <?php endif ?>
+
    <div class="row j1" >
         <label class="col-sm-2" for="<?php echo solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::PRODUCTO_INSUMO_ID, true) ?>" >  <?php echo i18n::__('des') ?>:   </label>
-           <div class="col-lg-5">
+           <div class="col-lg-4">
           <select class="form-control" id="slcInsumo" name="<?php echo solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::PRODUCTO_INSUMO_ID, true); ?>" required>
               <option value="<?php echo (session::getInstance()->hasFlash('inputDescripcion') or request::getInstance()->hasPost(solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::PRODUCTO_INSUMO_ID, true))) ? request::getInstance()->getPost(solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::PRODUCTO_INSUMO_ID, true)) : ((isset($objS[0])) ? '' : '') ?>"><?php echo i18n::__('selectInsumo') ?></option>
               <?php  foreach ($objProducto as $key): ?>
@@ -109,9 +118,17 @@
                 <?php  endforeach; ?>
             </select>
         </div>
-        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-             <input class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputCantidad') or request::getInstance()->hasPost(solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::CANTIDAD, true))) ? request::getInstance()->getPost(solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::CANTIDAD, true)) : ((isset($objS[0])) ? $objS[0]->$cantidad : '') ?>" type="text" name="<?php echo solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::CANTIDAD, true) ?>" placeholder="<?php echo i18n::__('cantidad por kilo') ?>">
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+             <input class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputCantidad') or request::getInstance()->hasPost(solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::CANTIDAD, true))) ? request::getInstance()->getPost(solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::CANTIDAD, true)) : ((isset($objS[0])) ? $objS[0]->$cantidad : '') ?>" type="text" name="<?php echo solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::CANTIDAD, true) ?>" placeholder="<?php echo i18n::__('cantidad') ?>">
      
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+            <select  class="form-control" id="<?php solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::ID, true)?>" name="<?php echo solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::UNIDAD_MEDIDA_ID, true);?>" required>
+      <option value="<?php echo (session::getInstance()->hasFlash('selectUnidadMedida') or request::getInstance()->hasPost(solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::UNIDAD_MEDIDA_ID, true))) ? request::getInstance()->getPost(solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::UNIDAD_MEDIDA_ID, true)) : ((isset($objS[0])) ? '' : '') ?>"><?php echo i18n::__('selectUnidadPeso') ?></option>
+       <?php foreach($objUnidadMedida as $key):?>
+       <option  <?php  echo (request::getInstance()->hasPost(solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::UNIDAD_MEDIDA_ID, true)) === true and request::getInstance()->getPost(solicitudInsumoTableClass::getNameField(solicitudInsumoTableClass::UNIDAD_MEDIDA_ID, true)) == $key->$idUnidadMedida) ? 'selected' :  (isset($objS[0]->$idUnidadMedidaId) === true and $objS[0]->$idUnidadMedidaId == $key->$idUnidadMedida) ? 'selected' : '' ?>  value="<?php echo $key->$idUnidadMedida?>"><?php echo $key->$desUnidadMedida?></option>
+        <?php endforeach;?>
+   </select>
         </div>
       </div>
 

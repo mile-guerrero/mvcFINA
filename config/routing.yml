@@ -348,6 +348,8 @@ ordenServicio_index:
     - model/loteTableClass.php
     - model/base/maquinaBaseTableClass.php
     - model/maquinaTableClass.php
+    - model/base/unidadDistanciaBaseTableClass.php
+    - model/unidadDistanciaTableClass.php
     - libs/validator/ordenServicio/ordenServicioValidatorClass.php
     
 ordenServicio_insert:
@@ -362,6 +364,8 @@ ordenServicio_insert:
     - model/loteTableClass.php
     - model/base/maquinaBaseTableClass.php
     - model/maquinaTableClass.php
+    - model/base/unidadDistanciaBaseTableClass.php
+    - model/unidadDistanciaTableClass.php
     - model/base/tipoProductoInsumoBaseTableClass.php
     - model/tipoProductoInsumoTableClass.php
     
@@ -377,6 +381,8 @@ ordenServicio_create:
     - model/loteTableClass.php
     - model/base/maquinaBaseTableClass.php
     - model/maquinaTableClass.php
+    - model/base/unidadDistanciaBaseTableClass.php
+    - model/unidadDistanciaTableClass.php
     - libs/validator/ordenServicio/ordenServicioValidatorClass.php
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
@@ -394,6 +400,8 @@ ordenServicio_edit:
     - model/loteTableClass.php
     - model/base/maquinaBaseTableClass.php
     - model/maquinaTableClass.php
+    - model/base/unidadDistanciaBaseTableClass.php
+    - model/unidadDistanciaTableClass.php
     
 ordenServicio_update:
   url:    /ordenServicio/actualizar
@@ -407,6 +415,8 @@ ordenServicio_update:
     - model/loteTableClass.php
     - model/base/maquinaBaseTableClass.php
     - model/maquinaTableClass.php
+    - model/base/unidadDistanciaBaseTableClass.php
+    - model/unidadDistanciaTableClass.php
     - libs/validator/ordenServicio/ordenServicioValidatorUpdateClass.php
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
@@ -422,6 +432,8 @@ ordenServicio_ver:
     - model/trabajadorTableClass.php
     - model/base/loteBaseTableClass.php
     - model/loteTableClass.php
+    - model/base/unidadDistanciaBaseTableClass.php
+    - model/unidadDistanciaTableClass.php
     - model/base/maquinaBaseTableClass.php
     - model/maquinaTableClass.php
     
@@ -436,6 +448,8 @@ ordenServicio_reporte:
     - model/trabajadorTableClass.php
     - model/base/loteBaseTableClass.php
     - model/loteTableClass.php
+    - model/base/unidadDistanciaBaseTableClass.php
+    - model/unidadDistanciaTableClass.php
     - model/base/maquinaBaseTableClass.php
     - model/maquinaTableClass.php 
     - hooks/logHookClass.php
@@ -1350,6 +1364,8 @@ solicitudInsumo_index:
     - model/productoInsumoTableClass.php
     - model/base/loteBaseTableClass.php
     - model/loteTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     - libs/validator/solicitudInsumo/solicitudInsumoValidatorClass.php
     
 solicitudInsumo_insert:
@@ -1364,6 +1380,8 @@ solicitudInsumo_insert:
     - model/productoInsumoTableClass.php
     - model/base/loteBaseTableClass.php
     - model/loteTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     - model/base/tipoProductoInsumoBaseTableClass.php
     - model/tipoProductoInsumoTableClass.php
     
@@ -1381,6 +1399,8 @@ solicitudInsumo_create:
     - model/productoInsumoTableClass.php
     - model/base/loteBaseTableClass.php
     - model/loteTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     - libs/validator/solicitudInsumo/solicitudInsumoValidatorClass.php
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
@@ -1400,6 +1420,8 @@ solicitudInsumo_edit:
     - model/productoInsumoTableClass.php
     - model/base/loteBaseTableClass.php
     - model/loteTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     
 solicitudInsumo_update:
   url:    /solicitudInsumo/actualizar
@@ -1415,6 +1437,8 @@ solicitudInsumo_update:
     - model/productoInsumoTableClass.php
     - model/base/loteBaseTableClass.php
     - model/loteTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     - libs/validator/solicitudInsumo/solicitudInsumoValidatorUpdateClass.php
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
@@ -1432,6 +1456,8 @@ solicitudInsumo_delete:
     - model/productoInsumoTableClass.php
     - model/base/loteBaseTableClass.php
     - model/loteTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
@@ -1448,6 +1474,8 @@ solicitudInsumo_deleteSelect:
     - model/productoInsumoTableClass.php
     - model/base/loteBaseTableClass.php
     - model/loteTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
@@ -1464,6 +1492,8 @@ solicitudInsumo_ver:
     - model/productoInsumoTableClass.php
     - model/base/loteBaseTableClass.php
     - model/loteTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     
 solicitudInsumo_reporte:
   url:    /solicitudInsumo/reporte
@@ -1478,6 +1508,8 @@ solicitudInsumo_reporte:
     - model/productoInsumoTableClass.php
     - model/base/loteBaseTableClass.php
     - model/loteTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
@@ -2227,6 +2259,8 @@ detalleFacturaVenta_index:
     - model/trabajadorTableClass.php
     - model/base/productoInsumoBaseTableClass.php
     - model/productoInsumoTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     - libs/validator/detalleFacturaVenta/detalleFacturaVentaValidatorClass.php
     
 getInsumo:
@@ -2245,6 +2279,8 @@ getInsumo:
     - model/productoInsumoTableClass.php
     - model/base/tipoProductoInsumoBaseTableClass.php
     - model/tipoProductoInsumoTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
 
 detalleFacturaVenta_insert:
   url:    /detalleFacturaVenta/insertar
@@ -2262,6 +2298,8 @@ detalleFacturaVenta_insert:
     - model/productoInsumoTableClass.php
     - model/base/tipoProductoInsumoBaseTableClass.php
     - model/tipoProductoInsumoTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     
     
 detalleFacturaVenta_create:
@@ -2280,6 +2318,8 @@ detalleFacturaVenta_create:
     - model/productoInsumoTableClass.php
     - model/base/tipoProductoInsumoBaseTableClass.php
     - model/tipoProductoInsumoTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     - libs/validator/detalleFacturaVenta/detalleFacturaVentaValidatorClass.php
     
 detalleFacturaVenta_edit:
@@ -2298,6 +2338,8 @@ detalleFacturaVenta_edit:
     - model/productoInsumoTableClass.php
     - model/base/tipoProductoInsumoBaseTableClass.php
     - model/tipoProductoInsumoTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     
 detalleFacturaVenta_update:
   url:    /detalleFacturaVenta/actualizar
@@ -2315,6 +2357,8 @@ detalleFacturaVenta_update:
     - model/productoInsumoTableClass.php
     - model/base/tipoProductoInsumoBaseTableClass.php
     - model/tipoProductoInsumoTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     - libs/validator/detalleFacturaVenta/detalleFacturaVentaValidatorUpdateClass.php
     
 detalleFacturaVenta_ver:
@@ -2333,6 +2377,8 @@ detalleFacturaVenta_ver:
     - model/productoInsumoTableClass.php
     - model/base/tipoProductoInsumoBaseTableClass.php
     - model/tipoProductoInsumoTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     - libs/validator/detalleFacturaVenta/detalleFacturaVentaValidatorClass.php
     
     
@@ -2356,6 +2402,8 @@ detalleFacturaVenta_reporte:
     - model/productoInsumoTableClass.php
     - model/base/tipoProductoInsumoBaseTableClass.php
     - model/tipoProductoInsumoTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     
 #----------------------Documento Factura Compra--------------------------------
 
@@ -2443,6 +2491,8 @@ detalleFacturaCompra_index:
     - model/proveedorTableClass.php
     - model/base/productoInsumoBaseTableClass.php
     - model/productoInsumoTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     - libs/validator/detalleFacturaCompra/detalleFacturaCompraValidatorClass.php
     
     
@@ -2460,6 +2510,8 @@ detalleFacturaCompra_insert:
     - model/productoInsumoTableClass.php
     - model/base/tipoProductoInsumoBaseTableClass.php
     - model/tipoProductoInsumoTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     
 detalleFacturaCompra_create:
   url:    /detalleFacturaCompra/crear
@@ -2475,6 +2527,8 @@ detalleFacturaCompra_create:
     - model/productoInsumoTableClass.php
     - model/base/tipoProductoInsumoBaseTableClass.php
     - model/tipoProductoInsumoTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     - libs/validator/detalleFacturaCompra/detalleFacturaCompraValidatorClass.php
     
 detalleFacturaCompra_edit:
@@ -2491,6 +2545,8 @@ detalleFacturaCompra_edit:
     - model/productoInsumoTableClass.php
     - model/base/tipoProductoInsumoBaseTableClass.php
     - model/tipoProductoInsumoTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     
 detalleFacturaCompra_update:
   url:    /detalleFacturaCompra/actualizar
@@ -2506,6 +2562,8 @@ detalleFacturaCompra_update:
     - model/productoInsumoTableClass.php
     - model/base/tipoProductoInsumoBaseTableClass.php
     - model/tipoProductoInsumoTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     - libs/validator/detalleFacturaCompra/detalleFacturaCompraValidatorUpdateClass.php
     
 detalleFacturaCompra_ver:
@@ -2522,6 +2580,8 @@ detalleFacturaCompra_ver:
     - model/productoInsumoTableClass.php
     - model/base/tipoProductoInsumoBaseTableClass.php
     - model/tipoProductoInsumoTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     - libs/validator/detalleFacturaCompra/detalleFacturaCompraValidatorClass.php  
     
 detalleFacturaCompra_reporte:
@@ -2542,6 +2602,8 @@ detalleFacturaCompra_reporte:
     - model/bitacoraTableClass.php 
     - model/base/tipoProductoInsumoBaseTableClass.php
     - model/tipoProductoInsumoTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
         
         
 #---------------------------------enfermedad-----------------------

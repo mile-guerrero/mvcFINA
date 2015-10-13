@@ -37,6 +37,10 @@
         </tr>
         <tbody>
 <?php foreach ($objPT as $key): ?>
+            <tr> 
+              <td><?php echo i18n::__('fechaPagoIni') ?></td>                   
+              <td><?php echo date('Y-m-d', strtotime($key->$fechaIni)) . ' - ' . date('Y-m-d', strtotime($key->$fechaFin)) ?></td>
+            </tr>
            <tr>
           <td><?php echo i18n::__('empresa') ?></td> 
           <td><?php echo empresaTableClass::getNameEmpresa($key->$idEmpresa) ?></td>

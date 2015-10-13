@@ -63,6 +63,7 @@ class indexActionClass extends controllerClass implements controllerActionInterf
           detalleFacturaVentaTableClass::VALOR_UNIDAD,
           detalleFacturaVentaTableClass::VALOR_TOTAL,
           detalleFacturaVentaTableClass::FACTURA_ID,
+          detalleFacturaVentaTableClass::UNIDAD_MEDIDA_ID,
           detalleFacturaVentaTableClass::CREATED_AT,
           detalleFacturaVentaTableClass::UPDATED_AT
       );

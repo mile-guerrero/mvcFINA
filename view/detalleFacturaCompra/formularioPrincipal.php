@@ -21,6 +21,10 @@
 <?php $idInsumoInsumo = productoInsumoTableClass::ID ?>
 <?php $nomInsumoInsumo = productoInsumoTableClass::DESCRIPCION ?>
 
+<?php $idUnidadMedidaId = detalleFacturaCompraTableClass::UNIDAD_MEDIDA_ID ?>
+<?php $idUnidadMedida = unidadMedidaTableClass::ID ?>
+<?php $desUnidadMedida = unidadMedidaTableClass::DESCRIPCION ?>
+
 
 <div class="container container-fluid" id="cuerpo">
   <div class="center-block" id="cuerpo5">
@@ -89,13 +93,24 @@ caja["<?php echo detalleFacturaCompraTableClass::getNameField(detalleFacturaComp
     </div>
     <?php endif ?>
 
-    <div class="form-group">
-      <label for="<?php echo detalleFacturaCompraTableClass::getNameField(detalleFacturaCompraTableClass::CANTIDAD, true) ?>" class="col-sm-2"> <?php echo i18n::__('cantidad') ?>:</label>     
-      <div class="col-sm-10">            
+        <div class="row j1" >
+    <label for="<?php echo detalleFacturaCompraTableClass::getNameField(detalleFacturaCompraTableClass::CANTIDAD, true) ?>" class="col-sm-2"> <?php echo i18n::__('cantidad') ?>:</label>     
+      <div class="col-sm-5">            
           <input class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputCantidad') or request::getInstance()->hasPost(detalleFacturaCompraTableClass::getNameField(detalleFacturaCompraTableClass::CANTIDAD, true))) ? request::getInstance()->getPost(detalleFacturaCompraTableClass::getNameField(detalleFacturaCompraTableClass::CANTIDAD, true)) : ((isset($objDetalleFactura[0])) ? $objDetalleFactura[0]->$cantidad : '') ?>" type="text" name="<?php echo detalleFacturaCompraTableClass::getNameField(detalleFacturaCompraTableClass::CANTIDAD, true) ?>" placeholder="<?php echo i18n::__('cantidad') ?>" onKeyUp="fncTotal()" required>
       </div>
-    </div> 
+        
+        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+            <select  class="form-control" id="<?php detalleFacturaCompraTableClass::getNameField(detalleFacturaCompraTableClass::ID, true)?>" name="<?php echo detalleFacturaCompraTableClass::getNameField(detalleFacturaCompraTableClass::UNIDAD_MEDIDA_ID, true);?>" required>
+      <option value="2" ><?php echo i18n::__('selectUnidadPeso') ?></option>
+       <?php foreach($objUnidadMedida as $key):?>
+       <option  <?php  echo (request::getInstance()->hasPost(detalleFacturaCompraTableClass::getNameField(detalleFacturaCompraTableClass::UNIDAD_MEDIDA_ID, true)) === true and request::getInstance()->getPost(detalleFacturaCompraTableClass::getNameField(detalleFacturaCompraTableClass::UNIDAD_MEDIDA_ID, true)) == $key->$idUnidadMedida) ? 'selected' :  (isset($objDetalleFactura[0]->$idUnidadMedidaId) === true and $objDetalleFactura[0]->$idUnidadMedidaId == $key->$idUnidadMedida) ? 'selected' : '' ?>  value="<?php echo $key->$idUnidadMedida?>"><?php echo $key->$desUnidadMedida?></option>
+        <?php endforeach;?>
+   </select>
+        </div>
+        </div>
 
+        <br> 
+        
       <?php if(session::getInstance()->hasError('inputValor')): ?>
     <div class="alert alert-danger alert-dismissible" role="alert" id="error">
       <button type="button" class="close" data-dismiss="alert" id="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>

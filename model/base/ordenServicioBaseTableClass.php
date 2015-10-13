@@ -16,6 +16,7 @@ class ordenServicioBaseTableClass extends tableBaseClass {
  private $valor;
  private $loteId;
  private $maquinaId;
+ private $unidadDistanciaId;
  private $createdAt;
  private $updatedAt;
 
@@ -28,82 +29,91 @@ class ordenServicioBaseTableClass extends tableBaseClass {
   const VALOR = 'valor';  
   const VALOR_LENGTH = 30;
   const LOTE_ID = 'lote_id';
+  const UNIDAD_DISTANCIA_ID = 'unidad_distancia_id';
   const MAQUINA_ID = 'maquina_id';
   const CREATED_AT = 'created_at';
   const UPDATED_AT = 'updated_at';
   
   public function getId() {
-    return $this->id;
+      return $this->id;
   }
 
   public function getFechaMantenimiento() {
-    return $this->fechaMantenimiento;
+      return $this->fechaMantenimiento;
   }
 
   public function getTrabajadorId() {
-    return $this->trabajadorId;
-  }
-  
-  public function get_cantidad() {
-    return $this->cantidad;
+      return $this->trabajadorId;
   }
 
-  public function get_valor() {
-    return $this->valor;
-  }
-  
-  public function get_loteId() {
-    return $this->loteId;
+  public function getCantidad() {
+      return $this->cantidad;
   }
 
-  public function get_maquinaId() {
-    return $this->maquinaId;
+  public function getValor() {
+      return $this->valor;
   }
-  
+
+  public function getLoteId() {
+      return $this->loteId;
+  }
+
+  public function getMaquinaId() {
+      return $this->maquinaId;
+  }
+
+  public function getUnidadDistanciaId() {
+      return $this->unidadDistanciaId;
+  }
+
   public function getCreatedAt() {
-    return $this->createdAt;
+      return $this->createdAt;
   }
 
   public function getUpdatedAt() {
-    return $this->updatedAt;
+      return $this->updatedAt;
   }
 
   public function setId($id) {
-    $this->id = $id;
+      $this->id = $id;
   }
 
   public function setFechaMantenimiento($fechaMantenimiento) {
-    $this->fechaMantenimiento = $fechaMantenimiento;
+      $this->fechaMantenimiento = $fechaMantenimiento;
   }
 
   public function setTrabajadorId($trabajadorId) {
-    $this->trabajadorId = $trabajadorId;
-  }
-  
-  public function set_cantidad($cantidad) {
-    $this->cantidad = $cantidad;
+      $this->trabajadorId = $trabajadorId;
   }
 
-  public function set_valor($valor) {
-    $this->valor = $valor;
-  }
-  
-  public function set_loteId($loteId) {
-    $this->loteId = $loteId;
+  public function setCantidad($cantidad) {
+      $this->cantidad = $cantidad;
   }
 
-  public function set_maquinaId($maquinaId) {
-    $this->maquinaId = $maquinaId;
+  public function setValor($valor) {
+      $this->valor = $valor;
   }
-  
+
+  public function setLoteId($loteId) {
+      $this->loteId = $loteId;
+  }
+
+  public function setMaquinaId($maquinaId) {
+      $this->maquinaId = $maquinaId;
+  }
+
+  public function setUnidadDistanciaId($unidadDistanciaId) {
+      $this->unidadDistanciaId = $unidadDistanciaId;
+  }
+
   public function setCreatedAt($createdAt) {
-    $this->createdAt = $createdAt;
+      $this->createdAt = $createdAt;
   }
 
   public function setUpdatedAt($updatedAt) {
-    $this->updatedAt = $updatedAt;
+      $this->updatedAt = $updatedAt;
   }
-
+  
    /**
    * Obtiene el nombre de la tabla
    * @return string

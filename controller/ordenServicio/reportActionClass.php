@@ -44,6 +44,7 @@ class reportActionClass extends controllerClass implements controllerActionInter
           ordenServicioTableClass::CANTIDAD,
           ordenServicioTableClass::VALOR,
           ordenServicioTableClass::MAQUINA_ID,
+          ordenServicioTableClass::UNIDAD_DISTANCIA_ID,
           ordenServicioTableClass::CREATED_AT,
           ordenServicioTableClass::UPDATED_AT
       );

@@ -54,6 +54,14 @@ class insertActionClass extends controllerClass implements controllerActionInter
       );
       $this->objTipo = tipoProductoInsumoTableClass::getAll($fields, true, $orderBy, 'ASC');
       
+      $fields = array(
+          unidadMedidaTableClass::ID,
+          unidadMedidaTableClass::DESCRIPCION
+      );
+      $orderBy = array(
+          unidadMedidaTableClass::DESCRIPCION
+      );
+      $this->objUnidadMedida = unidadMedidaTableClass::getAll($fields, false, $orderBy, 'ASC');
       
             $this->mensaje ="";
             $this->defineView('insert', 'detalleFacturaVenta', session::getInstance()->getFormatOutput());

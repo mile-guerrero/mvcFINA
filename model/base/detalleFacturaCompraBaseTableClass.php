@@ -15,6 +15,7 @@ class detalleFacturaCompraBaseTableClass extends tableBaseClass {
  private $valorUnidad;
  private $valorTotal;
  private $facturaCompraId;
+ private $unidadMedidaId;
  private $createdAt;
  private $updatedAt;
  
@@ -27,6 +28,7 @@ class detalleFacturaCompraBaseTableClass extends tableBaseClass {
   const VALOR_UNIDAD = 'valor_unidad';
   const VALOR_TOTAL = 'valor_total';
   const FACTURA_COMPRA_ID = 'factura_compra_id';
+  const UNIDAD_MEDIDA_ID = 'unidad_medida_id';
   const CREATED_AT = 'created_at';
   const UPDATED_AT = 'updated_at';
   
@@ -51,9 +53,12 @@ class detalleFacturaCompraBaseTableClass extends tableBaseClass {
       return $this->valorTotal;
   }
 
-  
   public function getFacturaCompraId() {
       return $this->facturaCompraId;
+  }
+
+  public function getUnidadMedidaId() {
+      return $this->unidadMedidaId;
   }
 
   public function getCreatedAt() {
@@ -84,10 +89,12 @@ class detalleFacturaCompraBaseTableClass extends tableBaseClass {
       $this->valorTotal = $valorTotal;
   }
 
-  
-
   public function setFacturaCompraId($facturaCompraId) {
       $this->facturaCompraId = $facturaCompraId;
+  }
+
+  public function setUnidadMedidaId($unidadMedidaId) {
+      $this->unidadMedidaId = $unidadMedidaId;
   }
 
   public function setCreatedAt($createdAt) {
@@ -98,7 +105,7 @@ class detalleFacturaCompraBaseTableClass extends tableBaseClass {
       $this->updatedAt = $updatedAt;
   }
 
-  
+    
          
     /**
    * Obtiene el nombre de la tabla

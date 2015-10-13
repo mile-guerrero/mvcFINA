@@ -7,6 +7,7 @@
 <?php $idProducto = detalleFacturaCompraTableClass::DESCRIPCION ?>
 <?php $descripcion = detalleFacturaCompraTableClass::DESCRIPCION ?>
 <?php $cantidad = detalleFacturaCompraTableClass::CANTIDAD ?>
+<?php $unidadMedida = detalleFacturaCompraTableClass::UNIDAD_MEDIDA_ID ?>
 <?php $valor_unidad = detalleFacturaCompraTableClass::VALOR_UNIDAD ?>
 <?php $valor_total = detalleFacturaCompraTableClass::VALOR_TOTAL ?>
 <?php $id = detalleFacturaCompraTableClass::ID ?>
@@ -113,7 +114,7 @@
                             
                           <td><?php echo productoInsumoTableClass::getNameProductoInsumo($key->$idProducto) ?></td>
 
-                            <td><?php echo $key->$cantidad ?></td>
+                            <td><?php echo $key->$cantidad . ' ' . unidadMedidaTableClass::getNameUnidadMedida($key->$unidadMedida) ?></td>
 
                             <td><?php echo '$' . number_format($key->$valor_unidad, 0, ',', '.') ?></td>
 
