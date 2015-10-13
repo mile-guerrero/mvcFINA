@@ -67,6 +67,47 @@ class pagoTrabajadorTableClass extends pagoTrabajadorBaseTableClass {
     }
     
   }
+  
+  public static function getTotalHistoria1(){
+    try {
+      $fechaInicial = session::getInstance()->getAttribute('fecha1');
+      $fechaFin = session::getInstance()->getAttribute('fecha2');
+     
+      $sql = 'SELECT ' . '  '. 'SUM ('. pagoTrabajadorTableClass::TOTAL_PAGAR  . ') ' .  ' As total'
+             . '  FROM ' . pagoTrabajadorTableClass::getNameTable() . '  ' 
+             . ' WHERE ' . '(' . pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::FECHA_INICIAL) . ' BETWEEN ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaInicial . ' 00:00:00')) . "'" . ' AND ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59')) . "'" . ' ) ';
+          
+//     print_r($sql);
+//            exit();
+      $answer = model::getInstance()->prepare($sql);
+            $answer->execute();
+            $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+ return $answer[0]->total;
+   } catch (Exception $exc) {
+      throw $exc;
+    }
+    
+  }
+  public static function getTotalHistoria2(){
+    try {
+      $fechaInicial = session::getInstance()->getAttribute('fecha3');
+      $fechaFin = session::getInstance()->getAttribute('fecha4');
+     
+      $sql = 'SELECT ' . '  '. 'SUM ('. pagoTrabajadorTableClass::TOTAL_PAGAR  . ') ' .  ' As total'
+             . '  FROM ' . pagoTrabajadorTableClass::getNameTable() . '  ' 
+             . ' WHERE ' . '(' . pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::FECHA_INICIAL) . ' BETWEEN ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaInicial . ' 00:00:00')) . "'" . ' AND ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaFin . ' 23:59:59')) . "'" . ' ) ';
+          
+//     print_r($sql);
+//            exit();
+      $answer = model::getInstance()->prepare($sql);
+            $answer->execute();
+            $answer = $answer->fetchAll(PDO::FETCH_OBJ);
+ return $answer[0]->total;
+   } catch (Exception $exc) {
+      throw $exc;
+    }
+    
+  }
 
 
   public static function getTotalPages($lines, $where) {

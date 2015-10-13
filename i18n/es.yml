@@ -199,7 +199,7 @@ dictionary:
     unidadDistancia:      Unidad Distancia
     tamano:               Área
     ubicacion:            Ubicación
-    fecha riego:          Fecha de riego
+    fecha produccion:     Fecha produccion
     #-------Orden de servicio-----------
     valor a pagar por trabajo realizado: Valor a pagar por trabajo realizado
     editar orden:         Editar Orden de Servicio

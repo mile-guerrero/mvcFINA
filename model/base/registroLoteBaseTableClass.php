@@ -17,6 +17,7 @@ class registroLoteBaseTableClass extends tableBaseClass {
   private $produccion;
   private $productoInsumoId;
   private $createdAt;
+  private $presupuesto;
 
   const ID = 'id';
   const UBICACION = 'ubicacion';
@@ -29,8 +30,18 @@ class registroLoteBaseTableClass extends tableBaseClass {
   const FECHA_RIEGO = 'fecha_riego';
   const PRODUCTO_INSUMO_ID = 'producto_insumo_id';
   const CREATED_AT = 'created_at';
+  const PRESUPUESTO = 'presupuesto';
 
  
+  public function get_presupuesto() {
+    return $this->presupuesto;
+  }
+
+  public function set_presupuesto($presupuesto) {
+    $this->presupuesto = $presupuesto;
+  }
+
+    
   public function get_id() {
     return $this->id;
   }

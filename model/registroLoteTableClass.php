@@ -305,10 +305,10 @@ class registroLoteTableClass extends registroLoteBaseTableClass {
 //    }
 //  }
 //
-  public static function regitroLoteInsert($ubicacion, $fechaRiego, $numero, $insumo, $produccion, $unidadMedida) {
+  public static function regitroLoteInsert($ubicacion, $fechaRiego, $numero, $insumo, $produccion, $unidadMedida,$presupuesto) {
     try {
-      $sql = 'INSERT INTO' . '  ' . registroLoteTableClass::getNameTable() . ' (' . registroLoteTableClass::UBICACION . ',' . registroLoteTableClass::FECHA_RIEGO . ',' . registroLoteTableClass::PRODUCTO_INSUMO_ID . ',' . registroLoteTableClass::NUMERO_PLANTULAS . ',' . registroLoteTableClass::PRODUCCION . ',' . registroLoteTableClass::UNIDAD_MEDIDA_ID . ' ) '
-              . ' VALUES (' . "'" . $ubicacion . "'" . ',' . "'" . $fechaRiego . "'" . ',' . $insumo . ',' . $numero . ',' . $produccion . ',' . $unidadMedida . ' )';
+      $sql = 'INSERT INTO' . '  ' . registroLoteTableClass::getNameTable() . ' (' . registroLoteTableClass::UBICACION . ',' . registroLoteTableClass::FECHA_RIEGO . ',' . registroLoteTableClass::PRODUCTO_INSUMO_ID . ',' . registroLoteTableClass::NUMERO_PLANTULAS . ',' . registroLoteTableClass::PRODUCCION . ',' . registroLoteTableClass::UNIDAD_MEDIDA_ID . ',' . registroLoteTableClass::PRESUPUESTO . ' ) '
+              . ' VALUES (' . "'" . $ubicacion . "'" . ',' . "'" . $fechaRiego . "'" . ',' . $insumo . ',' . $numero . ',' . $produccion . ',' . $unidadMedida . ',' . $presupuesto . ' )';
 
 
       model::getInstance()->beginTransaction();

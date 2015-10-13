@@ -153,7 +153,7 @@
   
   
 <div class="form-group">
-      <label for="<?php echo loteTableClass::getNameField(loteTableClass::FECHA_RIEGO, true) ?>" class="col-sm-2"> <?php echo i18n::__('fecha riego') ?>: </label>     
+      <label for="<?php echo loteTableClass::getNameField(loteTableClass::FECHA_RIEGO, true) ?>" class="col-sm-2"> <?php echo i18n::__('fecha produccion') ?>: </label>     
       <div class="col-sm-10">
         <input  class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputFechaRiego') or request::getInstance()->hasPost(loteTableClass::getNameField(loteTableClass::FECHA_RIEGO, true))) ? request::getInstance()->getPost(loteTableClass::getNameField(loteTableClass::FECHA_RIEGO, true)) : ((isset($objLote) == true) ? date('Y-m-d\TH:i:s') : date('Y-m-d\TH:i:s')) ?>" type="datetime-local" name="<?php echo loteTableClass::getNameField(loteTableClass::FECHA_RIEGO, true) ?>" placeholder="<?php echo i18n::__('fecha riego') ?>"required >
       </div>

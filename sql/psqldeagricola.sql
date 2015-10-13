@@ -356,6 +356,7 @@ CREATE TABLE registro_lote
 	ubicacion VARCHAR(400)  NULL,
 	fecha_riego TIMESTAMP NULL,
 	numero_plantulas BigInt NULL,
+	presupuesto BigInt NULL,
 	produccion BigInt NULL,
 	unidad_medida_id BIGINT NULL,
 	producto_insumo_id BIGINT NULL,	
@@ -421,11 +422,11 @@ CREATE TABLE solicitud_insumo
 (
 	id BIGINT DEFAULT nextval('public.solicitud_insumo_id_seq'::regclass) NOT NULL,
 	fecha_hora TIMESTAMP DEFAULT now() NOT NULL,
-        trabajador_id BIGINT NOT NULL,	
-        cantidad BigInt NOT NULL,	
-        producto_insumo_id BIGINT NOT NULL,
-        unidad_medida_id BIGINT NOT NULL,
-        lote_id BIGINT NOT NULL,	
+    trabajador_id BIGINT NOT NULL,	
+    cantidad BigInt NOT NULL,	
+    producto_insumo_id BIGINT NOT NULL,
+    unidad_medida_id BIGINT NOT NULL,
+    lote_id BIGINT NOT NULL,	
 	created_at TIMESTAMP DEFAULT now() NOT NULL,
 	updated_at TIMESTAMP DEFAULT now() NOT NULL,
 	deleted_at TIMESTAMP NULL
@@ -454,11 +455,11 @@ CREATE TABLE pago_trabajador
 	id BIGINT DEFAULT nextval('public.pago_trabajador_id_seq'::regclass) NOT NULL,
 	fecha_inicial TIMESTAMP DEFAULT now() NOT NULL,
 	fecha_final TIMESTAMP DEFAULT now() NOT NULL,
-        empresa_id BIGINT NOT NULL,	
-        trabajador_id BIGINT NOT NULL,	
+    empresa_id BIGINT NOT NULL,	
+    trabajador_id BIGINT NOT NULL,	
 	valor_salario BigInt NOT NULL,
-        horas_perdidas BigInt NOT NULL,
-        total_pagar BigInt NOT NULL,	
+    horas_perdidas BigInt NOT NULL,
+    total_pagar BigInt NOT NULL,	
 	created_at TIMESTAMP DEFAULT now() NOT NULL,
 	updated_at TIMESTAMP DEFAULT now() NOT NULL
 );
@@ -473,8 +474,8 @@ CREATE TABLE mano_obra
 	valor_hora BigInt NOT NULL,
 	total_pagar BigInt NOT NULL,
 	cooperativa_id BIGINT NOT NULL,	
-        maquina_id BIGINT NOT NULL,
-        lote_id BIGINT NOT NULL,	
+    maquina_id BIGINT NOT NULL,
+    lote_id BIGINT NOT NULL,	
 	created_at TIMESTAMP DEFAULT now() NOT NULL,
 	updated_at TIMESTAMP DEFAULT now() NOT NULL,
 	deleted_at TIMESTAMP NULL
@@ -528,7 +529,7 @@ CREATE TABLE historial
 	producto_insumo_id BigInt NOT NULL,
 	lote_id BigInt NOT NULL,
 	plaga_id BigInt NOT NULL,
-        enfermedad_id BIGINT NOT NULL,		
+    enfermedad_id BIGINT NOT NULL,		
 	created_at TIMESTAMP DEFAULT now() NOT NULL,
 	updated_at TIMESTAMP DEFAULT now() NOT NULL
 );

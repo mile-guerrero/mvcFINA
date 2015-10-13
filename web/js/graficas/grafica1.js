@@ -195,7 +195,7 @@ function crearGrafica6(produccion1, produccion2) {
  
    plot3 = $.jqplot('chart7', [produccion1, produccion2], 
     { 
-      title:'Presupuesto produccion', 
+      title:'Comparación de produccion', 
     animate: !$.jqplot.use_excanvas,
    
 //    seriesDefaults: {

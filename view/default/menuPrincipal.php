@@ -75,7 +75,6 @@ use mvc\i18n\i18nClass as i18n ?>
             <ul class="dropdown-menu" role="menu">
               <li><a  href="<?php echo routing::getInstance()->getUrlWeb('controlPlaga', 'index') ?>"><?php echo i18n::__('controlPlaga') ?></a></li>
               <li><a  href="<?php echo routing::getInstance()->getUrlWeb('controlEnfermedad', 'index') ?>"><?php echo i18n::__('controlEnfermedad') ?></a></li>
-              <li><a  href="<?php echo routing::getInstance()->getUrlWeb('presupuestoHistorico', 'index') ?>"><?php echo i18n::__('presupuestoHistorico') ?></a></li>
               <li class="divider"></li>
               <li><a  href="<?php echo routing::getInstance()->getUrlWeb('reportes', 'index') ?>"><?php echo i18n::__('reportes') ?></a></li>
               <li><a  href="<?php echo routing::getInstance()->getUrlWeb('productoInsumo', 'inventarioProductoInsumo') ?>"><?php echo i18n::__('inventario') ?></a></li>

@@ -83,44 +83,78 @@ class reportActionClass extends controllerClass implements controllerActionInter
      }
 
  if ($value == 4){
+       $where = session::getInstance()->getAttribute('graficaWhereAno');
+       
+       $this->mensaje4 = 'Informacion del presupuesto historico';
+       $fields = array(
+            registroLoteTableClass::UBICACION,
+            registroLoteTableClass::PRODUCTO_INSUMO_ID,
+            registroLoteTableClass::ID,
+            registroLoteTableClass::FECHA_RIEGO,
+            registroLoteTableClass::PRODUCCION,
+            registroLoteTableClass::PRESUPUESTO,
+            registroLoteTableClass::CREATED_AT
+        );
+        $orderBy = array(
+//            registroLoteTableClass::ID,
+            registroLoteTableClass::PRODUCCION
+        );
+        $this->objPresupuesto = registroLoteTableClass::getAll($fields, false, $orderBy, 'ASC', null, null, $where);
+     }
+          
+     if ($value == 4){
+      $where = session::getInstance()->getAttribute('graficaWhereTrabajadorAno');
+     $fields = array(
+            pagoTrabajadorTableClass::ID,
+            pagoTrabajadorTableClass::TOTAL_PAGAR,
+            pagoTrabajadorTableClass::FECHA_INICIAL
+        );
+        $orderBy = array(
+//            registroLoteTableClass::ID,
+            pagoTrabajadorTableClass::FECHA_INICIAL
+        );
+        $this->objPagoTrabajador = pagoTrabajadorTableClass::getAll($fields, false, $orderBy, 'ASC', null, null, $where);
+     }
+     
+     //------------------------------------------------------------------------------
+     
+     
+     if ($value == 4){
        $where = session::getInstance()->getAttribute('graficaWhere');
        
        $this->mensaje4 = 'Informacion del presupuesto historico';
        $fields = array(
-            presupuestoHistoricoTableClass::LOTE_ID,
-            presupuestoHistoricoTableClass::PRODUCTO_INSUMO_ID,
-            presupuestoHistoricoTableClass::ID,
-            presupuestoHistoricoTableClass::TOTAL_PAGO_TRABAJADOR,
-            presupuestoHistoricoTableClass::TOTAL_PRODUCCION,
-            presupuestoHistoricoTableClass::PRESUPUESTO,
-            presupuestoHistoricoTableClass::CREATED_AT
+            registroLoteTableClass::UBICACION,
+            registroLoteTableClass::PRODUCTO_INSUMO_ID,
+            registroLoteTableClass::ID,
+            registroLoteTableClass::FECHA_RIEGO,
+            registroLoteTableClass::PRODUCCION,
+            registroLoteTableClass::PRESUPUESTO,
+            registroLoteTableClass::CREATED_AT
         );
         $orderBy = array(
-//            presupuestoHistoricoTableClass::ID,
-            presupuestoHistoricoTableClass::TOTAL_PRODUCCION
+//            registroLoteTableClass::ID,
+            registroLoteTableClass::PRODUCCION
         );
-        $this->objPresupuesto = presupuestoHistoricoTableClass::getAll($fields, true, $orderBy, 'ASC', null, null, $where);
+        $this->objPresupuesto2 = registroLoteTableClass::getAll($fields, false, $orderBy, 'ASC', null, null, $where);
      }
      
+     
      if ($value == 4){
-       $whereAno = session::getInstance()->getAttribute('graficaWhereAno');
-       
-       $this->mensaje5 = 'Informacion del presupuesto historico año anterior';
-       $fields = array(
-            presupuestoHistoricoTableClass::LOTE_ID,
-            presupuestoHistoricoTableClass::PRODUCTO_INSUMO_ID,
-            presupuestoHistoricoTableClass::ID,
-            presupuestoHistoricoTableClass::TOTAL_PAGO_TRABAJADOR,
-            presupuestoHistoricoTableClass::TOTAL_PRODUCCION,
-            presupuestoHistoricoTableClass::PRESUPUESTO,
-            presupuestoHistoricoTableClass::CREATED_AT
+      $where = session::getInstance()->getAttribute('graficaWhereTrabajador');
+     $fields = array(
+            pagoTrabajadorTableClass::ID,
+         pagoTrabajadorTableClass::TOTAL_PAGAR,
+            pagoTrabajadorTableClass::FECHA_INICIAL
         );
         $orderBy = array(
-//            presupuestoHistoricoTableClass::ID,
-            presupuestoHistoricoTableClass::TOTAL_PRODUCCION
+//            registroLoteTableClass::ID,
+            pagoTrabajadorTableClass::FECHA_INICIAL
         );
-        $this->objPresupuesto2 = presupuestoHistoricoTableClass::getAll($fields, true, $orderBy, 'ASC', null, null, $whereAno);
+        $this->objPagoTrabajador2 = pagoTrabajadorTableClass::getAll($fields, false, $orderBy, 'ASC', null, null, $where);
      }
+     
+     
       $this->defineView('index', 'reportes', session::getInstance()->getFormatOutput());
     } //cierre del try
     catch (PDOException $exc) {

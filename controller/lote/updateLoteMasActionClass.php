@@ -103,7 +103,8 @@ class updateLoteMasActionClass extends controllerClass implements controllerActi
         loteTableClass::loteupdateMas($id,$fechaSiembra,$fechaRiego,$numero,$insumo,$presupuesto,$produccion, $unidadMedida);
         
         
-        registroLoteTableClass::regitroLoteInsert($ubicacion,$fechaRiego,$numero,$insumo,$produccion,$unidadMedida);
+        registroLoteTableClass::regitroLoteInsert($ubicacion,$fechaRiego,$numero,$insumo,$produccion,$unidadMedida,$presupuesto);
+        
         session::getInstance()->setSuccess('La actualizacion fue correcta');
         $observacion ='se ha modificado el lote mas';
         log::register('Modificar', loteTableClass::getNameTable(),$observacion,$id);

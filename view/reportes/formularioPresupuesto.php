@@ -11,9 +11,11 @@ use mvc\session\sessionClass as session ?>
 use mvc\request\requestClass as request ?>
 
 <?php $idReporte = reporteTableClass::ID ?>
-<?php $lote = presupuestoHistoricoTableClass::LOTE_ID ?>
-<?php $idLote = loteTableClass::ID ?>
-<?php $nomLote = loteTableClass::UBICACION ?>
+<?php $lote = registroLoteTableClass::ID ?>
+
+<?php $idLote = registroLoteTableClass::ID ?>
+<?php $ubicacion = registroLoteTableClass::UBICACION ?>
+
 
 <div class="container container-fluid" id="cuerpo">
   <div class="center-block" id="cuerpo5">
@@ -34,20 +36,20 @@ use mvc\request\requestClass as request ?>
             <i class="glyphicon glyphicon-remove-sign"></i> <?php echo session::getInstance()->getError('inputFecha') ?>
           </div>
 <?php endif ?>
-<!--<label class="col-sm-2 control-label" for="<?php echo presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::CREATED_AT, true) . '_1' ?>" ><?php echo i18n::__('rango de fechas') ?></label>-->
+<!--<label class="col-sm-2 control-label" for="<?php echo registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_1' ?>" ><?php echo i18n::__('rango de fechas') ?></label>-->
 
         <div class="row j1" >
           <div class=""> 
-          <label class="col-sm-2 control-label" for="<?php echo presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::CREATED_AT, true) . '_1' ?>" ><?php echo i18n::__('fecha inicio') ?></label>
+          <label class="col-sm-2 control-label" for="<?php echo registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_1' ?>" ><?php echo i18n::__('fecha inicio') ?></label>
            </div>
           <div class="col-lg-4">            
-            <input type="date" class="form-control" id="<?php echo presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::CREATED_AT, true) . '_1' ?>" name="<?php echo presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::CREATED_AT, true) . '_1' ?>" required>
+            <input type="date" class="form-control" id="<?php echo registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_1' ?>" name="<?php echo registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_1' ?>" required>
           </div>
           <div class="">
-          <label class="col-sm-2 control-label" for="<?php echo presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::CREATED_AT, true) . '_1' ?>" ><?php echo i18n::__('fecha fin') ?></label>
+          <label class="col-sm-2 control-label" for="<?php echo registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_1' ?>" ><?php echo i18n::__('fecha fin') ?></label>
            </div>
           <div class="col-lg-4 ">            
-            <input type="date" class="form-control" id="<?php echo presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::CREATED_AT, true) . '_2' ?>" name="<?php echo presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::CREATED_AT, true) . '_2' ?>" required>
+            <input type="date" class="form-control" id="<?php echo registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_2' ?>" name="<?php echo registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_2' ?>" required>
           </div>
         </div>
         <br>
@@ -55,16 +57,16 @@ use mvc\request\requestClass as request ?>
         
         <div class="row j1" >
           <div class=""> 
-          <label class="col-sm-2 control-label" for="<?php echo presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::CREATED_AT, true) . '_3' ?>" ><?php echo i18n::__('fecha inicio') ?></label>
+          <label class="col-sm-2 control-label" for="<?php echo registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_3' ?>" ><?php echo i18n::__('fecha inicio') ?></label>
            </div>
           <div class="col-lg-4">            
-            <input type="date" class="form-control" id="<?php echo presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::CREATED_AT, true) . '_3' ?>" name="<?php echo presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::CREATED_AT, true) . '_3' ?>" required>
+            <input type="date" class="form-control" id="<?php echo registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_3' ?>" name="<?php echo registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_3' ?>" required>
           </div>
           <div class="">
-          <label class="col-sm-2 control-label" for="<?php echo presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::CREATED_AT, true) . '_4' ?>" ><?php echo i18n::__('fecha fin') ?></label>
+          <label class="col-sm-2 control-label" for="<?php echo registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_4' ?>" ><?php echo i18n::__('fecha fin') ?></label>
            </div>
           <div class="col-lg-4 ">            
-            <input type="date" class="form-control" id="<?php echo presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::CREATED_AT, true) . '_4' ?>" name="<?php echo presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::CREATED_AT, true) . '_4' ?>" required>
+            <input type="date" class="form-control" id="<?php echo registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_4' ?>" name="<?php echo registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_4' ?>" required>
           </div>
         </div>
         <br>
@@ -72,19 +74,17 @@ use mvc\request\requestClass as request ?>
        
      
 
-       <div class="form-group">
-          <label class="col-sm-2" for="<?php echo presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::LOTE_ID, true) ?>" >  <?php echo i18n::__('lote') ?>:   </label>
-          <div class="col-sm-10"> 
-            <select class="form-control"  name="<?php echo presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::LOTE_ID, true); ?>" required>
-              <option value="<?php echo (session::getInstance()->hasFlash('inputDescripcion') or request::getInstance()->hasPost(presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::LOTE_ID, true))) ? request::getInstance()->getPost(presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::LOTE_ID, true)) : ((isset($objpresupuestoHistorico[0])) ? '' : '') ?>"><?php echo i18n::__('selectLote') ?></option>
-              <?php  foreach ($objLoteR as $key): ?>
-         
-              <option <?php echo (request::getInstance()->hasPost(presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::LOTE_ID, true)) === true and request::getInstance()->getPost(presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::LOTE_ID, true)) == $key->$idLote) ? 'selected' : (isset($objpresupuestoHistorico[0]->$lote) === true and $objpresupuestoHistorico[0]->$lote == $key->$idLote) ? 'selected' : ''  ?> value="<?php echo $key->$idLote  ?>"><?php echo $key->$nomLote  ?></option>
-                <?php  endforeach; ?>
-            </select>
-          </div>
-        </div>
-        <br>
+        <div class="form-group">
+    <label for="filterLote" class="col-sm-2 control-label"><?php echo i18n::__('lote') ?></label>
+    <div class="col-sm-10">
+      <select class="form-control" id="filterLote" name="<?php echo registroLoteTableClass::getNameField(registroLoteTableClass::UBICACION, true) ?>" required>
+        <option value=""><?php echo i18n::__('selectLote') ?></option>
+<?php foreach ($objLoteR as $key): ?>
+            <option value="<?php echo $key->$ubicacion ?>"><?php echo $key->$ubicacion ?></option>
+<?php endforeach; ?>
+          </select>
+    </div>
+  </div>
 
 
         <input class="btn btn-lg btn-success btn-xs" type="submit" value="<?php echo i18n::__(((isset($objReportes)) ? 'update' : 'register')) ?>">

@@ -137,37 +137,58 @@ class createActionClass extends controllerClass implements controllerActionInter
 
       
       if ($value == 4) {
-        if ((request::getInstance()->hasPost(presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::CREATED_AT, true) . '_1') and empty(mvc\request\requestClass::getInstance()->getPost(presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::CREATED_AT, true) . '_1')) === false) and ( (request::getInstance()->hasPost(presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::CREATED_AT, true) . '_2') and empty(mvc\request\requestClass::getInstance()->getPost(presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::CREATED_AT, true) . '_2')) === false))) {
+        if ((request::getInstance()->hasPost(registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_1') and empty(mvc\request\requestClass::getInstance()->getPost(registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_1')) === false) and ( (request::getInstance()->hasPost(registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_2') and empty(mvc\request\requestClass::getInstance()->getPost(registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_2')) === false))) {
 
           if (request::getInstance()->isMethod('POST')) {
 
-            $fechaInicial1 = request::getInstance()->getPost(presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::CREATED_AT, true) . '_1');
-            $fechaFin1 = request::getInstance()->getPost(presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::CREATED_AT, true) . '_2');
+            $fechaInicial1 = request::getInstance()->getPost(registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_1');
+            $fechaFin1 = request::getInstance()->getPost(registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_2');
             
             
-            $fechaInicial2 = request::getInstance()->getPost(presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::CREATED_AT, true) . '_3');
-            $fechaFin2 = request::getInstance()->getPost(presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::CREATED_AT, true) . '_4');
-            $lote = request::getInstance()->getPost(presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::LOTE_ID, true));
+            $fechaInicial2 = request::getInstance()->getPost(registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_3');
+            $fechaFin2 = request::getInstance()->getPost(registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT, true) . '_4');
+            $lote = request::getInstance()->getPost(registroLoteTableClass::getNameField(registroLoteTableClass::UBICACION, true));
              session::getInstance()->setAttribute('Lote', $lote);
         
-       
-//            if (strtotime($fechaFin) < strtotime($fechaInicial)) {
-//              session::getInstance()->setError('La fecha final no puede ser menor a la actual', 'inputFecha');
-//              session::getInstance()->setFlash('modalFilters', true);
-//              routing::getInstance()->forward('reportes', 'insert');
-//            }
+           session::getInstance()->setAttribute('fecha1', $fechaInicial1);
+           session::getInstance()->setAttribute('fecha2', $fechaFin1);
+           session::getInstance()->setAttribute('fecha3', $fechaInicial2);
+           session::getInstance()->setAttribute('fecha4', $fechaFin2);
 
-          $whereAno[] = '(' . presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::LOTE_ID) . ' = ' . $lote . ' ) '
-                    . ' AND ' . '(' . presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::CREATED_AT) . ' BETWEEN ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaInicial1 . ' 00:00:00')) . "'" . ' AND ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaFin1 . ' 23:59:59')) . "'" . ' ) ';
+            $whereAno[] = '(' . registroLoteTableClass::getNameField(registroLoteTableClass::UBICACION) . ' = ' . "'" . $lote . "'" . ' ) '
+                    . ' AND ' . '(' . registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT) . ' BETWEEN ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaInicial1 . ' 00:00:00')) . "'" . ' AND ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaFin1 . ' 23:59:59')) . "'" . ' ) ';
           
             session::getInstance()->setAttribute('graficaWhereAno', $whereAno);
           
 
-            $where[] = '(' . presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::LOTE_ID) . ' = ' . $lote . ' ) '
-                    . ' AND ' . '(' . presupuestoHistoricoTableClass::getNameField(presupuestoHistoricoTableClass::CREATED_AT) . ' BETWEEN ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaInicial2 . ' 00:00:00')) . "'" . ' AND ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaFin2 . ' 23:59:59')) . "'" . ' ) ';
+            $where[] = '(' . registroLoteTableClass::getNameField(registroLoteTableClass::UBICACION) . ' = ' . "'" . $lote . "'"  . ' ) '
+                    . ' AND ' . '(' . registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT) . ' BETWEEN ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaInicial2 . ' 00:00:00')) . "'" . ' AND ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaFin2 . ' 23:59:59')) . "'" . ' ) ';
           
             session::getInstance()->setAttribute('graficaWhere', $where);
+            
+            //------------------------------------------------------
+            $whereTrabajador1[] =  '(' . pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::FECHA_INICIAL) . ' BETWEEN ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaInicial1 . ' 00:00:00')) . "'" . ' AND ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaFin1 . ' 23:59:59')) . "'" . ' ) ';
+          
+            session::getInstance()->setAttribute('graficaWhereTrabajadorAno', $whereTrabajador1);
+            
+            
+            $whereTrabajador2[] =  '(' . pagoTrabajadorTableClass::getNameField(pagoTrabajadorTableClass::FECHA_INICIAL) . ' BETWEEN ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaInicial2 . ' 00:00:00')) . "'" . ' AND ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaFin2 . ' 23:59:59')) . "'" . ' ) ';
+          
+            session::getInstance()->setAttribute('graficaWhereTrabajador', $whereTrabajador2);
+            
+            
+            //-----------------------------------------------------------
+            $whereAno[] = '(' . registroLoteTableClass::getNameField(registroLoteTableClass::UBICACION) . ' = ' . "'" . $lote . "'"  . ' ) '
+                    . ' AND ' . '(' . registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT) . ' BETWEEN ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaInicial1 . ' 00:00:00')) . "'" . ' AND ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaFin1 . ' 23:59:59')) . "'" . ' ) ';
+          
+            session::getInstance()->setAttribute('graficaWhereLoteAno', $whereAno);
+          
 
+            $where[] = '(' . registroLoteTableClass::getNameField(registroLoteTableClass::UBICACION) . ' = ' . "'" . $lote . "'"  . ' ) '
+                    . ' AND ' . '(' . registroLoteTableClass::getNameField(registroLoteTableClass::CREATED_AT) . ' BETWEEN ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaInicial2 . ' 00:00:00')) . "'" . ' AND ' . "'" . date(config::getFormatTimestamp(), strtotime($fechaFin2 . ' 23:59:59')) . "'" . ' ) ';
+          
+            session::getInstance()->setAttribute('graficaWhereLote', $where);
+            
           }
         }
       }
