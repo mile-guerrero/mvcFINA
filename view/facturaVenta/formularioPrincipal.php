@@ -38,7 +38,7 @@
      <div class="form-group">
        <label for="<?php echo facturaVentaTableClass::getNameField(facturaVentaTableClass::FECHA, true) ?>" class="col-sm-2"><?php echo i18n::__('fechaNormal') ?>:</label>     
       <div class="col-sm-10">
-   <input  class="form-control" value="<?php echo (session::getInstance()->hasFlash('fechaPagoFin') or request::getInstance()->hasPost(facturaVentaTableClass::getNameField(facturaVentaTableClass::FECHA, true))) ? request::getInstance()->getPost(facturaVentaTableClass::getNameField(facturaVentaTableClass::FECHA, true)) : ((isset($objFactura) == true) ? date('Y-m-d\TH:i:s', strtotime($objFactura[0]->$fecha)) : date('Y-m-d\TH:i:s')) ?>" type="datetime-local" name="<?php echo facturaVentaTableClass::getNameField(facturaVentaTableClass::FECHA, true) ?>"required readonly>
+   <input  class="form-control" value="<?php echo (session::getInstance()->hasFlash('fechaPagoFin') or request::getInstance()->hasPost(facturaVentaTableClass::getNameField(facturaVentaTableClass::FECHA, true))) ? request::getInstance()->getPost(facturaVentaTableClass::getNameField(facturaVentaTableClass::FECHA, true)) : ((isset($objFactura) == true) ? date('Y-m-d\TH:i:s', strtotime($objFactura[0]->$fecha)) : date('Y-m-d\TH:i:s')) ?>" type="datetime-local" name="<?php echo facturaVentaTableClass::getNameField(facturaVentaTableClass::FECHA, true) ?>"required >
       </div>
   </div>
     
