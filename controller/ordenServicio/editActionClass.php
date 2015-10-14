@@ -26,8 +26,7 @@ class editActionClass extends controllerClass implements controllerActionInterfa
             ordenServicioTableClass::CANTIDAD,
             ordenServicioTableClass::VALOR,            
             ordenServicioTableClass::LOTE_ID,
-            ordenServicioTableClass::MAQUINA_ID,
-            ordenServicioTableClass::UNIDAD_DISTANCIA_ID
+            ordenServicioTableClass::MAQUINA_ID
         );
         $where = array(
             ordenServicioTableClass::ID => request::getInstance()->getGet(ordenServicioTableClass::ID)
@@ -66,14 +65,14 @@ class editActionClass extends controllerClass implements controllerActionInterfa
       );      
       $this->objOSM = maquinaTableClass::getAll($fields, true, $orderBy, 'ASC');
       
-      $fields = array(
-          unidadDistanciaTableClass::ID,
-          unidadDistanciaTableClass::DESCRIPCION
-      );
-      $orderBy = array(
-          unidadDistanciaTableClass::DESCRIPCION   
-      );      
-      $this->objUnidadDistancia = unidadDistanciaTableClass::getAll($fields, false, $orderBy, 'ASC');
+//      $fields = array(
+//          unidadDistanciaTableClass::ID,
+//          unidadDistanciaTableClass::DESCRIPCION
+//      );
+//      $orderBy = array(
+//          unidadDistanciaTableClass::DESCRIPCION   
+//      );      
+//      $this->objUnidadDistancia = unidadDistanciaTableClass::getAll($fields, false, $orderBy, 'ASC');
       
         $this->defineView('edit', 'ordenServicio', session::getInstance()->getFormatOutput());
      

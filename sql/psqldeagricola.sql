@@ -409,7 +409,6 @@ CREATE TABLE orden_servicio
         cantidad BigInt NOT NULL,
         valor BigInt NOT NULL,	
         lote_id BIGINT NOT NULL,
-        unidad_distancia_id BIGINT NOT NULL,
         maquina_id BIGINT NOT NULL,		
 	created_at TIMESTAMP DEFAULT now() NOT NULL,
 	updated_at TIMESTAMP DEFAULT now() NOT NULL
@@ -422,11 +421,11 @@ CREATE TABLE solicitud_insumo
 (
 	id BIGINT DEFAULT nextval('public.solicitud_insumo_id_seq'::regclass) NOT NULL,
 	fecha_hora TIMESTAMP DEFAULT now() NOT NULL,
-    trabajador_id BIGINT NOT NULL,	
-    cantidad BigInt NOT NULL,	
-    producto_insumo_id BIGINT NOT NULL,
-    unidad_medida_id BIGINT NOT NULL,
-    lote_id BIGINT NOT NULL,	
+        trabajador_id BIGINT NOT NULL,	
+        cantidad BigInt NOT NULL,	
+        producto_insumo_id BIGINT NOT NULL,
+        unidad_medida_id BIGINT NOT NULL,
+        lote_id BIGINT NOT NULL,	
 	created_at TIMESTAMP DEFAULT now() NOT NULL,
 	updated_at TIMESTAMP DEFAULT now() NOT NULL,
 	deleted_at TIMESTAMP NULL
@@ -455,11 +454,11 @@ CREATE TABLE pago_trabajador
 	id BIGINT DEFAULT nextval('public.pago_trabajador_id_seq'::regclass) NOT NULL,
 	fecha_inicial TIMESTAMP DEFAULT now() NOT NULL,
 	fecha_final TIMESTAMP DEFAULT now() NOT NULL,
-    empresa_id BIGINT NOT NULL,	
-    trabajador_id BIGINT NOT NULL,	
+        empresa_id BIGINT NOT NULL,	
+        trabajador_id BIGINT NOT NULL,	
 	valor_salario BigInt NOT NULL,
-    horas_perdidas BigInt NOT NULL,
-    total_pagar BigInt NOT NULL,	
+        horas_perdidas BigInt NOT NULL,
+        total_pagar BigInt NOT NULL,	
 	created_at TIMESTAMP DEFAULT now() NOT NULL,
 	updated_at TIMESTAMP DEFAULT now() NOT NULL
 );
@@ -529,7 +528,7 @@ CREATE TABLE historial
 	producto_insumo_id BigInt NOT NULL,
 	lote_id BigInt NOT NULL,
 	plaga_id BigInt NOT NULL,
-    enfermedad_id BIGINT NOT NULL,		
+        enfermedad_id BIGINT NOT NULL,		
 	created_at TIMESTAMP DEFAULT now() NOT NULL,
 	updated_at TIMESTAMP DEFAULT now() NOT NULL
 );
@@ -581,7 +580,8 @@ CREATE TABLE control_plaga
 	lote_id BIGINT NOT NULL,
         plaga_id BIGINT NOT NULL,
         cantidad BigInt NOT NULL,	
-        producto_insumo_id BIGINT NOT NULL,	
+        producto_insumo_id BIGINT NOT NULL,
+        unidad_medida_id BIGINT NOT NULL,	
 	created_at TIMESTAMP DEFAULT now() NOT NULL,
 	updated_at TIMESTAMP DEFAULT now() NOT NULL,
 	deleted_at TIMESTAMP NULL
@@ -596,7 +596,8 @@ CREATE TABLE control_enfermedad
 	lote_id BIGINT NOT NULL,
         enfermedad_id BIGINT NOT NULL,
         cantidad BigInt NOT NULL,	
-        producto_insumo_id BIGINT NOT NULL,	
+        producto_insumo_id BIGINT NOT NULL,
+        unidad_medida_id BIGINT NOT NULL,	
 	created_at TIMESTAMP DEFAULT now() NOT NULL,
 	updated_at TIMESTAMP DEFAULT now() NOT NULL,
 	deleted_at TIMESTAMP NULL
@@ -838,10 +839,6 @@ ALTER TABLE orden_servicio ADD CONSTRAINT fk_orden_servicio_maquina
 	FOREIGN KEY (maquina_id) REFERENCES maquina(id)
 	ON UPDATE RESTRICT ON DELETE RESTRICT;
 
-ALTER TABLE orden_servicio ADD CONSTRAINT fk_orden_servicio_unidad_distancia
-	FOREIGN KEY (unidad_distancia_id) REFERENCES unidad_distancia(id)
-	ON UPDATE RESTRICT ON DELETE RESTRICT;	
-
 ALTER TABLE cooperativa ADD CONSTRAINT fk_cooperativa_ciudad
 	FOREIGN KEY (id_ciudad) REFERENCES ciudad(id)
 	ON UPDATE RESTRICT ON DELETE RESTRICT;
@@ -869,6 +866,10 @@ ALTER TABLE control_plaga ADD CONSTRAINT fk_control_plaga_plaga
 ALTER TABLE control_plaga ADD CONSTRAINT fk_control_plaga_producto_insumo
 	FOREIGN KEY (producto_insumo_id) REFERENCES producto_insumo(id)
 	ON UPDATE RESTRICT ON DELETE RESTRICT;	
+
+ALTER TABLE control_plaga ADD CONSTRAINT fk_control_plaga_unidad_medida
+	FOREIGN KEY (unidad_medida_id) REFERENCES unidad_medida(id)
+	ON UPDATE RESTRICT ON DELETE RESTRICT;
 	
 ALTER TABLE control_enfermedad ADD CONSTRAINT fk_control_enfermedad_lote
 	FOREIGN KEY (lote_id) REFERENCES lote(id)
@@ -880,9 +881,12 @@ ALTER TABLE control_enfermedad ADD CONSTRAINT fk_control_enfermedad_enfermedad
 	
 ALTER TABLE control_enfermedad ADD CONSTRAINT fk_control_enfermedad_producto_insumo
 	FOREIGN KEY (producto_insumo_id) REFERENCES producto_insumo(id)
+	ON UPDATE RESTRICT ON DELETE RESTRICT;
+
+ALTER TABLE control_enfermedad ADD CONSTRAINT fk_control_enfermedad_unidad_medida
+	FOREIGN KEY (unidad_medida_id) REFERENCES unidad_medida(id)
 	ON UPDATE RESTRICT ON DELETE RESTRICT;	
 	
-
 ALTER TABLE pago_trabajador ADD CONSTRAINT fk_pago_trabajador_empresa
 	FOREIGN KEY (empresa_id) REFERENCES empresa(id)
 	ON UPDATE RESTRICT ON DELETE RESTRICT;			

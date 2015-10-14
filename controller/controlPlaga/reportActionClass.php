@@ -59,7 +59,8 @@ class reportActionClass extends controllerClass implements controllerActionInter
           controlPlagaTableClass::LOTE_ID,
           controlPlagaTableClass::PLAGA_ID,
           controlPlagaTableClass::PRODUCTO_INSUMO_ID,
-          controlPlagaTableClass::CANTIDAD
+          controlPlagaTableClass::CANTIDAD,
+          controlPlagaTableClass::UNIDAD_MEDIDA_ID
       );
       $orderBy = array(
           controlPlagaTableClass::LOTE_ID

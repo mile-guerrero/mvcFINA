@@ -7,6 +7,7 @@ use mvc\routing\routingClass as routing;
  $id = controlEnfermedadTableClass::ID;
  $insumo = controlEnfermedadTableClass::PRODUCTO_INSUMO_ID;
  $cantidad = controlEnfermedadTableClass::CANTIDAD;
+ $unidadMedida = controlEnfermedadTableClass::UNIDAD_MEDIDA_ID;
 
 class PDF extends FPDF {
 
@@ -53,7 +54,7 @@ $pdf->Ln();
 foreach ($objControlEnfermedad as $valor) {  
   $pdf->Cell(65, 8, loteTableClass::getNameLote($valor->$lote),1);
   $pdf->Cell(60, 8, utf8_decode(productoInsumoTableClass::getNameProductoInsumo($valor->$insumo)),1);
-  $pdf->Cell(65, 8, utf8_decode($valor->$cantidad),1);  
+  $pdf->Cell(65, 8, utf8_decode($valor->$cantidad). ' ' . unidadMedidaTableClass::getNameUnidadMedida($valor->$unidadMedida),1);  
   $pdf->Ln();
   $pdf->Cell(35, 10, utf8_decode("Enfermedad"),1, 0, 'C', true);
   $pdf->MultiCell(155, 8, utf8_decode(enfermedadTableClass::getNameEnfermedad($valor->$enfermedad)) . ':' . ' ' . utf8_decode(enfermedadTableClass::getNameDes($valor->$enfermedad)),1);

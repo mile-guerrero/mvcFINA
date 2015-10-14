@@ -7,6 +7,7 @@
 <?php $enfermedad = controlEnfermedadTableClass::ENFERMEDAD_ID ?>
 <?php $insumo = controlEnfermedadTableClass::PRODUCTO_INSUMO_ID ?>
 <?php $cantidad = controlEnfermedadTableClass::CANTIDAD ?>
+<?php $unidadMedida = controlEnfermedadTableClass::UNIDAD_MEDIDA_ID ?>
 <?php $id = controlEnfermedadTableClass::ID ?>
 
 
@@ -46,7 +47,7 @@
           </tr>
            <tr>
           <td><?php echo i18n::__('cantidad') ?></td>      
-          <td><?php echo ($key->$cantidad) ?></td>
+          <td><?php echo ($key->$cantidad). ' ' . unidadMedidaTableClass::getNameUnidadMedida($key->$unidadMedida) ?></td>
           </tr>
            <tr>
           <td><?php echo i18n::__('enfermedad') ?></td>      

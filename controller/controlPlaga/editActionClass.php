@@ -36,7 +36,8 @@ class editActionClass extends controllerClass implements controllerActionInterfa
           controlPlagaTableClass::LOTE_ID,
           controlPlagaTableClass::PLAGA_ID,
           controlPlagaTableClass::PRODUCTO_INSUMO_ID,
-          controlPlagaTableClass::CANTIDAD
+          controlPlagaTableClass::CANTIDAD,
+          controlPlagaTableClass::UNIDAD_MEDIDA_ID 
         );
         $where = array(
             controlPlagaTableClass::ID => request::getInstance()->getGet(controlPlagaTableClass::ID)
@@ -90,9 +91,16 @@ class editActionClass extends controllerClass implements controllerActionInterfa
       ); 
       $this->objPlaga = plagaTableClass::getAll($fields, false, $orderBy, 'ASC');
 
+      $fields = array(
+          unidadMedidaTableClass::ID,
+          unidadMedidaTableClass::DESCRIPCION
+      );
+      $orderBy = array(
+          unidadMedidaTableClass::DESCRIPCION
+      );
+      $this->objUnidadMedida = unidadMedidaTableClass::getAll($fields, false, $orderBy, 'ASC');         
         
-        
-        $this->defineView('edit', 'controlPlaga', session::getInstance()->getFormatOutput());
+      $this->defineView('edit', 'controlPlaga', session::getInstance()->getFormatOutput());
         
       }//cierre del if existencia de id
        else{

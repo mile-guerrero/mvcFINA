@@ -30,6 +30,7 @@ dictionary:
     registroDetallVenta:  Registro de 
     registroEmpresa:      Registration company
     registroEnfermedad:   Registration disease
+    registroPlaga:        Registration de plaga
     registroFactuCompra:  Purchase invoice record
     registroFactuVenta:   Invoice record sales
     registroHistorial:    Registration history

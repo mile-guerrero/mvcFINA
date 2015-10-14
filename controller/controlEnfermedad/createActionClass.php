@@ -37,7 +37,7 @@ class createActionClass extends controllerClass implements controllerActionInter
         $enfermedad = trim(request::getInstance()->getPost(controlEnfermedadTableClass::getNameField(controlEnfermedadTableClass::ENFERMEDAD_ID, true)));
         $insumo = trim(request::getInstance()->getPost(controlEnfermedadTableClass::getNameField(controlEnfermedadTableClass::PRODUCTO_INSUMO_ID, true)));
         $cantidad = trim(request::getInstance()->getPost(controlEnfermedadTableClass::getNameField(controlEnfermedadTableClass::CANTIDAD, true)));
-        
+        $unidadMedida = request::getInstance()->getPost(controlEnfermedadTableClass::getNameField(controlEnfermedadTableClass::UNIDAD_MEDIDA_ID, true));
         //llamar la funcion validateInsert()
         validator::validateInsert();
 
@@ -47,6 +47,7 @@ class createActionClass extends controllerClass implements controllerActionInter
             controlEnfermedadTableClass::ENFERMEDAD_ID => $enfermedad,
             controlEnfermedadTableClass::PRODUCTO_INSUMO_ID => $insumo,
             controlEnfermedadTableClass::CANTIDAD => $cantidad,
+            controlEnfermedadTableClass::UNIDAD_MEDIDA_ID => $unidadMedida,
             '__sequence' => 'control_enfermedad_id_seq'
         );
         $id = controlEnfermedadTableClass::insert($data);

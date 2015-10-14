@@ -37,7 +37,7 @@ class createActionClass extends controllerClass implements controllerActionInter
         $plaga = trim(request::getInstance()->getPost(controlPlagaTableClass::getNameField(controlPlagaTableClass::PLAGA_ID, true)));
         $insumo = trim(request::getInstance()->getPost(controlPlagaTableClass::getNameField(controlPlagaTableClass::PRODUCTO_INSUMO_ID, true)));
         $cantidad = trim(request::getInstance()->getPost(controlPlagaTableClass::getNameField(controlPlagaTableClass::CANTIDAD, true)));
-        
+        $unidadMedida = request::getInstance()->getPost(controlPlagaTableClass::getNameField(controlPlagaTableClass::UNIDAD_MEDIDA_ID, true));
         //llamar la funcion validateInsert()
         validator::validateInsert();
 
@@ -47,6 +47,7 @@ class createActionClass extends controllerClass implements controllerActionInter
             controlPlagaTableClass::PLAGA_ID => $plaga,
             controlPlagaTableClass::PRODUCTO_INSUMO_ID => $insumo,
             controlPlagaTableClass::CANTIDAD => $cantidad,
+            controlPlagaTableClass::UNIDAD_MEDIDA_ID => $unidadMedida,
             '__sequence' => 'control_plaga_id_seq'
         );
         $id = controlPlagaTableClass::insert($data);

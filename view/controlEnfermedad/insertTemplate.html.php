@@ -10,6 +10,6 @@
    
   </div>
 
-<?php view::includePartial('controlEnfermedad/formularioPrincipal',array ('objEnfermedad'=>$objEnfermedad,'objLote' => $objLote,'objTipo' => $objTipo))?>
+<?php view::includePartial('controlEnfermedad/formularioPrincipal',array ('objEnfermedad'=>$objEnfermedad, 'objUnidadMedida'=>$objUnidadMedida,'objLote' => $objLote,'objTipo' => $objTipo))?>
   
 </div>

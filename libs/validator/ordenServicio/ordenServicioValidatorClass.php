@@ -61,10 +61,10 @@ namespace mvc\validator {
         session::getInstance()->setFlash('selectMaquina', true);
         session::getInstance()->setError('La maquina es requerida', 'selectMaquina');
         
-      } if (self::notBlank(request::getInstance()->getPost(\ordenServicioTableClass::getNameField(\ordenServicioTableClass::UNIDAD_DISTANCIA_ID, true)))) {
-        $flag = true;
-        session::getInstance()->setFlash('selectUnidadDistancia', true);
-        session::getInstance()->setError('La maquina es requerida', 'selectUnidadDistancia');  
+//      } if (self::notBlank(request::getInstance()->getPost(\ordenServicioTableClass::getNameField(\ordenServicioTableClass::UNIDAD_DISTANCIA_ID, true)))) {
+//        $flag = true;
+//        session::getInstance()->setFlash('selectUnidadDistancia', true);
+//        session::getInstance()->setError('La maquina es requerida', 'selectUnidadDistancia');  
         
 //      } else if(strlen(request::getInstance()->getPost('inputCantidad')) > \manoObraTableClass::CANTIDAD_HORA_LENGTH) {
 //        $flag = true;

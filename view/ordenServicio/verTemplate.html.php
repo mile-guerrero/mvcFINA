@@ -10,7 +10,6 @@
 <?php $idTrabajador = ordenServicioTableClass::TRABAJADOR_ID ?>
 <?php $idLote = ordenServicioTableClass::LOTE_ID ?>
 <?php $idMaquina = ordenServicioTableClass::MAQUINA_ID ?>
-<?php $idUnidadDistancia = ordenServicioTableClass::UNIDAD_DISTANCIA_ID ?>
 
 <div class="container container-fluid" id="cuerpo">
   <div class="center-block" id="cuerpo6">
@@ -55,12 +54,12 @@
               <td><?php echo maquinaTableClass::getNameMaquina($key->$idMaquina) ?></td>
             </tr>
             <tr>
-              <td><?php echo i18n::__('cantidad') ?></td>      
-              <td><?php echo $key->$cantidad . ' ' . unidadDistanciaTableClass::getNameUnidadDistancia($key->$idUnidadDistancia) ?></td>
-            </tr>
-            <tr>
               <td> <?php echo i18n::__('valor') ?></td>      
               <td><?php echo '$' . number_format($key->$valor, 0, ',', '.') ?></td>
+            </tr>
+            <tr>
+              <td><?php echo i18n::__('cantidad') ?></td>      
+              <td><?php echo $key->$cantidad ?></td>
             </tr>
             
 <?php endforeach; ?>

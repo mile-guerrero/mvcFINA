@@ -9,5 +9,5 @@
     </h2>
    <br><br>
   </div>
-<?php view::includePartial('controlPlaga/formularioPrincipal', array('objControlPlaga' => $objControlPlaga, 'idTipoProducto' => $idTipoProducto,'objProducto' => $objProducto,'objTipo' => $objTipo,'objLote'=>$objLote,'objPlaga'=>$objPlaga)) ?>
+<?php view::includePartial('controlPlaga/formularioPrincipal', array('objControlPlaga' => $objControlPlaga, 'objUnidadMedida'=>$objUnidadMedida,'idTipoProducto' => $idTipoProducto,'objProducto' => $objProducto,'objTipo' => $objTipo,'objLote'=>$objLote,'objPlaga'=>$objPlaga)) ?>
 </div>

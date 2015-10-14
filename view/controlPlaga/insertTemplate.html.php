@@ -10,6 +10,6 @@
    
   </div>
 
-<?php view::includePartial('controlPlaga/formularioPrincipal',array ('objPlaga'=>$objPlaga,'objLote' => $objLote,'objTipo' => $objTipo))?>
+<?php view::includePartial('controlPlaga/formularioPrincipal',array ('objPlaga'=>$objPlaga,'objUnidadMedida'=>$objUnidadMedida,'objLote' => $objLote,'objTipo' => $objTipo))?>
   
 </div>

@@ -27,7 +27,7 @@ class createActionClass extends controllerClass implements controllerActionInter
         $valor = request::getInstance()->getPost(ordenServicioTableClass::getNameField(ordenServicioTableClass::VALOR, true));
         $lote = request::getInstance()->getPost(ordenServicioTableClass::getNameField(ordenServicioTableClass::LOTE_ID, true));
         $maquina = request::getInstance()->getPost(ordenServicioTableClass::getNameField(ordenServicioTableClass::MAQUINA_ID, true));
-        $unidadDistancia = request::getInstance()->getPost(ordenServicioTableClass::getNameField(ordenServicioTableClass::UNIDAD_DISTANCIA_ID, true));
+//        $unidadDistancia = request::getInstance()->getPost(ordenServicioTableClass::getNameField(ordenServicioTableClass::UNIDAD_DISTANCIA_ID, true));
         
         validator::validateInsert();
         
@@ -50,7 +50,7 @@ class createActionClass extends controllerClass implements controllerActionInter
             ordenServicioTableClass::VALOR => $valor,
             ordenServicioTableClass::LOTE_ID => $lote,            
             ordenServicioTableClass::MAQUINA_ID => $maquina,
-            ordenServicioTableClass::UNIDAD_DISTANCIA_ID => $unidadDistancia,
+//            ordenServicioTableClass::UNIDAD_DISTANCIA_ID => $unidadDistancia,
             '__sequence' => 'orden_servicio_id_seq'
             
         );

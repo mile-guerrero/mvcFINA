@@ -51,6 +51,15 @@ class insertActionClass extends controllerClass implements controllerActionInter
       plagaTableClass::NOMBRE    
       ); 
       $this->objPlaga = plagaTableClass::getAll($fields, false, $orderBy, 'ASC');
+      
+      $fields = array(
+          unidadMedidaTableClass::ID,
+          unidadMedidaTableClass::DESCRIPCION
+      );
+      $orderBy = array(
+          unidadMedidaTableClass::DESCRIPCION
+      );
+      $this->objUnidadMedida = unidadMedidaTableClass::getAll($fields, false, $orderBy, 'ASC');
 
       $this->defineView('insert', 'controlPlaga', session::getInstance()->getFormatOutput());
     }//cierre del try

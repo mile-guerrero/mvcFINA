@@ -59,7 +59,8 @@ class reportActionClass extends controllerClass implements controllerActionInter
           controlEnfermedadTableClass::LOTE_ID,
           controlEnfermedadTableClass::ENFERMEDAD_ID,
           controlEnfermedadTableClass::PRODUCTO_INSUMO_ID,
-          controlEnfermedadTableClass::CANTIDAD
+          controlEnfermedadTableClass::CANTIDAD,
+          controlEnfermedadTableClass::UNIDAD_MEDIDA_ID
       );
       $orderBy = array(
          controlEnfermedadTableClass::ID

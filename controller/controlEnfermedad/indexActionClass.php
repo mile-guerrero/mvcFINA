@@ -81,7 +81,8 @@ class indexActionClass extends controllerClass implements controllerActionInterf
                 controlEnfermedadTableClass::LOTE_ID,
                 controlEnfermedadTableClass::ENFERMEDAD_ID,
                 controlEnfermedadTableClass::PRODUCTO_INSUMO_ID,
-                controlEnfermedadTableClass::CANTIDAD
+                controlEnfermedadTableClass::CANTIDAD,
+                controlEnfermedadTableClass::UNIDAD_MEDIDA_ID
             );
             $orderBy = array(
                 controlEnfermedadTableClass::LOTE_ID

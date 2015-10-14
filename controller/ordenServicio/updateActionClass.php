@@ -28,7 +28,6 @@ class updateActionClass extends controllerClass implements controllerActionInter
         $valor = request::getInstance()->getPost(ordenServicioTableClass::getNameField(ordenServicioTableClass::VALOR, true));
         $lote = request::getInstance()->getPost(ordenServicioTableClass::getNameField(ordenServicioTableClass::LOTE_ID, true));
         $maquina = request::getInstance()->getPost(ordenServicioTableClass::getNameField(ordenServicioTableClass::MAQUINA_ID, true));
-        $unidadDistancia = request::getInstance()->getPost(ordenServicioTableClass::getNameField(ordenServicioTableClass::UNIDAD_DISTANCIA_ID, true));
         
         validator::validateUpdate();
         
@@ -57,8 +56,8 @@ class updateActionClass extends controllerClass implements controllerActionInter
             ordenServicioTableClass::CANTIDAD => $cantidad,
             ordenServicioTableClass::VALOR => $valor,
             ordenServicioTableClass::LOTE_ID => $lote,            
-            ordenServicioTableClass::MAQUINA_ID => $maquina,
-            ordenServicioTableClass::UNIDAD_DISTANCIA_ID => $unidadDistancia
+            ordenServicioTableClass::MAQUINA_ID => $maquina
+            
         );
         ordenServicioTableClass::update($ids, $data);
         session::getInstance()->setSuccess('La actualizacion fue correcta');

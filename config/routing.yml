@@ -3095,6 +3095,8 @@ controlPlaga_index:
     - model/productoInsumoTableClass.php
     - model/base/plagaBaseTableClass.php
     - model/plagaTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     - libs/validator/controlPlaga/controlPlagaValidatorClass.php
     
     
@@ -3112,6 +3114,8 @@ controlPlaga_insert:
     - model/productoInsumoTableClass.php
     - model/base/plagaBaseTableClass.php
     - model/plagaTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     
 controlPlaga_create:
   url:    /controlPlaga/crear
@@ -3127,6 +3131,8 @@ controlPlaga_create:
     - model/productoInsumoTableClass.php
     - model/base/plagaBaseTableClass.php
     - model/plagaTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     - libs/validator/controlPlaga/controlPlagaValidatorClass.php
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
@@ -3146,6 +3152,8 @@ controlPlaga_edit:
     - model/productoInsumoTableClass.php
     - model/base/plagaBaseTableClass.php
     - model/plagaTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     
 controlPlaga_update:
   url:    /controlPlaga/actualizar
@@ -3161,6 +3169,8 @@ controlPlaga_update:
     - model/productoInsumoTableClass.php
     - model/base/plagaBaseTableClass.php
     - model/plagaTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     - libs/validator/controlPlaga/controlPlagaValidatorUpdateClass.php
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
@@ -3178,6 +3188,8 @@ controlPlaga_delete:
     - model/productoInsumoTableClass.php
     - model/base/plagaBaseTableClass.php
     - model/plagaTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
@@ -3194,6 +3206,8 @@ controlPlaga_deleteSelect:
     - model/productoInsumoTableClass.php
     - model/base/plagaBaseTableClass.php
     - model/plagaTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
@@ -3210,6 +3224,8 @@ controlPlaga_ver:
     - model/productoInsumoTableClass.php
     - model/base/plagaBaseTableClass.php
     - model/plagaTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     
 controlPlaga_reporte:
   url:    /controlPlaga/reporte
@@ -3222,6 +3238,8 @@ controlPlaga_reporte:
     - model/loteTableClass.php
     - model/base/plagaBaseTableClass.php
     - model/plagaTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     - model/base/productoInsumoBaseTableClass.php
     - model/productoInsumoTableClass.php
     - hooks/logHookClass.php
@@ -3247,6 +3265,8 @@ controlEnfermedad_index:
     - model/loteTableClass.php
     - model/base/productoInsumoBaseTableClass.php
     - model/productoInsumoTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     - libs/validator/controlEnfermedad/controlEnfermedadValidatorClass.php
     
     
@@ -3264,6 +3284,8 @@ controlEnfermedad_insert:
     - model/loteTableClass.php
     - model/base/productoInsumoBaseTableClass.php
     - model/productoInsumoTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     
 controlEnfermedad_create:
   url:    /controlEnfermedad/crear
@@ -3279,6 +3301,8 @@ controlEnfermedad_create:
     - model/loteTableClass.php
     - model/base/productoInsumoBaseTableClass.php
     - model/productoInsumoTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     - libs/validator/controlEnfermedad/controlEnfermedadValidatorClass.php
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
@@ -3298,6 +3322,8 @@ controlEnfermedad_edit:
     - model/loteTableClass.php
     - model/base/productoInsumoBaseTableClass.php
     - model/productoInsumoTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     
 controlEnfermedad_update:
   url:    /controlEnfermedad/actualizar
@@ -3313,7 +3339,9 @@ controlEnfermedad_update:
     - model/loteTableClass.php
     - model/base/productoInsumoBaseTableClass.php
     - model/productoInsumoTableClass.php
-    - libs/validator/controlEnfermedad/controlEnfermedadUpdateClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
+    - libs/validator/controlEnfermedad/controlEnfermedadValidatorUpdateClass.php
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
@@ -3330,6 +3358,8 @@ controlEnfermedad_delete:
     - model/loteTableClass.php
     - model/base/productoInsumoBaseTableClass.php
     - model/productoInsumoTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
@@ -3346,6 +3376,8 @@ controlEnfermedad_deleteSelect:
     - model/loteTableClass.php
     - model/base/productoInsumoBaseTableClass.php
     - model/productoInsumoTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
@@ -3362,6 +3394,8 @@ controlEnfermedad_ver:
     - model/loteTableClass.php
     - model/base/productoInsumoBaseTableClass.php
     - model/productoInsumoTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     
 controlEnfermedad_reporte:
   url:    /controlEnfermedad/reporte
@@ -3376,6 +3410,8 @@ controlEnfermedad_reporte:
     - model/loteTableClass.php
     - model/base/productoInsumoBaseTableClass.php
     - model/productoInsumoTableClass.php
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
     - hooks/logHookClass.php
     - model/base/bitacoraBaseTableClass.php
     - model/bitacoraTableClass.php
@@ -3623,6 +3659,75 @@ vivero_deleteFilters:
   url:    /vivero/borrarFiltros
   param:  { module: vivero, action: deleteFilters, format: html }
   load:      
+      
+#---------------------------------Plaga-----------------------
+
+plaga_index:
+  url:    /plaga/index
+  param:  { module: plaga, action: index, format: html }
+  load:
+    - model/base/plagaBaseTableClass.php
+    - model/plagaTableClass.php
+    - libs/validator/plaga/plagaValidatorClass.php
+    
+plaga_insert:
+  url:    /plaga/insertar
+  param:  { module: plaga, action: insert, format: html }
+  load:
+    - model/base/plagaBaseTableClass.php
+    - model/plagaTableClass.php
+    
+plaga_create:
+  url:    /plaga/crear
+  param:  { module: plaga, action: create, format: html }
+  load:
+    - model/base/plagaBaseTableClass.php
+    - model/plagaTableClass.php
+    - libs/validator/plaga/plagaValidatorClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
+    
+plaga_edit:
+  url:    /plaga/editar
+  param:  { module: plaga, action: edit, format: html }
+  load:
+    - model/base/plagaBaseTableClass.php
+    - model/plagaTableClass.php
+    
+plaga_update:
+  url:    /plaga/actualizar
+  param:  { module: plaga, action: update, format: html }
+  load:
+    - model/base/plagaBaseTableClass.php
+    - model/plagaTableClass.php
+    - libs/validator/plaga/plagaValidatorClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php
+    
+plaga_ver:
+  url:    /plaga/ver
+  param:  { module: plaga, action: ver, format: html }
+  load:
+    - model/base/plagaBaseTableClass.php
+    - model/plagaTableClass.php   
+    
+plaga_reporte:
+  url:    /plaga/reporte
+  param:  { module: plaga, action: report, format: pdf } 
+  load:
+    - libs/fpdf/fpdf.php 
+    - model/base/plagaBaseTableClass.php
+    - model/plagaTableClass.php
+    - hooks/logHookClass.php
+    - model/base/bitacoraBaseTableClass.php
+    - model/bitacoraTableClass.php 
+    
+plaga_deleteFilters:
+  url:    /plaga/borrarFiltros
+  param:  { module: plaga, action: deleteFilters, format: html }
+  load: 
     
 
        

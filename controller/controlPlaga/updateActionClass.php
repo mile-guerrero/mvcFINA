@@ -38,6 +38,7 @@ class updateActionClass extends controllerClass implements controllerActionInter
         $insumo = trim(request::getInstance()->getPost(controlPlagaTableClass::getNameField(controlPlagaTableClass::PRODUCTO_INSUMO_ID, true)));
         $cantidad = trim(request::getInstance()->getPost(controlPlagaTableClass::getNameField(controlPlagaTableClass::CANTIDAD, true)));
         $id = request::getInstance()->getPost(controlPlagaTableClass::getNameField(controlPlagaTableClass::ID, true));
+        $unidadMedida = request::getInstance()->getPost(controlPlagaTableClass::getNameField(controlPlagaTableClass::UNIDAD_MEDIDA_ID, true));
         
         validator::validateUpdate();
          
@@ -48,7 +49,8 @@ class updateActionClass extends controllerClass implements controllerActionInter
             controlPlagaTableClass::LOTE_ID => $lote,
             controlPlagaTableClass::PLAGA_ID => $plaga,
             controlPlagaTableClass::PRODUCTO_INSUMO_ID => $insumo,
-            controlPlagaTableClass::CANTIDAD => $cantidad
+            controlPlagaTableClass::CANTIDAD => $cantidad,
+            controlPlagaTableClass::UNIDAD_MEDIDA_ID => $unidadMedida
         );
           controlPlagaTableClass::update($ids, $data);
         

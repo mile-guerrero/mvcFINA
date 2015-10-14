@@ -38,6 +38,7 @@ class updateActionClass extends controllerClass implements controllerActionInter
         $insumo = trim(request::getInstance()->getPost(controlEnfermedadTableClass::getNameField(controlEnfermedadTableClass::PRODUCTO_INSUMO_ID, true)));
         $cantidad = trim(request::getInstance()->getPost(controlEnfermedadTableClass::getNameField(controlEnfermedadTableClass::CANTIDAD, true)));
         $id = request::getInstance()->getPost(controlEnfermedadTableClass::getNameField(controlEnfermedadTableClass::ID, true));
+        $unidadMedida = request::getInstance()->getPost(controlEnfermedadTableClass::getNameField(controlEnfermedadTableClass::UNIDAD_MEDIDA_ID, true));
         
         validator::validateUpdate();
          
@@ -48,7 +49,8 @@ class updateActionClass extends controllerClass implements controllerActionInter
             controlEnfermedadTableClass::LOTE_ID => $lote,
             controlEnfermedadTableClass::ENFERMEDAD_ID => $enfermedad,
             controlEnfermedadTableClass::PRODUCTO_INSUMO_ID => $insumo,
-            controlEnfermedadTableClass::CANTIDAD => $cantidad
+            controlEnfermedadTableClass::CANTIDAD => $cantidad,
+            controlEnfermedadTableClass::UNIDAD_MEDIDA_ID => $unidadMedida
         );
           controlEnfermedadTableClass::update($ids, $data);
         

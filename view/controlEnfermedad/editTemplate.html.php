@@ -9,5 +9,5 @@
     </h2>
    <br><br>
   </div>
-<?php view::includePartial('controlEnfermedad/formularioPrincipal', array('objControlEnfermedad' => $objControlEnfermedad, 'idTipoProducto' => $idTipoProducto,'objProducto' => $objProducto,'objTipo' => $objTipo,'objLote'=>$objLote,'objEnfermedad'=>$objEnfermedad)) ?>
+<?php view::includePartial('controlEnfermedad/formularioPrincipal', array('objControlEnfermedad' => $objControlEnfermedad, 'objUnidadMedida'=>$objUnidadMedida, 'idTipoProducto' => $idTipoProducto,'objProducto' => $objProducto,'objTipo' => $objTipo,'objLote'=>$objLote,'objEnfermedad'=>$objEnfermedad)) ?>
 </div>

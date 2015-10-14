@@ -1030,7 +1030,45 @@ enfermedad:
     security: true  
     credentials:
       - [admin]
-      - [consultor] 
+      - [consultor]
+      
+#-------------------modulo - plaga----------------------------  
+plaga:
+  index:
+    security: true
+    credentials:
+      - [admin]
+      - [consultor]
+  insert:
+    security: true
+    credentials:
+      - [admin]
+      - [consultor]
+  create:
+    security: true
+    credentials:
+      - [admin]
+      - [consultor]
+  edit: 
+    security: true
+    credentials:
+      - [admin]
+      - [consultor]
+  update:
+    security: true
+    credentials:
+      - [admin]
+      - [consultor]
+  ver:
+    security: true
+    credentials:
+      - [admin]
+      - [consultor]
+  report:
+    security: true  
+    credentials:
+      - [admin]
+      - [consultor]      
       
 #-------------------modulo - historial----------------------------
 historial:

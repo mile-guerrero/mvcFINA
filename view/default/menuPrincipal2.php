@@ -99,7 +99,8 @@ use mvc\i18n\i18nClass as i18n ?>
 <?php if (session::getInstance()->hasCredential('admin')): ?>
                 <li class="divider"></li>
                 <li><a  href="<?php echo routing::getInstance()->getUrlWeb('enfermedad', 'index') ?>"><?php echo i18n::__('enfermedad') ?></a></li>
-<?php endif ?>
+                <li><a  href="<?php echo routing::getInstance()->getUrlWeb('plaga', 'index') ?>"><?php echo i18n::__('plaga') ?></a></li>
+                <?php endif ?>
                 <?php if (session::getInstance()->hasCredential('admin')): ?>
                 <li><a  href="<?php echo routing::getInstance()->getUrlWeb('vivero', 'index') ?>"><?php echo i18n::__('vivero') ?></a></li>
               <?php endif ?>

@@ -36,7 +36,8 @@ class verActionClass extends controllerClass implements controllerActionInterfac
           controlEnfermedadTableClass::ID,
           controlEnfermedadTableClass::LOTE_ID,
           controlEnfermedadTableClass::ENFERMEDAD_ID,
-          controlEnfermedadTableClass::PRODUCTO_INSUMO_ID,  
+          controlEnfermedadTableClass::PRODUCTO_INSUMO_ID,
+          controlEnfermedadTableClass::UNIDAD_MEDIDA_ID,  
           controlEnfermedadTableClass::CANTIDAD
       );
       

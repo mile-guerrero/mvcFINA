@@ -16,7 +16,6 @@ class ordenServicioBaseTableClass extends tableBaseClass {
  private $valor;
  private $loteId;
  private $maquinaId;
- private $unidadDistanciaId;
  private $createdAt;
  private $updatedAt;
 
@@ -29,7 +28,6 @@ class ordenServicioBaseTableClass extends tableBaseClass {
   const VALOR = 'valor';  
   const VALOR_LENGTH = 30;
   const LOTE_ID = 'lote_id';
-  const UNIDAD_DISTANCIA_ID = 'unidad_distancia_id';
   const MAQUINA_ID = 'maquina_id';
   const CREATED_AT = 'created_at';
   const UPDATED_AT = 'updated_at';
@@ -60,10 +58,6 @@ class ordenServicioBaseTableClass extends tableBaseClass {
 
   public function getMaquinaId() {
       return $this->maquinaId;
-  }
-
-  public function getUnidadDistanciaId() {
-      return $this->unidadDistanciaId;
   }
 
   public function getCreatedAt() {
@@ -100,10 +94,6 @@ class ordenServicioBaseTableClass extends tableBaseClass {
 
   public function setMaquinaId($maquinaId) {
       $this->maquinaId = $maquinaId;
-  }
-
-  public function setUnidadDistanciaId($unidadDistanciaId) {
-      $this->unidadDistanciaId = $unidadDistanciaId;
   }
 
   public function setCreatedAt($createdAt) {

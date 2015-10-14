@@ -25,6 +25,7 @@ dictionary:
     registroDetallVenta:  Registro de 
     registroEmpresa:      Registro de empresa
     registroEnfermedad:   Registro de enfermedad
+    registroPlaga:        Registro de plaga
     registroFactuCompra:  Registro de factura compra
     registroFactuVenta:   Registro de factura venta
     registroHistorial:    Registro de historial

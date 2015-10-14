@@ -1,14 +1,8 @@
-<?php
-
-use mvc\routing\routingClass as routing ?>
-<?php
-use mvc\i18n\i18nClass as i18n ?>
-<?php
-use mvc\view\viewClass as view ?>
-<?php
-use mvc\session\sessionClass as session ?>
-<?php
-use mvc\request\requestClass as request ?>
+<?php use mvc\routing\routingClass as routing ?>
+<?php use mvc\i18n\i18nClass as i18n ?>
+<?php use mvc\view\viewClass as view ?>
+<?php use mvc\session\sessionClass as session ?>
+<?php use mvc\request\requestClass as request ?>
 
 <?php $idControlPlaga = controlPlagaTableClass::ID ?>
 <?php $cantidad = controlPlagaTableClass::CANTIDAD ?>
@@ -27,6 +21,10 @@ use mvc\request\requestClass as request ?>
 <?php $insumoInsumo = controlPlagaTableClass::PRODUCTO_INSUMO_ID  ?>
 <?php $idInsumoInsumo = productoInsumoTableClass::ID ?>
 <?php $nomInsumoInsumo = productoInsumoTableClass::DESCRIPCION ?>
+
+<?php $idUnidadMedidaId = controlPlagaTableClass::UNIDAD_MEDIDA_ID ?>
+<?php $idUnidadMedida = unidadMedidaTableClass::ID ?>
+<?php $desUnidadMedida = unidadMedidaTableClass::DESCRIPCION ?>
 
 <div class="container container-fluid" id="cuerpo">
   <div class="center-block" id="cuerpo5">
@@ -122,7 +120,7 @@ use mvc\request\requestClass as request ?>
                         
         <div class="row j1" >
          <label class="col-sm-2" for="<?php echo controlPlagaTableClass::getNameField(controlPlagaTableClass::PRODUCTO_INSUMO_ID, true) ?>" >  <?php echo i18n::__('insumo') ?>:   </label>
-         <div class="col-lg-5">
+         <div class="col-lg-4">
          <select class="form-control" id="slcInsumo" name="<?php echo controlPlagaTableClass::getNameField(controlPlagaTableClass::PRODUCTO_INSUMO_ID, true); ?>" required>
               <option value="<?php echo (session::getInstance()->hasFlash('selectProducto') or request::getInstance()->hasPost(controlPlagaTableClass::getNameField(controlPlagaTableClass::PRODUCTO_INSUMO_ID, true))) ? request::getInstance()->getPost(controlPlagaTableClass::getNameField(controlPlagaTableClass::PRODUCTO_INSUMO_ID, true)) : ((isset($objControlPlaga[0])) ? '' : '') ?>"><?php echo i18n::__('selectInsumo') ?></option>
               <?php  foreach ($objProducto as $key): ?>
@@ -133,8 +131,17 @@ use mvc\request\requestClass as request ?>
         </div>
         
                  
-         <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
         <input  class="form-control" value="<?php echo (session::getInstance()->hasFlash('inputCantidad') or request::getInstance()->hasPost(controlPlagaTableClass::getNameField(controlPlagaTableClass::CANTIDAD, true))) ? request::getInstance()->getPost(controlPlagaTableClass::getNameField(controlPlagaTableClass::CANTIDAD, true)) : ((isset($objControlPlaga[0])) ? $objControlPlaga[0]->$cantidad : '') ?>" type="text" name="<?php echo controlPlagaTableClass::getNameField(controlPlagaTableClass::CANTIDAD, true) ?>" placeholder="<?php echo i18n::__('cantidad') ?>" >
+        </div>
+         
+         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+            <select  class="form-control" id="<?php controlPlagaTableClass::getNameField(controlPlagaTableClass::ID, true)?>" name="<?php echo controlPlagaTableClass::getNameField(controlPlagaTableClass::UNIDAD_MEDIDA_ID, true);?>" required>
+      <option value="<?php echo (session::getInstance()->hasFlash('selectUnidadMedida') or request::getInstance()->hasPost(controlPlagaTableClass::getNameField(controlPlagaTableClass::UNIDAD_MEDIDA_ID, true))) ? request::getInstance()->getPost(controlPlagaTableClass::getNameField(controlPlagaTableClass::UNIDAD_MEDIDA_ID, true)) : ((isset($objControlPlaga[0])) ? '' : '') ?>"><?php echo i18n::__('selectUnidadPeso') ?></option>
+       <?php foreach($objUnidadMedida as $key):?>
+       <option  <?php  echo (request::getInstance()->hasPost(controlPlagaTableClass::getNameField(controlPlagaTableClass::UNIDAD_MEDIDA_ID, true)) === true and request::getInstance()->getPost(controlPlagaTableClass::getNameField(controlPlagaTableClass::UNIDAD_MEDIDA_ID, true)) == $key->$idUnidadMedida) ? 'selected' :  (isset($objControlPlaga[0]->$idUnidadMedidaId) === true and $objControlPlaga[0]->$idUnidadMedidaId == $key->$idUnidadMedida) ? 'selected' : '' ?>  value="<?php echo $key->$idUnidadMedida?>"><?php echo $key->$desUnidadMedida?></option>
+        <?php endforeach;?>
+   </select>
         </div>
       </div>
         

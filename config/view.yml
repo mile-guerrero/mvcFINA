@@ -182,7 +182,13 @@ empresa:
 enfermedad: 
   index:
     javascript:
-      - confirmar.js      
+      - confirmar.js   
+      
+#-------------------modulo - plaga-------------------------
+plaga: 
+  index:
+    javascript:
+      - confirmar.js         
    
       
 #-------------------modulo - pagotrabajador-------------------------

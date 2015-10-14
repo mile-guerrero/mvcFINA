@@ -43,7 +43,7 @@ class insertActionClass extends controllerClass implements controllerActionInter
       ); 
       $this->objLote = loteTableClass::getAll($fields, true, $orderBy, 'ASC');
       
-       $fields = array(     
+      $fields = array(     
       enfermedadTableClass::ID, 
       enfermedadTableClass::NOMBRE
       );
@@ -51,6 +51,15 @@ class insertActionClass extends controllerClass implements controllerActionInter
       enfermedadTableClass::NOMBRE    
       ); 
       $this->objEnfermedad = enfermedadTableClass::getAll($fields, false, $orderBy, 'ASC');
+      
+      $fields = array(
+          unidadMedidaTableClass::ID,
+          unidadMedidaTableClass::DESCRIPCION
+      );
+      $orderBy = array(
+          unidadMedidaTableClass::DESCRIPCION
+      );
+      $this->objUnidadMedida = unidadMedidaTableClass::getAll($fields, false, $orderBy, 'ASC');
 
       $this->defineView('insert', 'controlEnfermedad', session::getInstance()->getFormatOutput());
     }//cierre del try

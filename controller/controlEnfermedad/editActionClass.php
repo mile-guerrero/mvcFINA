@@ -36,7 +36,8 @@ class editActionClass extends controllerClass implements controllerActionInterfa
           controlEnfermedadTableClass::LOTE_ID,
           controlEnfermedadTableClass::ENFERMEDAD_ID,
           controlEnfermedadTableClass::PRODUCTO_INSUMO_ID,
-          controlEnfermedadTableClass::CANTIDAD
+          controlEnfermedadTableClass::CANTIDAD,
+          controlEnfermedadTableClass::UNIDAD_MEDIDA_ID
         );
         $where = array(
             controlEnfermedadTableClass::ID => request::getInstance()->getGet(controlEnfermedadTableClass::ID)
@@ -90,7 +91,14 @@ class editActionClass extends controllerClass implements controllerActionInterfa
       ); 
       $this->objEnfermedad = enfermedadTableClass::getAll($fields, false, $orderBy, 'ASC');
 
-        
+      $fields = array(
+          unidadMedidaTableClass::ID,
+          unidadMedidaTableClass::DESCRIPCION
+      );
+      $orderBy = array(
+          unidadMedidaTableClass::DESCRIPCION
+      );
+      $this->objUnidadMedida = unidadMedidaTableClass::getAll($fields, false, $orderBy, 'ASC');  
         
         $this->defineView('edit', 'controlEnfermedad', session::getInstance()->getFormatOutput());
         

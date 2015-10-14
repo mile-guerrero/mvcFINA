@@ -7,6 +7,7 @@
 <?php $plaga = controlPlagaTableClass::PLAGA_ID ?>
 <?php $insumo = controlPlagaTableClass::PRODUCTO_INSUMO_ID ?>
 <?php $cantidad = controlPlagaTableClass::CANTIDAD ?>
+<?php $unidadMedida = controlPlagaTableClass::UNIDAD_MEDIDA_ID ?>
 <?php $id = controlPlagaTableClass::ID ?>
 
 
@@ -46,7 +47,7 @@
           </tr>
            <tr>
           <td><?php echo i18n::__('cantidad') ?></td>      
-          <td><?php echo ($key->$cantidad) ?></td>
+          <td><?php echo ($key->$cantidad). ' ' . unidadMedidaTableClass::getNameUnidadMedida($key->$unidadMedida) ?></td>
           </tr>
            <tr>
           <td><?php echo i18n::__('plaga') ?></td>      

@@ -45,14 +45,14 @@ class insertActionClass extends controllerClass implements controllerActionInter
       );      
       $this->objOSM = maquinaTableClass::getAll($fields, true, $orderBy, 'ASC');
       
-      $fields = array(
-          unidadDistanciaTableClass::ID,
-          unidadDistanciaTableClass::DESCRIPCION
-      );
-      $orderBy = array(
-          unidadDistanciaTableClass::DESCRIPCION   
-      );      
-      $this->objUnidadDistancia = unidadDistanciaTableClass::getAll($fields, false, $orderBy, 'ASC');
+//      $fields = array(
+//          unidadDistanciaTableClass::ID,
+//          unidadDistanciaTableClass::DESCRIPCION
+//      );
+//      $orderBy = array(
+//          unidadDistanciaTableClass::DESCRIPCION   
+//      );      
+//      $this->objUnidadDistancia = unidadDistanciaTableClass::getAll($fields, false, $orderBy, 'ASC');
     
       $this->defineView('insert', 'ordenServicio', session::getInstance()->getFormatOutput());
     } catch (PDOException $exc) {
