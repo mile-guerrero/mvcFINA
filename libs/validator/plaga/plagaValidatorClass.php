@@ -14,32 +14,18 @@ namespace mvc\validator {
   class plagaValidatorClass extends validatorClass {
     public static function validateInsert() {
       $flag = false;
-//      $soloNumeros = "/^[[:digit:]]+$/";
-      $soloLetras = "/^[a-z áéíóúÁÉÍÓÚnÑ]+$/i";
-      $soloTelefono = "/^(\d{3,3}\-\d{3,3}\-\d{4,4})|^(\+\d\-\d{3,3}\-\d{4,4})/";
-      $emailcorrecto = '/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/';
-          
-      //-------------------------------campo nombre-----------------------------
+
+     //-------------------------------campo nombre-----------------------------
           //----campo nulo----
       if (self::notBlank(request::getInstance()->getPost(\plagaTableClass::getNameField(\plagaTableClass::NOMBRE, true)))) {
         $flag = true;
         session::getInstance()->setFlash('inputNombre', true);
         session::getInstance()->setError('El nombre de la plaga es requerido', 'inputNombre');
-      } //----solo permitir letras----
-        else if (!preg_match($soloLetras, (request::getInstance()->getPost(\plagaTableClass::getNameField(\plagaTableClass::NOMBRE, true))))){
-        $flag = true;
-        session::getInstance()->setFlash('inputNombre', true);
-        session::getInstance()->setError('El nombre no permite numeros, solo letras', 'inputNombre');
-      } //----sobre pasar los caracteres----
-        else if(strlen(request::getInstance()->getPost(\plagaTableClass::getNameField(\plagaTableClass::NOMBRE, true))) > \plagaTableClass::NOMBRE_LENGTH) {
+      } else if(strlen(request::getInstance()->getPost(\plagaTableClass::getNameField(\plagaTableClass::NOMBRE, true))) > \plagaTableClass::NOMBRE_LENGTH) {
         $flag = true;
         session::getInstance()->setFlash('inputNombre', true);
         session::getInstance()->setError('El nombre digitado es mayor en cantidad de caracteres a lo permitido', 'inputNombre');
-      }else if (self::isUnique(\plagaTableClass::NOMBRE, true, array(\plagaTableClass::NOMBRE => request::getInstance()->getPost(\plagaTableClass::getNameField(\plagaTableClass::NOMBRE, true))), \plagaTableClass::getNameTable())) {
-                $flag = true;
-                session::getInstance()->setFlash('inputNombre', true);
-                session::getInstance()->setError('El nombre digitado ya existe', 'inputNombre');
-            }
+      }
       //-------------------------------campo descripcion-----------------------------
           //----campo nulo----
         if (self::notBlank(request::getInstance()->getPost(\plagaTableClass::getNameField(\plagaTableClass::DESCRIPCION, true)))) {
@@ -78,8 +64,7 @@ namespace mvc\validator {
       }
       //-------------------------------condiccion de bandera true-----------------------------
       if ($flag === true) {
-        //request::getInstance()->setMethod('GET');
-        routing::getInstance()->forward('plaga', 'insert');
+       routing::getInstance()->forward('plaga', 'insert');
       }
     }
   
@@ -97,11 +82,11 @@ namespace mvc\validator {
         session::getInstance()->setFlash('inputNombre', true);
         session::getInstance()->setError('El nombre de la plaga es requerido', 'inputNombre');
       } //----solo permitir letras----
-        else if (!preg_match($soloLetras, (request::getInstance()->getPost(\plagaTableClass::getNameField(\plagaTableClass::NOMBRE, true))))){
-        $flag = true;
-        session::getInstance()->setFlash('inputNombre', true);
-        session::getInstance()->setError('El nombre no permite numeros, solo letras', 'inputNombre');
-      } //----sobre pasar los caracteres----
+//        else if (!preg_match($soloLetras, (request::getInstance()->getPost(\plagaTableClass::getNameField(\plagaTableClass::NOMBRE, true))))){
+//        $flag = true;
+//        session::getInstance()->setFlash('inputNombre', true);
+//        session::getInstance()->setError('El nombre no permite numeros, solo letras', 'inputNombre');
+//      } //----sobre pasar los caracteres----
         else if(strlen(request::getInstance()->getPost(\plagaTableClass::getNameField(\plagaTableClass::NOMBRE, true))) > \plagaTableClass::NOMBRE_LENGTH) {
         $flag = true;
         session::getInstance()->setFlash('inputNombre', true);

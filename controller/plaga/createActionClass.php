@@ -54,25 +54,15 @@ class createActionClass extends controllerClass implements controllerActionInter
       }//cierre del else
     } //cierre de la try
     catch (PDOException $exc) {
-      routing::getInstance()->redirect('plaga', 'insert');
-      session::getInstance()->setFlash('exc', $exc);
+//      routing::getInstance()->redirect('plaga', 'insert');
+//      session::getInstance()->setFlash('exc', $exc);
+      echo $exc->getMessage();
+      echo '<br>';
+      echo $exc->getTraceAsString();
+      
     }//cierre del catch
   }//cierre de la funcion execute 
 }//cierre de la clase
-      
-     
-//$sql = 'SELECT ' . clienteTableClass::NOMBRE .  ' As nombre  '
-//             . '  FROM ' . clienteTableClass::getNameTable() . '  '
-//             . '  WHERE ' . clienteTableClass::DOCUMENTO . ' = :documento';
-//    $params = array(
-//          ':documento' => $documento
-//      );
-//    
-//    $answer = model::getInstance()->prepare($sql);
-//    $answer->execute($params);
-//    $answer = $answer->fetchAll(PDO::FETCH_OBJ);
-//    print_r ($answer);
-   
 
 
 
